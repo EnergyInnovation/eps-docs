@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>How the EPS Avoids Double Counting Policy Effects</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="css/main.css">
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-28450138-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+</head>
+
+
+  <body>
+
+    <div class="top-bar">
+  <div class="content-column">
+    <div class="banner">
+      <div class="logo-left">
+        
+        <a href="../index.html" target="_blank">
+        
+        <img src="images/logo_eps_white.svg" width="254" height="50">
+        </a>
+      </div>
+      <div class="partner-logos">
+        <!-- some partner logos go on the left -->
+        
+        <!-- EI logo on the left -->
+        
+        <div class="logo-right" style="margin-right: 0">
+        
+        <a href="https://energyinnovation.org" target="_blank"><img src="images/ei-logo.svg" alt="Energy Innovation"></a>
+        </div>
+        <!-- partner logos left to right -->
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-column">
+  <div class="nav-bar">
+    <div class="nav-link"><h3><a href="index.html">Documentation Index</a></h3></div>
+    <div class="nav-link"><h3><a href="video-series.html">EPS Video Series</a></h3></div>
+    <div class="nav-link"><h3><a href="download.html">Download Model</a></h3></div>
+  </div>
+</div>
+
+
+
+    <div class="content-column">
+        <header class="post-header">
+    <h1 class="post-title">How the EPS Avoids Double Counting Policy Effects</h1>
+  </header>
+
+  <article class="post-content">
+    <h2 id="about-double-counting-and-policy-types">About Double Counting and Policy Types</h2>
+
+<p>The EPS has been designed to avoid double-counting the effects of policies on model results, such as emissions reductions or cash flow changes.  This means that if Policy A abates two tons of CO<sub>2</sub>e, and Policy B abates two tons of CO<sub>2</sub>e, then when the user enables Policies A and B together, the total abatement will only be four tons if the policies are completely non-interacting.  If one of the tons abated by each policy is the “same” ton, then the model will count that abatement only once, so that the total abatement of Policies A and B together will be three tons.  It is crucial that the model be able to avoid double-counting policy effects in its results in order to accurately assess the effects of packages consisting of many interacting policies.</p>
+
+<p>This can pose a challenge for pricing policies (especially a carbon tax), which may incentivize a wide variety of actions to reduce emissions.  For example, a carbon tax applied to the Transportation sector may make driving fossil fuel-powered vehicles more expensive, reducing demand for travel.  It may also increase the attractiveness of electric vehicles (EVs) relative to fossil fuel-powered vehicles, leading to a change in the market shares of these types of vehicles.  In other words, it may lead both to a shift in demand for transportation services and to technology switching.</p>
+
+<p>In the Energy Policy Simulator, some actions that may be undertaken to lower emissions are either price-driven or are governed by a separate policy lever particular to that action, not both.  For example, changes in demand for building services (such as how often occupants choose to use their lights, air conditioning, or cooking appliances) are price-driven; there is no policy lever that allows the user to explicitly set a reduction in demand for building services.  In contrast, industries converting their manufacturing processes that run on natural gas to run on electricity is governed by a separate policy lever (an industrial electrification policy), and this conversion will not be undertaken solely due to changes in the cost of natural gas or electricity.</p>
+
+<h2 id="combining-multiple-policies">Combining Multiple Policies</h2>
+
+<p>Multiple pricing policies combine together without difficulty: they each influence the final price, and the final price determines the action undertaken.  Multiple non-pricing policies usually also combine together without difficulty, as each policy typically specifies the point at which it influences action, and each policy can be modeled at that point in the calculation flow, “seeing” effects of upstream policies as having already happened in the current model year.</p>
+
+<p>It can be more challenging to combine pricing effects and non-pricing policies without double counting.  There are essentially two ways to achieve this: either the separate policy lever is specifically defined to be additive to any price-induced shifting, or the separate lever is a floor (or ceiling) that only takes effect after price-induced shifting.  (Throughout the rest of this documentation page, a “floor” refers to either a ceiling or to a floor, which are not meaningfully different for purposes of this discussion.)  Unfortunately, there are downsides to each of these approaches:</p>
+
+<p>Additive policies are dissimilar from real-world policies, because policymakers can’t foresee the amount of price-induced shifting that will occur in the future and then enact a policy that specifies a strictly additive change, perhaps to hit a desired target.  (Even with hindsight, it can be tough or impossible to determine how much of an action was undertaken due to differences between actual historical costs and counter-factual possible historical costs, so calculating the “base” to which an additive policy must be applied may not be possible.  This means that in the real world, it may not be clear whether or not an actor has complied with an additive policy, even in retrospect.)  Therefore, while additive policies are comparatively easy to model, they have drawbacks when seeking to represent policies that a real policymaker could plausibly enact.</p>
+
+<p>In contrast, floor policies are straightforward to enact in the real world, but on the modeling side, they can reduce the EPS’s ability to ascribe emissions reductions or other impacts to a particular policy (e.g. in wedge diagrams or cost curve diagrams) while capturing all policy interactions.  In the web app interface, the EPS tests for policy contributions to an interacting package by sequentially disabling each policy in turn, noting the resulting change in emissions (or costs, or other metric of interest), then re-enabling the disabled policy and moving on to the next policy.  At the end, it scales the results of each policy’s contribution such that the total equals the package’s total effect.  The reason this presents a difficulty with floor and pricing policy interactions can be hard to visualize, so here is a helpful example:</p>
+
+<p>The EPS adjusts EV market share based on policies that affect fuel price, reflecting the way fuel prices influence buyers’ vehicle choices.  The EPS also includes an EV sales mandate, which can require that at least a certain percentage of vehicle sales consist of EVs.  The EV sales mandate is implemented as a floor, so the mandate has no effect if EV sales would be high enough to comply based on pricing policies alone.  Suppose you design a policy package that features a carbon tax policy and also an EV sales mandate that would require an increase in EV market share equal to the increase obtained from the carbon tax.  When the EPS breaks that policy package into its component parts, the model will tell you that the EV sales mandate is responsible for no increase in EV deployment, because when it relaxes the EV sales mandate, the EV market share does not drop, as that higher market share is being fully supported by the pricing policy.  The EPS will also find that the carbon tax policy results in no increase in EV market share, because when the carbon tax is relaxed, there is no drop in EV market share, as the EV market share is fully supported by the EV sales mandate policy.  Thus, even though the change in EV market share from the policy package as a whole is calculated correctly, no policy receives “credit” for that increase.</p>
+
+<p>It is possible to get around this problem by performing an analysis of policy contributions to your metric of interest by enabling each policy within the policy package in turn, noting the effect, then disabling it and repeating for the next policy.  At the end, it scales the components so they sum to the policy package’s total effect.  This “policy-enabling” procedure would correctly ascribe 50% of the effect on EV deployment in our example above to the sales mandate and 50% to the carbon tax.  Unfortunately, because only one policy is ever enabled at a given time, it fails to capture policy interactions.  Thus, there are pluses and minuses to each approach.</p>
+
+<p>Both methods provide valuable insight and researchers studying these topics should consider evaluating policies from both perspectives.  The <a href="testing-policy-contributions.html">ContributionTest Python script</a> included with the Energy Policy Simulator can be configured to use either policy-disabling (the default) or policy-enabling calculation modes.  The wedge diagrams and cost curves available through the web interface use only policy-disabling analysis, as as this approach minimizes inaccuracy for most use cases.</p>
+
+<ul>
+  <li><strong>Update:</strong> As of EPS 3.1.0, the web interface uses a new, more advanced procedure for allocating policies’ contributions to GHG abatement within a policy package (i.e., for wedge thicknesses or cost curve box widths).  This is a refinement of the “policy-disabling” procedure described above that breaks the output metric (GHG abatement) into sectors, tests the effects of each policy on each sector, and assembles the final impact of each policy by summing across sectors.  There are certain other refinements in the new procedure as well.  This avoids many of the problems formerly associated with overlapping policy effects.  A detailed description of the new procedure is <a href="calculating-wedge-diagrams-and-cost-curves.html">available here</a>.</li>
+</ul>
+
+<h2 id="selecting-the-best-approach-for-each-modeled-action">Selecting the Best Approach for Each Modeled Action</h2>
+
+<p>As model developers, we must carefully balance upsides and downsides of handling each potential mitigation action in a solely price-driven way, solely driven by a separate policy lever, or as a combination of the two (with the separate lever either specifying an additive amount or serving as a floor):</p>
+<ul>
+  <li>Treating an action as solely price-driven properly captures the price-behavior feedbacks.  This approach is often the preference of classical economists.  However, it is poor at capturing <a href="https://energyinnovation.org/wp-content/uploads/2018/01/2016-08-18-Broad-Spectrum-Published-Article.pdf">non-price barriers</a>, and by definition, it disallows the possibility of mandating more of that action via a separate policy, something that is often done and can achieve good results in the real world.</li>
+  <li>Treating an action as solely driven by a separate policy lever allows for granular control over that action and allows us to easily account for non-price barriers that limit the extent to which the action may be undertaken due to market forces alone.  Unfortunately, it makes that action completely insensitive to pricing policies.  Even in the presence of severe non-price barriers, in the real world, there is often at least a small sensitivity to price changes.</li>
+  <li>Using a combined approach requires us to treat the policy lever as additive or as a floor.  Additive policies may be dissimilar from plausibly enactable real-world policies in the way the desired quantity of action is specified.  Policies that are a floor often have no effect until above a certain threshold and lead the EPS to incorrectly under-estimate the contribution of both the pricing policy and the floor policy to the total policy package’s effect when using a policy-disabling analysis mode (which can cause wedge diagrams and policy cost curve diagrams generated by the web app to be inaccurate).</li>
+</ul>
+
+<p>As developers of the EPS, we resolve these trade-offs by using an approach for each action that best reflects the way policies regarding that action are usually implemented in the real world, while looking to minimize error in the most common use cases.  The correct approach necessarily varies by action.  As a result, the EPS does not have a consistent treatment of how policies drive mitigation actions, and we believe it to be more accurate as a result.</p>
+
+<p>The following table lists which approach is used to govern which types of action in the EPS.  This table may not include all effects that exist in the EPS, but it aims to include the major types of modeled actions that contribute to emissions abatement.  A key to the acronyms used in the table appears below the table.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sector</th>
+      <th>Action</th>
+      <th style="text-align: center">Price-Driven?</th>
+      <th style="text-align: center">Separate Lever(s)?</th>
+      <th>Non-Pricing Policies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Transportation</td>
+      <td>Change in demand for travel</td>
+      <td style="text-align: center">yes</td>
+      <td style="text-align: center">yes</td>
+      <td>additive: TDM</td>
+    </tr>
+    <tr>
+      <td>Transportation</td>
+      <td>Technology choice (e.g. electric vs. combustion engine LDVs)</td>
+      <td style="text-align: center">yes</td>
+      <td style="text-align: center">yes</td>
+      <td>floor: EV mandate; additive: reduce EV range anxiety, EV charger deployment</td>
+    </tr>
+    <tr>
+      <td>Transportation</td>
+      <td>Fuel supply blending</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>LCFS</td>
+    </tr>
+    <tr>
+      <td>Transportation</td>
+      <td>Efficiency of new vehicles of a given technology</td>
+      <td style="text-align: center">yes</td>
+      <td style="text-align: center">yes</td>
+      <td>additive: standards, parameterized feebate<sup>A</sup></td>
+    </tr>
+    <tr>
+      <td>Transportation</td>
+      <td>Mode shifting (e.g. shifting trips from LDVs to buses)</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>TDM</td>
+    </tr>
+    <tr>
+      <td>Transportation</td>
+      <td>Conventional pollutant reduction</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>standards</td>
+    </tr>
+    <tr>
+      <td>Electricity<sup>B</sup></td>
+      <td>Technology choice for new power plants</td>
+      <td style="text-align: center">yes</td>
+      <td style="text-align: center">yes</td>
+      <td>floors: RPS, ban new plant types, mandated capacity construction</td>
+    </tr>
+    <tr>
+      <td>Electricity</td>
+      <td>Flexibility provision</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>DR, transmission, batteries</td>
+    </tr>
+    <tr>
+      <td>Electricity</td>
+      <td>Transmission loss reduction</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>reduce T&amp;D losses</td>
+    </tr>
+    <tr>
+      <td>Electricity</td>
+      <td>Early retirement of fossil plants</td>
+      <td style="text-align: center">yes</td>
+      <td style="text-align: center">yes</td>
+      <td>additive: early retirement</td>
+    </tr>
+    <tr>
+      <td>Electricity</td>
+      <td>Change in electricity imports &amp; exports</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>electricity imports, electricity exports</td>
+    </tr>
+    <tr>
+      <td>Buildings</td>
+      <td>Change in demand for building services</td>
+      <td style="text-align: center">yes</td>
+      <td style="text-align: center">no</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td>Buildings</td>
+      <td>Technology choice (e.g. natural gas vs. electric appliances)</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>building component electrification</td>
+    </tr>
+    <tr>
+      <td>Buildings</td>
+      <td>Change in efficiency of new building components</td>
+      <td style="text-align: center">yes</td>
+      <td style="text-align: center">yes</td>
+      <td>additive: building codes, rebate, labeling</td>
+    </tr>
+    <tr>
+      <td>Buildings</td>
+      <td>Accelerated retrofitting</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>commercial retrofitting</td>
+    </tr>
+    <tr>
+      <td>Buildings</td>
+      <td>Distributed solar PV deployment</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>RPS tranche, parameterized subsidy<sup>C</sup></td>
+    </tr>
+    <tr>
+      <td>Industry</td>
+      <td>Change in demand for industrial products</td>
+      <td style="text-align: center">yes</td>
+      <td style="text-align: center">yes</td>
+      <td>additive: material efficiency / longevity / re-use, shift to non-animal products</td>
+    </tr>
+    <tr>
+      <td>Industry</td>
+      <td>Technology choice (e.g. natural gas vs. electric production processes)</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>fuel switching</td>
+    </tr>
+    <tr>
+      <td>Industry</td>
+      <td>Change in energy efficiency of production</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>standards, waste heat recovery, system integration</td>
+    </tr>
+    <tr>
+      <td>Industry</td>
+      <td>Early retirement of industrial facilities</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>early retirement</td>
+    </tr>
+    <tr>
+      <td>Industry</td>
+      <td>Process emissions abatement</td>
+      <td style="text-align: center">yes</td>
+      <td style="text-align: center">yes</td>
+      <td>additive: 8 levers (including agriculture)</td>
+    </tr>
+    <tr>
+      <td>District Heat<sup>B</sup></td>
+      <td>Technology choice (fuel switching)</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>fuel switching</td>
+    </tr>
+    <tr>
+      <td>District Heat</td>
+      <td>Efficiency</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>CHP</td>
+    </tr>
+    <tr>
+      <td>LULUCF</td>
+      <td>All actions</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>each action has its own lever</td>
+    </tr>
+    <tr>
+      <td>CCS</td>
+      <td>Amount of deployment</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>CCS deployment</td>
+    </tr>
+    <tr>
+      <td>Hydrogen Supply<sup>B</sup></td>
+      <td>Technology choice (e.g. methane reforming, electrolysis, etc.)</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>production pathway switching</td>
+    </tr>
+    <tr>
+      <td>Geoengineering</td>
+      <td>Amount of deployment</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>direct air capture</td>
+    </tr>
+    <tr>
+      <td>R&amp;D</td>
+      <td>Amount of progress achieved</td>
+      <td style="text-align: center">no</td>
+      <td style="text-align: center">yes</td>
+      <td>separate levers for each technology</td>
+    </tr>
+    <tr>
+      <td>Fuel Trade</td>
+      <td>Quantities of fuels imported/exported</td>
+      <td style="text-align: center">yes</td>
+      <td style="text-align: center">yes</td>
+      <td>reduce exports</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><sup>A</sup> The feebate is a pricing policy, but it is converted into a percentage increase in efficiency via a parameter from a study, then applied additively following pricing effects.</p>
+
+<p><sup>B</sup> Note that change in demand for electricity, district heat, and hydrogen is handled in each energy-demanding sector, not in the Electricity, District Heat, or Hydrogen Supply sectors.</p>
+
+<p><sup>C</sup> The subsidy for distributed solar PV is a pricing policy, but it is converted into a percentage increase in deployment via a parameter from a study.  There is no purely price-driven mechanism for distributed PV deployment that responds to, say, changes in the price of electricity from the grid.</p>
+
+<p>Key to acronyms used in this table:</p>
+<ul>
+  <li>CCS = carbon capture and sequestration</li>
+  <li>CHP = combined heat and power</li>
+  <li>DR = demand response</li>
+  <li>EV = electric vehicle</li>
+  <li>LCFS = low carbon fuel standard</li>
+  <li>LDVs = light duty [on-road] vehicles</li>
+  <li>LULUCF = land use, land use change, and forestry</li>
+  <li>R&amp;D = research and development</li>
+  <li>T&amp;D = transmission and distribution</li>
+  <li>TDM = transportation demand management</li>
+</ul>
+
+  </article>
+
+</div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+    // Show the cookie consent bar unless already opted in.
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: '#000000', text: '#ffffff' },
+        button: { background: '#00acec', text: '#ffffff' }
+      },
+      theme: 'classic',
+      content: {
+        message:
+          'By continuing to use this site, you are accepting the use of cookies, which provide functionality for this website.',
+        dismiss: 'OK',
+        href: 'https://energypolicy.solutions/privacy/'
+      }
+    })
+</script>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Public Health and Additional Outputs</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="css/main.css">
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-28450138-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+</head>
+
+
+  <body>
+
+    <div class="top-bar">
+  <div class="content-column">
+    <div class="banner">
+      <div class="logo-left">
+        
+        <a href="../index.html" target="_blank">
+        
+        <img src="images/logo_eps_white.svg" width="254" height="50">
+        </a>
+      </div>
+      <div class="partner-logos">
+        <!-- some partner logos go on the left -->
+        
+        <!-- EI logo on the left -->
+        
+        <div class="logo-right" style="margin-right: 0">
+        
+        <a href="https://energyinnovation.org" target="_blank"><img src="images/ei-logo.svg" alt="Energy Innovation"></a>
+        </div>
+        <!-- partner logos left to right -->
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-column">
+  <div class="nav-bar">
+    <div class="nav-link"><h3><a href="index.html">Documentation Index</a></h3></div>
+    <div class="nav-link"><h3><a href="video-series.html">EPS Video Series</a></h3></div>
+    <div class="nav-link"><h3><a href="download.html">Download Model</a></h3></div>
+  </div>
+</div>
+
+
+
+    <div class="content-column">
+        <header class="post-header">
+    <h1 class="post-title">Public Health and Additional Outputs</h1>
+  </header>
+
+  <article class="post-content">
+    <p>In addition to the totaled quantities available on the <a href="cross-sector-totals.html">Cross-Sector Totals sheet</a> and the <a href="cost-outputs.html">Cost Outputs sheet</a>, the Energy Policy Simulator (EPS) calculates numerous other outputs that are useful for understanding the full range of impacts of the modeled policy package.  A variety of these outputs are available on this sheet.</p>
+
+<h2 id="public-health">Public Health</h2>
+
+<p>The EPS calculates emissions reductions of 12 different pollutants, several of which have direct, negative impacts on human health, such as nitrogen oxides (NO<sub>X</sub>), sulfur oxides (SO<sub>X</sub>), and directly-emitted particulate matter (PM).  Most of the same policies that reduce greenhouse gas emissions also reduce emissions of these other pollutants (<a href="ccs.html">carbon capture and sequestration</a> being the most important exception), so most policy packages that aim to mitigate climate change also have direct human health benefits.</p>
+
+<p>Typically, to calculate the change in health outcomes due to a change in emissions, two intervening calculation steps are necessary:</p>
+
+<ol>
+  <li>
+    <p>Changes in pollutant emissions are entered into a gridded air quality model, such as <a href="http://acmg.seas.harvard.edu/geos/">GEOS-Chem</a> or <a href="https://www.epa.gov/cmaq">CMAQ</a>, to determine the change in ground-level concentration of various pollutants throughout the modeled year.</p>
+  </li>
+  <li>
+    <p>Changes in ground-level concentration are fed into epidemiological concentration-response functions (CRFs), which relate the change in concentration to the change in a rate of a negative health outcome, such as premature mortality.  Multiplying by the business-as-usual rate of that negative health outcome gives the change caused by the policy package.</p>
+  </li>
+</ol>
+
+<p>Though CRFs can be computed quickly, gridded air quality models are slow to run, so they cannot be directly integrated into a computer model that provides real-time interactivity and feedback, such as the EPS.  Fortunately, some organizations that use gridded air quality models, such as the U.S. Environmental Protection Agency, have computed and <a href="https://www.epa.gov/benmap/reduced-form-tools-calculating-pm25-benefits">published “reduced-form tools”</a> that enable one to calculate the public health benefits of emissions reductions without running a gridded air quality model oneself.  These tools can produce results that are <a href="https://www.epa.gov/sites/production/files/2019-11/documents/rft_combined_report_10.31.19_final.pdf">“reasonably comparable to those derived from full-form models”</a> and are the best available option for computing public health benefits in the EPS.</p>
+
+<p>The EPS calculates the change in the following public health outcomes caused by the policy package:</p>
+
+<ul>
+  <li>Premature mortality (i.e. deaths)</li>
+  <li>Respiratory emergency room visits</li>
+  <li>Acute bronchitis</li>
+  <li>Lower respiratory symptoms</li>
+  <li>Upper respiratory symptoms</li>
+  <li>Minor restricted activity days</li>
+  <li>Lost workdays</li>
+  <li>Asthma exacerbation (asthma attacks)</li>
+  <li>Cardiovascular hospital admissions</li>
+  <li>Respiratory hospital admissions</li>
+  <li>Nonfatal heart attacks</li>
+</ul>
+
+<p>In the web interface, these are grouped into eight categories, while the full breakout of eleven categories is shown in Vensim.</p>
+
+<p>Particulates are the primary cause of these negative health outcomes, including primary particulates (those directly emitted by combustion) and secondary particulates (those formed in the atmosphere by chemical reactions involving gaseous pollutants).  The health outomes simulated in the EPS are only due to particulates, not other pollutants (such as ozone), so the public health impacts estimates produced the EPS may be conservative.</p>
+
+<h3 id="model-structure">Model Structure</h3>
+
+<p>The total emissions of each pollutant in the BAU and policy cases are obtained from the <a href="cross-sector-totals.html">Cross-Sector Totals</a> sheet, and we take the difference to find the change in pollutant emissions caused by the policy package.  (For the small number of EPS models configured to include emissions associated with imported electricity in the in-region emissions total, we exclude these emissions from the public health calculations, as we are only tracking health incidents caused by in-region emissions.)   We then multiply the change in emissions of each pollutant by a set of <code class="language-plaintext highlighter-rouge">Health Outcome Incidence per Ton Pollutant</code> multipliers, from the reduded-form tools discussed above.  Outcomes are quantized (rounded down) to the nearest whole number, such as 1 death or 1 lost workday.</p>
+
+<p><img src="additional-outputs-PublicHealthBenefits.png" alt="public health benefits in the EPS" /></p>
+
+<p>In some cases, it is useful to be able to see public health benefits in currency units - e.g. for comparison with other costs or savings.  The EPS monetizes avoided premature mortality using a Value of a Statistical Life (VSL) figure, taken in as input data.  Only premature mortality, not other health outcomes, are monetized.  (Premature mortality often represents on the order of 97% of monetized benefits, due to the high value assigned to incidents of premature mortality and far smaller values assigned to other health impacts.)</p>
+
+<p><img src="additional-outputs-MonetizedBenefits.png" alt="monetized avoided premature mortality" /></p>
+
+<p>Additionally, the EPS provides an estimated demographic breakdown of premature mortality incidents, where input data are available.  We take in input data from <code class="language-plaintext highlighter-rouge">FoHObDT Fraction of Health Outcomes by Demographic Trait</code> and multiply by the number of avoided premature deaths to allocate them to specific demographic traits.  For the U.S. model, the relevant traits are sex, race, and Hispanic or Latino status.  The main complexity of this process occurs not within Vensium but within the Excel file for variable <code class="language-plaintext highlighter-rouge">FoHObDT Fraction of Health Outcomes by Demographic Trait</code> (which draws from results from air quality and public health models).  The sources and methods are carefully documented and explained within that file - simply <a href="download.html">download the model</a> and review the file for more details.</p>
+
+<p><img src="additional-outputs-AvoidedDeathsDemographics.png" alt="avoided premature mortality by demographic trait" /></p>
+
+<p>So that we can display demographic mortality results as percentage changes (which is helpful for making comparisons between demographic groups), we calculate the number of deaths by demographic trait (in the policy case) by subtracting avoided deaths from BAU deaths, and we compare policy case deaths to BAU deaths by demographic trait to find percent changes.</p>
+
+<p><img src="additional-outputs-PercCngDeaths.png" alt="percent change in deaths" /></p>
+
+<h2 id="avoided-climate-damages">Avoided Climate Damages</h2>
+
+<p>The model also estimates monetized social benefits from avoided climate damages.  We take the difference in CO<sub>2</sub>e emissions between the BAU and policy cases, and we multiply it by the <code class="language-plaintext highlighter-rouge">Social Cost of Carbon</code>, a projection of the value to society in avoiding a given quantity of CO<sub>2</sub>e emissions.  The structure is shown below:</p>
+
+<p><img src="additional-outputs-CarbonBenefits.png" alt="monetized benefits from avoided climate damages" /></p>
+
+<h2 id="total-monetized-social-benefit">Total Monetized Social Benefit</h2>
+
+<p>Finally, we sum the changes in monetized public health impacts (from particulates) and monetized climate damages to obtain a total social benefits from emissions reduction, when represented in economic terms (rather than negative outcomes avoided).  We also calculate the social benefit per unit emissions abatement caused by the policy package.  The structure is shown below:</p>
+
+<p><img src="additional-outputs-TotSocialBenefits.png" alt="total social benefits of emissions reductions" /></p>
+
+<h2 id="energy-related-emissions">Energy-Related Emissions</h2>
+
+<p>Some users might want to know the amount of emissions from the production of energy (in any form, such as heat, electricity, light, or force).  All emissions in the Energy Policy Simulator (EPS) are “energy-related” except industrial sector process emissions and anthropogenic LULUCF emissions.  We include the effects of carbon sequestration conducted by the electricity and industry sectors, which effectively reduces these sectors’ net CO<sub>2</sub> emissions, so the total energy-related emissions reported here do not include CO<sub>2</sub> sequestered by these sectors.  In contrast, for the geoengineering sector, we do not subtract captured CO<sub>2</sub> (i.e., from direct air capture; DAC) from total energy-related emissions.  (We only include emissions from energy used to power geoengineering processes.)  In the geoengineering sector, the CO<sub>2</sub> removal is the product/purpose and these negative emissions are not considered <em>energy-related</em>.</p>
+
+<p>We calculate energy-related emissions for both the BAU and policy cases.  From “Total Pollutant Emissions,” we subtract anthropogenic LULUCF emissions and Industry sector process emissions.  For geoengineering, we take the total emissions excluding captured CO<sub>2</sub>.  We then convert this to CO<sub>2</sub>e using the user-specified GWP factor.  A screenshot of the structure for the policy case is shown below:</p>
+
+<p><img src="additional-outputs-EnergyRelatedEmis.png" alt="energy-related emissions excluding leakage" /></p>
+
+<h2 id="miscellaneous-additional-outputs">Miscellaneous Additional Outputs</h2>
+
+<p>This section contains a variety of outputs that may be of use for scenario analysis.  These outputs need little calculation structure (or in some cases, they are simply shadow variables from elsewhere), so they do not merit their own sections on the “Additional Outputs” sheet.</p>
+
+<p>Electricity capacity divided up by type (coal, wind, etc.) but not by plant quality level is provided here.  Similarly, we provide electricity generation (i.e. output) by type but grouped across quality levels:</p>
+
+<p><img src="additional-outputs-ElecByType.png" alt="electricity capacity and generation by type" /></p>
+
+<p>We total up the amount of primary energy from non-fossil sources, and we also express this as a percentage of total primary energy:</p>
+
+<p><img src="additional-outputs-PrimaryEnergy.png" alt="non-fossil primary energy" /></p>
+
+<p>We also report the fuel use for each fuel-using sector (transportation, electricity, buildings, industry, and district heat) by fuel:</p>
+
+<p><img src="additional-outputs-SectoralFuelUse.png" alt="fuel use by sector" /></p>
+
+<p>We also calculate the change in net electricity imports, which is used in one output graph.</p>
+
+<p><img src="additional-outputs-CngNetElecImports.png" alt="change in net electricity imports" /></p>
+
+  </article>
+
+</div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+    // Show the cookie consent bar unless already opted in.
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: '#000000', text: '#ffffff' },
+        button: { background: '#00acec', text: '#ffffff' }
+      },
+      theme: 'classic',
+      content: {
+        message:
+          'By continuing to use this site, you are accepting the use of cookies, which provide functionality for this website.',
+        dismiss: 'OK',
+        href: 'https://energypolicy.solutions/privacy/'
+      }
+    })
+</script>
+
+
+  </body>
+
+</html>

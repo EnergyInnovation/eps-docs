@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Download and Installation Instructions</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="css/main.css">
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-28450138-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+</head>
+
+
+  <body>
+
+    <div class="top-bar">
+  <div class="content-column">
+    <div class="banner">
+      <div class="logo-left">
+        
+        <a href="../index.html" target="_blank">
+        
+        <img src="images/logo_eps_white.svg" width="254" height="50">
+        </a>
+      </div>
+      <div class="partner-logos">
+        <!-- some partner logos go on the left -->
+        
+        <!-- EI logo on the left -->
+        
+        <div class="logo-right" style="margin-right: 0">
+        
+        <a href="https://energyinnovation.org" target="_blank"><img src="images/ei-logo.svg" alt="Energy Innovation"></a>
+        </div>
+        <!-- partner logos left to right -->
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-column">
+  <div class="nav-bar">
+    <div class="nav-link"><h3><a href="index.html">Documentation Index</a></h3></div>
+    <div class="nav-link"><h3><a href="video-series.html">EPS Video Series</a></h3></div>
+    <div class="nav-link"><h3><a href="download.html">Download Model</a></h3></div>
+  </div>
+</div>
+
+
+
+    <div class="content-column">
+        <header class="post-header">
+    <h1 class="post-title">Download and Installation Instructions</h1>
+  </header>
+
+  <article class="post-content">
+    <p>The Energy Policy Simulator (EPS) can be used in via its powerful <a href="online-model-tutorial.html">web interface</a> in your browser, without the need to download or install any software.  However, if you wish to view or edit the model’s input data or source code, you will need to download the model.</p>
+
+<p>The EPS is developed in <a href="http://vensim.com/">Vensim</a>, a program produced by Ventana Systems for the creation and simulation of system dynamics models.  While Vensim is sold commercially in several tiers, Ventana Systems produces a free Vensim Model Reader that can read and simulate (but not edit) models.  These instructions will walk you through the process of installing Vensim Model Reader and the Energy Policy Simulator.</p>
+
+<p>Vensim Model Reader is available for Windows and Mac operating systems.  The directions below are based on Windows, but the process should be similar on a Mac.</p>
+
+<h2 id="how-to-obtain-vensim-model-reader">How to Obtain Vensim Model Reader</h2>
+
+<p>Before downloading the EPS, you should install a copy of Vensim Model Reader.  You may download this software on the <a href="http://vensim.com/free-download/">Vensim Free Downloads page</a>.  Check the “Anti-spam” box on that web page.  <strong>Be sure to change the radio button in the “Product” section from “Vensim PLE” to “Model Reader.”</strong>  The EPS will not function under Vensim PLE (personal learning edition).  Select your operating system, enter your name and email address, and click the “Download software” button.  You will receive an email with a link to download Vensim Model Reader.  Download and run this installer, following all prompts.  After installing Vensim Model Reader, open the program to ensure it runs successfully.</p>
+
+<p>Note that the EPS Vensim version 8 or later (64-bit).  If you already have Vensim installed, but your copy is too old, you can follow the steps above to get an up-to-date version of Vensim Model Reader.</p>
+
+<h2 id="how-to-obtain-the-eps">How to Obtain the EPS</h2>
+
+<p>Once Vensim Model Reader is installed, you should download the EPS by clicking the button below.</p>
+
+<p><a href="https://github.com/Energy-Innovation/eps-us/archive/3.4.2.zip" class="btn">Download the Energy Policy Simulator</a></p>
+
+<p>A compressed archive (.zip file) will be downloaded named “eps-us-“ followed by the model’s current version number.</p>
+
+<h3 id="uncompress-the-zip-archive">Uncompress the .zip Archive</h3>
+
+<p>It is necessary to extract the files from the .zip archive before running the model.  On Windows, .zip archives look similar to folders, and you can double-click them to open them and even open the files inside them.  <strong>This does not mean you have extracted the files from the archive.</strong>  (Vensim cannot write files into a .zip archive, so Vensim will not be able to run the model properly, as this process generates an output file containing the run results.)  To extract the files, right-click on the .zip archive and select “Extract All…” then click “Extract” in the dialogue box that appears.  This will generate an uncompressed folder containing the model files.  You should now delete the .zip archive, so that there is no possibility of accidentally running the copy of the model that is still located inside the .zip archive.</p>
+
+<h3 id="show-file-extensions">Show File Extensions</h3>
+
+<p>It is easiest to use the EPS if your operating system is not configured to hide file extensions, which is the default behavior.  If you do not see file extensions such as .vpmx, .mdl, .py, .lst, .vgd, .cin, and .xlsx in the files in the model distribution, it is recommended that you change your OS settings to display file extensions.  On Windows 7 and Windows 10, go to the Control Panel/Settings, type “file extensions” in the search field, and click “Show or hide file extensions.”  In the “Folder Options” dialogue box that appears, the “View” tab should be active.  Clear the box for “Hide extensions for known file types” and click “OK”.</p>
+
+<h2 id="running-the-eps">Running the EPS</h2>
+
+<p>Double-click the <code class="language-plaintext highlighter-rouge">EPS.vpmx</code> model file to open the model in Vensim Model Reader.  (If the .vpm file extension is not associated to Vensim, you may need to browse for Vensim Model Reader (<code class="language-plaintext highlighter-rouge">venread.exe</code>) and select it in order to associate the .vpmx extension to this program.)  You may now examine and run the model.  For guidance, please see the <a href="how-to-conduct-analysis.html">How to Conduct Analysis in Vensim Model Reader</a> page (and its sub-pages on the <a href="index.html">documentation index</a>) and/or refer to <a href="http://www.vensim.com/documentation/index.html">Vensim’s help documentation</a>.</p>
+
+<h2 id="model-folder-contents">Model Folder Contents</h2>
+
+<p>The model folder will contain the following files and folders:</p>
+
+<h3 id="folders">Folders</h3>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">docs</code>, a copy of the documentation viewable <a href="index.html">on this website</a></p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">InputData</code>, a folder that contains all of the input data files (in .csv format) read by the model at runtime, as well as the Excel files used to generate those data files.  The Excel files contain bibliographic source information, so model users know the origin of every piece of data used in the model.  Data are sorted into folders by model section and then by acronyms for variable names.  A key to the meaning of all acronyms is provided in the <code class="language-plaintext highlighter-rouge">InputData</code> folder, in the file <code class="language-plaintext highlighter-rouge">acronym-key.xlsx</code>.  For more details, see the <a href="input-data.html">input data documentation page</a>.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">web_assets</code>, a small number of files used in that EPS distribution’s online landing page, documentation pages, and social media sharing features, not of interest to most users</p>
+  </li>
+</ul>
+
+<h3 id="files">Files</h3>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.gitignore</code>, a file assisting in management of the Git repository containing the model’s code</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Cost Curve Generator.xlsx</code>, an Excel file that enables users to create cost curve diagrams offline (similar to the cost curve diagrams available through the EPS’s web interface)</p>
+  </li>
+  <li>
+    <p>four scripts in the Python programming language (with <code class="language-plaintext highlighter-rouge">.py</code> extension), used to allow for batch runs and other automated behavior.  For instructions, see the <a href="automated-analysis.html">documentation pages on using the Python scripts</a>.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">EPS.mdl</code>, the model source code, suitable for use in Vensim Pro or Vensim DSS (and viewable in a text editor)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">EPS.vpmx</code>, the model in compiled form, suitable for use in Vensim Model Reader</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">GraphDefinitions.vgd</code>, a text file defining properties of graphs that appear when the model is opened in Vensim</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">License.txt</code>, a copy of the GNU General Public License version 3 (GPLv3), under which the EPS is licensed.  See the <a href="software-license.html">Software License page</a> for more details.</p>
+  </li>
+  <li>
+    <p>Two variable lists: <code class="language-plaintext highlighter-rouge">OutputVarsForCarbonCapToTaxScript.lst</code> and <code class="language-plaintext highlighter-rouge">OutputVarsToExport.lst</code>, text files listing the names of output variables, used by the Python scripts</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ReadMe.docx</code>, a file containing some introductory information and a link to the documentation on this website</p>
+  </li>
+  <li>
+    <p>three policy packages or scenarios (with <code class="language-plaintext highlighter-rouge">.cin</code> extension), which can be loaded by Vensim.  These scenarios are also featured in the EPS’s web interface.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">WebAppData.xlsx</code>, a spreadsheet that contains information used by the online web application that runs the model</p>
+  </li>
+</ul>
+
+<p>If you are using Vensim Model Reader, the only files you will need are the compiled version of the model (with .vpmx extension) and the InputData folder.  The .mdl file and .vgd file are only useful if you have Vensim Pro or Vensim DSS.  (A copy of GraphDefinitions.vgd is bundled into the compiled .vpmx file, so you do not need the graph definitions text file to view graphs when using the compiled version of the model.)  The .py and .lst files are only useful if you have Vensim DSS (because this is the only version of Vensim that supports scripts).  To use these scripts, you will also need to have <a href="https://www.python.org/downloads/">Python 3</a> installed.  For more information, see the <a href="automated-analysis.html">Automated Analysis with Python Scripts</a> page.</p>
+
+  </article>
+
+</div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+    // Show the cookie consent bar unless already opted in.
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: '#000000', text: '#ffffff' },
+        button: { background: '#00acec', text: '#ffffff' }
+      },
+      theme: 'classic',
+      content: {
+        message:
+          'By continuing to use this site, you are accepting the use of cookies, which provide functionality for this website.',
+        dismiss: 'OK',
+        href: 'https://energypolicy.solutions/privacy/'
+      }
+    })
+</script>
+
+
+  </body>
+
+</html>

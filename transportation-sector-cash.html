@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Transportation Sector (cash flow)</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="css/main.css">
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-28450138-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+</head>
+
+
+  <body>
+
+    <div class="top-bar">
+  <div class="content-column">
+    <div class="banner">
+      <div class="logo-left">
+        
+        <a href="../index.html" target="_blank">
+        
+        <img src="images/logo_eps_white.svg" width="254" height="50">
+        </a>
+      </div>
+      <div class="partner-logos">
+        <!-- some partner logos go on the left -->
+        
+        <!-- EI logo on the left -->
+        
+        <div class="logo-right" style="margin-right: 0">
+        
+        <a href="https://energyinnovation.org" target="_blank"><img src="images/ei-logo.svg" alt="Energy Innovation"></a>
+        </div>
+        <!-- partner logos left to right -->
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-column">
+  <div class="nav-bar">
+    <div class="nav-link"><h3><a href="index.html">Documentation Index</a></h3></div>
+    <div class="nav-link"><h3><a href="video-series.html">EPS Video Series</a></h3></div>
+    <div class="nav-link"><h3><a href="download.html">Download Model</a></h3></div>
+  </div>
+</div>
+
+
+
+    <div class="content-column">
+        <header class="post-header">
+    <h1 class="post-title">Transportation Sector (cash flow)</h1>
+  </header>
+
+  <article class="post-content">
+    <p>The “Transportation - Cash Flow” sheet calculates the changes in amount spent and received for transportation fuels and for vehicles.  Changes in price per unit fuel/vehicle and in quantity demanded are both taken into account.</p>
+
+<h2 id="change-in-fuel-spending">Change in Fuel Spending</h2>
+
+<p>The following screenshot shows the model structure used to calculate change in amount spent on fuel, including amount spent on fuel taxes:</p>
+
+<p><img src="transportation-sector-cash-Fuels.png" alt="change in fuel spending" /></p>
+
+<p>The fleet fuel use by fuel type is multiplied by the fuel cost per unit energy (calculated on the <a href="fuels.html">Fuels page</a>) to obtain the amount of money spent on transportation fuels.  This value is inclusive of tax.  We also multiply the quantity of fuel used by the amount of tax paid per unit energy to find the taxes paid on transportation fuels.  These steps are done both for the BAU and the policy cases.</p>
+
+<p>We find the difference in the amount spent on fuel taxes, and we find the difference in the amount spent on fuels.  We subtract out the difference in taxes to find the cash flow change for the fuel industry (which is subscripted by fuel type).  That is, a reduction in fuel spending is a negative cash flow for the fuel industry, while an increase in fuel spending is a positive cash flow for the fuel industry.</p>
+
+<h2 id="change-in-spending-on-vehicles">Change in Spending on Vehicles</h2>
+
+<p>Policy-related change in spending on vehicles requires a significant amount of additional input data to calculate.  These input data are only available for two vehicle types: passenger LDVs and freight HDVs.  Therefore, the model only calcualtes cash flow changes resulting from differences in spending on vehicles for these two vehicle types.  Fortunately, these are the two most important vehicle types, accounting for the vast majority of Transportation sector emissions and likely the vast majority of spending on vehicles each year.</p>
+
+<h3 id="estimating-number-of-vehicles-purchased">Estimating Number of Vehicles Purchased</h3>
+
+<p>Since the Transportation sector generally works in units of cargo<em>distance (passenger</em>miles or freight ton*miles), but vehicle-related cash flows are determined on the basis of number of vehicles, we must use the available data to estimate the number of vehicles that are purchased each year.  The following screenshot shows the model structure used for this purpose:</p>
+
+<p><img src="transportation-sector-cash-NewVehicles.png" alt="estimating number of vehicles purchased" /></p>
+
+<p>“BAU New Cargo Dist Transported” is taken from the “Transportation - Main” sheet.  We apply the policy-related changes in vehicle usage calculated on that sheet (based on fuel cost per unit cargo<em>distance transported and on the transportation demand management (TDM) policy lever) to find the “New Cargo Dist Transported” in the policy case.  To convert a quantity of cargo</em>distance to a number of vehicles, we need to know the average amount of cargo<em>distance that a new vehicle transports in its first year of service.  This is calculated based on the average annual distance traveled by vehicles of each type, as well as the average vehicle loading (typical, distance-weighted number of persons or freight tons carried).  This refers to the actual number of persons or freight</em>tons that were carried, not the vehicle’s capacity.</p>
+
+<h3 id="calculating-average-vehicle-price">Calculating Average Vehicle Price</h3>
+
+<p>To convert the number of new vehicles to an amount spent on vehicles, we need to know the average vehicle price in the BAU and policy cases.  Average vehicle price in the BAU case is taken in as input data.  The screenshot below shows the structure used to estimate average vehicle price in the policy case, based on the BAU price and other data:</p>
+
+<p><img src="transportation-sector-cash-VehPrice.png" alt="estimating average vehicle price" /></p>
+
+<p>First, we adjust vehicle price upward if the carbon tax policy is enabled, based on the “embedded carbon” content of the vehicle.  This refers to the amount of carbon (or other GHGs) released “upstream,” during the course of manufacture of the vehicle and its component parts.  Those producers had to pay those taxes and likely will pass some or all of the additional cost on to purchasers of those vehicles.  (In introductory economics, an individual producer is likely to pass on a fraction of a new tax that is based on the slope of the demand and supply curves for that good.  However, in the context of an economy-wide carbon tax- namely, one affecting all producers and all goods- it is likely that this would under-estimate the share of the tax that would be passed on to purchasers, since they would be seeing similar price increases for all goods in the economy, and so would have fewer substitutes or ways to avoid a passed-on tax.)  We model this simply as an increase in the cost of the vehicles- as if all of the additional tax were passed on.</p>
+
+<p>We also adjust the price of new vehicles based on improvements made to their fuel economy.  A more efficient vehicle provides savings and uses more advanced technology than a similar but less-efficient vehicle, as indicated by the “Elasticity of Vehicle Price wrt Fuel Economy.”  (This is a case where an analysis of raw sales data does not correctly reveal this trend, due to market segmentation.  Car manufacturers sell more expensive cars to wealthy consumers who are not price-sensitive, so they do not bother to make those cars more fuel efficient.  The best fuel efficiency is found in cars that are neither the most expensive nor the cheapest in their size class.  However, boosting the efficiency of all cars, rather than when manufacturers voluntarily make certain efficient models to target consumers interested in fuel economy, is more likely to add a cost to all vehicles of a given size class.  To estimate the elasticity, we rely on regulatory impact analyses of new fuel economy standards, which correctly provide positive costs for more efficient vehicles, rather than raw sales data, which are confounded by the presence of very expensive yet inefficient cars.)</p>
+
+<p>Lastly, we apply the relevant R&amp;D policy to reduce vehicle costs by a user-specified percentage.</p>
+
+<h3 id="taxes-and-cash-flows-for-vehicles">Taxes and Cash Flows for Vehicles</h3>
+
+<p>Finally, we consider the tax rate on capital equipment (which includes vehicles) and calculate the relevant cash flows, as shown in the following screenshot:</p>
+
+<p><img src="transportation-sector-cash-VehiclesCash.png" alt="calculating cash flow changes due to vehicles" /></p>
+
+<p>For each of the BAU and Policy cases, we multiple the average vehicle price by the number of vehicles sold to find the total amount spent on vehicles.  Based on the sales tax rate, we find the amount of taxes paid on vehicles.  We take the difference between the two cases to find the change in tax payments attributable to the policy package.  We similarly take the difference in overall spending on vehicles.  Then we subtract out the difference in sales taxes paid, to find the change in non-tax amount spent on vehicles.  This becomes the change in cash flow for vehicle suppliers.  That is, a reduction in the amount spent on vehicles is a negative cash flow for vehicle suppliers.</p>
+
+<h2 id="assigning-cash-flows-by-actor">Assigning Cash Flows by Actor</h2>
+
+<p>Lastly, having determined the change in the amount spent on fuels and on vehicles (and the portion of those changes that went into taxes), we assign the resulting cash flows to each actor, or cash flow entity, that buys vehicles (namely: government, industry, and consumers).  In other words, the calculations above determined who received the money (fuel suppliers, vehicle suppliers, and the government), and this section determines who spends the money.  The following screenshot shows the relevant piece of model structure:</p>
+
+<p><img src="transportation-sector-cash-AssigningFlows.png" alt="assigning cash flows in the Transportation sector" /></p>
+
+<p>Our guiding assumption here is that the fraction of the change in cash flow attributable to each actor is the same as the fraction of all vehicles owned by that actor, calculated separately for each vehicle type.  We find the total change in amount spent on fuels and on vehicles, and we divide up this change in spending by actor accordingly.  Finally, we add in the tax receipts to the “government” total, and we break out the final numbers into three variables for visual clarity and ease of reporting.</p>
+
+  </article>
+
+</div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+    // Show the cookie consent bar unless already opted in.
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: '#000000', text: '#ffffff' },
+        button: { background: '#00acec', text: '#ffffff' }
+      },
+      theme: 'classic',
+      content: {
+        message:
+          'By continuing to use this site, you are accepting the use of cookies, which provide functionality for this website.',
+        dismiss: 'OK',
+        href: 'https://energypolicy.solutions/privacy/'
+      }
+    })
+</script>
+
+
+  </body>
+
+</html>
