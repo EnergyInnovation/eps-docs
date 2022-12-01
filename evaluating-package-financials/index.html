@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evaluating the Financial Costs or Benefits of a Policy Package</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="icon" href="/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/images/manifest.webmanifest" />
+  <script>
+    ;(function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r
+      ;(i[r] =
+        i[r] ||
+        function () {
+          ;(i[r].q = i[r].q || []).push(arguments)
+        }),
+        (i[r].l = 1 * new Date())
+      ;(a = s.createElement(o)), (m = s.getElementsByTagName(o)[0])
+      a.async = 1
+      a.src = g
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga')
+    ga('create', 'UA-28450138-3', 'auto')
+    ga('send', 'pageview')
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+</head>
+
+
+  <body>
+
+    <div class="top-bar">
+  <div class="content-column">
+    <div class="banner">
+      <div class="logo-left">
+        <a href="https://energypolicy.solutions" target="_blank" rel="noopener">
+          <img src="/images/logo_eps_white.svg" width="254" height="50" alt="EPS logo" />
+        </a>
+      </div>
+      <div class="logo-right">
+        <a href="https://energyinnovation.org" target="_blank" rel="noopener"
+          ><img src="/images/logo_ei_horz_partial_white.svg" alt="Energy Innovation logo"
+        /></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content-column">
+  <div class="nav-bar">
+    <div class="nav-link">
+      <h3><a href="/">Contents</a></h3>
+    </div>
+    <div class="nav-link">
+      <h3><a href="/video-series">EPS Video Series</a></h3>
+    </div>
+    <div class="nav-link">
+      <h3><a href="/download">Download Model</a></h3>
+    </div>
+  </div>
+</div>
+
+
+    <div class="content-column">
+        <header class="post-header">
+    <h1 class="post-title">Evaluating the Financial Costs or Benefits of a Policy Package</h1>
+  </header>
+
+  <article class="post-content">
+    <h2>Policy-Driven Costs and Savings are Not &quot;Good&quot; or &quot;Bad&quot;</h2>
+<p>There is not just one correct way to calculate the financial cost or savings of a set of policies, and even the same type of cost (or savings) may be seen either in a positive or negative light.</p>
+<p>Policies can increase or decrease spending on:</p>
+<ul>
+<li>Capital equipment (e.g. power plants, appliances in buildings, industrial equipment, etc.)</li>
+<li>Labor</li>
+<li>Fuel/energy</li>
+<li>Other O&amp;M (apart from labor and fuel/energy)</li>
+<li>Tax and subsidy payments</li>
+</ul>
+<p>All of these changes in spending are calculated in the Energy Policy Simulator.</p>
+<p>However, the simulator can't tell you whether a change is &quot;good&quot; or not.  For example, a policy that improves the lifetime reliability of industrial equipment would reduce capital spending (because factories need to replace their equipment less often).  This &quot;saves&quot; the business money, which sounds good.  But it reduces economic activity (reduces GDP), by reducing the sales of the companies that manufacture the equipment, and the companies that make the materials (like steel) of which the equipment is made.</p>
+<p>GDP is itself not a clear &quot;good.&quot;  This is because not all spending is equal.  Spending on food, entertainment, and leisure travel are often considered good, but higher spending on disaster recovery or medical expenses is often considered bad.  A policy that worsens air quality and sickens people, so they must visit the doctor more often and buy expensive medicines, will tend to increase GDP (even after accounting for lost workdays).  This is especially true if the policy primarily sickens retirees, who are not working.  But no reasonable person would argue that making retirees sicker is a good policy outcome, even if it boosts GDP.</p>
+<p>Similarly, spending <strong>more</strong> on labor can be seen as a positive thing (job creation), and spending <strong>less</strong> on labor can be seen as a positive thing (automation increases domestic businesses' productivity and competitiveness).</p>
+<p>A wise policymaker thinks not only about whether a policy increases or decreases certain types of costs, but what underlying dynamic drives those changes, and whether that dynamic makes the country (and the world) a better or a worse place to live.</p>
+<h2>Cost Metrics in the Energy Policy Simulator</h2>
+<p>The Energy Policy Simulator includes a number of cost metrics:</p>
+<ol>
+<li>
+<p>The first important cost metric is &quot;Change in Capital and Operational Expenditures.&quot;  This is a useful total that expresses how much the policy package saves money or increases spending.  It respects the user's settings for how government raises or spends revenue (discussed on the documentation page for the EPS's <a href="/io-model">input-output model</a>), so it correctly reflects user choices such as making carbon taxes revenue-neutral.  It roughly expresses both the cost to domestic firms and the amount of economic stimulus the policy will provide.  The simulator subdivides the metric into components (fuel and O&amp;M, capital equipment, taxes and subsidies) to help users see what cost changes went into the metric.  This is critical for evaluating if the type of spending driven by the policies is &quot;good&quot; or &quot;bad&quot; spending (or savings), with spending on fuel often considered bad and spending on capital equipment often considered good, or at least neutral.</p>
+</li>
+<li>
+<p>Another important set of metrics concerns the impact of the policy package on the government's financial situation.  Details are  provided by the &quot;Government Cash Flow Accounting&quot; graph and the two national debt-related graphs in the web interface, which show the following effects of the policy package:</p>
+<ul>
+<li>Change in government spending</li>
+<li>Change in budget deficit</li>
+<li>Change in household taxes</li>
+<li>Change in payroll taxes</li>
+<li>Change in corporate income taxes</li>
+<li>Cumulative change in the national debt</li>
+<li>Change in interest paid on the national debt</li>
+</ul>
+<p>Reviewing these metrics helps the model user understand some of the financial implications of the policy package for government.  For example, a policy package that increases the budget deficit may provide short-term stimulus to the economy, but it will also increase interest payments on the national debt.</p>
+</li>
+<li>
+<p>The third key metric are the macroeconomic results of the EPS's <a href="/io-model">input-output model</a>.  These results include the policy package's effects on:</p>
+<ul>
+<li>Number of jobs</li>
+<li>GDP / value added</li>
+<li>Employee compensation</li>
+</ul>
+<p>These quantities can each be viewed via several different breakouts:</p>
+<ul>
+<li>By industry (e.g. which industries are gaining/losing jobs, value added, etc.)</li>
+<li>By effect type: direct, indirect, or induced.  For definitions of these terms, see the doc page on the <a href="/io-model">input-output model</a>.</li>
+</ul>
+<p>And a few additional details are available:</p>
+<ul>
+<li>Jobs by union representation status</li>
+<li>Average compensation per employee</li>
+</ul>
+<p>These metrics are often of particular interest to policymakers, who may want to understand (for example) which policies will boost employment and in which industries.</p>
+</li>
+<li>
+<p>The last important cost metric is a breakout of &quot;Direct Cash Flow Changes.&quot;  This shows how much money each of the following nine entities directly spend or save due to the policy package:</p>
+<ol>
+<li>Government</li>
+<li>Labor and consumers</li>
+<li>Non-energy industries</li>
+<li>Foreign entities</li>
+<li>Electricity suppliers</li>
+<li>Coal suppliers</li>
+<li>Natural gas and petroleum suppliers</li>
+<li>Biomass and biofuel suppliers</li>
+<li>Other energy suppliers (e.g. hydrogen, uranium, etc.)</li>
+</ol>
+<p>The simulator breaks out the cash flow changes for each of the nine entities above into four components:</p>
+<ul>
+<li>Change in domestic revenues</li>
+<li>Change in export revenues</li>
+<li>Change in energy expenditures</li>
+<li>Change in non-energy expenditures</li>
+</ul>
+<p>Seeing the component parts of the cash flow changes can help the user to understand whether a change is a &quot;good&quot; or &quot;bad&quot; thing, from that user's perspective, and can give the user an idea of which policies to change in order to achieve a desired financial effect.</p>
+</li>
+</ol>
+<h2>First-Order Cash Flows and Higher-Order Economic Effects</h2>
+<p>The Energy Policy Simulator first calculates direct (or &quot;first-order&quot;) financial effects of a policy package within each sector: Who gives how much more (or less) money to whom?  Then, using its built-in <a href="/io-model">input-output model</a>, the EPS calculates higher-order (indirect and induced) effects.  These come from the industries that supply industries affected by the policy package, and from the respending of money received by households or by government (or if less money is received due to the policy package, then how households or government make up for the reduction).</p>
+<p>How money is used by households and government can have a large impact on the policy's outcome.  A carbon price that raises government revenue will go farther if the government wisely spends the money (for example, on support for research and development, which can accelerate technological progress, or improving public transit systems, as public transit <a href="https://www.ebp-us.com/sites/default/files/project/uploads/timeismoney.pdf">generates economic value</a> far greater than its costs).  If the revenue is spent unwisely, the policy will not do nearly so much good.  In the EPS, how government uses or raises revenue for/from specific policies can be set using Government Revenue Accounting levers, discussed on the <a href="/io-model">input-output model</a> documentation page.</p>
+<p>Therefore, the graphs that show &quot;Financial: Direct Cash Flow Changes&quot; should not be interpreted as which entities &quot;win&quot; and which entities &quot;lose&quot; due to a policy package.  First-order cash flows aren't where the money ultimately lands.</p>
+<p>The proper simulation of policy effects on GDP (or jobs) requires accounting for higher-order effects.  For example, a model must account for the re-integration of displaced workers into the economy and the long-term effects of efficiency gains on the economy.  This is easiest to visualize in the context of an intervention (such as automation) that displaces workers and reduces spending while increasing productivity.  In the short term, this sort of intervention looks bad, as it reduces jobs and GDP.  But in the longer term, displaced workers find new places in the economy where they can work, and the entire economy produces more goods with fewer people.  Many of the best policies to mitigate climate change, such as policies that improve products' energy efficiency, improve material efficiency in industry, and promote renewable electricity generation, have disruptive short-term effects because they save money (reduce GDP).  In the longer term, the economy will be better off for these reductions, just as the economy is better off today because of all the labor-saving and energy-saving devices and techniques invented since the Middle Ages.</p>
+<p>The Energy Policy Simulator uses induced jobs, induced value added (GDP contribution), and induced employee compensation to capture how savings (for example, from reduced energy expenditures) can create jobs in other parts of the economy (when the money is spent on other things).</p>
+<h2>Non-Financial Metrics</h2>
+<p>Fortunately, non-financial metrics are not as equivocal as financial metrics.  For example, the Energy Policy Simulator includes an estimate of avoided premature mortality (human lives saved) due to reduced pollution.  This is an unqualified good.</p>
+<p>Similarly, avoiding greenhouse gas (GHG) emissions is an unqualified good, as it reduces both human suffering and huge financial costs in later years.  There is widespread scientific agreement that the types of technological and policy interventions necessary to transition to a sustainable society are vastly cheaper than the damage that unchecked global warming would do to our economy.</p>
+<h2>Rules of Thumb for Policymakers</h2>
+<p>If the guidelines above regarding financial metrics make them seem too multifaceted to be used for policy guidance, a few rules of thumb might help:</p>
+<ul>
+<li>
+<p>Energy and material efficiency will have long-term positive financial effects, even if the near-term, direct effects show negative GDP impacts.  In the EPS, the positive induced effects will generally outweigh the negative direct effects for efficiency policies.</p>
+</li>
+<li>
+<p>Carbon pricing can result in considerable economic growth, if the revenues are spent well.  If not, carbon pricing is an economic headwind.  (However, it could be used to offset other taxes that are worse economic headwinds, like sales or payroll taxes.)</p>
+</li>
+<li>
+<p>Utilize a mix of supply-side interventions (new energy technologies, etc.) and demand-side interventions (material or energy efficiency, etc.).  In the short term, supply-side interventions may increase capital spending and (hence) employment, while reducing demand for industrial products and materials may reduce spending.  Balancing the two types of policy may help to maintain a stable and growing job market, avoiding a boom-and-bust cycle.</p>
+</li>
+<li>
+<p>Focus on objective goods.  Nobody can argue with saving human lives.  Don't let the debate about the effects of a policy package exclusively center on financial outcomes.</p>
+</li>
+</ul>
+
+  </article>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+    // Show the cookie consent bar unless already opted in.
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: '#000000', text: '#ffffff' },
+        button: { background: '#00acec', text: '#ffffff' }
+      },
+      theme: 'classic',
+      content: {
+        message:
+          'By continuing to use this site, you are accepting the use of cookies, which provide functionality for this website.',
+        dismiss: 'OK',
+        href: 'dcs/privacy/'
+      }
+    })
+</script>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Land Use, Land Use Change, and Forestry</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="icon" href="/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/images/manifest.webmanifest" />
+  <script>
+    ;(function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r
+      ;(i[r] =
+        i[r] ||
+        function () {
+          ;(i[r].q = i[r].q || []).push(arguments)
+        }),
+        (i[r].l = 1 * new Date())
+      ;(a = s.createElement(o)), (m = s.getElementsByTagName(o)[0])
+      a.async = 1
+      a.src = g
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga')
+    ga('create', 'UA-28450138-3', 'auto')
+    ga('send', 'pageview')
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+</head>
+
+
+  <body>
+
+    <div class="top-bar">
+  <div class="content-column">
+    <div class="banner">
+      <div class="logo-left">
+        <a href="https://energypolicy.solutions" target="_blank" rel="noopener">
+          <img src="/images/logo_eps_white.svg" width="254" height="50" alt="EPS logo" />
+        </a>
+      </div>
+      <div class="logo-right">
+        <a href="https://energyinnovation.org" target="_blank" rel="noopener"
+          ><img src="/images/logo_ei_horz_partial_white.svg" alt="Energy Innovation logo"
+        /></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content-column">
+  <div class="nav-bar">
+    <div class="nav-link">
+      <h3><a href="/">Contents</a></h3>
+    </div>
+    <div class="nav-link">
+      <h3><a href="/video-series">EPS Video Series</a></h3>
+    </div>
+    <div class="nav-link">
+      <h3><a href="/download">Download Model</a></h3>
+    </div>
+  </div>
+</div>
+
+
+    <div class="content-column">
+        <header class="post-header">
+    <h1 class="post-title">Land Use, Land Use Change, and Forestry</h1>
+  </header>
+
+  <article class="post-content">
+    <h2>General Notes</h2>
+<p>The Land Use, Land Use Change, and Forestry (LULUCF) sheet in the Energy Policy Simulator (EPS) handles pollutant emissions and sequestration from land uses, primarily related to forests, including forest set-asides, afforestation/reforestation, avoided deforestation, and forest management.  Emissions from agricultural operations are handled in the <a href="/industry-ag-main">Industry sector</a> (including emissions from fuel use and process emissions, such as methane from enteric fermentation and rice cultivation).  However, conversion of land from forest to cropland or vice versa is handled in the LULUCF sector.</p>
+<p>The LULUCF sector is constructed to be relatively flexible because different countries have very different land use challenges.  For example, in the U.S., there is no net deforestation, and most existing forests are well-managed.  In some countries, deforestation is a major problem.  Therefore, the policies in this sector are defined based on a researched potential specific to the modeled country (set in input data), and the policy lever specifies a fraction of the potential that is achieved in each year.</p>
+<p>The LULUCF sector does not include fuel use.  Fuel use by relevant entities is handled in other sectors.  For example, wood burning to heat homes in the Buildings sector, and fuel burned in the course of business operations by timber-harvesting companies is included in the &quot;other industries&quot; category in the Industry Sector.</p>
+<h2>LULUCF Policies<a name="aff-ref"></a><a name="set-asides"></a><a name="forest-mgmt"></a><a name="avoid-def"></a></h2>
+<p>The following LULUCF policies exist in the EPS.  Follow the links to view more details about each policy.</p>
+<ul>
+<li>
+<p><a href="/forest-set-asides">Forest Set-Asides</a>: A forest set-aside program removes harvested timberland from production, converting it to unharvested forestland.  By removing timberland from harvest, carbon that would otherwise be released through the wood products or in the harvesting process continues to be sequestered.</p>
+</li>
+<li>
+<p><a href="/afforestation-and-reforestation">Afforestation and Reforestation</a>: Reforestation is planting forests on land that is not forest, but was forest prior to human influence.  Afforestation is planting forests on land that was not deforested by humans, but is climatologically able to support a forest.  These policies are grouped in the EPS because the actions involved in reforestation and afforestation, as well as the resulting sequestration, are similar and can be handled by the same model structure.</p>
+</li>
+<li>
+<p><a href="/improved-forest-management">Improved Forest Management</a>: Improved forest management practices increase the carbon uptake and improve the ecosystem services provided by existing forestland. These might include enhanced thinning techniques, longer rotation periods, and other changes to timber harvesting.</p>
+</li>
+<li>
+<p><a href="/avoid-deforestation">Avoid Deforestation</a>: Avoided deforestation requires implementing policies and practices that limit the legal or illegal removal of native forestland.  Options include legally protecting forests through the creation of designated protected areas, requirements that private landholders maintain a minimum fraction of forest cover, and payments to landowners for providing environmental services through maintaining forest cover.</p>
+</li>
+<li>
+<p><a href="/peatland-restoration">Peatland Restoration</a>: Peatlands (also known as peat bogs or simply bogs) are a type of wetland.  The acidic and anaerobic conditions slow the decay of organic matter that dies within the bog.  Humans drain peatlands to make the land more suitable for agriculture, but this leads to rapid decomposition of organic matter and increases the risk of peat fires.  Protecting or restoring peatlands can avoid these damages.</p>
+</li>
+<li>
+<p><a href="/forest-restoration">Forest Restoration</a>: A degraded forest is an area of forested land that has been damaged by human activity, forest fires, pests, disease, or climate change.  Degraded forests contain less stored carbon per acre and sequester less carbon per year per acre than healthy, growing forests.  Forest restoration includes measures to accelerate the recovery of the degraded land (such as tree planting and building erosion control structures) as well as steps to protect the land from activities that perpetuate degradation, such as animal grazing.</p>
+</li>
+</ul>
+<h2>Determining Change in Emissions</h2>
+<p>Each policy is set by the user to a fraction of its maximum potential, as defined in input data.  We begin by loading these user settings into a single variable, subscripted by LULUCF policy.</p>
+<p><img src="/lulucf-PolicySettings.png" alt="LULUCF policy settings"></p>
+<p>Each of these policies may affect different amounts of land each year.  The user-set fraction of potential is multiplied by the maximum possible amount of land that could be affected by each policy in a single year to calculate the amount of land newly affected by each policy this year.</p>
+<p><img src="/lulucf-NewlyAffectedLandArea.png" alt="newly affected land area by each policy"></p>
+<p>For all LULUCF policies <em>except</em> Improved Forest Management, any given area of land need be affected only once, and then it provides carbon sequestration benefits in each subsequent year of the model run.  For example, once a given area of land has been afforested, that forest continues to grow, sequestering carbon in each year.  (Eventually, an old growth forest can reach carbon neutrality, but we assume this does not happen to land areas targeted by LULUCF policies within the model run timeframe.)  Therefore, to determine the sequestration from a policy in the current model year, we need to know the cumulative land area that has been affected by each policy to date, which we track with a state variable.</p>
+<p><img src="/lulucf-CumulativeAreaAffected.png" alt="cumulative land area affected by each policy"></p>
+<p>To achieve sequestration on a given area of land, the Improved Forest Management policy must be used on that area of land in each year.  In this way, it is unlike the other LULUCF policies.  Accordingly, for this policy, we do not track a cumulative total area of land affected.  We simply multiply the area of land affected this year by the CO<sub>2</sub> savings per unit land area, as defined by input data.</p>
+<p><img src="/lulucf-ImprForestMgmt.png" alt="improved forest management"></p>
+<p>CO<sub>2</sub> abatement from the other LULUCF policies is determined by multiplying the cumulative land area affected by an input data variable indicating the ongoing (annual) sequestration or abatement from each unit of land area that has previously been affected by each policy.</p>
+<p>We annualize abatement from avoidance of large one-time carbon releases (such as massive wildfires or peat fires) over the time required for the forest or peatland to regenerate after a major carbon release.  This avoids unrealistic, spiky results and also allows the associated policies to be treated in a way consistent with other land use sector policies.</p>
+<p>We add in the previously calculated abatement from the Improved Forest Management policy, so that each policy's abatement is in its own subscript element of the same variable.</p>
+<p><img src="/lulucf-TotAbatement.png" alt="total abatement from LULUCF policies this year"></p>
+<h3>Rebound GHG Emissions</h3>
+<p>All policies that increase the amount of CO<sub>2</sub> sequestered in forests have a slight rebound in emissions of methane and N<sub>2</sub>O.  This is primarily because forest fires will release a greater quantity of CH<sub>4</sub> and N<sub>2</sub>O when they have more fuel to combust, but also because decomposition in forest soils will release more GHGs.  (Forest fires will also release more CO<sub>2</sub> if more CO<sub>2</sub> is sequestered in forests, but we are looking at net flows, and the net effect of these LULUCF policies on CO<sub>2</sub> is to increase <em>sequestration</em>, while the net effect of the policies is to increase N<sub>2</sub>O and CH<sub>4</sub> <em>emissions</em>.)  In CO<sub>2</sub>e terms, on a 100-year GWP timeframe, the increase in CH<sub>4</sub> and N<sub>2</sub>O offsets only about 2% of the net sequestration of CO<sub>2</sub>, so the rebound is very minor.  Nonetheless, we account for it as a matter of completeness.  The relevant structure is shown below:</p>
+<p><img src="/lulucf-ReboundEmis.png" alt="rebound GHG emissions from LULUCF"></p>
+<h3>Summing Up Emissions</h3>
+<p>We take the BAU anthropogenic (human-caused) GHG emissions as input data and add the changes in emissions due to all of the policies to find the total quantity of anthropogenic LULUCF emissions in the policy case.</p>
+<p><img src="/lulucf-TotalEmis.png" alt="total LULUCF anthropogenic emissions"></p>
+<h2>LULUCF Policy Implementation and Maintenance Costs</h2>
+<p>LULUCF policies may have one or two types of costs associated with them:</p>
+<ul>
+<li>
+<p>the <strong>implementation cost</strong>, which is the cost per unit land area to undertake the policy</p>
+</li>
+<li>
+<p>the <strong>maintenance cost</strong>, which is an ongoing cost to maintain the benefits of land previously affected by the policy</p>
+</li>
+</ul>
+<p>For example, the implementation cost of the afforstation/reforestation policy may include things such as hiring workers, buying tree saplings, and paying for equipment to physically plant the trees.  The ongoing maintenance costs may include activities such as applying fertilizer, pest control, or irrigation, which need to be repeated every year.</p>
+<p>Not every policy has each type of cost.  Which policies have costs and the magnitude of the costs can vary greatly between different EPS models representing different geographies.  (Improved Forest Management can only have implementation costs, not maintenance costs, as this policy must be newly applied to all affected land areas each year.)</p>
+<p>Each policy's implementation cost is multiplied by the land area newly affected by the policy this year.</p>
+<p><img src="/lulucf-ImplementationCosts.png" alt="LULUCF policy implementation costs"></p>
+<p>Each policy's maintenance cost is multiplied by the cumulative total land area affected by the policy to date.</p>
+<p><img src="/lulucf-MaintenanceCosts.png" alt="LULUCF policy maintenance costs"></p>
+<p>Finally, these costs are assigned to cash flow entities, in proportion to the fraction of all forests owned by each entity.  For instance, if government owns 50% of the forests, government will bear 50% of the costs of LULUCF policies.</p>
+<p><img src="/lulucf-AssigningCosts.png" alt="assigning LULUCF policy costs to forest owners"></p>
+<h2>Lost Land Value</h2>
+<p>In other sectors in the EPS, we consider cash flows caused by the policies enabled by the user: that is, actual payments of money from one actor to another.  In the LULUCF sector, some of the important financial impacts pertain to the value of land, but do not cause specific changes in cash flows, at least until the land is sold (which is not within the model scope, and which may never happen for many government-owned forests).  Accordingly, we include a calculation of &quot;lost land value&quot; that is separate from the &quot;cash flow&quot; calculations for the LULUCF sector.</p>
+<p>Whether and to what extent each policy affects the value of the land is governed by an input variable, <code>CiLVpUAAbP Change in Land Value per Unit Area Affected by Policy</code>.  These values may be positive or negative.  For example, the Forest Restoration policy may improve land value, by upgrading a degraded forest to a healthy forest.  However, the Forest Set-Asides policy may reduce land value, since economically productive timberland is often worth more per acre than protected forest.  (The Improved Forest Management policy, which does not make permanent changes to the land, has no impact on land value.)</p>
+<p>We multiply the cumulative total amount of land affected by each policy by the change in land value per unit area caused by that policy to find the cumulative total change in land value caused by each policy to date.</p>
+<p><img src="/lulucf-CngLandValue.png" alt="change in land value caused by policy"></p>
+<h2>Allocating Changes in Expenditures and Revenues</h2>
+<p>As noted above, LULUCF policy expenditures were allocated to cash flow entities proportionate to their ownership of forestlands.  We assign the non-energy industries' expenditures to ISIC 01T03, which includes the agriculture and forestry sectors, the major corporate land-owners of relevance for LULUCF policies.</p>
+<p><img src="/lulucf-Expenditures.png" alt="LULUCF expenditures allocated"></p>
+<p>The change in revenues from LULUCF policies is all allocated to the &quot;non-energy industries&quot; cash flow entity, and specifically, ISIC 01T03.  This is because that ISIC code includes agriculture, forestry, and related activities, and these are the companies that would be providing services such as forest maintenance, restoration, or afforestation.</p>
+<p><img src="/lulucf-Revenues.png" alt="LULUCF revenues allocated"></p>
+<p>The labor and government (tax) shares of these revenues are separated out on the <a href="/cross-sector-totals">Cross-Sector Totals</a> sheet.</p>
+
+  </article>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+    // Show the cookie consent bar unless already opted in.
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: '#000000', text: '#ffffff' },
+        button: { background: '#00acec', text: '#ffffff' }
+      },
+      theme: 'classic',
+      content: {
+        message:
+          'By continuing to use this site, you are accepting the use of cookies, which provide functionality for this website.',
+        dismiss: 'OK',
+        href: 'dcs/privacy/'
+      }
+    })
+</script>
+
+
+  </body>
+
+</html>

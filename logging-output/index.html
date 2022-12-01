@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logging Output for Multiple Scenarios</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="icon" href="/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/images/manifest.webmanifest" />
+  <script>
+    ;(function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r
+      ;(i[r] =
+        i[r] ||
+        function () {
+          ;(i[r].q = i[r].q || []).push(arguments)
+        }),
+        (i[r].l = 1 * new Date())
+      ;(a = s.createElement(o)), (m = s.getElementsByTagName(o)[0])
+      a.async = 1
+      a.src = g
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga')
+    ga('create', 'UA-28450138-3', 'auto')
+    ga('send', 'pageview')
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+</head>
+
+
+  <body>
+
+    <div class="top-bar">
+  <div class="content-column">
+    <div class="banner">
+      <div class="logo-left">
+        <a href="https://energypolicy.solutions" target="_blank" rel="noopener">
+          <img src="/images/logo_eps_white.svg" width="254" height="50" alt="EPS logo" />
+        </a>
+      </div>
+      <div class="logo-right">
+        <a href="https://energyinnovation.org" target="_blank" rel="noopener"
+          ><img src="/images/logo_ei_horz_partial_white.svg" alt="Energy Innovation logo"
+        /></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content-column">
+  <div class="nav-bar">
+    <div class="nav-link">
+      <h3><a href="/">Contents</a></h3>
+    </div>
+    <div class="nav-link">
+      <h3><a href="/video-series">EPS Video Series</a></h3>
+    </div>
+    <div class="nav-link">
+      <h3><a href="/download">Download Model</a></h3>
+    </div>
+  </div>
+</div>
+
+
+    <div class="content-column">
+        <header class="post-header">
+    <h1 class="post-title">Logging Output for Multiple Scenarios</h1>
+  </header>
+
+  <article class="post-content">
+    <p>The Energy Policy Simulator (EPS) includes a Python script, <code>CreateDataLoggingScript.py</code>, that makes it quick and easy to output a specific set of variables from one or more scenarios.  Each scenario you wish to use with this script, except the Business as Usual (BAU) scenario, must have its own scenario definition file (a text file with a <code>.cin</code> extension).  (Though the BAU scenario has a <code>.cin</code> file in EPS versions 3.0.0 and later, the BAU scenario's <code>.cin</code> file is not used by the Data Logging Script.)</p>
+<h2>Saving .cin Files with Policy Settings</h2>
+<p>After you have set policy levers (most easily done in SyntheSim mode, as described in the <a href="/running-the-model">Running the Model and Setting Policy Levers</a> section, you can also save your scenario settings to a <code>.cin</code> file.  While in SyntheSim mode, after changing some policy levers, click the &quot;Save Changes&quot; button near the upper left of the screen.</p>
+<p><img src="/logging-output-SaveChangesButton.png" alt="save changes button"></p>
+<p>You then specify a name for the new <code>.cin</code> file that will be created.  The <code>.cin</code> file is a text file that specifies the values of any variables that you have changed from their default values (typically, any policies you have enabled).  If you are using a custom policy implementation schedule, the <code>.cin</code> file will also specify the number of the policy implementation schedule you are using.</p>
+<p>Saving <code>.cin</code> files is useful because they take up very little disk space and can quickly be used to re-run the model with a particular group of settings, so that output data can be re-generated.</p>
+<p>If you make many scenarios, you may acquire a large collection of <code>.cin</code> files.  You might wish to compare specific output data between these scenarios (for example, to find the one that has the lowest emissions).  Without a script, you would need to load each scenario one-at-a-time and note the amount of emissions.  The Data Logging Script allows you to quickly compile a list containing the values of the output variables of your choice for each scenario you specify.</p>
+<h2>Using the Data Logging Script when Calibrating a New EPS Deployment</h2>
+<p>The Data Logging Script is also useful when calibrating a new EPS deployment.  This process often involves comparing EPS outputs to other data sources (such as published reports or other models' outputs) using a spreadsheet, then reviewing and possibly adjusting the EPS's input data to fix any problems that might have been discovered, and updating the comparison spreadsheet.  The Data Logging Script can generate a list of variables from the EPS to be compared to other sources.  Paste the output from the Data Logging script in a dedicated spreadsheet tab and refer to it via formulas on other tabs when making comparisons.  When it is time to update the EPS data in the comparison spreadsheet, simply re-run the Data Loggging script and paste the output over the old values in the corresponding tab in the comparison spreadsheet.</p>
+<h2>Editing the Data Logging Script</h2>
+<p>Several scenarios defined by <code>.cin</code> files are included in the model distribution.  By default, the data logging script is configured to use these scenarios.  We will use them in the following example.</p>
+<p>First, ensure that your <code>OuputVarsToExport.lst</code> file is properly configured, as described in <a href="/selecting-output-variables">Selecting Output Variables for a Python Script</a>.</p>
+<p>Next, open the <code>CreateDataLoggingScript.py</code> file in a text editor such as <em>Visual Studio Code</em>.  The first 22 lines are shown in the following screenshot:</p>
+<p><img src="/logging-output-LoggingScript.png" alt="first lines of GenerateDataLoggingScript.py"></p>
+<p>The only line that you are likely to wish to edit is line 19, which includes a list of the scenario files (<code>.cin</code> files) that should be run.  By default, the script will run the BAU case (the entry with two adjacent double-quote marks, which needs no associated <code>.cin</code> file) and each of the included scenarios: the NDC Scenario and the Net Zero Emissions scenario.  You may remove any of these scenarios from the list, and you may add an unlimited number of your own scenarios to the list.  Each scenario must be the complete filename of the <code>.cin</code> file that defines the scenario.  Like the examples provided, the scenario filename should be within the square brackets, surrounded by double quotes, and separated from the other filenames via a comma.</p>
+<p>Save and close the <code>GenerateDataLoggingScript.py</code> file when you are done.</p>
+<h2>Running the Data Logging Script</h2>
+<p>Run the <code>GenerateDataLoggingScript.py</code> file in Python 3.  (If the <code>.py</code> file extension is associated with Python 3, you can simply double-click the file to do this.)  Python creates a new file in the EPS model folder called <code>GeneratedDataLoggingScript.cmd</code>.  This is a Vensim command script.</p>
+<p>Open Vensim DSS.  From the &quot;File&quot; menu, choose &quot;Open Model...&quot;  In the &quot;Name of Model to Open&quot; dialogue box, you will see a drop-down menu in the lower right corner, just above the &quot;Open&quot; and &quot;Cancel&quot; buttons.  That menu starts with &quot;Vensim Models&quot; selected.  Change the setting to <code>Command Scripts (*.cmd)</code>.  (If you do not see this option in your drop-down menu, then you are running a version of Vensim other than Vensim DSS.  See the page on <a href="/automated-analysis">Automated Analysis with Python Scripts</a> for details on software requirements.)  The following screenshot shows Vensim's &quot;Open&quot; dialogue box under Windows 10:</p>
+<p><img src="/logging-output-OpenScriptWindow.png" alt="open script window"></p>
+<p>Click the &quot;Open&quot; button.  Vensim performs one run for each entry in the list of .cin files specified in the Python script.  If you kept the blank entry in the list, one run will also be done for the BAU case.  For each model run, Vensim produces one data file (with <code>.vdfx</code> extension) and one text results file (with <code>.tsv</code> extension).  Each file will be named after the scenario that generated it.  (For example, the output files from the simulation based on the <code>Scenario_NDC.cin</code> file will be named <code>Scenario_NDC.vdfx</code> and <code>Scenario_NDC.tsv</code>.)  Output files for a BAU run (not based on a .cin file) will be named <code>NoSettings.vdfx</code> and <code>NoSettings.tsv</code>.</p>
+<p>The <code>.tsv</code> files are tab-separated values and can be opened in Microsoft Excel or another spreadsheet program, where the value of each variable specified in the <code>OuputVarsToExport.lst</code> file will be included for each year of the model run.  The <code>.vdfx</code> files are Vensim data files.  They can be safely deleted if you are only interested in the output for the variables specified in <code>OutputVarsToExport.lst</code> (which are included in the tab-separated values file).</p>
+
+  </article>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+    // Show the cookie consent bar unless already opted in.
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: '#000000', text: '#ffffff' },
+        button: { background: '#00acec', text: '#ffffff' }
+      },
+      theme: 'classic',
+      content: {
+        message:
+          'By continuing to use this site, you are accepting the use of cookies, which provide functionality for this website.',
+        dismiss: 'OK',
+        href: 'dcs/privacy/'
+      }
+    })
+</script>
+
+
+  </body>
+
+</html>

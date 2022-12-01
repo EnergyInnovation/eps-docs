@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hydrogen Supply</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="icon" href="/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/images/manifest.webmanifest" />
+  <script>
+    ;(function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r
+      ;(i[r] =
+        i[r] ||
+        function () {
+          ;(i[r].q = i[r].q || []).push(arguments)
+        }),
+        (i[r].l = 1 * new Date())
+      ;(a = s.createElement(o)), (m = s.getElementsByTagName(o)[0])
+      a.async = 1
+      a.src = g
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga')
+    ga('create', 'UA-28450138-3', 'auto')
+    ga('send', 'pageview')
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+</head>
+
+
+  <body>
+
+    <div class="top-bar">
+  <div class="content-column">
+    <div class="banner">
+      <div class="logo-left">
+        <a href="https://energypolicy.solutions" target="_blank" rel="noopener">
+          <img src="/images/logo_eps_white.svg" width="254" height="50" alt="EPS logo" />
+        </a>
+      </div>
+      <div class="logo-right">
+        <a href="https://energyinnovation.org" target="_blank" rel="noopener"
+          ><img src="/images/logo_ei_horz_partial_white.svg" alt="Energy Innovation logo"
+        /></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content-column">
+  <div class="nav-bar">
+    <div class="nav-link">
+      <h3><a href="/">Contents</a></h3>
+    </div>
+    <div class="nav-link">
+      <h3><a href="/video-series">EPS Video Series</a></h3>
+    </div>
+    <div class="nav-link">
+      <h3><a href="/download">Download Model</a></h3>
+    </div>
+  </div>
+</div>
+
+
+    <div class="content-column">
+        <header class="post-header">
+    <h1 class="post-title">Hydrogen Supply</h1>
+  </header>
+
+  <article class="post-content">
+    <h2>General Notes</h2>
+<p>The Hydrogen Supply sector is one of three sectors in the Energy Policy Simulator (EPS) that produce an energy carrier used by other sectors.  The other two energy carrier supply sectors are <a href="/electricity-sector-main">Electricity</a> and <a href="/district-heating">District Heating</a>.  All three energy carrier supply sectors produce a quantity of energy (hydrogen, electricity, or district heat) determined by the demand for these energy carriers in all of the sectors of the EPS, with the largest demand coming from the <a href="/transportation-sector-main">Transportation</a>, <a href="/buildings-sector-main">Buildings</a>, and <a href="/industry-ag-main">Industry</a> sectors.</p>
+<p>(Secondary petroleum products can be produced in the <a href="/industry-ag-main">Industry</a> sector and used in various sectors, but this production is not wholly based on domestic demand, given international markets and <a href="/fuels">fuel imports/exports</a>, so the term &quot;energy carriers&quot; in the EPS only refers to electricity, district heat, and hydrogen.)</p>
+<p>All calculations for hydrogen supply (Policy case, BAU case, and cash flow) are handled on one sheet in the Vensim model.  As is the case for other sectors, the documentation here only discusses the policy case and cash flow, not the BAU case.</p>
+<h2>Hydrogen Production Pathways</h2>
+<p>Hydrogen, H<sub>2</sub>, is a colorless, flammable gas that produces water vapor (H<sub>2</sub>O) when it burns.  As hydrogen combustion doesn't have any direct carbon dioxide (CO<sub>2</sub>) emissions, the contribution of hydrogen to global warming depends on the manner in which the hydrogen was produced.</p>
+<p>Today, <a href="https://webstore.iea.org/download/direct/2803">according to the Internaitonal Energy Agency</a>, roughly 75% of the world's hydrogen is produced from natural gas, and 23% is produced from coal (with most coal-based hydrogen production occurring in China).  Most of the remaining 2% is produced as a byproduct of chlor-alkali electrolysis in the production of chlorine and caustic soda.  Less than 0.1% of global hydrogen comes from water electrolysis - that is, using electricity to split water into H<sub>2</sub> and O<sub>2</sub> gases.  Producing hydrogen using zero-carbon electricity, or another zero-carbon pathway, is necessary for hydrogen to be a key technology that supports net zero emissions economy-wide.</p>
+<p>The EPS has been designed to model up to five different hydrogen production pathways, and to allow these pathways to be customizable, to support different novel hydrogen technologies.  By default, the five modeled pathways are:</p>
+<ul>
+<li>electrolysis</li>
+<li>natural gas reforming</li>
+<li>coal gasification</li>
+<li>biomass gasification</li>
+<li>thermochemical water splitting</li>
+</ul>
+<p>(<a href="https://www.energy.gov/eere/fuelcells/hydrogen-production-thermochemical-water-splitting">Thermochemical water splitting</a> is a proposed technology that uses high-temperature heat from solar thermal plants or nuclear reactors instead of an electrical current to split water into H<sub>2</sub> and O<sub>2</sub>.)</p>
+<p>New pathways can be substituted for one or more of these five pathways by altering the input data in these variables:</p>
+<ul>
+<li><code>hydgn/HPEbP</code> Hydrogen Production Efficiency by Pathway</li>
+<li><code>hydgn/HPtFM</code> Hydrogen Pathway to Fuel Mappings</li>
+<li><code>hydgn/HPEC</code> Hydrogen Production Equipment CapEx</li>
+<li><code>hydgn/HPEC</code> Hydrogen Production Equipment OpEx</li>
+</ul>
+<p>This allows a model user to customize which types of fuels supply the energy for the hydrogen production process, as well as the efficiency of the process.  For more details, see the page on <a href="/remapping">Remapping Subscript Elements</a>.</p>
+<p>Note that the hydrogen supply sector represents <em>dedicated</em> hydrogen production, not hydrogen produced as a byproduct of industrial operations aiming at producing a different product, so we don't include byproduct hydrogen from the production of chlorine and caustic soda in this sector of the model.</p>
+<p>Also note that the &quot;electrolysis&quot; pathway draws its electricity from the grid - it does not assume dedicated renewable energy or other facilities are supplying the hydrogen producer.  Therefore, decarbonizing the modeled region's electricity supply using policy levers that affect the <a href="/electricity-sector-main">Electricity Sector</a> is necessary to achieve zero-carbon hydrogen production via the &quot;electrolysis&quot; pathway.</p>
+<h2>Hydrogen Production Energy Use and Emissions</h2>
+<p>Five EPS sectors can demand hydrogen as a fuel: transportation, buildings, industry, district heat, and geoengineering.  (This only includes hydrogen purchased from hydrogen suppliers, not hydrogen produced and consumed within the same industrial facility.)  Hydrogen demand from these sectors is summed.  Then, the hydrogen to be produced is apportioned between the various production pathways based on shares taken in as time-series input data (allowing for a gradual shift between pathways in the BAU case).</p>
+<p><img src="/hydrogen-supply-DemandByPathway.png" alt="summing hydrogen demand and apportioning it by production pathway"></p>
+<p>In the policy case, the Hydrogen Production Pathway Shifting policy allows the user to specify a shift from the BAU set of production pathways to any other apportionment of production amongst the various pathways.  The recipient (non-BAU) pathways are specified in input variable <code>hydgn/RHPF</code> and the extent to which the shift occurs is controlled by the policy lever and associated policy implementation schedule.</p>
+<p><img src="/hydrogen-supply-PathwayShifting.png" alt="hydrogen production pathway shifting policy"></p>
+<p>To calculate fuel use, we multiply the quantity of hydrogen produced via each pathway by an efficiency that indicates how much fuel or electricity is used per unit of hydrogen produced.  We work with efficiencies rather than a strict chemical relationship between the moledules (e.g. one molecule CO<sub>2</sub> produced per CH<sub>4</sub> converted to hydrogen) to capture the energy requirements of the transformation, which is an endothermic reaction.</p>
+<p><img src="/hydrogen-supply-FuelUse.png" alt="hydrogen sector fuel use"></p>
+<p>Finally, we multiply by pollutant emissions intensities to obtain the total, direct pollutant emissions from hydrogen production, and we also convert to units of CO<sub>2</sub>e using global warming potentials (GWP).  We use the same pollutant emissions intensities (mass of pollutant per energy unit of a given type of fuel burned) from the industry sector, as hydrogen production uses industrial equipment.  Additionally, we total the electricity use by the hydrogen supply sector, which is fed into the total electricity use on the <a href="/cross-sector-totals">Cross-Sector Totals</a> sheet.</p>
+<p><img src="/hydrogen-supply-TotEmissions.png" alt="total emissions and electricity use"></p>
+<h2>Demand-Responsive Electricity Capacity for Electrolyzers</h2>
+<p>It <a href="https://www.energy.gov/sites/prod/files/2017/06/f34/fcto_may_2017_h2_scale_wkshp_hovsapian.pdf">has been proposed</a> that hydrogen production from electrolysis can help balance (provide flexibility to) the electricity grid, by running when electricity demand is low and pausing when electricity demand is high.  The EPS simulates this by taking the &quot;excess&quot; hydrogen production capacity - e.g. how much more hydrogen-making equipment exists than the amount of equipment that would be required to produce a particular quantity of hydrogen per year, if the equipment were run constantly at full design capacity, 24 hours per day, 365 days per year (in <code>hydgn/HPPECbP</code>).  On its own, core (non-excess) capacity cannot contribute to providing flexibility, because it must run in order to generate enough hydrogen to meet the annual hydrogen demand.  Excess capacity can kick in at times of low electricity demand to reduce the need to run some of the core capacity during high-electricity-demand times.  Therefore, the amount of excess capacity is the amount by which the peak electricity demand can be reduced while maintaining the same annual hydrogen production rate.  We convert from excess hydrogen production capacity to electricity capacity using data indicating the electricity capacity that would be required to produce a particular quantity of hydrogen per year (in <code>hydgn/EHPpUC</code>).  The resulting &quot;Demand Responsive Capacity for Electrolyzers&quot; provides flexibility points to the <a href="/electricity-sector-main">Electricity Sector</a>.</p>
+<p><img src="/hydrogen-supply-DemandResponsiveCapacity.png" alt="demand-responsive capacity for electrolyzers"></p>
+<h2>Capital Expenditures</h2>
+<p>To determine the cost of capital equipment for hydrogen production, we first calculate the year-over-year change in annual hydrogen output from each production pathway.</p>
+<p><img src="/hydrogen-supply-AnnualProdCng.png" alt="year-over-year change in annual hydrogen production by pathway"></p>
+<p>We multiply the increase in hydrogen demand by the percent of excess capacity required (which provides grid flexibility, as noted above) and by the cost per unit of equipment (measured in currency units per unit annual hydrogen production capacity).  This provides the amount spent that year to buy new equipment to meet the new, incremental demand for hydrogen in that year.</p>
+<p><img src="/hydrogen-supply-CapExAmountSpent.png" alt="amount spent on hydrogen supply capital equipment"></p>
+<p>Finally, we take the difference between the BAU and Policy case versions of this variable to find the policy-driven change in capital equipment expenditures.</p>
+<p><img src="/hydrogen-supply-ChgInCapEx.png" alt="change in hydrogen supply capital expenditures"></p>
+<h2>Non-Fuel Operational Expenditures</h2>
+<p>Non-fuel expenditures to run hydrogen supply operations (e.g. labor, maintenance, replacement parts, etc.) is calculated by first increasing the total hydrogen production by the share of excess capacity (since this capacity also needs to be maintained), and then multiplying by a variable that indicates the amount spent on non-fuel operational expenses per unit annual hydrogen production capacity.</p>
+<p><img src="/hydrogen-supply-OpExAmountSpent.png" alt="hydrogen supply operational expenditures"></p>
+<p>The difference between the BAU and Policy case versions of this variable gives us the policy-driven change in operational expenditures.</p>
+<p><img src="/hydrogen-supply-CngInOpEx.png" alt="change in hydrogen supply operational expenditures"></p>
+<h2>Fuel Expenditures</h2>
+<p>In order to calculate the change in fuel (including electricity) expenditures, we first multiply fuel use by the cost per unit fuel to find the total amount spent on fuels by the hydrogen supply sector.</p>
+<p><img src="/hydrogen-supply-AmtSpentOnFuels.png" alt="amount spent on fuels by hydrogen supply sector"></p>
+<p>We multiply the quantity of fuel used by the fuel tax amount per unit fuel sold to find the total taxes paid on hydrogen sector fuels.</p>
+<p><img src="/hydrogen-supply-TaxPaidOnFuels.png" alt="taxes paid on hydrogen sector fuels"></p>
+<p>We take the difference between the BAU and Policy cases to find the change in amount spent on fuels, and the change in taxes resulting from the sale of hydrogen sector fuels.  Finally, we subtract the change in taxes from the change in amount spent to find the cash flow impacts for the fuel-supplying entities.</p>
+<p><img src="/hydrogen-supply-CngInFuelCosts.png" alt="change in hydrogen sector fuel costs and taxes"></p>
+<h2>Allocating Changes in Expenditures</h2>
+<p>Hydrogen suppliers are part of &quot;other energy suppliers,&quot; one of the nine &quot;cash flow entities&quot; tracked in the EPS (separately from the 36 ISIC codes used in the <a href="/io-model">input-output model</a> and for revenue allocation in each sector).  Therefore, allocating expenditures is very straightforward.  All hydrogen supply expenditures, whether for fuel, capital, or operational expenditures, are allocated to the &quot;other energy suppliers&quot; cash flow entity.  (Expenditures to buy hydrogen fuel are included in the sectors that demand hydrogen, such as industry or transportation, not in the hydrogen supply sector.)</p>
+<p><img src="/hydrogen-supply-AllocateExpenditures.png" alt="allocating hydrogen supply expenditures"></p>
+<p>We also calculate the change in expenditures per unit of hydrogen produced.  This value is used on the <a href="/fuels">Fuels sheet</a> to adjust the BAU price of hydrogen to reflect policy-driven changes in the cost to produce hydrogen.  This may include price reductions (such as if endogenous learning drives down hydrogen production cost) or, more commonly, price increases (if the pathway shifting lever shifts production from a lower-cost pathway to a higher-cost pathway).  (This feedback loop can be disabled using the &quot;Toggle Whether Policies Affect Energy Prices&quot; policy lever on the &quot;Policy Control Center&quot; sheet.)</p>
+<p><img src="/hydrogen-supply-ExpenditureCngPerUnitH2.png" alt="change in hydrogen expenditures per unit hydrogen"></p>
+<h2>Allocating Changes in Revenues</h2>
+<p>Revenues going to non-energy industries are allocated to some of the 36 ISIC codes tracked in the model.  (For more detail on ISIC codes, see the documentation page on the <a href="/io-model">input-output model</a>.)  The shares for labor and for government (i.e. taxes) are separated out later, on the <a href="/cross-sector-totals">Cross-Sector Totals sheet</a>.  Changes in capital expenditures are allocated to ISIC 28 (Machinery and equipment not elsewhere classified), while changes in non-fuel operational expenditures are allocated to ISIC 31T33 (Other manufacturing; repair and installation of machinery and equipment).</p>
+<p><img src="/hydrogen-supply-NonEnIndstRevenue.png" alt="change in non-energy industries' revenue due to hydrogen supply sector"></p>
+<p>Remaining changes in revenues are allocated to the correct cash flow entities.  Taxes on fuels go to the government.  Changes in after-tax revenue for each fuel-supplying industry are assigned to the correct energy supplier cash flow entity.  The change in non-energy industry revenue by ISIC code is assigned to the &quot;non-energy industries&quot; cash flow entity, as this entity is always kept in sync with the corresponding values broken out by ISIC code.</p>
+<p><img src="/hydrogen-supply-AllocCngRevenue.png" alt="hydrogen supply sector changes in revenues"></p>
+<p>The changes in expenditures and revenues are then summed with those from other sectors on the <a href="/cross-sector-totals">Cross-Sector Totals</a> sheet.</p>
+
+  </article>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+    // Show the cookie consent bar unless already opted in.
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: '#000000', text: '#ffffff' },
+        button: { background: '#00acec', text: '#ffffff' }
+      },
+      theme: 'classic',
+      content: {
+        message:
+          'By continuing to use this site, you are accepting the use of cookies, which provide functionality for this website.',
+        dismiss: 'OK',
+        href: 'dcs/privacy/'
+      }
+    })
+</script>
+
+
+  </body>
+
+</html>

@@ -1242,8 +1242,8 @@ img.alignright {
     .sect_nav li.current a {
       color: #ff7a27; }
       .sect_nav li.current a:before {
-        content: "\f0da";
-        left: -.75em;
+        content: "\25B6\FE0E\00A0";
+        left: -1em;
         position: absolute;
         color: #ff7a27;
         line-height: 1.4; }

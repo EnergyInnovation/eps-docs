@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>District Heating</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="icon" href="/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/images/manifest.webmanifest" />
+  <script>
+    ;(function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r
+      ;(i[r] =
+        i[r] ||
+        function () {
+          ;(i[r].q = i[r].q || []).push(arguments)
+        }),
+        (i[r].l = 1 * new Date())
+      ;(a = s.createElement(o)), (m = s.getElementsByTagName(o)[0])
+      a.async = 1
+      a.src = g
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga')
+    ga('create', 'UA-28450138-3', 'auto')
+    ga('send', 'pageview')
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+</head>
+
+
+  <body>
+
+    <div class="top-bar">
+  <div class="content-column">
+    <div class="banner">
+      <div class="logo-left">
+        <a href="https://energypolicy.solutions" target="_blank" rel="noopener">
+          <img src="/images/logo_eps_white.svg" width="254" height="50" alt="EPS logo" />
+        </a>
+      </div>
+      <div class="logo-right">
+        <a href="https://energyinnovation.org" target="_blank" rel="noopener"
+          ><img src="/images/logo_ei_horz_partial_white.svg" alt="Energy Innovation logo"
+        /></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content-column">
+  <div class="nav-bar">
+    <div class="nav-link">
+      <h3><a href="/">Contents</a></h3>
+    </div>
+    <div class="nav-link">
+      <h3><a href="/video-series">EPS Video Series</a></h3>
+    </div>
+    <div class="nav-link">
+      <h3><a href="/download">Download Model</a></h3>
+    </div>
+  </div>
+</div>
+
+
+    <div class="content-column">
+        <header class="post-header">
+    <h1 class="post-title">District Heating</h1>
+  </header>
+
+  <article class="post-content">
+    <h2>General Notes</h2>
+<p>In the Energy Policy Simulator (EPS), &quot;heat&quot; is an energy carrier like electricity.  It is generated centrally by district heat plants (which may be CHP plants and also produce electricity), then distributed to buildings and facilities that use the heat.</p>
+<p>&quot;District heat&quot; refers only to the heat that is generated centrally and piped to a building or industrial facility.  Heat that is generated and used on-site at an industrial facility is not &quot;district heat&quot; and is not included in the &quot;heat&quot; energy carrier total.  (Similarly, electricity that is generated and used on-site at an industrial facility is not included in the &quot;electricity&quot; total, as this total serves to inform the model how much demand the Electricity Supply sector must serve.)</p>
+<p>In the U.S., district heat is a relatively minor part of the energy system.  It is only used by commercial buildings, not by residential buildings, nor industrial facilities.  However, the structure in this model section supports countries for which district heat plays a more important role (so the model can be easily customized by swapping input data).</p>
+<p>All calculations for district heating (policy case, BAU case, and cash flow) are handled on one sheet in the Vensim model.  As is the case for other sectors, the documentation here only discusses the policy case and cash flow, not the BAU case.</p>
+<h2>Emissions and Fuel Use<a name="chp"></a></h2>
+<p>First, we find the total usage of the &quot;heat&quot; energy carrier by the Buildings and Industry sectors.</p>
+<p><img src="/district-heating-TotHeatUse.png" alt="total heat use"></p>
+<p>Next, we find the fraction of district heat that is generated from each fuel (e.g. coal, natural gas, etc.).  The BAU fractions are taken in as time-series input data, and the fractions in the policy case can be affect by the District Heat Fuel Shifting policy lever.  This lever allows the user to shift the fuel mix from the BAU case to whatever fractions are specified for the policy case in <code>RHFF Recipient Heat Fuel Fractions</code>.  The total heat use is then divided up by the fuels that provide that heat.</p>
+<p><img src="/district-heating-FuelUse.png" alt="fuel used to create district heat"></p>
+<p>Next, we determine the fraction of district heat that is provided by combined heat and power (CHP) plants.  BAU data break out the CHP share of district heat by fuel, to allow for the circumstance where heat-providing CHP plants tend to more often burn one fuel type (such as natural gas), while dedicated heat plants tend to more often burn a different fuel type (such as coal).</p>
+<p>We assume CHP plants would have been run irrespective of heat demand in order to provide electricity, and so, these plants should be included within the Electricity Sector.  To avoid double-counting these plants, we only consider heat provided by &quot;dedicated facilities&quot; (i.e. non-CHP plants) in the &quot;District Heating&quot; part of the model.</p>
+<p>The user may use the district heat CHP conversion policy to specify what fraction of heat provided by non-CHP plants in the BAU case should instead be provided by CHP plants in the policy case, thus effectively removing those plants from consideration within the &quot;District Heating&quot; model sheet.</p>
+<p>We remove the fraction of heat provided by CHP plants, to obtain the amount of heat provided by dedicated CHP facilities.</p>
+<p><img src="/district-heating-CHPFraction.png" alt="CHP fraction of district heat"></p>
+<p>Some heat can be lost through the boiler walls, and in transmission and distribution systems (e.g. for hot water or steam), and there may be other inefficiencies in heat plants and distribution systems.  We calculate the amount of fuel that dedicated district heat facilities must burn in order to meet the heat demand, accounting for heat losses and inefficiencies.</p>
+<p><img src="/district-heating-Efficiency.png" alt="district heating efficiency"></p>
+<p>We separate out any electricity demand by district heat facilities, to include in the total electricity demand, which is calculated on the <a href="/cross-sector-totals">Cross-Sector Totals</a> sheet.</p>
+<p><img src="/district-heating-ElectricityUse.png" alt="district heating electricity use"></p>
+<p>Finally, we apply the emissions intensities by fuel to obtain emissions by pollutant.  We use industry-sector (rather than utility-sector) pollution emissions indices, because district heat plants are smaller than utility-scale electricity generating plants and may be more similar to major industrial facilities in terms of size.  We also report a version of the emissions summed across fuels, so that total emissions of each pollutant from the District Heating sector can be more quickly assessed.</p>
+<p><img src="/district-heating-Emissions.png" alt="emissions from district heating"></p>
+<h2>Changes in Cash Flow</h2>
+<h3>Cost of Shifting to CHP Facilities</h3>
+<p>The model estimates the cost associated with purchasing necessary equipment to provide a greater share of district heat from CHP facilities, as a result of the district heat CHP conversion policy.  To do this, we begin by taking the difference between the amount of heat provided by dedicated (non-CHP) facilities in the Policy and BAU cases.  For purposes of cost calculation, we subtract out the change in total heat use (due to efficiency or pricing policies in heat-demanding sectors) from the amount of heat shifted to CHP facilities.  This effectively assumes that reductions in heat use come from reduced usage of dedicated facilities, rather than reduced usage of heat from CHP facilities.  The relevant model structure is shown in the following screenshot:</p>
+<p><img src="/district-heating-HeatShiftedToCHP.png" alt="heat shifted from dedicated to CHP facilities"></p>
+<p>The quantity calculated above refers to the total amount of heat shifted to CHP facilities in the policy case relative to the BAU case.  For purposes of knowing how much equipment needs to be purchased in the current model year, we need to know the amount of shifting from dedicated to CHP facilities that happened in the current year.  To do that, we subtract last year's total shifted quantity from this year's total shifted quantity, as shown in the following screenshot:</p>
+<p><img src="/district-heating-ThisYearHeatShifted.png" alt="heat shifted to CHP facilities this year"></p>
+<p>We use the implementation cost of the policy to increase usage of combined heat and power (CHP) in the <a href="/industry-ag-main">Industry Sector</a> to represent the cost of increasing the usage of CHP for provision of district heat, since CHP equipment prices specifically for district heat plants are not available (and might be largely the same as CHP equipment prices for industrial facilities).  The resulting change in spenrevenue ding is then assigned to ISIC 28 (Machinery and equipment not elsewhere classified), for use in the <a href="/cross-sector-totals">Cross-Sector Totals</a> sheet and, ultimately, in the <a href="/io-model">Input-Output model</a>.</p>
+<p><img src="/district-heating-EqptSupplierCash.png" alt="cash flow change for industrial equipment suppliers"></p>
+<h3>Cash Flow Changes due to Spending on Fuels and Fuel Taxes</h3>
+<p>In each of the BAU and policy cases, the amount of fuel consumed to generate district heat is multiplied by the cost per unit energy (by fuel) to determine the total amount spent of fuel.  The quantity of fuel consumed is multiplied by the amount of tax per unit energy to determine the quantity that was spent on taxes on the district heat fuels.  We take the difference in the quantity of taxes spent in the BAU and policy cases to find the change in taxes paid.  We take the difference in total amount spent on fuels, and we subtract the change in taxes paid, to find the change in amount of money going to the fuel industry (by fuel).</p>
+<p><img src="/district-heating-FuelCost.png" alt="cash flow changes due to spending on fuels and fuel taxes"></p>
+<h3>Allocating Expenditures and Revenues</h3>
+<p>District heat facilities are part of the &quot;other energy suppliers&quot; cash flow entity, so we assign all expenditures on fuel and equipment by district heating facilities to this cash flow entity.  We also divide by the total quantity of heat generated to find the change in expenditures (positive or negative) per unit heat, which is used to adjust the price of heat on the <a href="/fuels">Fuels</a> sheet.</p>
+<p><img src="/district-heating-AllocatingExpenditures.png" alt="allocating change in district heating expenditures"></p>
+<p>Changes in fuel tax revenues are allocated to the government.  Changes in revenues from equipment sales are allocated to the &quot;non-energy industries&quot; cash flow entity.  (They were already also allocated to the proper ISIC code for use in input-output calculations, as noted above.)  Changes in revenues from selling fuels are allocated to the corresponding fuel suppliers.</p>
+<p><img src="/district-heating-AllocatingRevenues.png" alt="allocating change in district heating revenues"></p>
+
+  </article>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+    // Show the cookie consent bar unless already opted in.
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: '#000000', text: '#ffffff' },
+        button: { background: '#00acec', text: '#ffffff' }
+      },
+      theme: 'classic',
+      content: {
+        message:
+          'By continuing to use this site, you are accepting the use of cookies, which provide functionality for this website.',
+        dismiss: 'OK',
+        href: 'dcs/privacy/'
+      }
+    })
+</script>
+
+
+  </body>
+
+</html>
