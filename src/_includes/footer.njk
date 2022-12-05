@@ -1,0 +1,22 @@
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+  // Show the cookie consent bar unless already opted in.
+  window.cookieconsent.initialise({
+    palette: {
+      popup: {
+        background: '#000000',
+        text: '#ffffff'
+      },
+      button: {
+        background: '#00acec',
+        text: '#ffffff'
+      }
+    },
+    theme: 'classic',
+    content: {
+      message: 'By continuing to use this site, you are accepting the use of cookies, which provide functionality for this website.',
+      dismiss: 'OK',
+      href: 'dcs/privacy/'
+    }
+  })
+</script>
