@@ -1,4 +1,5 @@
 _site
+src/*.json
 .DS_Store
 .env
 .svelte-kit

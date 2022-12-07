@@ -12,6 +12,7 @@
   "author": "Todd Fincannon <todd@energyinnovation.org> (https://energyinnovation.org/)",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.2"
+    "@11ty/eleventy": "^1.0.2",
+    "lunr": "^2.3.9"
   }
 }
