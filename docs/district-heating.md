@@ -12,7 +12,7 @@ In the U.S., district heat is a relatively minor part of the energy system.  It 
 
 All calculations for district heating (policy case, BAU case, and cash flow) are handled on one sheet in the Vensim model.  As is the case for other sectors, the documentation here only discusses the policy case and cash flow, not the BAU case.
 
-## Emissions and Fuel Use<a name="chp"></a>
+## Emissions and Fuel Use
 
 First, we find the total usage of the "heat" energy carrier by the Buildings and Industry sectors.
 

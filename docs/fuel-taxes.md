@@ -9,6 +9,6 @@ In addition to the effects on individual rational actors, fuel taxes encourage p
 
 Fuel taxes have some drawbacks, however, and are unlikely to achieve sufficient emissions reductions in the absence of complementary economy-wide policies.  In the real world, using taxes to correctly price fuel to account for pollution externalities is not sufficient for substantially improving a product’s efficiency.  This is because consumers appear to systematically underinvest in efficiency (i.e., they are relatively insensitive to fuel price changes).  Studies have shown that consumers could privately benefit from owning more fuel-efficient products, but they still do not make these rational investment decisions.  Of course, ending fuel subsidies and including a tax in fuel prices would influence purchasing decisions and use patterns for fuel-intensive products in the long-term.  However, the effect on efficiency will be smaller than if consumers fully valued expected savings.
 
-<a name="fn-1">1</a> In this case, *product* refers to anything that consumes fuel to operate, from vehicles and homes to appliances and industrial equipment.
+ In this case, *product* refers to anything that consumes fuel to operate, from vehicles and homes to appliances and industrial equipment.
 
 *For a more detailed discussion, see [the applicable chapter](/dcs/policies/vehicle-and-fuel-fees-and-feebates/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

@@ -34,7 +34,7 @@ For on-road vehicles, the model also tracks vehicle technology, grouping vehicle
 * plug-in hybrid vehicle = on-road vehicles that possess both an internal combustion engine (for gasoline or diesel) and an electric motor, and which can be charged from the electric grid
 * nonroad vehicle = a technology category assigned to all non-road vehicles (aircraft, rail, ships), as we do not track specific technology types for these vehicle types
 
-## Calculating Cargo Distance Transported<a name="tdm"></a>
+## Calculating Cargo Distance Transported
 
 The EPS begins by determining the demand for transportation services, which is measured in units of cargo-distance, separated by vehicle type.  BAU case transportation service demand is taken in as input data.  This demand is then modified by the transportation demand management (TDM) policy, as shown in the following screenshot:
 
@@ -62,7 +62,7 @@ Next, we must determine the share of the cargo distance transported that is attr
 
 ![new cargo distance transported](/img/transportation-sector-main-NewCargoDist.png)
 
-## Calculating New Vehicle Fuel Economy<a name="fuel-econ-std"></a>
+## Calculating New Vehicle Fuel Economy
 
 ### Fuel Price Effects
 
@@ -76,7 +76,7 @@ Vehicle fuel economies are differentiated by vehicle type and vehicle technology
 
 We then multiply these percent changes by the BAU new vehicle fuel economy (which is derived from input data).
 
-### Feebate<a name="feebate"></a>
+### Feebate
 
 The feebate policy, which only applies to LDVs, has a specific effect on new LDV fuel economy based on the results of a study.  We multiply the user's selected feebate setting by the effect of a feebate observed in that study to obtain the percent change in fuel economy due to the feebate, then apply that percent change to the new vehicle fuel economy:
 

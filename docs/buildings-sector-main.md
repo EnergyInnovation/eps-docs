@@ -28,7 +28,7 @@ After the model has run a number of years equal to the component lifetime, we no
 
 ## Policy Effects
 
-### Accelerated Retrofitting Policy<a name="retrofitting"></a>
+### Accelerated Retrofitting Policy
 
 Next, the model implements the effects of the accelerated retrofitting policy, as shown in the following screenshot:
 
@@ -44,7 +44,7 @@ We also track the cumulative potential energy use of components that have been r
 
 Vensim doesn't update level variables with the current year's inflows and outflows- the current year's flows affect the level variable next year.  We want to adhere to the user-defined policy implementation schedule without introducing a one-year delay.  (If the user wanted a one-year delay, he/she would have put it into the policy implementation schedule.)  Accordingly, we manually add the current year's inflows and outflows to the cumulative total to obtain the "Cumulative Replaced Components Potential Energy Use" (and later in the Buildings Sector, the "Cumulative Potential Energy Difference Relative to BAU").  We do something similar with all other level variables in the Energy Policy Simulator (EPS).
 
-### Efficiency Standards and R&D<a name="eff-stds"></a>
+### Efficiency Standards and R&D
 
 The following structure implements the energy efficiency standards and energy efficiency R&D policies for building components:
 
@@ -52,7 +52,7 @@ The following structure implements the energy efficiency standards and energy ef
 
 The implementation of these policies is straightforward, as the user settings of these policy levers explicitly define their effects.  We conservatively assume that newly sold building components just meet the reduction in energy use required by the standard.  The R&D policies are defined to be additional R&D beyond any that may be needed to satisfy requirements of other policies, such as R&D by building component manufacturers done in order to meet efficiency standards.
 
-### Improved Labeling and Contractor Education and Training<a name="contractor-ed"></a><a name="device-labeling"></a>
+### Improved Labeling and Contractor Education and Training
 
 The following structure implements two Boolean policies (i.e., policies that can only be set to "on" or "off" rather than set to a range of different values): improved device labeling and improved contractor education and training.
 
@@ -60,7 +60,7 @@ The following structure implements two Boolean policies (i.e., policies that can
 
 Energy efficiency labeling reduces the energy use of specific types of devices- appliances, heating equipment (i.e. central air furnace), and cooling / ventilation equipment (e.g. air conditioning units).  Contractor education and training improves the performance of building envelope components, reducing energy spent on heating and cooling.  In both cases, these are Boolean policies because specific labeling interventions and specific training programs were studied in our input data sources- it does not make sense to allow a user to implement a fraction of a labeling program or a fraction of a training program.
 
-### Rebate Policy and Component Quality Levels<a name="rebate"></a>
+### Rebate Policy and Component Quality Levels
 
 The EPS supports multiple quality levels for building components.  For the U.S. version of the simulator, there are only two quality levels: standard-compliant and rebate-qualifying.  The structure that handles these quality levels, as well as the rebate policy, is shown in the following screenshot:
 
@@ -80,7 +80,7 @@ The energy use of new components (including BAU new components and new component
 
 In the next step, we combine this change in energy use with the difference in fuel cost (disaggregated by fuel), which may be driven by other policies (such as a carbon tax or fuel taxes), most of which are handled on the [Fuels page](fuels).  This gives us a percentage change in cost to provide services to a given building area, disaggregated by component and by fuel type.  We use an elasticity of new component energy demand with respect to energy cost to convert this into a percentage change in the energy efficiency of newly sold components.  This percentage change is multiplied by the total energy use from the most recent prior calculation ("New Components Potential Energy Use after Quality Level Shifts") to give the potential energy use after price-efficiency feedbacks.
 
-### Electrification<a name="component-elec"></a>
+### Electrification
 
 A policy is available to shift newly sold components from non-electricity fuel types to electricity, as shown below:
 
@@ -128,7 +128,7 @@ We find the percentage change in fuel cost between these two cases.  Then we com
 
 ![behavioral response to energy cost changes](/img/buildings-sector-main-BehavioralResponse.png)
 
-## Distributed Solar PV Calculations<a name="solar-carve-out"></a><a name="distributed-solar-subsidy"></a>
+## Distributed Solar PV Calculations
 
 The simulator factors in the amount of distributed electricity generation capacity (from a variety of sources on-site at buildings), the vast majority of which comes from solar PV panels.  It also includes two policies that allow the user to increase the amount of distributed solar PV capacity beyond the BAU case.
 

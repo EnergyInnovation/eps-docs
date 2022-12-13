@@ -19,7 +19,7 @@ title: Remapping Subscript Elements
 | [Land Use Policy](#land_use_policy)                                             | good |
 
 
-## About Subscript Elements and Remapping<a name="about"></a>
+## About Subscript Elements and Remapping
 
 The Energy Policy Simulator (EPS) uses subscripts (array dimensions) to manage data.  Examples of subscripts include "Industry Category," "Building Type," "Electricity Source," and so forth.  Each subscript contains various elements.  For example, the "Building Type" subscript contains three elements: urban residential, rural residential, and commercial.  All subscripts and their elements can be viewed by [downloading the model](download), opening it in Vensim Model Reader, and clicking the "Subscripts" button.
 
@@ -27,7 +27,7 @@ When adapting the EPS to a new geography, we are sometimes asked if we can add a
 
 Remapping a subscript is possible, but caution must be taken.  In some cases, the model structure treats certain elements differently from others, based on the model's understanding of what those subscript elements mean.  This can make certain output graphs inaccurate if remapping is done inappropriately.  This documentation page aims to help clarify which subscript elements may be remapped and under what constraints.
 
-## Power Plant Types<a name="power_plant_types"></a>
+## Power Plant Types
 
 The 16 elements of the "Electricity Source" subscript are: hard coal, natural gas nonpeaker, nuclear, hydro, onshore wind, solar PV, solar thermal, biomass, geothermal, petroleum, natural gas peaker, lignite, offshore wind, crude oil, heavy or residual fuel oil, and municipal solid waste.  (This does not include distributed generation, which is handled in the Buildings sector and is not part of this subscript.)  Remapping of power plant types is possible given the following constraints:
 
@@ -37,7 +37,7 @@ The 16 elements of the "Electricity Source" subscript are: hard coal, natural ga
 
 Remember that when remapping, you likely will need to update not only a variety of variables within the electricity sector (e.g. start year capacity, heat rate, expected capacity factors, etc.) but also pollutant emissions intensities and pollutant emissions intensity improvement rates (in the Fuels section).
 
-## Industries<a name="industries"></a>
+## Industries
 
 The 8 elements of the "Industry Category" subscript are: cement and other carbonates, natural gas and petroleum systems, iron and steel, chemicals, coal mining, waste management, agriculture, other industries.
 
@@ -53,7 +53,7 @@ The 8 elements of the "Industry Category" subscript are: cement and other carbon
 
 - Agriculture has special handling with respect to the "shift from animal to nonanimal products" policy lever, though this lever could be disabled in the web interface.
 
-## Industrial Process Emissions Policies<a name="industrial_process_emissions_policies"></a>
+## Industrial Process Emissions Policies
 
 The nine industrial process emissions policies are a subset of the "Policy" subscript and also are used in the "Industry by Process Emissions Policy" subscript  The nine elements are: methane capture, methane destruction, f gas substitution, f gas destruction, f gas recovery, f gas inspct maint retrofit, cropland and rice measures, livestock measures, and cement measures.  Each policy lever represents a "bucket" of different technical strategies (summed up from a major EPA report, for non-CO2 gases), and the exact composition of those buckets can change, as long as the following guidelines are respected:
 
@@ -69,19 +69,19 @@ The nine industrial process emissions policies are a subset of the "Policy" subs
 
 For example, you could remap the "cement clinker substitution" policy to "cement measures" and add data about the cost and reduction potential of alternative cement chemistries to the existing data on clinker substitution in PERAC, so this lever represents doing both of these technical measures (depending on the lever's setting).  You could also consolidate all F-gas measures into a smaller number of levers (by default, four levers), or remap "Crop and Rice Measures" to a different policy that affects methane and nitrous oxide in the agriculture industry.
 
-## Cash Flow Entities<a name="cash_flow_entities"></a>
+## Cash Flow Entities
 
 The nine cash flow entities (entities to whom the EPS can assign positive and negative cash flows) are: government, nonenergy industries, labor and consumers, foreign entities, electricity suppliers, coal suppliers, natural gas and petroleum suppliers, biomass and biofuel suppliers, and other energy suppliers.
 
 - Cash flow entities cannot be remapped.  The finances of the five energy-supplying cash flow entities are structurally linked to the sales and prices of associated fuels.  The other four broad entities also have model structure defining aspects of their cash flows.  For example, tax revenues go to the "government" and the labor fraction of operations and maintenance costs goes to "labor and consumers."
 
-## Building Type<a name="building_type"></a>
+## Building Type
 
 The three elements of the "Building Type" subscript are: urban residential, rural residential, and commercial.
 
 - Building types may be remapped freely, as long as the resulting categories are non-overlapping and encompass all buildings.  For example, the "urban residential" subscript can be remapped to "residential" and contain data for all residential buildings, without regard to an urban/rural split.  The "commercial" buildings subscript could be split into two types of commercial buildings, such as "private nonresidential buildings" and "public nonresidential buildings," but in that case, the fuel costs (which can vary by building type) may need to be updated, in fuels/BFCpUEbS.
 
-## Building Component<a name="building_component"></a>
+## Building Component
 
 The six elements of the "Building Component" subscript are: heating, cooling and ventilation, envelope, lighting, appliances, and other components.
 
@@ -89,7 +89,7 @@ The six elements of the "Building Component" subscript are: heating, cooling and
 
 - The lighting, appliances, and "other components" subscripts can be remapped freely, so long as the total amount of energy used in buildings (except to operate industrial machinery or electricity generation equipment) is equal to the sum of the energy used by all of the "building component" subscript elements.  For example, it would be possible to remap "appliances" to "cooking equipment," so long as the energy used by all non-cooking appliances were added to the "other components" category.
 
-## Vehicle Type and Cargo Type<a name="vehicle_type_and_cargo_type"></a>
+## Vehicle Type and Cargo Type
 
 The six elements of the "Vehicle Type" subscript are: LDVs, HDVs, aircraft, rail, ships, and motorbikes.  The two elements of the cargo type subscript are: passenger and freight.
 
@@ -99,7 +99,7 @@ The six elements of the "Vehicle Type" subscript are: LDVs, HDVs, aircraft, rail
 
 - No special handling is required when remapping between a non-road and an on-road vehicle mode, but you may wish to check to ensure the LCFS policy is correctly set to cover or exclude the remapped vehicle type in trans/BVTStL.
 
-## Fuels<a name="fuels"></a>
+## Fuels
 
 Fuels appear in a variety of subscripts, including "All Fuels" and sector-specific fuel subscripts, such as "Industrial Fuel" or "Transportation Fuel."
 
@@ -107,13 +107,13 @@ Fuels appear in a variety of subscripts, including "All Fuels" and sector-specif
 
 - If the remapped fuel is used in the same sectors but in different types of equipment, this may necessitate changes in numerous variables in the relevant sector.  For example, remapping "biofuel gasoline" to "bio-jet fuel" would require changes in the transportation sector that specify which fuel types different vehicle technologies and vehicles may use.  This is likely to be even more difficult in other sectors, such as electricity supply and industry.  Therefore, it is strongly recommended that the remapped fuel be one used by the same types of equipment or industries as the original fuel.
 
-## Hydrogen Production Pathway<a name="hydrogen_production_pathway"></a>
+## Hydrogen Production Pathway
 
 The hydrogen production pathway subscript includes five pathways: electrolysis, natural gas reforming, coal gasification, biomass gasification, and thermochemical water splitting.
 
 - Hydrogen production pathways may be remapped freely.  This subscript was designed to facilitate remapping, and also, there is the expectation that no EPS deployment is likely to use all of the available subscript elements.
 
-## Land Use Policy<a name="land_use_policy"></a>
+## Land Use Policy
 
 The six land use policies are a subset of the "Policy" subscript and also are used in the "Land Use Policy" subscript  The elements are: forest set asides, afforestation and reforestation, forest management, avoid deforestation, peatland restoration, and forest restoration.
 

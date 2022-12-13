@@ -29,7 +29,7 @@ There are several reasons why we choose to represent quality levels based on the
 
 ## Capacity Construction
 
-### Determining Energy Need<a name="red-tnd-losses"></a><a name="red-downtime"></a><a name="elec-exports"></a><a name="elec-imports"></a>
+### Determining Energy Need
 
 The sheet begins by taking in the total amount of electricity demanded by the other sectors of the model.  It applies a transmission and distribution loss percentage to determine the amount of electricity that needs to be generated and dispatched (e.g. for off-site use) by power plants.  The transmission and distribution losses are reduced via the associated policy lever.  The structure is shown in the following screenshot:
 
@@ -57,7 +57,7 @@ One of the electricity sector policies allows the user to specify a "mandated ca
 
 Finally, we convert from capacity to potential output using the target electricity capacity factors and determine the remaining amount of new potential output we need, after the mandated capacity construction policy.
 
-### Renewable Portfolio Standard Policy<a name="rps"></a>
+### Renewable Portfolio Standard Policy
 
 Next, the model determines what must be built to comply with the Renewable Portfolio Standard (RPS) policy.  Each type of power plant either  qualifies or does not qualify as contributing to the achievement of the RPS.  In the U.S., the RPS-compliant power plant types are non-hydro renewables.
 
@@ -145,7 +145,7 @@ Since all other costs are annual, we annualize the construction cost to make it 
 
 ![annualizing construction costs](/img/electricity-sector-main-AnnualizingCosts.png)
 
-### Costs per Unit Output<a name="subsidies"></a>
+### Costs per Unit Output
 
 The next portion of the model looks at the remaining costs of building and operating power plants and represents them per unit output, as shown in the following screenshot:
 
@@ -161,7 +161,7 @@ We add the following costs:
 
 We report the result both before and after subsidies, because the unsubsidized version must be used in the allocation functions, when converting normalized standard deviations of cost into standard deviations of cost.  This is because the normalization process in the cost source data only looks at the range of actual costs incurred, irrespective of whether subsidies later repaid the electricity suppliers.  For all other purposes in the model, we use the cost numbers that factor in subsidies.
 
-## Tracking Capital Stock<a name="early-ret"></a><a name="life-ext"></a>
+## Tracking Capital Stock
 
 In each model year, new power plants are built (unless there are enough surviving plants to meet demand) and old power plants are retired.  The means of determining how much of each type of plant is discussed above, so this section will mostly discuss retirements.  There are three retirement mechanisms: the natural retirement rate (which can be affected by the lifetime extension policy), retirements caused by the early retirement policy, and retirements caused when a power plant type becomes uneconomic to keep running.
 
@@ -205,7 +205,7 @@ The Energy Policy Simulator (EPS) uses annual timesteps, whereas the timescale o
 
 We allow each flexibility point to support one MW of wind and one MW of solar PV, because wind and solar PV tend to need assistance at different times of the day.  (Solar PV needs support at night, and generally, wind needs support during the daytime.)  We use results of a modeling study that used a fine timescale and a detailed electricity supply, demand, and transmission model to estimate the number of flexibility points provided by a given quantity of each of several technology options.
 
-### Sources of Flexibility Points<a name="dr"></a><a name="storage"></a>
+### Sources of Flexibility Points
 
 Peaker plants are one source of flexibility points.  The structure representing them is shown in the following screenshot:
 
@@ -235,7 +235,7 @@ The last source of flexibility points is transmission capacity across the modele
 
 ![transmission across the modeled region border](/img/electricity-sector-main-FlexibilityTransmissionBorder.png)
 
-### Transmission<a name="transmission"></a>
+### Transmission
 
 The EPS also includes the concept of electrical transmission capacity within the modeled region.  A source of flexibility points, such as an energy storage system, does no good if it is not connected to any variable generation.  Accordingly, transmission is used to link sources of flexibility points to the variable generation that needs flexibility support.  The following structure handles the interaction of transmission with flexibility points:
 

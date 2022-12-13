@@ -51,7 +51,7 @@ We also load the CO<sub>2</sub> emissions intensities from each fuel into the `A
 
 ![fuel CO2 emissions intensities in All Fuels subscript](/img/fuels-EmisIntensitiesAllFuels.png)
 
-## Carbon Tax Amount per Unit Energy<a name="carbon-tax"></a>
+## Carbon Tax Amount per Unit Energy
 
 The carbon tax is based on the CO<sub>2</sub> or CO<sub>2</sub>e intensity of different fuels (depending on whether the carbon tax is configured to apply to non-CO<sub>2</sub> greenhouse gases), so we must begin by considering fuels' pollutant emissions intensities.
 
@@ -79,7 +79,7 @@ Next, we convert from grams of CO<sub>2</sub>e to metric tons of CO<sub>2</sub>e
 
 ![amount of carbon tax per unit fuel by sector](/img/fuels-CarbTaxAmtBySector.png)
 
-### Fuel Tax Amount per Unit Energy<a name="fuel-taxes"></a>
+### Fuel Tax Amount per Unit Energy
 
 In addition to carbon taxes, there are often exist fuel taxes, such as sales taxes, value added taxes, or excise taxes on fuels.  We need to calculate the amounts of these taxes per unit energy for each fuel.  First, we multiply any additional tax rate (set as a percentage of the BAU pretax fuel price) set by the user by the BAU pretax fuel price to find the incremental additional fuel tax amount per unit energy.  We add this to the BAU fuel tax amount per unit energy to find the policy case fuel tax amount per unit energy.
 
@@ -103,7 +103,7 @@ When performing Monte Carlo sensitivity analysis runs, one of the most common in
 
 ![sensitivity multiplier for fuel prices](/img/fuels-SensitivityMultiplier.png)
 
-### Energy Price Adjustment based on Energy Supplier Costs<a name="prevent-pol-effects"></a>
+### Energy Price Adjustment based on Energy Supplier Costs
 
 The model supports altering the price of fuels based on model results, such as the expenses seen by fuel producers.  The only fuels for which the model alters the price in this way are the three energy carriers: electricity, district heat, and hydrogen.  This is because the EPS includes model sectors dedicated to [electricity](electricity-sector-main), [district heating](district-heating), and [hydrogen supply](hydrogen-supply), where the model specially calculates policy-driven changes in the costs seen by the suppliers of these energy carriers.  In contrast, the EPS does not havee similarly detailed models of the internal business processes of other fuel producers, such as oil and gas companies.  (Also, almost all electricity, district heat, and hydrogen are sold domestically, whereas many fuels have prices set on an international market, making the influence of users' policy settings on those prices less important.)
 
@@ -115,13 +115,13 @@ In some regions, energy suppliers may not adjust their prices in response to cha
 
 ![energy price adjustment configuration](/img/fuels-EnergyPriceAdjControls.png)
 
-### Reduction of BAU Subsidies for Fuels<a name="end-subsidies"></a>
+### Reduction of BAU Subsidies for Fuels
 
 In many regions, subsidies affect fuel costs in the BAU case, and policymakers may be interested in the effects of withdrawing these subsidies.  Some subsidies are applied to thermal fuels per unit of fuel produced (say, a tax break for an extraction activity, such as drilling for oil or natural gas), while others are applied per unit of electricity produced by a fuel or energy source, and hence only apply to the Electricity sector.  The user can choose to reduce or eliminate subsidies on any fuel type (e.g. hard coal, natural gas, etc.) or electricity source (e.g. wind, solar PV, etc.), in any year or years according to the policy implementation schedule.  Reduction of subsidies on electric output is handled in the [Electricity sector](electricity-sector-main).  For fuels, the BAU prices include subsidies.  Therefore, removal of the subsidies will increase the fuel prices.  This increase is calculated by finding the policy-case subsidy value per unit energy by fuel (by reducing BAU subsidies by the percentage specified in the `Reduction in BAU Subsidies` policy lever), and taking the difference from the BAU subsidy values, to find the added cost per unit energy from withdrawing subsidies.  This value is then used to modify the policy case fuel prices.
 
 ![increase in fuel cost due to subsidy removal](/img/fuels-FuelsSubsidy.png)
 
-### Fuel Price Deregulation<a name="fuel-price-deregulation"></a>
+### Fuel Price Deregulation
 
 In some countries or regions, the prices that fuel producers may charge on the domestic market are capped at levels far below the prices that could be commanded on the international market.  This is particularly relevant in oil-exporting countries that wish to protect domestic industry and residents from high energy prices while maximizing earnings for exported oil.  The fuel price deregulation policy lever allows the user to partially or fully relax these domestic price caps, such that domestic fuel prices may approach or equal international market prices.  Since this is not a tax or a subsidy, it does not involve direct government payments to/from fuel producers.
 

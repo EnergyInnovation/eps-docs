@@ -34,7 +34,7 @@ Emissions due to leakage are estimated by the model but are not added to total e
 
 ## Process Emissions
 
-### Policies<a name="clinker"></a><a name="methane-capture"></a><a name="methane-destr"></a><a name="avoid-f-gases"></a><a name="worker-training"></a><a name="cropland"></a><a name="livestock"></a><a name="rice"></a>
+### Policies
 
 All policies affecting process emissions are represented as a fraction of the total potential abatement from that policy that is achieved (based on the user's policy setting and policy implementation schedule), so they are all handled via a similar calculation flow, as shown in the following screenshot:
 
@@ -64,7 +64,7 @@ First, we use global warming potential (GWP) factors to convert BAU Process Emis
 
 Finally, we apply the fuel-weighted percent change in production due to policies (the calculation of which is explained below) to adjust both the process emissions and the change in process emissions to reflect increases or decreases in industry production levels.  The "Process Emissions" variable is used later on this sheet as a component of total Industry sector emissions, while the "Change in Process Emissions" variable is used on the [Industry - Cash Flow sheet](industry-ag-cash).
 
-## Policies Affecting Fuel Use<a name="cogen"></a><a name="early-ret"></a><a name="eff-stds"></a><a name="system-integ"></a><a name="fuel-switching"></a>
+## Policies Affecting Fuel Use
 
 The Industry Sector policies that do not affect process emissions instead affect fuel use, either by reducing fuel use or by changing the type of fuel that is consumed.  Some cross-sector policies, such as the carbon tax and fuel taxes, can also play a role.
 

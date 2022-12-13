@@ -28,7 +28,7 @@ In other words, models that include DAC find that it would be needed on a scale 
 
 It is difficult to envision DAC spending of one to several times the size of the oil industry, even with significant policy support.  Therefore, policymakers may achieve better results by emphasizing emissions reduction approaches that are more technologically mature and more likely to be deployed at large scale, such as renewable energy production, energy efficiency, industrial material efficiency, etc.
 
-## DAC Modeling Approach in the EPS<a name="dac"></a>
+## DAC Modeling Approach in the EPS
 
 DAC is an emerging technology, with large-scale use decades away, at a minimum.  Therefore, there is significant uncertainty in the timeframe and availability of DAC.
 

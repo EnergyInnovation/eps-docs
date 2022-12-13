@@ -10,7 +10,7 @@ The LULUCF sector is constructed to be relatively flexible because different cou
 
 The LULUCF sector does not include fuel use.  Fuel use by relevant entities is handled in other sectors.  For example, wood burning to heat homes in the Buildings sector, and fuel burned in the course of business operations by timber-harvesting companies is included in the "other industries" category in the Industry Sector.
 
-## LULUCF Policies<a name="aff-ref"></a><a name="set-asides"></a><a name="forest-mgmt"></a><a name="avoid-def"></a>
+## LULUCF Policies
 
 The following LULUCF policies exist in the EPS.  Follow the links to view more details about each policy.
 

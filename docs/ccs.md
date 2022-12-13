@@ -2,7 +2,7 @@
 title: Carbon Capture and Sequestration
 ---
 
-## General Notes<a name="ccs"></a>
+## General Notes
 
 The carbon capture and sequestration (CCS) sheet handles various calculations relating to the quantity of CO<sub>2</sub> sequestered, the amount of fuel burned to power this sequestration, the cost of the capital equipment needed to sequester this amount of carbon, and the O&M cost for this equipment.  All of these results are disaggregated between the [electricity sector](electricity-sector-main) (where they are divided between various types of fuel-burning power plants, such as coal, natural gas, and biomass plants) and the [industry sector](industry-ag-main) (where they are divided up by industry).  These results are then used on the sheets for the electricity and industry sectors in the model.  Final emissions and cash flow calculations are not conducted on the CCS sheet; its purpose is to do supporting calculations for the other sectors.  Italics, which are used in the model (in all sheets) to denote when a variable is going to or coming from a different sector of the model, are useful for seeing which results on the CCS sheet are used on other sheets.
 
