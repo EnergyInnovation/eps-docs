@@ -44,7 +44,7 @@ The model folder will contain the following files and folders:
 
 * `InputData`, a folder that contains all of the input data files (in .csv format) read by the model at runtime, as well as the Excel files used to generate those data files.  The Excel files contain bibliographic source information, so model users know the origin of every piece of data used in the model.  Data are sorted into folders by model section and then by acronyms for variable names.  A key to the meaning of all acronyms is provided in the `InputData` folder, in the file `acronym-key.xlsx`.  For more details, see the [input data documentation page](input-data).
 
-* `web_assets`, a small number of files used in that EPS distribution's online landing page, documentation pages, and social media sharing features, not of interest to most users
+* `web_assets`, a small number of files used in that EPS distribution's online home page, documentation pages, and social media sharing features, not of interest to most users
 
 ### Files
 

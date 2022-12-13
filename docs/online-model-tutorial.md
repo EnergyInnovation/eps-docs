@@ -16,13 +16,13 @@ This video (#2 in the [EPS Video Series](video-series)) provides an introduction
 
 There are two ways you can use the EPS.  You may either [install the required software and download the model](download) to your own computer, or you can use the model via a web application interface on this site.  This tutorial page discusses how to use the model via the web application interface.  The web interface is powerful, user-friendly, and does not require you to install any software.  However, the downloadable model offers some additional features.  We recommend you get started by using the web interface, and if you require advanced features (such as reporting outputs from variables not shown in the web interface, editing the model's input data, performing batches of runs via a script, performing Monte Carlo sensitivity analyses, etc.), you may migrate to the downloadable version.
 
-## Global and Regional Landing Pages
+## Global and Regional Home Pages
 
-The Energy Policy Solutions project, Energy Innovation's effort to produce objective tools and resources on effective energy policy design, has a [global landing page](https://www.energypolicy.solutions) containing links to all regional EPS deployments.  EPS deployments exist for a growing number of countries, states/provinces, cities, and other geographic areas.
+The Energy Policy Solutions project, Energy Innovation's effort to produce objective tools and resources on effective energy policy design, has a [global home page](https://energypolicy.solutions) containing links to all regional EPS deployments.  EPS deployments exist for a growing number of countries, states/provinces, cities, and other geographic areas.
 
-Each regional EPS deployment also has its own landing page.  For example, the U.S. (national) EPS simulator's landing page is [here](https://us.energypolicy.solutions).
+Each regional EPS deployment also has its own home page.  For example, the U.S. (national) EPS simulator's home page is [us.energypolicy.solutions](https://us.energypolicy.solutions).
 
-Each regional EPS landing page features a small amount of introductory text and several buttons:
+Each regional EPS home page features a small amount of introductory text and several buttons:
 
 - `Change region` opens a small pop-up that allows you to jump directly to the EPS deployment for a different geographic region.
 
@@ -30,7 +30,7 @@ Each regional EPS landing page features a small amount of introductory text and 
 
 - `Sign in` will take you to a page where you can sign into the Energy Policy Simulator.  You also have the option to register an account.  An EPS account is not necessary to use the tool.  You only need an account if you wish to save your user-created policy scenarios on the server.
 
-- A **language toggle button** is available for certain EPS deployments, such as the [Canada EPS](https://canada.energypolicy.solutions) and [Saudi Arabia EPS](https://saudiarabia.energypolicy.solutions).  This button switches that region's landing page, documentation pages, and EPS web interface between English and that region's alternative language (e.g. Frech for Canada, Arabic for Saudi Arabia, etc.).
+- A **language toggle button** is available for certain EPS deployments, such as the [Canada EPS](https://canada.energypolicy.solutions) and [Saudi Arabia EPS](https://saudiarabia.energypolicy.solutions).  This button switches that region's home page, documentation pages, and EPS web interface between English and that region's alternative language (e.g. Frech for Canada, Arabic for Saudi Arabia, etc.).
 
 - `Enter Simulator`, located just below the introductory text, will take you to that EPS region's web interface.
 
@@ -130,7 +130,7 @@ Next there are three links:
 
 - `Customize implementation schedule` lets you change the rate at which the policy phases in (or out) over the model run.  A description of how to use this feature appears below.
 
-- `How to design this policy well` opens this policy's page from the [Policy Design Guide](https://energypolicy.solutions/docs/policy-design-index.html), a set of short documents that provide advice on how to effectively implement each policy in the model.
+- `How to design this policy well` opens this policy's page from the [Policy Design Guide](https://docs.energypolicy.solutions/policy-design-index), a set of short documents that provide advice on how to effectively implement each policy in the model.
 
 - `How the model handles this policy` opens a page from the model documentation where the structure related to the implementation of that policy is discussed.
 
@@ -277,7 +277,7 @@ When many scenarios are displayed, it can sometimes be confusing which scenario 
 ### Help
 ![help button](/img/online-model-tutorial-ButtonHelp.png)
 
-The Help button opens the Energy Policy Simulator documentation in a new browser tab.  It functions identially to the `Learn More` button on each regional EPS deployment's landing page, discussed above.
+The Help button opens the Energy Policy Simulator documentation in a new browser tab.  It functions identially to the `Learn More` button on each regional EPS deployment's home page, discussed above.
 
 ### Account
 ![account button](/img/online-model-tutorial-ButtonAccount.png)
@@ -306,7 +306,7 @@ If you are currently signed in, clicking the Account button will display a small
 
 ![Energy Policy Solutions logo](/img/online-model-tutorial-LogoPolicySolutions.png)
 
-Clicking on the "Energy Policy Solutions" logo on the left side of the header bar will open a browser tab showing the landing page for the regional EPS deployment you are using.
+Clicking on the "Energy Policy Solutions" logo on the left side of the header bar will open a browser tab showing the home page for the regional EPS deployment you are using.
 
 ![Energy Innovation logo](/img/online-model-tutorial-LogoEI.png)
 

@@ -87,6 +87,7 @@ const sidebars = {
       type: 'category',
       label: 'Policy Descriptions',
       items: [
+        'policy-design-index',
         {
           type: 'category',
           label: 'Transportation Policies',
