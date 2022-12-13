@@ -1,10 +1,6 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
 const lightCodeTheme = require('prism-react-renderer/themes/github')
 const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
-/** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Energy Policy Simulator Documentation',
   tagline: '',
@@ -21,45 +17,47 @@ const config = {
     defaultLocale: 'en',
     locales: ['en']
   },
-
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           routeBasePath: '/',
-          sidebarPath: require.resolve('./sidebars.js')
+          sidebarPath: require.resolve('./sidebars.js'),
+          breadcrumbs: false
         },
         blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css')
         }
-      })
+      }
     ]
   ],
-
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      navbar: {
-        title: 'Energy Policy Simulator Documentation',
-        logo: {
-          alt: 'EPS icon',
-          src: 'img/icon.svg'
-        },
-        items: []
-      },
-      footer: {
-        style: 'dark',
-        links: [],
-        copyright: `Copyright © ${new Date().getFullYear()} Energy Innovation. Built with Docusaurus.`
-      },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme
+  themeConfig: {
+    docs: {
+      sidebar: {
+        autoCollapseCategories: true,
+        hideable: true
       }
-    })
+    },
+    navbar: {
+      title: 'Energy Policy Simulator Documentation',
+      logo: {
+        alt: 'EPS icon',
+        src: 'img/icon.svg'
+      },
+      items: []
+    },
+    footer: {
+      style: 'dark',
+      links: [],
+      copyright: `Copyright © ${new Date().getFullYear()} Energy Innovation. All rights reserved. Built with Docusaurus.`
+    },
+    prism: {
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme
+    }
+  }
 }
 
 module.exports = config
