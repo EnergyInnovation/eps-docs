@@ -112,3 +112,6 @@ The change in capital costs (which consists of generation construction, battery,
 This screenshot of the final piece shows the summation of all the cash flows affecting government: taxes on the labor fraction of O&M, taxes on equipment purchases, and taxes on electricity fuel purchases (calculated in the "Change in Fuel Costs" section above).  It also shows two quantities the government pays out: subsidies and a rebate for sequestering CO<sub>2</sub> in the event of a carbont tax:
 
 ![totaling cash flow impacts on government](/img/electricity-sector-cash-GovernmentTotal.png)
+
+---
+*This page was last updated in version 1.1.4.*

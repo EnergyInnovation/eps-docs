@@ -226,3 +226,6 @@ Here's what a scenario similar to the first graph in this post looks like using 
 The new procedure is designed to be backward-compatible with old EPS versions, so that the modern web app software can continue to build and deploy older models.  To use the new procedure, you must list the component variables that make up the metric being graphed in the wedge diagram in `WebAppData.xlsx`, in the “OutputGraphs” tab, in the “Vensim Names of Graphed Variables” column.  If you do not do this, the web app will still build and run without errors, but you will get wedge and cost curve results based on the old procedure.  The component variables that make up a given metric will not vary by model region, so this should be a simple copy-and-paste operation.
 
 The cost curves now only need one variable specified instead of two, as they rely on widths calculated for the wedge diagram.
+
+---
+*This page was last updated in version 3.3.1.*

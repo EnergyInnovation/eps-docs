@@ -74,3 +74,6 @@ Depending on whether your permit prices fit a neat trend, you may not need to en
 Update the schedule number in the blue tabs, save a copy of FoPITY under a new name and export the blue tabs as `.csv` files, using filenames based on the updated tab names.
 
 In Vensim, open the EPS model, enter SyntheSim mode, and load your `ComplementaryPolicies.cin` file.  Set the Policy Implementation Schedule Selector to the schedule number you just assigned to your new FoPITY file.  Set the carbon tax lever on each covered sector to the value of the permit price in the highest year ($40 in our example above).  Finally, save a new `.cin` file, using a descriptive name.  This `.cin` file saves your complete policy package, including the cap-and-trade policy and complementary policies.  You may now perform analysis using this scenario as you would any other policy scenario.  Remember that it can be recreated in the web interface and shared with others, if you prefer to use the web interface rather than Vensim to analyze your policy package.
+
+---
+*This page was last updated in version 3.0.0.*

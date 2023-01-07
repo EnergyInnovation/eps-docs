@@ -62,3 +62,6 @@ We sum up the change in taxes paid (on components, fuels, and distributed energy
 We also sum up the change in capital equipment supplier cash flows, which comes from changes in amounts spent on building components and on distributed energy systems.
 
 ![change in capital equipment supplier cash flow](/img/buildings-sector-cash-CapEqptSuppliersTot.png)
+
+---
+*This page was last updated in version 1.1.4.*

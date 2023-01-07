@@ -110,3 +110,6 @@ If the guidelines above regarding financial metrics make them seem too multiface
 * Utilize a mix of supply-side interventions (new energy technologies, etc.) and demand-side interventions (material or energy efficiency, etc.).  In the short term, supply-side interventions may increase capital spending and (hence) employment, while reducing demand for industrial products and materials may reduce spending.  Balancing the two types of policy may help to maintain a stable and growing job market, avoiding a boom-and-bust cycle.
 
 * Focus on objective goods.  Nobody can argue with saving human lives.  Don't let the debate about the effects of a policy package exclusively center on financial outcomes.
+
+---
+*This page was last updated in version 3.0.0.*

@@ -31,7 +31,7 @@ Using the Python scripts requires software beyond that which is needed to simply
 
 ### Vensim DSS
 
-Most features of the EPS can be used if you run the model in the free Vensim Model Reader, as discussed on the [Download and Installation Instructions](download) page.  However, you will need a copy of Vensim DSS to make use of the Python scripts included with the EPS.  Information on how to purchase Vensim DSS is available for Windows and Mac on [the official Vensim website](http://vensim.com/purchase/).  As of Oct. 15, 2020, a commercial license costs $1995, a public research license costs $998, and an academic license costs $798.
+Most features of the EPS can be used if you run the model in the free Vensim Model Reader, as discussed on the [Download and Installation](download) page.  However, you will need a copy of Vensim DSS to make use of the Python scripts included with the EPS.  Information on how to purchase Vensim DSS is available for Windows and Mac on [the official Vensim website](http://vensim.com/purchase/).  As of Oct. 15, 2020, a commercial license costs $1995, a public research license costs $998, and an academic license costs $798.
 
 If you already own Vensim DSS, please be sure that it is version 8 or later, and you have installed the 64-bit version.  The EPS relies on features and bug fixes that were implemented in Vensim 8.  If you own Vensim Pro or DSS with a current maintenance subscription, you can download an updated version from the [Vensim download center](https://www.vensim.com/php-bin/download.html).  If your maintenance subscription is not current, you may log in using your old license key and renew your subscription for a fraction of the price of buying a new Vensim DSS license.
 
@@ -68,3 +68,6 @@ More detailed instructions about how to use each Python script are available on 
 4. Open Vensim DSS.  Choose `File > Open Model`.  From the drop-down menu above the `Open` and `Cancel` buttons, select `Command Scripts (*.cmd)`.  Select the command script you just created and click `Open`.
 
 5. Wait for Vensim to complete the series of runs.  Results will be found in a tab-separated values (`.tsv`) file inside the EPS model folder.  The name of the results file varies depending on which Python script you used.  You may open and graph the results in a spreadsheet program.
+
+---
+*This page was last updated in version 3.0.0.*

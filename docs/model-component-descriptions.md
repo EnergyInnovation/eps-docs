@@ -7,3 +7,6 @@ Each of the pages in the "Model Component Descriptions" section explains the ove
 Many screenshots of model structure are used in these sections.  A key to the meaning of the variables' background colors exists in the model, on the "Structural Overview" tab.  It is useful to know the meanings of the colors when reading the model component descriptions in the documentation.  Here is a screenshot of the key:
 
 ![key to variable colors](/img/model-component-descriptions-ColorKey.png)
+
+---
+*This page was last updated in version 3.0.0.*

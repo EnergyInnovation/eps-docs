@@ -40,3 +40,6 @@ The following partners have chosen to use the supported method above to integrat
 
 * [https://eps.kapsarc.org/](https://eps.kapsarc.org/) - King Abdullah Petroleum Studies and Research Center, Saudi Arabia
 * [https://policysolutions.pembina.org/](https://policysolutions.pembina.org/) - Pembina Institute, Canada
+
+---
+*This page was last updated in version 3.2.0.*

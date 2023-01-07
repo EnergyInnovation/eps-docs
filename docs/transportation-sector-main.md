@@ -239,3 +239,6 @@ The price of an amount of low-carbon fuel needed to generate one LCFS credit buy
 Finally, some LCFS legislation may include a price cap.  We implement a simple, boolean flag that notifies the user of any years in which the estimated LCFS credit price derived from a given fuel type exceeds the cap.  (In practice, whether or not this would mean the cap is "reached" in that year would depend on whether or not there was potential in that year to obtain the required number of LCFS credits from the fuel types capable of generating these credits at a cost below the cap.)
 
 ![LCFS credit price and price cap](/img/transportation-sector-main-CreditPrice.png)
+
+---
+*This page was last updated in version 1.3.1.*

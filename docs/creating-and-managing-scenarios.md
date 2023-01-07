@@ -60,3 +60,6 @@ The "Control Panel" window appears.  It includes five tabs.  If the tab for "Dat
 You may click on one of the scenarios in the right-hand (Loaded) pane to make it the active scenario.  It moves to the top of the list.  (The active scenario is the one that is featured on the built-in graphs in Vensim, but all loaded scenarios are featured on graphs and tables you generate in Vensim.)
 
 Select the "RenewablePortfolioStandard" scenario and click the "<<" button in the column between the "Available" and "Loaded" panes.  The "RenewablePortfolioStandard" scenario moves to the "Available" area and is no longer loaded.  It will not appear on charts or tables generated in Vensim.  However, the data file, "RenewablePortfolioStandard.vdf," remains in the model folder until it is deleted or overwritten.  It can be moved back to the "Loaded" pane by pushing the ">>" button, and it will again be included in graphs and tables.
+
+---
+*This page was last updated in version 1.1.2.*

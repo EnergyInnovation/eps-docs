@@ -109,3 +109,6 @@ The change in revenues from LULUCF policies is all allocated to the "non-energy 
 ![LULUCF revenues allocated](/img/lulucf-Revenues.png)
 
 The labor and government (tax) shares of these revenues are separated out on the [Cross-Sector Totals](cross-sector-totals) sheet.
+
+---
+*This page was last updated in version 3.0.0.*

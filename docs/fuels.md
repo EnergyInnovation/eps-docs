@@ -283,3 +283,6 @@ Changes in fuel subsidies paid are allocated to the government, while changes in
 Changes in export tax revenues are assigned to government.  Proceeds from exporting fuel (selling fuel abroad) are assigned to the corresponding fuel suppliers by fuel type.
 
 ![allocating fuels sheet revenues](/img/fuels-AllocatingRevenues.png)
+
+---
+*This page was last updated in version 3.0.0.*

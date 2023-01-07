@@ -335,3 +335,6 @@ To calculate the change in union-represented jobs and non-union-represented jobs
 ## Macroeconomic Feedbacks
 
 The results of the IO model are also used in macroeconomic feedback loops, discussed on the [Macroeconomic Feedbacks](macro-feedbacks) documentation page.
+
+---
+*This page was last updated in version 3.0.0.*

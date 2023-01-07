@@ -1,5 +1,5 @@
 ---
-title: Download and Installation Instructions
+title: Download and Installation
 ---
 
 The Energy Policy Simulator (EPS) can be used in via its powerful [web interface](online-model-tutorial) in your browser, without the need to download or install any software.  However, if you wish to view or edit the model's input data or source code, you will need to download the model.
@@ -71,3 +71,6 @@ The model folder will contain the following files and folders:
 * `WebAppData.xlsx`, a spreadsheet that contains information used by the online web application that runs the model
 
 If you are using Vensim Model Reader, the only files you will need are the compiled version of the model (with .vpmx extension) and the InputData folder.  The .mdl file and .vgd file are only useful if you have Vensim Pro or Vensim DSS.  (A copy of GraphDefinitions.vgd is bundled into the compiled .vpmx file, so you do not need the graph definitions text file to view graphs when using the compiled version of the model.)  The .py and .lst files are only useful if you have Vensim DSS (because this is the only version of Vensim that supports scripts).  To use these scripts, you will also need to have [Python 3](https://www.python.org/downloads/) installed.  For more information, see the [Automated Analysis with Python Scripts](automated-analysis) page.
+
+---
+*This page was last updated in version 3.0.0.*

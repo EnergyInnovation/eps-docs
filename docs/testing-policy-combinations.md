@@ -61,3 +61,6 @@ Finally, save and run the Python script to generate a Vensim command script, the
 ## Analyzing Results
 
 You may now open `RunResults.tsv` in a spreadsheet program and perform analysis on the resulting dataset.  For example, you could eliminate all scenarios with CO<sub>2</sub>e emissions in excess of a certain value (a cap) you have in mind for a particular year, then sort the rest from lowest to highest cost, to find the least-expensive way to comply with the carbon cap using the policies and settings you included in your run set.
+
+---
+*This page was last updated in version 3.0.0.*

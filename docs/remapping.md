@@ -123,3 +123,6 @@ The six land use policies are a subset of the "Policy" subscript and also are us
 
 - Land use policies were designed to facilitate remapping, and also, there is the expectation that no EPS deployment is likely to use all of the available subscript elements.
 
+
+---
+*This page was last updated in version 3.0.0.*

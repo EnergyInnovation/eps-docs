@@ -169,3 +169,6 @@ First, to get total electricity demand from the Buildings sector, we separate ou
 Lastly, we find the total energy use of non-electricity fuels in the Buildings Sector by adding the non-electricity energy use by building components to the fuel use from fuel-using distributed electricity sources.  We then multiply by the emissions indices for each pollutant and for each fuel type, to obtain the direct pollutant emissions from the buildings sector.  We also sum emissions across building types in a separate output variable, for ease of reporting total pollutants from this sector, when this is desired by the user.  These steps are shown in the following screenshot:
 
 ![outputs from Buildings Sector - Main](/img/buildings-sector-main-Outputs.png)
+
+---
+*This page was last updated in version 1.1.4.*

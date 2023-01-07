@@ -726,3 +726,6 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
   * **Hydrogen Electrolyzers**
 
     _Capital cost of hydrogen production equipment to produce one kilogram H<sub>2</sub> per year via electrolysis_
+
+---
+*This page was last updated in version 3.4.0.*

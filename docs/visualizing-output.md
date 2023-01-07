@@ -77,3 +77,6 @@ You can include variables on more than one Vensim sheet in the same table, even 
 Once you have the variables you want in the table, click the fourth small button in the upper left corner of the Table window, which copies the table data to the clipboard (as tab-separated values).  Now, open the program you wish to use for analysis or graphing, such as a spreadsheet program, and paste the data in from the clipboard.  If your analysis or graphing program will not accept pasted data directly, you can instead use the fifth button in the Table window to save the data as a text file (again, as tab-separated values), then open that text file in your program.  The following screenshot points out the location of these two buttons.
 
 ![Table export buttons](/img/visualizing-output-TableExportButtons.png)
+
+---
+*This page was last updated in version 1.1.2.*

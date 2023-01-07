@@ -41,3 +41,6 @@ This video explains how the Energy Policy Simulator's input data is structured a
 [EPS version 1.4.2](version-history) was current when this video was made.
 
 <iframe width="1000" height="562" src="https://www.youtube.com/embed/asIVby8g7J0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+---
+*This page was last updated in version 3.0.0.*

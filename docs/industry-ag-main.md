@@ -139,3 +139,6 @@ The difference between BAU and policy case emissions by industry are multiplied 
 The model converts Industry sector emissions to units of CO<sub>2</sub>e using GWP values, as shown in the following screenshot:
 
 ![total industry sector emissions in CO2e](/img/industry-ag-main-CO2e.png)
+
+---
+*This page was last updated in version 1.1.4.*

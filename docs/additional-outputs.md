@@ -91,3 +91,6 @@ We also report the fuel use for each fuel-using sector (transportation, electric
 We also calculate the change in net electricity imports, which is used in one output graph.
 
 ![change in net electricity imports](/img/additional-outputs-CngNetElecImports.png)
+
+---
+*This page was last updated in version 3.3.0.*

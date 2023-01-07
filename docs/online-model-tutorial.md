@@ -324,3 +324,6 @@ The Energy Policy Simulator does not define a specific goal that users should be
 * You may look through the policies and enable your favorites at levels that seem wise to you.  Once your package has been fully constructed, you check several output variables to see how it performs (for example, in terms of emissions reductions, capital and operational costs/savings, electricity generation by type, etc.).
 * You may choose a goal you care about, such as minimizing fine particulate (PM<sub>2.5</sub>) emissions or maximizing the amount of installed wind generation capacity.  You then switch to the relevant output graph and try to design a policy package that achieves your chosen goal.
 * You may look for policies that have interesting, non-linear interactions.  For example, policies that promote wind generation become less effective if the electric grid becomes flexibility-constrained, so a policy like increased electrical transmission capacity (which provides flexibility) has different effects depending on whether or not there are other policies enabled that drive wind capacity growth.
+
+---
+*This page was last updated in version 3.0.0.*

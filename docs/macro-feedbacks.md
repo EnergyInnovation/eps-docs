@@ -65,3 +65,6 @@ We do the same for macroeconomic expenditure changes.  Nothing in this section c
 Finally, we calculate the changes in cash flow to be used in the feedback loops by subtracting the change in expenditures from the change in revenues for each entity.  We don't actually need the change in industry cash flow by ISIC code, as industry contribution to change in output in the I/O model is based on change in revenue, not change in cash flow, but we calculate it here for completeness.  The values for government and for labor and consumers are used in the I/O model, so we introduce a one-timestep delay to avoid circularity.
 
 ![macro cash flow changes](/img/macro-feedbacks-CashFlowCngs.png)
+
+---
+*This page was last updated in version 3.3.0.*

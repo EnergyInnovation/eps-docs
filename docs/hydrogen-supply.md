@@ -123,3 +123,6 @@ Remaining changes in revenues are allocated to the correct cash flow entities.  
 ![hydrogen supply sector changes in revenues](/img/hydrogen-supply-AllocCngRevenue.png)
 
 The changes in expenditures and revenues are then summed with those from other sectors on the [Cross-Sector Totals](cross-sector-totals) sheet.
+
+---
+*This page was last updated in version 3.0.0.*

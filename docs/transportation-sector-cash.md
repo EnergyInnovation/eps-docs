@@ -52,3 +52,6 @@ Lastly, having determined the change in the amount spent on fuels and on vehicle
 ![assigning cash flows in the Transportation sector](/img/transportation-sector-cash-AssigningFlows.png)
 
 Our guiding assumption here is that the fraction of the change in cash flow attributable to each actor is the same as the fraction of all vehicles owned by that actor, calculated separately for each vehicle type.  We find the total change in amount spent on fuels and on vehicles, and we divide up this change in spending by actor accordingly.  Finally, we add in the tax receipts to the "government" total, and we break out the final numbers into three variables for visual clarity and ease of reporting.
+
+---
+*This page was last updated in version 1.1.4.*

@@ -45,3 +45,6 @@ Here is the corresponding primary energy use graph:
 Wedge diagrams and cost curves cannot be rendered in Vensim.  To see these graph types, you must use the web application.
 
 In general, graphs are included on the Web Application Support sheet as a way to quickly visually check that each output variable is producing data and to verify that the units used by the output variable result in reasonable axis labels.  These small graphs are not intended to be used for data analysis, as they generally lack sufficient detail.  For data analysis use, it is recommended you use the versions of these graphs that are available through the web application.  If you wish to perform data analysis in Vensim, you can follow the guidelines discussed in the help pages in the [How to Conduct Analysis in Vensim Model Reader](how-to-conduct-analysis) section.
+
+---
+*This page was last updated in version 3.0.0.*

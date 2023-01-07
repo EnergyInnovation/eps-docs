@@ -41,3 +41,6 @@ When you specify a policy implementation schedule, you should ensure that it rea
 Similarly, you should never specify a value greater than "1" in the policy implementation schedule, because this violates the assumption that "1" means full implementation of the user's setting.  If you want the policy to be stronger, you should increase the strength of the policy setting, not implement more than 100% of the policy.
 
 Lastly, you should never specify a negative number in the implementation schedule, because this will cause the policy to have the opposite of its intended effect and/or will cause the model to function improperly.
+
+---
+*This page was last updated in version 1.1.2.*

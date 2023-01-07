@@ -42,3 +42,6 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 * Matthew Zaragoza-Watkins, Massachusetts Institute of Technology - input data collection, policy guide author
 * Mingwei Li, Massachusetts Institute of Technology - air quality modeling
 * Michael Greenstone, University of Chicago - high-level guidance
+
+---
+*This page was last updated in version 3.0.0.*

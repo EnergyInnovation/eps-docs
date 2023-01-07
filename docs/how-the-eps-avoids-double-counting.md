@@ -88,3 +88,6 @@ Key to acronyms used in this table:
 * R&D = research and development
 * T&D = transmission and distribution
 * TDM = transportation demand management
+
+---
+*This page was last updated in version 3.1.0.*

@@ -75,3 +75,6 @@ District heat facilities are part of the "other energy suppliers" cash flow enti
 Changes in fuel tax revenues are allocated to the government.  Changes in revenues from equipment sales are allocated to the "non-energy industries" cash flow entity.  (They were already also allocated to the proper ISIC code for use in input-output calculations, as noted above.)  Changes in revenues from selling fuels are allocated to the corresponding fuel suppliers.
 
 ![allocating change in district heating revenues](/img/district-heating-AllocatingRevenues.png)
+
+---
+*This page was last updated in version 3.0.0.*

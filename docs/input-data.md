@@ -100,3 +100,6 @@ Due to the large number of data sources (often several for a single variable), t
 * The U.S. Forest Service, for data pertaining to land use and forestry
 * The U.S. Bureau of Transportation Statistics, for data pertaining to travel demand and vehicle properties
 * The OECD, for input-output tables and related macroeconomic variables
+
+---
+*This page was last updated in version 3.0.0.*

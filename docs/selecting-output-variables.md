@@ -29,3 +29,6 @@ If you are uncertain of the different values that a subscript may take, you can 
 Pay attention to the units used by the variables you add to the output list.  Most variables in the EPS are in "working units" (such as grams or BTUs), which may not be convenient units for output or display.  However, the variables that appear on the "Web Application Support Variables" sheet whose names begin with the word "Output" use the proper display units for the modeled region.  These are the same variables that are used by the web application interface.  It is often best to primarily or exclusively use these "Output" variables in your `OuputVarsToExport.lst` file, and only use other variables from the EPS when you wish to analyze something that is not reported in any "Output" variable.
 
 For more information on working units, display units, and unit conversion, see the [Notes on Unit Conversion](unit-conversion) documentation page.
+
+---
+*This page was last updated in version 3.0.0.*

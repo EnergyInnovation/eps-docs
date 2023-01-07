@@ -1014,3 +1014,6 @@ Note that starting with this release, Vensim 8 or later (64-bit) is required to 
 ### **1.0.0 - Oct 20, 2015**
 
 * Initial Release
+
+---
+*This page was last updated in version 3.4.2.*

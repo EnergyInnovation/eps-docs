@@ -59,3 +59,6 @@ We assume all DAC is funded by government, since DAC on the required scale would
 All revenues from the capital and operational expenditures are assigned to the non-energy industries, and all are assigned to ISIC 28 (Machinery and equipment not otherwise classified).  Portions of this payment going to labor and taxes are separated out on the [Cross-Sector Totals](cross-sector-totals) sheet.  Energy expenditures are assigned to the appropriate energy-supplying industries, and tax revenues are assigned to the government.
 
 ![geoengineering revenue assignment](/img/geoengineering-RevenueAssignment.png)
+
+---
+*This page was last updated in version 3.0.0.*

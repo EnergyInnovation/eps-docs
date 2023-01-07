@@ -114,3 +114,6 @@ Next, we sum the two sources of cash flow changes for the fuel industry (changes
 Finally, we sum all sources of cash flow change for the three main actors: government, industry, and consumers.  There are five sources of cash flow change: spending due to process emissions policies, the carbon tax on process emissions, spending due to efficiency policies, spending on fuel, and spending on CCS (equipment, O&M, and carbon tax rebate for sequestered CO<sub>2</sub>).  Consumers only need to add three of these sources of change, because they are not involved in cash flow changes related to carbon tax on process emissions or related to fuel spending.  The relevant model structure is shown below:
 
 ![summing cash flow impacts on the three main actors](/img/industry-ag-cash-SumMainActors.png)
+
+---
+*This page was last updated in version 1.1.4.*

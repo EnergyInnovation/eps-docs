@@ -29,3 +29,6 @@ If you have a version of Vensim capable of editing models (that is, all versions
 _Symptom:_ When you enter SyntheSim mode and the name inside the "Simulation results file name" box is 3 characters or less, you receive an error stating "ERROR: Unable to open the file C:\[path to your model folder]\[truncated folder name].vdf" and the .vdf file generated cannot be loaded by Vensim.  Also, while already in SyntheSim mode, if you change the "Simulation results file name" to a name that is 3 characters or less, the .vdf file for that run will not be able to be loaded by Vensim.
 
 This issue is caused by a bug in Vensim when the folder enclosing the model has a name that ends with a period followed by any other character.  The bug is present in v6.4A of Vensim (all tiers: Model Reader, DSS, etc.) and has been reported to Ventana Systems.  In the meanwhile, you can work around the bug by either using a run name longer than 3 characters or renaming the folder enclosing the model so that it does not end with a period followed by another character (for example, by replacing the periods with dashes).
+
+---
+*This page was last updated in version 1.1.2.*

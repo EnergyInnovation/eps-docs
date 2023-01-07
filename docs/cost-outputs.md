@@ -37,3 +37,6 @@ The “Total Change in Tax Revenues” and “Total Change in Subsidies” are c
 We then create a modified version of “Total Change in CapEx and OpEx” by subtracting out the change in tax revenues and adding in the total change in subsidies, as shown in the following model structure:
 
 ![cost metrics assuming revenue-neutral carbon tax](/img/cost-outputs-RevenueNeutral.png)
+
+---
+*This page was last updated in version 3.0.0.*

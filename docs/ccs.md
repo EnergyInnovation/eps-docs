@@ -67,3 +67,6 @@ For the electricity sector, we allocate the energy use to power the CCS process 
 For the industry sector, we divide up the energy use by industry based on the quantity of CO<sub>2</sub> sequestered by each industry.  Unlike the electricity sector, each industry uses multiple fuel types, so we need to further disaggregate the energy use by fuel type.  We assume each industry uses fuel types to power CCS in proportion to its use of fuel types for other purposes.
 
 ![fuel use to power CCS in the industry sector](/img/ccs-IndstSectorFuel.png)
+
+---
+*This page was last updated in version 3.0.0.*

@@ -97,3 +97,6 @@ Our final step is to sum the changes in expenditures (energy and non-energy) and
 ![summing changes in cash flow by entity](/img/cross-sector-totals-SumCngCashFlowByEntity.png)
 
 For the next steps in the calculation of financial policy impacts, see the documentation page on [the input-output model](io-model).
+
+---
+*This page was last updated in version 3.0.0.*

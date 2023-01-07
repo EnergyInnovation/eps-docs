@@ -7,3 +7,6 @@ Past releases of the U.S. Energy Policy Simulator can be downloaded from the [re
 For non-U.S. versions of the Energy Policy Simulator, go to the list of [Energy Innovation's GitHub repositories](https://github.com/Energy-Innovation?tab=repositories), select the repository for the region of interest, and navigate to its "releases" section (on the "code" tab).
 
 Many changes, including bug fixes, have been made with each model version.  (See the [Version History](version-history) page for details.)  Therefore, we recommend using only the most recent version of the EPS for analysis purposes.  However, older versions of the EPS may be useful for comparing the performance of different EPS releases or replicating results obtained via an older EPS release.
+
+---
+*This page was last updated in version 3.0.0.*

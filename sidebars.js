@@ -1,7 +1,6 @@
 const sidebars = {
   epsSidebar: [
     'index',
-    'introduction',
     'video-series',
     'download',
     'online-model-tutorial',

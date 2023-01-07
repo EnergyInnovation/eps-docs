@@ -4,7 +4,7 @@ title: How to Conduct Analysis in Vensim Model Reader
 
 *Note:* Much of the content in this section of the documentation is also available in video form.  On the [EPS Video Series](video-series) page, view Video 3: A Look Inside the Simulator.
 
-Vensim Model Reader is the free version of Vensim, the program in which the Energy Policy Simulator (EPS) is built.  Instructions for how to obtain Vensim Model Reader and the EPS are available on the [Download and Installation Instructions](download) page.
+Vensim Model Reader is the free version of Vensim, the program in which the Energy Policy Simulator (EPS) is built.  Instructions for how to obtain Vensim Model Reader and the EPS are available on the [Download and Installation](download) page.
 
 Performing basic analysis tasks in Vensim Model Reader requires three steps: running the model, setting policy lever values, and producing output (in graphical or table form).  It is also possible to produce multiple scenarios (each with different policy settings) and compare their output.  In addition to setting policy lever values, a user can specify a custom policy implementation schedule (that is, specifying the strength with which each policy is applied in each year of the model run), allowing for the investigation of policies that have delayed starts, that stop becoming more stringent before 2030, etc.
 
@@ -17,3 +17,6 @@ Links to pages in this section:
   * [Creating and Managing Scenarios](creating-and-managing-scenarios)
   * [Adjusting Policy Implementation Schedules](adjusting-plcy-impl-schd)
   * [Troubleshooting Vensim Model Reader Issues](troubleshooting-vensim)
+
+---
+*This page was last updated in version 1.4.2.*

@@ -45,3 +45,6 @@ Open Vensim DSS.  From the "File" menu, choose "Open Model..."  In the "Name of 
 Click the "Open" button.  Vensim performs one run for each entry in the list of .cin files specified in the Python script.  If you kept the blank entry in the list, one run will also be done for the BAU case.  For each model run, Vensim produces one data file (with `.vdfx` extension) and one text results file (with `.tsv` extension).  Each file will be named after the scenario that generated it.  (For example, the output files from the simulation based on the `Scenario_NDC.cin` file will be named `Scenario_NDC.vdfx` and `Scenario_NDC.tsv`.)  Output files for a BAU run (not based on a .cin file) will be named `NoSettings.vdfx` and `NoSettings.tsv`.
 
 The `.tsv` files are tab-separated values and can be opened in Microsoft Excel or another spreadsheet program, where the value of each variable specified in the `OuputVarsToExport.lst` file will be included for each year of the model run.  The `.vdfx` files are Vensim data files.  They can be safely deleted if you are only interested in the output for the variables specified in `OutputVarsToExport.lst` (which are included in the tab-separated values file).
+
+---
+*This page was last updated in version 3.0.0.*

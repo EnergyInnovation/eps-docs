@@ -53,3 +53,6 @@ For example, suppose you start with 100 2013 Chinese yuan.  If you first convert
 As a result, we must establish a standard ordering, which we use when converting currency units in input files.  This way, we can reverse the operation in the conversion factors that produce output units.  The standard used in EPS input files is: convert currency type first, then convert currency year.  Accordingly, in the output conversion factors, we use the opposite order: we convert currency year first, then currency type.
 
 This ordering is selected because when we adapt the EPS to a foreign country, some of the input files typically are retained from the U.S. model and thus only have a year conversion applied in the input data.  Accordingly, we need to undo that conversion (year) before we apply a new conversion (currency type) in the output variable.  Since year conversion has to come first in the output conversion factors, it has to come second in the input variables.
+
+---
+*This page was last updated in version 3.0.0.*

@@ -119,3 +119,6 @@ We compare the amount of battery capacity that exists in the current year to the
 ![battery capacity cost as fraction of first year cost](/img/endogenous-learning-BatteriesCostFraction.png)
 
 The resulting fraction is used to reduce the cost of EV batteries (but not other EV components) in the Transportation sector, and to reduce the cost of grid batteries in the Electricity sector.
+
+---
+*This page was last updated in version 3.0.0.*

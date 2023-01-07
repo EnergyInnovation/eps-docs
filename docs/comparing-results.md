@@ -63,3 +63,6 @@ Differences in emissions indices are another cause of different emissions result
 Different global warming potential (GWP) values also result in different CO<sub>2</sub>e values.  The EPS uses numbers from the IPCC Fifth Assessment Report (released in 2015).  Many sources still use older numbers.  For example, the 100-year GWP of methane was raised from 25 to 28 in the Fifth Assessment Report, but many sources still use the previous number.
 
 In specific cases, we may choose to use data sources other than official inventories. For example, the U.S. EPS uses International Energy Agency (IEA) data for methane leakage from the oil and gas sector rather than EPA data. We choose to use IEA data because multiple peer-reviewed studies have shown that EPA estimates likely underestimate methane leakage. Additionally, much of the U.S. input data is sourced from the U.S. Energy Information Administration Annual Energy Outlook (AEO), which uses different methodologies than the EPA for certain sectors.
+
+---
+*This page was last updated in version 3.3.1.*
