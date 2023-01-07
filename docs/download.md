@@ -4,7 +4,7 @@ title: Download and Installation Instructions
 
 The Energy Policy Simulator (EPS) can be used in via its powerful [web interface](online-model-tutorial) in your browser, without the need to download or install any software.  However, if you wish to view or edit the model's input data or source code, you will need to download the model.
 
-The EPS is developed in [Vensim](http://vensim.com/), a program produced by Ventana Systems for the creation and simulation of system dynamics models.  While Vensim is sold commercially in several tiers, Ventana Systems produces a free Vensim Model Reader that can read and simulate (but not edit) models.  These instructions will walk you through the process of installing Vensim Model Reader and the Energy Policy Simulator.
+The EPS is developed in [Vensim](http://vensim.com/), a program produced by Ventana Systems for the creation and simulation of System Dynamics models.  While Vensim is sold commercially in several tiers, Ventana Systems produces a free Vensim Model Reader that can read and simulate (but not edit) models.  These instructions will walk you through the process of installing Vensim Model Reader and the Energy Policy Simulator.
 
 Vensim Model Reader is available for Windows and Mac operating systems.  The directions below are based on Windows, but the process should be similar on a Mac.
 
