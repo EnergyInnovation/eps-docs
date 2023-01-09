@@ -86,7 +86,7 @@ const sidebars = {
       type: 'category',
       label: 'Policy Descriptions',
       items: [
-        'policy-design-index',
+        'policy-design-contents',
         {
           type: 'category',
           label: 'Transportation Policies',
@@ -185,6 +185,17 @@ const sidebars = {
           type: 'category',
           label: 'R&D Policies',
           items: ['direct-air-capture', 'research-and-development']
+        }
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Model Regions',
+      items: [
+        {
+          type: 'doc',
+          id: 'models/california',
+          label: 'California'
         }
       ]
     },
