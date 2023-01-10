@@ -20,6 +20,12 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 * Members of the New Mexico Climate Change Task Force
 * Patrick Cummins, Center for the New Energy Economy
+* Ashna Aggarwal, RMI
+* Olivia Ashmoore, Energy Innovation LLC
+* Kyle Clark-Sutton, RMI
+* Nathan Iyer, RMI
+* Megan Mahajan, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
 
 ## Version History
 

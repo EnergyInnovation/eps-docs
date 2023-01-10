@@ -21,6 +21,12 @@ We would like to acknowledge the following organizations who helped adapt the En
 * 5 Lakes Energy
 * NRDC
 * Michigan Environmental Council
+* Ashna Aggarwal, RMI
+* Olivia Ashmoore, Energy Innovation LLC
+* Kyle Clark-Sutton, RMI
+* Nathan Iyer, RMI
+* Megan Mahajan, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
 
 ## Version History
 

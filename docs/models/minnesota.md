@@ -21,6 +21,12 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Matthew Anderson, Energy Foundation
 * Ben Passer, Allen Gleckner, Margaret Cherne-Hendrick, Fresh Energy
 * Audrey Partridge and Mike Bull, MN Center for Energy and Environment
+* Ashna Aggarwal, RMI
+* Olivia Ashmoore, Energy Innovation LLC
+* Kyle Clark-Sutton, RMI
+* Nathan Iyer, RMI
+* Megan Mahajan, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
 
 ## Version History
 

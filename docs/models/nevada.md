@@ -19,6 +19,12 @@ We would like to acknowledge the following people/groups who helped adapt the En
 
 * Energy Foundation
 * Nevada Climate Initiative
+* Ashna Aggarwal, RMI
+* Olivia Ashmoore, Energy Innovation LLC
+* Kyle Clark-Sutton, RMI
+* Nathan Iyer, RMI
+* Megan Mahajan, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
 
 ## Version History
 

@@ -21,6 +21,12 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Lindsay Cooper, Louisiana Office of the Governor
 * Allison DeJong, The Water Institute of the Gulf
 * David Dismukes, Louisiana State University
+* Ashna Aggarwal, RMI
+* Olivia Ashmoore, Energy Innovation LLC
+* Kyle Clark-Sutton, RMI
+* Nathan Iyer, RMI
+* Megan Mahajan, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
 
 ## Version History
 

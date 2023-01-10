@@ -20,6 +20,12 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Eric Strid, Power Oregon
 * Green Energy Institute, Lewis & Clark Law School
 * Northwest Economic Research Center, Portland State University
+* Ashna Aggarwal, RMI
+* Olivia Ashmoore, Energy Innovation LLC
+* Kyle Clark-Sutton, RMI
+* Nathan Iyer, RMI
+* Megan Mahajan, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
 
 ## Version History
 

@@ -24,6 +24,12 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Carson Reed, University of Texas at Austin
 * Josh Rhodes, University of Texas at Austin
 * Kelsey Richardson, University of Texas at Austin
+* Ashna Aggarwal, RMI
+* Olivia Ashmoore, Energy Innovation LLC
+* Kyle Clark-Sutton, RMI
+* Nathan Iyer, RMI
+* Megan Mahajan, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
 
 ## Version History
 

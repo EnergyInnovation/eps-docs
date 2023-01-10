@@ -21,6 +21,12 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Lena Lewis, The Nature Conservancy
 * Will Cleveland, Southern Environmental Law Center
 * Virginia Department of Environmental Quality
+* Ashna Aggarwal, RMI
+* Olivia Ashmoore, Energy Innovation LLC
+* Kyle Clark-Sutton, RMI
+* Nathan Iyer, RMI
+* Megan Mahajan, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
 
 ## Version History
 

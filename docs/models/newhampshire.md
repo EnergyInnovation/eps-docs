@@ -17,8 +17,6 @@ Documentation of the model is available [here](https://docs.energypolicy.solutio
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the U.S. State Energy Policy Simulators possible.
 
-### Core Team
-
 * Ashna Aggarwal, RMI
 * Olivia Ashmoore, Energy Innovation LLC
 * Kyle Clark-Sutton, RMI
