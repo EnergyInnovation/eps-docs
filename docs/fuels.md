@@ -17,7 +17,9 @@ Even though BAU fuel prices and taxes are subscripted by fuel and by sector, the
 
 This is the problem that subranges in Vensim exist to solve, and at one time, we did implement all sector-specific fuel sets as subranges of the `All Fuels` subscript.  Unfortunately, we learned that Vensim's `ALLOCATE AVAILABLE` function, which is used a number of times in the EPS to make price-based decisions, is not compatible with allocating things across subranges; it can only allocate across elements of a single, complete subscript.  This limitation of the important `ALLOCATE AVAILABLE` function forces us to implement sector-specific fuel subscripts and map values across subscripts.
 
-# Fuel Emissions Intensities, Costs, and Taxes
+<hr />
+
+## Fuel Emissions Intensities, Costs, and Taxes
 
 ## Setting Pollutant Emissions Intensities
 
@@ -133,7 +135,9 @@ We sum the total fuel tax amount (which is already broken by fuel and by sector)
 
 ![fuel costs per unit energy](/img/fuels-FuelCosts.png)
 
-# Fuel Imports, Exports, and Production
+<hr />
+
+## Fuel Imports, Exports, and Production
 
 The EPS calculates the quantities of each fuel that are imported into, exported from, and produced within the modeled region.  (Electricity imports, exports, and generation are handled in the [Electricity sector](electricity-sector-main), but are added to the totals on this sheet as one of the last steps in the calculation, as described below.)
 

@@ -69,3 +69,17 @@ a.btn:focus {
 a.btn:active {
   background-color: var(--cds-active-primary, #002d9c);
 }
+/* Responsive 16x9 iframe */
+.iframe-container {
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+}
+.iframe-container iframe {
+   border: 0;
+   height: 100%;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 100%;
+}

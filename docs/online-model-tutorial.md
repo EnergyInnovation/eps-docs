@@ -4,19 +4,19 @@ title: Web Interface Tutorial
 
 This web page contains tutorials for how to use the Energy Policy Simulator (EPS) via its user-friendly, yet powerful, web interface.  Tutorials are available in two formats: a video tutorial, and a tutorial using text and screenshots.
 
-# Web Interface Video Tutorial
+## Web Interface Video Tutorial
 
 This video (#2 in the [EPS Video Series](video-series)) provides an introduction to how to perform analysis with the EPS.  It shows how to build policy packages, to customize a policy’s implementation schedule, to select different output graphs, to compare multiple scenarios, and more.  ([EPS version 1.4.1](version-history) was current when this video was made.)
 
-<iframe width="1000" height="562" src="https://www.youtube.com/embed/7guMn2dhuGA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<div class="iframe-container"><iframe loading="lazy" src="https://www.youtube.com/embed/7guMn2dhuGA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
-# Web Interface Text-Based Tutorial
+## Web Interface Text-Based Tutorial
 
-## Online vs. Offline Model Versions
+### Online vs. Offline Model Versions
 
 There are two ways you can use the EPS.  You may either [install the required software and download the model](download) to your own computer, or you can use the model via a web application interface on this site.  This tutorial page discusses how to use the model via the web application interface.  The web interface is powerful, user-friendly, and does not require you to install any software.  However, the downloadable model offers some additional features.  We recommend you get started by using the web interface, and if you require advanced features (such as reporting outputs from variables not shown in the web interface, editing the model's input data, performing batches of runs via a script, performing Monte Carlo sensitivity analyses, etc.), you may migrate to the downloadable version.
 
-## Global and Regional Home Pages
+### Global and Regional Home Pages
 
 The Energy Policy Solutions project, Energy Innovation's effort to produce objective tools and resources on effective energy policy design, has a [global home page](https://energypolicy.solutions) containing links to all regional EPS deployments.  EPS deployments exist for a growing number of countries, states/provinces, cities, and other geographic areas.
 
@@ -34,7 +34,7 @@ Each regional EPS home page features a small amount of introductory text and sev
 
 - `Enter Simulator`, located just below the introductory text, will take you to that EPS region's web interface.
 
-## Quick Start Walkthrough
+### Quick Start Walkthrough
 
 If this is your first time accessing a region's web interface in this web browser, you will be presented with the "Quick Start" walkthrough.  This is a brief overview of key user interface (UI) elements.  The "Quick Start" walkthrough is a series of boxes, each of which highlights a feature of the UI.  The rest of the UI is grayed out, to focus attention on the part mentioned in the Quick Start box.  You can click "Next" to move to the next Quick Start box or "Skip tutorial" to end the Quick Start walkthrough.  Here is a screenshot of the first Quick Start box, which points out the row of buttons along the top of the screen:
 
@@ -44,7 +44,7 @@ The following three Quick Start boxes highlight the policy scenario selector, th
 
 If you wish to re-play the Quick Start walkthrough in the future using the same web browser, you may do so by using an "incognito" or "private" browsing window, which causes the simulator to believe this is your first visit to the site.
 
-## Output Graph and Output Graph Selector
+### Output Graph and Output Graph Selector
 
 On the right-hand side of the window are two drop-down menus and a graph, as shown in the following screenshot:
 
@@ -56,7 +56,7 @@ The graph below the drop-down menus is where the results of policy packages are 
 
 The graph also shows the U.S. 2025 emissions target, which was submitted to the U.N. Framework Convention on Climate Change as the [United States' Intended Nationally Determined Contribution (INDC)](https://www4.unfccc.int/sites/ndcstaging/PublishedDocuments/United%20States%20of%20America%20First/U.S.A.%20First%20NDC%20Submission.pdf) in 2015.  This provides a reference point as well as a goal that users might try to hit as they design policy packages.
 
-## Single and Multi-Variable Graphs
+### Single and Multi-Variable Graphs
 
 At any given time, there is always an "active scenario," which is the scenario that you are in the process of editing.  "New Scenario" is currently the active scenario.  There is currently one other scenario, `Business as Usual`, also displayed on the output graph.
 
@@ -70,7 +70,7 @@ There are also many output graphs that show multiple variables from the same sce
 
 It is not possible to show multiple scenarios on this graph at once, because each scenario requires its own set of stacked areas.  Therefore, when you choose a multi-variable graph from the Output Graph Selector, the data depicted will be from the active scenario.  If you wish to see a multi-variable graph for a different scenario, you must change which scenario is the active scenario, as discussed below (in the "Policy Scenario Selector" section).
 
-## Policy Scenario Selector
+### Policy Scenario Selector
 
 The Policy Scenario Selector is a drop-down menu near the upper left corner of the screen, above the list of different sectors.  When using the EPS via the online interface, there is always an active scenario, and its name is displayed in this drop-down menu.  The active scenario is the one that will be edited if you adjust any of the policy levers (as discussed below).  When you first start using the EPS, the active scenario will be "New Scenario," and it will not have any policies enabled, so it will be identical to the included "Business as Usual" scenario.
 
@@ -88,7 +88,7 @@ The included Reference Scenarios in the U.S. EPS version 3.0.0 are:
 
 You can expand the Policy Scenario Selector and choose one of the Reference Scenarios, or any scenario you have previously created and saved, to make it the active scenario.  It will be added to the graph and the policy settings for that scenario will appear in the "Policy Settings" box below.  If you have made any edits to the active scenario and have not saved your changes (discussed below), you will be asked if you wish to save discard your changes before switching to a different active scenario.  (Only the active scenario may have unsaved changes.)
 
-## Wedge Diagrams and Cost Curves
+### Wedge Diagrams and Cost Curves
 
 When the active scenario contains multiple policies, two special graph types become available.  **Wedge Diagrams** break apart a policy package to show how each policy contributes to an outcome.  For example, here is the wedge diagram showing how each policy within the `NDC` scenario contributes to GHG reductions:
 
@@ -98,7 +98,7 @@ When the active scenario contains multiple policies, two special graph types bec
 
 ![cost curve for NDC scenario](/img/online-model-tutorial-NDCCostCurve.png)
 
-## Policy Levers and Control Settings
+### Policy Levers and Control Settings
 
 Below the Output Graph Selector is a set of expandable menus titled with the names of various sectors ("Transportation," "Electricity," etc.) as well as other categories, such as "Cross-Sector" and "Research and Development."  These categories are used to sort the policy and control setting levers available in the simulator.
 
@@ -136,7 +136,7 @@ Next there are three links:
 
 Finally, there is an `OK` button to dismiss the Policy Pane.  If your screen is not very tall, it is possible that the `OK` button may be off the bottom of the screen.  You can scroll the policy pane to bring the button into view.
 
-## Customizing Policy Implementation Schedules
+### Customizing Policy Implementation Schedules
 
 If you click on the `Customize implementation schedule` link in a policy pane, the pane changes to display the schedule editor.
 
@@ -150,13 +150,13 @@ You can edit existing data points in the schedule grid, you can add points by en
 
 When you are done building your custom implementation schedule, click `OK`.  The model will run with your new schedule applied.
 
-## Government Revenue Accounting levers
+### Government Revenue Accounting levers
 
 There exist a set of "Government Revenue Accounting" levers.  These are not policies.  Rather, they set the way in which government spends increased revenue or makes up for decreased revenue as a result of particular policies.  For a full discussion of these levers, see the documentation page on the Energy Policy Simulator's built-in [Input-Output model](io-model).
 
 ![government revenue accounting levers](/img/online-model-tutorial-GRALevers.png)
 
-## Unsaved Changes
+### Unsaved Changes
 
 If you change one or more policy settings for the active scenario, the name of the active scenario in the Policy Scenario Selector will be followed by the words "(unsaved changes)."
 
@@ -164,7 +164,7 @@ If you change one or more policy settings for the active scenario, the name of t
 
 If you are logged in, you can save this scenario to your personal collection of policy scenarios using the Save Scenario button (discussed below).  If you are not logged in and you attempt to save your scenario, you will be prompted to either sign in or to register for an account.  (Since scenarios are saved on the server, you must have an account to which your custom scenario may be saved.)
 
-## Policy Settings Pane
+### Policy Settings Pane
 
 In the lower left area of the screen, below the menus of policy levers, is the Policy Settings box.  All of the policy settings for the active scenario are listed in this box.  This helps you keep track of the policies that you have added to your policy package and lets you see the contents of a policy package at a glance.  If the active scenario has too many policy settings to all be visible in this box, you can scroll the box to bring the rest into view.
 
@@ -172,16 +172,16 @@ For example, using the Policy Scenario Selector (discussed above), choose the "N
 
 ![policy settings box with NDC scenario policies](/img/online-model-tutorial-PolSettingsBox.png)
 
-## Button Bar
+### Button Bar
 
 The button bar is a blue strip that runs across the top of the window.  This section will include a picture of each element in the button bar followed by an explanation of what it does.
 
-### New Scenario
+#### New Scenario
 ![new scenario button](/img/online-model-tutorial-ButtonNewScenario.png)
 
 The New Scenario button will create a new scenario with no policies enabled, just like the one that exists when you start the simulator for the first time.  The newly created scenario will be selected as the active scenario.  If you have an active scenario with unsaved changes, you will be prompted about whether to discard these changes before creating the new scenario.
 
-### Save Scenario
+#### Save Scenario
 ![save scenario button](/img/online-model-tutorial-ButtonSaveScenario.png)
 
 The Save Scenario button will allow you to save your scenario to your account on the Energy Policy Solutions server.  If you are not logged into an account, you will be prompted to sign in or to register an account before you may save your scenario.
@@ -203,27 +203,27 @@ If you choose the same name as a custom scenario that you previously saved, the 
 
 If you have previously saved this scenario under a custom name, and you have since made changes (so the Policy Scenario Selector reads "_Your Scenario Name_ (unsaved changes)", then clicking the Save Scenario button will simply update that scenario without changing the name, removing the "(unsaved changes)" note from the Policy Scenario Selector.
 
-### Save As
+#### Save As
 ![save as button](/img/online-model-tutorial-ButtonSaveAs.png)
 
 The Save As button will save a copy of the active scenario under a new name.  As in the case of the Save Scenario button, you cannot choose any of the built-in scenario names.  If you choose the same name as a custom scenario you have previously saved, the simulator will ask you whether you wish to overwrite that scenario.
 
-### Rename
+#### Rename
 ![rename button](/img/online-model-tutorial-ButtonRename.png)
 
 The Rename button will change the name of the current scenario, if it is a user-created scenario that you previously saved.  (The Rename button will generate an error message if you attempt to rename a scenario with one of the built-in names.)  You cannot rename a scenario to any of the built-in names, nor to a name already used by a custom scenario.  (If you wish to replace a different custom scenario with the current custom scenario, you may either use "Save As" and overwrite it, or you may delete the other custom scenario, then rename this scenario to the name formerly used by the deleted scenario.)
 
-### Delete Scenario
+#### Delete Scenario
 ![delete scenario button](/img/online-model-tutorial-ButtonDelete.png)
 
 The Delete Scenario button deletes the active scenario from your account on the EPS server.  You may not delete a scenario with one of the built-in names, such as "New Scenario" or "Net Zero Emissions."
 
-### Revert
+#### Revert
 ![revert button](/img/online-model-tutorial-ButtonRevert.png)
 
 The Revert button will change the policy settings of the active scenario back to the values they had at the last time it was saved (or shared, in the case of a scenario accessed via a URL, as described in the "Sharing Scenarios" section).  If the active scenario is a New Scenario that has never been saved, the Revert button will remove all policy settings from the scenario.  The simulator will always prompt you to confirm that you really wish to revert before doing so.
 
-### Download Data
+#### Download Data
 ![download button](/img/online-model-tutorial-ButtonDownload.png)
 
 Clicking on the Download Data button will cause a .zip file to be downloaded to your computer.  The .zip file will contain two or three comma-separated values (`.csv`) files.  One file specifies the names of the policies that are enabled in the active scenario and their numerical settings (including policy implementation schedule data).  Another file provides the numerical values for the data shown on the currently-displayed output graph for the active scenario.
@@ -232,7 +232,7 @@ If you are currently displaying two output graphs (see the "Multiple Graph Displ
 
 The Download button is useful if you have developed a scenario and wish to work with the output data in a spreadsheet program, to perform analysis or to create a graph with customized colors or other stylistic elements.
 
-### Share Scenario
+#### Share Scenario
 ![share button](/img/online-model-tutorial-ButtonShare.png)
 
 The Share Scenario button opens the sharing pane.  This pane provides several options by which you can share the active scenario: email, Facebook, Twitter, LinkedIn, or you can copy a URL to the clipboard, which you can paste into a program of your choice.
@@ -251,13 +251,13 @@ Enter your name in the top box.  In the second box, enter a list of email addres
 
 The email will include a special link that references your scenario.  When the recipient clicks the link, he/she will be taken to the Energy Policy Simulator, and all of the policy settings for the shared scenario will be set automatically.  The scenario will have the name you gave it.  Then, your recipient may view the scenario, may edit it, and may save a copy of it to his/her own account.
 
-### Multiple Graph Display
+#### Multiple Graph Display
 ![show two graphs button](/img/online-model-tutorial-ButtonTwoGraphs.png)
 ![show one graph button](/img/online-model-tutorial-ButtonOneGraph.png)
 
 The Show Two Graphs / Show One Graph buttons toggle the output graph display between showing one large graph and two smaller graphs, stacked vertically.  When you click the Show Two Graphs button, a second graph with its own Output Graph Selector appears below the graph you were already viewing.  In the button bar, the Show Two Graphs button changes to the Show One Graph button.  Click this button to remove the lower graph.
 
-### Comparisons Pane
+#### Comparisons Pane
 ![comparisons button](/img/online-model-tutorial-ButtonComparisons.png)
 
 The Comparisons button opens the Comparisons pane, where you may select scenarios or targets to compare against the active scenario on the output graph.  The following screenshot shows the comparisons pane:
@@ -274,12 +274,12 @@ The U.S. 2025 emissions target can only be shown on the "CO<sub>2</sub>e Emissio
 
 When many scenarios are displayed, it can sometimes be confusing which scenario is the active scenario.  Remember that the name of the active scenario will always be displayed in the Policy Scenario Selector.
 
-### Help
+#### Help
 ![help button](/img/online-model-tutorial-ButtonHelp.png)
 
 The Help button opens the Energy Policy Simulator documentation in a new browser tab.  It functions identially to the `Learn More` button on each regional EPS deployment's home page, discussed above.
 
-### Account
+#### Account
 ![account button](/img/online-model-tutorial-ButtonAccount.png)
 
 If you are not signed in, clicking the Account button will display a small pop-up box with `Sign in`, `Register`, and `Cancel` buttons.
@@ -302,7 +302,7 @@ If you are currently signed in, clicking the Account button will display a small
 
 ![signed in pop-up](/img/online-model-tutorial-SignedIn.png)
 
-### Logos
+#### Logos
 
 ![Energy Policy Solutions logo](/img/online-model-tutorial-LogoPolicySolutions.png)
 
@@ -312,11 +312,11 @@ Clicking on the "Energy Policy Solutions" logo on the left side of the header ba
 
 Clicking on the Energy Innovation logo on the right side of the header bar will open a browser tab showing the home page of Energy Innovation: Policy and Technology LLC, the organization that developed the Energy Policy Simulator.
 
-### Version Number
+#### Version Number
 
 Different EPS models may be on different versions of the core EPS software platform.  To the right of the Energy Innovation logo is the version number of the regional EPS deployment you are using.  Clicking the version number will open the [Version History](version-history) page in a new tab, allowing you to see what features your EPS deployment includes.
 
-## Ideas for User Goals
+### Ideas for User Goals
 
 The Energy Policy Simulator does not define a specific goal that users should be striving to achieve through their policy packages.  Nonetheless, even after learning how to operate the web application interface, some users may not know exactly how they wish to use it.  Therefore, we provide some ideas for goals that might be of interest to users:
 

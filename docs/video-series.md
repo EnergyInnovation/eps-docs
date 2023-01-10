@@ -10,9 +10,7 @@ This video discusses the high-level structure of the simulator, how it has been 
 
 [EPS version 1.3.1](version-history) was current when this video was made.
 
-<iframe width="1000" height="562" src="https://www.youtube.com/embed/LuP6vUhrDx8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-<br />
+<div class="iframe-container"><iframe loading="lazy" src="https://www.youtube.com/embed/LuP6vUhrDx8" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 ## 2: A Tour of the Web Interface
 
@@ -20,9 +18,7 @@ This video provides a thorough introduction to how to perform analysis with the 
 
 [EPS version 1.4.1](version-history) was current when this video was made.
 
-<iframe width="1000" height="562" src="https://www.youtube.com/embed/7guMn2dhuGA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-<br />
+<div class="iframe-container"><iframe loading="lazy" src="https://www.youtube.com/embed/7guMn2dhuGA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 ## 3: A Look Inside the Simulator
 
@@ -30,9 +26,7 @@ This video explains how to install and use the Energy Policy Simulator (EPS).  T
 
 [EPS version 1.4.2](version-history) was current when this video was made.
 
-<iframe width="1000" height="562" src="https://www.youtube.com/embed/OyNYVoh9-K8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-<br />
+<div class="iframe-container"><iframe loading="lazy" src="https://www.youtube.com/embed/OyNYVoh9-K8" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 ## 4: Input Data and Adapting the EPS to New Regions
 
@@ -40,7 +34,7 @@ This video explains how the Energy Policy Simulator's input data is structured a
 
 [EPS version 1.4.2](version-history) was current when this video was made.
 
-<iframe width="1000" height="562" src="https://www.youtube.com/embed/asIVby8g7J0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<div class="iframe-container"><iframe loading="lazy" src="https://www.youtube.com/embed/asIVby8g7J0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 ---
 *This page was last updated in version 3.0.0.*
