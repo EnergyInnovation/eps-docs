@@ -19,14 +19,7 @@ Energy Innovation released a report, [California Energy Policy Simulator Update:
 Documentation of source data, assumptions, and policy scenarios is available [here](https://github.com/Energy-Innovation/eps-california/raw/main/Policy%20Assumptions%20and%20Sources.docx). 
 Documentation of the model is available [here](https://us.energypolicy.solutions/docs/index.html).  Documentation is not specific to any model version and therefore applies to both U.S. and California versions of the Energy Policy Simulator.
 
-## Other Information
-
-* [California EPS Version History](version-history.html)
-* [Software License and Image Credits](software-license.html)
-
 ## Version History
-
-This page tracks updates that have been made with each version of the California Energy Policy Simulator.
 
 ### **3.3.1.1 - October 7, 2022 **
 

@@ -19,7 +19,13 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-font-family-base: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
   --ifm-background-color: #ffffff;
-}
+  --cds-active-primary: #002d9c;
+  --cds-focus: #0f62fe;
+  --cds-hover-primary: #0353e9;
+  --cds-interactive-01: #0f62fe;
+  --cds-text-04: #ffffff;
+  --cds-ui-background: #ffffff;
+  }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
@@ -32,4 +38,34 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-background-color: #393939;
+  --cds-active-primary: #002d9c;
+  --cds-focus: #ffffff;
+  --cds-hover-primary: #0353e9;
+  --cds-interactive-01: #0f62fe;
+  --cds-text-04: #ffffff;
+  --cds-ui-background: #262626;
+}
+
+/* Carbon link button style */
+a.btn {
+  font-size: 1em;
+  padding: 0.5em 1.5em;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  background-color: var(--cds-interactive-01, #0f62fe);
+  color: var(--cds-text-04, #ffffff);
+}
+a.btn:hover {
+  background-color: var(--cds-hover-primary, #0353e9);
+}
+a.btn:focus {
+  border-color: var(--cds-focus, #0f62fe);
+  box-shadow: inset 0 0 0 1px var(--cds-focus, #0f62fe), inset 0 0 0 2px var(--cds-ui-background, #ffffff);
+}
+a.btn:active {
+  background-color: var(--cds-active-primary, #002d9c);
 }
