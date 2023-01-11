@@ -6,15 +6,11 @@ The Nevada Energy Policy Simulator (EPS) is a free and open-source computer mode
 
 ## Model Download
 
-The Nevada Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](https://docs.energypolicy.solutions/download) in order to install the required software and make use of the downloadable version of the model.
+The Nevada Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](download) in order to install the required software and make use of the downloadable version of the model.
 
 <p><a href="https://github.com/Energy-Innovation/eps-nevada/archive/3.4.3.zip" class="btn">Download the Nevada Energy Policy Simulator</a></p>
 
-## Documentation
-
-Documentation of source data, assumptions, and policy scenarios is available [here](https://github.com/Energy-Innovation/eps-nevada/raw/main/Nevada%20EPS%20Scenario%20Assumptions.pdf). Documentation of the model is available [here](https://docs.energypolicy.solutions/).  Documentation of the model is not specific to any model version and therefore applies to both U.S. and Nevada versions of the Energy Policy Simulator.
-
-## Acknowledgement of Contributors and Reviewers
+Documentation of source data, assumptions, and policy scenarios is available [here](https://github.com/Energy-Innovation/eps-nevada/raw/main/Nevada%20EPS%20Scenario%20Assumptions.pdf). ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people/groups who helped adapt the Energy Policy Simulator for Nevada.  Individuals are listed alphabetically.
 
 * Energy Foundation

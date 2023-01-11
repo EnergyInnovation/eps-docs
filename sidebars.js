@@ -44,7 +44,18 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Model Component Descriptions',
+      label: 'Using Python for Analysis',
+      items: [
+        'automated-analysis',
+        'selecting-output-variables',
+        'logging-output',
+        'testing-policy-combinations',
+        'simulating-cap-and-trade'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Model Components',
       items: [
         'model-component-descriptions',
         'transportation-sector-main',
@@ -73,20 +84,8 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Using Python for Analysis',
+      label: 'Policy Design Guide',
       items: [
-        'automated-analysis',
-        'selecting-output-variables',
-        'logging-output',
-        'testing-policy-combinations',
-        'simulating-cap-and-trade'
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Policy Descriptions',
-      items: [
-        'policy-design-contents',
         {
           type: 'category',
           label: 'Transportation Policies',

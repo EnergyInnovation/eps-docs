@@ -8,10 +8,6 @@ The China (2022, iGDP) Energy Policy Simulator (EPS) is a free and open-source c
 
 The China (2022, iGDP) Energy Policy Simulator may be used on this website through your web browser, and a download of the full version is available upon request. Please submit your request through this [online form](https://wkf.ms/3hIh7YF).
 
-## Documentation
-
-Documentation of the model is available [here](https://docs.energypolicy.solutions/).  Documentation is not specific to any model version and therefore applies to both U.S. and China (2022, iGDP) versions of the Energy Policy Simulator.
-
 ## Acknowledgement of Contributors and Reviewers
 The China (2022, iGDP) Energy Policy Simulator was adapted by iGDP and Energy Innovation. It is one of two national-level China Energy Policy Simulators.
 

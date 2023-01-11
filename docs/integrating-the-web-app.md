@@ -20,15 +20,13 @@ Most partners who ask about self-hosting the EPS web interface are simply lookin
 
 ### Supported Procedure for Integration into Partner Websites
 
-If your organization is working with Energy Innovation to put your EPS model online using the web interface, you are under no obligation to integrate it into your own website.  All EPS web apps are given a unique subdomain of the `energypolicy.solutions` domain (e.g. `poland`, `virginia`, `canada`, etc.), and your EPS model will be accessible there.  Most of our partners have found this to be sufficient.  However, if you do wish to integrate the EPS into your organization's website, this can be done using the following procedure:
+If your organization is working with Energy Innovation to put your EPS model online using the web interface, you are under no obligation to integrate it into your own website.  All EPS models are accessible from the `energypolicy.solutions` website.  Most of our partners have found this to be sufficient.  However, if you do wish to integrate the EPS into your organization's website, this can be done using the following procedure:
 
 1. Choose a subdomain name you want for the simulator.  In a URL, a subdomain follows the `https://` and precedes the domain name and extension.  For example, if your organization's website is at `www.partnerorganization.org` and you select the subdomain `eps` for your model, the simulator will be reached at `eps.partnerorganization.org`.
 
-2. Once your EPS model is running in the web interface on a production server, Energy Innovation will inform you of that server's IP address.  Access your DNS (Domain Name System) management interface.  (The DNS manager is usually either the company you use as your domain name registrar or the company you use to host your website.)  Add an `A record` to your DNS using your chosen subdomain name pointing at the IP address for your production server.
+2. Add a redirect to your site that sends visitors from the subdomain URL to the model's EPS home page.
 
-3. Optionally, if you want the simulator to be accessible at a subdirectory URL (such as `www.partnerorganization.org/eps`), you may add a redirect to your site that sends visitors from the subdirectory to the subdomain URL.
-
-4. Incorporate links to the simulator at its new URL to your existing website.  Here, "links" does not just mean hypertext links in the body content of your webpages - "links" can also be in your sites' existing navigation menus and can look like links to any other page on your site.
+3. Incorporate links to the simulator at its new URL to your existing website.  Here, "links" does not just mean hypertext links in the body content of your webpages - "links" can also be in your sites' existing navigation menus and can look like links to any other page on your site.
 
 This procedure allows the EPS web interface to appear to be an integrated part of your website without requiring you to physically host the web application on your servers.  Steps 1-3 can be done before the new simulator is made available to the public.
 
@@ -42,4 +40,4 @@ The following partners have chosen to use the supported method above to integrat
 * [https://policysolutions.pembina.org/](https://policysolutions.pembina.org/) - Pembina Institute, Canada
 
 ---
-*This page was last updated in version 3.2.0.*
+*This page was last updated in version 3.4.3.*

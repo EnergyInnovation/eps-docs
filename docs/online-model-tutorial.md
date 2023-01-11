@@ -20,7 +20,7 @@ There are two ways you can use the EPS.  You may either [install the required so
 
 The Energy Policy Solutions project, Energy Innovation's effort to produce objective tools and resources on effective energy policy design, has a [global home page](https://energypolicy.solutions) containing links to all regional EPS deployments.  EPS deployments exist for a growing number of countries, states/provinces, cities, and other geographic areas.
 
-Each regional EPS deployment also has its own home page.  For example, the U.S. (national) EPS simulator's home page is [us.energypolicy.solutions](https://us.energypolicy.solutions).
+Each regional EPS deployment also has its own home page.  For example, the U.S. (national) EPS simulator's home page is [energypolicy.solutions/home/us/en](https://energypolicy.solutions/home/us/en).
 
 Each regional EPS home page features a small amount of introductory text and several buttons:
 
@@ -30,7 +30,7 @@ Each regional EPS home page features a small amount of introductory text and sev
 
 - `Sign in` will take you to a page where you can sign into the Energy Policy Simulator.  You also have the option to register an account.  An EPS account is not necessary to use the tool.  You only need an account if you wish to save your user-created policy scenarios on the server.
 
-- A **language toggle button** is available for certain EPS deployments, such as the [Canada EPS](https://canada.energypolicy.solutions) and [Saudi Arabia EPS](https://saudiarabia.energypolicy.solutions).  This button switches that region's home page, documentation pages, and EPS web interface between English and that region's alternative language (e.g. Frech for Canada, Arabic for Saudi Arabia, etc.).
+- A **language toggle button** is available for certain EPS deployments, such as the [Canada EPS](https://canada.energypolicy.solutions).  This button switches that region's home page, documentation pages, and EPS web interface between English and that region's alternative language (e.g. French for Canada, etc.).
 
 - `Enter Simulator`, located just below the introductory text, will take you to that EPS region's web interface.
 

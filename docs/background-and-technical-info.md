@@ -17,7 +17,7 @@ The online interface does not contain as many features and options as Vensim Mod
 * Users cannot edit the model or input data.
 * A few policy levers and control settings (such as a toggle between 100-year and 20-year global warming potential timeframes) are not available in the web interface.
 
-None of these limitations exist in the free and open-source version of the EPS that may be downloaded and run locally.  If you expect to do any of the tasks above, you are encouraged to run the EPS on your own computer.  Please see the [Download and Installation](download) for details.
+None of these limitations exist in the free and open-source version of the EPS that may be downloaded and run locally.  If you expect to do any of the tasks above, you are encouraged to run the EPS on your own computer.  Please see the [Download and Installation](download) page for details.
 
 ## Web App Architecture
 

@@ -6,7 +6,7 @@ The Alberta Energy Policy Simulator (EPS) is a free and open-source computer mod
 
 ## Model Download
 
-The Alberta Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](https://docs.energypolicy.solutions/download) in order to install the required software and make use of the full version of the model.
+The Alberta Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](download) in order to install the required software and make use of the full version of the model.
 
 <p><a href="https://github.com/Energy-Innovation/eps-alberta/archive/1.4.2.zip" class="btn">Download the Energy Policy Simulator, Alberta Version</a></p>
 
@@ -18,10 +18,6 @@ The "Current policy" scenario represents the emissions trajectory expected when 
 The "Example: Further Alberta ambition" scenario increases ambition of the "Current policy" scenario to illustrate the effect of implementing more stringent and supplementary policies. For example, this includes a renewable portfolio standard that ensures Alberta produce 50% renewable electricity by 2030, a 100 megatonne cap on oilsand emissions, and an electric vehicle sales mandate of 30% by 2030, among others.
 
 For a more detailed explanation of these scenarios, and answers to other common questions, please visit our [FAQ](https://www.pembina.org/reports/ab-eps-faq-2019.pdf) page.
-
-## Documentation
-
-Documentation of the model is available [here](https://docs.energypolicy.solutions/).  Documentation is not specific to any model version and therefore applies to both U.S. and Alberta versions of the Energy Policy Simulator.
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Alberta.  Individuals are listed alphabetically.

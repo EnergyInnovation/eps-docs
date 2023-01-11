@@ -8,10 +8,6 @@ The Zhejiang Energy Policy Simulator (EPS) is a free and open-source computer mo
 
 The Zhejiang Energy Policy Simulator may be used on this website through your web browser.
 
-## Documentation
-
-Documentation of the model is available [here](https://docs.energypolicy.solutions/).  Documentation is not specific to any model version and therefore applies to both U.S. and Zhejiang versions of the Energy Policy Simulator.
-
 ## Reports
 
 Two accompanying reports are avaialble for download. A policy analysis report examining two decarbonization scenarios for Zhejiang can be found [here](https://wri.org.cn/report/2020/11/accelerating-net-zero-transition-china_CN). A technical note on the model itself can be found [here](https://wri.org.cn/working_paper/2020/12/ZHEJIANG_ENERGY_POLICY_SIMULATOR_METHODS_DATA_AND_SCENARIO_SETTINGS_CN). 
