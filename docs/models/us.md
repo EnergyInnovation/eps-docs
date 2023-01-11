@@ -1,5 +1,5 @@
 ---
-title:  "Energy Policy Simulator Documentation"
+title:  "U.S. Energy Policy Simulator"
 ---
 
 The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation LLC](https://energyinnovation.org/).
