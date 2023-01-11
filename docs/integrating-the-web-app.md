@@ -2,7 +2,7 @@
 title: Web App Hosting and Integration into a Partner's Website
 ---
 
-The Energy Policy Simulator (EPS) web application is a program that runs on a webserver and allows users to [interact with the model using a web browser](/online-model-tutorial).  The EPS model itself is free and open-source (per its [software license](/software-license)) and can be [downloaded](/download) and run locally on your Windows PC or Mac.  In contrast, the web interface consists of proprietary server-side code owned by Energy Innovation LLC.
+The Energy Policy Simulator (EPS) web application is a program that runs on a webserver and allows users to [interact with the model using a web browser](online-model-tutorial).  The EPS model itself is free and open-source (per its [software license](software-license)) and can be [downloaded](download) and run locally on your Windows PC or Mac.  In contrast, the web interface consists of proprietary server-side code owned by Energy Innovation LLC.
 
 ### Web Application Hosting
 

@@ -35,6 +35,33 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 * Initial Release
 
+## Prior Mexico Model Release
+
+The current version of the Mexico EPS is the third release of this tool.  In 2016, an earlier version (1.1.4) of the Mexico EPS was released.
+
+### Prior Version Results
+
+In 2016, a report with key findings and policy recommendations for Mexico based on analysis performed with the Mexico EPS was released. You may visit the [report page on WRI's website](http://www.wri.org/publication/achieving-mexicos-goals), or you may download:
+
+* the [full report](/download/Achieving_Mexicos_Climate_Goals.pdf), including the executive summary, in English
+* the [full report](/download/Achieving_Mexicos_Climate_Goals_Spanish.pdf), including the executive summary, in Spanish
+* the [executive summary](/download/Achieving_Mexicos_Climate_Goals_ExecSum_Spanish.pdf), in Spanish
+* an [infographic](/download/Achieving_Mexicos_Climate_Goals_Infographic_Spanish.pdf), in Spanish
+* the [technical appendix](/download/Achieving_Mexicos_Climate_Goals_Technical_Appendix.pdf), in English
+
+### Prior Version Acknowledgements
+
+The following people helped create the first adaptation of the EPS for Mexico (1.1.4). Individuals are listed alphabetically.
+
+* Carlos Brown Solá, CTS Embarq Mexico
+* Erika Ortiz, Centro Mario Molina
+* Katie Ross, World Resources Institute
+* Jeffrey Rissman, Energy Innovation LLC
+* Juan Carlos Altamirano, World Resources Institute
+* Julia Martinez, CTS Embarq Mexico
+* Robbie Orvis, Energy Innovation LLC
+* Taryn Fransen, World Resources Institute
+
 ## Software License
 
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software.  The full license text is available [in English](http://www.gnu.org/licenses/gpl-3.0.en.html) and in [many other languages](http://www.gnu.org/licenses/translations.html).  A simple, easy-to-read, unofficial guide to the main attributes of the GPLv3 is available <a href="https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)">here</a>.
