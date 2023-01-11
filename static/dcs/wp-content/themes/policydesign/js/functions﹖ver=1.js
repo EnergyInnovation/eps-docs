@@ -112,7 +112,7 @@
 
 // fix header + nav over page when scrolling
 	$(function(){
-	  var menuOffset = $('#branding').outerHeight();
+	  var menuOffset = $('#branding').outerHeight();
 // 			sidebarHeight = $('#sidebar').outerHeight();
 		$(document).ready(function(){
 	    $('#shim').css( 'height',(menuOffset + 10) );
@@ -238,7 +238,7 @@ window.alert("hi");
 	});
 
 	$(window).load(function() {
-	  var menuOffset = $('#branding').outerHeight(),
+	  var menuOffset = $('#branding').outerHeight(),
 			botSpacing = $("#bottom").outerHeight();
     $("#sidebar").sticky({topSpacing:menuOffset, bottomSpacing: botSpacing});
     $("#sidebar2").sticky({topSpacing:menuOffset, bottomSpacing: botSpacing});
