@@ -8,7 +8,7 @@ The New Mexico Energy Policy Simulator (EPS) is a free and open-source computer 
 
 The New Mexico Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](https://docs.energypolicy.solutions/download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/Energy-Innovation/eps-New Mexico/archive/refs/tags/3.2.1.zip" class="btn">Download the New Mexico Energy Policy Simulator</a></p>
+<p><a href="https://github.com/Energy-Innovation/eps-New Mexico/archive/refs/tags/3.4.3.zip" class="btn">Download the New Mexico Energy Policy Simulator</a></p>
 
 ## Documentation
 
@@ -28,6 +28,10 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Robbie Orvis, Energy Innovation LLC
 
 ## Version History
+
+### **3.4.3 - February 6, 2023**
+
+* Update model to version 3.4.3
 
 ### **3.2.1 - April 30, 2022**
 
