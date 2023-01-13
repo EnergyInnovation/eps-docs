@@ -39,13 +39,8 @@ The Energy Policy Simulator (EPS) is released under the GNU General Public Licen
 Note that this license applies to the EPS, not to Vensim.  Vensim is commercial software and is owned by Ventana Systems.  We recommend the use of Vensim Model Reader to run the model.  You may change the input data using Microsoft Excel or any program capable of reading Excel files, such as [Open Office](https://www.openoffice.org/).
 
 ## Image Credits
-
-Intricate Chinese Architectural design Of A Colorful Temple
-
-Magda Ehlers
-
-[https://www.pexels.com/photo/intricate-chinese-architectural-design-of-a-colorful-temple-2846001/](https://www.pexels.com/photo/intricate-chinese-architectural-design-of-a-colorful-temple-2846001/)
-
-License: Pexels License
-
-Changes: Image has been cropped and a fade has been applied to the left side.
+Intricate Chinese Architectural design Of A Colorful Temple<br/>
+Magda Ehlers<br/>
+[https://www.pexels.com/photo/intricate-chinese-architectural-design-of-a-colorful-temple-2846001/](https://www.pexels.com/photo/intricate-chinese-architectural-design-of-a-colorful-temple-2846001/)<br/>
+License: Pexels License<br/>
+Changes: Image has been cropped and a fade has been applied to the left side.<br/>

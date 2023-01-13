@@ -41,13 +41,8 @@ The Energy Policy Simulator (EPS) is released under the GNU General Public Licen
 Note that this license applies to the EPS, not to Vensim.  Vensim is commercial software and is owned by Ventana Systems.  We recommend the use of Vensim Model Reader to run the model.  You may change the input data using Microsoft Excel or any program capable of reading Excel files, such as [Open Office](https://www.openoffice.org/).
 
 ## Image Credits
-
-Waterfall at Beaver Bay, Minnesota
-
-[Andrew Ling](https://unsplash.com/@linginit?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
-
-[https://unsplash.com/photos/_6yj0U-Ty1M](https://unsplash.com/photos/_6yj0U-Ty1M)
-
-License: Unsplash License
-
-Changes: Image has been cropped and a fade has been applied to the left side.
+Waterfall at Beaver Bay, Minnesota<br/>
+[Andrew Ling](https://unsplash.com/@linginit?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)<br/>
+[https://unsplash.com/photos/_6yj0U-Ty1M](https://unsplash.com/photos/_6yj0U-Ty1M)<br/>
+License: Unsplash License<br/>
+Changes: Image has been cropped and a fade has been applied to the left side.<br/>

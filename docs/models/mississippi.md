@@ -33,14 +33,8 @@ The Energy Policy Simulator (EPS) is released under the GNU General Public Licen
 Note that this license applies to the EPS, not to Vensim.  Vensim is commercial software and is owned by Ventana Systems.  We recommend the use of Vensim Model Reader to run the model.  You may change the input data using Microsoft Excel or any program capable of reading Excel files, such as [Open Office](https://www.openoffice.org/).
 
 ## Image Credits
-
-Headed down the Mississippi River, a tugboat pushes barges as it passes under the Vicksburg Bridge
-
-Justin Wilkens
-
-[https://unsplash.com/photos/dq3ujEmzV0s](https://unsplash.com/photos/dq3ujEmzV0s)
-
-License: Unsplash License
-
-Changes: Image has been cropped and a fade has been applied to the left side.
-
+Headed down the Mississippi River, a tugboat pushes barges as it passes under the Vicksburg Bridge<br/>
+Justin Wilkens<br/>
+[https://unsplash.com/photos/dq3ujEmzV0s](https://unsplash.com/photos/dq3ujEmzV0s)<br/>
+License: Unsplash License<br/>
+Changes: Image has been cropped and a fade has been applied to the left side.<br/>
