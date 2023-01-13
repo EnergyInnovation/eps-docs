@@ -294,7 +294,7 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 
 * New Features
   * Policy implementation schedules may now be set separately for every subscripted element of every policy lever.  For example, this allows different start dates for energy efficiency standards applied to the steel industry vs. the cement industry.  (Each industry is an element of the "industrial energy efficiency standards" policy lever.)
-  * Improved procedure for allocating responsibility for emissions abatement amongst policies within a policy package, used in calculating wedge thicknesses in the wedge diagram and box widths in the cost curve.  A description of the improved procedure [can be found here](https://github.com/Energy-Innovation/eps-us/issues/119).
+  * Improved procedure for allocating responsibility for emissions abatement amongst policies within a policy package, used in calculating wedge thicknesses in the wedge diagram and box widths in the cost curve.  A description of the improved procedure [can be found here](https://github.com/EnergyInnovation/eps-us/issues/119).
   * Replaced "Net Zero" scenario with "1.5°C Pathway" scenario
   * Edits to indst/BPEiC and indst/PERAC streamline IEA data integration and internationalization
   * Industry energy efficiency standards are now subscripted by fuel type (and continue to be subscripted by industry)

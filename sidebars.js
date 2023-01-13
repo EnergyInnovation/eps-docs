@@ -4,7 +4,6 @@ const sidebars = {
     'video-series',
     'download',
     'online-model-tutorial',
-    'version-history',
     {
       type: 'category',
       label: 'Model Overview',
@@ -257,12 +256,9 @@ const sidebars = {
         ]
       ]
     },
-    {
-      type: 'category',
-      label: 'Other Information',
-      items: ['acknowledgement', 'contact', 'software-license', 'version-history', 'archived-releases']
-    },
-    { type: 'category', label: 'Deprecated Documentation', items: ['carbon-tax-revenue-use', 'testing-policy-contributions'] }
+    { type: 'category', label: 'Deprecated Documentation', items: ['carbon-tax-revenue-use', 'testing-policy-contributions'] },
+    'software-license',
+    'contact'
   ]
 }
 module.exports = sidebars

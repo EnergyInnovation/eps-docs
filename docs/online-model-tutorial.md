@@ -6,7 +6,7 @@ This web page contains tutorials for how to use the Energy Policy Simulator (EPS
 
 ## Web Interface Video Tutorial
 
-This video (#2 in the [EPS Video Series](video-series)) provides an introduction to how to perform analysis with the EPS.  It shows how to build policy packages, to customize a policy’s implementation schedule, to select different output graphs, to compare multiple scenarios, and more.  ([EPS version 1.4.1](version-history) was current when this video was made.)
+This video (#2 in the [EPS Video Series](video-series)) provides an introduction to how to perform analysis with the EPS.  It shows how to build policy packages, to customize a policy’s implementation schedule, to select different output graphs, to compare multiple scenarios, and more.  ([EPS version 1.4.1](models/us#141---june-22-2018) was current when this video was made.)
 
 <div class="iframe-container"><iframe loading="lazy" src="https://www.youtube.com/embed/7guMn2dhuGA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
@@ -314,7 +314,7 @@ Clicking on the Energy Innovation logo on the right side of the header bar will 
 
 #### Version Number
 
-Different EPS models may be on different versions of the core EPS software platform.  To the right of the Energy Innovation logo is the version number of the regional EPS deployment you are using.  Clicking the version number will open the [Version History](version-history) page in a new tab, allowing you to see what features your EPS deployment includes.
+Different EPS models may be on different versions of the core EPS software platform.  To the right of the Energy Innovation logo is the version number of the regional EPS deployment you are using.  Clicking the version number will open the version history page in a new tab, allowing you to see what features your EPS deployment includes.
 
 ### Ideas for User Goals
 

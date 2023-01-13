@@ -16,11 +16,9 @@ Note that the EPS Vensim version 8 or later (64-bit).  If you already have Vensi
 
 ## How to Obtain the EPS
 
-Once Vensim Model Reader is installed, you should download the EPS by clicking the link below.
+Once Vensim Model Reader is installed, visit the documentation page in the Model Regions section of this documentation for the model you want, and download the EPS by clicking the download link.
 
-**[Download the Energy Policy Simulator](https://github.com/Energy-Innovation/eps-us/archive/3.4.4.zip)**
-
-A compressed archive (.zip file) will be downloaded named "eps-us-" followed by the model's current version number.
+A compressed archive (.zip file) will be downloaded named "eps-" followed by the model region and the model's current version number.
 
 ### Uncompress the .zip Archive
 
@@ -71,6 +69,15 @@ The model folder will contain the following files and folders:
 * `WebAppData.xlsx`, a spreadsheet that contains information used by the online web application that runs the model
 
 If you are using Vensim Model Reader, the only files you will need are the compiled version of the model (with .vpmx extension) and the InputData folder.  The .mdl file and .vgd file are only useful if you have Vensim Pro or Vensim DSS.  (A copy of GraphDefinitions.vgd is bundled into the compiled .vpmx file, so you do not need the graph definitions text file to view graphs when using the compiled version of the model.)  The .py and .lst files are only useful if you have Vensim DSS (because this is the only version of Vensim that supports scripts).  To use these scripts, you will also need to have [Python 3](https://www.python.org/downloads/) installed.  For more information, see the [Automated Analysis with Python Scripts](automated-analysis) page.
+
+## Archived Releases
+
+Past releases of the U.S. Energy Policy Simulator can be downloaded from the [releases section](https://github.com/EnergyInnovation/eps-us/releases) of Energy Innovation's U.S. EPS GitHub repository.  The compressed "Source code" file below each release is the complete model package, including the Vensim model files, input data, and Python scripts.  (Note that to run the model, you will need to install Vensim Model Reader.  For help, see the instructions on the [Download](download) page.)
+
+For non-U.S. versions of the Energy Policy Simulator, go to the list of [Energy Innovation's GitHub repositories](https://github.com/orgs/EnergyInnovation/repositories), select the repository for the region of interest, and navigate to its "releases" section (on the "code" tab).
+
+Many changes, including bug fixes, have been made with each model version.  See the Version History
+section of the model documentation page for details.  We recommend using only the most recent version of the EPS for analysis purposes.  However, older versions of the EPS may be useful for comparing the performance of different EPS releases or replicating results obtained via an older EPS release.
 
 ---
 *This page was last updated in version 3.0.0.*

@@ -1,7 +1,7 @@
 ---
 title: Introduction
 ---
-## About the Energy Policy Simulator
+## About the Energy Policy Simulators
 
 The Energy Policy Simulator (EPS) is a free and open-source computer model developed by [Energy Innovation LLC](https://energyinnovation.org/) as part of its Energy Policy Solutions project, an effort which aims to inform policymakers and regulators about which climate and energy policies will reduce greenhouse gas emissions most effectively and with the most beneficial financial and public health outcomes.
 
@@ -26,12 +26,6 @@ The model is distributed with a complete set of input data representing the Unit
 ## Project Overview Video
 
 <div class="iframe-container"><iframe loading="lazy" src="https://www.youtube.com/embed/LuP6vUhrDx8" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-
-## Additional Information
-
-The EPS is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software.  For more information, please see the [Software License](software-license) page.
-
-The EPS has benefited from the work of many [contributors and reviewers](acknowledgement).
 
 ---
 *This page was last updated in version 3.0.0.*

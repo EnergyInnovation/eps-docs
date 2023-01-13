@@ -8,7 +8,7 @@ The Maryland Energy Policy Simulator (EPS) is a free and open-source computer mo
 
 The Maryland Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/Energy-Innovation/eps-maryland/archive/refs/tags/3.4.3.zip" class="btn">Download the Maryland Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-maryland/archive/refs/tags/3.4.3.zip" class="btn">Download the Maryland Energy Policy Simulator</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the U.S. State Energy Policy Simulators possible.

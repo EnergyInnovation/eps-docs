@@ -207,15 +207,15 @@ An Excel file in the EPS GitHub repository walks through the methodology to buil
 
 This Excel file contains output from the U.S. EPS as of commit 0869ae3.
 
-[2020-11-30 WedgeDiagramProcedure v6.xlsx](https://github.com/Energy-Innovation/eps-us/files/5620157/2020-11-30.WedgeDiagramProcedure.v6.xlsx)
+[2020-11-30 WedgeDiagramProcedure v6.xlsx](https://github.com/EnergyInnovation/eps-us/files/5620157/2020-11-30.WedgeDiagramProcedure.v6.xlsx)
 
 Second, I've attached a `.cin` file containing all the policy settings used in the Excel file.  (I had to change the extension from `.cin` to `.txt` because GitHub wouldn't let me upload it using a `.cin` extension.)
 
-[Scenario_WedgeCalcExample.txt](https://github.com/Energy-Innovation/eps-us/files/5586250/Scenario_WedgeCalcExample.txt)
+[Scenario_WedgeCalcExample.txt](https://github.com/EnergyInnovation/eps-us/files/5586250/Scenario_WedgeCalcExample.txt)
 
 Third, here is the Python script used to generate the command script that produces the data on the "Emissions" tab of the Excel file above.  (I had to change the extension from `.py` to `.txt` because GitHub wouldn't let me upload it using a `.py` extension.)  The scenario settings are the same ones specified in the `Scenario_WedgeCalcExample.txt` (i.e. `.cin`) file above, but this is the Python script version of that scenario.
 
-[CreateContributionTestScript-WedgeTest.txt](https://github.com/Energy-Innovation/eps-us/files/5620175/CreateContributionTestScript-WedgeTest.txt)
+[CreateContributionTestScript-WedgeTest.txt](https://github.com/EnergyInnovation/eps-us/files/5620175/CreateContributionTestScript-WedgeTest.txt)
 
 ## Closing Notes
 
