@@ -6,7 +6,7 @@ The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model 
 
 ## Model Download
 
-The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](download) in order to install the required software and make use of the downloadable version of the model.
+The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
 <p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/3.4.4.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
@@ -324,7 +324,7 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Respending of changes in cash flow for government, households, and industries is now accounted for, providing a holistic look at policy impacts on economic activity.
   * New Government Revenue Accounting (GRA) settings allows the user to specify how government raises or spends changes in revenue caused by the policy package.  Options include changes in regular spending, deficit spending, household taxes, payroll taxes, and corporate income taxes.
   * Feedback loops from the I/O model to the Transportation, Buildings, and Industry sectors capture the energy demand and emissions associated with indirect and induced economic activity.
-  * A new [documentation page](io-model) explains the I/O model in detail.
+  * A new [documentation page](../io-model) explains the I/O model in detail.
   * We gratefully acknowledge the invaluable contributions of the [American Council for an Energy-Efficient Economy](https://www.aceee.org/) (ACEEE), [Jim Barrett](https://www.barretteconomics.com/), and [Skip Laitner](https://www.linkedin.com/in/skip-laitner-746b124/) for their guidance and advice in implementing this feature, and for allowing us to learn from the [DEEPER I/O model](https://www.aceee.org/files/pdf/fact-sheet/DEEPER_Methodology.pdf), originally created by Skip Laitner.
 * Improved Public Health Calculations
   * In addition to the policy package's effects on premature mortality (introduced in version 1.0.3), the EPS now calculates impacts on 10 additional health outcomes, including lost workdays, hospital admissions, non-fatal heart attacks, asthma attacks, respiratory symptoms and bronchitis.

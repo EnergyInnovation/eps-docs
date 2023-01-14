@@ -6,7 +6,7 @@ The Louisiana Energy Policy Simulator (EPS) is a free and open-source computer m
 
 ## Model Download
 
-The Louisiana Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](download) in order to install the required software and make use of the downloadable version of the model.
+The Louisiana Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
 <p><a href="https://github.com/EnergyInnovation/eps-louisiana/archive/refs/tags/3.4.3.zip" class="btn">Download the Louisiana Energy Policy Simulator</a></p>
 

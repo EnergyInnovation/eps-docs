@@ -6,7 +6,7 @@ The California Energy Policy Simulator (EPS) is a free and open-source computer 
 
 ## Model Download
 
-The California Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](download) in order to install the required software and make use of the downloadable version of the model.
+The California Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
 <p><a href="https://github.com/EnergyInnovation/eps-california/archive/refs/tags/3.3.1.1.zip" class="btn">Download the California Energy Policy Simulator</a></p>
 
@@ -65,7 +65,7 @@ Additionally, the updated Deeper Decarbonization Scenario adds a policy reducing
   * Respending of changes in cash flow for government, households, and industries is now accounted for, providing a holistic look at policy impacts on economic activity.
   * New Government Revenue Accounting (GRA) settings allows the user to specify how government raises or spends changes in revenue caused by the policy package.  Options include changes in regular spending, deficit spending, household taxes, payroll taxes, and corporate income taxes.
   * Feedback loops from the I/O model to the Transportation, Buildings, and Industry sectors capture the energy demand and emissions associated with indirect and induced economic activity.
-  * A new [documentation page](io-model) explains the I/O model in detail.
+  * A new [documentation page](../io-model) explains the I/O model in detail.
   * We gratefully acknowledge the invaluable contributions of the [American Council for an Energy-Efficient Economy](https://www.aceee.org/) (ACEEE), [Jim Barrett](https://www.barretteconomics.com/), and [Skip Laitner](https://www.linkedin.com/in/skip-laitner-746b124/) for their guidance and advice in implementing this feature, and for allowing us to learn from the [DEEPER I/O model](https://www.aceee.org/files/pdf/fact-sheet/DEEPER_Methodology.pdf), originally created by Skip Laitner.
 
 * Improved Public Health Calculations
