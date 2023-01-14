@@ -258,6 +258,7 @@ const sidebars = {
     },
     { type: 'category', label: 'Deprecated Documentation', items: ['carbon-tax-revenue-use', 'testing-policy-contributions'] },
     'software-license',
+    { type: 'link', label: 'Version History', href: '/models/us#version-history' },
     'contact'
   ]
 }
