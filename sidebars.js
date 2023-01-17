@@ -191,6 +191,7 @@ const sidebars = {
       label: 'Model Regions',
       items: [
         [
+          'state-eps-methodology',
           { type: 'doc', id: 'models/alabama', label: 'Alabama' },
           { type: 'doc', id: 'models/alberta', label: 'Alberta' },
           { type: 'doc', id: 'models/arizona', label: 'Arizona' },
