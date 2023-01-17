@@ -10,7 +10,12 @@ The Texas Energy Policy Simulator may be used on this website through your web b
 
 <p><a href="https://github.com/EnergyInnovation/eps-texas/archive/3.4.3.zip" class="btn">Download the Texas Energy Policy Simulator</a></p>
 
+## State EPS Methodology
+
+The [State EPS Methodology](../state-eps-methodology) page details our basic modeling assumptions, data sources, and methodology by sector. Additionally, we include information on the business-as-usual (BAU) and nationally determined contribution (NDC) scenario assumptions.
+
 ## Acknowledgement of Contributors and Reviewers
+
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Texas.  Individuals are listed alphabetically.
 
 * Isabella Gee, University of Texas at Austin

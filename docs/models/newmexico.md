@@ -11,7 +11,12 @@ The New Mexico Energy Policy Simulator may be used on this website through your 
 <p><a href="https://github.com/EnergyInnovation/eps-New Mexico/archive/refs/tags/3.4.3.zip" class="btn">Download the New Mexico Energy Policy Simulator</a></p>
 
 Documentation of source data, assumptions, and policy scenarios is available [here](https://github.com/EnergyInnovation/eps-New Mexico/raw/3.2.1/3.2%20Policy%20Assumptions%20and%20Sources.pdf). 
+## State EPS Methodology
+
+The [State EPS Methodology](../state-eps-methodology) page details our basic modeling assumptions, data sources, and methodology by sector. Additionally, we include information on the business-as-usual (BAU) and nationally determined contribution (NDC) scenario assumptions.
+
 ## Acknowledgement of Contributors and Reviewers
+
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for New Mexico.  Individuals are listed alphabetically.
 
 * Members of the New Mexico Climate Change Task Force
