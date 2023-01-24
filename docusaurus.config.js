@@ -56,6 +56,12 @@ const config = {
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme
+    },
+    algolia: {
+      // The application ID, key, and index name is provided by Algolia.
+      appId: 'JX5PCLQY4G',
+      indexName: 'energypolicy',
+      apiKey: '887071eebffc9848ee9cd1afdc33a621',
     }
   }
 }
