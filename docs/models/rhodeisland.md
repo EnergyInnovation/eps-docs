@@ -35,7 +35,7 @@ We would like to acknowledge the following people who made the U.S. State Energy
 
 ## Version History
 
-### **3.4.3 - February 6, 2023**
+### **3.4.3.1 - February 6, 2023**
 
 * Official launch of the U.S. State Energy Policy Simulators
 
