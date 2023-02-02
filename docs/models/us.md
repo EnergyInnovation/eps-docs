@@ -54,7 +54,7 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 
 ## Version History
 
-### **3.4.4 - December 6, 2022**
+### **3.4.4 - December 12, 2022**
 
 * New Features
   * The EV Minimum and Hydrogen Vehicle Minimum policies have been replaced with a single Zero-Emissions Vehicle (ZEV) standard policy.  Which vehicle technologies qualify as ZEVs can be customized in trans/BVTQaZ and trans/VTQaZ for a policy scenario that differs. The EPS selects between qualifying vehicle technologies via economic factors.  The new ZEV standard policy only applies to road vehicles, not aicraft, rail, or ships.
