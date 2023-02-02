@@ -30,7 +30,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **3.4.3 - February 6, 2023**
+### **3.4.3.1 - February 6, 2023**
 
 * Update model to version 3.4.3
 

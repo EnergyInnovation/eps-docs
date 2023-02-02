@@ -31,7 +31,7 @@ We would like to acknowledge the following organizations who helped adapt the En
 
 ## Version History
 
-### **3.4.3 - February 6, 2023**
+### **3.4.3.1 - February 6, 2023**
 
 * Update model to version 3.4.3
 
