@@ -10,8 +10,6 @@ The Colorado Energy Policy Simulator may be used on this website through your we
 
 <p><a href="https://github.com/EnergyInnovation/eps-colorado/archive/refs/tags/3.4.3.1.zip" class="btn">Download the Colorado Energy Policy Simulator</a></p>
 
-Documentation of source data, assumptions, and policy scenarios is available [here](https://github.com/EnergyInnovation/eps-colorado/blob/main/Colorado%20EPS%20Scenario%20Assumptions.pdf).
-
 ## U.S. State EPS Methodology
 
 The [U.S. State EPS Methodology](../us-state-eps-methodology) page details our basic modeling assumptions, data sources, and methodology by sector. Additionally, we include information on the business-as-usual (BAU) and nationally determined contribution (NDC) scenario assumptions.
