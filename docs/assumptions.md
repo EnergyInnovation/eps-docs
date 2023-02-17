@@ -18,7 +18,7 @@ Generally, the model's business-as-usual (BAU) case is likely to be closest to t
 
 Almost all of the input data used in the EPS lack numerical uncertainty bounds.  Even if such bounds had been available, it would have been difficult to carry them through the complex model calculations to establish uncertainty bounds on the final result.
 
-As an alternative, the Policy Solutions model supports Monte Carlo analysis, which can highlight the sensitivity of the model results to changes in any particular input or set of inputs.  A user who lacks confidence in a particular value may run a Monte Carlo simulation, varying the suspect value within the range that he/she believes is reasonable, to obtain a probability distribution for those outputs in which he/she is interested.
+As an alternative, the Policy Solutions model supports Monte Carlo analysis, which can highlight the sensitivity of the model results to changes in any particular input or set of inputs.  A user who lacks confidence in a particular value may run a Monte Carlo simulation, varying the suspect value within the range that they believe is reasonable, to obtain a probability distribution for those outputs in which they are interested.
 
 ## EPS Policies Imply Actions, Not Targets
 
@@ -30,7 +30,7 @@ Policies that consist of setting targets to be met via unknown actions are gener
 
 The fact that most policies in the EPS imply actions does not mean that the EPS cannot help a user understand the effect of a policy that sets a target.  In fact, there are many (likely infinitely many) different combinations of actions that would result in compliance with an achievable target.  The [Testing Policy Permutations Python script](testing-policy-combinations) enables users to search across many of combinations of policy settings to find ones that optimize particular outputs.  For example, if a user has a maximum allowable carbon emissions in mind (a carbon cap), he/she can perform thousands of runs of the model while varying policies of interest, discard all of the results with carbon emissions in excess of the cap, and sort the remaining scenarios by another metric of interest (such as least cost).  The result will be a set of policies that imply specific actions that, when taken together, achieve the emissions target at least cost.
 
-As of EPS 2.0.0, a new Python script offers explicit support for more complex analysis when [simulating a cap-and-trade policy](simulating-cap-and-trade), applied to one or across multiple sectors of the economy.  The carbon tax and carbon cap policies can drive a variety of actions, but not all possible actions, that mitigate GHG emissions.  For more details on which actions in the EPS are price-driven, see the documentation page that discusses [how the EPS avoids double-counting](how-the-eps-avoids-double-counting) policy effects.
+As of EPS 2.0.0, a Python script offers explicit support for more complex analysis when [simulating a cap-and-trade policy](simulating-cap-and-trade), applied to one or across multiple sectors of the economy.  The carbon tax and carbon cap policies can drive a variety of actions, but not all possible actions, that mitigate GHG emissions.  For more details on which actions in the EPS are price-driven, see the documentation page that discusses [how the EPS avoids double-counting](how-the-eps-avoids-double-counting) policy effects.
 
 ---
-*This page was last updated in version 3.0.0.*
+*This page was last updated in version 3.5.0.*

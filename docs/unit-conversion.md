@@ -5,7 +5,7 @@ title: Notes on Unit Conversion
 
 The Energy Policy Simulator (EPS) takes in input data and produces output data of a variety of types, including quantities of energy, money, distance, mass of pollutant emissions, etc.  In any given deployment of the model, the units used to represent these quantities can be customized to reflect the units familiar in the modeled region.
 
-The EPS has two types of units: working units and output units.  Working units are used in model input data, and they are carried through most calculations in the model's structure in Vensim.  Therefore, when vieweing data in Vensim, except for output variables on the "Web App Support Variables" sheet, you will generally be viewing data in working units.
+The EPS has two types of units: working units and output units.  Working units are used in model input data, and they are carried through most calculations in the model's structure in Vensim.  Therefore, when viewing data in Vensim, except for output variables on the "Web App Support Variables" sheet, you will generally be viewing data in working units.
 
 Output units are those used in the web app interface, and also in the output variables on the "Web App Support Variables" tab in Vensim.
 
@@ -42,7 +42,7 @@ In electricity-specific output graphs, typically no unit conversion is necessary
 
 For the most part, the EPS only uses heat rates only when representing an actual conversion of thermal or nuclear fuel into electricity.  These conversions occur within the electricity sector and are not relevant for output unit conversion.
 
-However, in output graphs of total primary energy, electricity from renewables (wind, solar, geothermal, etc.) has no upstream source.  If this electricity were displayed alongside other energy types using a pure unit conversion, it would look far smaller than primary energy from fuels used to generate electricity (two thirds or more of the energy in thermal fuels can be lost when burning them for electricity), so a direct unit conversion under-represents the role of renewables in the energy mix.  The EPS follows the convention typically used in China, where the electricity from renewables is converted to energy units not with a pure unit conversion, but with the heat rate of the typical preexisting hard coal power plant at model start.  (In models where the hard coal subscript is repurposed- as of 2019, this applies only to Saudi Arabia, where that subscript is used for crude oil- the heat rate of this plant type is used.)
+However, in output graphs of total primary energy, electricity from renewables (wind, solar, geothermal, etc.) has no upstream source.  If this electricity were displayed alongside other energy types using a pure unit conversion, it would look far smaller than primary energy from fuels used to generate electricity (two thirds or more of the energy in thermal fuels can be lost when burning them for electricity), so a direct unit conversion under-represents the role of renewables in the energy mix.  The EPS follows the convention typically used in China, where the electricity from renewables is converted to energy units not with a pure unit conversion, but with the heat rate of the typical preexisting hard coal power plant at model start.  (In models where the hard coal subscript is repurposed- as of 2023, this applies only to Saudi Arabia, where that subscript is used for crude oil- the heat rate of this plant type is used.)
 
 ## Currency Unit Conversions
 

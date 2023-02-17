@@ -18,17 +18,17 @@ There are two ways you can use the EPS.  You may either [install the required so
 
 ### Global and Regional Home Pages
 
-The Energy Policy Solutions project, Energy Innovation's effort to produce objective tools and resources on effective energy policy design, has a [global home page](https://energypolicy.solutions) containing links to all regional EPS deployments.  EPS deployments exist for a growing number of countries, states/provinces, cities, and other geographic areas.
+The Modeling and Analysis group, Energy Innovation's effort to produce objective tools and resources on effective energy policy design, has a [global home page](https://energypolicy.solutions) containing links to all regional EPS deployments.  EPS deployments exist for a growing number of countries, states/provinces, cities, and other geographic areas.
 
 Each regional EPS deployment also has its own home page.  For example, the U.S. (national) EPS simulator's home page is [energypolicy.solutions/home/us/en](https://energypolicy.solutions/home/us/en).
 
 Each regional EPS home page features a small amount of introductory text and several buttons:
 
-- `Change region` opens a small pop-up that allows you to jump directly to the EPS deployment for a different geographic region.
+- `Region` opens a small pop-up that allows you to jump directly to the EPS deployment for a different geographic region.
 
-- `Learn more` opens a web page to the documentation for that region.  In order to avoid repeating identical content, the full EPS documentation only exists on the U.S. EPS region's website.  Other regions' documentation pages include notes specific to that region and, usually, a download link for that region's simulator.  They link users to the full documentation on the U.S. site if they have questions about how to use the tool or how it works.
+- `Docs` opens a web page to the documentation for that region.  In order to avoid repeating identical content, the full EPS documentation only exists on the U.S. EPS region's website.  Other regions' documentation pages include notes specific to that region and, usually, a download link for that region's simulator.  They link users to the full documentation on the U.S. site if they have questions about how to use the tool or how it works.
 
-- `Sign in` will take you to a page where you can sign into the Energy Policy Simulator.  You also have the option to register an account.  An EPS account is not necessary to use the tool.  You only need an account if you wish to save your user-created policy scenarios on the server.
+- `Sign in` will take you to a page where you can sign into the Energy Policy Simulator.  You also have the option to register an account.  An EPS account is not necessary to use the tool.  You only need an account if you wish to save and/or share your user-created policy scenarios on the server.
 
 - A **language toggle button** is available for certain EPS deployments, such as the [Canada EPS](https://canada.energypolicy.solutions).  This button switches that region's home page, documentation pages, and EPS web interface between English and that region's alternative language (e.g. French for Canada, etc.).
 
