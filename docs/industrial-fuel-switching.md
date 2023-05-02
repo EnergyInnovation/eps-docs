@@ -1,6 +1,6 @@
 ---
 title: Industrial Fuel Switching
 ---
-Coal use conversion in industry causes industrial facilities to switch to other fuels, such as natural gas and biomass, when running industrial equipment or producing electricity.  Policies promoting fuel conversion can be mandatory (e.g., banning the use of coal in certain industrial facilities), or market-based (e.g., taxing the use of coal or offering tax credits or incentives to use other fuels). Policies that price carbon emissions also create an incentive for facilities to switch away from using coal as a fuel.
+Policies promoting fuel conversion can be mandatory (e.g., banning the use of fossil fuels in certain industrial facilities or setting emissions thresholds), or market-based (e.g., taxing the use of fossil fuels or offering tax credits or incentives to use electricity or other clean fuels). Policies that price carbon emissions also create an incentive for facilities to switch away from using fossil fuels.
 
-This policy may also represent electrification of industry, replacing coal or natural gas-fired processes with electrical processes.
+Direct electrification of industrial processes using heat pumps is the most efficient technology option, though some higher heat processes will require other electric technologies or the use of combustible fuels such as electrolytic hydrogen.

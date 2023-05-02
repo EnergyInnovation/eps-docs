@@ -12,7 +12,7 @@ Various unit conversion factors are arrayed in the top left side of the sheet.  
 
 ![unit conversion factors](/img/web-app-support-UnitConvFactors.png)
 
-Some of these factors, colored in light green, are universally true and so should not be adjusted by the model user, even if customizing the model for a different country.  For example, there will always be one million MWh per TWh and one thousand grams per kilogram.  Conversion factors for coal, natural gas, and liquid fuels (petroleum gasoline, petroleum diesel, biofuel gasoline, biofuel diesel, and jet fuel) can vary by country, because the chemical composition of these fuels may vary from place to place and from year to year.  (In fact, they are implemented as time series in the U.S. model, because the energy content of petroleum gasoline and of biofuel gasoline change very slightly during the model run.)
+Some of these factors, colored in light green, are universally true and so should not be adjusted by the model user, even if customizing the model for a different country.  For example, there will always be one million MWh per TWh.  Conversion factors for coal, natural gas, and liquid fuels (petroleum gasoline, petroleum diesel, biofuel gasoline, biofuel diesel, and jet fuel) can vary by country, because the chemical composition of these fuels may vary from place to place and from year to year.  (In fact, they are implemented as time series in the U.S. model, because the energy content of petroleum gasoline and of biofuel gasoline change very slightly during the model run.)  For some other variables, the choice of output units may vary between regions, such as the choice to use miles or kilometers when reporting passenger or freight distance traveled. 
 
 Dollars per Output Currency Unit converts the model's internal currency unit (dollars) into whatever currency output unit is most appropriate for the modeled country or region.  In the U.S., the output currency units are "billions of US dollars."
 
@@ -47,4 +47,4 @@ Wedge diagrams and cost curves cannot be rendered in Vensim.  To see these graph
 In general, graphs are included on the Web Application Support sheet as a way to quickly visually check that each output variable is producing data and to verify that the units used by the output variable result in reasonable axis labels.  These small graphs are not intended to be used for data analysis, as they generally lack sufficient detail.  For data analysis use, it is recommended you use the versions of these graphs that are available through the web application.  If you wish to perform data analysis in Vensim, you can follow the guidelines discussed in the help pages in the [How to Conduct Analysis in Vensim Model Reader](how-to-conduct-analysis) section.
 
 ---
-*This page was last updated in version 3.0.0.*
+*This page was last updated in version 3.5.0.*

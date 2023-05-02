@@ -1,5 +1,5 @@
 ---
-title: Peatland Restoration
+title: Peatland/Wetland Restoration
 ---
 
 Peatlands (also known as peat bogs or simply bogs) are a type of wetland.  Peat bogs generally lack tree cover, and the soil is saturated with acidic water.  The acidic and anaerobic conditions slow the decay of organic matter that dies within the bog.

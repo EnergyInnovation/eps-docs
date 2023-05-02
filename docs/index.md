@@ -11,13 +11,13 @@ The EPS allows the user to control numerous, different policies that affect ener
 
 * Emissions of 12 different pollutants (CO<sub>2</sub>, nitrogen oxides (NO<sub>x</sub>), sulfur oxides (SO<sub>x</sub>), fine particulate matter (PM<sub>2.5</sub>), and eight others), as well as carbon dioxide Eequivalent (CO<sub>2</sub>e; a measure of the global warming potential of various pollutants)
 * Direct cash flow (cost or savings) impacts on government, non-energy industries, labor and consumers, and five energy-supplying industries
-* Impacts on jobs, GDP, and employee compensation, as a whole or disaggregated into 36 economic categories
+* Impacts on jobs, GDP, and employee compensation, as a whole or disaggregated into 42 economic categories
 * Premature mortality (deaths) and 10 other health-related outcomes avoided thanks to reduced primary and secondary particulate pollution
 * The composition and output of the electricity sector (e.g. capacity and generation from coal, natural gas, wind, solar, etc.)
 * Vehicle technology market shares and fleet composition (electric vehicles, etc.)
 * Energy use by fuel type from various energy-using technologies (specific types of vehicles, building components, etc.)
 * Breakdowns of how each policy within a policy package contributes to total abatement and the cost-effectiveness of each policy (e.g. wedge diagrams and cost curves)
-* Fuel imports and exports, and associated expenditures or revenues
+* Imports and exports, and associated expenditures or revenues
 
 The EPS is a System Dynamics computer model created in a program called [Vensim](http://vensim.com/).  Vensim is a tool produced by Ventana Systems for the creation and simulation of System Dynamics models.  The Energy Policy Simulator has been designed to be used with the free Vensim Model Reader.  Directions on how to obtain Vensim Model Reader and the Energy Policy Simulator can be found on the [Download and Installation](download) page.
 
@@ -28,4 +28,4 @@ The model is distributed with a complete set of input data representing the Unit
 <div class="iframe-container"><iframe loading="lazy" src="https://www.youtube.com/embed/LuP6vUhrDx8" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 ---
-*This page was last updated in version 3.0.0.*
+*This page was last updated in version 3.5.0.*

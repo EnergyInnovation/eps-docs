@@ -34,16 +34,16 @@ It is necessary to have multiple scenarios, ideally with significantly different
 2. Change the "Simulation results file name" to "BusinessAsUsual"
 3. Click the "SyntheSim" button
 4. Change the "Simulation results file name" to "CarbonTax"
-5. In the Cross-Sector Policies section, change the "Carbon Tax" slider to 50
+5. In the Cross-Sector Policies section, change the "Additional Carbon Tax Rate" setting for the electricity sector to 50
 6. Change the "Simulation results file name" to "RenewablePortfolioStandard"
-7. Change the "Carbon Tax" slider to 0 and, in the Electricity Supply section, set the "Additional Renewable Portfolio Std Percentage" slider to 0.25
+7. Change the "Carbon Tax" slider to 0 and, in the Electricity Supply section, set the "Additional Renewable Portfolio Std Percentage" slider to 0.8
 8. Click the "Stop Setup" button
 
 Now all three runs are loaded in Vensim, and only the most recent one (the run titled "RenewablePortfolioStandard") is shown on the built-in graphs, such as the ones located below the sliders on the "Policy Control Center" sheet.  To see multiple runs together, you will need to generate graphs in Vensim.  (For more details, see the [Visualizing Output](visualizing-output) page of this documentation.)  For example, switch to the "Cross-Sector Totals" tab, navigate to the upper left, select the "Total CO2e Emissions" variable, and click the "Graph" button.  A graph should appear that looks similar to the following screenshot:
 
 ![three-variable CO2e graph](/img/creating-and-managing-scenarios-ThreeVarGraph.png)
 
-Similarly, you can click the "Table" button to create a table that has values for the "Total CO2e Emissions" variable for all three loaded scenarios.  Each scenario will use a single color in the table, which is particularly useful for keeping the scenarios straight when including many different variables in the same table.  Here is a screenshot of what the table might look like:
+Similarly, you can click the "Table" button to create a table that has values for the "Total CO2e Emissions" variable for all three loaded scenarios.  Here is a screenshot of what the table might look like:
 
 ![three-variable CO2e table](/img/creating-and-managing-scenarios-ThreeVarTable.png)
 
@@ -53,7 +53,7 @@ If you have many scenarios, it can be useful to include only some of them on gra
 
 ![Control Panel button](/img/creating-and-managing-scenarios-ControlPanelButton.png)
 
-The "Control Panel" window appears.  It includes five tabs.  If the tab for "Datasets" is not already selected, click it to make it active.  Now, the Control Panel should look like the following screenshot:
+The "Control Panel" window appears.  It includes six tabs.  If the tab for "Datasets" is not already selected, click it to make it active.  Now, the Control Panel should look like the following screenshot:
 
 ![Datasets control](/img/creating-and-managing-scenarios-Datasets.png)
 
@@ -62,4 +62,4 @@ You may click on one of the scenarios in the right-hand (Loaded) pane to make it
 Select the "RenewablePortfolioStandard" scenario and click the "<<" button in the column between the "Available" and "Loaded" panes.  The "RenewablePortfolioStandard" scenario moves to the "Available" area and is no longer loaded.  It will not appear on charts or tables generated in Vensim.  However, the data file, "RenewablePortfolioStandard.vdf," remains in the model folder until it is deleted or overwritten.  It can be moved back to the "Loaded" pane by pushing the ">>" button, and it will again be included in graphs and tables.
 
 ---
-*This page was last updated in version 1.1.2.*
+*This page was last updated in version 3.5.0.*

@@ -42,8 +42,6 @@ There also exist several files at the root of the InputData folder:
 
 * `CSV Export Tool.xlsm` is an Excel spreadsheet containing Visual Basic scripts.  It allows you to efficiently generate or re-generate the Vensim-readable `.csv` files from the Excel data files for any or all of the input variables.
 
-* `output_shares_by_industry.xlsx` contains data used for dividing up certain cash flows between different entities in the model.  Like `cpi.xlsx`, it is used in more than one variable spanning multiple sectors, so we put the data and source information in one place here.
-
 * `version.txt` contains the core version number of the EPS release.  This information is also displayed inside the model itself (`EPS.mdl` and `EPS.vpmx` on the "Structural Overview" sheet.)
 
 ### Excel and .csv Files
@@ -66,13 +64,13 @@ Sometimes an acronym folder will contain more than one variable from the EPS mod
 
 ![PEI folder contents](/img/input-data-PEIFolder.png)
 
-In this case, .csv files begin with the acronym for the enclosing folder (`PEI`), followed by the acronym for the particular variable for which they supply data (`BFPEI`, `EFPEI`, `IFPEI`, or `TFPEI`).  For variables with different `.csv` files for different subscripts, this is followed by the values of the subscript that define each table (`agriculture`, `cement`, etc.).  Hyphens are used as separators.
+In this case, .csv files begin with the acronym for the enclosing folder (`PEI`), followed by the acronym for the particular variable for which they supply data (`BFPEI`, `EFPEI`, `IFPEI`, or `TFPEI`).  For variables with different `.csv` files for different subscripts, this is followed by the values of the subscript that define each table (`rail`, `ships`, etc.).  Hyphens are used as separators.
 
-A few variables use calculated outputs or intermediate calculation steps from other variables as their inputs, but are not produced by the same Excel file, usually to limit the amount of complexity in any single Excel file.  These instances are noted in the `acronym-key.xlsx` file, in the "Relies on variable" column.  For example, in the Transportation sector, `SDoVPbT` (Standard Deviation of Vehicle Prices by Technology) relies on `BNVP` (BAU New Vehicle Price).
+A few variables use calculated outputs or intermediate calculation steps from other variables as their inputs, but are not produced by the same Excel file, usually to limit the amount of complexity in any single Excel file.  These instances are noted in the `acronym-key.xlsx` file, in the "Relies on variable" column.  For example, in the Transportation sector, `BHNVFEAL` (BAU Historical New Vehicle Fuel Economy After Lifetime) relies on `BNVFE` (BAU New Vehicle Fuel Economy).
 
 ## Working Units and Output Units
 
-The units used by the EPS when outputing results can be customized using the conversion factors in the variables inside the `web-app` folder.  For example, financial results could be output in 2019 U.S. dollars, 2015 Chinese yuan, or any other currency.  The same is true for other types of outputs, such as units of energy or mass of pollutants.
+The units used by the EPS when outputing results can be customized using the conversion factors in the variables inside the `web-app` folder.  For example, financial results could be output in 2021 U.S. dollars, 2015 Chinese yuan, or any other currency.  The same is true for other types of outputs, such as units of energy or mass of pollutants.
 
 Internally, the EPS standardizes on specific "working units" that are used throughout its calculations.  Input data from various reports or databases needs to be adjusted to use the working units on the blue tabs that are exported to `.csv` format.
 
@@ -97,9 +95,8 @@ Due to the large number of data sources (often several for a single variable), t
 * The U.S. Energy Information Administration, particularly for BAU fuel use data in many sectors
 * The U.S. Environmental Protection Agency, especially pertaining to industrial process emissions
 * Argonne National Laboratory, for pollutant emissions intensities
-* The U.S. Forest Service, for data pertaining to land use and forestry
 * The U.S. Bureau of Transportation Statistics, for data pertaining to travel demand and vehicle properties
 * The OECD, for input-output tables and related macroeconomic variables
 
 ---
-*This page was last updated in version 3.0.0.*
+*This page was last updated in version 3.5.0.*

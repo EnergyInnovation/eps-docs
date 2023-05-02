@@ -6,13 +6,7 @@ After you have run the model, there are three ways to visualize the outputs.  Yo
 
 ## The EPS's Built-In Graphs
 
-The EPS includes about twenty graphs that were set up by the model developer.  The specific variables shown on these graphs, as well as the graph style (line or stacked area, sometimes axis scale) have been pre-selected and cannot be changed using Vensim Model Reader.  These graphs include:
-
-* Total CO<sub>2</sub>e emissions, PM<sub>2.5</sub> emissions, cash flow change, change in outlays compared to monetized social benefits, human lives saved from reduced particulate pollution, and four electricity-related graphs located on the "Policy Control Center" sheet
-* A CO<sub>2</sub> graph specific to each of the four major sectors located on that sector's "Main" sheet
-* A financial graph specific to each of the four major sectors located on that sector's "Cash Flow" sheet
-* Four electricity-related graphs located on the "Electricity Sector - Main" sheet
-* (There also exist many small graphs on the "Web Application and Support Variables" sheet, but these are not set up to be used for analysis.)
+The EPS includes many graphs, which are listed on the [Output Graphs Available in the Web Interface](web-interface-graphs) documentation page. The specific variables shown on these graphs, as well as the graph style (line or stacked area, sometimes axis scale) have been pre-selected and cannot be changed using Vensim Model Reader.
 
 Once the model has been run, the data from the topmost currently-loaded run (generally the most recent run) will always be shown in the built-in graphs.
 
@@ -26,7 +20,7 @@ Navigate to the "Cross-Sector Totals" sheet and scroll to the top left.  Click o
 
 ![Graph button](/img/visualizing-output-GraphButton.png)
 
-A graph showing total CO<sub>2</sub>e emissions appears in an output window, as shown below.  You can drag any edge to resize this window.  Five small buttons in the upper left allow you to close the window, lock the window (prevent it from being closed), print the graph, copy the graph to the clipboard, or save the graph as a file.
+A graph showing total CO<sub>2</sub>e emissions appears in an output window, as shown below.  You can drag any edge to resize this window.  A menu bar includes options such as locking the screen and copying the graph. 
 
 ![Total CO2e Emissions graph](/img/visualizing-output-CO2eGraph.png)
 
@@ -48,35 +42,23 @@ Click on the "CO<sub>2</sub>" and "F gases" rows to de-select them.  The name of
 
 ![Total Pollutant Emissions graph](/img/visualizing-output-PollutantsGraph2.png)
 
-You may also include more than one variable on the same graph.  Open the Subscripts window, ensure the "Pollutants" tab is selected, and click the "None" button to deselect all the pollutants.  Then click on "CO<sub>2</sub>" to select only that pollutant.  Close the subscripts window.
-
-Now, in the upper left corner of the "Cross-Sector Totals" sheet, click on "Transportation Sector Pollutant Emissions."  Hold shift, then click on "Electricity Sector Pollutant Emissions," which appears immediately below.  Then click on the "Graph" button.  A graph titled "Selected Variables" appears that shows the CO<sub>2</sub> emissions for these two sectors, as in the following screenshot:
-
-![graph of CO2 from two sectors](/img/visualizing-output-TwoSectorCO2.png)
-
-This method only works if the two variables are on the same sheet.  If you select a new variable that is on a different sheet from the variable you last selected, even if you hold shift, the selected variable(s) on the inactive sheet will not be included in the graph.
-
-If the two variables you selected have different units, Vensim will create multiple Y axis labels at different scales- one set of labels for each of the units used by a selected variable.  For example, graphing "Total CO<sub>2</sub>e Emissions" and "Total Electricity Demand" together will yield one scale in g CO<sub>2</sub>e and one scale in MWh, as shown in the following screenshot:
-
-![graph of Total CO2e Emissions and Total Electricity Demand](/img/visualizing-output-DifferentUnits.png)
-
 ## Copying Tabular Data for Use in Another Program
 
 Graphs generated on command in Vensim Model Reader can be good for getting a quick sense of a variable's behavior, but the graphs seldom look very good and are not customizable.  Often, it is best to copy the data in tabular form and graph it in a program that provides more options and produces nicer-looking output, such as Microsoft Excel or another spreadsheet program.
 
-To do this, select one or more variables, then click on the "Table" button on the left side of the screen.
+To do this, select a variable, then click on the "Table" button on the left side of the screen.
 
 ![Table button](/img/visualizing-output-TableButton.png)
 
-A table appears that includes all of the selected variables.  (Often, variables with longer variable names will overlap some of the table entries- this cannot be corrected in Vensim Model Reader, which does not support changing the size of the first table column, but it does not affect the data.)  Here is a screenshot of the Table window showing data for the "Total CO<sub>2</sub>e Emissions" variable:
+A table appears that includes all of the selected variables.  Here is a screenshot of the Table window showing data for the "Total CO<sub>2</sub>e Emissions" variable:
 
 ![Table window](/img/visualizing-output-TableWindow.png)
 
-You can include variables on more than one Vensim sheet in the same table, even though variables on non-active sheets will not be included in a table if you select a variable on a new sheet before clicking the "Table" button.  Instead, add the variables to the table sequentially, without closing the table in between variables.  For example, select one or more variables on the Cross-Sector Totals tab, click the "Table" button, and then left-click in the main Vensim window.  The table vanishes, but it has not been closed- it is simply behind the main Vensim window.  Now, switch to another sheet.  Select one or more variables and click the "Table" button.  The existing table will be brought to the front and the selected variables will be added to the bottom of the table.
+By default, Vensim displays values in "Pretty" format, which uses "M" for million, "B" for billion, and "T" for trillion, etc.  While this may be useful for evaluating the relative magnitude of variables, "Pretty" format is not readable as values in a spreadsheet program.  To change the number format, right click on the Table button and select "Scientific" instead of "Pretty" in the Appearance selector.  Now, tables will display all values in scienific notation.
 
-Once you have the variables you want in the table, click the fourth small button in the upper left corner of the Table window, which copies the table data to the clipboard (as tab-separated values).  Now, open the program you wish to use for analysis or graphing, such as a spreadsheet program, and paste the data in from the clipboard.  If your analysis or graphing program will not accept pasted data directly, you can instead use the fifth button in the Table window to save the data as a text file (again, as tab-separated values), then open that text file in your program.  The following screenshot points out the location of these two buttons.
+You can include variables on more than one Vensim sheet in the same table by adding the variables to the table sequentially, without closing the table in between variables.  For example, select one or more variables on the Cross-Sector Totals tab, click the "Table" button, and then left-click in the main Vensim window.  The table vanishes, but it has not been closed- it is simply behind the main Vensim window.  Now, switch to another sheet.  Select one or more variables and click the "Table" button.  The existing table will be brought to the front and the selected variables will be added to the bottom of the table.
 
-![Table export buttons](/img/visualizing-output-TableExportButtons.png)
+Once you have the variables you want in the table, you can use the View option from the menu bar to copy the values, or you can click on the "Time" box in the upper-left to select all data and copy using the ctrl+C keyboard shortcut.  Alternatively, you can select and copy only certain rows or columns of the table.  Now, open the program you wish to use for analysis or graphing, such as a spreadsheet program, and paste the data in from the clipboard.  If your analysis or graphing program will not accept pasted data directly, you can instead use the File option on the menu bar to save the data as a text file (again, as tab-separated values), then open that text file in your program.
 
 ---
-*This page was last updated in version 1.1.2.*
+*This page was last updated in version 3.5.0.*

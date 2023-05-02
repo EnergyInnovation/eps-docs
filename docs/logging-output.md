@@ -2,7 +2,7 @@
 title: Logging Output for Multiple Scenarios
 ---
 
-The Energy Policy Simulator (EPS) includes a Python script, `CreateDataLoggingScript.py`, that makes it quick and easy to output a specific set of variables from one or more scenarios.  Each scenario you wish to use with this script, except the Business as Usual (BAU) scenario, must have its own scenario definition file (a text file with a `.cin` extension).  (Though the BAU scenario has a `.cin` file in EPS versions 3.0.0 and later, the BAU scenario's `.cin` file is not used by the Data Logging Script.)
+The Energy Policy Simulator (EPS) includes a Python script, `CreateDataLoggingScript.py`, that makes it quick and easy to output a specific set of variables from one or more scenarios.  Each scenario you wish to use with this script, except the Business as Usual (BAU) scenario, must have its own scenario definition file (a text file with a `.cin` extension).  (Though the BAU scenario has a `.cin` file in some EPS versions (between 3.0.0 and 3.4.0), the BAU scenario's `.cin` file is not used by the Data Logging Script.)
 
 ## Saving .cin Files with Policy Settings
 
@@ -30,7 +30,7 @@ Next, open the `CreateDataLoggingScript.py` file in a text editor such as _Visua
 
 ![first lines of GenerateDataLoggingScript.py](/img/logging-output-LoggingScript.png)
 
-The only line that you are likely to wish to edit is line 19, which includes a list of the scenario files (`.cin` files) that should be run.  By default, the script will run the BAU case (the entry with two adjacent double-quote marks, which needs no associated `.cin` file) and each of the included scenarios: the NDC Scenario and the Net Zero Emissions scenario.  You may remove any of these scenarios from the list, and you may add an unlimited number of your own scenarios to the list.  Each scenario must be the complete filename of the `.cin` file that defines the scenario.  Like the examples provided, the scenario filename should be within the square brackets, surrounded by double quotes, and separated from the other filenames via a comma.
+The only line that you are likely to wish to edit is line 19, which includes a list of the scenario files (`.cin` files) that should be run.  By default, the script will run only the BAU case (the entry with two adjacent double-quote marks, which needs no associated `.cin` file).  However, you can add additional scenarios, and each scenario must be the complete filename of the `.cin` file that defines the scenario.  Like the examples provided above, the scenario filename should be within the square brackets, surrounded by double quotes, and separated from the other filenames via a comma.
 
 Save and close the `GenerateDataLoggingScript.py` file when you are done.
 
@@ -47,4 +47,4 @@ Click the "Open" button.  Vensim performs one run for each entry in the list of 
 The `.tsv` files are tab-separated values and can be opened in Microsoft Excel or another spreadsheet program, where the value of each variable specified in the `OuputVarsToExport.lst` file will be included for each year of the model run.  The `.vdfx` files are Vensim data files.  They can be safely deleted if you are only interested in the output for the variables specified in `OutputVarsToExport.lst` (which are included in the tab-separated values file).
 
 ---
-*This page was last updated in version 3.0.0.*
+*This page was last updated in version 3.5.0.*
