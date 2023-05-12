@@ -28,6 +28,23 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
+### **3.4.3.2 - March 27, 2023**
+* Bug Fixes
+  * Fixed minor formula errors in fuels/BFPaT, elec/BGDPbES, indst/BPoIFUfE.
+* Data Updates
+  * Recalibrated elec/PMCCS to match actual solar and wind capacity development.
+  * Updates to elec/ARpUIiRC to reflect that China does not always retire capacity early for economic reasons.
+  * Adjusted technology shareweights for MSW and hydro to 0.1 and 1, respectively, in elec/ETS.
+  * Updates to coal values in elec/BHRbEF, elec/BPaFF, elec/BECF, fuels/BFPaT, elec/BDSBaPCF.
+  * Include self-use electricity for wind and solar in elec/BECF.
+  * Refine policy scenario guaranteed dispatch, mandated hydro and nuclear capacity construction, and EV deployment.
+  * Updated indst/BIFUbC calculations and added in processing loss as a feedstock.
+  * Updated methodology and data source to calculate elec/BHRbEF.
+  * Increased gas guaranteed dispatch rate to 40% in elec/BGDPbES to avoid under-dispatch.
+  * Lowered capacity factors for wind in elec/BECF to avoid over-dispatch.
+  * Added additional non-coal capacity for 2020 in elec/BPMCCS, based on calculations in elec/PMCCS.
+  * Updated indst/BPoIFUfE to align with updated indst/BIFUbC data.
+
 ### **3.4.3.1 - February 6, 2023**
 * Bug fix
   * Correction to calculations for policy-driven amount of CCS
