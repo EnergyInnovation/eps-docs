@@ -80,7 +80,7 @@ At this stage, we are done applying policies and economic effects that alter the
 
 The retrofitting policy applies only to preexisting buildings.  We first determine the share of buildings that existed in the model start year that are surviving in each year of the model run, using the average building lifetime.  We then apply the user's selected policy setting for Share of Preexisting Buildings Subject to Retrofitting to Date to the share of surviving buildings. Finally, we apply a percentage reduction in energy consumption by component for a typical retrofit to the share of existing buildings subject to retrofitting. In the U.S., retrofits are set to reduce energy consumption for the heating and cooling end uses. 
 
-![retrofitting calculations](/img/buildings-sector-main-retrofitting.png)
+![retrofitting calculations](/img/buildings-sector-main-Retrofitting.png)
 
 ## Finding Components Energy Use
 
