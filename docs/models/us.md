@@ -8,7 +8,7 @@ The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model 
 
 The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/3.4.5.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/3.4.6.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
@@ -53,6 +53,11 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 * Michael Greenstone, University of Chicago - high-level guidance
 
 ## Version History
+
+### **3.4.6 - May 16, 2023**
+
+* Bug fix
+  * Allow changes in capacity construction subsidies to affect electricity prices
 
 ### **3.4.5 - February 6, 2023**
 * Bug fix
