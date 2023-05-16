@@ -54,6 +54,11 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 
 ## Version History
 
+### **3.4.6 - May 16, 2023**
+
+* Bug fix
+  * Allow changes in capacity construction subsidies to affect electricity prices
+
 ### **3.4.5 - February 6, 2023**
 * Bug fix
   * Corrections to the amount of CCS applied in policy scenarios
