@@ -28,7 +28,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **3.4.3.2 - March 27, 2023**
+### **3.4.3.2 - May 19, 2023**
 * Bug Fixes
   * Fixed minor formula errors in fuels/BFPaT, elec/BGDPbES, indst/BPoIFUfE.
 * Data Updates
@@ -44,6 +44,9 @@ We would like to acknowledge the following people who helped adapt the Energy Po
   * Lowered capacity factors for wind in elec/BECF to avoid over-dispatch.
   * Added additional non-coal capacity for 2020 in elec/BPMCCS, based on calculations in elec/PMCCS.
   * Updated indst/BPoIFUfE to align with updated indst/BIFUbC data.
+  * Updated data source and values for hydgn/EHPpUC.
+  * Remove carbon tax from electricity sector in fuels/BCTR to better represent free emissions allowances.
+  * Correct conversion factors for hydrogen production in fuels/BFPIaE.
 
 ### **3.4.3.1 - February 6, 2023**
 * Bug fix
