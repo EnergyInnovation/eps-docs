@@ -2,7 +2,7 @@
 title:  "China (2022, iGDP) Energy Policy Simulator"
 ---
 
-The China (2022, iGDP) Energy Policy Simulator (EPS) is a free and open-source computer model created by [innovative Green Development Program (iGDP)](http://www.igdp.cn/).  It is adapted from software originally created by [Energy Innovation LLC](https://energyinnovation.org/).
+The China (2022, iGDP) Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation (EI)] (https://energyinnovation.org/) and [innovative Green Development Program (iGDP)](http://www.igdp.cn/).  It is adapted from software originally created by EI.
 
 ## Model Download
 
