@@ -29,7 +29,7 @@ This powerful set of tools allows for simulation of complicated policy packages,
 
 The I/O model breaks the economy down into [International Standard Industrial Classification (ISIC) codes (Rev. 4)](https://unstats.un.org/unsd/publication/seriesM/seriesm_4rev4e.pdf), a classification system for economic activity developed and maintained by the United Nations Statistics Division.  Input-output tables specify which ISIC codes (e.g. industries) supply the inputs for each other industry, and which entities buy the outputs of each industry.  Other tables, also divided up by ISIC code, specify the total jobs, value added, employee compensation, and economic output of each ISIC code.  By default, the EPS draws these data from the OECD Statistical Database, where the OECD has freely released their [input-output data](https://stats.oecd.org/Index.aspx?DataSetCode=IOTSI4_2018) and [associated employment-related data](https://stats.oecd.org/Index.aspx?DataSetCode=TIM_2019_MAIN) for over 60 countries and regions.  For citations to specific tables within the OECD database, [download the EPS](download) and look at the first tab of the Excel file for the variable in which you are interested.  EPS adaptations for regions not in the OECD database will use other sources of I/O data, reformatted to fit the ISIC code categories used by the OECD.
 
-The OECD's data uses 36 ISIC code categories, which is generally sufficient for the EPS.  However, the OECD lacks sufficient granularity for energy-supplying industries.  Therefore, the EPS maintains its pre-3.0 break-out of energy suppliers (electricity suppliers, coal suppliers, natural gas and petroleum suppliers, biomass and biofuel suppliers, and other energy suppliers), and calculates impacts for these energy-supplying industries.  Similarly, the EPS uses its more sophisticated [fuel import and fuel export calculations](fuels) to determine the cash flows associated with fuel imports and exports, instead of using the OECD data.  The more sophisticated handling of energy products and energy industries is the main reason that non-energy industries and energy industries are treated differently on each EPS sector's "Cash Flow" sheet in Vensim, as well as on the [Cross-Sector Totals](cross-sector-totals) sheet.
+The OECD's data uses 36 ISIC code categories, which is generally sufficient for the EPS.  However, the OECD lacks sufficient granularity for energy-supplying industries.  Therefore, the EPS maintains its pre-3.0 break-out of energy suppliers (electricity suppliers, coal suppliers, natural gas and petroleum suppliers, biomass and biofuel suppliers, and other energy suppliers), and calculates impacts for these energy-supplying industries.  Similarly, the EPS uses its more sophisticated [fuel import and fuel export calculations](fuels) to determine the cash flows associated with fuel imports and exports, instead of using the OECD data.  The more sophisticated handling of energy products and energy industries is the main reason that non-energy industries and energy industries are treated differently on each EPS sector's "Cash Flow" sheet in Vensim, as well as on the [Cross-Sector Totals](cross-sector-totals) sheet.  A few other non-energy ISIC codes provided in the OECD database are broken apart where we need more granularity in the EPS.  For example, we break ISIC 24 - "manufacture of basic metals" - into separate ISIC codes for iron and steel and for other metals.  This allows us to treat the iron and steel industry, which is particularly energy-intensive and has unique process emissions and emissions reductions technologies, separately from other metals. 
 
 ## Direct, Indirect, and Induced Economic Impacts
 
@@ -59,11 +59,35 @@ We gratefully acknowledge the invaluable contributions of the [American Council 
 
 A detailed, illustrated walkthrough of the calculation approach appears below.  Note that inputs to the I/O model pertaining to the direct impacts of the user's chosen policies come from the [Cross-Sector Totals sheet](cross-sector-totals), so if you have interest in how these inputs are obtained, you may wish to review that documentation page before proceeding.
 
+## Creating Time Series Versions of Variables
+
+The OECD source data we use for most key I/O variables is static data, meaning it is provided for one historical year.  For several of these variables, we want time series data for every year of the model run.  We therefore create time series versions of several variables ahead of the I/O calculations.  
+
+First, we want economic output (revenue) by each ISIC code.  For this key variable, we use endogenously calculated revenue for fuels and exogenous data for non-fuel products, as we track fuel production and revenue in the [Fuels sheet](fuels) with a detailed methodology.  We take BAU Fuel Industry Revenue by Fuel from the [Fuels sheet](fuels) and map it to the relevant ISIC codes for each fuel type, also applying the variable 'BDCSoCbIC BAU Domestic Content Share of Consumption by ISIC Code' to calculate the domestic energy revenue only for every year of the model run.
+
+![domestic energy revenue](/img/io-model-DomEnergyRev.png)
+
+For non-fuel products, we have that data for a historical year in variable 'BObIC BAU Output by ISIC Code.'  We also provide input data for 'BPCiObIC BAU Percent Change in Output by ISIC Code,' which can use projections of output or extrapolate historical data.  We multiply these values to find the BAU output for every year.  
+
+![non-fuel output by year](/img/io-model-NonfuelOutput.png)
+
+Next, we sum up the output for each ISIC code, using the exogenous calculation for all non-fuel products and the endogenous calculation for all fuel products (using the variable 'FoPTaFbIC Fractions of Products That are Fuels by ISIC Code' to determine the share of each ISIC code that is fuel).  We also calculate the percent change in output by ISIC code each year, which will be used in the calculations following below. 
+
+![output by year](/img/io-model-OutputByYear.png)
+
+We now need to create time series versions of several other I/O variables.  For employment and employee compensation, we ue changes in production (physical quantity of energy produced) from the [Fuels sheet](fuels) to estimate changes for energy products.  For non-energy priducts, we use the percent change in output calculated above, since non-energy products are heterogeneous and are presently only tracked in financial terms, not as physical quantities of goods. 
+
+![employment and employee compensation by year](/img/io-model-EmployByYear.png)
+
+For Value Added and Government and Household Expenditures, we assume that changes in these variables are directly proportional to changes in output for each specific ISIC code.  Note that the government and household spending variables are only used to determine the proportion of spending going to each ISIC code.  Therefore, the time series projection here is meant simply to reflect how growth or shrinkage in one ISIC code relative to another is reflected in changes in government and household spending.  It does not matter whether these variables contain accurate absolute amounts spent, as they are not used for that purpose.
+
+![value added and government and household expenditures by year](/img/io-model-IOInputsbyYear.png)
+
 ## Incorporating Macroeconomic Feedbacks
 
 Government and households can respend any increase in cash they get due to the policy package (and, conversely, can reduce their spending if the policy package decreases their available cash).  Households will always change their spending, while government's response to changes in its cash flow is specified using Government Revenue Allocation (GRA) settings, discussed below.
 
-The inputs to the I/O model already include direct changes in cash flow for government and households, such as when households spend less money on fuel and more money on vehicles due to fuel economy standards.  However, there are also indirect effects on household and on government cash flow caused by the policy package's effects on industry.  For example, if industrial output increases, industries may hire and pay more workers, which increases household cash flow.  Some of industries' increased output may go to corporate income taxes and payroll taxes, and some of the increased employee compensation will go to individual income taxes, so increases in industrial output also lead to increases in government cash flow.  To capture these indirect effects, we use a macroeconomic feedback loop.  Here, we incorporate the results of the macroeconomic feedback loop on government and on household (i.e. "labor and consumers") cash flow, combining these effects with the direct policy-driven changes in cash flow for government and households.  There is also a control setting that can be used to disable this feedback, which is primarily for model debugging purposes and should generally not be used by model users.
+The inputs to the I/O model already include direct changes in cash flow for government and households, such as when households spend less money on fuel and more money on vehicles due to fuel economy standards.  However, there are also indirect effects on household and on government cash flow caused by the policy package's effects on industry.  For example, if industrial output increases, industries may hire and pay more workers, which increases household cash flow.  Some of industries' increased output may go to taxes, and some of the increased employee compensation will go to individual income taxes, so increases in industrial output also lead to increases in government cash flow.  To capture these indirect effects, we use a macroeconomic feedback loop.  Here, we incorporate the results of the macroeconomic feedback loop on government and on household (i.e. "labor and consumers") cash flow, combining these effects with the direct policy-driven changes in cash flow for government and households.  There is also a control setting that can be used to disable this feedback, which is primarily for model debugging purposes and should generally not be used by model users.  See the [Macroeconomic Feedbacks page](macro-feedbacks) for more detail on the calculations behind the 'Last Year Change in Domestic Individual Income Tax Revenue by ISIC Code' and 'Last Year Change in Labor and Consumers Earnings After Income Taxes' variables shown in the screenshot below.
 
 ![incorporating macroeconomic feedbacks](/img/io-model-MacroFeedbacks.png)
 
@@ -110,7 +134,7 @@ We allocate the change in interest paid on the national debt to cash flow entiti
 
 ## Change in Household Savings and Spending
 
-Households do not respend all of an increase in cash flow that they receive in response to a policy package.  Households save some of the money, investing it in real assets (e.g. paying for a home), bank accounts, equities, etc.  Similarly, a reduction in household cash won't immediately reduce spending by the same amount - a household may tap into its savings to help maintain its prior level of consumption.  This is represented by the personal savings rate, the share of disposable household income that is saved or invested.  In the United States, over the 20-year period from 2000-2019, the [average personal savings rate was 6%](https://fred.stlouisfed.org/series/PSAVERT).
+Households do not respend all of an increase in cash flow that they receive in response to a policy package.  Households save some of the money, investing it in real assets (e.g. paying for a home), bank accounts, equities, etc.  Similarly, a reduction in household cash won't immediately reduce spending by the same amount - a household may tap into its savings to help maintain its prior level of consumption.  This is represented by the personal savings rate, the share of disposable household income that is saved or invested.  In the United States, from 2012-2019, the [average personal savings rate was 7.4%](https://fred.stlouisfed.org/series/PSAVERT).
 
 Changes in savings do not affect industrial output in the same way as consumption.  Consumption directly leads to economic output.  Savings can make more money available to businesses, which they can invest in expanding their operations.  However, this does not necessarily lead directly to increased economic output.  It depends on prevailing economic conditions.
 
@@ -140,6 +164,44 @@ We also track the cumulative change in household savings across the model run.  
 
 ![cumulative change in household savings](/img/io-model-CumCngHouseholdSavings.png)
 
+## Calculating Effects of Buy-In Region Policy
+
+### Calculating In-Region Share of Outputs
+
+One last step before calculating the change in domestic output by ISIC code is to calculate the effects of the "Buy-In Region" policy lever, which causes shifts in the amount of consumption of domestically produced goods vs. imported goods.  This policy is implemented on the [Industry and Agriculture sheet](industry-ag-main).  The calculation flow on the I/O page is broken into a few sections.  First, we calculate the domestic content share of purchases directly caused by the policy package, based on the BAU domestic content share of consumption for each ISIC code and the chosen policy settings.
+
+![direct effects of Buy-In Region policy](/img/io-model-BuyInRegionDirectEff.png)
+
+We also add in the price-driven import substitution calculated on the [Industry and Agriculture sheet](industry-ag-main), and calculate the Change in Domestic Content Share of Consumption by ISIC Code relative to BAU. 
+
+![change in domestic content share by ISIC code](/img/io-model-CngDomContentShr.png)
+
+### Calculating In-Region Leontief Inverse Matrix
+
+A key input for the I/O model is a Leontief Inverse Matrix, which provides coefficients to represent the interconnectedness of each ISIC code.  This is further explained in the Calculating Jobs, Value Added and Compensation Requirements per Unit Output section of the I/O documentation below.  Because the Buy In-Region policy shifts the amount of domestic production of various industries, we must adjust the Leontief Inverse Matrix in response.  In order to understand this step, it is crucial to understand what a Leontief Reverse Matrix is.  A screenshot of the upper left portion of the OECD's DLIM file for the United States (showing the first six ISIC code categories) appears below.  Please refer to it while reading the following explanation.
+
+![OECD Domestic Leontief Inverse Matrix screenshot](/img/io-model-DomesticLeontiefInvMatrix.png)
+
+A Leontief Inverse Matrix provides a set of multipliers that illustrate how spending by each ISIC code in the economy affects each other ISIC code, as well as how it affects itself, after all respending effects are accounted for.  (Recall that each ISIC code contains many businesses, which may produce different products, so long as those products fall within the same ISIC code.)  The same industries appear in the rows and the columns (i.e. the matrix is square).
+
+If a policy intervention increases (or decreases) the jobs, value added, or employee compensation of an ISIC code in a row by 1 unit, the resulting effect on all industries is shown in each column of that row.  The initial 1 unit is included for the industry in the current row, and then indirect effects account for the values in all other columns, as well as the amount exceeding 1 in that industry's own column.
+
+For example, the "Agricluture" row in the table above has a 1.18 value in the "Agriculture" column (cell C9).  This means that if policies directly generate 100 jobs in agriculture, the ultimate effect will be to generate 118 agricultural jobs, because 18 more jobs are needed to supply the inputs for the 100 new agricultural jobs (such as growing feed crops for animals).  In the "Agriculture" row, the "Mining and extraction of energy producing products" column (cell D9) has an extremely low value (0.001) because the mining industry does not buy agricultural products, so inputs from agriculture are not needed for the mining industry to generate value.  In contrast, the column for the "Food products, beverages, and tobacco" industry (cell G9) has a value of 0.288, which is a very high multiplier.  This is because the agriculture industry is a very important supplier to the food, beverage, and tobacco industry, so growth of agriculture tends to accompany growth in the food and beverage industry.
+
+If you read down a column, you see the amount of input from the industry in each row needed to produce 1 unit of value for the industry in the column.  For example, in the row for "Mining and extraction of energy producing products," the column for "Agriculture" (cell C10) has a value of 0.02, which is 20 times higher than the value in the agriculture row for the mining industry (cell D9).  This is because energy is an input to agriculture, so roughly 2 energy extraction jobs are needed to supply every 100 agriculture jobs.
+
+If you multiply a one-dimentional "demand matrix" (a vector) of values by the Leontief Inverse Matrix, you obtain the amount of output from each industry required to meet that demand.  For example, if there is an external demand for $1000 worth of value from every industry, the Leontief Inverse Matrix multiplied by a vector with $1000 for each industry would provide the change in output produced by each industry to meet that demand.  The change in external demand (output) can be the result of a policy package, as calculated earlier.
+
+The model only calculates the policy-induced change in domestic jobs, GDP, and employee compensation, not the global changes, meaning we want to use a Leontief Inverse Matrix that only captures domestic production (and filters out purchases of imported goods).  However, the Buy-In Region policy requires industries to source more of their total inputs from domestic suppliers, which will alter the values of the matrix.  To capture this effect, we have input data for two versions of the Leontief Inverse Matrix - a domestic matrix (in-region only) and a total matrix (including imports).  We can therefore represent the Buy In-Region policy impact by scaling between the domestic (DLIM) and total (TLIM) matrices based on the chosen policy settings and the previously calculated price-driven import substitution effect.  
+
+![calculated in-region Leontief Inverse Matrix](/img/io-model-InRegionLeontiefInvMatrix.png)
+
+### Effects of Buy In-Region Policy on BAU Output
+
+The Buy In-Region policy shifts not only the changes in output caused by other policies from foreign to domestic suppliers.  It also shifts the BAU output from foreign to domestic suppliers.  We therefore need another small section to calculate this shift of the BAU (imported) output, shown in the screenshot below.  Note that shifting of BAU output caused by price-driven import dubstitution is already handled in the [Industry and Agriculture sheet](industry-ag-main), so it is not added here.
+
+![BAU imported output shifted in-region](/img/io-model-BAUImportedOutputShifted.png)
+
 ## Calculating Change in Domestic Output by ISIC Code
 
 ### Government and Household Spending Contribution to Change in Industrial Output
@@ -148,13 +210,21 @@ As the next step, we calculate the policy-driven change in output for each cash 
 
 Note that government and household contribution to the change in industrial output is based on the change in money available for government and households to spend - i.e. change in cash flow, not change in revenue.  (Some of the change in revenue has already been spent on products and is already included in the change in industry revenue, so we need to use the change in cash flow for government and households to avoid double-counting.)  In contrast, industry contribution will be handled using change in revenue, not change in cash flow (discussed below).
 
-First, we calculate the impact of changes in regular government spending, which is used to account for the change in government cash flow that was assigned to regular spending via the GRA levers.  We assume these changes in cash flow increase or decrease spending on ISIC codes in proportion to how the existing government budget is spent, as defined in variable `GaHEbIC Government Expenditures by ISIC Code`.
+First, we calculate the impact of changes in regular government spending, which is used to account for the change in government cash flow that was assigned to regular spending via the GRA levers.  We assume these changes in cash flow increase or decrease spending on ISIC codes in proportion to how the existing government budget is spent, as defined in variable `GaHEbIC Government Expenditures by ISIC Code` and converted to a time series variable as shown above. 
 
 ![allocation of change in Government expenditures to ISIC codes](/img/io-model-GovtOutputAllocated.png)
 
 Change in households' spending are allocated to ISIC codes in the same proportions as existing household expenditures.  The change in households' cash flow includes any cash received from the GRA "household taxes" mechanism, which includes increases and decreases in individual income taxes, as well as climate dividend payments (if any).  They do not include any change in household savings, as noted above.
 
 ![allocation of change in Household expenditures to ISIC codes](/img/io-model-HouseholdsOutputAllocated.png)
+
+Next, we remove the "foreign content share" (the fraction of the spending on each ISIC code that is supplied by foreign entities - i.e. imports) from the both the government and household contributions.  This restricts the changes in output to those affecting domestic suppliers in each ISIC code, which helps us calculate the effects of the policies on domestic (rather than domestic + foreign) jobs, GDP, and employee compensation.
+
+![limiting government and household changes via domestic content share](/img/io-model-DomesticContentShareGovHhld.png)
+
+Finally, we sum the government and household contributions to change in output by ISIC code, because respending of these dollars will cause induced impacts on jobs, GDP, and employee compensation.  Changes in industry contributions to change in output by ISIC code are kept separate from this total, because those changes in output produce direct and indirect effcts, not induced effects, and we wish to keep the effects separate because they are handled differently in macroeconomic feedback loops and so that they may be reported individually in output graphs.
+
+![summing changes to domestic output by ISIC code](/img/io-model-SumGovtHouseholdOutputChange.png)
 
 ### Industry Contribution to Change in Industrial Output
 
@@ -164,29 +234,27 @@ To start calculating the industry contribution to change in output, we sum the c
 
 ![government revenue change allocated to industry](/img/io-model-GovtRevToIndustry.png)
 
-Policy-driven changes in industries' revenues have already been assigned to ISIC codes in the various sectors elsewhere in the EPS and summed on the [Cross-Sector Totals](cross-sector-totals) sheet.  Here, we do these things:
+Policy-driven changes in nonenergy industries' revenues have already been assigned to ISIC codes in the various sectors elsewhere in the EPS and summed on the [Cross-Sector Totals](cross-sector-totals) sheet.  Here, we do these things:
 - We add in any change in government cash flow that was reallocated to ISIC codes using the GRA settings.
-- We assign changes in cash flow for the five energy suppliers to the (more aggregated) ISIC codes for energy.  This is because we are about to use these data in the I/O model, which contains data for all ISIC codes but not for the energy supplying industries that we track separately.  (Direct cash flow impacts on the waste management industry are grouped with certain energy industries in one ISIC code category.)  We use weighted average output of different energy ISIC codes to help us assign cash flow impacts on broken-out energy suppliers to more aggregated energy ISIC codes.
+- We assign changes in fuel industry revenue to their corresponding ISIC codes.  This is because in each sector's cash flow sheets, we have tracked changes in Nonenergy ISIC Code Revenue separately from energy revenue, which has a more detailed treatment on the [Fuels](fuels) sheet.
 
 ![clean up of change in industry output to ISIC codes](/img/io-model-IndustryOutputAllocated.png)
 
-Expenses passed through to buyers (such as raising the price of a good by the amount of a tax levied on that good) don't increase output for employment (or employee compensation) purposes.  An industry doesn't need more workers because it is not making more products.  Therefore, we remove industry's revenue from passthrough costs from industry's contribution to output.  (For calculation of value added, we will add the passthrough costs back in later, because taxes and employee compensation paid are a part of value added and contribute to GDP.)  For more on how passthrough costs are calculated, see the [industry - cash flow](industry-ag-cash) documentation page.
-
-![removal of passthrough costs from industry output](/img/io-model-IndustryPassthruRemoval.png)
-
-Next, we remove the "foreign content share" (the fraction of the spending on each ISIC code that is supplied by foreign entities - i.e. imports) from the total.  This restricts the changes in output to those affecting domestic suppliers in each ISIC code, which helps us calculate the effects of the policies on domestic (rather than domestic + foreign) jobs, GDP, and employee compensation.
+Next, we remove the "foreign content share" (the fraction of the spending on each ISIC code that is supplied by foreign entities - i.e. imports) from the total (as we did above for the government and household respending effects).
 
 (The import/export code on the [Fuels](fuels) sheet is not a replacement for doing this for the fuel industries.  The fuel trade code adds revenue for fuel exports and adds expenditures for fuel imports, but we use revenues here (not cash flows), so the revenues used here still include any changes in payments to foreign fuel suppliers.  Therefore, no exception is made for fuel industries here.)
 
-![limiting government and household changes via domestic content share](/img/io-model-DomesticContentShareGovHhld.png)
+Changes in the cash flow assigned to "foreign entities" due to the policy package are assumed not to influence the extent to which foreign entities buy goods or services from the modeled region, as (1) these changes in cash flow are divided up among many foreign countries/regions and are likely to be very small next to the total size of the economies of these regions, and (2) foreign economies are likely to spend the vast majority of their cash on their own domestically-produced goods and services, and on imports from countries other than the modeled country.
 
 ![limiting industry changes via domestic content share](/img/io-model-DomesticContentShareIndst.png)
 
-Finally, we sum the government and household contributions to change in output by ISIC code, because respending of these dollars will cause induced impacts on jobs, GDP, and employee compensation.  Changes in industry contributions to change in output by ISIC code are kept separate from this total, because those changes in output produce direct and indirect effcts, not induced effects, and we wish to keep the effects separate because they are handled differently in macroeconomic feedback loops and so that they may be reported individually in output graphs.
+Expenses passed through to buyers (such as raising the price of a good by the amount of a tax levied on that good) don't increase output for employment (or employee compensation) purposes.  An industry doesn't need more workers because it is not making more products.  Therefore, we remove industry's revenue from passthrough costs from industry's contribution to output.  (For calculation of value added, we will add the passthrough costs back in later, because taxes and employee compensation paid are a part of value added and contribute to GDP.)  For more on how passthrough costs are calculated, see the [Industry - Cash Flow](industry-ag-cash) documentation page.
 
-Changes in the cash flow assigned to "foreign entities" due to the policy package are assumed not to influence the extent to which foreign entities buy goods or services from the modeled region, as (1) these changes in cash flow are divided up among many foreign countries/regions and are likely to be very small next to the total size of the economies of these regions, and (2) foreign economies are likely to spend the vast majority of their cash on their own domestically-produced goods and services, and on imports from countries other than the modeled country.
+![removal of passthrough costs from industry output](/img/io-model-IndustryPassthruRemoval.png)
 
-![summing changes to domestic output by ISIC code](/img/io-model-SumGovtHouseholdOutputChange.png)
+Finally, we need to add in the effects of the Buy-In-Region policy on BAU output (this policy's effects on the change in output is already captured above).
+
+![adding Buy-In-Region effects](/img/io-model-BuyInRegionContribution.png)
 
 ## Calculating Jobs, Value Added and Compensation Requirements per Unit Output
 
@@ -202,33 +270,15 @@ Some details about these three metrics:
 
 We divide each of the three key metrics (jobs, value added, and employee compensation) by output to obtain "within industry" jobs, value added, or employee compensation per unit of output that ISIC code generates.  This provides a measure of direct (first-order) job intensity, value added intensity, and employee compensation intensity of each ISIC code.  These intensity or "Direct Requirements" variables will be used later to help us calculate the direct impacts of the policy package.
 
+Note that changes in product prices do not change the number of workers required to produce a product.  We handle this (currently only for energy products) by adjusting based on the Percent Change in Weighted Average Pretax Prices by ISIC Code, calculated on the [Fuels page](fuels).
+
 ![within-industry job, value added, and employee compensation intensities](/img/io-model-WithinIndustryIntensities.png)
 
-Just below on the IO Model sheet, we calculate "Direct Plus Indirect Requirements" variables.  These requirements variables are used to assist in the calculation of induced impacts (because induced impacts are not typically reported broken into direct and indirect components - that is, how much of the induced activity was induced by direct spending and how much was induced by indirect spending).  To do this, we must conver these direct ("within-industry") intensities into final intensities that include direct and indirect requirements.  Each "within industry" intensity is multiplied by the Domestic Leontief Inverse Matrix (DLIM) for the modeled region.  DLIM is obtained from the same OECD database as other I/O data, described above, and can be caluclated from a standard input-output table (using the procedure described on the "About" tab of the io-model/DLIM Excel file).  However, we do not need to calculate our own DLIM table, since it was available pre-calculated by the OECD.
+Just below on the IO Model sheet, we calculate "Direct Plus Indirect Requirements" variables. These requirements variables are used to assist in the calculation of induced impacts (because induced impacts are not typically reported broken into direct and indirect components - that is, how much of the induced activity was induced by direct spending and how much was induced by indirect spending). To do this, we must convert these direct ("within-industry") intensities into final intensities that include direct and indirect requirements. Each "within industry" intensity is multiplied by the Calculated Leontief Inverse Matrix we found above in the Buy In-Region section, which represents how spending by each ISIC code in the economy affects each other ISIC code. 
 
-In order to understand this step, it is crucial to understand what a Leontief Reverse Matrix is.  A screenshot of the upper left portion of the OECD's DLIM file for the United States (showing the first six ISIC code categories) appears below.  Please refer to it while reading the following explanation.
+However, we don't want to multiply the Leontief Inverse Matrix by quantities of output change directly.  This is because we aren't interested in the final change in _output_ of each industry.  We want to know the final change in _jobs_, _value added_, and _employee compensation_ for each industry.  (The difference between output and value added was explained above.)  Therefore, we must convert the multipliers obtained from the Leontief Inverse Matrix for output to produce results for jobs, value added and industry.  Therefore, we multiply by the within-industry jobs, value added, and employee compensation intensities to obtain a trio of Leontief Inverse Matrix-like variables that convert changes in output to changes in jobs, value added, and employee compensation, rather than remaining in units of output.  This trio is called the "Requirements" variables, as they specify the number of jobs, value added, or employee compensation that was "required" (i.e. created) to bring about a known change in output.
 
-![OECD Domestic Leontief Inverse Matrix screenshot](/img/io-model-DomesticLeontiefInvMatrix.png)
-
-A Leontief Inverse Matrix provides a set of multipliers that illustrate how spending by each ISIC code in the economy affects each other ISIC code, as well as how it affects itself, after all respending effects are accounted for.  (Recall that each ISIC code contains many businesses, which may produce different products, so long as those products fall within the same ISIC code.)  The same industries appear in the rows and the columns (i.e. the matrix is square).
-
-If a policy intervention increases (or decreases) the jobs, value added, or employee compensation of an ISIC code in a row by 1 unit, the resulting effect on all industries is shown in each column of that row.  The initial 1 unit is included for the industry in the current row, and then indirect effects account for the values in all other columns, as well as the amount exceeding 1 in that industry's own column.
-
-For example, the "Agricluture" row in the table above has a 1.18 value in the "Agriculture" column (cell C9).  This means that if policies directly generate 100 jobs in agriculture, the ultimate effect will be to generate 118 agricultural jobs, because 18 more jobs are needed to supply the inputs for the 100 new agricultural jobs (such as growing feed crops for animals).  In the "Agriculture" row, the "Mining and extraction of energy producing products" column (cell D9) has an extremely low value (0.001) because the mining industry does not buy agricultural products, so inputs from agriculture are not needed for the mining industry to generate value.  In contrast, the column for the "Food products, beverages, and tobacco" industry (cell G9) has a value of 0.288, which is a very high multiplier.  This is because the agriculture industry is a very important supplier to the food, beverage, and tobacco industry, so growth of agriculture tends to accompany growth in the food and beverage industry.
-
-If you read down a column, you see the amount of input from the industry in each row needed to produce 1 unit of value for the industry in the column.  For example, in the row for "Mining and extraction of energy producing products," the column for "Agriculture" (cell C10) has a value of 0.02, which is 20 times higher than the value in the agriculture row for the mining industry (cell D9).  This is because energy is an input to agriculture, so roughly 2 energy extraction jobs are needed to supply every 100 agriculture jobs.
-
-If you multiply a one-dimentional "demand matrix" (a vector) of values by the Leontief Inverse Matrix, you obtain the amount of output from each industry required to meet that demand.  For example, if there is an external demand for $1000 worth of value from every industry, the DLIM multiplied by a vector with $1000 for each industry would provide the change in output produced by each industry to meet that demand.  The change in external demand (output) can be the result of a policy package, as calculated earlier.
-
-That would be the classical way to use DLIM for output analysis.  However, we don't want to multiply the DLIM by quantities of output change directly.  This is because we aren't interested in the final change in _output_ of each industry.  We want to know the final change in _jobs_, _value added_, and _employee compensation_ for each industry.  (The difference between output and value added was explained above.)  Therefore, we must convert the multipliers obtained from the DLIM for output to produce results for jobs, value added and industry.  Therefore, we multiply by the within-industry jobs, value added, and employee compensation intensities to obtain a trio of DLIM-like variables that convert changes in output to changes in jobs, value added, and employee compensation, rather than remaining in units of output.  This trio is called the "Requirements" variables, as they specify the number of jobs, value added, or employee compensation that was "required" (i.e. created) to bring about a known change in output.
-
-![domestic jobs, value added, and employee compensation requirements](/img/io-model-DirectPlusIndirectRequirements.png)
-
-To calculate "indirect" effects on jobs, GDP, and employee compensation, we need versions of the requirements variables that exclude direct impacts.  To obtain this, we calculate an alternate version of the Domestic Leontief Inverse Matrix (DLIM).  We subtract the identity matrix (a matrix containing 1s along the diagonal, for matching ISIC codes, and 0s elsewhere) from DLIM to remove the initial output unit (job or currency unit) assigned to an ISIC code.  This leaves only the multipliers across all ISIC codes that reflect the indirect activity from adding a unit of output to a given ISIC code.
-
-![modified Domestic Inverse Leontief Matrix excluding direct effects](/img/io-model-ModifiedDLIM.png)
-
-We then multiply the within-industry intensities by our modified DLIM to obtain requirements variables that include only indirect effects.
+To calculate "indirect" effects on jobs, GDP, and employee compensation, we need versions of the requirements variables that exclude direct impacts.  To obtain this, we calculate an alternate version of the Calculated Leontief Inverse Matrix.  We subtract the identity matrix (a matrix containing 1s along the diagonal, for matching ISIC codes, and 0s elsewhere) from DLIM to remove the initial output unit (job or currency unit) assigned to an ISIC code.  This leaves only the multipliers across all ISIC codes that reflect the indirect activity from adding a unit of output to a given ISIC code.  We then multiply the within-industry intensities by our modified Leontief Inverse Matrix to obtain requirements variables that include only indirect effects.
 
 ![indirect requirements variables](/img/io-model-IndirectRequirements.png)
 
@@ -328,7 +378,7 @@ We calculate the BAU equivalents of these values, and then we take the differenc
 
 ## Union Representation
 
-To calculate the change in union-represented jobs and non-union-represented jobs, we take in input data for the percentage of jobs within each ISIC code that are represented by unions.  (We currently use time-invariant union representation shares using the latest available data, though using future projected time series data may be possible in a future EPS release, if reliable projections of future changes in union representation share by ISIC code are available.)  We multiply the new jobs in each ISIC code by that ISIC code's union representation share to find the total change in union-represented jobs.  The remainder are non-union-represented jobs.
+To calculate the change in union-represented jobs and non-union-represented jobs, we take in input data for the percentage of jobs within each ISIC code that are represented by unions.  (We currently use time-invariant union representation shares using the latest available data, though using future projected time series data may be possible in a future EPS release, if reliable projections of future changes in union representation share by ISIC code are available.)  We multiply both BAU jobs and new jobs (after accounting for productivity effects) in each ISIC code by that ISIC code's union representation share to find the total domestic jobs and the change in domestic jobs in union-represented jobs.  The remainder are non-union-represented jobs.
 
 ![change in union-represented and non-union jobs](/img/io-model-CngUnionNonUnionJobs.png)
 
@@ -337,4 +387,4 @@ To calculate the change in union-represented jobs and non-union-represented jobs
 The results of the IO model are also used in macroeconomic feedback loops, discussed on the [Macroeconomic Feedbacks](macro-feedbacks) documentation page.
 
 ---
-*This page was last updated in version 3.0.0.*
+*This page was last updated in version 3.5.0.*

@@ -54,7 +54,7 @@ We then take the difference between the BAU and policy cases to find the change 
 
 ## Changes in Cash Flows
 
-The model tracks changes in cash flow for nine main actors (sometimes called "cash flow entities"): government, non-energy industries, labor and consumers, foreign entities, and five types of energy suppliers (electricity, coal, natural gas and petroleum, biomass and biofuel, and other).  Additionally, the model tracks cash flow impacts by ISIC code, which breaks apart the non-energy industries cash flow entity into 18 ISIC codes and also tracks an additional 18 ISIC codes, for a total of 36 ISIC codes.  The break-out of five types of energy supplier within the EPS is more detailed than the available data by ISIC code (which, for example, groups all fossil fuel extraction businesses together, not distingusihing coal from oil and gas), so we retain the five energy suppliers within the "cash flow entities" subscript, instead of simply relying entirely on ISIC codes to track cash flows for all industries.  The detailed break-outs by ISIC code and by cash flow entity allows the EPS to produce outputs that show how policy packages affect specific segments of the economy and society.
+The model tracks changes in cash flow for nine main actors (sometimes called "cash flow entities"): government, non-energy industries, labor and consumers, foreign entities, and five types of energy suppliers (electricity, coal, natural gas and petroleum, biomass and biofuel, and other).  Additionally, the model tracks cash flow impacts by ISIC code, which breaks apart the non-energy industries cash flow entity into 21 ISIC codes and also tracks an additional 21 ISIC codes, for a total of 42 ISIC codes.  The break-out of five types of energy supplier within the EPS is more detailed than the available data by ISIC code (which, for example, groups all fossil fuel extraction businesses together, not distingusihing coal from oil and gas), so we retain the five energy suppliers within the "cash flow entities" subscript, instead of simply relying entirely on ISIC codes to track cash flows for all industries.  The detailed break-outs by ISIC code and by cash flow entity allows the EPS to produce outputs that show how policy packages affect specific segments of the economy and society.
 
 ## Changes in Non-Energy Industry Cash Flows by ISIC Code
 
@@ -64,13 +64,23 @@ The first step is to total the change in non-energy industry expenditures by ISI
 
 ![summing non-energy expenditures by ISIC code](/img/cross-sector-totals-NonEnerExpendByISIC.png)
 
-We also track the change in revenues by ISIC code and by cash flow entity.  Revenue assignments to specific ISIC codes were already made in various sectors (transportation, buildings, etc.), but labor and tax shares of the assignments to non-energy industries were not separated out within the sectors.  We will account for the effects of changes in output by ISIC code on government and household spending the [input-output model](io-model) sheet, using variables that are part of a feedback loop from the IO model outputs.  Therefore, we do not need to separate out labor and tax shares of industry revenue upstream of the IO model.  (The IO model expects the total change in output, which is based on revenue, including revenue that ultimately is paid to workers or paid as taxes.  Worker salaries and taxes paid still contribute to that industry's value added and hence to its economic output.)  The share of each ISIC code supplied by foreign entities is also separated out inside the IO model.
+We also track the change in revenues by ISIC code and by cash flow entity.  Revenue assignments to specific ISIC codes were already made in various sectors (transportation, buildings, etc.), which include taxes on those outputs (all input data on costs of equipment, labor, etc. should reflect final prices paid, including taxes).  We sum those components here, also allocating any change in interest paid on the national debt to nonenergy industries at this stage - for more on this, see the documentation page on the [input-output model](io-model).
 
-We also allocate any change in interest paid on the national debt to nonenergy industries at this stage - for more on this, see the documentation page on the [input-output model](io-model).
+![summing non-energy revenues by ISIC code before removing taxes](/img/cross-sector-totals-NonEnerRevByISIC.png)
 
-![summing non-energy revenues by ISIC code before partitioning](/img/cross-sector-totals-NonEnerRevByISIC.png)
+We now need to separate out value added tax (VAT) or sales taxes collected, as our input data for the I/O model on industrial output does not inlcude these taxes and we need to maintain a consistent treatment of taxes.  To do this, we find the tax portion using input data on the VoSTR VAT or Sales Tax Rate by ISIC code.  An ideal VAT and sales tax would produce the same amount of government revenue, with the same tax burden ultimately falling on producers of each ISIC code.  It is just a difference of tax administration, or where the tax is collected.  A VAT is collected at each step of the production chain, and each downstream buyer pays a price that reimburses the supplier for the VAT it paid.  A sales tax is collected at the end, so a business would pay less to its suppliers, as it doesn't need to reimburse them for their VAT payments.  Before applying the tax rate, we also subtract the change in exports of nonenergy products from the direct change in revenue, as VAT or sales tax is not applied to exported goods. 
 
-We add the direct (first-order) changes in revenue and changes in expenses to obtain the direct changes in cash flow for each non-energy industry, broken out by ISIC code.  In other words, this is the direct impact of the user's selected policies on the cash available to each industry segment.  We do not actually use this variable within the IO model (because the IO model requires the change in output, not the change in cash flow or net income, for each industry), but we calculate it here for completeness and for use in the [debugging assistance](debugging-assistance) sheet.
+![change in VAT or sales tax collected](/img/cross-sector-totals-CnginVAT.png)
+ 
+The variable 'Change in VAT or Sales Tax Collected on Revenue of Nonenergy ISIC Codes' shown above also includes one other component for the ISIC codes that do not correspond to one of the 25 industry categories.  For these ISIC codes, we also need to take VAT or sales tax out of the indirect and induced output (for industry ISIC codes, the indirect and induced effects already contributed to altering production via the [macroeconomic feedbacks](macro-feedbacks), and are therefore already reflected in the direct output).  We sum the indirect and induced changes in output, apply a one-year delay to avoid circularity, and apply the VAT or sales tax rate to this additional output for non-industry ISIC codes only. 
+
+![change in VAT or sales tax collected on indirect and induced effects](/img/cross-sector-totals-CnginVATInd.png)
+
+Now that we have the total change in VAT or sales tax revenue, we can create two additional variables we will need for other calculations in the model.  First, we subtract the change in VAT from the direct change in revenue to find 'Change in Nonenergy ISIC Code Revenue After Relinquishing Collected VAT or Sales Tax by ISIC Code.'  We also map the tax revenue from ISIC codes to the Cash Flow Entity subscript.  All tax revenue is assigned to the government subscript, while the revenue is removed from the nonenergy industries entity.
+
+![change in VAT or sales tax collected by cash flow entity](/img/cross-sector-totals-CnginVATOutputs.png)
+
+Finally, we add the changes in revenue and changes in expenses calculated above to obtain the Change in Nonenergy Industry Cash Flow, broken out by ISIC code.  In other words, this is the impact of the user's selected policies on the cash available to each industry segment.  We do not actually use this variable within the IO model (because the IO model requires the change in output, not the change in cash flow or net income, for each industry), but we calculate it here for completeness and for use in the [debugging assistance](debugging-assistance) sheet.
 
 ![totalling change in non-energy industries' cash flow by ISIC code](/img/cross-sector-totals-NonEnerCashFlowTot.png)
 
@@ -84,9 +94,9 @@ Similarly, we sum changes in revenues for each cash flow entity across all secto
 
 ![summing changes in revenues](/img/cross-sector-totals-SumCngRevenues.png)
 
-We also assign changes in national debt interest payments, with expenses paid by government and revenues for those entities that own government debt.  (The interest received by the "non-energy industries" cash flow entity was allocated to ISIC codes earlier on this sheet.)
+We also assign changes in revenue due to VAT or sales tax (explained above) and national debt interest payments, with expenses paid by government and revenues for those entities that own government debt.  (The interest received by the "non-energy industries" cash flow entity was allocated to ISIC codes earlier on this sheet.)
 
-![assigning changes in interest on national debt](/img/cross-sector-totals-NatnlDebtIntByEntity.png)
+![assigning changes VAT or sales tax revenue and interest on national debt](/img/cross-sector-totals-NatnlDebtIntByEntityandTax.png)
 
 We know how much of the output of each energy industry and non-energy industry was purchased by "foreign entities," so we are able to subdivide the change in revenue by entity into change in export revenue and change in domestic revenue.  We break this out here to enable us to show this revenue breakdown in output graphs.
 
@@ -98,5 +108,15 @@ Our final step is to sum the changes in expenditures (energy and non-energy) and
 
 For the next steps in the calculation of financial policy impacts, see the documentation page on [the input-output model](io-model).
 
+## Change in Energy Supplier Revenue and BAU Energy Supplier Revenue by Fuel
+
+This section calculates the change of revenue for fuel-supplying entities attributable to each fuel type they produce.  This is done to allocate revenue changes for fuel suppliers to ISIC codes in the I/O model, as the ISIC codes don't map neatly onto the cash flow entities (but can be mapped neatly onto the fuel types).  Similar to other calculations shown above, this section sums the various sources of revenue.  However, these aren't already summed by sector in the cash flow sheets.  Therefore, we create each sectoral total here using all relevant pieces that affect energy supplier revenue and mapping them to the relevant fuel type, as shown below. 
+
+![summing changes in energy supplier revenue](/img/cross-sector-totals-CngInEnergySupplierRev.png)
+
+We also need the BAU energy supplier revenue by fuel to endogenously calculate time series output for fuel industries ahead of the I/O model.  This requires an extra step to map the amount spent on fuels from each sector to the 'All Fuels' subscript, as each sector works with a different number of fuel types (for example, coal can be used in the electricity and industry sectors, but not in the transportation sector).
+
+![summing changes in energy supplier revenue](/img/cross-sector-totals-BAUEnergySupplierRev.png)
+
 ---
-*This page was last updated in version 3.0.0.*
+*This page was last updated in version 3.5.0.*

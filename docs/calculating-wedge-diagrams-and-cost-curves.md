@@ -1,7 +1,7 @@
 ---
 title: Calculating Wedge Diagrams and Cost Curves
 ---
-The Energy Policy Simulator (EPS) can breaking apart a policy package and illustrate the effects of each component policy within that package.  The simulator produces two types of graphs of these policy-by-policy effects: _wedge diagrams_ and _cost curves_.  Both graph types are available for total GHG emissions, and wedge diagrams (but not cost curves) are also available for sector-specific GHG emissions and for avoided premature deaths.
+The Energy Policy Simulator (EPS) can break apart a policy package and illustrate the effects of each component policy within that package.  The simulator produces two types of graphs of these policy-by-policy effects: _wedge diagrams_ and _cost curves_.  Both graph types are available for total GHG emissions, and wedge diagrams (but not cost curves) are also available for sector-specific GHG emissions and for avoided premature deaths.
 
 **To see examples of these graphs, and to learn how to read and understand them, see [this location in the Tour of the Web Interface video](https://www.youtube.com/watch?v=7guMn2dhuGA&t=1099s).**
 
@@ -19,7 +19,7 @@ As noted above, wedge diagrams are used to display several different metrics, su
 
 ### Policies and Policy Groups
 
-Each policy that forms a single wedge is actually a set of a few different policy levers.  Generally, all the subscripted elements of a given policy will be tested together.  We call this a "policy group."  For example, the policy "Building Energy Efficiency Standards" can be set to different values for different byilding types (urban residential, rural residential, or commercial) and different building components (heating, cooling, lighting, etc.).  All of these settings are considered a single policy and will be tested together to form a single wedge for "Building Energy Efficiency Standards."
+Each policy that forms a single wedge is actually a set of a few different policy levers.  Generally, all the subscripted elements of a given policy will be tested together.  We call this a "policy group."  For example, the policy "Building Energy Efficiency Standards" can be set to different values for different building types (urban residential, rural residential, or commercial) and different building components (heating, cooling, lighting, etc.).  All of these settings are considered a single policy and will be tested together to form a single wedge for "Building Energy Efficiency Standards."
 
 In rare cases, multiple policy levers (not just subscripted elements of a single lever) may be grouped as a single wedge.  For example, the policies "Change Electricity Exports" and "Change Electricity Imports" are two separate policy levers, but they are grouped into a single wedge called "Electricity Imports and Exports."
 
@@ -55,7 +55,7 @@ Here is the correct size of the F-gas wedge, which we see if we disable one of t
 
 ![wedge diagram showing correct F-gas wedge size](/img/calculating-wedge-diagrams-and-cost-curves-Wedge2.png)
 
-It is possible to avoid these interactions by testing each policy individually. That is, in the policy package, you enable one policy at a time, checking to see how much emissions fall each time, to get the raw wedge thicknesses. Then you scale by a multiplier to make the wedges fit the total abatement of the package. The problem with this approach is that it fails to capture any policy interactions at all, which is important in many cases. Two examples are: (1) fuel shift to hydrogen in industry + shift hydrogen production to electrolysis, or (2) subsidize RE + add flexibility to the grid, to accommodate more RE. In each of these circumstances, testing the policies individually will fail to show the importance of the policies for decarbonization, because they rely on each other to deliver the large-scale abatement.
+It is possible to avoid these interactions by testing each policy individually. That is, in the policy package, you enable one policy at a time, checking to see how much emissions fall each time, to get the raw wedge thicknesses. Then you scale by a multiplier to make the wedges fit the total abatement of the package. The problem with this approach is that it fails to capture any policy interactions at all, which is important in many cases. Two examples are: (1) fuel shift to hydrogen in industry + shift hydrogen production to electrolysis, or (2) subsidize renewable energy + add flexibility to the grid, to accommodate more renewable energy. In each of these circumstances, testing the policies individually will fail to show the importance of the policies for decarbonization, because they rely on each other to deliver the large-scale abatement.
 
 So, the goal is to limit the effects of interactions we don't want but keep interactions we do want. This turns out to be a trade-off, without a single correct "solution," but more of a compromise.
 
@@ -82,7 +82,7 @@ Obtain a list of all the component variables for the metric being graphed.  In t
 * `Output Waste Management CO2e Emissions`
 * `Output Buildings Sector CO2e Emissions`
 
-Other wedge diagrams, such as the one for avoided premature mortality, may have fewer variables or just one variable listed in `WebAppData.xlsx`.  The procedure here should work for all of these graphs.  (If only one variable is listed, the procedure should produce results essentially identical to what we have in EPS 3.0.0.)
+Other wedge diagrams, such as the one for avoided premature mortality, may have fewer variables or just one variable listed in `WebAppData.xlsx`.  The procedure here should work for all of these graphs.  (If only one variable is listed, the procedure should produce results essentially identical to what we had in EPS 3.0.0 before the improved methodology was introduced.)
 
 The directions in this post will refer to each variable listed above as a "sector," even though some of them (such as Industry Process Emissions and Industry Energy Related Emissions) are not technically sectors.  They don't need to actually be sectors.  **The important thing is that the variables must sum to the metric you want graphed.**
 
@@ -90,7 +90,7 @@ The directions in this post will refer to each variable listed above as a "secto
 
 We will assume you have a policy scenario, either created by the user in the web app, or defined by a `.cin` file and included as a reference scenario in the web app.
 
-Just as in EPS 3.0.0 and earlier, certain policies are grouped, which means that they are treated as a single policy for purposes of drawing wedges.  **This is not changing.**  The groups are still defined in `WebAppData.xlsx` on the `PolicyLevers` tab in the `Policy Group` column.  Generally, all the subscripted elements of a single lever are treated as part of the same group.  (For example, a building component energy efficiency standard applied to heating systems and a building component energy efficiency standard applied to cooling systems are both going to be part of the building component energy efficiency standard policy group, and this group will have a single wedge.)  In rare cases, different levers will be grouped.  For example, the four different policies that target F-gas process emissions (F-gas substitution, F-gas destruction, F-gas recovery, F-gas eqpt. maintenance/retrofit) are assigned to the same `F-gas Measures` group, so they will be drawn as a single wedge.  This prevents the fragmentation of the wedge diagram into zillions of tiny wedges.
+Just as in EPS 3.0.0 and earlier, certain policies are grouped, which means that they are treated as a single policy for purposes of drawing wedges.  **This has not changed.**  The groups are still defined in `WebAppData.xlsx` on the `PolicyLevers` tab in the `Policy Group` column.  Generally, all the subscripted elements of a single lever are treated as part of the same group.  (For example, a building component energy efficiency standard applied to heating systems and a building component energy efficiency standard applied to cooling systems are both going to be part of the building component energy efficiency standard policy group, and this group will have a single wedge.)  In rare cases, different levers will be grouped.  For example, the four different policies that target F-gas process emissions (F-gas substitution, F-gas destruction, F-gas recovery, F-gas eqpt. maintenance/retrofit) are assigned to the same `F-gas Measures` group, so they will be drawn as a single wedge.  This prevents the fragmentation of the wedge diagram into many tiny wedges.
 
 Any policy lever that has a blank entry in the `Policy Group` column is to be omitted from the wedge diagram entirely.  This is also the same behavior has we have had in EPS 3.0 and prior.  Currently, the only excluded levers are control settings, which are not policies, and which move the BAU case line along with the policy line, so they are not compatible with wedge diagrams or cost curves.
 
@@ -121,13 +121,13 @@ Each policy group can affect each of the component variables.
 
 In other words, when the policy group makes beneficial progress on the metric (which is a reduction in emissions, or an increase in avoided premature mortality), the wedge thickness should be positive.  The wedge thickness should be negative if the policy group is harmful to the metric (increases emissions, or reduces avoided premature mortality).  You can tell whether positive or negative changes are beneficial or harmful to the metric by checking whether the chart type is an "increase wedge" or "reduction wedge" in the `Graph Style` column of the `OutputGraphs` tab in WebAppData.  Remember that we're testing each policy group by disabling it, not by enabling it, so if emissions rise when a policy group is disabled, this means the policy group was making a beneficial contribution to the metric.  Similarly, if disabling a policy group causes avoided deaths to fall (i.e. more deaths), that means that policy group was making a beneficial contribution to that metric.
 
-**This is generally how raw wedge thicknesses are already calculated in EPS 3.0.0.  The key difference for 3.1 is that now we are doing this calculation separately for each component variable, rather than for a single metric variable taken as a whole.**  That is, we are adding the inner "For" loop, while the outer "For" loop and wedge thickness calculation should already exist.
+**This is generally how raw wedge thicknesses were already calculated in EPS 3.0.0.  The key difference as of 3.1 is that now we are doing this calculation separately for each component variable, rather than for a single metric variable taken as a whole.**  That is, we are adding the inner "For" loop, while the outer "For" loop and wedge thickness calculation should already exist.
 
 Negative values were relatively uncommon under the old approach but will be much more common now, because it is common for a policy that is beneficial overall to have negative effects on at least one of the component variables.  For instance, a policy might reduce emissions in the transportation sector by 100 units but increase energy-related emissions in the industrial sector by 2 units, so it will have a positive raw wedge thickness for the component variable `Output Total CO2e Emissions by Sector[transportation sector]` but a negative raw wedge thickness for the component variable `Output Industry Sector Energy Related CO2e Emissions Excluding Ag and Waste`.
 
 ### Step 5
 
-Replace all negative wedge thicknesses with zeroes.  We can't have negative thicknesses on the graph, and including the negative numbers messes with the scaling we need to perform.
+Replace all negative wedge thicknesses with zeroes.  We can't have negative thicknesses on the graph, and including the negative numbers interferes with the scaling we need to perform.
 
 ### Step 6
 
@@ -199,23 +199,7 @@ Note that in any year where the policy case line is worse than BAU (i.e. has mov
 
 ## Cost Curves
 
-The abatement cost curve needs to know the average annual abatement of each policy group over the model run.  Rather than calculating this itself, it should piggyback off the calculations done for the wedge diagram.  That is, it should use the annual output from Step 11, sum across all model run years, and divide by the number of model run years.  Once you have the width of each box, the Y-axis value for each box is calculated in the same way we do it today, using the new box width.
-
-## Attached files
-
-An Excel file in the EPS GitHub repository walks through the methodology to build a cost curve.  It includes a version of our old methodology (that did not divide things up by sector) below, for comparison.  The tabs go left-to-right through all the calculation steps above (though not every step from this post gets its own tab).  The left-most tab contains output from a Python script that tested each policy group and produced emissions results, so you should consider the left-most tab to already contain the output of Step 3.
-
-This Excel file contains output from the U.S. EPS as of commit 0869ae3.
-
-[2020-11-30 WedgeDiagramProcedure v6.xlsx](https://github.com/EnergyInnovation/eps-us/files/5620157/2020-11-30.WedgeDiagramProcedure.v6.xlsx)
-
-Second, I've attached a `.cin` file containing all the policy settings used in the Excel file.  (I had to change the extension from `.cin` to `.txt` because GitHub wouldn't let me upload it using a `.cin` extension.)
-
-[Scenario_WedgeCalcExample.txt](https://github.com/EnergyInnovation/eps-us/files/5586250/Scenario_WedgeCalcExample.txt)
-
-Third, here is the Python script used to generate the command script that produces the data on the "Emissions" tab of the Excel file above.  (I had to change the extension from `.py` to `.txt` because GitHub wouldn't let me upload it using a `.py` extension.)  The scenario settings are the same ones specified in the `Scenario_WedgeCalcExample.txt` (i.e. `.cin`) file above, but this is the Python script version of that scenario.
-
-[CreateContributionTestScript-WedgeTest.txt](https://github.com/EnergyInnovation/eps-us/files/5620175/CreateContributionTestScript-WedgeTest.txt)
+The abatement cost curve needs to know the average annual abatement of each policy group over the model run.  Rather than calculating this itself, it should piggyback off the calculations done for the wedge diagram.  That is, it should use the annual output from Step 11, sum across all model run years, and divide by the number of model run years.  Once you have the width of each box, the Y-axis value for each box is calculated in the same way as before 3.1.0, using the new box width.
 
 ## Closing Notes
 
@@ -228,4 +212,4 @@ The new procedure is designed to be backward-compatible with old EPS versions, s
 The cost curves now only need one variable specified instead of two, as they rely on widths calculated for the wedge diagram.
 
 ---
-*This page was last updated in version 3.3.1.*
+*This page was last updated in version 3.5.0.*

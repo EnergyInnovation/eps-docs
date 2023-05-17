@@ -2,7 +2,7 @@
 title: Running the Model and Setting Policy Levers
 ---
 
-Open the packaged version of the EPS in Vensim model reader.  This is the version of the model with .vpm extension.
+Open the packaged version of the EPS in Vensim model reader.  This is the version of the model with .vpmx extension.
 
 ## Sheets
 
@@ -30,17 +30,17 @@ After you click this button, you enter Sim Setup mode.  Where the "Sim Setup" bu
 
 ![Sim Setup mode](/img/running-the-model-SimSetupMode.png)
 
-Now that you are in Sim Setup mode, you may click on any one of the policy levers to set its value.  The policies with the letter "S" in a pink box next to them are subscripted.  This means that their values can be set separately for each element of the subscript(s) they have.  If you click on a policy that is not subscripted, a small box will appear, into which you can type a numerical value for the policy setting.  For example, the following screenshot shows what it looks like after you click on the "Fraction of TDM Package Implemented" policy (TDM stands for "Transportation Demand Management") while in Sim Setup mode:
+Now that you are in Sim Setup mode, you may click on any one of the policy levers to set its value.  The policies with the letter "S" in a pink box next to them are subscripted.  This means that their values can be set separately for each element of the subscript(s) they have.  If you click on a policy that is not subscripted, a small box will appear, into which you can type a numerical value for the policy setting.  For example, the following screenshot shows what it looks like after you click on the "LDVs Feebate Rate" policy (LDVs stands for "light-duty vehicles") while in Sim Setup mode:
 
-![editing the TDM policy lever](/img/running-the-model-EditingTDM.png)
+![editing the TDM policy lever](/img/running-the-model-EditingFeebate.png)
 
-You may now enter a value, such as 0.5 (meaning half of the TDM package will be implemented by the model's end year).  Either press "return" or click elsewhere in the Vensim window to confirm your entry.  If you click on "Fraction of TDM Package Implemented" again at this point, the text box that appears will already contain the value of 0.5 that you entered earlier.
+You may now enter a value, such as 0.5 (meaning half of the global best practice feebate rate will be implemented by the model's end year).  Either press "return" or click elsewhere in the Vensim window to confirm your entry.  If you click on "LDVs Feebate Rate" again at this point, the text box that appears will already contain the value of 0.5 that you entered earlier.
 
 If you click on a policy that is subscripted, a small "Constant Changes" window will appear that lists the subscript elements to which you may apply the policy.  For example, the following screenshot shows what it looks like after you click on the "Percentage Additional Improvement of Fuel Economy Std" policy (and resize the "Constant Changes" window so that the text inside is not cut off):
 
 ![constant changes window](/img/running-the-model-ConstantChanges.png)
 
-You may now change the policy settings for each subscripted element by double-clicking its row in the "Constant Changes" window.  For example, you may enter a value, such as 0.2, for LDVs (light-duty vehicles).  This will improve the fuel economy of LDVs by 20% but will leave the fuel economy of the other vehicle types unchanged.  To finish editing an entry, click elsewhere in the "Constant Changes" window or click the "Update" button.  You may set different or the same policy values for any or all of the subscripted elements, as desired for the policy scenario you are investigating.  When you are done setting values for this policy, click the "Close" button to close the "Constant Changes" window.
+You may now change the policy settings for each subscripted element by double-clicking its row in the "Constant Changes" window.  For example, you may enter a value, such as 0.2, for passenger LDVs.  This will improve the fuel economy of passenger LDVs by 20% but will leave the fuel economy of the other vehicle types unchanged.  To finish editing an entry, click elsewhere in the "Constant Changes" window or click the "Update" button.  You may set different or the same policy values for any or all of the subscripted elements, as desired for the policy scenario you are investigating.  When you are done setting values for this policy, click the "Close" button to close the "Constant Changes" window.
 
 If you are uncertain what values would be reasonable, you may consider using SyntheSim mode (discussed below), which includes an upper bound on each policy setting.
 
@@ -54,7 +54,7 @@ SyntheSim mode is a way to run a model interactively in Vensim.  When running th
 
 ![SyntheSim mode](/img/running-the-model-SyntheSimMode.png)
 
-For a policy that is not subscripted, you may simply left-click and hold your mouse on one of the sliders, then drag it right and left to set the policy to the desired value.  For greater numerical precision, you may click on the bar that forms a track for the slider.  This will open a small dialogue box in which you can type the desired value for the slider.  It also shows you the minimum and maximum recommended values for this slider, which are values determined via research during the process of creating the EPS.  While the slider will not exceed this recommended range, you may type a number that falls outside of the range, to test that setting, if desired.  Here is a screenshot of the dialogue box that appears after clicking on the track for the slider for the "Fraction of TDM Package Implemented" policy:
+For a policy that is not subscripted, you may simply left-click and hold your mouse on one of the sliders, then drag it right and left to set the policy to the desired value.  For greater numerical precision, you may click on the bar that forms a track for the slider.  This will open a small dialogue box in which you can type the desired value for the slider.  It also shows you the minimum and maximum recommended values for this slider, which are values determined via research during the process of creating the EPS.  While the slider will not exceed this recommended range, you may type a number that falls outside of the range, to test that setting, if desired.  Here is a screenshot of the dialogue box that appears after clicking on the track for the slider for the "LDVs Feebate Rate" policy:
 
 ![setting a non-subscripted policy numerically in SyntheSim mode](/img/running-the-model-SetPolNum.png)
 
@@ -73,4 +73,4 @@ If you wish to reset all of the levers to their default values (all policies tur
 You may exit SyntheSim mode by clicking the "Stop Setup" button.  The values of your policy settings and the model results will be remembered until you begin a new simulation or enter Sim Setup mode.
 
 ---
-*This page was last updated in version 1.1.2.*
+*This page was last updated in version 3.5.0.*

@@ -30,7 +30,7 @@ The Energy Policy Simulator includes a number of cost metrics:
 
 1. The first important cost metric is "Change in Capital and Operational Expenditures."  This is a useful total that expresses how much the policy package saves money or increases spending.  It respects the user's settings for how government raises or spends revenue (discussed on the documentation page for the EPS's [input-output model](io-model)), so it correctly reflects user choices such as making carbon taxes revenue-neutral.  It roughly expresses both the cost to domestic firms and the amount of economic stimulus the policy will provide.  The simulator subdivides the metric into components (fuel and O&M, capital equipment, taxes and subsidies) to help users see what cost changes went into the metric.  This is critical for evaluating if the type of spending driven by the policies is "good" or "bad" spending (or savings), with spending on fuel often considered bad and spending on capital equipment often considered good, or at least neutral.
 
-2. Another important set of metrics concerns the impact of the policy package on the government's financial situation.  Details are  provided by the "Government Cash Flow Accounting" graph and the two national debt-related graphs in the web interface, which show the following effects of the policy package:
+2. Another important set of metrics concerns the impact of the policy package on the government's financial situation.  Details are provided by the "Government Cash Flow Accounting" graph and the two national debt-related graphs in the web interface, which show the following effects of the policy package:
 
     * Change in government spending
     * Change in budget deficit
@@ -60,34 +60,11 @@ The Energy Policy Simulator includes a number of cost metrics:
 
     These metrics are often of particular interest to policymakers, who may want to understand (for example) which policies will boost employment and in which industries.
 
-4. The last important cost metric is a breakout of "Direct Cash Flow Changes."  This shows how much money each of the following nine entities directly spend or save due to the policy package:
-
-    1. Government
-    2. Labor and consumers
-    3. Non-energy industries
-    4. Foreign entities
-    5. Electricity suppliers
-    6. Coal suppliers
-    7. Natural gas and petroleum suppliers
-    8. Biomass and biofuel suppliers
-    9. Other energy suppliers (e.g. hydrogen, uranium, etc.)
-
-    The simulator breaks out the cash flow changes for each of the nine entities above into four components:
-
-    * Change in domestic revenues
-    * Change in export revenues
-    * Change in energy expenditures
-    * Change in non-energy expenditures
-
-    Seeing the component parts of the cash flow changes can help the user to understand whether a change is a "good" or "bad" thing, from that user's perspective, and can give the user an idea of which policies to change in order to achieve a desired financial effect.
-
 ## First-Order Cash Flows and Higher-Order Economic Effects
 
 The Energy Policy Simulator first calculates direct (or "first-order") financial effects of a policy package within each sector: Who gives how much more (or less) money to whom?  Then, using its built-in [input-output model](io-model), the EPS calculates higher-order (indirect and induced) effects.  These come from the industries that supply industries affected by the policy package, and from the respending of money received by households or by government (or if less money is received due to the policy package, then how households or government make up for the reduction).
 
 How money is used by households and government can have a large impact on the policy's outcome.  A carbon price that raises government revenue will go farther if the government wisely spends the money (for example, on support for research and development, which can accelerate technological progress, or improving public transit systems, as public transit [generates economic value](https://www.ebp-us.com/sites/default/files/project/uploads/timeismoney.pdf) far greater than its costs).  If the revenue is spent unwisely, the policy will not do nearly so much good.  In the EPS, how government uses or raises revenue for/from specific policies can be set using Government Revenue Accounting levers, discussed on the [input-output model](io-model) documentation page.
-
-Therefore, the graphs that show "Financial: Direct Cash Flow Changes" should not be interpreted as which entities "win" and which entities "lose" due to a policy package.  First-order cash flows aren't where the money ultimately lands.
 
 The proper simulation of policy effects on GDP (or jobs) requires accounting for higher-order effects.  For example, a model must account for the re-integration of displaced workers into the economy and the long-term effects of efficiency gains on the economy.  This is easiest to visualize in the context of an intervention (such as automation) that displaces workers and reduces spending while increasing productivity.  In the short term, this sort of intervention looks bad, as it reduces jobs and GDP.  But in the longer term, displaced workers find new places in the economy where they can work, and the entire economy produces more goods with fewer people.  Many of the best policies to mitigate climate change, such as policies that improve products' energy efficiency, improve material efficiency in industry, and promote renewable electricity generation, have disruptive short-term effects because they save money (reduce GDP).  In the longer term, the economy will be better off for these reductions, just as the economy is better off today because of all the labor-saving and energy-saving devices and techniques invented since the Middle Ages.
 
@@ -112,4 +89,4 @@ If the guidelines above regarding financial metrics make them seem too multiface
 * Focus on objective goods.  Nobody can argue with saving human lives.  Don't let the debate about the effects of a policy package exclusively center on financial outcomes.
 
 ---
-*This page was last updated in version 3.0.0.*
+*This page was last updated in version 3.5.0.*

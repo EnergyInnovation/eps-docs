@@ -32,11 +32,11 @@ The EPS calculates the change in the following public health outcomes caused by 
 
 In the web interface, these are grouped into eight categories, while the full breakout of eleven categories is shown in Vensim.
 
-Particulates are the primary cause of these negative health outcomes, including primary particulates (those directly emitted by combustion) and secondary particulates (those formed in the atmosphere by chemical reactions involving gaseous pollutants).  The health outomes simulated in the EPS are only due to particulates, not other pollutants (such as ozone), so the public health impacts estimates produced the EPS may be conservative.
+Particulates are the primary cause of these negative health outcomes, including primary particulates (those directly emitted by combustion) and secondary particulates (those formed in the atmosphere by chemical reactions involving gaseous pollutants).  The health outomes simulated in the EPS are only due to particulates, not other pollutants (such as ozone), so the public health impacts estimates produced by the EPS may be conservative.
 
 ### Model Structure
 
-The total emissions of each pollutant in the BAU and policy cases are obtained from the [Cross-Sector Totals](cross-sector-totals) sheet, and we take the difference to find the change in pollutant emissions caused by the policy package.  (For the small number of EPS models configured to include emissions associated with imported electricity in the in-region emissions total, we exclude these emissions from the public health calculations, as we are only tracking health incidents caused by in-region emissions.)   We then multiply the change in emissions of each pollutant by a set of `Health Outcome Incidence per Ton Pollutant` multipliers, from the reduded-form tools discussed above.  Outcomes are quantized (rounded down) to the nearest whole number, such as 1 death or 1 lost workday.
+The total emissions of each pollutant in the BAU and policy cases are obtained from the [Cross-Sector Totals](cross-sector-totals) sheet, and we take the difference to find the change in pollutant emissions caused by the policy package.  (For the small number of EPS models configured to include emissions associated with imported electricity in the in-region emissions total, we exclude these emissions from the public health calculations, as we are only tracking health incidents caused by in-region emissions.)   We then multiply the change in emissions of each pollutant by a set of `Health Outcome Incidence per Ton Pollutant` multipliers, from the reduded-form tools discussed above.  Outcomes are quantized (rounded down) in increments set by the input data variable 'Quantization Size for Health Outcomes.'  Generally, health outcome graphs don't have rounding errors that need to be dampened, and quantizing to 1 incident can result in errors in the display of graphs don't have rounding errors that need to be the avoided deaths wedge diagram, which can be pronounced in regions and policy packages with small numbers of avoided deaths in partiuclar years (less than 20). Therefore, we default this variable to zero, which has the effect of not quantizing the results at all (the same as if the QUANTUM function were not used).
 
 ![public health benefits in the EPS](/img/additional-outputs-PublicHealthBenefits.png)
 
@@ -93,4 +93,4 @@ We also calculate the change in net electricity imports, which is used in one ou
 ![change in net electricity imports](/img/additional-outputs-CngNetElecImports.png)
 
 ---
-*This page was last updated in version 3.3.0.*
+*This page was last updated in version 3.5.0.*

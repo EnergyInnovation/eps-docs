@@ -1,7 +1,7 @@
 ---
 title: Industrial Electrification and Hydrogen
 ---
-In order to decarbonize the industry sector, it will be necessary for industry to transiton to energy sources that do not emit greenhouse gases (GHGs).  Some industrial processes can be electrified, but this is difficult for other processes, such as the creation of new steel from iron ore, which requires both high heat and a chemical reducing agent.  Hydrogen offers a way to meet industrial energy needs that are not amenable to electrification.
+In order to decarbonize the industry sector, it will be necessary for industry to transiton to energy sources that do not emit greenhouse gases (GHGs).  The majority of industrial processes can be electrified, but this is difficult for other processes, such as the creation of new steel from iron ore, which requires both high heat and a chemical reducing agent.  Hydrogen offers a way to meet industrial energy needs that are not amenable to electrification.
 
 Policies promoting fuel conversion can be mandatory (e.g., banning the use of coal or natural gas in certain industrial facilities), or market-based (e.g., taxing the use of coal or natural gas, or offering tax credits or incentives to use zero-carbon fuels). Policies that price carbon emissions also create an incentive for facilities to switch away from combusting fossil fuels.
 

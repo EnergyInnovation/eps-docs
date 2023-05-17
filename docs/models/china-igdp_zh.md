@@ -70,7 +70,7 @@ title:  "中国能源政策模型（2022，iGDP）"
 
 ## 软件许可
 
-能源政策模型（EPS）根据GNU通用公共许可证第3版（GPLv3）或任何更高的版本发布，是免费的开源软件。 请参考[软件许可证](.../software-license)页面，了解全部细节。
+能源政策模型（EPS）根据GNU通用公共许可证第3版（GPLv3）或任何更高的版本发布，是免费的开源软件。 请参考[软件许可证](../software-license)页面，了解全部细节。
 
 ## 图片来源
 Intricate Chinese Architectural design Of A Colorful Temple<br/>

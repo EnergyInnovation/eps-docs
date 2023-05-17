@@ -9,49 +9,69 @@ The following screenshot shows the model structure used to calculate change in a
 
 ![change in fuel spending](/img/transportation-sector-cash-Fuels.png)
 
-The fleet fuel use by fuel type is multiplied by the fuel cost per unit energy (calculated on the [Fuels page](fuels)) to obtain the amount of money spent on transportation fuels.  This value is inclusive of tax.  We also multiply the quantity of fuel used by the amount of tax paid per unit energy to find the taxes paid on transportation fuels.  These steps are done both for the BAU and the policy cases.
+Transportation fuel use by fuel type is multiplied by the fuel cost per unit energy (calculated on the [Fuels page](fuels)) to obtain the amount of money spent on transportation fuels.  This value is inclusive of tax.  We also multiply the quantity of fuel used by the amount of tax paid per unit energy to find the taxes paid on transportation fuels.  These steps are done both for the BAU and the policy cases.
 
 We find the difference in the amount spent on fuel taxes, and we find the difference in the amount spent on fuels.  We subtract out the difference in taxes to find the cash flow change for the fuel industry (which is subscripted by fuel type).  That is, a reduction in fuel spending is a negative cash flow for the fuel industry, while an increase in fuel spending is a positive cash flow for the fuel industry.
 
 ## Change in Spending on Vehicles
 
-Policy-related change in spending on vehicles requires a significant amount of additional input data to calculate.  These input data are only available for two vehicle types: passenger LDVs and freight HDVs.  Therefore, the model only calcualtes cash flow changes resulting from differences in spending on vehicles for these two vehicle types.  Fortunately, these are the two most important vehicle types, accounting for the vast majority of Transportation sector emissions and likely the vast majority of spending on vehicles each year.
+Policy-related change in spending on vehicles includes several components, including capital and operation and maintenance costs.
 
-### Estimating Number of Vehicles Purchased
+### Change in Vehicle Costs
 
-Since the Transportation sector generally works in units of cargo*distance (passenger*miles or freight ton*miles), but vehicle-related cash flows are determined on the basis of number of vehicles, we must use the available data to estimate the number of vehicles that are purchased each year.  The following screenshot shows the model structure used for this purpose:
+We calculate the number of newly sold vehicles and vehicle prices (before subsidies) on the [Transportation Sector (main) page](transportation-sector-main). We then multiply these values in both the policy and the BAU cases to find the total amount spent on vehicles. The difference in the amount spent between the two cases reflects the policy-driven change in vehicle spending. This is meant to reflect the total change in cash flow due to vehicle purchases, not the price ultimately paid by the consumer that may be lower due to government subsidies.
 
-![estimating number of vehicles purchased](/img/transportation-sector-cash-NewVehicles.png)
+![calculating change in vehicle costs](/img/transportation-sector-cash-VehPrice.png)
 
-"BAU New Cargo Dist Transported" is taken from the "Transportation - Main" sheet.  We apply the policy-related changes in vehicle usage calculated on that sheet (based on fuel cost per unit cargo*distance transported and on the transportation demand management (TDM) policy lever) to find the "New Cargo Dist Transported" in the policy case.  To convert a quantity of cargo*distance to a number of vehicles, we need to know the average amount of cargo*distance that a new vehicle transports in its first year of service.  This is calculated based on the average annual distance traveled by vehicles of each type, as well as the average vehicle loading (typical, distance-weighted number of persons or freight tons carried).  This refers to the actual number of persons or freight*tons that were carried, not the vehicle's capacity.
+### Change in EV Subsidy Payments
 
-### Calculating Average Vehicle Price
+We separately calculate the change in EV subsidies by multiplying the amount spent on vehicles (as calculated above) by the EV subsidy percentage in both the policy and BAU cases in order to find the change in total EV subsidies paid. 
 
-To convert the number of new vehicles to an amount spent on vehicles, we need to know the average vehicle price in the BAU and policy cases.  Average vehicle price in the BAU case is taken in as input data.  The screenshot below shows the structure used to estimate average vehicle price in the policy case, based on the BAU price and other data:
+![calculating change in vehicle costs](/img/transportation-sector-cash-EVSubsidy.png)
 
-![estimating average vehicle price](/img/transportation-sector-cash-VehPrice.png)
+### Change in Other Transportation Costs
 
-First, we adjust vehicle price upward if the carbon tax policy is enabled, based on the "embedded carbon" content of the vehicle.  This refers to the amount of carbon (or other GHGs) released "upstream," during the course of manufacture of the vehicle and its component parts.  Those producers had to pay those taxes and likely will pass some or all of the additional cost on to purchasers of those vehicles.  (In introductory economics, an individual producer is likely to pass on a fraction of a new tax that is based on the slope of the demand and supply curves for that good.  However, in the context of an economy-wide carbon tax- namely, one affecting all producers and all goods- it is likely that this would under-estimate the share of the tax that would be passed on to purchasers, since they would be seeing similar price increases for all goods in the economy, and so would have fewer substitutes or ways to avoid a passed-on tax.)  We model this simply as an increase in the cost of the vehicles- as if all of the additional tax were passed on.
+We also calculate the change in the following costs for vehicles: vehicle maintenance, insurance, parking, and licensing/registration/property taxes. These sections find the corresponding costs in both the policy and BAU cases by multiplying cost per vehicle by the number of vehicles in the fleet (not the number of newly sold vehicles, as these costs occur every year of the model run). For example, see the screenshot for the change in vehicle maintenance costs below:
 
-We also adjust the price of new vehicles based on improvements made to their fuel economy.  A more efficient vehicle provides savings and uses more advanced technology than a similar but less-efficient vehicle, as indicated by the "Elasticity of Vehicle Price wrt Fuel Economy."  (This is a case where an analysis of raw sales data does not correctly reveal this trend, due to market segmentation.  Car manufacturers sell more expensive cars to wealthy consumers who are not price-sensitive, so they do not bother to make those cars more fuel efficient.  The best fuel efficiency is found in cars that are neither the most expensive nor the cheapest in their size class.  However, boosting the efficiency of all cars, rather than when manufacturers voluntarily make certain efficient models to target consumers interested in fuel economy, is more likely to add a cost to all vehicles of a given size class.  To estimate the elasticity, we rely on regulatory impact analyses of new fuel economy standards, which correctly provide positive costs for more efficient vehicles, rather than raw sales data, which are confounded by the presence of very expensive yet inefficient cars.)
+![calculating change in vehicle maintenance costs](/img/transportation-sector-cash-VehMaintenance.png)
 
-Lastly, we apply the relevant R&D policy to reduce vehicle costs by a user-specified percentage.
+Finally, we calculate the change in transport fares paid. We take input data on fares per unit cargo distance and multiply by the cargo distance transported in both the policy and BAU cases.
 
-### Taxes and Cash Flows for Vehicles
+![calculating change in transport fares](/img/transportation-sector-cash-TransFares.png)
 
-Finally, we consider the tax rate on capital equipment (which includes vehicles) and calculate the relevant cash flows, as shown in the following screenshot:
+## Allocating Changes in Expenditures and Revenue
 
-![calculating cash flow changes due to vehicles](/img/transportation-sector-cash-VehiclesCash.png)
+### Changes in Expenditures
 
-For each of the BAU and Policy cases, we multiple the average vehicle price by the number of vehicles sold to find the total amount spent on vehicles.  Based on the sales tax rate, we find the amount of taxes paid on vehicles.  We take the difference between the two cases to find the change in tax payments attributable to the policy package.  We similarly take the difference in overall spending on vehicles.  Then we subtract out the difference in sales taxes paid, to find the change in non-tax amount spent on vehicles.  This becomes the change in cash flow for vehicle suppliers.  That is, a reduction in the amount spent on vehicles is a negative cash flow for vehicle suppliers.
+Now that we have calculated the changes in spending for the transportation sector, we need to assign those costs to the corresponding cash flow entities, as well as their corresponding ISIC codes (to be used in the [Input-Output Model](io-model)).
 
-## Assigning Cash Flows by Actor
+First, we allocate transportation expenditures. To do this, we find the fraction of vehicles owned by each cash flow entity. For most vehicles, the fraction owned by entity is read in as input data. However, we adjust the fraction of freight road vehicles owned by industry based on industrial output, because the share of output provided by the cash flow entities that serve as energy suppliers may vary due to policy. 
 
-Lastly, having determined the change in the amount spent on fuels and on vehicles (and the portion of those changes that went into taxes), we assign the resulting cash flows to each actor, or cash flow entity, that buys vehicles (namely: government, industry, and consumers).  In other words, the calculations above determined who received the money (fuel suppliers, vehicle suppliers, and the government), and this section determines who spends the money.  The following screenshot shows the relevant piece of model structure:
+![calculating fraction of vehicles by entity](/img/transportation-sector-cash-VehbyEntity.png)
 
-![assigning cash flows in the Transportation sector](/img/transportation-sector-cash-AssigningFlows.png)
+We then allocate energy expenditures to each of the cash flow entities by multiplying the change in amount spent on transportation fuels by vehicle type by the fraction of vehicles owned by each entity. 
 
-Our guiding assumption here is that the fraction of the change in cash flow attributable to each actor is the same as the fraction of all vehicles owned by that actor, calculated separately for each vehicle type.  We find the total change in amount spent on fuels and on vehicles, and we divide up this change in spending by actor accordingly.  Finally, we add in the tax receipts to the "government" total, and we break out the final numbers into three variables for visual clarity and ease of reporting.
+![calculating change in energy expenditures by entity](/img/transportation-sector-cash-EnergyExpbyEntity.png)
+
+We next allocate nonenergy expenditures. Generally, the categories of spending shown in the screenshot below are assigned to entities based on the change in amount multiplied by the fraction of vehicles owned by that entity. The exceptions are the change in EV subsidies paid, which are paid wholly by the government, and changes in transport fares (passenger fares are assigned to labor and consumers, while freight fares are assigned to nonenergy industries).
+
+![calculating change in nonenergy expenditures by entity](/img/transportation-sector-cash-NonenergyExpbyEntity.png)
+
+Finally, we use the calculated expenditures by entity variables to also assign expenditures by ISIC code, using data on the percent of output by each ISIC code from the [Input-Output Model](io-model). We only need to track the transportation sector's changes in expenditures by ISIC code for nonenergy industries, as the EPS separately tracks changes in energy industries.
+
+### Changes in Revenue
+
+We also need to track which entities and ISIC codes receive money based on transportation sector expenditures. First, we find the change in revenue from EV subsidies by entity (using the change in EV subsidies paid and the fraction of vehicles owned by entity). We similarly find the change in fare revenue by transport supplier based on the change in transport fares paid and the fraction of vehicles owned by entity. 
+
+![calculating change in EV subsidies and transport fares by entity](/img/transportation-sector-cash-SubsidyandFareRevenue.png)
+
+As with expenditures, we want to find the change in revenue by ISIC code for nonenergy industries only. We do this by mapping various categories of expenditures onto the most relevant ISIC code. For example, the amount spent on road vehicles is assigned to the ISIC code for the "motor vehicles, trailers, and semi-trailers" industry, and the amount spent on nonroad vehicles is assigned to the ISIC code for "other transportation equipment" industry. The change in revenue from EV subsidies for the nonenergy industries entity is assigned based on the percent of output provided by each ISIC code. The change in fare revenue for nonenergy industries is assigned to the ISIC code for "transportation and storage."
+
+![calculating change in revenue by ISIC code](/img/transportation-sector-cash-RevenuebyISIC.png)
+
+Lastly, we also calculate the total transportation sector change in revenue by entity. For the nonenergy industry, this is equal to the sum of the "Transportation Sector Change in Nonenergy Industry Revenue by ISIC Code" variable calculated above. Additional categories of expenditures not included in the nonenergy industries entity are mapped onto the most relevant entities, for example the revenue from vehicle licensing, registration, and property taxes is assigned to the government entity. We also add in the previously calculated change in revenue from EV subsidies and transport fares. 
+
+![calculating change in revenue by entity](/img/transportation-sector-cash-RevenuebyEntity.png)
 
 ---
-*This page was last updated in version 1.1.4.*
+*This page was last updated in version 3.5.0.*

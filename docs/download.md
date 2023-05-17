@@ -50,7 +50,7 @@ The model folder will contain the following files and folders:
 
 * `Cost Curve Generator.xlsx`, an Excel file that enables users to create cost curve diagrams offline (similar to the cost curve diagrams available through the EPS's web interface)
 
-* four scripts in the Python programming language (with `.py` extension), used to allow for batch runs and other automated behavior.  For instructions, see the [documentation pages on using the Python scripts](automated-analysis).
+* Four scripts in the Python programming language (with `.py` extension), used to allow for batch runs and other automated behavior.  For instructions, see the [documentation pages on using the Python scripts](automated-analysis).
 
 * `EPS.mdl`, the model source code, suitable for use in Vensim Pro or Vensim DSS (and viewable in a text editor)
 
@@ -64,9 +64,13 @@ The model folder will contain the following files and folders:
 
 * `ReadMe.docx`, a file containing some introductory information and a link to the documentation on this website
 
-* three policy packages or scenarios (with `.cin` extension), which can be loaded by Vensim.  These scenarios are also featured in the EPS's web interface.
+* Policy packages or scenarios (with `.cin` extension), which can be loaded by Vensim.  These scenarios are also featured in the EPS's web interface.
 
 * `WebAppData.xlsx`, a spreadsheet that contains information used by the online web application that runs the model
+
+* `BAU_Lever_Settings.txt`, a file that contains control settings for the business-as-usual (BAU) scenario
+
+* Any region specific notes or documentation. In the U.S. EPS, this includes "NDC policy settings and calculations.xlsx" (documenting policy settings in one of the default scenarios), as well as a file providing a comparison of EPS results to external calibration data, and a PDF explaining various U.S. specific policy assumptions
 
 If you are using Vensim Model Reader, the only files you will need are the compiled version of the model (with .vpmx extension) and the InputData folder.  The .mdl file and .vgd file are only useful if you have Vensim Pro or Vensim DSS.  (A copy of GraphDefinitions.vgd is bundled into the compiled .vpmx file, so you do not need the graph definitions text file to view graphs when using the compiled version of the model.)  The .py and .lst files are only useful if you have Vensim DSS (because this is the only version of Vensim that supports scripts).  To use these scripts, you will also need to have [Python 3](https://www.python.org/downloads/) installed.  For more information, see the [Automated Analysis with Python Scripts](automated-analysis) page.
 
@@ -76,8 +80,7 @@ Past releases of the U.S. Energy Policy Simulator can be downloaded from the [re
 
 For non-U.S. versions of the Energy Policy Simulator, go to the list of [Energy Innovation's GitHub repositories](https://github.com/orgs/EnergyInnovation/repositories), select the repository for the region of interest, and navigate to its "releases" section (on the "code" tab).
 
-Many changes, including bug fixes, have been made with each model version.  See the Version History
-section of the model documentation page for details.  We recommend using only the most recent version of the EPS for analysis purposes.  However, older versions of the EPS may be useful for comparing the performance of different EPS releases or replicating results obtained via an older EPS release.
+Many changes, including bug fixes, have been made with each model version.  See the Version History section of the model documentation page for details.  We recommend using only the most recent version of the EPS for analysis purposes.  However, older versions of the EPS may be useful for comparing the performance of different EPS releases or replicating results obtained via an older EPS release.
 
 ---
-*This page was last updated in version 3.0.0.*
+*This page was last updated in version 3.5.0.*
