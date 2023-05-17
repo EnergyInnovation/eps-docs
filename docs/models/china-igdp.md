@@ -28,7 +28,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **3.4.3.2 - May 19, 2023**
+### **3.4.3.2 - May 17, 2023**
 * Bug Fixes
   * Fixed minor formula errors in fuels/BFPaT, elec/BGDPbES, indst/BPoIFUfE.
 * Data Updates
