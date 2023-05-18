@@ -27,6 +27,11 @@ We would like to acknowledge the following people who made the U.S. State Energy
 
 ## Version History
 
+### **3.4.3.2 - May 19, 2023**
+
+* Bug fix
+  * Allow changes in capacity construction subsidies to affect electricity prices
+
 ### **3.4.3.1 - February 6, 2023**
 
 * Official launch of the U.S. State Energy Policy Simulators
