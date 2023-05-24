@@ -93,8 +93,8 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 # Version History
 ## 3.4.3 – June 20, 2023
-* Updated model platform to 3.4.3 from 1.4.2
-## 1.4.2 – June 26, 2019
+* Updated model platform to 3.4.3 from 1.4.3
+## 1.4.3 – June 26, 2019
 * Updated core files to 1.4.3
 * Updated Canada data for compatibility with 1.4.3
 * Various other Canada data updates
@@ -108,9 +108,9 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 # Software License
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software. Refer to the Software License page for full details.
 
-# Image Credits
-Ottawa Parliament at Night
-Doug Tanner
-https://www.flickr.com/photos/dougtanner/12688950314/
-License: Attribution-NonCommercial-NoDerivs 2.0 Generic (CC BY-NC-ND 2.0)
-Changes: Image has been cropped and a fade has been applied to the left side.
+## Image Credits
+Ottawa Parliament at Night<br/>
+Doug Tanner<br/>
+[https://www.flickr.com/photos/dougtanner/12688950314/](https://www.flickr.com/photos/dougtanner/12688950314/)<br/>
+License: Attribution-NonCommercial-NoDerivs 2.0 Generic (CC BY-NC-ND 2.0)<br/>
+Changes: Image has been cropped and a fade has been applied to the left side.<br/>
