@@ -8,45 +8,45 @@ The Energy Policy Simulator (EPS) is a free and open-source computer model origi
 The Canada Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below. Note that you will need to go through the steps explained on the **EPS download page** in order to install the required software and make use of the full version of the model.
 ## Business As Usual (BAU) – Baseline 
 ### Overarching Assumptions
-•	The BAU scenario only includes policies fully developed and legislated into law by the end of 2021. Any announced, developing, or developed but not legislated policies were not included in the BAU, but will be reflected in incremental policy scenarios 
+* The BAU scenario only includes policies fully developed and legislated into law by the end of 2021. Any announced, developing, or developed but not legislated policies were not included in the BAU, but will be reflected in incremental policy scenarios 
 
-•	The model assumes policies in Canada are applied nationally.
+* The model assumes policies in Canada are applied nationally.
 
-•	The full carbon price (e.g. increasing by $15 per year starting in 2023 until reaching $170/tonne in 2030) is applied to the transportation and buildings sector, but not in other sectors, where the carbon price was left at zero. This is because carbon pricing for the other sectors includes free allocations, and is applied differently across different provinces. 
+* The full carbon price (e.g. increasing by $15 per year starting in 2023 until reaching $170/tonne in 2030) is applied to the transportation and buildings sector, but not in other sectors, where the carbon price was left at zero. This is because carbon pricing for the other sectors includes free allocations, and is applied differently across different provinces. 
 
-* The user can change the national “simplified carbon price” lever to apply an additional carbon price (beyond the initial assumption) to any sector. For example, adding a $10 carbon price in the buildings and transportation sectors yields a carbon price of $180/tonne, whereas applying $10 in the industry sector will only apply $10/tonne for the entire sector. See policy description for more details. 
+  * The user can change the national “simplified carbon price” lever to apply an additional carbon price (beyond the initial assumption) to any sector. For example, adding a $10 carbon price in the buildings and transportation sectors yields a carbon price of $180/tonne, whereas applying $10 in the industry sector will only apply $10/tonne for the entire sector. See policy description for more details. 
 
-•	Projections to the year 2050 were based on sources that use legislated policies at the end of 2021.
+* Projections to the year 2050 were based on sources that use legislated policies at the end of 2021.
 
-•	Existing legislated policies were assumed to remain unchanged between 2030 and 2050 (e.g. Clean Fuel Regulations, carbon tax). 
+* Existing legislated policies were assumed to remain unchanged between 2030 and 2050 (e.g. Clean Fuel Regulations, carbon tax). 
 
-•	Where variable-specific forecasts were unavailable, forecasts for related variables were used as proxies to model change in future years. For data with gaps between years, we linearly interpolated between datapoints and held it constant beyond the final datapoint.  
+* Where variable-specific forecasts were unavailable, forecasts for related variables were used as proxies to model change in future years. For data with gaps between years, we linearly interpolated between datapoints and held it constant beyond the final datapoint.  
 
-•	Reporting structures vary significantly between sources, so when data was taken from different sources, mappings would need to be done to see how the data most accurately translated to our model. As such, sector, file, and variable-specific data may not match up exactly with other sources.
+* Reporting structures vary significantly between sources, so when data was taken from different sources, mappings would need to be done to see how the data most accurately translated to our model. As such, sector, file, and variable-specific data may not match up exactly with other sources.
 
-•	Canada Energy Futures 2021 was used as a primary input for forecasts to 2050 unless a more detailed dataset exists.
+* Canada Energy Futures 2021 was used as a primary input for forecasts to 2050 unless a more detailed dataset exists.
 
-•	Where provincial data showed significant variations, a weighted average was used to represent values for Canada. 
+* Where provincial data showed significant variations, a weighted average was used to represent values for Canada. 
 
-•	The model BAU inputs were completed using data from Canada, except where Canadian data does not exist in the public domain. In these cases, U.S. data was used, as it is expected to be similar to Canadian data. 
+* The model BAU inputs were completed using data from Canada, except where Canadian data does not exist in the public domain. In these cases, U.S. data was used, as it is expected to be similar to Canadian data. 
 
-•	Emissions results for years 2019-2021 were matched with Canada’s National Inventory Report (NIR-2021) on a sector-by-sector basis.  
+* Emissions results for years 2019-2021 were matched with Canada’s National Inventory Report (NIR-2021) on a sector-by-sector basis.  
 ## Key Data Sources
-•	Canada Energy Regulator
+* Canada Energy Regulator
 
-•	Natural Resources Canada
+* Natural Resources Canada
 
-•	Stats Canada
+* Stats Canada
 
-•	Transport Canada
+* Transport Canada
 
-•	Environment and Climate Change Canada
+* Environment and Climate Change Canada
 
-•	U.S. Energy Information Administration
+* U.S. Energy Information Administration
 
-•	U.S. Environmental Protection Agency 
+* U.S. Environmental Protection Agency 
 
-•	U.S. National Renewable Energy Laboratory
+* U.S. National Renewable Energy Laboratory
 ## Sector Assumptions 
 
 
@@ -79,32 +79,32 @@ For a more detailed explanation of these scenarios, and answers to other common 
 # Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Canada. Individuals are listed alphabetically.
 
-•	Andre Dixon, Pembina Institute
+* Andre Dixon, Pembina Institute
 
-•	Eyab Al-Aini, Pembina Institute
+* Eyab Al-Aini, Pembina Institute
 
-•	Jared Connoy, Pembina Institute
+* Jared Connoy, Pembina Institute
 
-•	Jason Lam, Pembina Institute
+* Jason Lam, Pembina Institute
 
-•	Olivia Ashmoore, Energy Innovation LLC
+* Olivia Ashmoore, Energy Innovation LLC
 
-•	Robbie Orvis, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
 
 # Version History
 ## 3.4.3 – June 20, 2023
-•	Updated model platform to 3.4.3 from 1.4.2
+* Updated model platform to 3.4.3 from 1.4.2
 ## 1.4.2 – June 26, 2019
-•	Updated core files to 1.4.3
-•	Updated Canada data for compatibility with 1.4.3
-•	Various other Canada data updates
-•	Updated scenarios, added youth policy design contest winner's scenario
+* Updated core files to 1.4.3
+* Updated Canada data for compatibility with 1.4.3
+* Various other Canada data updates
+* Updated scenarios, added youth policy design contest winner's scenario
 ## 1.4.2 – January 29, 2019
-•	Updated core files to 1.4.2
-•	Updated Canada input data for compatibility with 1.4.2
-•	Updated scenarios
+* Updated core files to 1.4.2
+* Updated Canada input data for compatibility with 1.4.2
+* Updated scenarios
 ## 1.3.2 – March 26, 2018
-•	Initial public release
+* Initial public release
 # Software License
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software. Refer to the Software License page for full details.
 
