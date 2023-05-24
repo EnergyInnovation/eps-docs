@@ -200,7 +200,7 @@ const sidebars = {
           { type: 'doc', id: 'models/california', label: 'California' },
           { type: 'doc', id: 'models/canada', label: 'Canada' },
           { type: 'doc', id: 'models/china', label: 'China (2017, NCSC)' },
-          { type: 'doc', id: 'models/china-igdp', label: 'China (2022, iGDP)' },
+          { type: 'doc', id: 'models/china-igdp', label: 'China (2023, iGDP)' },
           { type: 'doc', id: 'models/colorado', label: 'Colorado' },
           { type: 'doc', id: 'models/connecticut', label: 'Connecticut' },
           { type: 'doc', id: 'models/delaware', label: 'Delaware' },
