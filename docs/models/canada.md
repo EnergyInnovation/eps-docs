@@ -14,7 +14,7 @@ The Canada Energy Policy Simulator may be used on this website through your web 
 
 •	The full carbon price (e.g. increasing by $15 per year starting in 2023 until reaching $170/tonne in 2030) is applied to the transportation and buildings sector, but not in other sectors, where the carbon price was left at zero. This is because carbon pricing for the other sectors includes free allocations, and is applied differently across different provinces. 
 
-•	The user can change the national “simplified carbon price” lever to apply an additional carbon price (beyond the initial assumption) to any sector. For example, adding a $10 carbon price in the buildings and transportation sectors yields a carbon price of $180/tonne, whereas applying $10 in the industry sector will only apply $10/tonne for the entire sector. See policy description for more details. 
+* The user can change the national “simplified carbon price” lever to apply an additional carbon price (beyond the initial assumption) to any sector. For example, adding a $10 carbon price in the buildings and transportation sectors yields a carbon price of $180/tonne, whereas applying $10 in the industry sector will only apply $10/tonne for the entire sector. See policy description for more details. 
 
 •	Projections to the year 2050 were based on sources that use legislated policies at the end of 2021.
 
