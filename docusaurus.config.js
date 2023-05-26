@@ -51,7 +51,7 @@ const config = {
     footer: {
       style: 'dark',
       links: [],
-      copyright: `Copyright © ${new Date().getFullYear()} Energy Innovation Policy & Technology LLC®. All rights reserved.`
+      copyright: `Copyright © ${new Date().getFullYear()} Energy Innovation. All rights reserved.`
     },
     prism: {
       theme: lightCodeTheme,
