@@ -126,12 +126,12 @@ Due to requests from partners in the following states, we have made customizatio
 
 ## About Us
 
-The EPS is a non-partisan, open-source, and peer-reviewed model. The EPS was developed to evaluate the impacts of climate and energy policies on emissions, costs and savings, and fuel consumption. It is used by policymakers to select and refine climate legislation and standards. For example, the EPS model was used to assess the impact of climate policies for the U.S. House Select Committee on the Climate Crisis.<sup>[xxxiii](#myfootnotexxxiii)</sup>  EPS users input climate policies and the model then analyzes interacting policy impacts to forecast environmental and economic outcomes. The model generates a variety of data outputs, including GHG emissions, criteria pollutant emissions, capital and operating cash flow changes, and macroeconomic changes to gross domestic product and jobs. RMI and Energy Innovation Policy & Technology LLC® are releasing EPS models for all 48 contiguous U.S. states. 
+The EPS is a non-partisan, open-source, and peer-reviewed model. The EPS was developed to evaluate the impacts of climate and energy policies on emissions, costs and savings, and fuel consumption. It is used by policymakers to select and refine climate legislation and standards. For example, the EPS model was used to assess the impact of climate policies for the U.S. House Select Committee on the Climate Crisis.<sup>[xxxiii](#myfootnotexxxiii)</sup>  EPS users input climate policies and the model then analyzes interacting policy impacts to forecast environmental and economic outcomes. The model generates a variety of data outputs, including GHG emissions, criteria pollutant emissions, capital and operating cash flow changes, and macroeconomic changes to gross domestic product and jobs. RMI and Energy Innovation are releasing EPS models for all 48 contiguous U.S. states. 
 
 ## Contact Us
 If you have questions about using the EPS, we recommend first watching our video series, available [here](https://docs.energypolicy.solutions/video-series). For further information on the EPS, contact us at <policy@energyinnovation.org>. For more information on RMI analysis and our state advocacy support network, contact us at <USAnalysis@rmi.org>. 
 
-The U.S. state EPS models were developed as a partnership between Energy Innovation® and RMI, with RMI work supported by Bloomberg Philanthropies.
+The U.S. state EPS models were developed as a partnership between Energy Innovation and RMI, with RMI work supported by Bloomberg Philanthropies.
 
 
 
