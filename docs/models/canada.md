@@ -92,8 +92,8 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Robbie Orvis, Energy Innovation LLC
 
 # Version History
-## 3.4.6 – June 16, 2023
-* Updated model platform to 3.4.6 from 1.4.3
+## 3.4.7 – June 13, 2023
+* Updated model platform to 3.4.7 from 1.4.3
 ## 1.4.3 – June 26, 2019
 * Updated core files to 1.4.3
 * Updated Canada data for compatibility with 1.4.3
