@@ -4,6 +4,11 @@ title: Version History
 This page tracks updates that have been made with each version of the Energy Policy Simulator.
 
 
+### **3.4.7 - June 8, 2023**
+
+* Bug fix
+  * Prevent Vensim error when there are negative electricity dispatch costs
+  
 ### **3.4.6 - May 16, 2023**
 
 * Bug fix
