@@ -8,7 +8,7 @@ title: Remapping Subscript Elements
 | ------- | ----------------- |
 | [About Subscript Elements and Remapping](#about)                                | |
 | [Power Plant Types](#power_plant_types)                                         | good |
-| [Industries](#industries)                                                       | impossible |
+| [Industries](#industries)                                                       | limited |
 | [Industrial Process Emissions Policies](#industrial_process_emissions_policies) | very limited |
 | [Cash Flow Entities](#cash_flow_entities)                                       | impossible |
 | [Building Type](#building_type)                                                 | good |
@@ -39,23 +39,21 @@ Remember that when remapping, you likely will need to update not only a variety 
 
 ## Industries
 
-The 8 elements of the "Industry Category" subscript are: cement and other carbonates, natural gas and petroleum systems, iron and steel, chemicals, coal mining, waste management, agriculture, other industries.
+The 25 elements of the "Industry Category" subscript are listed on the [Industry and Agriculture - Main](industry-ag-main) page.
 
-- Industries (as well as agriculture and waste management) cannot be remapped.
-
-- Industries are structurally associated with particular ISIC Code categories used in the input-output model.
-
-- Industries are structurally associated with particular process emissions types (e.g. in "Fraction of Process Emissions Reductions by Pollutant") and policy levers (e.g. in "This Year Change in Process Emissions by Policy and Industry").  These associations are also present in difficult-to-change input data (e.g. indst/BPEiC and indst/PERAC).  This rules out any remapping that would change the type of process emissions that an industry emits or which policies can be used to reduce those process emissions.
-
-- Two industries are energy suppliers and have corresponding elements in the cash flow entities subscript (natural gas and petroleum systems, and coal mining).  The revenues of these industries are affected by endogenously-calculated changes in demand for the associated fuels (i.e. in "Change in Revenue by Industry").  There are other, complex ways in which the revenues of these industries are handled differently from other industries.  Remapping one of these industries would invalidate the revenue calculations.
+- Industries are energy suppliers and have corresponding elements in the cash flow entities subscript (natural gas and petroleum systems, and coal mining).  The revenues of these industries are affected by endogenously-calculated changes in demand for the associated fuels (i.e. in "Change in Revenue by Industry").  There are other, complex ways in which the revenues of these industries are handled differently from other industries.  Remapping one of these industries would invalidate the revenue calculations.
 
 - Agriculture and waste management are displayed individually in output graphs and are not displayed as part of the "Industry" sector in the web interface.
 
 - Agriculture has special handling with respect to the "shift from animal to nonanimal products" policy lever, though this lever could be disabled in the web interface.
 
+- Industries are structurally associated with particular process emissions types (e.g. in "Fraction of Process Emissions Reductions by Pollutant") and policy levers (e.g. in "This Year Change in Process Emissions by Policy and Industry").  These associations are also present in difficult-to-change input data (e.g. indst/BPEiC and indst/PERAC).  This rules out any remapping that would change the type of process emissions that an industry emits or which policies can be used to reduce those process emissions.
+
+- However, nonenergy industries that are not associated with specific process emissions may be remapped.  There are several regional EPS models that combine several industry categories together due to input data limitations.  For example, some regions may group 'road vehicles' and 'nonroad vehicles' together into a single 'vehicles' category.  However, it is important to remember that industries are structurally associated with particular ISIC Code categories used in the input-output model.  If industry variables are remapped, any file including ISIC codes must be carefully redone to reflect the same categorization. 
+
 ## Industrial Process Emissions Policies
 
-The nine industrial process emissions policies are a subset of the "Policy" subscript and also are used in the "Industry by Process Emissions Policy" subscript  The nine elements are: methane capture, methane destruction, f gas substitution, f gas destruction, f gas recovery, f gas inspct maint retrofit, cropland and rice measures, livestock measures, and cement measures.  Each policy lever represents a "bucket" of different technical strategies (summed up from a major EPA report, for non-CO2 gases), and the exact composition of those buckets can change, as long as the following guidelines are respected:
+The eleven industrial process emissions policies are a subset of the "Policy" subscript and also are used in the "Industry by Process Emissions Policy" subscript  The twelve elements are: methane capture, methane destruction, f-gas substitution, f-gas destruction, f-gas recovery, f-gas inspct maint retrofit, cropland and rice measures, livestock measures, improved soil measures, N2O measures, and cement measures.  Each policy lever represents a "bucket" of different technical strategies (summed up from a major EPA report, for non-CO2 gases), and the exact composition of those buckets can change, as long as the following guidelines are respected:
 
 - Each policy's name can be updated in the web interface.  Abatement potential and cost data can be updated in indst/PERAC.  This can represent a variety of differences in technical measures and approaches to broadly abate the same gas from the same industry.
 
@@ -125,4 +123,4 @@ The six land use policies are a subset of the "Policy" subscript and also are us
 
 
 ---
-*This page was last updated in version 3.0.0.*
+*This page was last updated in version 3.5.0.*

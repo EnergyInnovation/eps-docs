@@ -42,7 +42,7 @@ The following table lists which approach is used to govern which types of action
 | Sector | Action | Price-Driven? | Separate Lever(s)? | Non-Pricing Policies |
 | ------ | ------ | :-----------: | :----------------: | -------------------- |
 | Transportation | Change in demand for travel | yes | yes | additive: TDM |
-| Transportation | Technology choice (e.g. electric vs. combustion engine LDVs) | yes | yes | floor: EV mandate; additive: reduce EV range anxiety, EV charger deployment |
+| Transportation | Technology choice (e.g. electric vs. combustion engine LDVs) | yes | yes | floor: EV mandate; additive: reduce EV range anxiety |
 | Transportation | Fuel supply blending | no | yes | LCFS |
 | Transportation | Efficiency of new vehicles of a given technology | yes | yes | additive: standards, parameterized feebate<sup>A</sup> |
 | Transportation | Mode shifting (e.g. shifting trips from LDVs to buses) | no | yes | TDM |
@@ -61,7 +61,7 @@ The following table lists which approach is used to govern which types of action
 | Industry | Technology choice (e.g. natural gas vs. electric production processes) | no | yes | fuel switching |
 | Industry | Change in energy efficiency of production | no | yes | standards, waste heat recovery, system integration |
 | Industry | Early retirement of industrial facilities | no | yes | early retirement |
-| Industry | Process emissions abatement | yes | yes | additive: 8 levers (including agriculture) |
+| Industry | Process emissions abatement | yes | yes | additive: 11 levers (including agriculture) |
 | District Heat<sup>B</sup> | Technology choice (fuel switching) | no | yes | fuel switching |
 | District Heat | Efficiency | no | yes | CHP |
 | LULUCF | All actions | no | yes | each action has its own lever |
@@ -90,4 +90,4 @@ Key to acronyms used in this table:
 * TDM = transportation demand management
 
 ---
-*This page was last updated in version 3.1.0.*
+*This page was last updated in version 3.5.0.*
