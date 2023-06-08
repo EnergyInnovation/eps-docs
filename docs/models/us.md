@@ -57,7 +57,7 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 ### **3.4.7 - June 8, 2023**
 
 * Bug fix
-  * Prevent Vensim error when there are negative electricity dispatch costs 
+  * Prevent rare Vensim error caused by negative ppriority values in ALLOCATE AVAILABLE function
 
 ### **3.4.6 - May 16, 2023**
 
