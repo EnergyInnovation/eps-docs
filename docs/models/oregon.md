@@ -30,6 +30,11 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
+### **3.4.3.3 - June 9, 2023**
+
+* Bug fix
+  * Prevent rare Vensim error caused by negative ppriority values in ALLOCATE AVAILABLE function
+
 ### **3.4.3.2 - May 19, 2023**
 
 * Bug fix
