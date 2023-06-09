@@ -8,7 +8,7 @@ The Michigan Energy Policy Simulator (EPS) is a free and open-source computer mo
 
 The Michigan Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-michigan/archive/refs/tags/3.4.3.2.zip" class="btn">Download the Michigan Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-michigan/archive/refs/tags/3.4.3.3.zip" class="btn">Download the Michigan Energy Policy Simulator</a></p>
 
 Documentation of source data, assumptions, and policy scenarios is available [here](https://github.com/EnergyInnovation/eps-michigan/raw/main/Policy%20Assumptions%20and%20Sources.pdf). 
 ## U.S. State EPS Methodology
@@ -30,6 +30,11 @@ We would like to acknowledge the following organizations who helped adapt the En
 * Robbie Orvis, Energy Innovation LLC
 
 ## Version History
+
+### **3.4.3.3 - June 9, 2023**
+
+* Bug fix
+  * Prevent rare Vensim error caused by negative ppriority values in ALLOCATE AVAILABLE function
 
 ### **3.4.3.2 - May 19, 2023**
 

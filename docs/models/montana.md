@@ -8,7 +8,7 @@ The Montana Energy Policy Simulator (EPS) is a free and open-source computer mod
 
 The Montana Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-montana/archive/refs/tags/3.4.3.2.zip" class="btn">Download the Montana Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-montana/archive/refs/tags/3.4.3.3.zip" class="btn">Download the Montana Energy Policy Simulator</a></p>
 
 ## U.S. State EPS Methodology
 
@@ -26,6 +26,11 @@ We would like to acknowledge the following people who made the U.S. State Energy
 * Robbie Orvis, Energy Innovation LLC
 
 ## Version History
+
+### **3.4.3.3 - June 9, 2023**
+
+* Bug fix
+  * Prevent rare Vensim error caused by negative ppriority values in ALLOCATE AVAILABLE function
 
 ### **3.4.3.2 - May 19, 2023**
 
