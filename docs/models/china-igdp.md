@@ -1,15 +1,18 @@
 ---
-title:  "China (2023, iGDP) Energy Policy Simulator"
+title:  "China (iGDP) Energy Policy Simulator"
 ---
 
-The China (2023, iGDP) Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation (EI)](https://energyinnovation.org/) and [innovative Green Development Program (iGDP)](http://www.igdp.cn/).  It is adapted from software originally created by EI.
+The China (iGDP) Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation (EI)](https://energyinnovation.org/) and [innovative Green Development Program (iGDP)](http://www.igdp.cn/).  It is adapted from software originally created by EI.
 
 ## Model Download
 
-The China (2023, iGDP) Energy Policy Simulator may be used on this website through your web browser, and a download of the full version is available upon request. Please submit your request through this [online form](https://wkf.ms/3hIh7YF).
+The China (iGDP) Energy Policy Simulator may be used on this website through your web browser, and a download of the full version is available upon request. Please submit your request through this [online form](https://wkf.ms/3hIh7YF).
+
+## Note on Different Versions of the China EPS
+
+The EPS software is free and open-source, and the China (iGDP) EPS is built with publicly available data. It is one of two national-level China EPSs. The other model is the [China (NCSC) EPS](https://china.energypolicy.solutions/), which contains some proprietary input data that are not available for download. Model results differ between the NCSC and iGDP versions of the China EPS due to differences in the proprietary input data used in the NCSC EPS and the public inputs used in the iGDP EPS.
 
 ## Acknowledgement of Contributors and Reviewers
-The China (2023, iGDP) Energy Policy Simulator was adapted by iGDP and Energy Innovation. It is one of two national-level China Energy Policy Simulators.
 
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for China. Individuals are listed alphabetically by first name.
 
@@ -27,6 +30,22 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Xi Xi, iGDP
 
 ## Version History
+
+### **3.4.7 - July 28, 2023**
+
+* Updated model platform to 3.4.7 from 3.4.3
+* New Features
+  * The EV Minimum and Hydrogen Vehicle Minimum policies have been replaced with a single Zero-Emissions Vehicle (ZEV) standard policy. Which vehicle technologies qualify as ZEVs can be customized in trans/BVTQaZ and trans/VTQaZ for a policy scenario that differs. The EPS selects between qualifying vehicle technologies via economic factors. The new ZEV standard policy only applies to road vehicles, not aicraft, rail, or ships.
+  * BAU ZEV standards may be specified separately for up to 60 subregions (such as U.S. states within the national-scale U.S. model), and the EPS will increase ZEV sales to meet BAU ZEV standards or user-specified ZEV standards only in subregions where the standard is not already being met. This improves accuracy relative to using national, sales-weighted averages.
+* Bug Fixes
+  * Allow changes in capacity construction subsidies to affect electricity prices
+  * Prevent rare Vensim error caused by negative priority values in ALLOCATE AVAILABLE function
+* Data Updates
+  * Changed to linear projection trends in io-model/BPCiObIC
+  * Replaced US data with China data in io-model/TLIM
+  * Update labor productivity growth rates to converge with US values in io-model/LPGRbIC
+  * Minor corrections to transportation fuel economy variables BHNVFEAL, BNVFE, and SYFAFE
+
 
 ### **3.4.3.2 - May 17, 2023**
 * Bug Fixes

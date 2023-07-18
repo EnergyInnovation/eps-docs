@@ -1,29 +1,35 @@
 ---
-title:  "China (2017, NCSC) Energy Policy Simulator"
+title:  "China (NCSC) Energy Policy Simulator"
 ---
 
-
-The Energy Policy Simulator (EPS) is a computer model originally created by [Energy Innovation LLC](https://energyinnovation.org/) and adapted for China in partnership with China's [National Center for Climate Change Strategy and International Cooperation (NCSC)](http://www.ncsc.org.cn/) and China's [Energy Research Institute](http://www.eri.org.cn/).
+The China (NCSC) Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation (EI)](https://energyinnovation.org/) and adapted for China in partnership with China's [National Center for Climate Change Strategy and International Cooperation (NCSC)](http://www.ncsc.org.cn/) and China's [Energy Research Institute](http://www.eri.org.cn/).
 
 ## Results
 
-In 2016, the organizations listed above jointly released an Executive Summary with key findings for China based on analysis performed with the China EPS.  A new and improved version of the China EPS was released in 2017.  The results will be updated based on the new version of the simulator and new policy packages.  In the meanwhile, the 2016 documents remain available for download:
+In 2016, the organizations listed above jointly released an Executive Summary with key findings for China based on analysis performed with the China (NCSC) EPS.  New and improved versions of the China (NCSC) EPS were released in 2017 and 2023. The results will be updated based on the new version of the simulator and new policy packages.  In the meantime, the 2016 documents remain available for download:
 
 * the [executive summary](/download/20160704_ExecutiveSummary_EN--FINAL.pdf), in English
 * the [executive summary](/download/20160703_ExecutiveSummary_CN.PDF), in Chinese
 * a [presentation](/download/PolicySolutionsForClimateChange_EnergyInnovation.pdf), in English
 
-## Note on Data in China (2017, NCSC) EPS
+## Note on Different Versions of the China EPS
 
-While the EPS software is free and open-source, the China (2017, NCSC) EPS contains some proprietary Chinese government input data that cannot be made available for download.  If you would like to download the EPS model and code, please [download the U.S. version of the EPS](../download).
+While the EPS software is free and open-source, the China (NCSC) EPS contains some proprietary input data that are not available for download. If you would like to download the EPS model and code, please [request a download of the iGDP version of the China EPS](https://wkf.ms/3hIh7YF), which is built with publicly available data. Model results differ between the NCSC and iGDP versions of the China EPS due to differences in the proprietary input data used in the NCSC EPS and the public inputs used in the iGDP EPS.
 
 ## Acknowledgement of Contributors and Reviewers
-We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for China.  Individuals are listed by organizaiton.
+
+We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for China.  Individuals are listed by organization and alphabetically by last name unless otherwise noted.
 
 NCSC
 
+* Chai Qimin
+* Huang Zihan
+* Li Moyu
 * Liu Qiang
+* Li Xiaomei
+* Ma Yujie
 * Tian Chuan
+* Tian Shuang
 * Zheng Xiaoqi
 
 ERI
@@ -31,18 +37,29 @@ ERI
 * Jiang Kejun
 * He Chenmin
 
-Energy Innovation
+Energy Innovation (listed by first name)
 
+* Fei Meng
 * Jeffrey Rissman
+* Megan Mahajan
+* Minshu Deng
 * Robbie Orvis
 * Sonia Aggarwal
-* Hu Min
+* Todd Fincannon
+* Xiuli Zhang
 
 Innovative Green Development Program
 
+* Hu Min
+* Xi Xi
 * Yang Li
 
 ## Version History
+
+### **3.4.7 - July 28, 2023**
+
+* Updated model platform to 3.4.7 from 1.2.4
+* Updates to underlying data sources
 
 ### **1.2.4 - September 29, 2017**
 
