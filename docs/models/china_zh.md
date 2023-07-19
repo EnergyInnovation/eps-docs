@@ -14,7 +14,7 @@ In 2016, the organizations listed above jointly released an Executive Summary wi
 
 ## Note on Different Versions of the China EPS
 
-While the EPS software is free and open-source, the China (NCSC) EPS contains some proprietary input data that are not available for download. It is one of two national-level China EPSs. If you would like to download the EPS model and code, please [request a download of the iGDP version of the China EPS](https://wkf.ms/3hIh7YF), which is built with publicly available data. Model results differ between the NCSC and iGDP versions of the China EPS due to differences in the proprietary input data used in the NCSC EPS and the public inputs used in the [iGDP EPS](https://china-igdp.energypolicy.solutions/).
+While the EPS software is free and open-source, the China (NCSC) EPS contains some proprietary input data that are not available for download. It is one of two national-level China EPS models. If you would like to download the EPS model and code, please [request a download of the iGDP version of the China EPS](https://wkf.ms/3hIh7YF), which is built with publicly available data. Model results differ between the NCSC and iGDP versions of the China EPS due to differences in the proprietary input data used in the NCSC EPS and the public inputs used in the [iGDP EPS](https://china-igdp.energypolicy.solutions/).
 
 ## Acknowledgement of Contributors and Reviewers
 
