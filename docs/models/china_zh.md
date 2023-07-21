@@ -1,77 +1,80 @@
 ---
-title:  "China (NCSC) Energy Policy Simulator"
+title:  "中国 (NCSC) 能源政策模型"
 ---
 
-The China (NCSC) Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation (EI)](https://energyinnovation.org/) and adapted for China in partnership with China's [National Center for Climate Change Strategy and International Cooperation (NCSC)](http://www.ncsc.org.cn/) and China's [Energy Research Institute](http://www.eri.org.cn/).
+中国 (NCSC) 能源政策模型来自由[能源创新 (EI)](https://energyinnovation.org/)创建的免费、开源计算机模型，并与中国[国家应对气候变化战略研究和国际合作中心 (NCSC) ](http://www.ncsc.org.cn/)和中国[能源研究所 (ERI)](http://www.eri.org.cn/)合作为中国进行了改编。
 
-## Results
+## 结果
 
-In 2016, the organizations listed above jointly released an Executive Summary with key findings for China based on analysis performed with the China (NCSC) EPS.  New and improved versions of the China (NCSC) EPS were released in 2017 and 2023. The results will be updated based on the new version of the simulator and new policy packages.  In the meantime, the 2016 documents remain available for download:
+2016年，上述机构通过中国 (NCSC) EPS模型进行分析，联合发布了一份执行摘要，其中包含对中国的主要发现。 2017年和2023年发布了新版和改进版的中国 (NCSC) EPS模型。相关结果根据新版模型和新的一系列政策进行更新。 同时，2016年的文件仍可供下载：
 
-* the [executive summary](/download/20160704_ExecutiveSummary_EN--FINAL.pdf), in English
-* the [executive summary](/download/20160703_ExecutiveSummary_CN.PDF), in Chinese
-* a [presentation](/download/PolicySolutionsForClimateChange_EnergyInnovation.pdf), in English
+* [执行摘要](/download/20160704_ExecutiveSummary_EN--FINAL.pdf)，英文版
+* [执行摘要](/download/20160703_ExecutiveSummary_CN.PDF)，中文版
+* [演示文稿](/download/PolicySolutionsForClimateChange_EnergyInnovation.pdf)，英文版
 
-## Note on Different Versions of the China EPS
 
-While the EPS software is free and open-source, the China (NCSC) EPS contains some proprietary input data that are not available for download. It is one of two national-level China EPS models. If you would like to download the EPS model and code, please [request a download of the iGDP version of the China EPS](https://wkf.ms/3hIh7YF), which is built with publicly available data. Model results differ between the NCSC and iGDP versions of the China EPS due to differences in the proprietary input data used in the NCSC EPS and the public inputs used in the [iGDP EPS](https://china-igdp.energypolicy.solutions/).
+## 关于中国EPS不同版本的说明
 
-## Acknowledgement of Contributors and Reviewers
+虽然EPS软件是免费、开源的，但中国 (NCSC) EPS包含一些专有输入数据，不提供下载。它是中国两个国家级EPS之一。如果您想下载EPS模型和代码，请[申请下载中国EPS的iGDP版本](https://wkf.ms/3hIh7YF)，该版本是用公开数据建立的。由于NCSC EPS使用的专有输入数据与[iGDP EPS](https://energypolicy.solutions/home/china-igdp/zh)使用的公开输入数据不同，NCSC和iGDP版本的中国EPS模型结果有所不同。
 
-We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for China.  Individuals are listed by organization and alphabetically by last name unless otherwise noted.
 
-NCSC
+## 鸣谢贡献者和审阅专家
 
-* Chai Qimin
-* Huang Zihan
-* Li Moyu
-* Liu Qiang
-* Li Xiaomei
-* Ma Yujie
-* Tian Chuan
-* Tian Shuang
-* Zheng Xiaoqi
+我们在此感谢以下帮助我们编写和审阅中国能源政策模型的人员和专家。 除非另行说明，姓名按所属机构和姓氏首字母排序。
 
-ERI
+国家应对气候变化战略研究和国际合作中心 (NCSC)
 
-* Jiang Kejun
-* He Chenmin
+* 柴麒敏
+* 黄子晗
+* 李墨宇
+* 刘强
+* 李晓梅
+* 马玉洁
+* 田川
+* 田爽
+* 郑晓奇
 
-Energy Innovation (listed by first name)
+能源研究所 (ERI)
 
-* Fei Meng
+* 姜克隽
+* 贺晨旻
+
+能源创新 (EI) (按名字首字母排序)
+
+* 孟菲
 * Jeffrey Rissman
 * Megan Mahajan
-* Minshu Deng
+* 邓敏姝
 * Robbie Orvis
 * Sonia Aggarwal
 * Todd Fincannon
-* Xiuli Zhang
+* 张秀丽
 
-Innovative Green Development Program
+绿色创新发展研究院 (iGDP)
 
-* Hu Min
-* Xi Xi
-* Yang Li
+* 胡敏
+* 奚溪
+* 杨鹂
 
-## Version History
+## 版本历史
 
-### **3.4.7 - July 28, 2023**
+### **3.4.7 - 2023年7月28日**
 
-* Updated model platform to 3.4.7 from 1.2.4
-* Updates to underlying data sources
+* 模型平台从1.2.4更新到3.4.7
+* 更新基础数据源
 
-### **1.2.4 - September 29, 2017**
+### **1.2.4 - 2017年9月29日**
 
-* Initial Release
+* 首次发布
 
-## Software License
+## 软件许可
 
-The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software.  Refer to the [Software License](../software-license) page for full details.
+能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考[软件许可证](../software-license)页面，了解全部细节。
 
-## Image Credits
+## 图片来源
 Great Hall Of The People At Night<br/>
 Thomas.fanghaenel<br/>
 [https://commons.wikimedia.org/wiki/File:Great_Hall_Of_The_People_At_Night.JPG](https://commons.wikimedia.org/wiki/File:Great_Hall_Of_The_People_At_Night.JPG)<br/>
-License: Creative Commons Attribution-Share Alike 3.0 Unported<br/>
-Changes: Image has been cropped and a fade has been applied to the left side.<br/>
+许可: Creative Commons Attribution-Share Alike 3.0 Unported<br/>
+修改： 图片已被裁剪，并在左侧进行了淡化处理。<br/>
+

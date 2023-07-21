@@ -10,7 +10,7 @@ The China (iGDP) Energy Policy Simulator may be used on this website through you
 
 ## Note on Different Versions of the China EPS
 
-The EPS software is free and open-source, and the China (iGDP) EPS is built with publicly available data. It is one of two national-level China EPSs. The other model is the [China (NCSC) EPS](https://china.energypolicy.solutions/), which contains some proprietary input data that are not available for download. Model results differ between the NCSC and iGDP versions of the China EPS due to differences in the proprietary input data used in the NCSC EPS and the public inputs used in the iGDP EPS.
+The EPS software is free and open-source, and the China (iGDP) EPS is built with publicly available data. It is one of two national-level China EPSs. The other model is the [China (NCSC) EPS](https://energypolicy.solutions/home/china/en), which contains some proprietary input data that are not available for download. Model results differ between the NCSC and iGDP versions of the China EPS due to differences in the proprietary input data used in the NCSC EPS and the public inputs used in the iGDP EPS.
 
 ## Acknowledgement of Contributors and Reviewers
 
@@ -27,11 +27,12 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Nina Khanna, Lawrence Berkeley National Laboratory
 * Olivia Ashmoore, Energy Innovation LLC
 * Robbie Orvis, Energy Innovation LLC
+* Todd Fincannon, Energy Innovation LLC
 * Xi Xi, iGDP
 
 ## Version History
 
-### **3.4.7 - July 28, 2023**
+### **3.4.7 - July 26, 2023**
 
 * Updated model platform to 3.4.7 from 3.4.3
 * New Features
@@ -45,6 +46,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
   * Replaced US data with China data in io-model/TLIM
   * Update labor productivity growth rates to converge with US values in io-model/LPGRbIC
   * Minor corrections to transportation fuel economy variables BHNVFEAL, BNVFE, and SYFAFE
+  * Shift coal to biomass and electricity instead of biomass and hydrogen in dist-heat/RHFF
 
 
 ### **3.4.3.2 - May 17, 2023**

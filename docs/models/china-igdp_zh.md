@@ -1,18 +1,20 @@
 ---
-title:  "中国能源政策模型（2022，iGDP）"
+title:  "中国 (iGDP) 能源政策模型"
 ---
 
-中国能源政策模型（2022，iGDP）基于[能源创新： 政策和技术有限责任公司（EI）](https://energyinnovation.org/)开发的能源政策模型（EPS）框架，是
-由[绿色创新发展研究院（iGDP）](http://www.igdp.cn/)和EI联合开发的免费、开源模型。
+中国 (iGDP) 能源政策模型 (EPS) 是由[能源创新 (EI)](https://energyinnovation.org/)和[绿色创新发展研究院 (iGDP)](http://www.igdp.cn/)创建的免费、开源的计算机模型。它由EI最初创建的模型改编建立。
 
 ## 下载模型
 
-您可以通过网络浏览器在本网站上使用中国EPS（2022，iGDP）。如果需要下载完整版本的模型，请通过[此表格](https://wkf.ms/3hIh7YF)提交申请。
+您可以通过网络浏览器在本网站上使用中国 (iGDP) 能源政策模型。如果需要下载完整版本的模型，请通过[在线表格](https://wkf.ms/3hIh7YF)提交您的申请。
 
-## 致谢
-中国EPS（2022，iGDP）由EI与iGDP联合开发，是两个中国国家EPS模型之一。
+## 关于中国EPS不同版本的说明
 
-特别感谢以下专家对EPS模型在中国应用做出贡献。排名以名字首字母排序。
+EPS软件是免费、开源的，中国 (iGDP) EPS是利用公开数据建立的。它是两个中国国家级EPS之一。另一个模型是[中国 (NCSC) EPS](https://energypolicy.solutions/home/china/zh)，它包含一些专有输入数据，不提供下载。由于NCSC EPS使用的专有输入数据和iGDP EPS使用的公开输入数据不同，NCSC和iGDP版本的中国EPS模型结果有所不同。
+
+## 鸣谢贡献者和审阅专家
+
+我们在此感谢以下帮助我们编写和审阅中国能源政策模型的人员和专家。姓名按名字首字母排序。
 
 * Jeffrey Rissman, Energy Innovation LLC
 * 杨鹂, iGDP
@@ -25,9 +27,25 @@ title:  "中国能源政策模型（2022，iGDP）"
 * Nina Khanna, Lawrence Berkeley National Laboratory
 * Olivia Ashmoore, Energy Innovation LLC
 * Robbie Orvis, Energy Innovation LLC
+* Todd Fincannon, Energy Innovation LLC
 * 奚溪, iGDP
 
 ## 版本历史
+
+### **3.4.7 - 2023年7月28日**
+* 模型平台从3.4.3更新到3.4.7
+* 新功能
+  * 电动汽车 (EV) 最低销量政策和氢能汽车 (Hydrogen Vehicle) 最低销量政策已被单一的零排放汽车 (ZEV) 标准政策所取代。可在trans/BVTQaZ和trans/VTQaZ中自定义哪些车辆技术符合ZEV标准，以适应不同的政策情景。EPS通过经济因素选择符合条件的车辆技术。新的ZEV标准政策仅适用于道路车辆，不适用于航空、铁路或船舶。
+  * BAU情景ZEV标准可为多达60个子区域（如美国国家模型中的美国各州）单独指定，EPS将在未达ZEV标准地区增加ZEV销售，以满足BAU情景ZEV标准或用户指定的ZEV销量标准。这与使用全国销量加权平均值相比提高了准确性。
+* 漏洞修复
+  * 允许电力容量建设补贴变化影响电价
+  * 防止在ALLOCATE AVAILABLE函数中由于负的优先级值引起的少见的Vensim错误
+* 数据更新
+  * 更新io-model/BPCiObIC为线性预测趋势
+  * 更新io-model/TLIM用中国数据替换美国数据
+  * 更新劳动生产率增长率，使其与io-model/LPGRbIC中的美国值趋同
+  * 对交通燃油经济性变量 BHNVFEAL、BNVFE 和 SYFAFE 做了小幅修正
+  * 更新dist-heat/RHFF中将煤炭转换为生物质和电力，而不是转换为生物质和氢能
 
 ### **3.4.3.2 - 2023年5月17日**
 * 漏洞修复
@@ -42,7 +60,7 @@ title:  "中国能源政策模型（2022，iGDP）"
   * 更新indst/BIFUbC方法学并将加工转换中的燃料损失包括在原料中。
   * 更新elec/BHRbEF数据源及方法学。
   * 燃气电厂保障性调度在elec/BGDPbES中调整为40%以避免过度发电。
-  * 风电容量因子减少（elec/BECF）。
+  * 风电容量因子减少 (elec/BECF)。
   * elec/BPMCCS添加了2020年实际装机量。
   * 更新indst/BPoIFUfE，与indst/BIFUbC保持一致.
   * 更新数据源：hydgn/EHPpUC。
@@ -70,7 +88,7 @@ title:  "中国能源政策模型（2022，iGDP）"
 
 ## 软件许可
 
-能源政策模型（EPS）根据GNU通用公共许可证第3版（GPLv3）或任何更高的版本发布，是免费的开源软件。 请参考[软件许可证](../software-license)页面，了解全部细节。
+能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考[软件许可证](../software-license)页面，了解全部细节。
 
 ## 图片来源
 Intricate Chinese Architectural design Of A Colorful Temple<br/>

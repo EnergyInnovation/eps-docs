@@ -56,7 +56,7 @@ Innovative Green Development Program
 
 ## Version History
 
-### **3.4.7 - July 28, 2023**
+### **3.4.7 - July 26, 2023**
 
 * Updated model platform to 3.4.7 from 1.2.4
 * Updates to underlying data sources
