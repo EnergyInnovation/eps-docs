@@ -26,6 +26,13 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Brianne Riehl, Pembina Institute
 * Kieran Cyphus, Pembina Institute
 
+## Version History
+
+### **eps-1.4.2-alberta - Mar 13, 2019**
+
+* Initial release of the Alberta EPS
+
+
 ## Software License
 
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software.  Refer to the [Software License](../software-license) page for full details.
