@@ -28,7 +28,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **eps-1.4.2-alberta - Mar 13, 2019**
+### **1.4.2 - March 13, 2019**
 
 * Initial release of the Alberta EPS
 

@@ -29,6 +29,14 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
+### **3.4.3.4 – September 1, 2023**
+* Calibration to Colorado’s emissions inventory
+  * Colorado EPS emissions are now calibrated to the state’s latest inventory. The input data remains calibrated to U.S. State Energy Data System (SEDS) data where possible.
+* Incorporating federal funding
+  * Federal funding from tax credits in the Inflation Reduction Act (IRA), and major formula-funded provisions from the IRA and Infrastructure and Investment Jobs Act (IIJA) are now included in Business-as-Usual. To do this, [Energy Innovation’s national model of the IRA](https://energyinnovation.org/wp-content/uploads/2022/08/Updated-Inflation-Reduction-Act-Modeling-Using-the-Energy-Policy-Simulator.pdf) was downscaled to Colorado using the “Low” scenario. 
+* Roadmap Baseline scenario
+  * This is now pre-loaded into the tool. This scenario reflects the state’s current policies, state policies expected to be in place by the end of 2023, and major provisions in the IRA and IIJA where Colorado expects to receive funds.
+
 ### **3.4.3.3 - June 9, 2023**
 
 * Bug fix
