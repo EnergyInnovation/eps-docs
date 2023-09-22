@@ -8,7 +8,7 @@ The Colorado Energy Policy Simulator (EPS) is a free and open-source computer mo
 
 The Colorado Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-colorado/archive/refs/tags/3.4.3.5.zip" class="btn">Download the Colorado Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-colorado/archive/refs/tags/3.4.3.6.zip" class="btn">Download the Colorado Energy Policy Simulator</a></p>
 
 ## U.S. State EPS Methodology
 
@@ -28,6 +28,9 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Robbie Orvis, Energy Innovation LLC
 
 ## Version History
+
+### **3.4.3.6 – September 22, 2023**
+* Data updates to retire the coal plant, Comanche 3, in 2030 due to an existing retirement plan by the utility, Xcel. Additional minor tweaks were made to the hydrogen vehicle sales standard lever to model the state's hydrogen end-use tax credits
 
 ### **3.4.3.5 – September 7, 2023**
 * Data updates to industry process emission reduction potential to increase the value of the methane capture and destruction policy levers in order to capture the impact of Colorado's oil and gas regulations to date
