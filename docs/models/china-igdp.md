@@ -32,6 +32,17 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
+### **3.4.7.1 - October 10, 2023**
+
+* Data Updates
+  * Updated capacity additions in elec/BPMCCS and PMCCS.
+  * Calibrated transportation stock and sales by adjusting trans/AVL, BCDTRtSY, BMRESP, and SoCDTtiNTY.
+  * Updated GDP data in io-model/BGDP with most recent World Bank histoical statistics and OECD forecasts.
+  * Slowed down reductions in iron and steel and cement energy consumption in indst/BIFUbC to better reflect current trends.
+* Web Application Data Updates
+  * Correct name and description for district heat fuel shifting policy lever to align with previous data update to dist-heat/RHFF.
+  
+
 ### **3.4.7 - July 26, 2023**
 
 * Updated model platform to 3.4.7 from 3.4.3
