@@ -3,6 +3,13 @@ title: Version History
 ---
 This page tracks updates that have been made with each version of the Energy Policy Simulator.
 
+### **3.4.8 - December 6, 2023**
+
+* New Features
+  * The Zero-Emission Vehicle Sales Standard can now be applied to nonroad vehicles in Vensim
+* Bug fix
+  * Prevent rare Vensim error affecting total available capacity by source type caused by a missing MAX function in an electricity sector variable
+
 
 ### **3.4.7 - June 8, 2023**
 
