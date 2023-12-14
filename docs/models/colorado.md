@@ -8,7 +8,7 @@ The Colorado Energy Policy Simulator (EPS) is a free and open-source computer mo
 
 The Colorado Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-colorado/archive/refs/tags/3.4.3.7.zip" class="btn">Download the Colorado Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-colorado/archive/refs/tags/3.4.3.8.zip" class="btn">Download the Colorado Energy Policy Simulator</a></p>
 
 ## U.S. State EPS Methodology
 
@@ -46,6 +46,10 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Robbie Orvis, Energy Innovation LLC
 
 ## Version History
+
+### **3.4.3.8 – December 14, 2023**
+* Data updates to emissions from industrial energy to match inventory data provided by the Colorado Department of Public Health and the Environment.
+* Minor adjustments to the emissions reduction targets based on latest inventory data.
 
 ### **3.4.3.7 – October 19, 2023**
 * Decreasing the buildings electrification lever for heating appliances in tthe Roadmap Baseline Scenario to 90% to model the combined impact of clean heat plans and HB23-1161
