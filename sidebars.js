@@ -243,6 +243,7 @@ const sidebars = {
           { type: 'doc', id: 'models/poland', label: 'Poland' },
           { type: 'doc', id: 'models/rhodeisland', label: 'Rhode Island' },
           { type: 'doc', id: 'models/saudiarabia', label: 'Saudi Arabia' },
+          { type: 'doc', id: 'models/saudiarabia_ar', label: 'Saudi Arabia — اللغة العربية' },
           { type: 'doc', id: 'models/southcarolina', label: 'South Carolina' },
           { type: 'doc', id: 'models/southdakota', label: 'South Dakota' },
           { type: 'doc', id: 'models/southkorea', label: 'South Korea' },
