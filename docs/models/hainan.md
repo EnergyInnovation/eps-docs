@@ -2,7 +2,7 @@
 title: "Hainan Energy Policy Simulator"
 ---
 
-The Hainan Energy Policy Simulator (EPS) is a free and open-source computer model created by {partner link}. It is adapted from software originally created by [Energy Innovation LLC](https://energyinnovation.org/).
+The Hainan Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation LLC (EI)](https://energyinnovation.org/) and the [Institute for Global Decarbonization Progress (iGDP)](http://www.igdp.cn/). It is adapted from software originally created by EI.
 
 ## Model Download
 
@@ -19,7 +19,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **{version number} - {release date}**
+### **3.4.8 - {release date}**
 
 * {release notes}
 
