@@ -28,6 +28,8 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software. Refer to the [Software License](../software-license) page for full details.
 
 ## Image Credits
-Xi Tai theatre in Jinci, Shanxi, China<br/>
-Yang Li<br/>
-Changes: Image has been cropped and a fade has been applied to the left side.
+Chinese temple in Datong, Shanxi, China<br/>
+Cajeo Zhang<br/>
+[https://unsplash.com/photos/people-walking-on-street-near-red-and-brown-temple-during-night-time-agV7V_bMrwg](https://unsplash.com/photos/people-walking-on-street-near-red-and-brown-temple-during-night-time-agV7V_bMrwg)<br/>
+Unsplash License<br/>
+Changes: Image has been cropped.
