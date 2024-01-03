@@ -8,7 +8,7 @@ The Shandong Energy Policy Simulator (EPS) is a free and open-source computer mo
 
 The Shandong Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below. Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
 
-<p><a href="{github release url}" class="btn">Download the Energy Policy Simulator, Shandong Version</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-shandong/archive/refs/tags/3.4.7.zip" class="btn">Download the Energy Policy Simulator, Shandong Version</a></p>
 
 ## Reference Scenarios
 
