@@ -13,9 +13,24 @@ The Guangdong Energy Policy Simulator may be used on this website through your w
 ## Reference Scenarios
 
 ## Acknowledgement of Contributors and Reviewers
-We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Guangdong. Individuals are listed alphabetically.
+We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Guangdong. Individuals are listed alphabetically by first name.
 
-* {contributor name}, {contributor org}
+* Cuiping Liao, Guangzhou Institute of Energy Conversion, Chinese Academy of Sciences
+* Li Yang, iGDP
+* Manjiao Song, iGDP
+* Megan Mahajan, Energy Innovation LLC
+* Min Hu, iGDP
+* Minshu Deng, Energy Innovation LLC
+* Pengcheng Xie, Guangzhou Institute of Energy Conversion, Chinese Academy of Sciences
+* Robbie Orvis, Energy Innovation LLC
+* Todd Fincannon, Energy Innovation LLC
+* Tongxin Zhu, iGDP
+* Xi Xi, iGDP
+* Xindi Li, iGDP
+* Xiuli Zhang, Energy Innovation LLC
+* Yating Yuan, iGDP
+* Ying Huang, Guangzhou Institute of Energy Conversion, Chinese Academy of Sciences
+* Zhen Liu, Guangzhou Institute of Energy Conversion, Chinese Academy of Sciences
 
 ## Version History
 

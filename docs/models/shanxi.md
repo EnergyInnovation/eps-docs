@@ -13,9 +13,25 @@ The Shanxi Energy Policy Simulator may be used on this website through your web 
 ## Reference Scenarios
 
 ## Acknowledgement of Contributors and Reviewers
-We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Shanxi. Individuals are listed alphabetically.
+We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Shanxi. Individuals are listed alphabetically by first name.
 
-* {contributor name}, {contributor org}
+* Hong He, Coshare Environment
+* Jie Liu, Coshare Environment
+* Li Yang, iGDP
+* Manjiao Song, iGDP
+* Megan Mahajan, Energy Innovation LLC
+* Min Hu, iGDP
+* Minshu Deng, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
+* Todd Fincannon, Energy Innovation LLC
+* Tongxin Zhu, iGDP
+* Xiaojing Xu, Coshare Environment
+* Xindi Li, iGDP
+* Xiuli Zhang, Energy Innovation LLC
+* Yan Qin, Coshare Environment
+* Yating Yuan, iGDP
+* Yu Liu, Coshare Environment
+* Yuehua Zhao, Coshare Environment
 
 ## Version History
 

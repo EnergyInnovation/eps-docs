@@ -13,9 +13,22 @@ The Hainan Energy Policy Simulator may be used on this website through your web 
 ## Reference Scenarios
 
 ## Acknowledgement of Contributors and Reviewers
-We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Hainan. Individuals are listed alphabetically.
+We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Hainan. Individuals are listed alphabetically by first name.
 
-* {contributor name}, {contributor org}
+* Dan Wu, Hainan University
+* Leya Wu, Center for Climate Change Research, Hainan Research Academy of Environmental Sciences
+* Li Yang, iGDP
+* Manjiao Song, iGDP
+* Megan Mahajan, Energy Innovation LLC
+* Min Hu, iGDP
+* Minshu Deng, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
+* Todd Fincannon, Energy Innovation LLC
+* Tongxin Zhu, iGDP
+* Xi Xi, iGDP
+* Xindi Li, iGDP
+* Xiuli Zhang, Energy Innovation LLC
+* Yating Yuan, iGDP
 
 ## Version History
 
