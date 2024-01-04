@@ -246,7 +246,7 @@ const sidebars = {
           { type: 'doc', id: 'models/poland', label: 'Poland' },
           { type: 'doc', id: 'models/rhodeisland', label: 'Rhode Island' },
           { type: 'doc', id: 'models/saudiarabia', label: 'Saudi Arabia' },
-          { type: 'doc', id: 'models/shandong', label: 'Shandong' },
+          // { type: 'doc', id: 'models/shandong', label: 'Shandong' },
           { type: 'doc', id: 'models/shanxi', label: 'Shanxi' },
           { type: 'doc', id: 'models/southcarolina', label: 'South Carolina' },
           { type: 'doc', id: 'models/southdakota', label: 'South Dakota' },
