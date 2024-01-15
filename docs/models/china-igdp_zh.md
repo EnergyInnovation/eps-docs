@@ -29,16 +29,27 @@ EPS软件是免费、开源的，中国 (iGDP) EPS是利用公开数据建立的
 * Robbie Orvis, Energy Innovation LLC
 * Todd Fincannon, Energy Innovation LLC
 * 奚溪, iGDP
+* Xindi Li, iGDP
+* Xiuli Zhang, iGDP
 
 ## 版本历史
 
-### **3.4.7.1 - 2023年10月10日**
+### **3.4.8 - 2024年1月19日**
 
+* Updated model platform to 3.4.8 from 3.4.3
+* New Features
+  * The Zero-Emission Vehicle Sales Standard can now be applied to nonroad vehicles in Vensim.
+* Bug Fix
+  * Prevent rare Vensim error affecting total available capacity by source type caused by a missing MAX function in an electricity sector variable.
 * 数据更新
   * 更新了 elec/BPMCCS 和 PMCCS 中的新增装机容量。
   * 通过调整 trans/AVL、BCDTRtSY、BMRESP 和 SoCDTtiNTY，校准了交通保有量和销量数据。
   * 根据世界银行的最新统计数据和经合组织的预测，更新了 io-model/BGDP 中的 GDP 数据。
+  * Recalibrated historical industrial fuel use in indst/BIFUbC against 2019-22 energy balance data.
   * 调整减慢了indst/BIFUbC 中钢铁和水泥能源消耗的削减速度，以更好地反映当前趋势。
+  * Add conversion losses back into indst/BIFUbC to ensure correct accounting for fuel imports and exports.
+  * Adjusted fraction of heat from CHP in dist-heat/BFoHfC.
+  * Set pre-determined capacity retirements to zero after 2030 in elec/BCRbQ and instead allow the model to endogenously calculate retirements.
 * 网络应用数据更新
   * 更正了地区供热燃料转换政策杠杆的名称和描述，以便与之前更新的地区供热/RHFF 数据保持一致。
 
