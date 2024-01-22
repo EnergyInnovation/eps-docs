@@ -10,37 +10,52 @@ title:  "中国 (iGDP) 能源政策模型"
 
 ## 关于中国EPS不同版本的说明
 
-EPS软件是免费、开源的，中国 (iGDP) EPS是利用公开数据建立的。它是两个中国国家级EPS之一。另一个模型是[中国 (NCSC) EPS](https://energypolicy.solutions/home/china/zh)，它包含一些专有输入数据，不提供下载。由于NCSC EPS使用的专有输入数据和iGDP EPS使用的公开输入数据不同，NCSC和iGDP版本的中国EPS模型结果有所不同。
+EPS软件是免费、开源的，中国 (iGDP) EPS是利用公开数据建立的。它是关于中国的两个国家级EPS模型之一。另一个模型是[中国 (NCSC) EPS](https://energypolicy.solutions/home/china/zh)，它包含一些专有输入数据，不提供下载。由于NCSC EPS使用的专有输入数据和iGDP EPS使用的公开输入数据不同，NCSC和iGDP版本的中国EPS模型结果有所不同。
 
 ## 鸣谢贡献者和审阅专家
 
 我们在此感谢以下帮助我们编写和审阅中国能源政策模型的人员和专家。姓名按名字首字母排序。
 
-* Jeffrey Rissman, Energy Innovation LLC
-* 杨鹂, iGDP
-* Lynn Price, Lawrence Berkeley National Laboratory
-* Megan Mahajan, Energy Innovation LLC
-* 陈美安, iGDP
-* 胡敏, iGDP
-* 邓敏姝, Energy Innovation LLC
-* 周南, Lawrence Berkeley National Laboratory
-* Nina Khanna, Lawrence Berkeley National Laboratory
-* Olivia Ashmoore, Energy Innovation LLC
-* Robbie Orvis, Energy Innovation LLC
-* Todd Fincannon, Energy Innovation LLC
-* 奚溪, iGDP
+* Jeffrey Rissman, 能源创新公司
+* 杨鹂, 绿色创新发展研究院 (iGDP)
+* Lynn Price, 劳伦斯伯克利国家实验室
+* Megan Mahajan, 能源创新公司
+* 陈美安, 绿色创新发展研究院 (iGDP)
+* 胡敏, 绿色创新发展研究院 (iGDP)
+* 邓敏姝, 能源创新公司
+* 周南, 劳伦斯伯克利国家实验室
+* Nina Khanna, 劳伦斯伯克利国家实验室
+* Olivia Ashmoore, 能源创新公司
+* Robbie Orvis, 能源创新公司
+* Todd Fincannon, 能源创新公司
+* 奚溪, 绿色创新发展研究院 (iGDP)
+* 李鑫迪, 绿色创新发展研究院 (iGDP)
+* 张秀丽, 能源创新公司
 
 ## 版本历史
 
-### **3.4.7.1 - 2023年10月10日**
+### **3.4.8 - 2024年1月23日**
 
+* 模型平台从 3.4.3 更新到 3.4.8
+* 新功能
+  * 零排放车辆销量标准政策在Vensim 中可应用于非道路移动机械。
+* 漏洞修复
+  * 防止在电力部门变量中因缺失MAX函数引起的少见的Vensim错误，影响不同能源类型的总装机容量。
 * 数据更新
   * 更新了 elec/BPMCCS 和 PMCCS 中的新增装机容量。
-  * 通过调整 trans/AVL、BCDTRtSY、BMRESP 和 SoCDTtiNTY，校准了交通保有量和销量数据。
+  * 通过调整 trans/AVL、BCDTRtSY、BMRESP 和 SoCDTtiNTY，校准了交通工具保有量和销量数据。
   * 根据世界银行的最新统计数据和经合组织的预测，更新了 io-model/BGDP 中的 GDP 数据。
-  * 调整减慢了indst/BIFUbC 中钢铁和水泥能源消耗的削减速度，以更好地反映当前趋势。
+  * 根据2019-2022年能源平衡表数据，重新校准了 indst/BIFUbC 中的历史工业燃油使用数据。
+  * 使用 iGDP 方法更新了 indst/BIFUbC 和 BPoIFUfE 中的未来工业能耗预测。
+  * 在 INDST/BIFUbC 中将转换损失加回，以确保正确计算燃油进出口量。
+  * 在 dist-heat/BFoHfC 和 BFoHfC 中调整了燃料提供的热量部分和来自热电联产的热量部分。
+  * 在 elec/BCRbQ 中将 2030 年后的预设产能退役设置为零，并允许模型内生计算退役产能。
+  * 在 bldgs/BCEU、SYCEU、BDEQ 和 SoCEUtiNTY 中，采用 iGDP 方法重新校准历史建筑能耗并更新未来预测。
+  * 更新了 elec/BECF 和 MPCbS 中的褐煤值，以代表峰值煤。
+  * 重新计算了 elec/BHRbEF 中煤炭的热耗率，以考虑小于 6000 千瓦的机组和自用电。
+  * 在ctrl-setting/EGGRA中关闭与COVID相关的GDP调整，因为交通、建筑和工业的能耗都已更新反映历史数据。
 * 网络应用数据更新
-  * 更正了地区供热燃料转换政策杠杆的名称和描述，以便与之前更新的地区供热/RHFF 数据保持一致。
+  * 更正了地区供热燃料转换政策杠杆的名称和描述，以便与之前更新的dist-heat/RHFF 数据保持一致。
 
 
 ### **3.4.7 - 2023年7月26日**

@@ -2,7 +2,7 @@
 title:  "China (iGDP) Energy Policy Simulator"
 ---
 
-The China (iGDP) Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation (EI)](https://energyinnovation.org/) and [innovative Green Development Program (iGDP)](http://www.igdp.cn/).  It is adapted from software originally created by EI.
+The China (iGDP) Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation (EI)](https://energyinnovation.org/) and the [Institute for Global Decarbonization Progress (iGDP)](http://www.igdp.cn/).  It is adapted from software originally created by EI.
 
 ## Model Download
 
@@ -29,16 +29,31 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Robbie Orvis, Energy Innovation LLC
 * Todd Fincannon, Energy Innovation LLC
 * Xi Xi, iGDP
+* Xindi Li, iGDP
+* Xiuli Zhang, Energy Innovation LLC
 
 ## Version History
 
-### **3.4.7.1 - October 10, 2023**
+### **3.4.8 - January 23, 2024**
 
+* Updated model platform to 3.4.8 from 3.4.3
+* New Features
+  * The Zero-Emission Vehicle Sales Standard can now be applied to nonroad vehicles in Vensim.
+* Bug Fix
+  * Prevent rare Vensim error affecting total available capacity by source type caused by a missing MAX function in an electricity sector variable.
 * Data Updates
   * Updated capacity additions in elec/BPMCCS and PMCCS.
   * Calibrated transportation stock and sales by adjusting trans/AVL, BCDTRtSY, BMRESP, and SoCDTtiNTY.
-  * Updated GDP data in io-model/BGDP with most recent World Bank histoical statistics and OECD forecasts.
-  * Slowed down reductions in iron and steel and cement energy consumption in indst/BIFUbC to better reflect current trends.
+  * Updated GDP data in io-model/BGDP with the most recent World Bank historical statistics and OECD forecasts.
+  * Recalibrated historical industrial fuel use in indst/BIFUbC against 2019-22 energy balance data.
+  * Updated future industrial energy consumption projections in indst/BIFUbC and BPoIFUfE using iGDP methodology.
+  * Added conversion losses back into indst/BIFUbC to ensure correct accounting for fuel imports and exports.
+  * Adjusted fraction of heat provided by fuel and fraction of heat from CHP in dist-heat/BFoHPbF and BFoHfC, respectively.
+  * Set pre-determined capacity retirements to zero after 2030 in elec/BCRbQ and instead allow the model to endogenously calculate retirements.
+  * Recalibrated historical buildings energy use and updated future projections with iGDP methodology in bldgs/BCEU, SYCEU, BDEQ, and SoCEUtiNTY.
+  * Updated lignite values in elec/BECF and MPCbS to represent peaker coal.
+  * Recalculated heat rate for coal in elec/BHRbEF to account for units smaller than 6000 kW and self-consumption.
+  * Turn off COVID-related GDP adjustments in ctrl-setting/EGGRA since transportation, buildings, and industry energy use have all been updated to reflect historical data.
 * Web Application Data Updates
   * Correct name and description for district heat fuel shifting policy lever to align with previous data update to dist-heat/RHFF.
   
