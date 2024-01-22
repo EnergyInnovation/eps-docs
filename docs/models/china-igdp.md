@@ -52,7 +52,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
   * Set pre-determined capacity retirements to zero after 2030 in elec/BCRbQ and instead allow the model to endogenously calculate retirements.
   * Recalibrated historical buildings energy use and updated future projections with iGDP methodology in bldgs/BCEU, SYCEU, BDEQ, and SoCEUtiNTY.
   * Updated lignite values in elec/BECF and MPCbS to represent peaker coal.
-  * Recalculated heat rate for coal in elec/BHRbEF to account for units smaller than 6000 kW.
+  * Recalculated heat rate for coal in elec/BHRbEF to account for units smaller than 6000 kW and self-consumption.
   * Turn off COVID-related GDP adjustments in ctrl-setting/EGGRA since transportation, buildings, and industry energy use have all been updated to reflect historical data.
 * Web Application Data Updates
   * Correct name and description for district heat fuel shifting policy lever to align with previous data update to dist-heat/RHFF.
