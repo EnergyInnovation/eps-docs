@@ -32,9 +32,9 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **3.4.8 - {release date}**
+### **3.4.8 - February 26, 2024**
 
-* {release notes}
+* Initial release
 
 ## Software License
 
