@@ -34,7 +34,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **3.4.8.1 - February 21, 2024**
+### **3.4.8.1 - March 1, 2024**
 
 * Removed old electricity variables from input data.
 
