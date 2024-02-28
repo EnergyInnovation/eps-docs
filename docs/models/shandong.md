@@ -2,26 +2,40 @@
 title: "Shandong Energy Policy Simulator"
 ---
 
-The Shandong Energy Policy Simulator (EPS) is a free and open-source computer model created by {partner link}. It is adapted from software originally created by [Energy Innovation LLC](https://energyinnovation.org/).
+The Shandong Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation LLC (EI)](https://energyinnovation.org/) and the [Beijing Smart Green Transport Research Center (Smart Trans)](http://smart-trans.net/). It is adapted from software originally created by EI.
 
 ## Model Download
 
 The Shandong Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below. Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-shandong/archive/refs/tags/3.4.7.zip" class="btn">Download the Energy Policy Simulator, Shandong Version</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-shandong/archive/refs/tags/3.4.8.zip" class="btn">Download the Energy Policy Simulator, Shandong Version</a></p>
 
 ## Reference Scenarios
 
 ## Acknowledgement of Contributors and Reviewers
-We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Shandong. Individuals are listed alphabetically.
+We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Shandong. Individuals are listed alphabetically by last name.
 
-* {contributor name}, {contributor org}
+* Minshu Deng, Energy Innovation LLC
+* Todd Finncannon, Energy Innovation LLC
+* Dongquan He, Beijing Smart Green Transport Research Center
+* Yiqun He, Beijing Smart Green Transport Research Center
+* Jindong Liang, Beijing Smart Green Transport Research Center
+* Lingjie Li, Beijing Smart Green Transport Research Center
+* Chang Liu, Beijing Smart Green Transport Research Center
+* Qing Liu, Beijing Smart Green Transport Research Center
+* Jiangsheng Lv, Siemens (China)
+* Megan Mahajan, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
+* Rui Wang, Beijing Smart Green Transport Research Center
+* Chenxi Zhang, China Academy of Building Research
+* Xiuli Zhang, Energy Innovation LLC
+* Lele Zou, Climate Imperative Foundation
 
 ## Version History
 
-### **{version number} - {release date}**
+### **3.4.8 - March 15, 2024**
 
-* {release notes}
+* Initial release
 
 ## Software License
 
