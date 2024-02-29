@@ -6,14 +6,14 @@ title: "山东能源政策模型"
 
 ## 下载模型
 
-The Shandong Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below. Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
+您可以通过网络浏览器在本网站上使用山东能源政策模型，或点击下方按钮将完整版模型下载至您的电脑中。请注意，您需要通过 [EPS download  page](../download)中的步骤安装所需软件来使用完整版模型。
 
 <p><a href="https://github.com/EnergyInnovation/eps-shandong/archive/refs/tags/3.4.8.zip" class="btn">下载山东EPS模型</a></p>
 
 ## 参考情景
 
 ## 鸣谢贡献者和审阅专家
-我们在此诚挚感谢以下人员和专家在我们创建和审阅山东能源政策模型时的贡献与支持。姓名按名字首字母排序。
+我们在此诚挚感谢以下人员和专家在我们创建和审阅山东能源政策模型时的贡献与支持。姓名按姓氏拼音首字母排序。
 
 * 邓敏姝，能源创新公司
 * Todd Finncannon， 能源创新公司
@@ -42,8 +42,8 @@ The Shandong Energy Policy Simulator may be used on this website through your we
 能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考 [软件许可证](../software-license) 页面，了解全部细节。
 
 ## 图片来源
-The rainbow bridge, Qingdao, Shandong, China<br/>
+彩虹桥，青岛，山东，中国<br/>
 Thomas Chen<br/>
 [https://unsplash.com/photos/cable-stayed-bridge-at-night-DwqRiLTBKLE](https://unsplash.com/photos/cable-stayed-bridge-at-night-DwqRiLTBKLE)<br/>
 Unsplash License<br/>
-Changes: Image has been cropped and a fade has been applied to the left side.
+修改: 图片经过裁剪，并在左侧经过渐变处理。

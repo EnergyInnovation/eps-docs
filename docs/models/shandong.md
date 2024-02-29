@@ -23,7 +23,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Lingjie Li, Beijing Smart Green Transport Research Center
 * Chang Liu, Beijing Smart Green Transport Research Center
 * Qing Liu, Beijing Smart Green Transport Research Center
-* Jiangsheng Lv, Siemens (China)
+* Jiansheng Lv, Siemens Ltd. China
 * Megan Mahajan, Energy Innovation LLC
 * Robbie Orvis, Energy Innovation LLC
 * Rui Wang, Beijing Smart Green Transport Research Center
