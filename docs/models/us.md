@@ -8,21 +8,19 @@ The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model 
 
 The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/3.4.8.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.0.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
 
-### Core Team
+### Core Development Team
 
-* Jeffrey Rissman, Energy Innovation LLC - technical lead, model developer, documentation and video author, policy guide author, input data collection
-* Robbie Orvis, Energy Innovation LLC - data analysis and visualization, QA testing, policy guide author, input data collection
-* Megan Mahajan, Energy Innovation LLC - data analysis and visualization, QA testing, input data collection
-* Todd Fincannon, Energy Innovation LLC - full stack developer
-* Olivia Ashmoore, Energy Innovation LLC - input data collection
-* Sonia Aggarwal, Energy Innovation LLC - high-level guidance, policy guide author
-* Silvio Marcacci, Energy Innovation LLC - communications
-* Hal Harvey, Energy Innovation LLC - high-level guidance
+* Jeffrey Rissman, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
+* Megan Mahajan, Energy Innovation LLC
+* Todd Fincannon, Energy Innovation LLC
+* Olivia Ashmoore, Energy Innovation LLC
+* Anand Gopal, Energy Innovation LLC
 
 ### Reviewers
 
@@ -38,6 +36,8 @@ We would like to acknowledge the following people who made the Energy Policy Sol
 * Jayant Sathaye, Lawrence Berkeley National Laboratory
 * Liu Qiang, Tian Chuan, and Zheng Xiaoqi, National Center for Climate Change Strategy and International Cooperation (国家应对气候变化战略研究和国际合作中心)
 * Jiang Kejun and He Chenmin, Energy Research Institute (国家发展和改革委员会能源研究所)
+* Amol Phadke, Lawrence Berkeley National Laboratory
+* Eric Gimon, Energy Innovation LLC
 
 The inclusion of a reviewer on this list does not imply endorsement of the model or its findings by this reviewer or his/her organization.
 
@@ -69,7 +69,9 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Added the ability for BAU data to have changes in domestic content share by ISIC code in future years rather than using static input data
   * Endogenous learning now functions based on the change from last year rather than the change from the start year. This allows users to switch over from historical data to endogenous learning in any year of the model run, rather than limiting users to only one year's worth of historical data.
   * Added a control lever to enable/disable RPS/CES foresight
-  * Added control lever to set which industries are subject to the carbon tax
+  * Added control lever to set which industries and vehicle types are subject to the carbon tax.
+  * Added control lever to set which industries and are covered by a carbon tax border adjustment.
+  * Redesigned structure for calculating changes in battery prices and impact on changes in vehicle prices.
 * New Policies
   * Levers for industrial fuel shifting are now split into separate electrification and hydrogen fuel shifting policies, which can both be separately set for different industrial processes
   * Reintroduced the EV charger lever, which is now tied to the model's shadow cost for range anxiety
@@ -78,13 +80,14 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Subsidies per unit capacity or per unit electricity supplied from grid batteries
   * Percent change in share of EVs used for grid balancing
   * Additional subsidies for CCS 
+  * Subsidies for the production of EV batteries
 * Bug Fixes
   * Quantization fix to avoid small policy effects in BAU case for Change in Energy Export Revenue graph in some cases
   * Fix to tracking of industry CCS for process vs. energy-related emissions
   * Fix that prevents the variable for BAU max new elec output still buildable falling below 0 in rare use cases
   * Corrected double counting of petroleum products in primary energy graphs
 * Data Updates
-  * Updated to the Energy Information Administration's Annual Energy Outlook 2023 Reference scenario
+  * Updated to the Energy Information Administration's Annual Energy Outlook 2023 Reference Scenario
   * Updated to use the National Renewable Energy Laboratory's Annual Technology Baseline 2023
   * Updated to use updated PRIMAP database for process CO2 emissions
   * Updated BAU to reflect components of the Inflation Reduction Act (see documentation included in model download folder)
@@ -96,6 +99,7 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Updated onroad vehicle prices with data from the International Council on Clean Transportation
   * Correction to LULUCF emissions trajectory based on trends in the Greenhouse Gas Inventory
   * Updates to historical and projected global capacity of certain technologies used in endogenous learning calculations
+  * Updated to use EPA's NEEDS database for planned power plant retirements (replacing EIA)
   * Other minor data updates
 * New Graphs
   * Cumulative CO2e emissions and reductions (including and excluding land use)
@@ -104,6 +108,9 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Direct emissions by building type and end use
   * Emissiosn by building type and end use (reallocated energy carriers)
   * Final energy graphs (by source and by sector)
+  * Carbon captured by end use
+  * Carbon tax revenue by source
+  * Hydrogen production by pathway
 
 ### **3.4.8 - December 6, 2023**
 
