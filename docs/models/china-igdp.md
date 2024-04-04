@@ -34,13 +34,27 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
+### **3.4.9 - April 8, 2024**
+
+* Updated model platform to 3.4.9 from 3.4.8
+* Bug Fix
+  * Prevent double counting in increases in fuel use for certain use cases of the industrial fuel shifting policy.
+* Data Updates
+  * Add nuclear to non-BAU RPS definition in elec/RQSD.
+  * Updates to policy scenarios and policy scenario documentation.
+  * Revise fuel use reduction from building electrification in bldgs/PCFURfE to match China's energy consumption pattern.
+  * Update demand response and grid battery storage capacities in elec/DRC and GBSC using more recent outlooks.
+  * Use more recent data sources and China multipliers for non-CO2 emissions in indst/BPE and PERAC.
+* Web Application Data Updates
+  * Corrected BTU to MWh conversion factor in web-app/BCF.
+
 ### **3.4.8.1 - March 1, 2024**
 
 * Removed old electricity variables from input data.
 
 ### **3.4.8 - January 23, 2024**
 
-* Updated model platform to 3.4.8 from 3.4.3
+* Updated model platform to 3.4.8 from 3.4.7
 * New Features
   * The Zero-Emission Vehicle Sales Standard can now be applied to nonroad vehicles in Vensim.
 * Bug Fix
