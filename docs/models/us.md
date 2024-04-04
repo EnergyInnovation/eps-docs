@@ -13,17 +13,14 @@ The U.S. Energy Policy Simulator may be used on this website through your web br
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
 
-### Core Team
+### Core Development Team
 
-* Jeffrey Rissman, Energy Innovation LLC - technical lead, model developer, documentation and video author, policy guide author, input data collection
-* Robbie Orvis, Energy Innovation LLC - data analysis and visualization, QA testing, policy guide author, input data collection
-* Megan Mahajan, Energy Innovation LLC - data analysis and visualization, QA testing, input data collection
-* Todd Fincannon, Energy Innovation LLC - full stack developer
-* Olivia Ashmoore, Energy Innovation LLC - input data collection
-* Sonia Aggarwal, Energy Innovation LLC - high-level guidance, policy guide author
-* Silvio Marcacci, Energy Innovation LLC - communications
-* Hallie Kennan, Energy Innovation LLC - communications
-* Hal Harvey, Energy Innovation LLC - high-level guidance
+* Jeffrey Rissman, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
+* Megan Mahajan, Energy Innovation LLC
+* Todd Fincannon, Energy Innovation LLC
+* Olivia Ashmoore, Energy Innovation LLC
+* Anand Gopal, Energy Innovation LLC
 
 ### Reviewers
 
@@ -39,6 +36,8 @@ We would like to acknowledge the following people who made the Energy Policy Sol
 * Jayant Sathaye, Lawrence Berkeley National Laboratory
 * Liu Qiang, Tian Chuan, and Zheng Xiaoqi, National Center for Climate Change Strategy and International Cooperation (国家应对气候变化战略研究和国际合作中心)
 * Jiang Kejun and He Chenmin, Energy Research Institute (国家发展和改革委员会能源研究所)
+* Amol Phadke, Lawrence Berkeley National Laboratory
+* Eric Gimon, Energy Innovation LLC
 
 The inclusion of a reviewer on this list does not imply endorsement of the model or its findings by this reviewer or his/her organization.
 
