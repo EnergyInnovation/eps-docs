@@ -54,7 +54,7 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 
 ## Version History
 
-### **3.4.9 - April 2023**
+### **3.4.9 - April 4, 2023**
 
 * Bug fix
   * Prevent double counting in increases in fuel use for certain use cases of the industrial fuel shifting policy
