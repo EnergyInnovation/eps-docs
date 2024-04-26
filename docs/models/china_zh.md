@@ -15,7 +15,7 @@ title:  "中国 (NCSC) 能源政策模型"
 
 ## 关于中国EPS不同版本的说明
 
-虽然EPS软件是免费、开源的，但中国 (NCSC) EPS包含一些专有输入数据，不提供下载。它是中国两个国家级EPS之一。如果您想下载EPS模型和代码，请[申请下载中国EPS的iGDP版本](https://wkf.ms/3hIh7YF)，该版本是用公开数据建立的。由于NCSC EPS使用的专有输入数据与[iGDP EPS](https://energypolicy.solutions/home/china-igdp/zh)使用的公开输入数据不同，NCSC和iGDP版本的中国EPS模型结果有所不同。
+虽然EPS软件是免费、开源的，但中国 (NCSC) EPS包含一些专有输入数据，不提供下载。它是中国两个国家级EPS之一。如果您想下载EPS模型和代码，请[申请下载中国EPS的iGDP版本](https://wkf.ms/3UwdWnS)，该版本是用公开数据建立的。由于NCSC EPS使用的专有输入数据与[iGDP EPS](https://energypolicy.solutions/home/china-igdp/zh)使用的公开输入数据不同，NCSC和iGDP版本的中国EPS模型结果有所不同。
 
 
 ## 鸣谢贡献者和审阅专家
