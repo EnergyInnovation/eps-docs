@@ -37,7 +37,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 ### **3.4.9.1 - May 15, 2024**
 
 * Data Updates
-  * Modified other rural energy consumption structure bldgs/BCEU to avoid negative values in 2059 and 2060.
+  * Modified other rural energy consumption structure in bldgs/BCEU to avoid negative values in 2059 and 2060.
 
 ### **3.4.9 - April 15, 2024**
 
