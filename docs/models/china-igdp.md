@@ -34,10 +34,13 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **3.4.9.1 - May 15, 2024**
+### **3.4.9.1 - June 14, 2024**
 
 * Data Updates
   * Modified other rural energy consumption structure in bldgs/BCEU to avoid negative values in 2059 and 2060.
+  * Round passenger LDV lifetime to an integer value in trans/AVL.
+  * Update maintenance costs for freight LDVs and freight HDVs in trans/AVMC.
+  * Correct vehicle purchase price calculations in trans/BNVP.
 
 ### **3.4.9 - April 15, 2024**
 
