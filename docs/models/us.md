@@ -53,7 +53,7 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 
 ## Version History
 
-### **4.0.0 - March 20, 2024**
+### **4.0.0 - July 5, 2024**
 
 * New Features
   * Redesigned electricity module, including hourly demand and dispatch for six time slices. This allows for both profitability- and reliability-based capacity expansion mechanisms; endogenous cost-driven retirements and retrofits; endogenous deployment, charging, and discharging of electricity storage; endogenous deployment of transmission and distribution; and a new bottom-up calculation of electricity rates. 
@@ -81,23 +81,25 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Percent change in share of EVs used for grid balancing
   * Additional subsidies for CCS 
   * Subsidies for the production of EV batteries
+  * Added an enhanced rock weathering policy lever to the geoengineering sector
 * Bug Fixes
   * Quantization fix to avoid small policy effects in BAU case for Change in Energy Export Revenue graph in some cases
   * Fix to tracking of industry CCS for process vs. energy-related emissions
   * Fix that prevents the variable for BAU max new elec output still buildable falling below 0 in rare use cases
   * Corrected double counting of petroleum products in primary energy graphs
 * Data Updates
+  * Updated BAU to reflect components of the Inflation Reduction Act and latest EPA rules (see documentation included in model download folder)
   * Updated to the Energy Information Administration's Annual Energy Outlook 2023 Reference Scenario
   * Updated to use the National Renewable Energy Laboratory's Annual Technology Baseline 2023
   * Updated to use updated PRIMAP database for process CO2 emissions
-  * Updated BAU to reflect components of the Inflation Reduction Act (see documentation included in model download folder)
   * Updated short-term natural gas prices to reflect futures prices
   * Updated BAU methane emissions from the oil and gas sector to reflect latest Environmental Protection Agency standards
   * Updated NDC Scenario with updated policy assumptions
   * Updated passenger light-duty vehicle fuel economy to reflect differences in tested and onroad fuel economy reported by EIA
   * Updated passenger light-duty vehicle lifetime
   * Updated onroad vehicle prices with data from the International Council on Clean Transportation
-  * Correction to LULUCF emissions trajectory based on trends in the Greenhouse Gas Inventory
+  * Updated LULUCF emissions trajectory based on trends in the latest Greenhouse Gas Inventory
+  * Updated mitigation potential in the agriculture and LULUCF sectors based on recent research from the EPA
   * Updates to historical and projected global capacity of certain technologies used in endogenous learning calculations
   * Updated to use EPA's NEEDS database for planned power plant retirements (replacing EIA)
   * Other minor data updates
