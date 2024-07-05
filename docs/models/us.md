@@ -8,7 +8,7 @@ The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model 
 
 The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/3.4.9.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.0.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
@@ -53,10 +53,66 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 
 ## Version History
 
-### **3.4.9 - April 4, 2023**
+### **4.0.0 - July 5, 2024**
 
-* Bug fix
-  * Prevent double counting in increases in fuel use for certain use cases of the industrial fuel shifting policy
+* New Features
+  * Redesigned electricity module, including hourly demand and dispatch for six time slices. This allows for both profitability- and reliability-based capacity expansion mechanisms; endogenous cost-driven retirements and retrofits; endogenous deployment, charging, and discharging of electricity storage; endogenous deployment of transmission and distribution; and a new bottom-up calculation of electricity rates. 
+  * Seven new power plant types: hard coal with CCS, natural gas combined cycle with CCS, biomass with CCS, lignite with CCS, small modular reactors, hydrogen combustion turbines, and hydrogen combined cycle plants
+  * Added new hydrogen production pathways for electrolysis with dedicated clean electricity and steam methane reforming with CCS
+  * Disaggregated industrial fuel consumption by industry into eight different industrial processes
+  * Diaggregated industry CCS costs by industry
+  * Added CCS transportation and storage costs to CCS cash flows
+  * Updated logit function for transportation vehicle purchasing decisions to better reflect deployment of different vehicle technologies
+  * The BAU Clean Electricity Standard is now tracked by subregion (in the US model, at the state-level)
+  * Added BAU CCS subsidies to the model
+  * Added the ability to track spending due to BAU distributed solar subsidies
+  * Added the ability for BAU data to have changes in domestic content share by ISIC code in future years rather than using static input data
+  * Endogenous learning now functions based on the change from last year rather than the change from the start year. This allows users to switch over from historical data to endogenous learning in any year of the model run, rather than limiting users to only one year's worth of historical data.
+  * Added a control lever to enable/disable RPS/CES foresight
+  * Added control lever to set which industries and vehicle types are subject to the carbon tax.
+  * Added control lever to set which industries and are covered by a carbon tax border adjustment.
+  * Redesigned structure for calculating changes in battery prices and impact on changes in vehicle prices.
+* New Policies
+  * Levers for industrial fuel shifting are now split into separate electrification and hydrogen fuel shifting policies, which can both be separately set for different industrial processes
+  * Reintroduced the EV charger lever, which is now tied to the model's shadow cost for range anxiety
+  * Vehicle subsidies are now subscripted by vehicle technology
+  * Added a policy lever to subject a non-BAU set of vehicles to the Low Carbon Fuel Standard. The non-BAU option in the web app applies the standard to only aviation to represent sustainable aviation fuels 
+  * Subsidies per unit capacity or per unit electricity supplied from grid batteries
+  * Percent change in share of EVs used for grid balancing
+  * Additional subsidies for CCS 
+  * Subsidies for the production of EV batteries
+  * Added an enhanced rock weathering policy lever to the geoengineering sector
+* Bug Fixes
+  * Quantization fix to avoid small policy effects in BAU case for Change in Energy Export Revenue graph in some cases
+  * Fix to tracking of industry CCS for process vs. energy-related emissions
+  * Fix that prevents the variable for BAU max new elec output still buildable falling below 0 in rare use cases
+  * Corrected double counting of petroleum products in primary energy graphs
+* Data Updates
+  * Updated BAU to reflect components of the Inflation Reduction Act and latest EPA rules (see documentation included in model download folder)
+  * Updated to the Energy Information Administration's Annual Energy Outlook 2023 Reference Scenario
+  * Updated to use the National Renewable Energy Laboratory's Annual Technology Baseline 2023
+  * Updated to use updated PRIMAP database for process CO2 emissions
+  * Updated short-term natural gas prices to reflect futures prices
+  * Updated BAU methane emissions from the oil and gas sector to reflect latest Environmental Protection Agency standards
+  * Updated NDC Scenario with updated policy assumptions
+  * Updated passenger light-duty vehicle fuel economy to reflect differences in tested and onroad fuel economy reported by EIA
+  * Updated passenger light-duty vehicle lifetime
+  * Updated onroad vehicle prices with data from the International Council on Clean Transportation
+  * Updated LULUCF emissions trajectory based on trends in the latest Greenhouse Gas Inventory
+  * Updated mitigation potential in the agriculture and LULUCF sectors based on recent research from the EPA
+  * Updates to historical and projected global capacity of certain technologies used in endogenous learning calculations
+  * Updated to use EPA's NEEDS database for planned power plant retirements (replacing EIA)
+  * Other minor data updates
+* New Graphs
+  * Cumulative CO2e emissions and reductions (including and excluding land use)
+  * Various hourly dispatch graphs
+  * Industry fuel use by industrial process (separate graphs for thermal fuels and electricity)
+  * Direct emissions by building type and end use
+  * Emissiosn by building type and end use (reallocated energy carriers)
+  * Final energy graphs (by source and by sector)
+  * Carbon captured by end use
+  * Carbon tax revenue by source
+  * Hydrogen production by pathway
 
 ### **3.4.8 - December 6, 2023**
 
