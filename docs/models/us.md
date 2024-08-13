@@ -8,7 +8,7 @@ The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model 
 
 The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.0.1.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.1.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
@@ -52,6 +52,27 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 * Michael Greenstone, University of Chicago - high-level guidance
 
 ## Version History
+
+### **4.0.1 - August 13, 2024**
+
+* New Features
+  * Enable policy scenarios to set different values for the RPS Alternative Compliance Payment
+  * Added structure to address the duration of subsidies in dispatch calculations. Previously, we correctly amortized subsidies for deciding what/how much new capacity to build, but did not include the duration in the estimation of dispatch costs in the future. This primarily affects CCUS units receiving 45Q tax credits in the US
+* Bug Fixes
+  * Address a bug with calculating marginal dispatch costs by hour
+  * Update to handling of coal retirements
+  * Update to remove double counting of some capacity built for clean dispatchable reliability
+  * Correct methodological error in calculation of load with transmission and distribution losses
+  * Correct methodological error in how a ban on CCUS retrofits can be applied
+  * Correct methodological error in RPS dispatch of certain resources that could lead to overgeneration
+* Data Updates
+ * Update handling of hydro dispatch
+ * Update 
+ * Data correction in file indst/PERAC for methane abatement potential
+ * Data correction in file indst/BIFUbC for LPG energy demand
+ * Data correction in file elec/BPSpUGBDC for phaseout of battery storage tax credits
+ * Updated curve parameters for clean dispatchable supply
+ * Updated the NDC scenario to start implementing policies in 2025, and modify the enhanced rock weathering setting
 
 ### **4.0.0.1 - July 8, 2024**
 
