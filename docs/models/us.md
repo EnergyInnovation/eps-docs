@@ -53,7 +53,7 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 
 ## Version History
 
-### **4.0.1 - August 13, 2024**
+### **4.0.1 - August 14, 2024**
 
 * New Features
   * Enable policy scenarios to set different values for the RPS Alternative Compliance Payment
@@ -66,13 +66,12 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Correct methodological error in how a ban on CCUS retrofits can be applied
   * Correct methodological error in RPS dispatch of certain resources that could lead to overgeneration
 * Data Updates
- * Update handling of hydro dispatch
- * Update 
- * Data correction in file indst/PERAC for methane abatement potential
- * Data correction in file indst/BIFUbC for LPG energy demand
- * Data correction in file elec/BPSpUGBDC for phaseout of battery storage tax credits
- * Updated curve parameters for clean dispatchable supply
- * Updated the NDC scenario to start implementing policies in 2025, and modify the enhanced rock weathering setting
+  * Update handling of hydro dispatch
+  * Data correction in file indst/PERAC for methane abatement potential
+  * Data correction in file indst/BIFUbC for LPG energy demand
+  * Data correction in file elec/BPSpUGBDC for phaseout of battery storage tax credits
+  * Updated curve parameters for clean dispatchable supply
+  * Updated the NDC scenario to start implementing policies in 2025, and modify the enhanced rock weathering setting
 
 ### **4.0.0.1 - July 8, 2024**
 
