@@ -10,6 +10,8 @@ The Washington Energy Policy Simulator may be used on this website through your 
 
 <p><a href="https://github.com/EnergyInnovation/eps-washington/archive/refs/tags/3.4.3.3.zip" class="btn">Download the Washington Energy Policy Simulator</a></p>
 
+[Click here](https://energypolicy.solutions/simulator/washington/en/315ec11) for access to the previous version of the public model, including access to saved scenarios.
+
 ## U.S. State EPS Methodology
 
 The [U.S. State EPS Methodology](../us-state-eps-methodology) page details our basic modeling assumptions, data sources, and methodology by sector. Additionally, we include information on the business-as-usual (BAU) and nationally determined contribution (NDC) scenario assumptions.
