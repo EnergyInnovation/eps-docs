@@ -10,7 +10,8 @@ The Louisiana Energy Policy Simulator may be used on this website through your w
 
 <p><a href="https://github.com/EnergyInnovation/eps-louisiana/archive/refs/tags/3.4.3.3.zip" class="btn">Download the Louisiana Energy Policy Simulator</a></p>
 
-Documentation of source data, assumptions, and policy scenarios is available [here](https://github.com/EnergyInnovation/eps-louisiana/raw/3.2.1/3.2%20Policy%20Assumptions%20and%20Sources.pdf). 
+[Click here](https://energypolicy.solutions/simulator/louisiana/en/5804b17) for access to the previous version of the public model, including access to saved scenarios.
+
 ## U.S. State EPS Methodology
 
 The [U.S. State EPS Methodology](../us-state-eps-methodology) page details our basic modeling assumptions, data sources, and methodology by sector. Additionally, we include information on the business-as-usual (BAU) and nationally determined contribution (NDC) scenario assumptions.

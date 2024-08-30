@@ -10,7 +10,8 @@ The Michigan Energy Policy Simulator may be used on this website through your we
 
 <p><a href="https://github.com/EnergyInnovation/eps-michigan/archive/refs/tags/3.4.3.3.zip" class="btn">Download the Michigan Energy Policy Simulator</a></p>
 
-Documentation of source data, assumptions, and policy scenarios is available [here](https://github.com/EnergyInnovation/eps-michigan/raw/main/Policy%20Assumptions%20and%20Sources.pdf). 
+[Click here](https://energypolicy.solutions/simulator/michigan/en/6b09fdc) for access to the previous version of the public model, including access to saved scenarios.
+
 ## U.S. State EPS Methodology
 
 The [U.S. State EPS Methodology](../us-state-eps-methodology) page details our basic modeling assumptions, data sources, and methodology by sector. Additionally, we include information on the business-as-usual (BAU) and nationally determined contribution (NDC) scenario assumptions.

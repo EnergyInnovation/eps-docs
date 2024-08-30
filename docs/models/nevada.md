@@ -10,7 +10,7 @@ The Nevada Energy Policy Simulator may be used on this website through your web 
 
 <p><a href="https://github.com/EnergyInnovation/eps-nevada/archive/3.4.3.3.zip" class="btn">Download the Nevada Energy Policy Simulator</a></p>
 
-Documentation of source data, assumptions, and policy scenarios is available [here](https://github.com/EnergyInnovation/eps-nevada/raw/main/Nevada%20EPS%20Scenario%20Assumptions.pdf).
+[Click here](https://energypolicy.solutions/simulator/nevada/en/f0c14a0) for access to the previous version of the public model, including access to saved scenarios.
 
 ## U.S. State EPS Methodology
 
