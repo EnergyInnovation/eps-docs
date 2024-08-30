@@ -10,7 +10,7 @@ The Minnesota Energy Policy Simulator may be used on this website through your w
 
 <p><a href="https://github.com/EnergyInnovation/eps-minnesota/archive/3.4.3.3.zip" class="btn">Download the Minnesota Energy Policy Simulator</a></p>
 
-[Click here](https://energypolicy.solutions/simulator/minnesota/en/104a3f0) for access to the previous version of the public model, including access to saved scenarios.
+Documentation of source data, assumptions, and policy scenarios is available [here](https://github.com/EnergyInnovation/eps-minnesota/blob/master/MN%20Policy%20Assumptions_FINAL.pdf).
 
 ## U.S. State EPS Methodology
 
