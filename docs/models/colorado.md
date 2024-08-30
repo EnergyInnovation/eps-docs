@@ -60,6 +60,15 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Robbie Orvis, Energy Innovation LLC
 
 ## Version History
+
+### **4.0.2 - September 9, 2024**
+
+* Updated to 4.0.2 EPS model platform
+* Data Updates
+  * Updated BAU to reflect components of the Inflation Reduction Act and latest EPA rules (see documentation)
+  * Updated input data to the latest available version from data sources, including the U.S. Energy Information Administration and the 
+    U.S. Environmental Protection Agency
+
 ### **3.4.3.10 – February 23, 2024**
 * Pre-loaded the Near Terms Action scenario, which builds on progress represented in the Roadmap Baseline scenario with the addition of “Near Term Actions” listed in the CO Roadmap.
 

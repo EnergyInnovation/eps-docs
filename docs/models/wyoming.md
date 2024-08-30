@@ -29,10 +29,13 @@ We would like to acknowledge the following people who made the U.S. State Energy
 
 ## Version History
 
-### **3.4.3.3 - June 9, 2023**
+### **4.0.2 - September 9, 2024**
 
-* Bug fix
-  * Prevent rare Vensim error caused by negative ppriority values in ALLOCATE AVAILABLE function
+* Updated to 4.0.2 EPS model platform
+* Data Updates
+  * Updated BAU to reflect components of the Inflation Reduction Act and latest EPA rules (see documentation)
+  * Updated input data to the latest available version from data sources, including the U.S. Energy Information Administration and the 
+    U.S. Environmental Protection Agency
 
 ### **3.4.3.3 - June 9, 2023**
 

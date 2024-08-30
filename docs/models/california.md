@@ -19,7 +19,15 @@ Energy Innovation released a report, [California Energy Policy Simulator Update:
 Documentation of source data, assumptions, and policy scenarios is available [here](https://github.com/EnergyInnovation/eps-california/raw/main/Policy%20Assumptions%20and%20Sources.docx). 
 ## Version History
 
-### **3.3.1.1 - October 7, 2022 **
+### **4.0.2 - September 9, 2024**
+
+* Updated to 4.0.2 EPS model platform
+* Data Updates
+  * Updated BAU to reflect components of the Inflation Reduction Act and latest EPA rules (see documentation)
+  * Updated input data to the latest available version from data sources, including the U.S. Energy Information Administration and the 
+    U.S. Environmental Protection Agency
+
+### **3.3.1.1 - October 7, 2022**
 
 CHANGES RELEVANT TO BAU SCENARIO
 
