@@ -23,7 +23,7 @@ The following information supplements the general EPS model information by summa
 |---|---|---|
 | Electricity | In-state capacity and generation ; out of state imports | For capacity and generation: EIA's [Form 923](https://www.eia.gov/electricity/data/eia923/) and EIA's [Form 860](https://www.eia.gov/electricity/data/eia860/). <br/> For imports/exports: EIA's State Electricity Profiles (https://www.eia.gov/electricity/state/) |
 | Building Energy Use | All energy use, all building components, residential and commercial buildings | EIA's [State Energy Data Systems](https://www.eia.gov/state/seds/seds-data-fuel.php?sid=NV) from 2021 | [NREL Electrification Futures Study - Reference Scenario](https://www.nrel.gov/analysis/electrification-futures.html) |  
-|Industrial Energy Use | All fuel use for industrial sector |EIA's[Annual Energy Outlook tables on Industrial Energy Use](https://www.eia.gov/outlooks/aeo/tables_ref.php) & EIA's [State Energy Data Systems](https://www.eia.gov/state/seds/seds-data-fuel.php?sid=US) |  
+|Industrial Energy Use | All fuel use for industrial sector |EIA's [Annual Energy Outlook tables on Industrial Energy Use](https://www.eia.gov/outlooks/aeo/tables_ref.php) & EIA's [State Energy Data Systems](https://www.eia.gov/state/seds/seds-data-fuel.php?sid=US) |  
 | Industrial Process Emissions | Agriculture and industrial process emissions | [U.S. State-level Non-CO2 GHG Mitigation Report](https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/us-state-level-non-co2-ghg-mitigation-report) |  
 | Land Use | Natural carbon sinks and sources (LULUCF) | EPA's [State GHG Emissions and Removals 2021 Inventory Report](https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals) |  
 | Transportation | All energy use, vehicle miles | EIA's [State Energy Data Systems](https://www.eia.gov/state/seds/seds-data-fuel.php?sid=NV) from 2021, [Energy Information Association's Annual Energy Outlook tables on Industrial Energy Use](https://www.eia.gov/outlooks/aeo/tables_ref.php) & [NREL Electrification Futures Study - Reference Scenario](https://www.nrel.gov/analysis/electrification-futures.html) |
@@ -155,74 +155,39 @@ The US state EPS models were developed as a partnership between Energy Innovatio
 
 * * * * *
 
-<sup>[1](#myfootnoteref1) https://us.energypolicy.solutions/docs/
-
-<sup>[2](#myfootnoteref2) https://www.eia.gov/state/seds/
-
-<sup>[3](#myfootnoteref3) https://www.nrel.gov/docs/fy18osti/71500.pdf
-
-<sup>[4](#myfootnoteref4) https://www.nrel.gov/docs/fy18osti/71500.pdf
-
-<sup>[5](#myfootnoteref5) https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals
-
-<sup>[6](#myfootnoteref6) https://rhg.com/data_story/climate-deck/
-
-<sup>[7](#myfootnoteref7) https://www.eia.gov/state/seds/
-
-<sup>[8](#myfootnoteref8) https://www.eia.gov/consumption/manufacturing/
-
-<sup>[9](#myfootnoteref9) https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals
-
-<sup>[10](#myfootnoteref10) https://rhg.com/data_story/climate-deck/
-
-<sup>[11](#myfootnoteref11)https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/us-state-level-non-co2-ghg-mitigation-report
-
-<sup>[12](#myfootnoteref12) https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals
-
-<sup>[13](#myfootnoteref13) https://ghgdata.epa.gov/ghgp/main.do?site_preference=normal
-
-<sup>[14](#myfootnoteref14) https://www.epa.gov/climate-hfcs-reduction
-
-<sup>[15](#myfootnoteref15) https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals
-
-<sup>[16](#myfootnoteref16) https://rhg.com/data_story/climate-deck/
-
-<sup>[17](#myfootnoteref17) https://www.eia.gov/electricity/data/eia860/
-
-<sup>[18](#myfootnoteref18) https://www.eia.gov/electricity/monthly/
-
-<sup>[19](#myfootnoteref19) https://www.eia.gov/electricity/data/eia923/
-
-<sup>[20](#myfootnoteref20) https://www.2035report.com/electricity/downloads/
-
-<sup>[21](#myfootnoteref21) https://www.eia.gov/electricity/state/
-
-<sup>[22](#myfootnoteref22) https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals
-
-<sup>[23](#myfootnoteref23) https://rhg.com/data_story/climate-deck/
-
-<sup>[24](#myfootnoteref24) https://www.eia.gov/state/seds/
-
-<sup>[25](#myfootnoteref25) https://www.nrel.gov/docs/fy18osti/71500.pdf
-
-<sup>[26](#myfootnoteref26) https://www.nrel.gov/docs/fy18osti/71500.pdf
-
-<sup>[27](#myfootnoteref27) https://www.eia.gov/outlooks/aeo/
-
-<sup>[28](#myfootnoteref28) https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals
-
-<sup>[29](#myfootnoteref29) https://rhg.com/data_story/climate-deck/
-
-<sup>[30](#myfootnoteref30)  https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals
-
-<sup>[31](#myfootnoteref31) https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals
-
-<sup>[32](#myfootnoteref32) https://rhg.com/data_story/climate-deck/
-
-<sup>[33](#myfootnoteref33)https://energyinnovation.org/2021/07/28/hal-harveys-insights-and-updates-congressional-climate-plan-is-a-bet-your-country-moment/
-
-<sup>[34](#myfootnoteref34) https://us.energypolicy.solutions/docs/download.html
-
-<sup>[35](#myfootnoteref35) https://us.energypolicy.solutions/docs/index.html
-
-<sup>[36](#myfootnoteref36) https://us.energypolicy.solutions/docs/video-series.html  
+<a name="myfootnote1">1</a>: "Energy Policy Simulator Documentation," Energy Innovation Policy & Technology LLC, accessed January 5, 2023, https://docs.energypolicy.solutions/.<br/>
+<a name="myfootnote2">2</a>: "State Energy Data System (SEDS)," U.S. Energy Information Administration, accessed January 5, 2023, https://www.eia.gov/state/seds/.<br/>
+<a name="myfootnote3">3</a>: "Electrification Futures Study: End-Use Electric Technology Cost and Performance Projections through 2050," National Renewable Energy Laboratory, 2017, https://www.nrel.gov/docs/fy18osti/71500.pdf.<br/>
+<a name="myfootnote4">4</a>: "Electrification Futures Study: End-Use Electric Technology Cost and Performance Projections through 2050," National Renewable Energy Laboratory, 2017, https://www.nrel.gov/docs/fy18osti/71500.pdf.<br/>
+<a name="myfootnote5">5</a>: "State Greenhouse Gas Emissions and Removals," U.S. Environmental Protection Agency, accessed January 5, 2023, https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals.<br/>
+<a name="myfootnote6">6</a>: "The Climate Deck," Rhodium Group, accessed January 5, 2023, https://rhg.com/data_story/climate-deck/.<br/>
+<a name="myfootnote7">7</a>: "State Energy Data System (SEDS)," U.S. Energy Information Administration, accessed January 5, 2023, https://www.eia.gov/state/seds/.<br/>
+<a name="myfootnote8">8</a>: "Manufacturing Energy Consumption Survey (MECS)," U.S. Energy Information Administration, accessed January 5, 2023, https://www.eia.gov/consumption/manufacturing/.<br/>
+<a name="myfootnote9">9</a>: "State Greenhouse Gas Emissions and Removals," U.S. Environmental Protection Agency, accessed January 5, 2023, https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals.<br/>
+<a name="myfootnote10">10</a>: "The Climate Deck," Rhodium Group, accessed January 5, 2023, https://rhg.com/data_story/climate-deck/.<br/>
+<a name="myfootnote11">11</a>: "U.S. State-level Non-CO2 Greenhouse Gas Mitigation Report," U.S. Environmental Protection Agency, accessed January 5, 2023, https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/us-state-level-non-co2-ghg-mitigation-report.<br/>
+<a name="myfootnote12">12</a>: "State Greenhouse Gas Emissions and Removals," U.S. Environmental Protection Agency, accessed January 5, 2023, https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals.<br/>
+<a name="myfootnote13">13</a>: "Facility Level Information on GreenHouse gases Tool (FLIGHT)," U.S. Environmental Protection Agency, accessed January 5, 2023, https://ghgdata.epa.gov/ghgp/main.do?site_preference=normal.<br/>
+<a name="myfootnote14">14</a>: "Phasedown of Hydrofluorocarbons: Establishing the Allowance Allocation and Trading Program under the American Innovation and Manufacturing Act," U.S. Environmental Protection Agency, accessed January 5, 2023, https://www.epa.gov/climate-hfcs-reduction.<br/>
+<a name="myfootnote15">15</a>: "State Greenhouse Gas Emissions and Removals," U.S. Environmental Protection Agency, accessed January 5, 2023, https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals.<br/>
+<a name="myfootnote16">16</a>: "The Climate Deck," Rhodium Group, accessed January 5, 2023, https://rhg.com/data_story/climate-deck/.<br/>
+<a name="myfootnote17">17</a>: "Form EIA-860 detailed data with previous form data (EIA-860A/860B)," U.S. Energy Information Administration, accessed January 5, 2023, https://www.eia.gov/electricity/data/eia860/.<br/>
+<a name="myfootnote18">18</a>: "Electric Power Monthly," U.S. Energy Information Administration, accessed January 5, 2023, https://www.eia.gov/electricity/monthly/.<br/>
+<a name="myfootnote19">19</a>: "Form EIA-923 detailed data with previous form data (EIA-906/920)," U.S. Energy Information Administration, accessed January 5, 2023, https://www.eia.gov/electricity/data/eia923/.<br/>
+<a name="myfootnote20">20</a>: "The 2035 Report: Plummeting Solar, Wind, and Battery Costs Can Accelerate Our Clean Electricity Future," Goldman School of Public Policy, University of California Berkeley, June 2020, https://www.2035report.com/electricity/downloads/.<br/>
+<a name="myfootnote21">21</a>: "State Electricity Profiles," U.S. Energy Information Administration, accessed January 5, 2023, https://www.eia.gov/electricity/state/.<br/>
+<a name="myfootnote22">22</a>: "State Greenhouse Gas Emissions and Removals," U.S. Environmental Protection Agency, accessed January 5, 2023, https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals.<br/>
+<a name="myfootnote23">23</a>: "The Climate Deck," Rhodium Group, accessed January 5, 2023, https://rhg.com/data_story/climate-deck/.<br/>
+<a name="myfootnote24">24</a>: "State Energy Data System (SEDS)," U.S. Energy Information Administration, accessed January 5, 2023, https://www.eia.gov/state/seds/.<br/>
+<a name="myfootnote25">25</a>: "Electrification Futures Study: End-Use Electric Technology Cost and Performance Projections through 2050," National Renewable Energy Laboratory, 2017, https://www.nrel.gov/docs/fy18osti/71500.pdf.<br/>
+<a name="myfootnote26">26</a>: "Electrification Futures Study: End-Use Electric Technology Cost and Performance Projections through 2050," National Renewable Energy Laboratory, 2017, https://www.nrel.gov/docs/fy18osti/71500.pdf.<br/>
+<a name="myfootnote27">27</a>: "Annual Energy Outlook 2022," U.S. Energy Information Administration, accessed January 5, 2023, https://www.eia.gov/outlooks/aeo/.<br/>
+<a name="myfootnote28">28</a>: "State Greenhouse Gas Emissions and Removals," U.S. Environmental Protection Agency, accessed January 5, 2023, https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals.<br/>
+<a name="myfootnote29">29</a>: "The Climate Deck," Rhodium Group, accessed January 5, 2023, https://rhg.com/data_story/climate-deck/.<br/>
+<a name="myfootnote30">30</a>: "State Greenhouse Gas Emissions and Removals," U.S. Environmental Protection Agency, accessed January 5, 2023, https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals.<br/>
+<a name="myfootnote31">31</a>: "State Greenhouse Gas Emissions and Removals," U.S. Environmental Protection Agency, accessed January 5, 2023, https://www.epa.gov/ghgemissions/state-ghg-emissions-and-removals.<br/>
+<a name="myfootnote32">32</a>: "The Climate Deck," Rhodium Group, accessed January 5, 2023, https://rhg.com/data_story/climate-deck/.<br/>
+<a name="myfootnote33">33</a>: "Congressional Climate Plan Is a 'Bet Your Country' Moment," Energy Innovation Policy & Technology LLC, July 28, 2021, https://energyinnovation.org/2021/07/28/hal-harveys-insights-and-updates-congressional-climate-plan-is-a-bet-your-country-moment/.<br/>
+<a name="myfootnote34">34</a>: "Download the Energy Policy Simulator," Energy Innovation Policy & Technology LLC, accessed January 5, 2023, https://us.energypolicy.solutions/docs/download.html.<br/>
+<a name="myfootnote35">35</a>: "Energy Policy Simulator Documentation," Energy Innovation Policy & Technology LLC, accessed January 5, 2023, https://us.energypolicy.solutions/docs/index.html.<br/>
+<a name="myfootnote36">36</a>: "Energy Policy Simulator Video Series," Energy Innovation Policy & Technology LLC, accessed January 5, 2023, https://us.energypolicy.solutions/docs/video-series.html.<br/>
