@@ -8,7 +8,7 @@ The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model 
 
 The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.1.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.2.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
@@ -52,6 +52,23 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 * Michael Greenstone, University of Chicago - high-level guidance
 
 ## Version History
+
+### **4.0.2 - September 9, 2024**
+
+* New Features
+  * Subscript fuel tax/subsidy lever by sector
+  * Update cost-effective capacity additions structure to use expected $/MWh profits rather than a multiplier representing the ratio of revenues to costs
+  * Update calculation methodology for electricity rates by collecting capacity market revenues over ten years and collecting all other non-amortized costs on an annual basis
+* Bug Fixes
+  * Implement one year delay on industry pass through expenses to align calculations and avoid potential for oscillating outputs
+  * Correct equation for change in decommissiong costs
+  * Revise calculation of changes in energy demand for energy pipelines and processing to be based on energy consumption rather than energy production
+  * Correct BAU values for the production tax credit to use correct currency conversion factor
+  * Set hydrogen fuel costs to not vary based on changes in production costs, since our input data already accounts for projected changes in production pathways
+* Data updates
+  * Update to ATB 2024 and extend input data to cover all historical years rather than just the start year
+  * Update global wind, solar, and battery deployment (used in endogenous learning calculations) to use latest projections
+  * Additional calibration of historical year electricity generation
 
 ### **4.0.1 - August 14, 2024**
 
