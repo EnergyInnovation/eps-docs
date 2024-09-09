@@ -8,9 +8,9 @@ The Minnesota Energy Policy Simulator (EPS) is a free and open-source computer m
 
 The Minnesota Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-minnesota/archive/4.0.2.zip" class="btn">Download the Minnesota Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-minnesota/archive/3.4.3.3.zip" class="btn">Download the Minnesota Energy Policy Simulator</a></p>
 
-[Click here](https://energypolicy.solutions/simulator/minnesota/en/104a3f0) for access to the previous version of the public model, including access to saved scenarios.
+Documentation of source data, assumptions, and policy scenarios is available [here](https://github.com/EnergyInnovation/eps-minnesota/blob/master/MN%20Policy%20Assumptions_FINAL.pdf).
 
 ## U.S. State EPS Methodology
 
@@ -32,14 +32,6 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Robbie Orvis, Energy Innovation LLC
 
 ## Version History
-
-### **4.0.2 - September 9, 2024**
-
-* Updated to 4.0.2 EPS model platform
-* Data Updates
-  * Updated BAU to reflect components of the Inflation Reduction Act and latest EPA rules (see documentation)
-  * Updated input data to the latest available version from data sources, including the U.S. Energy Information Administration and the 
-    U.S. Environmental Protection Agency
 
 ### **3.4.3.3 - June 9, 2023**
 
