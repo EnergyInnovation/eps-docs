@@ -2,7 +2,7 @@
 title:  "Hong Kong Energy Policy Simulator"
 ---
 
-The Alberta Energy Policy Simulator (EPS) is a free and open-source computer model created by [World Resources Institute](https://wri.org/) and [Civic Exchange](https://civic-exchange.org/).  It is adapted from software originally created by [Energy Innovation LLC](https://energyinnovation.org/).
+The Hong Kong Energy Policy Simulator (EPS) is a free and open-source computer model created by [World Resources Institute](https://wri.org/) and [Civic Exchange](https://civic-exchange.org/).  It is adapted from software originally created by [Energy Innovation LLC](https://energyinnovation.org/).
 
 ## Model Download
 
