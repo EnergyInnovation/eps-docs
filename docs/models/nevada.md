@@ -31,7 +31,7 @@ We would like to acknowledge the following people/groups who helped adapt the En
 
 ## Version History
 
-### **4.0.2 - September 9, 2024**
+### **4.0.2 - September 17, 2024**
 
 * Updated to 4.0.2 EPS model platform
 * Data Updates
