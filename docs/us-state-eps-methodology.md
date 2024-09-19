@@ -1,6 +1,6 @@
 State EPS Methodology
 ==============
-**Updated: July 2024**
+**Updated: September 2024**
 
 The state Energy Policy Simulators (EPS) account for emissions produced in the following sectors: electricity generation, building energy consumption, industrial energy consumption, industrial process emissions, agriculture process emissions, land use change, and transportation. Our primary sources are federal data sets from the Environmental Protection Agency (EPA), Energy Information Administration (EIA), and the National Renewable Energy Lab (NREL).
 
