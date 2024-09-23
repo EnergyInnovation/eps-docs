@@ -12,6 +12,10 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 * Achala Yareseeme, Thinkthrough Consulting
 * Megan Mahajan, Energy Innovation LLC
+* Varun Agarwal, WRI
+* Vijay Ganapathy, Thinkthrough Consulting
+
+We would also like to acknowledge the following people for their contributions to data collection, processing, and research: Abhiniti Gupta, Anshul Sharma, Kritika Chakliath, Muskan Agrawal, Pari Sharma, Priyadharshini R and Saransh.
 
 ## Version History
 
