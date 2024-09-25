@@ -207,6 +207,7 @@ const sidebars = {
           { type: 'doc', id: 'models/colorado', label: 'Colorado' },
           { type: 'doc', id: 'models/connecticut', label: 'Connecticut' },
           { type: 'doc', id: 'models/delaware', label: 'Delaware' },
+          { type: 'doc', id: 'models/eu', label: 'European Union' },
           { type: 'doc', id: 'models/florida', label: 'Florida' },
           { type: 'doc', id: 'models/georgia', label: 'Georgia' },
           { type: 'doc', id: 'models/hongkong', label: 'Hong Kong' },
