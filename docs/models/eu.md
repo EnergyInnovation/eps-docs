@@ -8,7 +8,7 @@ The Energy Policy Simulator (EPS) is a free and open-source computer model origi
 
 The European Union Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-eu/archive/4.0.2.zip" class="btn">Download the European Union Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-eu/archive/refs/tags/4.0.2.zip" class="btn">Download the European Union Energy Policy Simulator</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We acknowledge the following organizations who helped develop the business-as-usual baseline of the EU Energy Policy Simulator.
@@ -28,7 +28,7 @@ Additionally, we acknowledge the work of the following Energy Innovation staff w
 
 ## Version History
 
-### **4.0.2 - release date**
+### **4.0.2 - September 25, 2024**
 
 * Initial Release
 
