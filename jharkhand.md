@@ -11,11 +11,15 @@ Data collection for the Jharkhand EPS was performed by Thinkthrough Consulting, 
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Jharkhand.  Individuals are listed alphabetically.
 
 * Achala Yareseeme, Thinkthrough Consulting
+* Ajay Kumar Pandey, Thinkthrough Consulting
+* Ajay Kumar Rastogi, Task Force-Sustainable Just Transition, Government of Jharkhand
+* Asim Juneja, Thinkthrough Consulting
 * Megan Mahajan, Energy Innovation LLC
+* Shweta Koshy, UNDP
 * Varun Agarwal, WRI
 * Vijay Ganapathy, Thinkthrough Consulting
 
-We would also like to acknowledge the following people for their contributions to data collection, processing, and research: Abhiniti Gupta, Anshul Sharma, Kritika Chakliath, Muskan Agrawal, Pari Sharma, Priyadharshini R and Saransh.
+We would also like to acknowledge the following people for their contributions to data collection, processing, and research: Aashi Srivastava, Abhiniti Gupta, Anchal Sharma, Annu Kumari (UNDP), Anshul Sharma, Kritika Chakliath, Mohd Adnan Ahmad, Muskan Agrawal, Pari Sharma, Priyadharshini R, Rahul Raj, Saransh.
 
 ## Version History
 
