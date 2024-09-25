@@ -2,7 +2,7 @@
 title:  "European Union Energy Policy Simulator"
 ---
 
-The Energy Policy Simulator (EPS) is a free and open-source computer model originally created by [Energy Innovation LLC](https://energyinnovation.org/) and adapted for the European Union in partnership with [TEP](https://www.tep-energy.ch/en/home/).
+The Energy Policy Simulator (EPS) is a free and open-source computer model originally created by [Energy Innovation LLC](https://energyinnovation.org/) and adapted for the European Union in partnership with [Agora Energiewende](https://www.agora-energiewende.org/).
 
 ## Model Download
 
@@ -11,13 +11,12 @@ The European Union Energy Policy Simulator may be used on this website through y
 <p><a href="https://github.com/EnergyInnovation/eps-eu/archive/4.0.2.zip" class="btn">Download the European Union Energy Policy Simulator</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
-We acknowledge the following organizations who helped adapt the Energy Policy Simulator for the European Union.  Organizations are listed alphabetically.
+We acknowledge the following organizations who helped develop the business-as-usual baseline of the EU Energy Policy Simulator.
 
-* Agora Energiewende
 * Artelys
 * TEP
 
-Additionally, we acknowledge the work of the following Energy Innovation staff who contributed significantly to the development of the EU model (alphabetically):
+Additionally, we acknowledge the work of the following Energy Innovation staff who contributed significantly to the development of the EU model:
 
 * Rachel Goldstein
 * Megan Mahajan
