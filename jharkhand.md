@@ -32,8 +32,6 @@ We would also like to acknowledge the following people for their contributions t
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software.  Refer to the [Software License](../software-license) page for full details.
 
 ## Image Credits
-Forests of Jharkhand, India<br/>
-PIVISO<br/>
-[placeholder](placeholder)<br/>
-License: Creative Commons CC0 1.0 Universal Public Domain Dedication<br/>
+Jharkhand, India<br/>
+Credit: Thinkthrough Consulting<br/>
 Changes: Image has been cropped and a fade has been applied to the left side.<br/>
