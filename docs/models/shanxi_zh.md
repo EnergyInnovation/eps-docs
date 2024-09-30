@@ -8,7 +8,7 @@ title: "山西能源政策模型"
 
 您可以通过网络浏览器在本网站上使用山西能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
 
-<p><a href="https://forms.monday.com/forms/b17d4c59814fa8872101298dddaf2e1b?r=use1" class="btn">下载山西EPS模型</a></p>
+<p><a href="https://wkf.ms/3vQKejZ" class="btn">下载山西EPS模型</a></p>
 
 ## 参考情景
 
@@ -36,7 +36,7 @@ title: "山西能源政策模型"
 
 ## 版本历史
 
-### **3.4.8 - 2024年3月1日**
+### **3.4.9 - 2024年4月15日**
 
 * 第一次发布
 

@@ -8,7 +8,7 @@ title: "海南能源政策模型"
 
 您可以通过网络浏览器在本网站上使用海南能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
 
-<p><a href="https://forms.monday.com/forms/1e67aa8cf6799eb4f47645ba37eb2a10?r=use1" class="btn">下载海南EPS模型</a></p>
+<p><a href="https://wkf.ms/3vOhHvq" class="btn">下载海南EPS模型</a></p>
 
 ## 参考情景
 
@@ -32,7 +32,7 @@ title: "海南能源政策模型"
 
 ## 版本历史
 
-### **3.4.8 - 2024年3月1日**
+### **3.4.9 - 2024年4月15日**
 
 * 第一次发布
 

@@ -6,9 +6,9 @@ title: "山东能源政策模型"
 
 ## 下载模型
 
-您可以通过网络浏览器在本网站上使用山东能源政策模型，或点击下方按钮将完整版模型下载至您的电脑中。请注意，您需要通过 [EPS download  page](../download)中的步骤安装所需软件来使用完整版模型。
+您可以通过网络浏览器在本网站上使用山东能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
 
-<p><a href="https://github.com/EnergyInnovation/eps-shandong/archive/refs/tags/3.4.8.zip" class="btn">下载山东EPS模型</a></p>
+<p><a href="https://wkf.ms/3VOoPTb" class="btn">下载山东EPS模型</a></p>
 
 ## 参考情景
 
@@ -33,7 +33,7 @@ title: "山东能源政策模型"
 
 ## 版本历史
 
-### **3.4.8 - 2024年3月15日**
+### **3.4.9 - 2024年4月15日**
 
 * 第一次发布
 

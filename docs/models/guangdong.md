@@ -8,7 +8,7 @@ The Guangdong Energy Policy Simulator (EPS) is a free and open-source computer m
 
 The Guangdong Energy Policy Simulator may be used on this website through your web browser, or you may request a download of the full version through the button below. Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
 
-<p><a href="https://forms.monday.com/forms/86fe7b7eaca1bc73fa10a82f2174fdd8?r=use1" class="btn">Download the Energy Policy Simulator, Guangdong Version</a></p>
+<p><a href="https://wkf.ms/49ywE2H" class="btn">Download the Energy Policy Simulator, Guangdong Version</a></p>
 
 ## Reference Scenarios
 
@@ -34,7 +34,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **3.4.8 - March 1, 2024**
+### **3.4.9 - April 15, 2024**
 
 * Initial release
 
