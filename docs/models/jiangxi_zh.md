@@ -8,7 +8,7 @@ title: "江西能源政策模型"
 
 您可以通过网络浏览器在本网站上使用江西能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
 
-<p><a href="https://github.com/EnergyInnovation/eps-jiangxi/archive/refs/tags/3.4.9.zip" class="btn">下载江西EPS模型</a></p>
+<p><a href="https://wkf.ms/3PSqQd1" class="btn">下载江西EPS模型</a></p>
 
 ## 参考情景
 
