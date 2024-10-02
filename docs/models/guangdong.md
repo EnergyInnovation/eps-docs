@@ -10,8 +10,6 @@ The Guangdong Energy Policy Simulator may be used on this website through your w
 
 <p><a href="https://wkf.ms/49ywE2H" class="btn">Download the Energy Policy Simulator, Guangdong Version</a></p>
 
-## Reference Scenarios
-
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Guangdong. Individuals are listed alphabetically by first name.
 
@@ -34,7 +32,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **3.4.9 - October 7, 2024**
+### **3.4.9 - October 3, 2024**
 
 * Initial release
 
