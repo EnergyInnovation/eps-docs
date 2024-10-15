@@ -21,16 +21,6 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 We would also like to acknowledge the following people for their contributions to data collection, processing, and research: Aashi Srivastava, Abhiniti Gupta, Anchal Sharma, Annu Kumari (UNDP), Anshul Sharma, Kritika Chakliath, Mohd Adnan Ahmad, Muskan Agrawal, Pari Sharma, Priyadharshini R, Rahul Raj, Saransh.
 
-## Version History
-
-### **3.1.3 - X**
-
-* Initial Release
-
-## Software License
-
-The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software.  Refer to the [Software License](../software-license) page for full details.
-
 ## Image Credits
 Jharkhand, India<br/>
 Credit: Thinkthrough Consulting<br/>
