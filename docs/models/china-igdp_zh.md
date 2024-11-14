@@ -34,6 +34,16 @@ EPS软件是免费、开源的，中国 (iGDP) EPS是利用公开数据建立的
 
 ## 版本历史
 
+### **3.4.9.2 - 2024年11月15日**
+
+* 数据更新
+  * 更新 io-model/BPCiObIC，以与行业能耗计算中使用的假设的预计产出变化保持一致。
+  * 根据新的能源平衡表调整bldgs/BCEU、bldgs/SYCEU 和 indst/BIFUbC 中的能源强度预测。
+  * 修改 indst/BPE 和 indst/PERAC 中的 CO2 工业流程排放量。
+  * 更新 trans/BAAD、trans/BCD 和 trans/SYVbT，以与新的能源平衡表保持一致。
+  * 增加 trans/BAADTbVT 和 trans/SYVbT 中的铁路旅行，以与新的能源平衡表保持一致。
+  * 更新政策情景和政策情景文档。
+
 ### **3.4.9.1 - 2024年6月14日**
 
 * 数据更新

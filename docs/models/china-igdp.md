@@ -34,6 +34,16 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
+### **3.4.9.2 - November 15, 2024**
+
+* Data Updates
+  * Updated io-model/BPCiObIC to align with projected changes in output with assumptions used in industry energy consumption calculations
+  * Adjusted energy intensity projection based on new energy balance in bldgs/BCEU, bldgs/SYCEU, and indst/BIFUbC
+  * Modified process CO2 emission in indst/BPE and indst/PERAC
+  * Updated trans/BAAD, trans/BCD, and trans/SYVbT to align with new energy balance
+  * Increased travel by rail in trans/BAADTbVT and trans/SYVbT to align with new energy balance
+  * Updates to policy scenarios and policy scenario documentation.
+
 ### **3.4.9.1 - June 14, 2024**
 
 * Data Updates
