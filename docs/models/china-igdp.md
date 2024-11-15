@@ -29,10 +29,21 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Robbie Orvis, Energy Innovation LLC
 * Todd Fincannon, Energy Innovation LLC
 * Xi Xi, iGDP
+* Xiaoxue Hou, Energy Innovation LLC
 * Xindi Li, iGDP
 * Xiuli Zhang, Energy Innovation LLC
 
 ## Version History
+
+### **3.4.9.2 - November 15, 2024**
+
+* Data Updates
+  * Updated io-model/BPCiObIC to align projected changes in output with assumptions used in industry energy consumption calculations.
+  * Adjusted energy intensity projections in bldgs/BCEU, bldgs/SYCEU, and indst/BIFUbC based on a more recent version of China's energy balance.
+  * Modified process CO2 emissions in indst/BPE and indst/PERAC.
+  * Updated trans/BAADTbVT, trans/BCDTRtSY, and trans/SYVbT to align with a more recent version of China's energy balance.
+  * Increased travel by rail in trans/BAADTbVT and trans/SYVbT.
+  * Updated policy scenarios, including a new iGDP carbon neutrality scenario, and policy scenario documentation.
 
 ### **3.4.9.1 - June 14, 2024**
 
@@ -48,11 +59,11 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Bug Fix
   * Prevent double counting in increases in fuel use for certain use cases of the industrial fuel shifting policy.
 * Data Updates
-  * Add nuclear to non-BAU RPS definition in elec/RQSD.
-  * Updates to policy scenarios and policy scenario documentation.
-  * Revise fuel use reduction from building electrification in bldgs/PCFURfE to match China's energy consumption pattern.
-  * Update demand response and grid battery storage capacities in elec/DRC and GBSC using more recent outlooks.
-  * Use more recent data sources and China multipliers for non-CO2 emissions in indst/BPE and PERAC.
+  * Added nuclear to non-BAU RPS definition in elec/RQSD.
+  * Updated policy scenarios and policy scenario documentation.
+  * Revised fuel use reduction from building electrification in bldgs/PCFURfE to match China's energy consumption pattern.
+  * Updated demand response and grid battery storage capacities in elec/DRC and GBSC using more recent outlooks.
+  * Switched to more recent data sources and China multipliers for non-CO2 emissions in indst/BPE and PERAC.
 * Web Application Data Updates
   * Corrected BTU to MWh conversion factor in web-app/BCF.
 

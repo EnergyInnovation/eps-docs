@@ -29,10 +29,21 @@ EPS软件是免费、开源的，中国 (iGDP) EPS是利用公开数据建立的
 * Robbie Orvis, 能源创新公司
 * Todd Fincannon, 能源创新公司
 * 奚溪, 绿色创新发展研究院 (iGDP)
+* 侯晓雪, 能源创新公司 
 * 李鑫迪, 绿色创新发展研究院 (iGDP)
 * 张秀丽, 能源创新公司
 
 ## 版本历史
+
+### **3.4.9.2 - 2024年11月15日**
+
+* 数据更新
+  * 更新了 io-model/BPCiObIC，以使预计的产出变化与行业能耗计算中使用的假设保持一致。
+  * 根据较新版中国能源平衡表，调整了 bldgs/BCEU、bldgs/SYCEU 和 indst/BIFUbC 中的能源强度预测。
+  * 修改了 indst/BPE 和 indst/PERAC 中的 CO2 工业流程排放量。
+  * 更新了 trans/BAADTbVT、trans/BCDTRtSY 和 trans/SYVbT，以与较新版中国能源平衡表保持一致。
+  * 增加了 trans/BAADTbVT 和 trans/SYVbT 中的铁路出行。
+  * 更新了政策情景，包括新的 iGDP 碳中和情景和政策情景文档。
 
 ### **3.4.9.1 - 2024年6月14日**
 
