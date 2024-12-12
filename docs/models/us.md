@@ -8,7 +8,7 @@ The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model 
 
 The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.2.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.3.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
@@ -19,6 +19,7 @@ We would like to acknowledge the following people who made the Energy Policy Sol
 * Robbie Orvis, Energy Innovation LLC
 * Megan Mahajan, Energy Innovation LLC
 * Todd Fincannon, Energy Innovation LLC
+* Dan O'Brien, Energy Innovation LLC
 * Olivia Ashmoore, Energy Innovation LLC
 * Anand Gopal, Energy Innovation LLC
 
@@ -52,6 +53,38 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 * Michael Greenstone, University of Chicago - high-level guidance
 
 ## Version History
+
+### **4.0.3 - December 12, 2024**
+
+* New Features
+  * Addition of a new industrial feedstock shifting policy lever
+  * New improved tracking of dedicated clean power plants built for green hydrogen production
+  * New policy lever for non-BAU zero-emission vehicle requirements at the subregional level (e.g. at the US state level)
+  * Addition of new structure to support the breaking out of power plants' own use of electricity
+  * Grid storage is now integrated with the capacity additions mechanism
+  * New control lever for how to integrate capacity market revenue into cash flows
+  * Addition of a minimum distributed solar capacity lever
+  * New policy lever to ban CCS retrofits by power plant type
+  * Addition of a smoothing time to smooth power plant decommissioning costs
+  * Replace thermochemical water splitting hydrogen production pathway with partial oxidation of hydrocarbons option
+  * Improves the representation of electricity cash flows, for example smoothing energy market revenues and wholesale energy market costs and combining least-cost and guaranteed dispatch into a single energy market
+* Bug Fixes
+  * Correct error in process emissions abatement potential for oil and gas CH4
+  * Correct double counting of a portion of emissions from hydrogen production
+  * Corrects bugs in the calculation of incremental capacity and dispatch from the clean electricity standard policy
+  * Correct how the percentage fuel use reductions for electricity are applied to the industrial electrification policy lever
+  * Add missing MAX function to two different variables to prevent mismatches between policy and BAU versions of EPS outputs
+  * Move emissions from ethanol production from the chemicals subsector into refining
+  * Prevent least cost dispatch from being negative in certain cases
+  * Allows the ZEV standard to now be applied to non-road vehicle types
+  * Fixes to revenue and deployment calculations for hybrid power plants
+* Data updates
+  * Update historical process emissions data based on EPA's Greenhouse Gas Inventory 1990-2022
+  * Update pollutant emissions intensities to use the latest EPA National Emissions Inventory for non-GHGs and EPA GHG Inventory data for N2O emissions from mobile combustion
+  * Update hydrogen prices for the electricity sector to assume blue hydrogen
+  * Update short-term natural gas prices to use latest gas futures estimates
+  * No longer estimate the portion of buildings sector fuel demand used for district heating and instead represent all fuel use and emissions within the buildings sector
+
 
 ### **4.0.2 - September 9, 2024**
 
