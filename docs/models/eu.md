@@ -2,19 +2,19 @@
 title:  "European Union Energy Policy Simulator"
 ---
 
-The Energy Policy Simulator (EPS) is a free and open-source computer model originally created by [Energy Innovation LLC](https://energyinnovation.org/) and adapted for the European Union in partnership with [Agora Energiewende](https://www.agora-energiewende.org/).
+The Energy Policy Simulator (EPS) is a free and open-source computer model originally created by [Energy Innovation LLC](https://energyinnovation.org/) and adapted for the European Union (EU) in partnership with [Agora Energiewende](https://www.agora-energiewende.org/).
 
 ## Model Download
 
-The European Union Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
+The EU EPS may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
 <p><a href="https://github.com/EnergyInnovation/eps-eu/archive/refs/tags/4.0.2.zip" class="btn">Download the European Union Energy Policy Simulator</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
-We acknowledge the following organizations who helped develop the business-as-usual baseline of the EU Energy Policy Simulator.
+We acknowledge the following organizations who helped develop the business-as-usual baseline of the EU EPS.
 
-* Artelys
-* TEP
+* [Artelys](https://www.artelys.com/)
+* [TEP Energy](https://www.tep-energy.ch/en/home/)
 
 Additionally, we acknowledge the work of the following Energy Innovation staff who contributed significantly to the development of the EU model:
 
@@ -28,9 +28,9 @@ Additionally, we acknowledge the work of the following Energy Innovation staff w
 
 ## Methodology
 
-The European Union (EU) version of the Energy Policy Simulator (EPS) aims to help the user find and understand the most important policies to decarbonize the EU’s economy in an effective and equitable way. The model includes two reference scenarios, a business-as-usual (BAU) and a Fit for 55 reference scenario. 
+The EU EPS aims to help the user find and understand the most important policies to decarbonize the EU’s economy in an effective and equitable way. The model includes two reference scenarios, a business-as-usual (BAU) and a Fit for 55 "core policies" scenario. 
 
-The BAU scenario simulates the energy landscape of the EU as it was in 2020, before the introduction of the European Green Deal and the passage of the subsequent Fit for 55 policy package. The Fit for 55 reference scenario captures the energy impacts of EU-level climate policy passed during the 2019-24 legislative cycle. 
+The BAU scenario simulates the energy landscape of the EU as it was in 2020, before the introduction of the European Green Deal and the passage of the subsequent Fit for 55 policy package. The Fit for 55 core policies scenario captures the energy impacts of EU-level climate policy passed during the 2019-24 legislative cycle. 
 
 ### Business-as-usual scenario
 
