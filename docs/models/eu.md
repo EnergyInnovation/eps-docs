@@ -71,6 +71,13 @@ Also in 2024, the EU passed into legislation its first-ever rules to curb methan
 
 ## Version History
 
+### **4.0.3 - December 16, 2024**
+
+* Updates model version to 4.0.3
+* Updates IO database to account for JRC's industrial aggregation
+* Calibrates historical power generation, vehicle sales, energy demand to 2022 and 2023 reports
+* Adjusts core Fit for 55 policies scenario to reflect updated projections
+
 ### **4.0.2 - September 25, 2024**
 
 * Initial Release
