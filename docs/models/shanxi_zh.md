@@ -38,6 +38,11 @@ title: "山西能源政策模型"
 
 * 第一次发布
 
+## 相关报告
+
+摘要：报告回顾了山西省低碳转型的进展情况。利用山西EPS模型和情景分析方法，报告预测了山西省能源消费和温室气体排放的长期趋势，识别了在双碳情景下山西省需重点关注的关键领域、主要目标设定以及优先实施的减排政策。同时，报告评估了这些政策实施所需的投资规模，以及它们对GDP和就业产生的潜在影响。基于这些分析，报告为山西省低碳转型提供了方向性的政策建议。<br/>
+[https://www.igdp.cn/wp-content/uploads/2024/12/%E5%B1%B1%E8%A5%BF%E4%BD%8E%E7%A2%B3%E8%BD%AC%E5%9E%8B%E4%B8%AD%E9%95%BF%E6%9C%9F%E5%B1%95%E6%9C%9B-%E5%9F%BA%E4%BA%8EEPS%E6%A8%A1%E5%9E%8B%E6%9E%84%E5%BB%BA%E5%8F%8C%E7%A2%B3%E8%B7%AF%E5%BE%84.pdf](https://www.igdp.cn/wp-content/uploads/2024/12/%E5%B1%B1%E8%A5%BF%E4%BD%8E%E7%A2%B3%E8%BD%AC%E5%9E%8B%E4%B8%AD%E9%95%BF%E6%9C%9F%E5%B1%95%E6%9C%9B-%E5%9F%BA%E4%BA%8EEPS%E6%A8%A1%E5%9E%8B%E6%9E%84%E5%BB%BA%E5%8F%8C%E7%A2%B3%E8%B7%AF%E5%BE%84.pdf)<br/>
+
 ## 软件许可
 
 能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考 [软件许可证](../software-license) 页面，了解全部细节。
