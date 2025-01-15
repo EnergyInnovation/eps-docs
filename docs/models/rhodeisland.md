@@ -29,11 +29,14 @@ We would like to acknowledge the following people who made the U.S. State Energy
 
 * Ashna Aggarwal, RMI
 * Olivia Ashmoore, Energy Innovation LLC
-* Ben Butterworth, Acadia Center
 * Kyle Clark-Sutton, RMI
+* Rachel Goldstein, Energy Innovation LLC
 * Nathan Iyer, RMI
+* Wendy Jaglom, RMI
 * Megan Mahajan, Energy Innovation LLC
 * Robbie Orvis, Energy Innovation LLC
+* Kayleigh Rubin, RMI
+* Addy Sonaike, RMI
 
 ## Version History
 

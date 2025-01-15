@@ -12,11 +12,25 @@ The California Energy Policy Simulator may be used on this website through your 
 
 [Click here](https://energypolicy.solutions/simulator/california/en/932e552) for access to the previous version of the public model, including access to saved scenarios.
 
-## Findings
+## U.S. State EPS Methodology
 
-Energy Innovation released a report, [California Energy Policy Simulator Update: Earlier Action Delivers Social and Economic Benefits](https://energyinnovation.org/publication/california-energy-policy-simulator-update-earlier-action-delivers-social-and-economic-benefits/), which explores the current state policy mix and options for deeper decarbonization using the California EPS. Full documentation for the scenario assumptions can be found at the documentation links below.
+The [U.S. State EPS Methodology](../us-state-eps-methodology) page details our basic modeling assumptions, data sources, and methodology by sector. Additionally, we include information on the business-as-usual (BAU) and nationally determined contribution (NDC) scenario assumptions.
 
-Documentation of source data, assumptions, and policy scenarios is available [here](https://github.com/EnergyInnovation/eps-california/raw/main/Policy%20Assumptions%20and%20Sources.docx). 
+## Acknowledgement of Contributors and Reviewers
+
+We would like to acknowledge the following people who made the U.S. State Energy Policy Simulators possible.
+
+* Ashna Aggarwal, RMI
+* Olivia Ashmoore, Energy Innovation LLC
+* Kyle Clark-Sutton, RMI
+* Rachel Goldstein, Energy Innovation LLC
+* Nathan Iyer, RMI
+* Wendy Jaglom, RMI
+* Megan Mahajan, Energy Innovation LLC
+* Robbie Orvis, Energy Innovation LLC
+* Kayleigh Rubin, RMI
+* Addy Sonaike, RMI
+
 ## Version History
 
 ### **4.0.2 - September 17, 2024**

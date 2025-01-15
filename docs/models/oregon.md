@@ -26,9 +26,13 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Ashna Aggarwal, RMI
 * Olivia Ashmoore, Energy Innovation LLC
 * Kyle Clark-Sutton, RMI
+* Rachel Goldstein, Energy Innovation LLC
 * Nathan Iyer, RMI
+* Wendy Jaglom, RMI
 * Megan Mahajan, Energy Innovation LLC
 * Robbie Orvis, Energy Innovation LLC
+* Kayleigh Rubin, RMI
+* Addy Sonaike, RMI
 
 ## Version History
 
