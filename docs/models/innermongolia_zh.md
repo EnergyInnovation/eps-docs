@@ -41,6 +41,8 @@ title: "内蒙古能源政策模型"
 能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考 [软件许可证](../software-license) 页面，了解全部细节。
 
 ## 图片来源
-内蒙古，中国<br/>
-
+Aerial view of wind farm on Huiteng Xile Grassland in Ulanqab, Inner Mongolia, China<br/>
+Govan Zhang<br/>
+[https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091](https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091<br/>
+许可: iStock License<br/>
 修改: 图片经过裁剪，并在左侧经过渐变处理。
