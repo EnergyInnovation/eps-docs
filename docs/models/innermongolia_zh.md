@@ -43,6 +43,6 @@ title: "内蒙古能源政策模型"
 ## 图片来源
 Aerial view of wind farm on Huiteng Xile Grassland in Ulanqab, Inner Mongolia, China<br/>
 Govan Zhang<br/>
-[https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091](https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091<br/>
+[https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091](https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091)<br/>
 许可: iStock License<br/>
 修改: 图片经过裁剪，并在左侧经过渐变处理。

@@ -43,6 +43,6 @@ The Energy Policy Simulator (EPS) is released under the GNU General Public Licen
 ## Image Credits
 Aerial view of wind farm on Huiteng Xile Grassland in Ulanqab, Inner Mongolia, China<br/>
 Govan Zhang<br/>
-[https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091](https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091<br/>
+[https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091](https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091)<br/>
 License: iStock License<br/>
 Changes: Image has been cropped and a fade has been applied to the left side.
