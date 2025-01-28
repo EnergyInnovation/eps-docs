@@ -3,315 +3,409 @@ title: Electricity Sector (main)
 ---
 ## General Notes
 
-In terms of structural complexity in Vensim, the Electricity Sector is the most complicated sector.  This is in large part because the nature of some of the policies we wish to represent (for example, pricing policies or a renewable portfolio standard) affect electricity suppliers' decisions about which power plant types to build, potentially resulting in dramatically different electricity sector structures depending on the user's chosen policy settings.  We are not simply changing the efficiency or the type of fuel consumed by an item (like a building component in the Buildings Sector), but substituting different generating technologies that have different properties (heat rates, fuel needs, flexibility needs) and may be dispatched differently based on the dispatch calculation section of the model.
+The Electricity Sector of the EPS is the most structurally complex sector in the model. In this sector, the model aggregates annual electricity demand from across the other sectors in the model, converts it to hourly electricity demand, adjusts demand based on losses, imports/exports, and load modifying technologies, and then calculates retirements, new capacity, and dispatch. Unlike other sectors of the model, the Electricity Sector has hourly temporal resolution, with the model estimating demand and generation across 24 hours in six different timeslices. It also calculates market dynamics unlike that in other sectors, including the use of multiple optimization loops. As such it is far more structuraly detailed than other sectors.
 
-As a result, we must construct our own BAU scenario, based on the decision-making logic in Vensim, rather than simply reading in projections of capacities or electricity output as input data.  Otherwise, when the policies are all disabled, the "policy case" in the model would not match the BAU case, because the "policy case" is still being assembled via our decision-making logic, even when no policies are turned on.
+While other sectors in the model rely on input data to specify energy or service demand, in the Electricity Sector the EPS constructs its own BAU scenario inclusive of existing policies. This different approach increaeses the complexity of the sector as it must be well calibrated in BAU even without the addition of policies.
 
-In general terms, the "Electricity Supply - Main" sheet examines how much power is needed, including transmission and distribution losses.  Then, it builds more power plants to supply that need (based on various factors such as the cost of building and operating different types of plants, as well as policies selected by the user).  The model ensures there is enough "flexibility" on the grid to support the wind and solar being built, or if flexibility-constrained, it will build something else instead.  It also checks to ensure there is enough peaking capacity to meet peak demand, and if not, it builds peaking power plants to meet that need.  Finally, it chooses what power plants to dispatch to meet the electricity demand, sums fuel use, and calculates pollutant emissions.  Each of these steps is explained in more detail below.
+The structure in the EPS attempts to mimic the behavior of other types of models that are dedicated electricity sector models, the most common of which is the "capacity expansion model." These models use linear programming to identify the least cost mix of resources that satisfy grid and policy constraints based on an objective function to minimized total system costs. 
 
-## Power Plant Types and Quality Levels
+Vensim does not have the capability to use linear programming and its ability to incorporate market clearing dynamics is extremely limited. As such, we built a structure that produces similar results to capacity expansion models with a simlar underlying market theory that is aligned with real world dynamics. In particular, the model will build new capacity if that capacity is profitable over a time period (meaning its anticipated revenues exceed its costs) and also if additional capacity is needed for reliability purposes, subject to a capacity price. Each component of the Electricity Sector is discussed in this section.
 
-The model includes eight types of power plants: coal, natural gas, nuclear, hydroelectric, wind, solar PV, solar thermal, and biomass.
+In general terms, the "Electricity Supply - Main" sheet determines hourly electricity demand, accounting for trade, losses, and load modifying resources. Then, it determines power plant retirements based on policy and profitability. It then runs through a series of capacity expansion steps that build new capacity, including storage capacity, based on policy, cost, or reliability, accounting for hourly demand and supply constraints. It next moves through a multi-stage dispatch mechanism, producing hourly dispatch and associated market prices. Lastly, it aggregates generation and calculates associated energy use and emissions. Each of these steps is explained in more detail below.
 
-In order to represent differences in characteristics between plants of the same type (say, between an older and a newer coal plant), the model also uses the concept of "Power Plant Quality Levels."  Plants of different quality levels may have different properties, most importantly, different heat rates (i.e. fuel efficiencies).
+## Power Plant Technologies
 
-We divide plants into three quality levels:
+The model includes twenty four types of power plants (note: not all of these are used in every geography the EPS covers):
 
-* preexisting retiring
-* preexisting nonretiring
-* newly built
+* hard coal
+* hard coal with CCS
+* lignite 
+* lignite with CCS
+* natural gas steam turbine
+* natural gas combined cycle
+* natural gas combined cycle with CCS
+* natural gas peaker
+* nuclear
+* small modular reactor
+* hydroelectric
+* onshore wind
+* offshore wind
+* solar PV
+* solar thermal
+* biomass
+* biomass with CCS
+* geothermal
+* petroleum
+* crude oil
+* heavy or residual fuel oil
+* municipal solid waste
+* hydrogen combustion turbine
+* hydrogen combined cycle
 
-The "preexisting retiring" quality level represents the average plant (of a given type) that exists at the start of the model run (in 2013) and is projected to retire by the end of the model run.  The "preexisting nonretiring" quality level represents the average plant (of a given type) that exists at the start of the model run and is not projected to retire by the end of the model run.  The "newly built" quality level represents the average plant that will be built during the model run.  All capacity in the model has one of these three quality levels.
+In order to represent differences in characteristics between plants of the same type (say, between an older and a newer coal plant), the model uses vintaging. Data for historical capacity is ordered by vintage and the model tracks vintages as power plants are added and retired. This allows the model to account for changes in technologies, such as improved heat rates or operating costs, over time. Generally speaking the model will order retirements from oldest to newest (more detail on retirements below). To improve runtime, the model collapses the vintages into weighted averages for the fleet as far upstream as possible.
 
-(In the U.S. dataset, we only use the "preexisting retiring" quality level, and it includes all preexisting plants.  This is because we have found that, in practice, there is no meaningful correlation between the properties of a plant of a given type (e.g. the properties of a coal plant) and whether or not it retires during the model run.  There are too many ideosyncretic considerations, such as old plants that are grandfathered into more recent environmental regulations, differences between states that will or will not let utilities recover their costs for inefficient plants, etc.  We leave all three quality tiers available in the model, so that the option to divide preexisting plants into two quality tiers will be available for Energy Policy Simulator (EPS) versions that represent other countries.)
+## Temporal Resolution
 
-There are several reasons why we choose to represent quality levels based on the average plant of a given type that will retire, will not retire, or will be built during the model run, as opposed to, for example, basing our quality levels on particular technology types (such as subcritical, supercritical ultra-supercritical and circulating fluidized bed coal plants).  One is that we may use the same category definitions for all plant types, allowing more uniform equations and representation in Vensim.  A good example is that all power plants built during the run are of the "newly built" quality level, rather than needing decision logic for how much of each type of coal plant is built in each year.  (That type of calculation can be handled outside of Vensim, when determining the numerical properties of the "newly built" quality level for a given plant type.)  Another reason is to help keep the model simpler: using technology-based categories is unnecessary to achieve a good representation of the effects of policies on the power plant fleet, and excess complexity makes the model harder to learn and to use.  Third, quality tiers don't always map perfectly onto technologies- it's possible to create a better-performing or worse-performing plant that uses the same core technology.
+The model includes six electricity timeslices, each with 24 hours:
 
-## Capacity Construction
+* average winter day
+* average spring day
+* average summer day
+* average fall day
+* peak summer day
+* peak winter day
 
-### Determining Energy Need
+Input data determine the number of days in each electricity timeslice. Peak days are used only in reliability calculations in the model and input data is meant to represent the worst system conditions in each hour on those days, i.e. lowest capacity factor for resources and highest demand hours. The peak hours are generally not used for computing dispatch, prices, or revenues, other than for reliability calculations.
 
-The sheet begins by taking in the total amount of electricity demanded by the other sectors of the model.  It applies a transmission and distribution loss percentage to determine the amount of electricity that needs to be generated and dispatched (e.g. for off-site use) by power plants.  The transmission and distribution losses are reduced via the associated policy lever.  The structure is shown in the following screenshot:
+## Hourly Electricity Demand
 
-![electricity demand including T&D losses](/img/electricity-sector-main-ElecDemand.png)
+The first stage of the power sector calculates the hourly electricity demand, which is used throughout the power sector to calculate dispatch, capacity additions, and market prices. In this stage, total annual demand across the various sectors of the model is converted to hourly demand, adjusted to account for trade and losses, and further modified by load modifying technologies, before finally yielding a total hourly electricity demand value for each electricity timeslice.
 
-The model then adjusts the electricity demand to account for electricity imports and exports (both of which can be adjusted via policy levers).  Electricity imports and exports are not linked to the other policies in the electricity sector (e.g. if the user makes electricity very expensive by applying taxes, the model will not automatically increase imports).  They are simply read from BAU data and then modified by user-set policies, as shown in the following screenshot:
+### Net Imports
 
-![electricity imports and exports](/img/electricity-sector-main-ImportsExports.png)
+The EPS reads in electricity exports (total) and imports (by fuel type) and calculates any changes to the BAU data based on exogenous GDP adjustments determined by input data and policy levers. These adjustments vary imports and exports based on changes in GDP outside of the underlying projection data. This structure is configured to allow for estimation of COVID-induced changes in demand from data sets pre-dating 2020. The final output is total net imports (positive for imports, negative for exports).
 
-Next, the model determines what the "expected" capacity factor is of each different plant type and quality tier.  These are based on BAU input data, modified by the downtime reduction policy, which can be set separately by plant type and by quality tier by the user.  The simulator will also reduce the expected capacity factors of flexibility-demanding plant types (wind and solar PV) if they are exceeding the available flexibility point allotment.  This represents curtailment.  Curtaliment follows a smooth function that swiftly increases as the power plant type demands more than 100% of flexibility points.  The function is a polynomial defined with coefficients.  There is also a maximum possible reduction, to reflect the fact that these plants will still be able to be used for at least the peak hour or two each day.  This rarely comes into effect- it is most common if natural gas peakers that were providing needed flexibility retire, leaving the system in severe flexibility point deficit.  The following screenshot shows the structure for handling the calculation of expected capacity factors:
+![net imports of electricity](/static/img/electricity-sector-main-NetImports.png)
 
-![calculating expected capacity factors](/img/electricity-sector-main-CapFactorAdjustment.png)
+### Calculating Hourly Electricity Demand from Annual Electricity Demand including Own Use and Transmission and Distribution Losses
 
-The model next determines the potential electricity output of the power plants that survive from the previous model year (i.e. the ones that have not retired).  As part of these calculations, we work with "Expected Capacity Factors," the capacity factors at which electricity suppliers desire to run each type of power plant.  Given the choice, an electricity supplier would sooner build a new nonpeaker power plant than attempt to rely on running a nonpeaker plant at greater than its Expected Capacity Factor.  (Peakers are handled somewhat differently, as discussed in the sections related to electricity dispatch calculations below.)  Therefore, expected electricity capacity factors are likely to be close to but not exactly the same as technical maximums.  We multiply the expected electricity capacity factors by hours per year, obtaining a multiplier that is used many times in the "Electricity Supply - Main" sheet to convert between capacity and potential electricity output.  (Actual output also factors into what is dispatched, which is addressed below.)
+The model then moves to compute total hourly final electricity demand. In other sectors of the model, electricity demand is tracked annually, for example total annual cooling demand in buildings or demand for electric vehicle charging. Input data relating annual demand to hourly demand (load factors) is used to convert the annual values to hourly values aligned with the electricity timeslices used by the model. 
 
-We subtract the amount of retiring potential electricity output from last year's potential output to determine the potential output that survives to the current year.  This is subtracted from the electricity demand that includes T&D losses to determine the new potential output needed this year, as shown in the following screenshot:
+Due to differences in data alignment, i.e. some end uses don’t directly overlap with input data, an adjustment can be necessary to ensure the computed peak and minimum demand values align with historical data. In this step, the model multiplies the computed hourly demand by an Hourly Variance Multiplier that is estimated such that the peak annual demand in the EPS aligns with historically observed values.
 
-![determining new potential output needed this year](/img/electricity-sector-main-NewPotOutputNeeded.png)
+In this step, the model adjusts load to account for transmission and distribution losses based on input data, adding demand in each hour to cover the estimated losses. Policies can be used to improve the loss percentages as well.
 
-### Mandated Capacity Construction Policy
+Finally, the model can incorporate own use on site as part of the total demand. In most regions, own use is accounted for through lower heat rates in the power sector, i.e. less power generation per unit of fuel input. But in some regions, own use is included in calculations of electricity demand, and the model can support either approach through input data modifications.
 
-One of the electricity sector policies allows the user to specify a "mandated capacity construction schedule," or a particular quantity of capacity of each type of plant that is built in each year (set separately by year).  There can be a BAU and a non-BAU version of this schedule, to accommodate countries that have plans to produce particular amounts of capacity of particular types even in their BAU case, irrespective of economics.  (The BAU mandated capacity construction schedule for the U.S. is set to zero in every year.)  A policy lever (located on the "Policy Control Center" sheet) toggles between the BAU and non-BAU versions of the mandated capacity construction schedule.  The following structure applies the effects of the mandated capacity construction policy:
+The final result is total electricity demand by hour before accounting for distributed generation.
 
-![mandated capacity construction policy](/img/electricity-sector-main-MandatedCapConst.png)
+![electricity demand before distributed generation](/static/img/electricity-sector-main-TotalDemandBeforeDG.png)
 
-Finally, we convert from capacity to potential output using the target electricity capacity factors and determine the remaining amount of new potential output we need, after the mandated capacity construction policy.
+### Hourly Demand after Distributed Generation
 
-### Renewable Portfolio Standard Policy
+Next, the model computes the contribution of distributed resources using hourly capacity factors from input data and total installed capacity of distributed resources. Electricity supplied by distributed resources is subtracted from the total hourly demand.
 
-Next, the model determines what must be built to comply with the Renewable Portfolio Standard (RPS) policy.  Each type of power plant either  qualifies or does not qualify as contributing to the achievement of the RPS.  In the U.S., the RPS-compliant power plant types are non-hydro renewables.
+![electricity demand after distributed generation](/static/img/electricity-sector-main-TotalDemandAfterDG.png)
 
-Unlike all other policies in the Energy Policy Simulator (EPS), electricity suppliers are given foresight of the full schedule of RPS percentages for future years.  This allows them to intelligently build to meet a future RPS target, rather than encountering an unrealistic shock in the year when the target occurs (or the year when the target surpasses the percentage of qualfying renewables that already exist).
+### Hourly Demand after Optimizing Dispatch of Net Imports
 
-The calculation begins by determining the RPS percentage in each year of the model run, summing any BAU RPS values with any additional RPS specified by the model users.  (In the U.S. dataset, the BAU RPS is a generation-weighted average of state RPSes by year.)  This is shown in the following screenshot:
+After computing net hourly demand, the model then allocates annual net imports to hours in each timeslice. The structure proportionally allocates imports (if net imports is positive) based on the total daily share of demand in a given hour. It allocates exports (if net imports is negative) similarly, but based on the hours of least demand. Both imports and exports are subject to minimum and maximum constraints, and the model will assign all of the net imports to the next set of hours that satisfy the constraints. The model loops through 20 optimization passes to allocate imports or exports proportionally without exceeding hourly maximums and minimums, which are provided in input data.
 
-![calculating RPS by year](/img/electricity-sector-main-RPS.png)
+As an example, consider a day with equal electricity demand in every hour and positive net imports. The model would allocate the same imports in every hour. Next consider a case where 23 of the 24 hours contain 70% of the daily demand, and the final hour contains 30% of the daily demand. In this case, assuming no maximum or minimum constraints, the model would apportion 30% of the expected daily import value to the worst hour and assign the remaining imports evenly across the remaining hours. Although this is a very simplified approach to estimating exports and imports, it helps maximize their utility.
 
-To minimize shocks, imagine that we draw lines between the percentage of RPS-qualifying sources that exist today and the RPS percentage in each future year.  We try to build to follow the steepest of these lines, which minimizes the steepness of the line that must be followed in any future year.  The relevant structure is shown below:
+![electricity demand after transmission and distribution losses](/static/img/electricity-sector-main-TotalDemandAfterNetImports.png)
 
-![calculating slope of line to RPS to follow](/img/electricity-sector-main-SlopeOfLine.png)
+### Potential Load Modification from Storage, Demand Response, Pumped Hydro, and Other Load Modifying Resources
 
-Next, we determine how much RPS-qualifying potential output we already have, both from that which survives from previous years and that which was mandated to be built this year by the mandated capacity construction policy.  We multiply the total demand (including T&D losses) by the "Percentage of RPS Qualifying Potential Output to Seek This Year."  If we already have enough RPS-qualifying potential output to reach this level, zero additional output is needed.  Otherwise, we need enough output to be built this year to provide the necessary fraction of the total demand from RPS-qualifying sources.  Note that this policy can cause power plants to be built even if there is enough non-RPS-qualifying potential output to meet that demand (for example, if we have nothing but coal plants, and a non-zero RPS setting, then some renewables would be built irrespective of the number of coal plants we have).  The relevant structure is below:
+Next, the model estimates demand modifications from load modifying resources, including demand response, EV batteries,  grid storage, and pumped hydro. Note that for hybrid power plants (i.e. power plants with battery storage), the impact of the onsite storage is handled through modifications to the hourly demand given limitations of programming in Vensim. This approach is discusssed in more detail below where applicable.
 
-![calculating new potential output to meet RPS](/img/electricity-sector-main-RPSQuantity.png)
+#### Grid Batteries Excluding Hybrid Batteries
 
-The next step is to allocate that new potential output among the different types of RPS-qualifying potential output that can be built.  The following screenshot shows the structure used to do this:
+The model estimates the total daily shifting potential of grid batteries. The model tracks the total MW*hr of battery capacity based on input data and calculated additions to compute a total potential. Adjustments for round trip efficiency losses are handled later in the code. The capacity additions of storage are on a one year time delay so the model adds the prior year's capacity additions in here. These calculations do not include the capacity of storage on hybrid power plants, which are handled later on.
 
-![allocating RPS-qualifying potential output](/img/electricity-sector-main-RPSAllocation.png)
+![potential daily max shifting from grid batteries](/static/img/electricity-sector-main-GridBatteriesDailyMax.PNG)
 
-Note that although the variables in the diagram above refer to "output" rather than "potential output," all outputs at this stage in the calculation flow are "potential output" values.  Actual output values come after the dispatch calculations, below.
+#### Pumped Hydro
 
-In order to perform an allocation in Vensim, using Vensim's ALLOCATE AVAILABLE function, we need to set up what is called a "Priority Profile."  This tells the model how to decide what to build.  We determine priority based on cost: the lowest-cost type of plant is built first, then the next-lowest cost, and so on.  However, each plant type does not have a single cost.  A plant type is represented by a normal distribution (a bell curve) of costs.  This reflects the fact that in the real world, conditions vary from project to project.  Some wind plants might be in windier areas than others.  Some coal plants might be located in places where it is more or less expensive to get regular coal shipments.  There can even be non-physical factors involved, such as differences in financing costs depending on project risk factors and borrower creditworthiness.  By representing each plant type's costs as a bell curve, we obtain much more realistic outputs than if we assumed the model built all of one plant type that it could before building any of the next-most-expensive plant type.
+Next the model estimates the potential day contribution of pumped hydro. Due to structural limitations in the model, pumped hydro is treated like demand response, i.e. it can be discharged daily during periods of maximum net load, and not handled as a power plant type. The model estimates daily contributions from pumped hydro by multiplying the capacity by hourly capacity factors provided in input data and assuming these rates are fixed.
 
-To define the bell curves for Vensim, we need to specify the curve's midpoint on the cost axis (the average cost of a plant type), the normalized standard deviation (the variability of costs for a given plant type, which reflects how different two projects building the same type of plant tend to be), and the volume under the curve (which reflects the maximum amount that could be feasibly built in a year, given limits on manufacturing capacity, the time of appropriately-skilled contractors, etc.).  The standard deviation and the costs are factored into the "Priority Profile" and the volume under the curve is factored into the allocation separately.  The allocation is actually performed in the "New Elec Output Allocated Under RPS" variable.  The following diagram is an illustration to help explain the allocation process in the model:
+![daily load reductions from pumped hydro](/static/img/electricity-sector-main-PumpedHydro.PNG)
 
-![allocation curve diagram](/img/electricity-sector-main-AllocationCurves.png)
+#### EV Batteries
 
-In this example, we only show two bell curves, though in the actual model, there is one bell curve during the RPS allocation for each of the RPS-qualifying plant types.  Each curve has its own unique midpoint on the cost axis (X-axis), its own standard deviation (curve width), and its own volume under the curve.  The Y-axis is the quantity of potential output that can be built at a given cost.  The volume inside these curves corresponds to a quantity of potential electrical output built: cost (X) multiplied by quantity per unit cost (Y).  We know the total amount of RPS-qualifying potential output we need to build, which is the volume under a portion of the black "Total" curve.  Accordingly, the model goes from left to right on the cost axis, filling in the volume under each individual plant type's bell curve, until a total amount of volume has been filled in equal to the quantity of RPS-qualifying potential output needed this year.  If this point is reached anywhere between the "3" and "6" numbers on the cost axis in the example diagram above, then a non-trivial amount of wind and a non-trivial amount of solar will be built, and neither wind nor solar will be built at the maximum possible rate this year.
+EV batteries can contribute to load shifting in the EPS based on input data and policy settings. The model aggregates the total amount of battery capacity from the existing stock of vehicles and then applies a BAU share of the EV battery capacity that can be used for grid balancing based on input data (in many countries this is set to zero as there is no vehicle-to-grid availability yet). Users can modify this through a policy lever which allows for increasing the share of total EV battery capacity that can be used for grid balancing. The model computes the final maximum amount of daily shifting that can be utilized from the EV batteries (round trip losses are accounted for later).
 
-Note that the model will not exceed the maximum amount of buildable output in the allocation function.  This means that if the model is in a state where the simulated year's level of deployment is so far behind the RPS in that year that even building all of the RPS-qualifying power types at the maximum possible rate cannot satisfy the RPS, then the RPS will not be met in that year.  In the example diagram above, this would correspond to needing so much RPS-qualifying output to be built in a single year that we reach the "7" number on the cost axis and still haven't encompassed enough volume under our curves.
+![potential daily max shifting from EV batteries](/static/img/electricity-sector-main-EVBatteries.PNG)
 
-Once we have allocated potential output under the RPS, the result is subtracted from the remaining potential output that still needs to be built after the mandated capacity construction policy, leaving the amount of demand that is still unmet after the RPS policy has been applied.
+#### Demand Response
 
-### Allocating Potential Output After the RPS
+Total demand response capacity (in MW) is aggregated based on BAU input data and policy settings and multiplied by an average hours per day that can be called for DR to estimate the total daily contribution of DR. Note that demand response capacity is not endogenously added in the EPS but additions are specified through input data and user policy settings. The model computes a total amount of hourly load shedding by electricity timeslice that is possible from DR.
 
-Following the RPS, if there is still unmet demand for potential output, we peform another allocation process to decide what else to build to satisfy the remaining demand.  This allocation works the same way as the allocation described above, except that all power plant types (not just RPS-qualifying types) are included, and the volumes under the curves of RPS-qualifying plant types are reduced by the amount of those types that was already built in the RPS compliance step.  The following screenshot shows the relevant structure:
+![potential daily max load shedding from demand response](/static/img/electricity-sector-main-DemandResponse.PNG)
 
-![allocating remaining potential output](/img/electricity-sector-main-PostRPSAllocation.png)
+#### Total Diurnal Balancing Potential
 
-### Summing Up and Converting to Capacity
+The model totals the amount of load shedding and shifting available accounting for losses. Because technologies are aggregated into capacity values, the model computes a weighted average round trip efficincy across all the different resources for use in the load shifting and shedding calculations. We also discount the availability of some resources to reflect the "copper sheet" nature of the EPS, in that it does not have subregional detail. These are incorporated via the Regional Availability Factor input data. The final outputs of this steps are weighted average round trip efficiencies and total availability capacity for daily load balancing.
 
-We sum up the potential output allocated under the RPS and the potential output allocated freely.  We convert this sum from potential output to capacity and add the capacity built under the mandated capacity construction policy to get the total amount of capacity built this year to meet energy need (as opposed to peaking need).  The following screenshot shows this process:
+![total diurnal balancing potential without hybrid battery storage](/static/img/electricity-sector-main-TotalDiurnalBalancingBeforeHybridBatteries.PNG)
 
-![summing up new capacity](/img/electricity-sector-main-SummingNewCap.png)
+Though there are few technologies readily available, the model is structured to allow for seasonal load shifting and balancing. Input data can be configured to allow for seasonal storage capacity and to specify the annual charge and discharge cycles and round trip efficiencies. These technologies are used later on to seasonally shift resources. 
 
-### Calculating New Peaker Capacity
+![total seasonal balancing potential](/static/img/electricity-sector-main-TotalSeasonalBalancing.PNG)
 
-After calculating the new capacity needed to meet energy need (e.g. to generate sufficient electricity to meet overall annual demand), we estimate the need for peaker capacity to meet peak demand.  We begin by estimating peak power demand, using a reserve margin (spare peaking capacity that utilities desire to possess beyond expected peak need) and peak demand.  Peak demand is estimated via a system load factor, which is the ratio of demand during an average hour to demand during the peak hour:
+### Modifying Load before Accounting for Hybrid Battery Storage
 
-![calculating peak demand](/img/electricity-sector-main-PeakDemand.png)
+The model next builds on the calculations of load modifying resources to compute changes in load. To estimate these changes in demand, the model starts by estimating the surplus capacity in each hour. This calculation subtracts net load from available capacity in each hour, yielding surplus capacity available, which is assumed to be a good indicator of when the grid is most and least constrained. The model subtracts from this value the average for each timeslice, meaning the most constrained hours have negative values (less surplus capacity than average) and the least constrained hours have the highest positive values (more surplus capacity than average). The model then allocates net seasonal peak load reduction from the load modifying resources proportionally based on the size of the hours with less surplus capacity than average, i.e. the hours with the least surplus capacity have the highest net peak load reduction from load modifying resources. For storage resources, charging hours are proportionally allocated to those hours with the most surplus capacity, accounting for round trip efficiency losses.
 
-The model reduces the needed peak power demand by the amount of demand response capacity that exists on the system:
+![shifting seasonal net peak load and demand](/static/img/electricity-sector-main-NetPeakLoadShift1of2.PNG)
 
-![demand response reduces peak power demand](/img/electricity-sector-main-DREffect.png)
+After calculating the seasonal load shifting, the model then calculates diurnal load shifting and shedding based on the resource availability calculated earlier.The model then aggregates the total load shed and shifting across seasonal and diurnal resources and computes a total amount of hourly electricity demand after demand altering technologies.
 
-The simulator determines how much peaking capacity already exists on the system, using a set of peak time capacity factors (which are different and, generally, higher than the "expected" capacity factors that reflect the availability of each source over the course of the whole year).  This is subtracted from the total peak power demand (after demand response) to determine the unmet peak power demand:
+![shifting diurnal net peak load and demand](/static/img/electricity-sector-main-NetPeakLoadShift2of2.PNG)
 
-![peak power demand to meet](/img/electricity-sector-main-PeakDemandToMeet.png)
+### Modifying Load after Accounting for Hybrid Battery Storage
 
-Next, we use a set of Peak Time Capacity Factors to convert the peak power demand to be met into a desired amount of peaker capacity.  (In the case where more than one plant type is designated as a peaking plant type, we divide up the new peaker capacity to be built in proportion to the share of all peaking capacity represented by each specific type of peaker.)
+The model next passes through another round of load modification using the adjusted load as a starting point. This part of the model also integrates with the capacity expansion structure to optimize the deployment of hybrid storage resources (i.e. wind and solar with storage) based on when they would charge and discharge and modifies the load accordingly. This approach is somewhat unique in that it modifies load to reflect charging and discharging of hybrid resources given constraints in the structure of Vensim. This step of the model is co-optimized with hybrid power plant capacity expansion so that the capacity and load impact is optimized. 
 
-![peaker capacity desired](/img/electricity-sector-main-PeakerCapacity.png)
+First, the model calculates an updated amount of battery storage for load shifting inclusive of hybrid batteries. The model does this in 20 optimization passes which are synced with capacity additions and in each pass further refines the storage capcaity based on the calculated storage additions in the current pass. 
 
-The model then determines how much of the desired peaker capacity actually gets built.  This will be the lower of the total desired quantity or the total amount buildable this year minus any that was already built this year as part of earlier calculation steps in the model (e.g. due to the mandated capacity construction policy, the RPS allocation, or the non-RPS allocation).  Then, any peaking capacity built this year is summed with capacity already built this year to meet energy need (e.g. from the earlier calculation steps) to find the total amount of generation capacity built this year.  These steps are shown in the screenshot below:
+![total battery balancing potential with hybrid battery storage](/static/img/electricity-sector-main-TotalDiurnalBalancingIncludingHybridBatteries.PNG)
 
-![total new capacity built this year](/img/electricity-sector-main-TotalNewCap.png)
 
-## Calculating Annualized Cost for New Output
+The model follows the same approach as before, moving through load modification from seasonal storage and diurnal storage, but using the values calculated in the first load modification bass for resources other than battery storage.
 
-The model includes calculations of cost to build and operate different types of power plants.  These costs are used in the allocation functions for construction of new capacity (described above) and in the dispatch calculations (described below).
+![shifting seasonal net peak load and demand including hybrid battery storage](/static/img/electricity-sector-main-NetPeakLoadShiftHybrid1of2.PNG)
 
-### Fixed Costs per Unit Capacity
+The model incorporates the new load shifting amounts into demand and produces final hourly electricity demand using the storage additions from the final optimization pass.
 
-The model considers two types of fixed costs per unit capacity, construction costs and fixed operating and maintenance (O&M) costs.  For two plant types (wind and solar PV), the simulator features an endogenous learning curve, which calculates cost reductions relative to the base year based on total installed capacity.  The model determines the total capacity of these plant types (as of last year, i.e., before the model decides what to build in the current year) and determines how many doublings of capacity have occurred since the start year.  It then applies a percentage cost reduction based on the number of doublings of capacity, as shown below:
+![shifting diurnal net peak load and demand including hybrid battery storage](/static/img/electricity-sector-main-NetPeakLoadShiftHybrid2of2.PNG)
 
-![calculating cost reductions from endogenous learning](/img/electricity-sector-main-EndogenousLearning.png)
+At the end of this calculation flow, the model has determined the final hourly electricity demand that must be met by generation resources and accounts for all load reduction and shifting that occurs from distributed resources, imports and exports, load modifying resources, and hybrid power plants.
 
-The cost reductions from endogenous learning are applied to the start year costs for wind and solar PV.  Other technologies also experience cost declines with time, but they are based on time-series data rather than installed capacity.  The effects of the user-set R&D lever are also taken into account at this stage, resulting in a total construction cost per unit capacity:
+### Summing Charging and Discharging from Batteries
 
-![total construction cost per unit capacity](/img/electricity-sector-main-TotConstructionCost.png)
+Finally, the model sums the total amount of battery capacity and the total charging and discharging of batteries, inclusive of hybrid batteries, for use in other places throughout the model.
 
-Since all other costs are annual, we annualize the construction cost to make it comparable.  We annualize the cost over the power plant's expected lifetime, applying a discount rate to account for the effect of time on the value of money.  (The model works in real dollars, so the discount rate does not need to account for inflation.)  The discount rate is taken in as input data and, like all input data, it can be edited by the model user.  After annualizing the construction cost, we add the fixed O&M cost, which is provided per unit capacity, to find the annual total fixed costs per unit capacity.
+![total hourly and annual charging and discharging of battery storage](/static/img/electricity-sector-main-HourlyBatteryChargeDischarge.PNG)
 
-![annualizing construction costs](/img/electricity-sector-main-AnnualizingCosts.png)
+## Revenues, Costs, Retirements, and Max Build Rates
 
-### Costs per Unit Output
+This stage of the model calculates revenues for new and existing resources, uses this information to estimate retirements, and calculates maximum build rates based on technical potential for different resources.
 
-The next portion of the model looks at the remaining costs of building and operating power plants and represents them per unit output, as shown in the following screenshot:
+### Annual Energy Market Revenues for Existing Resourcces
 
-![calculating cost per unit output](/img/electricity-sector-main-AllCosts.png)
+To estimate energy market revenues for existing resources, the model calculates total revenue per unit capacity by summing the hourly generation from all resources of a certain type (e.g. natural gas combined cycle power plants) and the marginal dispatch cost in that hour and dividing by total installed capacity, yielding estimated annual energy market revenue per unit capacity. 
 
-We add the following costs:
+![Annual energy market revenues for existing resources](/static/img/electricity-sector-main-EnergyRevenuesExisting.PNG)
 
-* Fixed costs per unit annual output (converted from fixed costs per unit capacity, found above)
-* Variable O&M costs per unit output, which are taken in as input data
-* Fuel cost per unit output, based on costs from the fuels page and the heat rates of the different power plant types (in this case, only looking at the "newly built" quality level, because this cost calculation supports the decision of what to build)
-* Subsidies per unit output
-* If the carbon tax policy is enabled, we add a certain amount of cost reflecting the "Nonfuel GHG Emis per Unit Output," or embedded carbon emissions in the equipment and building materials.  Although these emissions are associated with physical construction and therefore would seem to be most naturally related to unit capacity, the lifecycle analyses from which these data were obtained already converted them to a "per unit output" basis, so we use that directly.
+### Projected Annual Revenues for New Resources
 
-We report the result both before and after subsidies, because the unsubsidized version must be used in the allocation functions, when converting normalized standard deviations of cost into standard deviations of cost.  This is because the normalization process in the cost source data only looks at the range of actual costs incurred, irrespective of whether subsidies later repaid the electricity suppliers.  For all other purposes in the model, we use the cost numbers that factor in subsidies.
+For new resources, the model estimates potential energy market revenues for plants with and without existing capacity. For plants with existing capacity, the model estimates potential dispatch and energy market revenues use a five-year average of energy prices for various resources, in order to average out annual fluctuations in resource costs. 
 
-## Tracking Capital Stock
+![Annual energy market revenues for new resources with existing capacity](/static/img/electricity-sector-main-EnergyRevenuesNew.PNG)
 
-In each model year, new power plants are built (unless there are enough surviving plants to meet demand) and old power plants are retired.  The means of determining how much of each type of plant is discussed above, so this section will mostly discuss retirements.  There are three retirement mechanisms: the natural retirement rate (which can be affected by the lifetime extension policy), retirements caused by the early retirement policy, and retirements caused when a power plant type becomes uneconomic to keep running.
+For plants without existing capacity, the model calculates a hypothetical dispatch amount in each hour as if that resource had been available using the calculated hourly energy market prices for existing resources (discussed later). This allows us to estimate potential dispatch and revenue from plant types with no existing capacity in the model but which may become profitable and be built in later years, such as hydrogen-based plants.
 
-The core tracking of capacity stock is handled with the structure in the following screenshot:
+![Annual hypothetical dispatch for resources with no existing capacity](/static/img/electricity-sector-main-HypotheticalDispatch.PNG)
 
-![tracking capital stock](/img/electricity-sector-main-StockTracking.png)
+The model combines the hypothetical dispatch for new resouces with no existing capacity and the five year average marginal dispatch costs to produce esitmated annual energy market revenues for planning new capacity. This is combined with the five year estimated energy market revenues for resources with existing capacity to produce a value for all new resources. Costs are divided by expected capacity factors to levelize them into a $/MW*hr value for all plant types. 
 
-Electricity generation capacity is tracked using a stock variable.  Vensim processes inflows and outflows to/from stocks only after the relevant timestep has elapsed.  So in model year 2020, the stock variable has the value it had in year 2019 plus the inflows of 2019, minus the outflows of 2019.  To improve clarity about this process, the stock variable is named "Last Year Electricity Generation Capacity," and when the current year's capacity is needed in equations, the current year's inflow and outflow must be explicitly added or subtracted from the stock.  The "Start Year Electricity Generation Capacity" refers to the capacity in the year before the first calculated year of the model run.
+Given the structure of the EPS and that it calculates load dynamically, it does not have foresight. To make future planning decisions in the electricity sector, the model therefore relies on a rolling average of energy market revenue. The model calculates a rolling four year average of anticipated energy market revenue (using five year averages for fuel prices as outlined above) for guiding investment decisions. In the first several years of the model run, prior to enough years being run to produce a four year average, the model wil use the most number of years possible to create the average, i.e. one in year one, two in year two, three in year three, and four in all subsequent years.
 
-Assigning retirements to quality levels is very simple.  If there are retirements of a given power plant type (such as coal), they will come out of the "preexisting retiring" quality level, unless there are not enough plants of that quality level left to retire.  After that, they come out of the "preexisting nonretiring" quality level, and if even that stock is exhausted, the retirements start coming out of the "newly built" quality level.  Remember that the nomenclature of the quality levels - "preexisting retiring" and "preexisting nonretiring" refers to the properties of the average plant of its type that will or will not retire during the model run in the BAU case.  By enabling certain policies, it is possible to retire plants of higher quality tiers.  This is normal model behavior.
+![Annual energy market revenues for all new resources](/static/img/electricity-sector-main-EnergyRevenuesNewAll.PNG)
 
-The structure that handles normal (as opposed to "early") retirements is shown in the following screenshot:
+The model has to calculate projected energy market revenues for hybrid power plants separately because they are able to optimize discharging and charging of the battery to maximize energy market revenues. To calculate the revenues the model applies input data on the average battery capacity per unit power plant capacity to compute the storage amount per MW of power plant capacity. It then calculates the share of daily expected output that can be shifted, which varies across electricity timeslice because of varying capacity factors by timeslice. The model computes the revenue from shifted generation based on availability and battery size and adds to it the revenue from unshifted generation to compute a total levelized energy revenue per unit output. This value will be higher than for plants without storage, particularly when there is a significant spread in marginal dispatch costs. These revenues also use the five year fuel price avearaging and rolling four year energy market revenue averaging outlined above.
 
-![calculating normal retirements](/img/electricity-sector-main-NormalRetirements.png)
+![Annual energy market revenues for new hybrid resources](/static/img/electricity-sector-main-EnergyRevenuesHybrids.PNG)
 
-Our input data provide a particular amount of capacity of each type that is projected to retire in each year of the model run.  Since these data are not based on power plant lifetimes, we implement the lifetime extension policy as a change in the BAU retirement rate (i.e. retirements are reduced by the same percentage as that by which the lifetime of plants is being extended).  This representation can be thought of as what would happen if the system were to reach steady state.  If a lifetime extension policy were to be implemented suddenly, one would expect zero retirements of that power plant type for at least a number of years equal to the magnitude of the lifetime extension, followed by a resumption of retirements at the regular rate.  Eventually, the system would approach the steady state, as electricity suppliers begin planning and building plants when taking the longer lifetime into account.  The latter approach may be more realistic within the model's run period, but our input data make it questionable to model a "sudden" life extension policy, and representing the policy in the steady state manner may provide more of a sense of the policy's long-term effects.
+### Annual Recurring Costs
 
-Finally, we have two mechanisms that drive "early" retirement.  The first is economic: when the cost of electricity from one new plant type (that is, including annualized construction costs) is made higher than in the BAU case via the user's policy settings, some amount of additional retirement will occur, if it is a plant type susceptible to economically-incented retirement.  The second is the user-set early retirement policy.
+Annual recurring costs are calculated as an input into the retirement decision-making framework. These costs are the sum of dispatch costs (which include fuel and variable O&M), annual capital costs (from input data) needed to maintain plants' operability, and ongoing fixed O&M costs. The model computes these costs on a $/MW basis for use downstream in retirement calculations
 
-For economic early retirement, for each of the BAU and Policy cases, we calculate the mean cost per unit electricity output from sources designated as significant enough to be factored into this mean.  We find the difference in cost between each plant type and the mean.  Then we look at whether this difference has grown (a plant type has become more expensive relative to its same-case mean) in the Policy case relative to the BAU case.  This process is shown in the following screenshot:
+![Annual recurring costs](/static/img/electricity-sector-main-AnnualRecurringCosts.PNG)
 
-![cost difference relative to mean between Policy and BAU cases](/img/electricity-sector-main-RetirementsCostDif.png)
+### Clean Electricity Standard and Zero Emission Credit Revenue
 
-Next, we use a conversion factor to estimate potential early retirements based on the magnitude of the cost increase.  We limit retirements of a given type of plant to the total amount of capacity that existed last year of that type.  Only certain plant types are subject to cost-based early retirement.  Plant types whose costs are overwhelmingly in the construction phase (renewables and nuclear) are immune because, even if it became much cheaper to build other plant types, there is no reason to stop using existing plant types for which the high upfront costs were paid, when operating costs are minimal.  Peakers are immune because they do not compete on the basis of how cheaply they can provide energy, but rather based on the system services they provide, which is not what is being measured in this part of the model.  The following screenshot show the conversion from relative cost increases to potential capacity to be retired early:
+Input data can specify any credits specifically for nuclear power plant owners. The model calculates a credit price from the clean electricity standard (discussed later) which is used here. Total revenue from these credits is calculated for use in the retirement calculations.
 
-![potential economic early retirements](/img/electricity-sector-main-RetirementsPotential.png)
+![Revenues from CES and ZEC programs](/static/img/electricity-sector-main-CESandZECRevenues.PNG)
 
-We limit the total allowable capacity to be retired early due to price increases to the total maximum buildable capacity of non-peaker plants that were made cheaper (relative to the mean price) in the Policy Case than they were in the BAU case.  This limit prevents unreasonably high retirement rates to be triggered if a single plant type (say, wind) becomes cheap, while all other plant types become more expensive.  If this limit is lower than the potential capacity to be retired early, we reduce the potential early retirements of each type of plant in proportion to that plant type's share of total potential early retirements until we reach the limit.  This is handled in the following structure:
+### CCUS Retrofitting Costs
 
-![limiting retirements to buildable capacity of eligible replacement plant types](/img/electricity-sector-main-RetirementsLimit.png)
+CCUS retrofitting costs are calculated using estimated capital costs and a capital recover factor, and incremental variable and fixed O&M costs from converting to CCUS. This yields an estimated retrofitting cost per unit electricity output. CCUS plants can have higher capacity factors than non-CCUS equipped plants, which can contribute to lowering the incremental cost difference.
 
-Finally, we add in any retirements specifically mandated by the user via the early retirement policy to find the total capacity retired early.
+![CCUS Retrofit Costs](/static/img/electricity-sector-main-CCUSRetrofitCost.PNG)
 
-![total retirements](/img/electricity-sector-main-RetirementsEarlyTotal.png)
+### Annualized Cost per Unit Output for New Capacity (i.e. LCOE)
 
-## Flexibility Points and Quantity of Buildable Capacity
+Annualized costs per unit new electricity output, the EPS version of an LCOE, is calculated next. These costs start with capital costs based on input data and endogenous learning of capital costs for certain technologies. The model starts by splitting soft costs and hard costs and applying an endogenous learning rate to the capital cost portion where that structure is used (discussed in the endogenous learning section of model documentation). Policies can be used to further lower soft costs. Research and development policies can also be used to further lower the total construction costs (sum of hard and soft costs). 
 
-Two of the power plant types in the model- solar PV and wind- are "variable" generation sources.  This is because their ability to generate power depends on the presence of wind and sunlight.  (While solar thermal also requires sunlight, its thermal inertia makes it less vulnerable to changes in sunlight levels, so we do not treat it as a variable source in terms of requiring flexibility support in this model.)  Certain technologies can provide flexibility services, such as energy storage systems, fast-ramping natural gas peaker plants, and the like.  These flexibility services make it easier to integrate more variable generation into the electric grid, because they can take up the slack in the event of a drop-off in sunlight or wind (and in the case of energy storage systems, they can absorb extra power during sunny or windy times to recharge themselves).
+![Construction costs per unit capacity before subsidies](/static/img/electricity-sector-main-LCOE1.PNG)
 
-The Energy Policy Simulator (EPS) uses annual timesteps, whereas the timescale over which solar and wind variability happens is often an hour or less.  Therefore, we use an abstraction to capture the need for flexibility to support renewables deployment.  The model defines a synthetic unit called a "flexibility point."  One flexibility point is a quantity of flexibility on the electric grid that is able to support one megawatt (MW) of variable generation.  Flexibility points are based on capacty (MW) rather than electricity output (MWh) because the relevant factor is the extent to which flexibility can address large, relatively sudden power needs (demand spikes or temporary drops in generation from variable renewables), not the portion of the year during which flexibility providers will be called upon to deliver these services.  Therefore, the different capacity factors of different plant types or quality tiers does not influence their flexibility point requirements (as these things affect generation but not capacity).
+The model then applies any subsidies for capacity construction (e.g. investment tax credit), which can be modified by user set policies. The model also adds in spur line costs at this point, which vary by technology and region. After computing the construction cost after subsidies and spur line costs, the model estimates an annual repayment of these costs per MW using a capital recovery factor calculated upstream. Each plant type can have a its own capital recovery factor which is based on the weighted average cost of capital and assumed financing lifetimes for power plant types. The application of the capital recovery factor converts the construction costs into an annualized payment.
 
-We allow each flexibility point to support one MW of wind and one MW of solar PV, because wind and solar PV tend to need assistance at different times of the day.  (Solar PV needs support at night, and generally, wind needs support during the daytime.)  We use results of a modeling study that used a fine timescale and a detailed electricity supply, demand, and transmission model to estimate the number of flexibility points provided by a given quantity of each of several technology options.
+![Annual financing repayment per unit capacity](/static/img/electricity-sector-main-LCOE2.PNG)
 
-### Sources of Flexibility Points
+For hybrid power plants, the model calculates the incremental annualized financing payment from the additional storage at the power plant.
 
-Peaker plants are one source of flexibility points.  The structure representing them is shown in the following screenshot:
+![Annual financing repayment for hybrid plant battery storage per unit capacity](/static/img/electricity-sector-main-LCOE3.PNG)
 
-![flexibility from peakers](/img/electricity-sector-main-FlexibilityPeakers.png)
+Next, the model adds annual fixed operating and maintenance (O&M) costs to the annualized financing repayment, then converts the annualized costs to levelized costs based on the achieved capacity factors of various types, yielding a $/MW*hr value for all plants types.The anticipated capacity factors utilize historical three year data calculated in the model to adjust capacity factors as the grid evolves, i.e. if natural gas combined cycle units dispatch less because there is more clean electricity on the system, the capacity factors reflect this evolution, and the levelized costs increase.
 
-We find the available capacity of peaker plants.  Which types of plants count as peakers can vary based on model version (country or region represented), but often natural gas peakers and petroleum-fired power plants will qualify.  We convert peaker capacity to flexibility points based on the results of a separate modeling study, which we take in as input data.
+![Annual fixed costs per unit new electricity output](/static/img/electricity-sector-main-LCOE4.PNG)
 
-Pumped hydro energy storage is the second source of flexibility points and uses the following structure:
+The model then estimates total variable costs and subsidies. Electricity production subsidy amounts CCUS subsidy amounts are calculated here, including an adjustment based on the lifetime of the credit (i.e. for credits that are only available for a portion of the financial lifetime of the power plant, their value has to be adjusted to account for the limited duration of their availability). The model adjusts the incentive amounts by calculating a duration multiplier for instances where the duration is shorter than the financial lifetime of the plant. Users can also modify the electricity production and CCUS incentives, which change the subsidy per unit electricity output. Carbon pricing credits are also calculated at this stage for plants equipped with CCUS. The model sums total variable costs, including fuel costs (which include carbon pricing impacts), variable O&M costs, CO2 transport and storage costs per MW*hr for plants with CCUS, electricity production subsidies, carbon price credits, and CCUS subsidies. Variable costs are added to the levelized fixed costs to produce a total cost per unit new elec output and several variations on this variable used throughout the model. Storage costs are added to these values for hybrid power plants.
 
-![pumped hydro storage](/img/electricity-sector-main-FlexibilityHydro.png)
+![Cost per unit new electricity output](/static/img/electricity-sector-main-LCOE5.PNG)
 
-No policy affects the quantity of pumped hydro storage available.  We convert to flexibility points using a conversion factor that is in between those for two types of pumped hydro: pumped hydro that can only make two mode shifts (charging or discharging) per day and pumped hydro that can make many mode shifts per day.
+### Economic, Policy-Driven, and Planned Retirements
 
-The third source of flexibility points is battery energy storage, as shown in the following structure:
+The model next moves on to calculating total annual retirements. Total revenues are calculated, including capacity market revenue or capacity contract revenue (discussed later), energy market revenue, revenue from clean electriicty credits, and revenue from zero emissions credits, yielding a total revenue per unit capacity. 
 
-![battery storage](/img/electricity-sector-main-FlexibilityBatteries.png)
+![Total revenue per unit capacity for existing plants](/static/img/electricity-sector-main-Retirements1.PNG)
 
-For cost purposes, the model assumes battery storage to consist entirley of chemical batteries, though it could also represent the flexibility benefits from similar technologies that make energy available on demand, such as compressed air or flywheels.  A policy allows the user to specify an annual growth rate above and beyond the BAU rate of non-hydro storage deployment.  As with other flexibility point-providing technologies, results of an electricity model are used to convert the quantity of storage into a number of flexibility points.
+For each power plant type, annual revenues are compared against going forward costs, calculated earlier, to estimate a net loss per unit electricity capacity. Power plants must be uneconomic (have net losses) for at least three consecutive years to be deemed uneconomic. If there are net losses for at least three years, the model calculates the rolling average three-year net loss and multiplies this by a calibrated parameter to determine the total cost driven retirements in a given year. 
 
-The next source of flexibility points is demand response, as shown in the following structure:
+To this, the model adds capacity retirements specificed in input data and finally adds capacity retirements from any policy lever settings to determine total retiring generation capacity.
 
-![demand response](/img/electricity-sector-main-FlexibilityDR.png)
-
-Demand Response refers to technologies or processes used to shift electricity demand to other times of the day, which can be used to lower peak demand and to assist with integration of variable renewables.  The demand response policy allows the user to specify a fraction of the additional demand response potential to be achieved, beyond BAU.  As with other flexibility point-providing technologies, results of an electricity model are used to convert the quantity of demand response into a number of flexibility points.
-
-The last source of flexibility points is transmission capacity across the modeled region border (that is, into and out of the country, for a country-scale model).  Transmission within the modeled region is handled differently, as discussed in the next section.  Regions outside of the modeled region are assumed to have their own generation resouces and can provide energy at peak times or when there is a shortfall in variable generation, and so interconnecting with these areas provides flexibility that allows higher penetrations of variable renewables.  No policy in the model affects transmission across the modeled region border.  (The policy that promotes transmission refers to in-region transmission.)  The relevant structure is shown below:
-
-![transmission across the modeled region border](/img/electricity-sector-main-FlexibilityTransmissionBorder.png)
-
-### Transmission
-
-The EPS also includes the concept of electrical transmission capacity within the modeled region.  A source of flexibility points, such as an energy storage system, does no good if it is not connected to any variable generation.  Accordingly, transmission is used to link sources of flexibility points to the variable generation that needs flexibility support.  The following structure handles the interaction of transmission with flexibility points:
-
-![transmission effect on flexibility points](/img/electricity-sector-main-Transmission.png)
-
-Since the EPS does not include geography of the modeled region, we use the concept of a "transmission connectivity coefficient" (TCC) to represent the level of connectivity between sources and sinks of flexibility points.  A TCC of "1" imples perfect connectivity of all sources and sinks of flexibility, as if any two points in the electric system were connected by unlimited transmission.  A TCC of "0" implies that no sources of flexibility points are connected to anything else.  All real-world electricity systems will have a TCC value between zero and one.
-
-We estimate the existing system's TCC using the results of a major study by the National Renewable Energy Laboratory, which found the amount of transmission that would be needed to support a given amount of renewable capacity, given certain quantities of flexibility point-providing technologies (which we convert to flexibility points using the factors discussed above).  While this is not the only solution- it is possible to integrate just as many renewables with less transmission if more other things are built- it is the lowest-cost solution for renewables integration and therefore is the best choice for our BAU case.  A policy lever allows the user to increase transmission built-out by a percentage of BAU.  This only affects the TCC here, but on the [Electricity Supply - Cash Flow sheet](electricity-sector-cash), it is converted to units of physical transmission capacity, and from there, to costs.
-
-Note that as power plants are built, we assume sufficient transmission is built alongside them to operate them in the same manner as existing plants in the BAU case.  For wind and solar PV, this means that the TCC remains unchanged as you build more wind and solar, rather than the TCC dropping (due to increased need for connectivity as there are more things to connect).  For other electricity sources, this simply means that they run at the expected capacity factors for their type and quality level, assuming they are dispatched via the dispatch calculations (discussed below).  In other words, as you build more plants, an amount of transmission necessary to maintain the same level of service enjoyed today is assumed to be built alongside, and this base level of additional transmission does not have its costs explicitly calculated and attributed to the policy package.  The transmission policy lever represents transmission build-out beyond this level, improving the service level of plants that require flexibility services.  The transmission built by this policy lever does have its costs attributed to the policy package.
+![Calculated total retiring generation capacity](/static/img/electricity-sector-main-Retirements2.PNG)
 
 ### Maximum Buildable Capacity
 
-Next, the model determines the maximum amount of capacity of each type that can be built in the current model year.  This is done in several steps.  The first step is to refer to a table of "lookups" that specify how much capacity can be built.  This allows, but does not require, the model to consider the quantity of a resource that has already been built when determining how much can be built in the current year.  Referring to the installed quantity is most relevant for newer technologies, like wind and solar PV, which are still in the process of scaling up.  Other methodologies are more appropriate for other technologies; these are handled inside the calculations that generate the Max Capacity Growth Lookup Table.  The structure is shown in the following screenshot:
+The model accounts for technical potential for various power plant types and will not allow capacity to be built in excess of maximum technical potential, particularly for renewable resoures. In addition, policy levers can be used to restrict the construction of certain capacity types. If a power plant type has been fully retired from the model, it is not allowed to be built again in later years. Collectively these calculations yield a maximum capacity buildable in a given year. The model includes other annual restrictions for new capacity, which are discussed below in the section on new capacity construction.
 
-![max buildable capacity based on lookups](/img/electricity-sector-main-MaxBuildableLookups.png)
+![Maximum buildable capacity](/static/img/electricity-sector-main-MaxBuildableCapacity.PNG)
 
-There is also maximum potential capacity of some sources, such as hydro and wind, that are location-dependent.  It is possible for a modeled region to exhaust all available sites for the construction of hydropower facilities, and to have powered or repowered all existing, suitable dams.  Depending on the region being modeled, it might also be possible to exhaust available sites for solar or wind power.  (In the U.S. model, the maximum potential capacities for all of the sources with such limits are so high as to have no effect on the model, irrespective of users' policy settings.  This may seem surprising in the case of hydro, since the U.S. has largely exhausted the good sites for large dams, particularly considering the environmental concerns that accompany building dams.  However, most of the additional potential hydro capacity in the U.S. comes from powering existing dams that are currently not equipped with power-generating equipment or improving the power-generating equipment on existing dams.  There are also some opportunities for very small-scale new hydro where there is no existing dam.  Taken together, these options are more than enough to allow for expansion of hydro through the end year of the model run at a rate greater than the rate actually predicted to happen in this model, even with substantial policy support.  The maximum potential capacities for the other relevant sources are even less likely to be reached.)  See the following structure for details:
+## New Capacity Construction
 
-![calculating maximum allowable capacity](/img/electricity-sector-main-MaxCapAllowable.png)
+In this stage, the model calculates new capacity additions across multiple mechanisms. The first of these is a mandated capacity and retrofit mechanism that uses input data and policy levers to add capacity and retrofit plants with CCUS. Next the model will add clean firm capacity if needed to comply with a clean electricity standard. After this step, the model moves into adding economic capacity, which is co-optimized with the clean electricity standard policy. Lastly, the model moves through a two stage reliability capacity addition mechanism, which ensures there is sufficient capacity installed to meet reliability requirements.
 
-If more solar PV or wind is built than can be supported via flexibility points, the model begins curtailing power from these resources, and the expected capacity factors of new plants of those types are reduced accordingly.  Even so, due in part to the one-year delay before the curtailment is reflected in prices for newly built plants, or in cases of heavy subsidy of wind or solar PV, the model may sometimes try to build so much wind or solar PV that curtailment gets unreasonably high.  To avoid this problem, the model will not attempt to build wind or solar PV that would exceed the flexibility point limit by more than a certain percentage, set in the variable "FPC Target Maximum Fraction of Flexibility Points Used."  (This can be overridden by the mandated capacity construction policy, which is able to force particular types of plants to be built, even if there is not enough flexibility to allow them to actually be dispatched.)  The following structure implements this limit, which functions as a cap on capacity of flexibility-consuming resources that the model will choose to build on its own:
+### Policy Mandated Capacity Additions and Retrofits
 
-![maximum capacity buildable while limiting flexibility point overage](/img/electricity-sector-main-FlexPointCapLimit.png)
+Mandated capacity additions and CCUS retrofits in the BAU and policy scenarios can be specified in the input data and policy levers. The model starts by reading in these values and adding them to new capacity built and retrofits in future years. 
 
-The lowest of these three caps determines the maximum capacity buildable this year.  (It is usually based on the maximum capacity buildable from lookups.)  Then, we determine how much capacity can still be built after the mandated capacity construction policy has taken effect, because we use this variable in our allocation calculations (described above).  The following screenshot shows the structure discussed in this paragraph:
+![Policy mandated capacity additions and retrofits](/static/img/electricity-sector-main-PolicyMandatedAdditionsRetrofits.PNG)
 
-![buildable capacity after mandated capacity construction](/img/electricity-sector-main-BuildableAfterMCCP.png)
+### Flexible Clean Capacity Additions and Retrofits Required for Clean Electricity Standard Compliance
 
-## Electricity Dispatch Mechanisms
+Next, the model calculates whether or not new clean dispatchable resources are needed to meet the clean electricity standard and will build new clean resources or retrofit existing ones if capacity is needed. We use a simplified assumption that 5% of peak demand at a 100% clean electricity standard value must be met with clean dispatchable resources in order to ensure the model builds sufficient clean dispatchable resources given its other constraints. In years leading up to the 100% clean electricity standard, the annual amount of clean dispatchable capacity required is determined by an s-curve defined in input data.
 
-The model includes two dispatch mechanisms: guranteed and least-cost.  Guaranteed dispatch is a versatile mechanism that allows the user to specify the priority ordering of different power plant types as well as what fraction of each type of plant is dispatched.  It can be used to represent environmentally-preferred dispatch, favoring coal plants that have preexisting contracts that guarantee them the ability to dispatch power, or anything in between.  Least-cost dispatch selects which plants run on the basis of lowest marginal cost.
+Each capacity mechanism, exclucing mandated additions, uses a structure that computes the cost-effectiveness of resources and determines a mount to be built if they are cost-effective. This structure is covered i more detail in the next sectrion.
 
-### Guaranteed Dispatch Mechanism
+If new clean dispatchable capacity is needed that would not otherwise be built, the model computes a credit price for new resources that drives sufficient new capacity to meet the demand. The model will increase the credit price until sufficient resources are built, based on the total revenue of various technologies, to meet the requirement. It adds this revenue to the estimated revenue for different plant types and then computes the amount of capacity added. The cost of this credit is added to the total costs of the clean electricity standard program. 
 
-The first part of the guaranteed dispatch mechanism simply calculates the total capacity available to be dispatched, summing the quantity that survived from the prior year with the quantity built in the current year:
+![Flexible clean firm capacity additions](/static/img/electricity-sector-main-FlexibleCleanFirm.PNG)
 
-![calculating total dispatchable capacity](/img/electricity-sector-main-TotCapacity.png)
+### Cost Effectiveness Additions and Retrofits
 
-For non-peaker power plant types, we convert this capacity to potential electricity output using a set of "bid" capacity factors.  Plants either bid (offer to supply power) at their expected (annual average) capacity factors or at their peak time capacity factors, depending on whether they would be technically capable of running more than expected, if it delivered to them a positive return.  Renewables like wind and solar PV bid at their expected capacity factors, because creating electricity is free (no fuel cost), but how much they can supply is limited by the availability of sun and wind throughout the year.  Resources like coal and non-peaker natural gas bid at their peak time capacity factors, which are higher than their expected capacity factors (though still less than 1, because there are times when these plants are down for maintenance) and reflect how much power they would supply if it were needed to avoid a shortfall.  Since the model determines the need for new plants based on expected (not peak time) capacity factors, the model generally will not find itself in a situation where it has to rely heavily on running various plant types at capacity factors that significantly exceed the expected capacity factors, even when bid capacity factors are higher.  See the following screenshot for the relevant structure:
+The core logic underpinning each element of the capacity expansion structure operates by evaluating whether not power plant types are profitable and estimating additions based on their level of profitability. Policies can affect this profitability through adding revenue to specific power plant plants types.
 
-![bid capacity factors](/img/electricity-sector-main-BidCapFactors.png)
+This mechanism operates simultaneously for new resources without storage, new resources with storage, and CCUS retrofits of existing resources.
 
-Peakers do not compete based on the affordability of their power, so a least-cost dispatch mechanism will choose not to dispatch peakers.  In the real world, peakers are in fact dispatched, primarily for their system regulation and flexibility benefits.  Therefore, the minimum possible dispatch of peakers is at their expected capacity factors.  (They can be dispatched more than this if required via the guaranteed dispatch percentages set by the user, but they are not dispatched as part of the least cost dispatch mechanism.)  This is handled in the following structure:
+The model begins by cumulating the total anticipated revenue by resource type. This relies on the rolling four year energy market revenue, discussed earlier and any anticipated policy revenue, particularly credits for the Clean Electricity Standard, which is co-optimized with economic capacity expansion (discussed later). Revenue is normalized into $/MW*hr based on achieved capacity factors by resource in the model. Subsidies for electricity generation are added.
 
-![minimum allowable dispatch of peakers](/img/electricity-sector-main-MinPeakerDispatch.png)
+The model then compares anticipated revenue against the anticipcated levelized cost of building new resources, not includeing variable subisidies (these are considered a revenue stream). Resources that are profitable will have revenues that exceed costs while unprofitable resrouces will not. This results in a profit value, i.e. revenues-costs.
 
-The model features both BAU and Policy case variables that govern guaranteed dispatch, so that the model can correctly handle countries that currently use systems other than least cost to dispatch power plants.  (The guaranteed dispatch quantity can be set to zero in the BAU case to simulate countries that dispatch non-peakers based solely on least cost.)
+The model then plots the expected profit against a curve that is defined in input data and calibrated against historical data and other models. The curve plots profit against a share of existing capacity, translating the profit amount to a share of existing capacity. This curve defines how much capacity is built for a given profit margin based on the total installed capacity of each resource. This prevents the model from overbuilding novel resources and let's the model deploy incremntally capacity at a given profit level as the total installed capacity of that resource grows and the knowledge, labor force, and materials become more widely available
 
-The user may specify a "Dispatch Priority by Electricity Source," which specifies the order in which plants should be dispatched.  For example, an environmentally preferred dispatch order might assign solar PV, solar thermal, and wind priority 1; biomass, hydro, and nuclear priority 2; natural gas priority 3; and coal priority 4.  The user may also specify a "Contracted Dispatch Percentage by Electricity Source," which specifies the fraction of the capacity of a given type that is subject to guaranteed dispatch.  (The remainder may be subject to least-cost dispatch later, if there is still unmet power demand after all contracts are satisfied.)  If a user wants to only use guaranteed dispatch, the percentage should be set to 100% for every power plant type.  A policy lever is used to toggle between the BAU and Policy case values for these variables, as shown in this screenshot:
+![Share of exisitng capacity installed per unit profit](/static/img/electricity-sector-main-ProfitExistingCapacity.PNG)
 
-![guaranteed dispatch calculations](/img/electricity-sector-main-ContractDispatch.png)
+For example, if a resource type has a profit of $10/MW*hr, it would cause new builds of roughly 13% of existing capacity. For a resource with an installed based of 50 GW, this would yield 6.5 GW of new builds. But over time as more of that resource is built, if it gets to 100 GW, then the same profit level would result in 13 GW being built. (This is balanced in the model by evolving market revenue as the system is satuated with resources).
 
-The model dispatches power sources with priority 1, up to the total quantity that is guaranteed.  Then it does the same for priority 2, priority 3, and so forth.  If all power demand is satisfied without fully dispatching the plants at a given priority level (say, level 3), then all of the priority 3 plants will be dispatched in proportion to their total capacity enough to meet demand, and no lower-priority plants will be dispatched.  If plants of all priority levels are dispatched enough to meet their contracts and there is still unmet demand, the remainder is satisfied via the least-cost dispatch mechanism.  The dispatch of different, guaranteed plants at different priority levels based on demand is shown in the following screenshot:
+The model then computes the total new capacity added using this computed value and several input data files which let users change the share of costs that have to be covered to be deemed profitable and the share of cost-effective capacity that is actually built (sometimes there are market dynamics that significantly limit what can be built, even if it is profitable) The model also uses a minimum value for resources that do not yet exist so that it is always capable of building them if they are profitable. 
 
-![assigning guaranteed dispatch by priority tier](/img/electricity-sector-main-AssigningGuaranteedDispatch.png)
+![Cost effective capacity additions and retrofits](/static/img/electricity-sector-main-CostEffectiveAdditions.PNG)
 
-Note that the "Guaranteed Electricity Dispatched by Priority" and "Demand Remaining to Satisfy After Priority Level" variables in the screenshot above rely on mapping one subrange of the "Electricity Dispatch Priority" subscript to a different subrange of that same subscript, so as to cause Vensim to loop through each element of the "Electricity Dispatch Priority" subscript at each timestep.  This is an unusual but powerful way to use subscripts in Vensim.
+### Clean Electricity Standard Additions
 
-### Least-Cost Dispatch Mechanism
+The EPS includes the clean electricity standard (sometimes referred to as renewable portfolio satndard) as one of the key power setor policies. The application of the CES/RPS is co-optimized with the cost-effectiveness additions to identify a credit price that generates sufficient revenue to add or retrofit resources for cost-effectiveness that leads to compliance with the CES/RPS setting. In each optimization pass, the model checks to see whether or not the anticipated amount of existing and new or retrofit clean electricity is sufficient to meet the standard. It will raise the credit price until this share is met and converge on a credit price that gets just the right amount of new clean capacity built and/or retrofit. 
 
-First, we determine how much potential electricity output remains undispatched after the guaranteed dispatch process.  We exclude peakers, which are handled in the guaranteed dispatch mechanism.  The following screenshot shows the relevant structure:
+The first stage of the CES is to compute the weighted average national CES/RPS value. The model allows for different resources to be included as part of the RPS/CES and also aggregates subnational data provided in the input data to estimate a binding CES/RPS value. For example, many states have existing RPS/CES values and collectively they form a national floor the CES, below which a user policy setting would not be binding. This first set of strecture computes the effective RPS/CES value that model will achieve.
 
-![remaining potential electricity output for least-cost dispatch](/img/electricity-sector-main-RemainingAllocOutput.png)
+![Calculating RPS/CES percentage to seek](/static/img/electricity-sector-main-CESTarget.PNG)
 
-The only notable step in this process is the need to move all of the resulting values to a "vector" (a one-dimensional matrix) before using the values in the allocation function.  This is to work around a limitation in Vensim: the program is only able to perform allocation of a quantity into "buckets" defined by values of a single subscript.  However, our power plants are broken into buckets along two dimensions: power plant type (11 types) and quality level (3 quality levels).  The solution is to simply use a new, 33-element subscript (in the model called "Power Plant Type by Quality"), and load all of the values from our double-subscripted variable into the corresponding elements of the large, single subscript.
 
-In setting up our priority profile (see the discussion of allocation above for a description of priority profiles), we must do something similar, as shown in the following screenshot:
+The optimization structure utilizes a special type of capacity factor, the marginal capacity factor, in order to properly incent and build the right resources. This is needed because once certain hours are saturated with clean electricity, adding more clean electricity in those hours does not help increase the total share of clean electricity over the year. The marginal capacity factor captures the diminishing value of resources as the grid gets cleaner and certain hours are saturated. 
 
-![setting up priority profile for least-cost dispatch](/img/electricity-sector-main-LeastCostPriorProf.png)
+![Calculating marginal capacity factors](/static/img/electricity-sector-main-MarginalCapacityFactor.PNG)
 
-We find the cost per unit output (from fuel and variable O&M).  Then, we create a version that includes subsidies (for use determining the median dispatch cost, or midpoint of each bell curve) and a version that does not include subsidies (for converting from a normalized standard deviation to a standard deviation of each bell curve).  We move these values, as well as the standard deviation of dispatch costs, into 33-element vectors, so we can generate a 33-element vector Priority Profile, to use in the allocation operation.
+One drawback to this approach is that it can make the credit price seems unnecessarily high. This can occur because the model computes revenue as the CES credit price multiplied by the marginal capacity factor for a given hour, summed over the year. As the grid approaches 100% clean, marginal capacity factors for all resources decrease and a higher price is needed to drive clean adoption. On the other hand, this ensures the model is only paying for completely additive clean resources and it helps shift CES revenue to dispatchable resources as the grid gets close to 100% clean.
 
-We perform the allocation of remaining electricity demand on the vectorized quantities, then move them back into a two-subscript variable, "Electricity Dispatched by Least Cost," for use elsewhere in the model, as shown in the following screenshot.
+Hybrid resources are included in the optimization loop and the model will tend to move towards them in years with higher clean shares to reallocate the clean supply to the hours when it is needed.
 
-![least-cost allocation](/img/electricity-sector-main-LeastCostAlloc.png)
+The CES also allows users to set an Alternative Compliance Payment in the input data that sets a cap on the credit price. Once the cap is hit, the model will not continue to increase the credit price, even if it cannot hit the CES target. 
+
+![Calculating marginal capacity factors](/static/img/electricity-sector-main-CES.PNG)
+
+The CES optimization works together with the clean dispatchable mechanism so that the model doesn’t overbuild clean resources but builds adequate flexible clean resources.
+
+### Additions to Support Green Hydrogen Production
+
+The EPS also tracks green hydrogen demand and will build off-grid renewables to support the production of green hydrogen. This part of the model uses a logit choice function to assign the demand for electricity to different resource types based on their costs. The exponents and shareweights for logit are included as part of input data. The model then builds sufficient capacity to electricity demand for green hydrogen production and tracks this stock over time.
+
+![Additions for green hydrogen production](/static/img/electricity-sector-main-GreenH2Additions.PNG)
+
+### Reliability Additions
+
+At this point the model has built capacity as mandated in input data, for cost-effectiveness, to comply with an RPS or CES including if flexible clean resources are needed, and for off-grid green hydrogen production. The final set of capacity mechanisms ensure there are sufficient resources online to meet reliability in every hour, including a reserve margin. 
+
+The reliability mechanism is broken into two steps due to limitations in Vensim. The model cannot optimize a resource mix across multiple hours and resource types at the same time given the structural limitations of Vensim (this would require a linear program). So, the EPS first does a reliability optimization limiting the model to building dispatchable resources. In the second optimization, the model adds the resources from the first optimization to the supply mix and then fills in the rest of what is needed from any resources. An example helps illustrate why this approach is necessary.
+
+Consider a system with a summer peak at 2 PM and a winter peak at 10 PM and where the summer peak is higher than the winter peak. If the model optimize around the single maximum peak, it might want to build solar to meet the 2 PM peak, but this solar would be unavailable for the winter peak. This could lead to situations where the model is unable to meet winter demand. On the other hand, the model was allowed to build all it wanted for both peaks, for example solar for the summmer peak and gas for the winter peak, and it just summed the additions from the two peaks, this would add too much capacity, because some of the gas winter peaking capacity could be used for the 2 PM summer peak. The best way to address this challenge is through the use of a linear program, however Vensim is not configured for this. So, the EPS addresses this challenge by splitting the reliability mechanism into two pieces. It first computes the dispatchable capacity, and then fills in the remainder with any kind of capacity.
+
+The model determines capacity additions by first estimating how much is needed in each hour and computing a capacity price that increases revenue such that sufficient capacity is added to the system, using the same cost-effectiveness structure used elsewhere in the model. The single highest hour is identified and used as the price for all resources. Resources’ total revenue from the capacity price is discounted by their hourly availability in the binding hour. For example, if a winter 10 PM peak is the binding hour, solar PV would not receive any capacity revenue, but onshore wind would at its estimated capacity factor.
+
+To estimate how much is needed in each hour, the model uses a peak winter and a peak summer timeslice. These are meant to represent the worst system conditions during the worst five days of each season in terms of demand and potential output from variable resources. The input data looks at the maximum demand during each hour of the top five days and the minimum capacity factor for variable resources. The model adds a reserve margin on top of this, to ensure sufficient supply. These approaches try to mimic planning procedures by real world utilities and grid operators.
+
+![Dispatchable-only reliability additions](/static/img/electricity-sector-main-DispatchableReliability.PNG)
+
+![Residual reliability additions](/static/img/electricity-sector-main-ResidualReliability.PNG)
+
+Because the reliability mechanisms are downstream of the cost-effectiveness mechanism, including for the CES/RPS, the reliability mechanism can result in additional clean capacity being built that causes the model to exceed the CES/RPS value in certain years. The only way to fully address would be through a linear program where the model could optimize capacity against multiple constraints at once, but Vensim is unable to do this.
+
+If the model has a CES/RPS of 100%, the reliability mechanism will not allow non-qualifying resources to be built. However, in the years leading up to the 100% value, the model can still build non-qualifying resources, which may not be run or may not be allowed to run shortly after. This is a known issue using a model without perfect foresight, but we are again constrained by our ability to model this given Vensim’s structure. A future area for enhancement might be to integrate the future year RPS value into the reliability structure to prevent the model from building resources that would never or only scarcely be used.
+
+### Total New and Retrofit Capacity
+
+Lastly, the model sums the total capacity additions and retrofits for input into the stock and flow tracking.
+
+![Total capacity additions and retrofits](/static/img/electricity-sector-main-TotalNewCapacity.PNG)
+
+## Tracking Electricity Stock and Average Power Plant Fleet Properties
+
+This part of the model tracks fleetwide properties of power plants, such as installed capacity, weighted average heat rates, and operating costs. The model collapses the vintaging here into a single weighted average value to minimize runtime impacts and carry through a single value for each power plant type.
+
+### Tracking the Electricity Fleet
+
+Existing capacity, retirements, new capacity, and retrofits are combined to produce key outputs for use across the electricity sector.
+
+![Total installed power plant capacity](/static/img/electricity-sector-main-StockTracking.PNG)
+
+### Capacity Factors
+
+Various capacity factor calculations are used through the electricity sector. These include achieved capacity factors (annual and by hour), three year average achieved capacity factors, expected capacity factors, and start year capacity factors. Each of these has a different use in the structure to reflect different situations and calculations.
+
+Three year average achieved capacity factors by hour are used in the RPS mechanism to ensure compliance will be met at a given RPS price and deployment. Achieved capacity factors by hour are important for measuring hourly output, which in turn is used to estimate annual output and compliance with an annual RPS. Achieved capacity factors differ from expected capacity factors because the account for real world (in the model) operating conditions and things that may cause expected output to deviate from actual output, such as curtailment. Achieved capacity factors are calculated using a three year rolling average of the model's calculated capacity factor by plant type by hour.
+
+![Three year average achieved capacity factors by hour](/static/img/electricity-sector-main-ThreeYearAverageAchievedCFbyHour.PNG)
+
+### Weighted Average Fleet Properties
+
+## Electricity Dispatch
+
+At this point, the model has now estimated load, costs, retirements, and capacity additions and retrofits. The next step is to compute what is dispatched.
+
+### Guaranteed Dispatch
+
+The model begins by dispatching resources that are guaranteed, as specified in input data. Based on this data, the model dispatches a fixed amount of the available capacity of a resource in every hour (i.e. the model does not have hourly differentiation for guaranteed dispatch). The input data can be configured to have two priority tiers so that in instances where the total amount of demand would be exceeded by guaranteed dispatch, it will first curtail resources in the lower tier and then the higher tier. One area for potential future improvements is to utilize the expected rather than available capacity in an hour for guaranteed dispatch to improve hourly representation.
+
+### Dispatch of RPS Qualifying Resources
+
+Next the model will dispatch RPS qualifying resources, starting with zero and negative cost resources and then moving to positive cost resources. This step helps ensure that these resources are appropriately used even if their costs might exceed other resources. It also ensures alignment with the projected clean share as part of the CES/RPS optimization. The model uses expected capacity factors for dispatch here. Because the expected and available capacity factors for variable renewables are the same, and most clean resources today are variable, this is generally not an important distinction, but it matters for certain resources like hydro, which can be used flexibly but otherwise generally run at a near constant capacity factor.
+
+### Dispatch of Remaining Zero and Negative Cost Resources
+
+The model then moves to dispatching other zero and negative cost resources, since these do not function correctly in the least cost dispatch step. They are dispatched at expected capacity factors.
+
+### Least Cost Dispatch
+
+Finally, the model calculates remaining dispatch through the least cost dispatch mechanism. This structure iteratively converges on an electricity market price that dispatches the right amount of electricity to meet remaining demand. 
+
+To do this, we start by representing each power plant type as a distribution. In reviewing real world data, we observed that dispatch costs most commonly represent different forms of Weibull distributions. We calculate the relevant parameters for each power plant type in the input data and use this, along with the dispatch cost per unit output (itself one of the parameters for a Weibull distribution) to compute a distribution for each resource. The model uses this information to estimate the share of each resource type that is dispatched at a given price, and multiplies this by the remaining available capacity to estimate the output in any given hour for a given price.
+
+We limit the least cost dispatch mechanism only to resources identified in the input data as participating in least cost dispatch to significantly reduce the computational requirements, which are otherwise very high. Care is required to ensure that resources not flagged as participating in least cost dispatch are correctly dispatched elsewhere.
+
+We also separately account for hydro dispatch as part of this mechanism by adding a “hydro opportunity cost” and allowing it to economically dispatch. This is required because while hydro plants have no fuel costs, they do have real opportunity costs they have to balance in determining whether or not to increase their dispatch and they are also a core part of flexible supply in certain geographies. 
+
+### Estimation of Market Prices
+
+Dispatch estimates are used to compute market prices for every hour. In hours when there is electricity dispatched through least cost dispatch, the model has a clear price to use and will use the output of the least dispatch mechanism. However, there can be other hours in which there is no least cost dispatch, especially as the grid approaches 100% clean. In these hours, the model uses a weighted average of the dispatch costs of other resources to determine an “average” market price. This approach could possibly benefit from improvement in the future but produces reasonable prices. Separately, particularly in small geographies, there can be hours in which all of the in-region supply is provided by imports. In these hours, we use the imported electricity price specified in input data.
+
+## Economic Storage Additions
+
+The final step in the electricity sector is for the model to estimate economic storage additions using the energy market data calculated above.
+
+To do this, the model compares the highest and lowest priced hours and computes an estimated daily profit by arbitraging these hours based on the duration of the storage (four years hours by default in the US model). This allows the model to determine an estimated annual average profit per MWh of battery capacity. This is multiplied by a calibrated input parameter (the MWh of storage added per $/MWh profit) to estimate battery additions. Incentive policies add to the profitability and drive additional storage capacity. The storage additions are added to the model’s capacity on a one year delay. The storage additions for the US and state models approximate those observed from other dedicated power system models.
 
 ## Total Generation and Emissions
 
@@ -350,4 +444,6 @@ We report the percentage of electricity generated by each source (coal, natural 
 ![generation by source](/img/electricity-sector-main-GenBySource.png)
 
 ---
-*This page was last updated in version 1.1.4.*
+*This page was last updated in version 4.0.3.*
+
+
