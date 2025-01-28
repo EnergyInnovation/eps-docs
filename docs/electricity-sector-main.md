@@ -363,85 +363,146 @@ Existing capacity, retirements, new capacity, and retrofits are combined to prod
 
 ### Capacity Factors
 
-Various capacity factor calculations are used through the electricity sector. These include achieved capacity factors (annual and by hour), three year average achieved capacity factors, expected capacity factors, and start year capacity factors. Each of these has a different use in the structure to reflect different situations and calculations.
+Various capacity factor calculations are used through the electricity sector. These include achieved capacity factors (annual and by hour), three year average achieved capacity factors, expected capacity factors, start year capacity factors, and bid capacity factors. Each of these has a different use in the structure to reflect different situations and calculations.
 
 Three year average achieved capacity factors by hour are used in the RPS mechanism to ensure compliance will be met at a given RPS price and deployment. Achieved capacity factors by hour are important for measuring hourly output, which in turn is used to estimate annual output and compliance with an annual RPS. Achieved capacity factors differ from expected capacity factors because the account for real world (in the model) operating conditions and things that may cause expected output to deviate from actual output, such as curtailment. Achieved capacity factors are calculated using a three year rolling average of the model's calculated capacity factor by plant type by hour.
 
 ![Three year average achieved capacity factors by hour](/static/img/electricity-sector-main-ThreeYearAverageAchievedCFbyHour.PNG)
 
-### Weighted Average Fleet Properties
+These values are also used to calculate average annual achieved capacity factors. We use achieved capacity factors because they can reflect the evolving nature of the power system and the impact to plant run times. For example, in a power sector decarbonization scenario, the achieved capacity factors for fossil thermal plants will decrease significantly. If we used a static capacity factor, then when computing anticipated revenue and costs for new power plant types, we would fail to capture the fewer hours those plants run. With achieved capacity factors, the model correctly tracks the evolution of the power sector composition and the impact this has on cost recovery for new power plant types. To calculate achieved capacity factors for new plants, we discount the expected capacity factor by the proportion of the three year average achieved capacity factor to expected. For example, if natural gas combined cycle plants have a three year average achieved capacity factor of 25% but their expected capacity factor is 50%, we reduce the achieved capacity factor for new plants by 50% (25% divided by 50%) to 25%. 
+
+![Three year average achieved capacity factors](/static/img/electricity-sector-main-ThreeYearAverageAchievedCF.PNG)
+
+These rely on weighted average data across the whole fleet by power plant type.
+
+![Three year average achieved capacity factors](/static/img/electricity-sector-main-WeightedAverageCFs.PNG)
+
+We also use expected capacity factors where there is no existing capacity from which to calculate an achieved capacity factor, for example novel technologies like hydrogen combustion turbines or small modular reactors. In these cases we compute a hypotehtical capacity factor as if one megawatt of that power plant type had been available for dispatch. 
+
+![Expected capacity factors](/static/img/electricity-sector-main-ExpectedCFs.PNG)
+
+In the start year we also compute start year capacity factors based on input data, since there is no historical year data to start calculating from.
+
+![Start year capacity factors](/static/img/electricity-sector-main-StartYearCFs.PNG)
+
+Bid capacity factors are used in the dispatch mechanisms to reflect the available capacity in a given hour available to dispatch. They incorporate several limitations, including a maximum capacity factor, i.e. the maximum share of potential output that is available in each hour. Because the EPS is also a single-region model, we also include the ability to discount the available output to account for the regionality of the grid. If we didn't include this, the model would operate as a copper sheet with a power plant in one region being able to supply power in a wholly different region. These parameters are set through RAF Regional Availability Factor for Generation and are generally handled through calibration. Non-dispatchable renewables are not typically affected by this calibration. Capacity factors used for reliability calculations (i.e that reflect an equivalent to effective load carrying capacity) are calculated here as well. 
+
+![Bid capacity factors](/static/img/electricity-sector-main-BidCFs.PNG)
+
+
+### Other Weighted Average Fleet Properties
+
+We compute values for new plants, including fixed O&M, variable O&M, and heat rates. We use this to also compute the fuel cost for newly built power plants.
+
+![Other new plant properties](/static/img/electricity-sector-main-OM_fuel_heatrate.PNG)
+
+The model next moves to computing properties for the existing fleet on a weighted average basis to collapse plant vintage down into a single element for model runtime.
+
+First we compute the weighted average heat rate for the fleet and generation costs per unit output.
+
+![Weighted average heat rate](/static/img/electricity-sector-main-weighted_avg_heatrate.PNG)
+
+Next we compute the remaining properties for the existing fleet.
+
+![Other weighted average fleet properties](/static/img/electricity-sector-main-weighted_avg_properties.PNG)
+
+The model also calculates subsidies for electricity generation on a weighted average basis. We account for the duration of subsidies here as well, since some regions have subsidies that are limited in duration. We then have a weighted average across all the vintages for a single value by power plant type.
+
+![Subsidies per unit output](/static/img/electricity-sector-subsidies_per_output.PNG)
+
+### Available and Expected Capacity by Hour
+
+Lastly, we compute the expected and available capacity by hour. Available capacity reflects the maximum available while expected reflects expected output, for example from hydro facilities where expected output is often far below maximum potential output.
+
+![Available and expected capacity by hour](/static/img/electricity-sector-available_expected_capacity.PNG)
 
 ## Electricity Dispatch
 
-At this point, the model has now estimated load, costs, retirements, and capacity additions and retrofits. The next step is to compute what is dispatched.
+At this point, the model has now estimated load, costs, retirements, capacity additions and retrofits and fleetwide properties, such as dispatch costs. The next step is to compute what is dispatched.
+
+There are multiple dispatch mechanisms in the EPS, each with a specific purpose. The dispatch process begins with guaranteed dispatch, which is not price-based but rather is based on input data and policy drivers. This can be used to reflect, for example, equal shares dispatch. It can also be used for plant types that are typically price-insensitive, such as nuclear and on-site cogeneration facilties, such as biomass combined heat and power plants. 
+
+Following guarnateed dispatch is dispatch of RPS qualifying resources. This happens upstream of economic dispatch because there are instances where high-priced clean energy sources are needed to comply with the CES that may not dispatch if left solely to market dynamics.
+
+Next the model has a dispatch mechanism for negative- or zero-cost resources, i.e. those resources that have zero or lower disptach costs. This step is need due to mathematical limitations in the least cost dispatch step. 
+
+Finally, the model estimates least cost dispatch based on the maringal dispatch cost of resources. 
+
+The model does this using annual fuel price data to estimate actual dispatch and also using five year average dispatch data to estimate a long run average dispatch amount for use in planning new resources.
+
+The model combines all the dispatch data at the end of the dispatch process to compute a market price in each hour on an annual and five year average basis.
 
 ### Guaranteed Dispatch
 
-The model begins by dispatching resources that are guaranteed, as specified in input data. Based on this data, the model dispatches a fixed amount of the available capacity of a resource in every hour (i.e. the model does not have hourly differentiation for guaranteed dispatch). The input data can be configured to have two priority tiers so that in instances where the total amount of demand would be exceeded by guaranteed dispatch, it will first curtail resources in the lower tier and then the higher tier. One area for potential future improvements is to utilize the expected rather than available capacity in an hour for guaranteed dispatch to improve hourly representation.
+The model begins by dispatching resources that are guaranteed, as specified in input data. Based on this data, the model dispatches a fixed amount of the expected capacity of a resource in every hour. Expected capacity factors are based on input data and calculations described above for expected capacity factors. The input data can be configured to have two priority tiers so that in instances where the total amount of demand would be exceeded by guaranteed dispatch, it will first curtail resources in the lower tier and then the higher tier. In instances where guaranteed dispatch and the RPS mechanism conflict, the RPS mechanism will take precedence to ensure compliance.
+
+![Guaranteed dispatch](/static/img/electricity-sector-main-GuaranteedDispatch.PNG)
 
 ### Dispatch of RPS Qualifying Resources
 
 Next the model will dispatch RPS qualifying resources, starting with zero and negative cost resources and then moving to positive cost resources. This step helps ensure that these resources are appropriately used even if their costs might exceed other resources. It also ensures alignment with the projected clean share as part of the CES/RPS optimization. The model uses expected capacity factors for dispatch here. Because the expected and available capacity factors for variable renewables are the same, and most clean resources today are variable, this is generally not an important distinction, but it matters for certain resources like hydro, which can be used flexibly but otherwise generally run at a near constant capacity factor.
 
+![RPS dispatch](/static/img/electricity-sector-main-RPSDispatch.PNG)
+
 ### Dispatch of Remaining Zero and Negative Cost Resources
 
-The model then moves to dispatching other zero and negative cost resources, since these do not function correctly in the least cost dispatch step. They are dispatched at expected capacity factors.
+The model then moves to dispatching other zero and negative cost resources, since the least cost dispatch mechanism is not able to accomodate resources with negative or zero marginal costs. They are dispatched at expected capacity factors. In instances where dispatching these resources would exceed demand, they are proportionally reduced so that supply and demand are in balance.
+
+![Negative and zero cost resource dispatch](/static/img/electricity-sector-main-NegAndZeroDispatch.PNG)
 
 ### Least Cost Dispatch
 
 Finally, the model calculates remaining dispatch through the least cost dispatch mechanism. This structure iteratively converges on an electricity market price that dispatches the right amount of electricity to meet remaining demand. 
 
-To do this, we start by representing each power plant type as a distribution. In reviewing real world data, we observed that dispatch costs most commonly represent different forms of Weibull distributions. We calculate the relevant parameters for each power plant type in the input data and use this, along with the dispatch cost per unit output (itself one of the parameters for a Weibull distribution) to compute a distribution for each resource. The model uses this information to estimate the share of each resource type that is dispatched at a given price, and multiplies this by the remaining available capacity to estimate the output in any given hour for a given price.
+To do this, we start by representing each power plant type as a Weibull distribution. In reviewing real world data, we observed that dispatch costs most commonly represent different forms of Weibull distributions. We calculate the relevant parameters for each power plant type in the input data and use this, along with the dispatch cost per unit output (itself one of the parameters for a Weibull distribution) to compute a distribution for each resource. The model uses this information to estimate the share of each resource type that is dispatched at a given price, and multiplies this by the remaining available capacity to estimate the output in any given hour for a given price. The mechaism runs through 20 optimization passes to converge on a market price where supply meets demand. This section also accounts for resources dispached elsewhere so that the marginal dispatch cost reflects the marginal amount of supply available by resource type.
 
 We limit the least cost dispatch mechanism only to resources identified in the input data as participating in least cost dispatch to significantly reduce the computational requirements, which are otherwise very high. Care is required to ensure that resources not flagged as participating in least cost dispatch are correctly dispatched elsewhere.
 
 We also separately account for hydro dispatch as part of this mechanism by adding a “hydro opportunity cost” and allowing it to economically dispatch. This is required because while hydro plants have no fuel costs, they do have real opportunity costs they have to balance in determining whether or not to increase their dispatch and they are also a core part of flexible supply in certain geographies. 
 
-### Estimation of Market Prices
+![Least cost dispatch](/static/img/electricity-sector-main-LeastCostDispatch.PNG)
 
-Dispatch estimates are used to compute market prices for every hour. In hours when there is electricity dispatched through least cost dispatch, the model has a clear price to use and will use the output of the least dispatch mechanism. However, there can be other hours in which there is no least cost dispatch, especially as the grid approaches 100% clean. In these hours, the model uses a weighted average of the dispatch costs of other resources to determine an “average” market price. This approach could possibly benefit from improvement in the future but produces reasonable prices. Separately, particularly in small geographies, there can be hours in which all of the in-region supply is provided by imports. In these hours, we use the imported electricity price specified in input data.
+As mentioned earlier, we do least cost dispatches twice: once using annual dispatch costs and once using five year average dispatch costs. The latter approach and accompanying market prices is used elsewhere in the power sector for determining future market revenues for new power plants. This avoids having a single year with high market prices used to represent anticipate future revenues.
+
+### Summing Total Dispatch and Estimating Market Prices
+
+Total electricity dispatched is summed across each of the elements of the dispatch pass. Dispatch estimates are used to compute market prices for every hour on an annual and five-year basis. In hours when there is electricity dispatched through least cost dispatch, the model has a calculated price from the least cost dispatch mechanism to use and will use the output of the least dispatch mechanism. However, there can be other hours in which there is no least cost dispatch, especially as the grid approaches 100% clean and most or all dispatch happens through the other dispatch mechanisms. In these hours, the model calculates a weighted average marginal dispatch cost of other resources to determine an “average” market price. Separately, particularly in small geographies, there can be hours in which all of the in-region supply is provided by imports. In these hours, we use the imported electricity price specified in input data.
+
+![Total generation and market prices](/static/img/electricity-sector-main-TotalDispatchAndMarketPrices.PNG)
 
 ## Economic Storage Additions
 
-The final step in the electricity sector is for the model to estimate economic storage additions using the energy market data calculated above.
+The electricity sector estimates economic storage additions based on anticipated market revenues, incentives, and battery costs.
 
-To do this, the model compares the highest and lowest priced hours and computes an estimated daily profit by arbitraging these hours based on the duration of the storage (four years hours by default in the US model). This allows the model to determine an estimated annual average profit per MWh of battery capacity. This is multiplied by a calibrated input parameter (the MWh of storage added per $/MWh profit) to estimate battery additions. Incentive policies add to the profitability and drive additional storage capacity. The storage additions are added to the model’s capacity on a one year delay. The storage additions for the US and state models approximate those observed from other dedicated power system models.
+To estimate storage additions the model starts by calculating anticipated market revenues. Unlike for power plants, the model does not directly compare anticipated revenues and against costs to estimate additions, but rather looks only at the anticipated net revenue. This approach is necessary because the EPS omits several sources of revenue for storage, notably including ancillary services like frequency response, and comparing against costs would yield far lower profitability than in reality. Additionally, while the EPS now has hourly granularity for six electricity timeslices, to fully capture the revenue potential for storage would required sub-hourly detail, in addition to grid services. If we directly compared costs and revenues, we would miss a large source of revenue and significantly underestimate anticipated storage additions.
 
-## Total Generation and Emissions
+To estimate market revenues, the model compares the highest and lowest priced hours and computes an estimated daily profit by arbitraging these hours based on the duration of the storage (four years hours by default in the US model). This allows the model to determine an estimated annual average charging and discharging profit per MWh of battery capacity. Incentive policies add to the profitability and drive additional storage capacity. Revenues from the reliability mechanism are integrated as well in this step. Declines in battery costs are modeled as a form of revenue as well to reflect increasing profitability of batteries. Together these elements comprise a "net revenue" estimate.
 
-First, we sum the output from the two dispatch processes, as shown in the following screenshot:
+The total net revenue is multiplied by a calibrated input parameter (the MWh of storage added per $/MWh profit) to estimate battery additions.  The storage additions are added to the model’s capacity on a one year delay. Storage additions for the US and state models approximate those observed from other dedicated power system models, e.g. the National Renewable Energy Lab's ReEDS model.
 
-![electricity generation and associated statistics](/img/electricity-sector-main-ElecGeneration.png)
+![Battery storage additions](/static/img/electricity-sector-main-GridStorageAdditions.PNG)
 
-Next, we determine the pollutant emissions based on the generation by type and quality level, as shown in the following screenshot:
+## Total Emissions
 
-![electricity sector pollutant emissions](/img/electricity-sector-main-Pollutants.png)
+Next, we determine the pollutant emissions based on the generation by type, as shown in the following screenshot:
 
-We use emissions indices (per unit energy in the fuel) and heat rates (energy units of fuel per MWh of electricity) to obtain pollutant emissions indices per MWh of electricity.  We also apply any carbon capture and sequestration that is performed by the electricity sector, reducing CO<sub>2</sub> emissions but also increasing fuel consumption (to power the CCS process).  We apply the emissions indices per MWh to the total generation and add in the CCS effects to obtain an emissions total for the electricity sector by pollutant.
+![electricity sector pollutant emissions](/static/img/electricity-sector-main-TotalEmissions.PNG)
+
+We use emissions indices (per unit energy in the fuel) and heat rates (energy units of fuel per MWh of electricity) to obtain pollutant emissions indices per MWh of electricity.  We also apply any carbon capture and sequestration that is performed by the electricity sector, reducing CO<sub>2</sub> emissions but also increasing fuel consumption (to power the CCS process).  We apply the emissions indices per MWh to the total generation and add in the CCS effects to obtain an emissions total for the electricity sector by pollutant. The EPS also include the ability to include or exclude emissions from either imported electricity or from exported electricity. These are control levers that are separately through input data.
 
 ## Additional Electricity Outputs
 
 This section includes a few calculated variables that may be of interest in evaluating the electricity sector's performance or characteristics.  Some of these values can be useful for debugging or evaluating the realism of the model's response to a given set of input data or policy settings.
 
-We calculate the amount of curtailed electricity output (based on the reduction in expected capacity factors) from each source that requires flexibility points:
+![Additional outputs](/static/img/electricity-sector-main-AdditionalOutputs.png)
 
-![curtailment](/img/electricity-sector-main-Curtailment.png)
+We calculate the amount of curtailed electricity output (based on the reduction in expected capacity factors) from each variable electricity source. These calculations are based on the expected output at expected capacity factors for these resources compared to their actual output. Curtailment can happen when supply is greater than demand or when other resources are guarnateed ahead of variable renewable resources. 
 
-We report unmet electricity demand (if any), to make it easier to notice if there are any years with unmet demand.  Typically, there are not any such years.
+We also track compliance with the RPS, which is used the RPS mechanism and accompany graphs. Conversions to other other outputs, such as the percentage generation from clean sources and renewable electricity generation in primary energy units is also handled here.
 
-![unmet demand](/img/electricity-sector-main-UnmetDemand.png)
+The EPS also tracks water withdrawn and used by power plants based on input data on power plants types and generation by power plant types. 
 
-We determine the "achieved" capacity factors, which may differ from bid or expected capacity factors depending on the outcome of the dispatch calculations.  For ease of analysis, we also show the fraction of the expected capacity factors that were achieved:
-
-![achieved capacity factors](/img/electricity-sector-main-AchievedCapFactors.png)
-
-Primarily for purposes of analyzind model behavior, we report the fraction of buildable capacity of each type that was built in each year:
-
-![fraction of buildable capacity actually built](/img/electricity-sector-main-FractionBuilt.png)
-
-We report the percentage of electricity generated by each source (coal, natural gas, wind, etc.).  We also report "Renewable Electricity Generation Converted to Primary Energy."  This statistic is used in calculations of total primary energy, which are generally based on fuel consumption rather than electricity generation.  We include plant types that do not use fuel from the primary energy total with an "effective" heat rate (taken from the rate of coal plants) that makes them more comparable to other plant types in the primary energy calculation.  Primary energy is not used for any purpose in this model- it is simply reported.  This statistic may be of greater interest and use for non-U.S. countries.  It was originally added to accommodate the reporting requirements for a China version of this model.
-
-![generation by source](/img/electricity-sector-main-GenBySource.png)
+Finally, the model aggregates pollutant emissions into estimate of CO<sub>2</sub>e and computes a few additional metrics used throughout the electricity sector.
 
 ---
 *This page was last updated in version 4.0.3.*
