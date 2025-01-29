@@ -41,6 +41,18 @@ The following structure handles differences in construction and CCS subsidies fo
 
 In the BAU case, capacity and CCS retrofit subsidies are applied based on BAU new and retrofit capacity. In the policy case these subsidies can be affected by multiple policies (which change the subsidy amounts) and the amount of capacity receiving incentives that is deployed. The change in capacity construction and CCS subsidies reflects diffrences in subsidy levels and new and retrofit capacity.
 
+### Change in Zero Emission Credit Subsidies
+
+Some regions, for example some US states, have additional subsidies for specific power plant types, such as nuclear power plants, often called Zero Emission Credits (ZECs). We calculate the change in these subsidy payments but comparing qualifying generation and subsidy amounts in BAU agains the policy scenario calculations.
+
+![change in ZEC subsidies](/img/electricity-sector-cash-ZECs.png)
+
+### Change in Generation Subsidies
+
+Qualifying power plants may also received a subsidy per unit of electricity generation. We track changes in subsidy payments to qualifying generators by summing generation and multiplying subsidies by the generation amount. Subsidies are calculated separately in the electricity sector as discussed on the [Electricity Sector](electricity-sector-main) page and handle nuances like varying duration periods for the subsidies.
+
+![change in generation subsidies](/img/electricity-sector-cash-generationsubsidies.png)
+
 ### Rebate for Sequestered CO<sub>2</sub>
 
 In the event that there is a carbon price in BAU and/or the policy scenario, electricity suppliers receive a rebate, i.e. some positive cash flow, for sequestering CO<sub>2</sub>, as shown in the following structure:
@@ -49,15 +61,51 @@ In the event that there is a carbon price in BAU and/or the policy scenario, ele
 
 First, we convert the amount of CO<sub>2</sub> sequestered from grams of pollutant to metric tons of CO<sub>2</sub>e.  (Although "This Year Pollutants Sequestered by Electricity Sector" is subscripted by pollutant, only CO<sub>2</sub> has a non-zero value for its amount of sequestration.)  We multiply this by the carbon tax rate to determine the "rebate" received for sequestering the CO<sub>2</sub>.  In reality, electricity suppliers are likely to have to pay carbon prices, so this "rebate" is merely a lowering of electricity suppliers' carbon pricing bills, rather than a net payment of money from government to electricity suppliers.
 
-### Change in Battery Costs
+### Change in Spending on Batteries
 
-The model determines the change in expenditures due to the construction of chemical batteries.  Batteries are one of four technologies for which the model endogenously calculates cost declines based on total deployment.  The cost declines are based on the number of doublings of battery capacity relative to the start year, as shown in the following structure:
+The model determines the change in expenditures due to the construction of grid batteries and batteries at hybrid power plants.  Batteries are one of the technologies for which the model endogenously calculates cost declines based on total global deployment.  The cost declines are based on the number of doublings of battery capacity relative to the start year, as discussed in the [Endogenous Learning](endogenous-learning) code. Battery costs are broken into energy costs, power costs, and balance of system costs.
 
-![battery cost declines](/img/electricity-sector-cash-BatteryCostDeclines.png)
-
-We find the difference in total capacity of deployed battery storage between the BAU and policy cases.  Then we compare this quantity to last year's quantity, to determine the amount of battery storage built this year.  This is multiplied by the cost of batteries per unit capacity, as calculated above.  The structure is as follows:
+We find the difference in total new capacity of deployed battery storage in both the BAU and policy cases to determine the change in battery storage built this year.  This is multiplied by the cost of batteries per unit capacity, which is calculated here based on the endogenous learning calculations.   The structure is as follows:
 
 ![change in battery costs](/img/electricity-sector-cash-Batteries.png)
+
+### Change in CCS Transportation and Storage Costs
+
+We also track changes in the costs to transport and store CO<sub>2</sub> that has been captured at plants equipped with CCS. Spending on CO<sub>2</sub> transportation and storage costs is calculated on the [CCS](CCS) page and the electricity CCS portion of those costs in BAU and policy cases is compared to determine the change in costs.
+
+![change in CCS transport and storage costs](/img/Electricity-sector-cash-CCSTransportStorage.png)
+
+### Change in Decommissioning Costs
+
+When power plants are retired, they have to be decommissioned. We track changes in spending on decommissioning costs. We compare the retiring capacity in the BAU and policy scenarios and multiply these by a power plant type specific decommissioning cost per unit capacity. We average these costs over a fixed set of years (3 years in the US EPS) assuming that decommissioning takes some amount of time to occur. We then compare these values for BAU and policy to get a total change in decommissioning costs.
+
+![change in decommissioning costs](/img/Electricity-sector-cash-decommissioning.png)
+
+### Change in Ongoing Capital Costs
+
+Existing power plants have ongoing capital costs beyond O&M costs. For example, nuclear plants need somewhat regular capital investment to maintain safety. We track ongoing capital costs for the existing fleet by multiplying the surviving capacity by a power plant type specific weighted average annual capital cost per unit capacity to find the change in ongoing capital costs.
+
+![change in decommissioning costs](/img/Electricity-sector-cash-ongoingcapital.png)
+
+### Change in Demand Response Costs
+
+The model tracks deployment of demand resopnse capacity in the BAU and policy cases and tracks changes in spending on demand response across both scenarios. We sum the total demand response capacity across both scenarios, which is driven by input data and policy levers and allocate this across different providers, notably industries and consumers/labor, which reflect ths building/factility types providng the DR for cash flow tracking purposes. We then multiply by this by a capacity cost per unit DR capacity to estimate the total spending on DR across BAU and policy scenarios and compare these values to find the change. DR is assumed not to have any operating costs but rather only have capital costs.
+
+![change in demand response costs](/img/electricity-sector-cash-demandresponse.png)
+
+
+
+### Change in Spur Line Construction Costs
+
+### Change in Distribution Costs
+
+### Change in Energy Market Costs
+
+### Change in CES Costs
+
+### Change in Capacity Market Costs
+
+### Change in Revenue from RPS Qualifying Resources and Zero or Negative Dispatch Cost Resources
 
 ### Change in Transmission Costs
 
