@@ -85,7 +85,7 @@ When power plants are retired, they have to be decommissioned. We track changes 
 
 Existing power plants have ongoing capital costs beyond O&M costs. For example, nuclear plants need somewhat regular capital investment to maintain safety. We track ongoing capital costs for the existing fleet by multiplying the surviving capacity by a power plant type specific weighted average annual capital cost per unit capacity to find the change in ongoing capital costs.
 
-![change in decommissioning costs](/img/Electricity-sector-cash-ongoingcapital.png)
+![change in decommissioning costs](/img/electricity-sector-cash-ongoingcapital.png)
 
 ### Change in Demand Response Costs
 
