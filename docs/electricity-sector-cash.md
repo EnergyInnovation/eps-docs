@@ -73,13 +73,13 @@ We find the difference in total new capacity of deployed battery storage in both
 
 We also track changes in the costs to transport and store CO<sub>2</sub> that has been captured at plants equipped with CCS. Spending on CO<sub>2</sub> transportation and storage costs is calculated on the [CCS](CCS) page and the electricity CCS portion of those costs in BAU and policy cases is compared to determine the change in costs.
 
-![change in CCS transport and storage costs](/img/Electricity-sector-cash-CCSTransportStorage.png)
+![change in CCS transport and storage costs](/img/electricity-sector-cash-CCSTransportStorage.png)
 
 ### Change in Decommissioning Costs
 
 When power plants are retired, they have to be decommissioned. We track changes in spending on decommissioning costs. We compare the retiring capacity in the BAU and policy scenarios and multiply these by a power plant type specific decommissioning cost per unit capacity. We average these costs over a fixed set of years (3 years in the US EPS) assuming that decommissioning takes some amount of time to occur. We then compare these values for BAU and policy to get a total change in decommissioning costs.
 
-![change in decommissioning costs](/img/Electricity-sector-cash-decommissioning.png)
+![change in decommissioning costs](/img/electricity-sector-cash-decommissioning.png)
 
 ### Change in Ongoing Capital Costs
 
@@ -92,8 +92,6 @@ Existing power plants have ongoing capital costs beyond O&M costs. For example, 
 The model tracks deployment of demand resopnse capacity in the BAU and policy cases and tracks changes in spending on demand response across both scenarios. We sum the total demand response capacity across both scenarios, which is driven by input data and policy levers and allocate this across different providers, notably industries and consumers/labor, which reflect ths building/factility types providng the DR for cash flow tracking purposes. We then multiply by this by a capacity cost per unit DR capacity to estimate the total spending on DR across BAU and policy scenarios and compare these values to find the change. DR is assumed not to have any operating costs but rather only have capital costs.
 
 ![change in demand response costs](/img/electricity-sector-cash-demandresponse.png)
-
-
 
 ### Change in Spur Line Construction Costs
 
