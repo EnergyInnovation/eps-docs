@@ -163,39 +163,55 @@ In the future, we hope to make imports and exports more dynamic and to calculate
 
 ![change in electricity import and export spending](/img/electricity-sector-cash-elecimportcash.png)
 
-## Summing Cash Flow Changes for Electricity Suppliers
+## Allocating Changes in Expenditures and Revenue
 
-We use the following structure to total the cash flow impacts from all of the cost components discussed above:
+### Changes in Expenditures
 
-![summing cash flow impacts on electricity suppliers](/img/electricity-sector-cash-ElecSupplierImpacts.png)
+Now that we have calculated the changes in spending for the electricity sector, we need to assign those costs to the corresponding cash flow entities, as well as their corresponding ISIC codes (to be used in the [Input-Output Model](io-model)).
 
-We simply add all of the changes in cost together.  Positive changes (increases) in fuel costs, O&M costs, construction costs, battery costs, and transmission costs all count as negative cash flow for electricity suppliers.  Positive changes in subsidies paid and carbon tax rebates due to CCS count as positive cash flow for electricity suppliers.  Note we here use the umbrella term "electricity suppliers" to refer to the entities that do all of these things: buy new power plants, buy fuel to operate the power plants, receive subsidies for generating electricity, pay for new transmission lines, etc.  In reality, different entities might handle some of these tasks (e.g. independent power producers might build and run plants, a distribution utility might build transmission lines, another company or even homeowners might provide battery services, etc.)  It should be understood that impacts on "electricity suppliers" affect any or all of these entities insofar as they are responsible for the activities whose cash flow impacts are calculated in the model.
+First, we allocate changes in energy expenditures. We track net changes in expenditures for foreign entities importing and exporting electricity. We estimate the net change in spending on electricity fuels and imports and assign this to the electricity suppliers cash flow entity.
 
-We allow changes in cash flow for electricity suppliers to affect the market price of electricity.  The variable used to perform this adjustment is calculated using the following structure:
+Next, we allocate change in nonenergy spending by entity and ISIC code. For cash flow entities, all costs are allocated either to government, electricity suppliers, or nonenergy industries. Government costs include all subsidies and tax rebates. Nonenergy industry costs include all of the capital spending, as this is assumed to come from industries that supply the electricity supply industry (e.g. utilities purchase steel, cement, and electric components from those sectors when building new power plants). All other costs, such as O&M costs, are allocated to the electricity supply industry. 
 
-![change in electricity supplier cost per unit electricity](/img/electricity-sector-cash-ElecPriceChange.png)
+All expenditures are allocated to the finance and insurance ISIC code under the assumption that electricity suppliers finance investments.
 
-The actual adjustment of electricity prices is performed on the [Fuels sheet](fuels).  This assumes that increased costs are ultimately passed on to electricity consumers, as electricity sales are the ultimate source of funds for electricity suppliers.  If this effect is not desired, a user may enable the policy "Boolean Prevent Policies from Affecting Electricity Prices" on the "Policy Control Center" sheet.  This will disable this feedback loop and electricity prices will reflect BAU projections through 2030.  This might be most applicable if electricity prices are expected to be fixed irrespective of other regulatory initiatives (like a carbon tax, an RPS, etc.) and/or if the government is likely to absorb the cost to electricity suppliers for compliance with these policies, allowing electricity prices to remain the same.
+![change in electricity expenditures](/img/electricity-sector-cash-expenditures.png)
 
-## Assigning Cash Flows to Money Recipients
+### Changes in Revenue
 
-As with other sections of the model, changes in cash flow for one actor affect other actors.  The last section of this sheet calculates the impacts of cash flow changes for electricity suppliers on the actors they pay or who pay them.
+We also need to track which entities and ISIC codes receive money based on electricity sector expenditures. To do this we sum the changes in spending by category and assign those costs to specific ISIC codes based on input data.
 
-The following structure deals with O&M costs, which happen to be the only type of electricity sector expense that is, in part, paid to consumers:
+Changes in capacity construction costs and ongoing capital costs are aggregated and assigned to ISIC codes specific to each power plant types.
 
-![recipients of O&M cash flow changes](/img/electricity-sector-cash-OnMRecipients.png)
+Changes in spur line costs, distribution construction costs, and transmission construction costs are aggregated and assigned to ISIC codes.
 
-The total change in O&M costs is split between equipment and labor, according to the current division of O&M costs between these two uses.  The change in O&M labor costs goes to consumers, less the taxes paid on that incremental payment to labor, which is calculated based on the marginal worker income tax rate.  These taxes will go to the government.
+Changes in spending on batteries is assigned directly to the electrical equipment ISIC code, which includes battery suppliers.
 
-Changes in equipment, including the equipment portion of O&M, are handled via the following structure:
+The above changes spending are summed by ISIC code to find a subtotal of the total change in amount spent on capital by recipient ISIC code.
 
-![recipients of equipment cash flow changes](/img/electricity-sector-cash-Equipment.png)
+Changes in transmission and distribution O&M costs are aggregated and assigned to ISIC codes.
 
-The change in capital costs (which consists of generation construction, battery, and transmission costs) are added to the equipment fraction of O&M to obtain a total "Change in Electric Equipment Purchases."  A fraction of this change is separated out for taxes, based on the capital equipment sales tax rate.  The remainder goes to capital equipment suppliers, which (like electricity suppliers) are one of the specially-broken-out industry categories in the Energy Policy Simulator (EPS).
+Changes in power plant fixed O&M costs are assigned to ISIC codes specific to each power plant type. 
 
-This screenshot of the final piece shows the summation of all the cash flows affecting government: taxes on the labor fraction of O&M, taxes on equipment purchases, and taxes on electricity fuel purchases (calculated in the "Change in Fuel Costs" section above).  It also shows two quantities the government pays out: subsidies and a rebate for sequestering CO<sub>2</sub> in the event of a carbont tax:
+Changes in power plant variable O&M costs are assigned to ISIC codes specific to each power plant type.
 
-![totaling cash flow impacts on government](/img/electricity-sector-cash-GovernmentTotal.png)
+Changes in CCS transportation and storage costs are assigned directly to the pipleines and transmission ISIC code.
+
+These categories are summed to find a total change OM costs by ISIC code. 
+
+![change in electricity revenues by isic code](/img/electricity-sector-cash-revenuebyisic.png)
+
+Next, we move to allocating revenues by remaining categories, e.g. decommissioning, and to allocating changes in revenues by ISIC code. Revenue from subsidies and rebates is assigned to the electricity supplier cash flow. 
+
+Revenue from fuels is assigned to the correct fuel supplier cash flow entity. 
+
+Other revenue is aggregated and assigned to correct cash flow entity, typically covering nonenergy suppliers, such as providers of equipment used for constructing power plants.
+
+This step also aggregates the total change in revenue by ISIC code.
+
+![change in electricity revenues by cash flow entity](/img/electricity-sector-cash-revenuebyentity.png)
+
+## Electricity Rates
 
 ---
-*This page was last updated in version 1.1.4.*
+*This page was last updated in version 4.0.3.*
