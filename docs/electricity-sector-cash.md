@@ -213,5 +213,31 @@ This step also aggregates the total change in revenue by ISIC code.
 
 ## Electricity Rates
 
+As of version 4.0.0, the EPS now estimates electricity rates, which are used throughout the model. Total rates are calculated on the [Fuels](Fuels) page. The wholesale energy, transmission, and distribution components of the rates here in the electricity sector cash flows. The methodology is discussed below. 
+
+Transmission, distribution, grid storage, spur line, and battery costs are considered system costs. This means these costs, including a rate of return are recovered directly from electricity users. These costs are treated as financed over a set financing period. To estimate the annual recoverable costs, we sum the annual change in spending for each category and apply a calculated capital recovery factor, amortizes a capital invesment over an investment period and at an assumed interest rate, which is the weighted average cost of electricity sector capital specified in input data. This methodology converts annual spending by utilities into a recoverable annual cost spread out over several years. We compare these estimates to find the change in repayment for financing as well.
+
+![repayment for electricity sector capital](/img/electricity-sector-cash-ratescapital.png)
+
+Next, we incorporate annual O&M and other expenditures. These include: transmission O&M, distribution O&M, income from exporting electricity, costs of exporting electricity, carbon price rebates due to CCS,  costs of providing demand response, and the amortized decommisioning costs. All of these are considered recoverable in rates and charged directly.
+
+![repayment for electricity sector OM costs](/img/electricity-sector-cash-ratesOM.png)
+
+Then, we move to adding other annual costs that would be recovered through rates. First is wholesale energy market costs, defined above. Next are costs of administering the capacity market or capacity construct. These costs are assumed to be folded into rates and recovered over a period determined in input data (10 years is the default in the U.S. model), rather than all recovered in a single year.  
+
+Next we adding the annual ongoing CES costs, calculated above. 
+
+We then add in the energy costs for non-RPS qualifying resourcse with zero or negative dispatch costs, also calculated above. 
+
+Finally, we add in the ongoing transmission capital and distribution capital costs for equipment in place prior to the model start year, taken from input data. 
+
+Summing all of the above gives us the total annual costs that need to be recovered through rates.
+
+We then divide this total by the sum of total electrcity demand to to estimate a cost per unit electricity delievered and compare agains tthe BAU equivalent.
+
+![repayment for other electricity sector costs](/img/electricity-sector-cash-ratesother.png)
+
+On the fuels page, we calculate the difference between this value and cost of delivered electricity from input data, the difference of which we assume are other components of rates not captured in the model. We then calculate rates by holding this difference constant and adding it to the calculated rates using the structure above. This calcultion flow is detailed on the [Fuels](fuels) page.
+
 ---
 *This page was last updated in version 4.0.3.*
