@@ -134,7 +134,7 @@ First, we read in data on the projected BAU capacity of distributed generation s
 
 ![BAU distributed electricity capacity](/img/buildings-sector-main-DistBAUTracking.png)
 
-The first policy that can impact distributed generation is a boolean that, if turned on, causes the model to read in a non-BAU projection of distributed generation capacity. This enables the user to easily implement projections from other sources. The second policy to influence distributed generation is a subsidy for distributed solar. The model calculates the effect such a subsidy using an elasticity of distributed solar deployment with respect to subsidy price, which modifies the BAU increase in distributed solar capacity.
+The first policy that can impact distributed generation is a boolean that, if turned on, causes the model to read in a non-BAU projection of distributed generation capacity. This enables the user to easily implement projections from other sources. The second policy to influence distributed generation is a subsidy for distributed solar. The model calculates the effect such a subsidy using an elasticity of distributed solar deployment with respect to subsidy price, which modifies the BAU increase in distributed solar capacity. The additional subsidy lever represents the percentage of distributed solar costs that are not subsidized in the BAU, hence the inclusion of the BAU percent subsidy variable here.
 
 ![effect of subsidy and nonBAU policy on distributed capacity](/img/buildings-sector-main-DistnonBAUandElasticity.png)
 
