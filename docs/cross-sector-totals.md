@@ -12,21 +12,17 @@ The Energy Policy Simulator (EPS) totals the quantities of 12 pollutants emitted
 
 ![summing pollutant and CO2e emissions](/img/cross-sector-totals-SumPollutants.png)
 
-## Electricity Demand
+## Fuel Use and Primary/Final Energy
 
-There are six sectors that can demand electricity: transportation, buildings, industry, hydrogen supply, district heat, and geoengineering.  The demand from these sectors is summed, and the sum is used as an input to the Electricity Sector of the model.  The following screenshot shows the relevant structure:
+We total fuel, primary, and final energy use, which are primarily used in various outputs, though it also serves as an input to the calculations of fuel imports and exports on the [Fuels sheet](fuels). First, we total all energy use by all sectors. We define final energy use as fuel used directly by end-users for energy-purposes (not feedstocks). We filter out energy used for feedstocks from the industry sector, then sum total fuel use for all sectors except electricity and district heat. Those sectors do not represent end consumers and are therefore not included in the final energy total. 
 
-![summing electricity demand](/img/cross-sector-totals-SumElecDemand.png)
+![summing fuel use](/img/cross-sector-totals-TotFinalEnergy.png)
 
-## Fuel Use and Primary Energy
+ For primary energy, we filter out non-primary fuels (such as electricity, district heat, and hydrogen, refined petroleum products, as well as the fuel-less electricity sources, such as hydro, wind, solar, and geothermal) to obtain Total Primary Fuel Use by Sector.  We sum across sectors to obtain Total Primary Fuel Use.
 
-We total fuel and primary energy use, which is primarily used in various outputs, though it also serves as an input to the calculations of fuel imports and exports on the [Fuels sheet](fuels).  First, we total all energy use by all sectors, and then we filter out non-primary fuels (such as electricity, district heat, and hydrogen, as well as the fuel-less electricity sources, such as hydro, wind, solar, and geothermal) to obtain Total Primary Fuel Use by Sector.  We sum across sectors to obtain Total Primary Fuel Use.
+ Finally, we convert fuel use to total primary energy.  Since we're already working in energy units that are the same across fuels, our only task is to convert the electricity that was generated via renewables (including distributed RE resources) to primary energy.  This was done on the [Electricity Sector sheet](electricity-sector-main), so we take those values and use them to fill in here for the renewable sources. We continue to report no value for energy carriers (electricity and heat) to avoid double-counting in the primary energy total. See the following screenshot for the structure:
 
-![summing fuel use](/img/cross-sector-totals-SumFuelUse.png)
-
-Finally, we convert fuel use to total primary energy.  Since we're already working in energy units that are the same across fuels, our only task is to convert the electricity that was generated via renewables (including distributed RE resources) to primary energy.  This was done on the [Electricity Sector sheet](electricity-sector-main), so we take those  values and use them to fill in here for the renewable sources.  We continue to report no value for energy carriers (electricity and heat) to avoid double-counting in the primary energy total.  See the following screenshot for the structure:
-
-![total primary energy use](/img/cross-sector-totals-TotPrimaryEnergy.png)
+![summing fuel use](/img/cross-sector-totals-PrimaryEnergy.png)
 
 ## Change in Carbon and Fuel Tax Revenues
 
@@ -112,6 +108,10 @@ For the next steps in the calculation of financial policy impacts, see the docum
 
 This section calculates the change of revenue for fuel-supplying entities attributable to each fuel type they produce.  This is done to allocate revenue changes for fuel suppliers to ISIC codes in the I/O model, as the ISIC codes don't map neatly onto the cash flow entities (but can be mapped neatly onto the fuel types).  Similar to other calculations shown above, this section sums the various sources of revenue.  However, these aren't already summed by sector in the cash flow sheets.  Therefore, we create each sectoral total here using all relevant pieces that affect energy supplier revenue and mapping them to the relevant fuel type, as shown below. 
 
+![summing changes in energy supplier revenue](/img/cross-sector-totals-CngInEnergySupplierRevbySec.png)
+
+We then sum the sectoral totals with the change in fuel industry cash flow from fuel exports and the change in thermal fuel subsidies paid to find the total change in fuel industry revenue by fuel, for use in the debugging assistance page and I/O model.
+
 ![summing changes in energy supplier revenue](/img/cross-sector-totals-CngInEnergySupplierRev.png)
 
 We also need the BAU energy supplier revenue by fuel to endogenously calculate time series output for fuel industries ahead of the I/O model.  This requires an extra step to map the amount spent on fuels from each sector to the 'All Fuels' subscript, as each sector works with a different number of fuel types (for example, coal can be used in the electricity and industry sectors, but not in the transportation sector).
@@ -119,4 +119,4 @@ We also need the BAU energy supplier revenue by fuel to endogenously calculate t
 ![summing changes in energy supplier revenue](/img/cross-sector-totals-BAUEnergySupplierRev.png)
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*
