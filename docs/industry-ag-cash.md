@@ -33,6 +33,10 @@ Next, we multiply the number of tons abated at each marginal cost level by the c
 
 ![total cash flow change for Industry due to process emissions policies](/img/industry-ag-cash-ProcEmisCostTotal.png)
 
+In the process emissions calculations on the [Industry and Agriculture - Main ](industry-ag-main) sheet, we include a boolean policy to read additional process emissions from input data. We treat these additional emissions similarly to those reduced by other policies, multiplying the number of tons added at each marginal cost level by the cost definition for that tier. These additioanl emissions are fed into the Cost to Industry from Process Emissions Policies. 
+
+![cash flow change for Industry due to added process emissions](/img/industry-ag-cash-ProcEmisAdded.png)
+
 ## Cash Flow Impacts of Implementing Efficiency Policies
 
 We begin this calculation by determining the additional, incremental change in fuel use (that is, between the policy and BAU cases) in the current year of the model run relative to the prior year.  This incremental difference indicates how much additional equipment was needed in the current year, since equipment that enabled fuel savings in past years is still in operation and still provides fuel savings in the current year.  For fuel shifting policies, we use increases in industrial fuel use rather than the change in fuel use, since the costs of fuel shifting are based on the purchase of equipment to handle new fuel types.  The following structure shows this calculation:
@@ -77,9 +81,9 @@ To calculate the change in CCS capital equipment costs, we take the difference i
 
 ![change in cash flow due to CCS equipment](/img/industry-ag-cash-CCSEquipmentCosts.png)
 
-The change in O&M costs is handled similarly, and we find the difference in CCS O&M costs between the BAU and policy cases.
+The change in O&M and transportation and storage costs, as well as the change in CCS subsidies are all handled similarly, as we find the difference in amounts between the BAU and policy cases. 
 
-![change in cash flow due to CCS O&M](/img/industry-ag-cash-CCSOMCosts.png)
+![change in cash flow due to CCS O&M](/img/industry-ag-cash-CCSOtherCosts.png)
 
 Finally, we take the difference in CO<sub>2</sub> sequestered in the BAU and policy cases, convert from grams of pollutant to grams of CO<sub>2</sub>e (which does not change the number, because CO<sub>2</sub> is the only pollutant that can be sequestered, and it has a GWP of 1), and convert to metric tons of CO<sub>2</sub>e.  This yields the change in CO<sub>2</sub> sequestered by Industry, and we apply the carbon tax rate to find the total tax rebate from CO<sub>2</sub> sequestration.  The relevant structure is shown in the following screenshot:
 
@@ -145,7 +149,7 @@ As covered above, we separately track industry spending on energy and nonenergy 
 
 In the screenshot above, we also separate out the 'Industry Sector Change in Energy Expenditures for Natural Gas Production' for use on the [Fuels](fuels) sheet. 
 
-Next, we want to sum up the changes in nonenergy expenditures by entity.  We do this in several steps, grouping changes in expenses together by category: 'Change in Expenditures on Nonenergy Imports and Exports by Entity,' 'Change in Nonenergy Expenditures by Entity due to Expense Passthrough,' 'Change in Carbon Tax Rebates,' 'Change in Nonenergy Expenditures by Entity due to Production Changes,' and 'Industry Sector Change in Miscellaneous Expenditures by Entity,' the last of which contains a variety of capital and O&M expenses calculated in the sections above.  Where necessary, the structure below maps expenditures that are subscripted by industry category to the relevant cash flow entities.  For example, the 'Change in Carbon Tax Rebates' is assigned to the 'government' entity, and expenditures by all nonenergy industry categories are summed together into the 'nonenergy industries' entity.
+Next, we want to sum up the changes in nonenergy expenditures by entity.  We do this in several steps, grouping changes in expenses together by category: 'Change in Expenditures on Nonenergy Imports and Exports by Entity,' 'Change in Nonenergy Expenditures by Entity due to Expense Passthrough,' 'Industry Sector Change in CCS Subsidy Amount Paid,' 'Change in Carbon Tax Rebates,' 'Change in Nonenergy Expenditures by Entity due to Production Changes,' and 'Industry Sector Change in Miscellaneous Expenditures by Entity,' the last of which contains a variety of capital and O&M expenses calculated in the sections above.  Where necessary, the structure below maps expenditures that are subscripted by industry category to the relevant cash flow entities.  For example, the 'Change in Carbon Tax Rebates' is assigned to the 'government' entity, and expenditures by all nonenergy industry categories are summed together into the 'nonenergy industries' entity.
 
 ![carbon tax per unit industrial output](/img/industry-ag-cash-CngNonenergyExp.png)
 
@@ -159,9 +163,9 @@ As in the section describing allocating changes in expenditures above, we group 
 
 ![carbon tax per unit industrial output](/img/industry-ag-cash-CngNonenergyRevenue.png)
 
-Lastly, we also need the change in nonenergy industry sector revenue by ISIC code to be used in the [Input-Output Model](io-model).  This requires two input data variables that specify the share of process emissions abatement spending by recipient ISIC code and the share of capital and O&M spending by recipient ISIC code.  The corresponding ISIC code for each nonenergy industry category receives revenue from (#1) any carbon tax rebates to the matching industry, (#2a) the matching industry's revenues from selling nonenergy products to any/all cash flow entities, (#2b) any expenses the matching industry passes through in the cost of nonenergy products to buyers, (#3) any revenue from that industry's sales of capital equipment or O&M to other industries, (#4) any revenue from industries' implementation of process emissions policies, and (#5) revenue from each industry's change in exports.
+Lastly, we also need the change in nonenergy industry sector revenue by ISIC code to be used in the [Input-Output Model](io-model).  This requires three input data variables that specify 1) the share of process emissions abatement spending by recipient ISIC code; 2) the share of CCS transportation and storage costs by recipient ISIC code; and 3) the share of capital and O&M spending by recipient ISIC code.  The corresponding ISIC code for each nonenergy industry category receives revenue from (#1) any carbon tax rebates to the matching industry, (#2a) the matching industry's revenues from selling nonenergy products to any/all cash flow entities, (#2b) any expenses the matching industry passes through in the cost of nonenergy products to buyers, (#3) any revenue from that industry's sales of capital equipment or O&M to other industries, (#4) any revenue from industries' implementation of process emissions policies, (#5) revenue from each industry's change in exports, and (#6) any revenue from each industry's transportation and storage costs.
 
 ![carbon tax per unit industrial output](/img/industry-ag-cash-CngNonenergyRevenueISIC.png)
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*
