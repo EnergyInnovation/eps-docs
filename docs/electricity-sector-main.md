@@ -125,7 +125,7 @@ Total demand response capacity (in MW) is aggregated based on BAU input data and
 
 #### Total Diurnal Balancing Potential
 
-The model totals the amount of load shedding and shifting available accounting for losses. Because technologies are aggregated into capacity values, the model computes a weighted average round trip efficiency across all the different resources for use in the load shifting and shedding calculations. We also discount the availability of some resources to reflect the "copper sheet" nature of the EPS, in that it does not have subregional detail. These are incorporated via the Regional Availability Factor input data. The final outputs of this steps are weighted average round trip efficiencies and total availability capacity for daily load balancing.
+The model totals the amount of load shedding and shifting available accounting for losses. Because technologies are aggregated into capacity values, the model computes a weighted average round trip efficiency across all the different resources for use in the load shifting and shedding calculations. We also discount the availability of some resources to reflect the "copper sheet" nature of the EPS, with a power plant in one region being able to supply power in a wholly different region.  Such is the limitation of a single-region model.  The limiting of particular resources is incorporated via the Regional Availability Factor input file. The final outputs of this step are weighted average round trip efficiencies and total availability capacity for daily load balancing.
 
 ![total diurnal balancing potential without hybrid battery storage](/img/electricity-sector-main-TotalDiurnalBalancingBeforeHybridBatteries.png)
 
@@ -151,7 +151,7 @@ First, the model calculates an updated amount of battery storage for load shifti
 
 ![total battery balancing potential with hybrid battery storage](/img/electricity-sector-main-TotalDiurnalBalancingIncludingHybridBatteries.png)
 
-The model follows the same approach as before, moving through load modification from seasonal storage and diurnal storage, but using the values calculated in the first load modification bass for resources other than battery storage.
+The model follows the same approach as before, moving through load modification from seasonal storage and diurnal storage, but using the values calculated in the first load modification pass for resources other than battery storage.
 
 ![shifting seasonal net peak load and demand including hybrid battery storage](/img/electricity-sector-main-NetPeakLoadShiftHybrid1of2.png)
 
@@ -211,7 +211,7 @@ Input data can specify any credits specifically for nuclear power plant owners. 
 
 ### CCUS Retrofitting Costs
 
-CCUS retrofitting costs are calculated using estimated capital costs and a capital recover factor, and incremental variable and fixed O&M costs from converting to CCUS. This yields an estimated retrofitting cost per unit electricity output. CCUS plants can have higher capacity factors than non-CCUS equipped plants, which can contribute to lowering the incremental cost difference.
+CCUS retrofitting costs are calculated using estimated capital costs and a capital recovery factor (an estimate of how much a borrower needs to pay each year to fully recover the cost of an investment and accrued interest), and incremental variable and fixed O&M costs from converting to CCUS. This yields an estimated retrofitting cost per unit electricity output. CCUS plants can have higher capacity factors than non-CCUS equipped plants, which can contribute to lowering the incremental cost difference.
 
 ![CCUS Retrofit Costs](/img/electricity-sector-main-CCUSRetrofitCost.png)
 
@@ -233,7 +233,7 @@ Next, the model adds annual fixed operating and maintenance (O&M) costs to the a
 
 ![Annual fixed costs per unit new electricity output](/img/electricity-sector-main-LCOE4.png)
 
-The model then estimates total variable costs and subsidies. Electricity production subsidy amounts CCUS subsidy amounts are calculated here, including an adjustment based on the lifetime of the credit (i.e. for credits that are only available for a portion of the financial lifetime of the power plant, their value has to be adjusted to account for the limited duration of their availability). The model adjusts the incentive amounts by calculating a duration multiplier for instances where the duration is shorter than the financial lifetime of the plant. Users can also modify the electricity production and CCUS incentives, which change the subsidy per unit electricity output. Carbon pricing credits are also calculated at this stage for plants equipped with CCUS. The model sums total variable costs, including fuel costs (which include carbon pricing impacts), variable O&M costs, CO2 transport and storage costs per Megawatthour for plants with CCUS, electricity production subsidies, carbon price credits, and CCUS subsidies. Variable costs are added to the levelized fixed costs to produce a total cost per unit new elec output and several variations on this variable used throughout the model. Storage costs are added to these values for hybrid power plants.
+The model then estimates total variable costs and subsidies. Electricity production CCUS subsidy amounts are calculated here, including an adjustment based on the lifetime of the credit (i.e. for credits that are only available for a portion of the financial lifetime of the power plant, their value has to be adjusted to account for the limited duration of their availability). The model adjusts the incentive amounts by calculating a duration multiplier for instances where the duration is shorter than the financial lifetime of the plant. Users can also modify the electricity production and CCUS incentives, which change the subsidy per unit electricity output. Carbon pricing credits are also calculated at this stage for plants equipped with CCUS. The model sums total variable costs, including fuel costs (which include carbon pricing impacts), variable O&M costs, CO2 transport and storage costs per Megawatthour for plants with CCUS, electricity production subsidies, carbon price credits, and CCUS subsidies. Variable costs are added to the levelized fixed costs to produce a total cost per unit new elec output and several variations on this variable used throughout the model. Storage costs are added to these values for hybrid power plants.
 
 ![Cost per unit new electricity output](/img/electricity-sector-main-LCOE5.png)
 
@@ -269,7 +269,7 @@ Mandated capacity additions and CCUS retrofits in the BAU and policy scenarios c
 
 Next, the model calculates whether or not new clean dispatchable resources are needed to meet the clean electricity standard and will build new clean resources or retrofit existing ones if capacity is needed. We use a simplified assumption that 5% of peak demand at a 100% clean electricity standard value must be met with clean dispatchable resources in order to ensure the model builds sufficient clean dispatchable resources given its other constraints. In years leading up to the 100% clean electricity standard, the annual amount of clean dispatchable capacity required is determined by an s-curve defined in input data.
 
-Each capacity mechanism, excluding mandated additions, uses a structure that computes the cost-effectiveness of resources and determines a mount to be built if they are cost-effective. This structure is covered in more detail in the next section.
+Each capacity mechanism, excluding mandated additions, uses a structure that computes the cost-effectiveness of resources and determines the amount to be built if they are cost-effective. This structure is covered in more detail in the next section.
 
 If new clean dispatchable capacity is needed that would not otherwise be built, the model computes a credit price for new resources that drives sufficient new capacity to meet the demand. The model will increase the credit price until sufficient resources are built, based on the total revenue of various technologies, to meet the requirement. It adds this revenue to the estimated revenue for different plant types and then computes the amount of capacity added. The cost of this credit is added to the total costs of the clean electricity standard program. 
 
@@ -281,11 +281,11 @@ The core logic underpinning each element of the capacity expansion structure ope
 
 This mechanism operates simultaneously for new resources without storage, new resources with storage, and CCUS retrofits of existing resources.
 
-The model begins by cumulating the total anticipated revenue by resource type. This relies on the rolling four year energy market revenue, discussed earlier and any anticipated policy revenue, particularly credits for the Clean Electricity Standard, which is co-optimized with economic capacity expansion (discussed later). Revenue is normalized into $/Megawatthour based on achieved capacity factors by resource in the model. Subsidies for electricity generation are added.
+The model begins by cumulating the total anticipated revenue by resource type. This relies on the rolling four-year energy market revenue discussed earlier and any anticipated policy revenue, particularly credits for the Clean Electricity Standard, which is co-optimized with economic capacity expansion (discussed later). Revenue is normalized into $/Megawatthour based on achieved capacity factors by resource in the model. Subsidies for electricity generation are added.
 
-The model then compares anticipated revenue against the anticipated levelized cost of building new resources, not including variable subsidies (these are considered a revenue stream). Resources that are profitable will have revenues that exceed costs while unprofitable resources will not. This results in a profit value, i.e. revenues-costs.
+The model then compares anticipated revenue against the anticipated levelized cost of building new resources, not including variable subsidies (these are considered a revenue stream). Resources that are profitable will have revenues that exceed costs while unprofitable resources will not. This results in a profit value, i.e. revenues minus costs.
 
-The model then plots the expected profit against a curve that is defined in input data and calibrated against historical data and other models. The curve plots profit against a share of existing capacity, translating the profit amount to a share of existing capacity. This curve defines how much capacity is built for a given profit margin based on the total installed capacity of each resource. This prevents the model from overbuilding novel resources and let's the model deploy incrementally capacity at a given profit level as the total installed capacity of that resource grows and the knowledge, labor force, and materials become more widely available
+The model then plots the expected profit against a curve that is defined in input data and calibrated against historical data and other models. The curve plots profit against a share of existing capacity, translating the profit amount to a share of existing capacity. This curve defines how much capacity is built for a given profit margin based on the total installed capacity of each resource. This prevents the model from overbuilding novel resources and lets the model deploy incremental capacity at a given profit level as the total installed capacity of that resource grows and the knowledge, labor force, and materials become more widely available
 
 ![Share of existing capacity installed per unit profit](/img/electricity-sector-main-ProfitExistingCapacity.png)
 
@@ -299,7 +299,7 @@ The model then computes the total new capacity added using this computed value a
 
 The EPS includes the clean electricity standard (sometimes referred to as renewable portfolio standard) as one of the key power sector policies. The application of the CES/RPS is co-optimized with the cost-effectiveness additions to identify a credit price that generates sufficient revenue to add or retrofit resources for cost-effectiveness that leads to compliance with the CES/RPS setting. In each optimization pass, the model checks to see whether or not the anticipated amount of existing and new or retrofit clean electricity is sufficient to meet the standard. It will raise the credit price until this share is met and converge on a credit price that gets just the right amount of new clean capacity built and/or retrofit. 
 
-The first stage of the CES is to compute the weighted average national CES/RPS value. The model allows for different resources to be included as part of the RPS/CES and also aggregates subnational data provided in the input data to estimate a binding CES/RPS value. For example, many states have existing RPS/CES values and collectively they form a national floor the CES, below which a user policy setting would not be binding. This first set of structure computes the effective RPS/CES value that model will achieve.
+The first stage of the CES is to compute the weighted average national CES/RPS value. The model allows for different resources to be included as part of the RPS/CES and also aggregates subnational data provided in the input data to estimate a binding CES/RPS value. For example, many states have existing RPS/CES values and collectively they form a national floor CES, below which a user policy setting would not be binding. This first set of structure computes the effective RPS/CES value that model will achieve.
 
 ![Calculating RPS/CES percentage to seek](/img/electricity-sector-main-CESTarget.png)
 
@@ -307,7 +307,7 @@ The optimization structure utilizes a special type of capacity factor, the margi
 
 ![Calculating marginal capacity factors](/img/electricity-sector-main-MarginalCapacityFactor.png)
 
-One drawback to this approach is that it can make the credit price seems unnecessarily high. This can occur because the model computes revenue as the CES credit price multiplied by the marginal capacity factor for a given hour, summed over the year. As the grid approaches 100% clean, marginal capacity factors for all resources decrease and a higher price is needed to drive clean adoption. On the other hand, this ensures the model is only paying for completely additive clean resources and it helps shift CES revenue to dispatchable resources as the grid gets close to 100% clean.
+One drawback to this approach is that it can make the credit price seem unnecessarily high. This can occur because the model computes revenue as the CES credit price multiplied by the marginal capacity factor for a given hour, summed over the year. As the grid approaches 100% clean, marginal capacity factors for all resources decrease and a higher price is needed to drive clean adoption. On the other hand, this ensures the model is only paying for completely additive clean resources and it helps shift CES revenue to dispatchable resources as the grid gets close to 100% clean.
 
 Hybrid resources are included in the optimization loop and the model will tend to move towards them in years with higher clean shares to reallocate the clean supply to the hours when it is needed.
 
@@ -437,13 +437,13 @@ The model begins by dispatching resources that are guaranteed, as specified in i
 
 ### Dispatch of RPS Qualifying Resources
 
-Next the model will dispatch RPS qualifying resources, starting with zero and negative cost resources and then moving to positive cost resources. This step helps ensure that these resources are appropriately used even if their costs might exceed other resources. It also ensures alignment with the projected clean share as part of the CES/RPS optimization. The model uses expected capacity factors for dispatch here. Because the expected and available capacity factors for variable renewables are the same, and most clean resources today are variable, this is generally not an important distinction, but it matters for certain resources like hydro, which can be used flexibly but otherwise generally run at a near constant capacity factor.
+Next the model will dispatch RPS qualifying resources, starting with zero- and negative-cost resources and then moving to positive-cost resources. This step helps ensure that these resources are appropriately used even if their costs might exceed other resources. It also ensures alignment with the projected clean share as part of the CES/RPS optimization. The model uses expected capacity factors for dispatch here. Because the expected and available capacity factors for variable renewables are the same, and most clean resources today are variable, this is generally not an important distinction, but it matters for certain resources like hydro, which can be used flexibly but otherwise generally run at a near constant capacity factor.
 
 ![RPS dispatch](/img/electricity-sector-main-RPSDispatch.png)
 
-### Dispatch of Remaining Zero and Negative Cost Resources
+### Dispatch of Remaining Zero- and Negative-Cost Resources
 
-The model then moves to dispatching other zero and negative cost resources, since the least cost dispatch mechanism is not able to accommodate resources with negative or zero marginal costs. They are dispatched at expected capacity factors. In instances where dispatching these resources would exceed demand, they are proportionally reduced so that supply and demand are in balance.
+The model then moves to dispatching other zero- and negative-cost resources, since the least-cost dispatch mechanism is not able to accommodate resources with negative or zero marginal costs. They are dispatched at expected capacity factors. In instances where dispatching these resources would exceed demand, they are proportionally reduced so that supply and demand are in balance.
 
 ![Negative and zero cost resource dispatch](/img/electricity-sector-main-NegAndZeroDispatch.png)
 
@@ -459,7 +459,7 @@ We also separately account for hydro dispatch as part of this mechanism by addin
 
 ![Least cost dispatch](/img/electricity-sector-main-LeastCostDispatch.png)
 
-As mentioned earlier, we do least cost dispatches twice: once using annual dispatch costs and once using five year average dispatch costs. The latter approach and accompanying market prices is used elsewhere in the power sector for determining future market revenues for new power plants. This avoids having a single year with high market prices used to represent anticipate future revenues.
+As mentioned earlier, we do least cost dispatches twice: once using annual dispatch costs and once using five-year-average dispatch costs. The latter approach and accompanying market prices is used elsewhere in the power sector for determining future market revenues for new power plants. This avoids having a single year with high market prices used to represent anticipate future revenues.
 
 ### Summing Total Dispatch and Estimating Market Prices
 
