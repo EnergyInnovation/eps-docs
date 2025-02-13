@@ -47,11 +47,15 @@ Some regions, for example some US states, have additional subsidies for specific
 
 ![change in ZEC subsidies](/img/electricity-sector-cash-ZECs.png)
 
-### Generation Subsidies
+### Generation and Grid Battery Electricity Supply Subsidies
 
-Qualifying power plants may also receive a subsidy per unit of electricity generation. We track changes in subsidy payments to qualifying generators by summing generation and multiplying subsidies by the generation amount. Subsidies are calculated separately in the electricity sector as discussed on the [Electricity Sector](electricity-sector-main) page and handle nuances like varying duration periods for the subsidies.
+Qualifying power plants may also receive a subsidy per unit of electricity generation. We use Vensim's stock and flow structure to track the eligibility of new and retrofit capacity for generation subsidies over time. In the BAU, we assume subsidies are paid for ten years after the construction of each power plant. We then take the difference between the policy and BAU generation subsidies paid to feed into expenditure and revenue tracking.
 
 ![change in generation subsidies](/img/electricity-sector-cash-generationsubsidies.png)
+
+A similar structure is used to track subsidy payments for electricity supplied to the grid by batteries. 
+
+![change in generation subsidies](/img/electricity-sector-cash-batterygenerationsubsidies.png)
 
 ### Rebate for Sequestered CO<sub>2</sub>
 
@@ -233,11 +237,11 @@ Finally, we add in the ongoing transmission capital and distribution capital cos
 
 Summing all of the above gives us the total annual costs that need to be recovered through rates.
 
-We then divide this total by the sum of total electricity demand to estimate a cost per unit electricity delivered and compare against the BAU equivalent.
+We then divide this total by the sum of total electricity demand plus exports to estimate a cost per unit electricity delivered and compare against the BAU equivalent.
 
 ![repayment for other electricity sector costs](/img/electricity-sector-cash-ratesother.png)
 
 On the fuels page, we calculate the difference between this value and cost of delivered electricity from input data, the difference of which we assume are other components of rates not captured in the model. We then calculate rates by holding this difference constant and adding it to the calculated rates using the structure above. This calculation flow is detailed on the [Fuels](fuels) page.
 
 ---
-*This page was last updated in version 4.0.3.*
+*This page was last updated in version 4.0.4.*
