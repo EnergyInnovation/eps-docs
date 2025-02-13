@@ -502,4 +502,4 @@ The EPS also tracks water withdrawn and used by power plants based on input data
 Finally, the model aggregates pollutant emissions into estimate of CO<sub>2</sub>e and computes a few additional metrics used throughout the electricity sector.
 
 ---
-*This page was last updated in version 4.0.3.*
+*This page was last updated in version 4.0.4.*
