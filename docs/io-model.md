@@ -23,13 +23,58 @@ A new set of Government Revenue Accounting (GRA) levers allows the user to adjus
 
 The extent to which government employs each of these strategies can be customized, allowing for any combination of these modes.  Additionally, these levers can be set to different values for every tax and subsidy policy in the EPS, as well as how government accounts for changes in interest on the national debt, and how government accounts for other changes in its cash flows (e.g. not driven by tax or subsidy policies, such as government buying electricity instead of gas to heat government buildings if those buildings are electrified).
 
-This powerful set of tools allows for simulation of complicated policy packages, such as a revenue-neutral carbon tax that is 50% rebated to households as a climate dividend and 50% used to offset payroll taxes, enacted alongside a subsidy for electric vehicles that is 75% funded through increased deficit spending and 25% funded through a reduction in spending on other government programs.
+This powerful set of tools allows for simulation of complicated policy packages; for example, a revenue-neutral carbon tax that is 50% rebated to households as a climate dividend and 50% used to offset payroll taxes, enacted alongside a subsidy for electric vehicles that is 75% funded through increased deficit spending and 25% funded through a reduction in spending on other government programs.
 
 ## Economic Categories and Data
 
-The I/O model breaks the economy down into [International Standard Industrial Classification (ISIC) codes (Rev. 4)](https://unstats.un.org/unsd/publication/seriesM/seriesm_4rev4e.pdf), a classification system for economic activity developed and maintained by the United Nations Statistics Division.  Input-output tables specify which ISIC codes (e.g. industries) supply the inputs for each other industry, and which entities buy the outputs of each industry.  Other tables, also divided up by ISIC code, specify the total jobs, value added, employee compensation, and economic output of each ISIC code.  By default, the EPS draws these data from the OECD Statistical Database, where the OECD has freely released their [input-output data](https://stats.oecd.org/Index.aspx?DataSetCode=IOTSI4_2018) and [associated employment-related data](https://stats.oecd.org/Index.aspx?DataSetCode=TIM_2019_MAIN) for over 60 countries and regions.  For citations to specific tables within the OECD database, [download the EPS](download) and look at the first tab of the Excel file for the variable in which you are interested.  EPS adaptations for regions not in the OECD database will use other sources of I/O data, reformatted to fit the ISIC code categories used by the OECD.
+The I/O model breaks the economy down into [International Standard Industrial Classification (ISIC) codes (Rev. 4)](https://unstats.un.org/unsd/publication/seriesM/seriesm_4rev4e.pdf), a classification system for economic activity developed and maintained by the United Nations Statistics Division.  Input-output tables specify which ISIC codes (e.g. industries) supply the inputs for each other industry, and which entities buy the outputs of each industry.  Other tables, also divided up by ISIC code, specify the total jobs, value added, employee compensation, and economic output of each ISIC code.  By default, the EPS draws these data from the OECD Statistical Database, where the OECD has freely released their [input-output data](https://stats.oecd.org/Index.aspx?DataSetCode=IOTSI4_2018) and [associated employment-related data](https://stats.oecd.org/Index.aspx?DataSetCode=TIM_2019_MAIN) for over 60 countries and regions.  For citations to specific tables within the OECD database, [download the EPS](download) and look at the first tab of the Excel file for the variable in which you are interested.  EPS adaptations for regions not in the OECD database will use other sources of I/O data, reformatted to fit the ISIC code categories used by the OECD. For some regions, we source data from [EXIOBASE](https://www.exiobase.eu/index.php/about-exiobase), a global, multi-region supply-use and input-output database  [publicly available](https://zenodo.org/records/2654460) on Zenodo. 
 
-The OECD's data uses 36 ISIC code categories, which is generally sufficient for the EPS.  However, the OECD lacks sufficient granularity for energy-supplying industries.  Therefore, the EPS maintains its pre-3.0 break-out of energy suppliers (electricity suppliers, coal suppliers, natural gas and petroleum suppliers, biomass and biofuel suppliers, and other energy suppliers), and calculates impacts for these energy-supplying industries.  Similarly, the EPS uses its more sophisticated [fuel import and fuel export calculations](fuels) to determine the cash flows associated with fuel imports and exports, instead of using the OECD data.  The more sophisticated handling of energy products and energy industries is the main reason that non-energy industries and energy industries are treated differently on each EPS sector's "Cash Flow" sheet in Vensim, as well as on the [Cross-Sector Totals](cross-sector-totals) sheet.  A few other non-energy ISIC codes provided in the OECD database are broken apart where we need more granularity in the EPS.  For example, we break ISIC 24 - "manufacture of basic metals" - into separate ISIC codes for iron and steel and for other metals.  This allows us to treat the iron and steel industry, which is particularly energy-intensive and has unique process emissions and emissions reductions technologies, separately from other metals. 
+The OECD's data uses 36 ISIC code categories, which is generally sufficient for the EPS.  However, the OECD lacks sufficient granularity for energy-supplying industries.  Therefore, the EPS maintains its pre-3.0 break-out of energy suppliers (electricity suppliers, coal suppliers, natural gas and petroleum suppliers, biomass and biofuel suppliers, and other energy suppliers), and calculates impacts for these energy-supplying industries.  Similarly, the EPS uses its more sophisticated [fuel import and fuel export calculations](fuels) to determine the cash flows associated with fuel imports and exports, instead of using the OECD data.  The more sophisticated handling of energy products and energy industries is the main reason that non-energy industries and energy industries are treated differently on each EPS sector's "Cash Flow" sheet in Vensim, as well as on the [Cross-Sector Totals](cross-sector-totals) sheet.  A few other non-energy ISIC codes provided in the OECD database are broken apart where we need more granularity in the EPS.  For example, we break ISIC 24 - "manufacture of basic metals" - into separate ISIC codes for iron and steel and for other metals.  This allows us to treat the iron and steel industry, which is particularly energy-intensive and has unique process emissions and emissions reductions technologies, separately from other metals.  A list of the industries broken out by ISIC code is available below.  Listed alongside each is the "aggregated category" under which the EPS web tool reports financial outputs for user friendliness -- 42 lines on a graph would be less convenient than the three aggregated categories: fossil and energy utilities, manufacturing and construction, and other.
+
+| ISIC Division/Group | Description | Aggregated Category |
+|---|---|---|
+| ISIC 01T03 | Agriculture, forestry, and fishing | Other |
+| ISIC 05 | Coal and lignite mining | Fossil and energy utilities |
+| ISIC 06 | Crude petroleum and natural gas extraction | Fossil and energy utilities |
+| ISIC 07T08 | Other mining | Other |
+| ISIC 09 | Mining support services | Other |
+| ISIC 10T12 | Food, beverage, and tobacco | Manufacturing and construction |
+| ISIC 13T15 | Textiles, apparel, and leather | Manufacturing and construction |
+| ISIC 16 | Wood products | Manufacturing and construction |
+| ISIC 17T18 | Pulp, paper, and printing | Manufacturing and construction |
+| ISIC 19 | Coke and refined petroleum | Fossil and energy utilities |
+| ISIC 20 | Chemicals and chemical products | Manufacturing and construction |
+| ISIC 21 | Pharmaceuticals, medicinal chemicals, and botanical products | Manufacturing and construction |
+| ISIC 22 | Rubber and plastic products | Manufacturing and construction |
+| ISIC 231 | Glass and glass products | Manufacturing and construction |
+| ISIC 239 | Non-metallic mineral products | Manufacturing and construction |
+| ISIC 241 | Iron and steel | Manufacturing and construction |
+| ISIC 242 | Precious and other non-ferrous metals | Manufacturing and construction |
+| ISIC 25 | Fabricated metal products, except machinery and equipment | Manufacturing and construction |
+| ISIC 26 | Computer, electronic, and optical products | Manufacturing and construction |
+| ISIC 27 | Electrical equipment | Manufacturing and construction |
+| ISIC 28 | Machinery and equipment n.e.c. | Manufacturing and construction |
+| ISIC 29 | Motor vehicles, trailers, and semi-trailers | Manufacturing and construction |
+| ISIC 30 | Other transport equipment | Manufacturing and construction |
+| ISIC 31T33 | Other manufacturing | Manufacturing and construction |
+| ISIC 351 | Electric power generation, transmission, and distribution | Fossil and energy utilities |
+| ISIC 352T353 | Gas manufacture and distribution; steam and air conditioning supply | Fossil and energy utilities |
+| ISIC 36T39 | Water supply; sewage, waste management and remediation | Other |
+| ISIC 41T43 | Construction | Manufacturing and construction |
+| ISIC 45T47 | Motor vehicle wholesale and retail trade; repair | Other |
+| ISIC 49T53 | Transportation and storage | Other |
+| ISIC 55T56 | Accommodation and food service | Other |
+| ISIC 58T60 | Publishing, programming, and broadcasting | Other |
+| ISIC 61 | Telecommunications | Other |
+| ISIC 62T63 | Computer programming, consultancy, and information service | Other |
+| ISIC 64T66 | Financial and insurance activities | Other |
+| ISIC 68 | Real estate activities | Other |
+| ISIC 69T82 | Professional, scientific, technical, and administrative services | Other |
+| ISIC 84 | Public administration and defense; social security | Other |
+| ISIC 85 | Education | Other |
+| ISIC 86T88 | Human health and social work | Other |
+| ISIC 90T96 | Arts, entertainment, recreation, and service activities | Other |
+| ISIC 97T98 | Household services and activities | Other |
 
 ## Direct, Indirect, and Induced Economic Impacts
 
@@ -63,7 +108,7 @@ A detailed, illustrated walkthrough of the calculation approach appears below.  
 
 The OECD source data we use for most key I/O variables is static data, meaning it is provided for one historical year.  For several of these variables, we want time series data for every year of the model run.  We therefore create time series versions of several variables ahead of the I/O calculations.  
 
-First, we want economic output (revenue) by each ISIC code.  For this key variable, we use endogenously calculated revenue for fuels and exogenous data for non-fuel products, as we track fuel production and revenue in the [Fuels sheet](fuels) with a detailed methodology.  We take BAU Fuel Industry Revenue by Fuel from the [Fuels sheet](fuels) and map it to the relevant ISIC codes for each fuel type, also applying the variable 'BDCSoCbIC BAU Domestic Content Share of Consumption by ISIC Code' to calculate the domestic energy revenue only for every year of the model run.
+First, we want economic output (revenue) by each ISIC code.  For this key variable, we use exogenous data for non-fuel products but endogenously calculated revenue for fuels, as we track fuel production and revenue in the [Fuels sheet](fuels) with a detailed methodology.  We take BAU Fuel Industry Revenue and Taxes Paid by Fuel from the [Fuels sheet](fuels) and map it to the relevant ISIC codes for each fuel type, then multiply by the BAU domestic content share of consumption to calculate the domestic energy revenue only for every year of the model run.
 
 ![domestic energy revenue](/img/io-model-DomEnergyRev.png)
 
@@ -75,7 +120,7 @@ Next, we sum up the output for each ISIC code, using the exogenous calculation f
 
 ![output by year](/img/io-model-OutputByYear.png)
 
-We now need to create time series versions of several other I/O variables.  For employment and employee compensation, we ue changes in production (physical quantity of energy produced) from the [Fuels sheet](fuels) to estimate changes for energy products.  For non-energy priducts, we use the percent change in output calculated above, since non-energy products are heterogeneous and are presently only tracked in financial terms, not as physical quantities of goods. 
+We now need to create time series versions of several other I/O variables.  For employment and employee compensation, we use changes in production (physical quantity of energy produced) from the [Fuels sheet](fuels) to estimate changes for energy products.  For non-energy products, we use the percent change in output calculated above, since non-energy products are heterogeneous and are presently only tracked in financial terms, not as physical quantities of goods. 
 
 ![employment and employee compensation by year](/img/io-model-EmployByYear.png)
 
@@ -95,14 +140,17 @@ The inputs to the I/O model already include direct changes in cash flow for gove
 
 One of the key inputs to the I/O model is the change in cash flow for each ISIC code and each tracked cash flow entity.  (There are nine cash flow entities: government, non-energy industries, labor and consumers, foreign entities, and the five energy suppliers listed above.)  These totals are calculated on the [Cross-Sector Totals sheet](cross-sector-totals), but they do not yet reflect the choices of how government will respend increases in revenues or make up for decreases in revenues.  This section of the model is where the user sets that behavior.
 
-First, we obtain the change in government revenue due to each tax or subsidy policy in the EPS, as well as the change in interest paid on the national debt (which we calculate later in the IO model, explained below, and use with a one-timestep delay to avoid circularity errors).  We load these changes in cash flows into a single variable subscripted by `Govt Cash Flow Type`.  As of the EPS 3.0.0 release, the following government cash flow types are broken out:
+First, we obtain the change in government revenue due to each tax or subsidy policy in the EPS, as well as the change in interest paid on the national debt (which we calculate later in the IO model, explained below, and use with a one-timestep delay to avoid circularity errors).  We load these changes in cash flows into a single variable subscripted by `Govt Cash Flow Type`.  As of the EPS 4.0.4 release, the following government cash flow types are broken out: 
+
 - carbon tax revenue
 - fuel tax revenue
 - EV subsidy
+- battery production subsidy
 - elec gen subsidy
 - elec cap construction subsidy
 - distributed solar subsidy
 - fuel subsidy
+- CCS subsidy
 - national debt interest
 - remainder (all other changes in government cash flow, summed)
 
@@ -270,13 +318,15 @@ Some details about these three metrics:
 
 We divide each of the three key metrics (jobs, value added, and employee compensation) by output to obtain "within industry" jobs, value added, or employee compensation per unit of output that ISIC code generates.  This provides a measure of direct (first-order) job intensity, value added intensity, and employee compensation intensity of each ISIC code.  These intensity or "Direct Requirements" variables will be used later to help us calculate the direct impacts of the policy package.
 
-Note that changes in product prices do not change the number of workers required to produce a product.  We handle this (currently only for energy products) by adjusting based on the Percent Change in Weighted Average Pretax Prices by ISIC Code, calculated on the [Fuels page](fuels).
+Note that changes in product prices do not change the number of workers required to produce a product.  We handle this (currently only for energy products) by adjusting based on the Percent Change in Weighted Average Pretax Prices by ISIC Code, calculated on the [Fuels page](fuels). 
 
 ![within-industry job, value added, and employee compensation intensities](/img/io-model-WithinIndustryIntensities.png)
 
 Just below on the IO Model sheet, we calculate "Direct Plus Indirect Requirements" variables. These requirements variables are used to assist in the calculation of induced impacts (because induced impacts are not typically reported broken into direct and indirect components - that is, how much of the induced activity was induced by direct spending and how much was induced by indirect spending). To do this, we must convert these direct ("within-industry") intensities into final intensities that include direct and indirect requirements. Each "within industry" intensity is multiplied by the Calculated Leontief Inverse Matrix we found above in the Buy In-Region section, which represents how spending by each ISIC code in the economy affects each other ISIC code. 
 
 However, we don't want to multiply the Leontief Inverse Matrix by quantities of output change directly.  This is because we aren't interested in the final change in _output_ of each industry.  We want to know the final change in _jobs_, _value added_, and _employee compensation_ for each industry.  (The difference between output and value added was explained above.)  Therefore, we must convert the multipliers obtained from the Leontief Inverse Matrix for output to produce results for jobs, value added and industry.  Therefore, we multiply by the within-industry jobs, value added, and employee compensation intensities to obtain a trio of Leontief Inverse Matrix-like variables that convert changes in output to changes in jobs, value added, and employee compensation, rather than remaining in units of output.  This trio is called the "Requirements" variables, as they specify the number of jobs, value added, or employee compensation that was "required" (i.e. created) to bring about a known change in output.
+
+![Requirements variables](/img/io-model-DirectIndirectRequirements.png)
 
 To calculate "indirect" effects on jobs, GDP, and employee compensation, we need versions of the requirements variables that exclude direct impacts.  To obtain this, we calculate an alternate version of the Calculated Leontief Inverse Matrix.  We subtract the identity matrix (a matrix containing 1s along the diagonal, for matching ISIC codes, and 0s elsewhere) from DLIM to remove the initial output unit (job or currency unit) assigned to an ISIC code.  This leaves only the multipliers across all ISIC codes that reflect the indirect activity from adding a unit of output to a given ISIC code.  We then multiply the within-industry intensities by our modified Leontief Inverse Matrix to obtain requirements variables that include only indirect effects.
 
@@ -382,9 +432,15 @@ To calculate the change in union-represented jobs and non-union-represented jobs
 
 ![change in union-represented and non-union jobs](/img/io-model-CngUnionNonUnionJobs.png)
 
+## Employment by Demographic Trait
+
+In many regions, employment varies drastically by demographic trait in each sector. For example, coal mining in the U.S. largely employs white males between the ages of 25 and 65. Agriculture, on the other hand, employs a more uniform distribution of males and females, a higher share of Hispanics, and more workers over the age of 65. As a result, the impact of policies on employment by demographic trait varies by sector. To calculate effects of policies, the model reads in the demographics of employees by ISIC code and multiplies it by BAU and policy-scenario employment to find the percent change by demographic trait. 
+
+![change in union-represented and non-union jobs](/img/io-model-DemographicTraitEmployment.png)
+
 ## Macroeconomic Feedbacks
 
 The results of the IO model are also used in macroeconomic feedback loops, discussed on the [Macroeconomic Feedbacks](macro-feedbacks) documentation page.
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*
