@@ -87,7 +87,7 @@ For the industry and transport sectors, there can be significant heterogeneity i
 
 ### Calculating Electricity prices
 
-In EPS platform 4.0, a simple capacity expansion model was added to the [Electricity sector](electricity-main). This structure allows endogenous calculations of capacity additions needed to meet the demands of policies, to ensure reliability, and to maximize profits through economic additions. The greater level of detail means electricity prices are better endogenized and can be sourced from that module rather than input data.  We calculate prices here by summing supplier costs recovered through electricity rates and any additional retail electricity costs on a one-year time delay.
+In EPS platform 4.0, a simple capacity expansion model was added to the [Electricity sector](electricity-sector-main). This structure allows endogenous calculations of capacity additions needed to meet the demands of policies, to ensure reliability, and to maximize profits through economic additions. The greater level of detail means electricity prices are better endogenized and can be sourced from that module rather than input data.  We calculate prices here by summing supplier costs recovered through electricity rates and any additional retail electricity costs on a one-year time delay.
 
 ![calculating electricity prices](/img/fuels-ElecPrices.png)
 
