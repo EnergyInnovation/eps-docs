@@ -15,7 +15,7 @@ BAU fuel costs vary by sector in many cases- for example, electricity is charged
 
 Even though BAU fuel prices and taxes are subscripted by fuel and by sector, they use the `All Fuels` subscript. At times in the calculations below, we must map these values onto variables for the different sectors because each sector uses its own fuel type subscript (e.g., `Transportation Fuel`, `Buildings Fuel`, etc.), and we must tell Vensim which fuels (which are members of the `All Fuels` subscript) correspond to those in each of the sector-specific fuel subscripts.
 
-This is the problem that subranges in Vensim exist to solve, and at one time, we did implement all sector-specific fuel sets as subranges of the `All Fuels` subscript. Unfortunately, we learned that Vensim's `ALLOCATE AVAILABLE` function, which is used in the EPS to make price-based electricity dispatch decisions, is not compatible with allocating things across subranges; it can only allocate across elements of a single, complete subscript. This limitation of the important `ALLOCATE AVAILABLE` function forces us to implement sector-specific fuel subscripts and map values across subscripts.
+This is the problem that subranges in Vensim exist to solve, and at one time, we did implement all sector-specific fuel sets as subranges of the `All Fuels` subscript. Unfortunately, we learned that Vensim's `ALLOCATE AVAILABLE` function, which is used in pre-4.0 platforms to make price-based electricity dispatch decisions, is not compatible with allocating things across subranges; it can only allocate across elements of a single, complete subscript. This limitation of the important `ALLOCATE AVAILABLE` function forces us to implement sector-specific fuel subscripts and map values across subscripts.
 
 <hr />
 
@@ -81,19 +81,33 @@ Next, we convert from grams of CO<sub>2</sub>e to metric tons of CO<sub>2</sub>e
 
 ![amount of carbon tax per unit fuel by sector](/img/fuels-CarbTaxAmtBySector.png)
 
+For the industry and transport sectors, there can be significant heterogeneity in how carbon taxes are implemented across the sectors. For example, the EU's Emissions Trading System (ETS) covers particular energy-intensive industries and aviation and maritime emissions. ETS II, on the other hand, covers remaining non-energy-intensive manufacturing and emissions from road vehicles. As a result, we incorporate input-data variables that allow the user to apply varying carbon taxes to each subindustry and vehicle type. Alternative input data can be used by enabling a boolean. 
+
+![fraction of carbon tax by industry and vehicle type](/img/fuels-CarbonTaxFraction.png)
+
+### Calculating Electricity prices
+
+In EPS platform 4.0, a simple capacity expansion model was added to the [Electricity sector](electricity-main). This structure allows endogenous calculations of capacity additions needed to meet the demands of policies, to ensure reliability, and to maximize profits through economic additions. The greater level of detail means electricity prices are better endogenized and can be sourced from that module rather than input data.  We calculate prices here by summing supplier costs recovered through electricity rates and any additional retail electricity costs on a one-year time delay.
+
+![calculating electricity prices](/img/fuels-ElecPrices.png)
+
 ### Fuel Tax Amount per Unit Energy
 
-In addition to carbon taxes, there are often fuel taxes, such as sales taxes, value added taxes, or excise taxes on fuels. We need to calculate the amounts of these taxes per unit energy for each fuel. First, we multiply any additional tax rate or subsidy (set as a percentage of the BAU pretax fuel price) set by the user by the BAU pretax fuel price to find the incremental additional fuel tax amount per unit energy. We add this to the BAU fuel tax amount per unit energy to find the policy case fuel tax or subsidy amount per unit energy.
+In addition to carbon taxes, there are often fuel taxes, such as sales taxes, value added taxes, or excise taxes on fuels. We need to calculate the amounts of these taxes per unit energy for each fuel. First, we multiply any additional tax rate or subsidy (set as a percentage of the BAU pretax fuel price) set by the user by the BAU pretax fuel price to find the incremental additional fuel tax amount per unit energy. We add this to the BAU fuel tax amount per unit energy to find the policy case fuel tax or subsidy amount per unit energy. (notes: the pretax electricity price is sourced from the above calculations rather than input data; the "Future Year to Year Mapping" variable is used to translate fuel costs from BFPAT, which is set up in a special manner to allow electricity producers foresight of future fuel prices)
 
 ![additional fuel tax or subsidy amount per unit energy](/img/fuels-AddtlFuelTax.png)
 
-These costs are then transferred into a set of five variables, one for each fuel-using sector of the model, using those sectors' fuel subscripts.
+These costs are then transferred into a set of six variables, one for each fuel-using sector of the model, using those sectors' fuel subscripts.
 
 ![fuel tax or subsidy amount by sector](/img/fuels-FuelTaxBySector.png)
 
+Lastly, we calculate five-year-forward fuel taxes for the electricity sector, which allows the model to compare future costs with revenues when considering building new plants similar to how utilities assess future profits during grid planning processes. By mapping BFPAT onto the EPS' "Future Year" subscript, producers can estimate prices in each future model year during each time step.
+
+![fuel tax or subsidy amount by sector](/img/fuels-FiveYearForwardPrices.png)
+
 ### Summing Carbon and Fuel Tax Amounts per Unit Energy
 
-We have already calculated the carbon and fuel tax amounts per unit energy, by fuel, for each sector. We now total these tax rates, so we can cleanly separate out the total amount of tax for each unit of fuel purchased, for use in the various fuel-using sectors of the EPS.
+We have already calculated the carbon and fuel tax amounts per unit energy, by fuel, for each sector. We now total these tax rates, so we can cleanly separate out the total amount of tax for each unit of fuel purchased, for use in the various fuel-using sectors of the EPS. We assume there are no carbon taxes levied on fuels in the geoengineering sector, the intention of which is to reduce emissions. 
 
 ![total tax amounts per unit energy](/img/fuels-TotalTaxAmounts.png)
 
@@ -129,7 +143,7 @@ In some countries or regions, the prices that fuel producers may charge on the d
 
 ## After-Tax Fuel Prices
 
-We sum the total fuel tax amount (which is already broken by fuel and by sector) with the policy-modified, pre-tax fuel price (in `Pretax Fuel Cost per Unit Energy by Sector after Fuel Price Deregulation`) to obtain the total cost per unit fuel for each sector.
+We sum the total fuel tax amount (which is already broken by fuel and by sector) with the policy-modified, pre-tax fuel price (in `Pretax Fuel Cost per Unit Energy by Sector after Fuel Price Deregulation`) to obtain the total cost per unit fuel for each sector. A surcharge can be added to specific powerplants' fuel costs; in the U.S. model we use this variable to reflect the higher gas costs paid by operators of peaking plants, which consume fuel on an irregular and infrequent basis, as compared with operators of combined-cycle baseload plants.
 
 ![fuel costs per unit energy](/img/fuels-FuelCosts.png)
 
@@ -304,4 +318,4 @@ Finally, we need a variable that tracks the percent change in energy production 
 
 ![percent change in BAU energy productiona and imports vs initial year by ISIC code](/img/fuels-PercCngFuelISIC.png)
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*
