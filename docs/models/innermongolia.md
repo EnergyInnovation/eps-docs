@@ -8,31 +8,32 @@ The Inner Mongolia Energy Policy Simulator (EPS) is a free and open-source compu
 
 The Inner Mongolia Energy Policy Simulator may be used on this website through your web browser, or you may request a download of the full version through the button below. Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
 
-<p><a href="https://wkf.ms/3TVUpvP" class="btn">Download the Energy Policy Simulator, Inner Mongolia Version</a></p>
+<p><a href="https://wkf.ms/41giVve" class="btn">Download the Energy Policy Simulator, Inner Mongolia Version</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Inner Mongolia. Individuals are listed alphabetically by last name.
 
+* Ruqi Chen, Beijing Smart Green Research Center
 * Minshu Deng, Energy Innovation LLC
 * Todd Finncannon, Energy Innovation LLC
-* Dongquan He, Beijing Smart Green Transport Research Center
-* Yiqun He, Beijing Smart Green Transport Research Center
-* Jindong Liang, Beijing Smart Green Transport Research Center
-* Lingjie Li, Beijing Smart Green Transport Research Center
-* Chang Liu, Beijing Smart Green Transport Research Center
-* Qing Liu, Beijing Smart Green Transport Research Center
-* Jiansheng Lv, Siemens Ltd. China
+* Dongquan He, Beijing Smart Green Research Center
+* Yiqun He, Beijing Smart Green Research Center
+* Xiaoxue Hou, Energy Innovation LLC
+* Jindong Liang, Beijing Smart Green Research Center
+* Lingjie Li, Beijing Smart Green Research Center
+* Chang Liu, Beijing Smart Green Research Center
+* Qing Liu, Beijing Smart Green Research Center
+* Yang Liu, Beijing Smart Green Research Center
 * Megan Mahajan, Energy Innovation LLC
 * Robbie Orvis, Energy Innovation LLC
-* Rui Wang, Beijing Smart Green Transport Research Center
-* Chenxi Zhang, China Academy of Building Research
-* Xiaoxue Hou, Energy Innovation LLC
+* Rui Wang, Beijing Smart Green Research Center
 * Xiuli Zhang, Energy Innovation LLC
 * Lele Zou, Climate Imperative Foundation
+* Siqi Zu, Beijing Smart Green Research Center
 
 ## Version History
 
-### **3.4.9 - January 29, 2025**
+### **3.4.9 - March 1, 2025**
 
 * Initial release
 
