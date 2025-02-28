@@ -27,7 +27,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Rui Wang, Beijing Smart Green Transport Research Center
 * Chenxi Zhang, China Academy of Building Research
 * Xiuli Zhang, Energy Innovation LLC
-* Lele Zou, Climate Imperative Foundation
+* Lele Zou, Energy Innovation LLC
 
 ## Version History
 
