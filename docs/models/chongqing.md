@@ -47,5 +47,5 @@ The Energy Policy Simulator (EPS) is released under the GNU General Public Licen
 Night view and beautiful skyline of Chongqing urban architectura, Chongqing, China<br/>
 Wang An Qi<br/>
 [https://www.shutterstock.com/image-photo/night-view-beautiful-skyline-chongqing-urban-1562820286](https://www.shutterstock.com/image-photo/night-view-beautiful-skyline-chongqing-urban-1562820286)<br/>
-Unsplash License<br/>
+Shutterstock License<br/>
 Changes: Image has been cropped.
