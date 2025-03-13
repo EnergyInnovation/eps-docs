@@ -13,24 +13,24 @@ The Chongqing Energy Policy Simulator may be used on this website through your w
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Chongqing. Individuals are listed alphabetically by first name.
 
-* Kesong ZENG, Chongqing Carbon Consultant & Management Technology CO.,Ltd
+* Kesong Zeng, Chongqing Carbon Consultant & Management Technology CO.,Ltd
 * Li Yang, iGDP
-* Lu LU, Chongqing Carbon Consultant & Management Technology CO.,Ltd
+* Lu Lu, Chongqing Carbon Consultant & Management Technology CO.,Ltd
 * Manjiao Song, iGDP
 * Megan Mahajan, Energy Innovation LLC
+* Meian Chen, iGDP
 * Min Hu, iGDP
 * Minshu Deng, Energy Innovation LLC
-* Qiang LI, Chongqing Carbon Consultant & Management Technology CO.,Ltd
+* Qiang Li, Chongqing Carbon Consultant & Management Technology CO.,Ltd
 * Robbie Orvis, Energy Innovation LLC
 * Todd Fincannon, Energy Innovation LLC
 * Tongxin Zhu, iGDP
-* Xi Xi, iGDP
 * Xiaoxue Hou, Energy Innovation LLC
 * Xindi Li, iGDP
 * Xiuli Zhang, Energy Innovation LLC
 * Yating Yuan, iGDP
-* Zhenjian HUANG, Chongqing Carbon Consultant & Management Technology CO.,Ltd
-* Zhuoan FANG, Chongqing Carbon Consultant & Management Technology CO.,Ltd
+* Zhenjian Huang, Chongqing Carbon Consultant & Management Technology CO.,Ltd
+* Zhuoan Fang, Chongqing Carbon Consultant & Management Technology CO.,Ltd
 
 
 ## Version History
