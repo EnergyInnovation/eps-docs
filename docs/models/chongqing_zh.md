@@ -44,8 +44,8 @@ title: "重庆能源政策模型"
 能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考 [软件许可证](../software-license) 页面，了解全部细节。
 
 ## 图片来源
-Night view and beautiful skyline of Chongqing urban architectura, Chongqing, China<br/>
-Wang An Qi<br/>
-[https://www.shutterstock.com/image-photo/night-view-beautiful-skyline-chongqing-urban-1562820286](https://www.shutterstock.com/image-photo/night-view-beautiful-skyline-chongqing-urban-1562820286)<br/>
+Aerial view of Chongqing skyline and river scenery in the early morning, Chongqing, China<br/>
+dongfang<br/>
+[https://www.shutterstock.com/image-photo/aerial-view-chongqing-skyline-river-scenery-2368696487](https://www.shutterstock.com/image-photo/aerial-view-chongqing-skyline-river-scenery-2368696487)<br/>
 许可：Shutterstock License<br/>
 修改：图片已被裁剪。

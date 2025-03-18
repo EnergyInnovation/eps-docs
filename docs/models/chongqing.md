@@ -44,8 +44,8 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software. Refer to the [Software License](../software-license) page for full details.
 
 ## Image Credits
-Night view and beautiful skyline of Chongqing urban architectura, Chongqing, China<br/>
-Wang An Qi<br/>
-[https://www.shutterstock.com/image-photo/night-view-beautiful-skyline-chongqing-urban-1562820286](https://www.shutterstock.com/image-photo/night-view-beautiful-skyline-chongqing-urban-1562820286)<br/>
+Aerial view of Chongqing skyline and river scenery in the early morning, Chongqing, China<br/>
+dongfang<br/>
+[https://www.shutterstock.com/image-photo/aerial-view-chongqing-skyline-river-scenery-2368696487](https://www.shutterstock.com/image-photo/aerial-view-chongqing-skyline-river-scenery-2368696487)<br/>
 Shutterstock License<br/>
 Changes: Image has been cropped.
