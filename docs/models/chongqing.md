@@ -35,7 +35,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **3.4.7 - March 19, 2025**
+### **3.4.9 - March 19, 2025**
 
 * Initial release
 
