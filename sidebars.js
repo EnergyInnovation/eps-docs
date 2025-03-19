@@ -204,6 +204,8 @@ const sidebars = {
           { type: 'doc', id: 'models/china_zh', label: 'China (NCSC) — 中文' },
           { type: 'doc', id: 'models/china-igdp', label: 'China (iGDP)' },
           { type: 'doc', id: 'models/china-igdp_zh', label: 'China (iGDP) — 中文' },
+          { type: 'doc', id: 'models/chongqing', label: 'Chongqing' },
+          { type: 'doc', id: 'models/chongqing_zh', label: 'Chongqing — 重庆' },
           { type: 'doc', id: 'models/colorado', label: 'Colorado' },
           { type: 'doc', id: 'models/connecticut', label: 'Connecticut' },
           { type: 'doc', id: 'models/delaware', label: 'Delaware' },
