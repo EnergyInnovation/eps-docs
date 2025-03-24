@@ -35,4 +35,4 @@ We also show the total as net present value (NPV) in the first year of the model
 ![NPVs of cost totals](/img/cost-outputs-NPV.png)
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

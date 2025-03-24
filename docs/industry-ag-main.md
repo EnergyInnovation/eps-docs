@@ -195,7 +195,7 @@ All but two policies affecting process emissions are represented as a fraction o
 
 ![process emissions policies](/img/industry-ag-main-ProcEmisPols.png)
 
-Each policy setting at its current year value is multiplied by the total potential reduction (in CO<sub>2</sub>e terms) in that year year to obtain reductions due to that policy (in CO<sub>2</sub>e).  The total potential reduction is defined by the input file "PERAC Mass CO2e Avoidable by Marginal Cost", which projects the process emissions that can be abated by policy in the BAU, plus the input file "PEAAC Mass CO2e Additions and Costs", which includes additional emissions that can be added in a policy scenario, and enabled by the above boolean lever. 
+Each policy setting at its current year value is multiplied by the total potential reduction (in CO<sub>2</sub>e terms) in that year year to obtain reductions due to that policy (in CO<sub>2</sub>e).  The total potential reduction is defined by the input file "PERAC Mass CO2e Avoidable by Marginal Cost", which projects the process emissions that can be abated by policy in the BAU. 
 
 Emissions reductions are disaggregated by industry and by policy.  We include a helper variable 'Industry Process Emissions Policy to Pollutant Mappings' to assign the emissions abatement from each policy to the correct pollutant. Generally, each process emissions policy targets a single pollutant, for example substitution of f-gases in the chemicals industry or methane capture for natural gas and petroleum systems.  The exceptions are the agricultural policies targeting cropland and rice and livestock, which include abatement of both CH<sub>4</sub> and N<sub>2</sub>O.  We apportion emissions reductions between these pollutants based on their share of BAU agricultural emissions.
 
@@ -221,7 +221,7 @@ Next, we account for any changes in process emissions due to feedstock shifting.
 
 ![total change in process emissions](/img/industry-ag-main-ProcEmisFeedstockShift.png)
 
-Then, we explicitly calculate non-BAU process emissions from input data if the boolean mentioned earlier is turned on by the user. This allows the user to explore differing projections of process emissions from various sources or the rollback of policies included in a BAU projection that would otherwise have lowered emissions. 
+Then, we explicitly calculate non-BAU process emissions from input data, which can be enabled if a boolean policy lever is turned on by the user. This allows the user to explore differing projections of process emissions from various sources or the rollback of policies included in a BAU projection that would otherwise have lowered emissions and is subscripted by process emissions policy. 
 
 ![alternative process emissions](/img/industry-ag-main-AlternativePEAAC.png)
 

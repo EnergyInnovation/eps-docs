@@ -193,7 +193,7 @@ Given the structure of the EPS and that it calculates load dynamically, it does 
 
 ![Annual energy market revenues for all new resources](/img/electricity-sector-main-EnergyRevenuesNewAll.png)
 
-The model has to calculate projected energy market revenues for hybrid power plants separately because they are able to optimize discharging and charging of the battery to maximize energy market revenues. To calculate the revenues the model applies input data on the average battery capacity per unit power plant capacity to compute the storage amount per MW of power plant capacity. It then calculates the share of daily expected output that can be shifted, which varies across electricity timeslice because of varying capacity factors by timeslice. The model computes the revenue from shifted generation based on availability and battery size and adds to it the revenue from unshifted generation to compute a total levelized energy revenue per unit output. This value will be higher than for plants without storage, particularly when there is a significant spread in marginal dispatch costs. These revenues also use the five-year fuel price averaging and rolling four-year energy market revenue averaging outlined above.
+The model has to calculate projected energy market revenues for hybrid power plants separately because they are able to optimize discharging and charging of the battery to maximize energy market revenues. To calculate the revenues the model applies input data on the average battery capacity per unit power plant capacity to compute the storage amount per MW of power plant capacity. It then calculates the share of daily expected output that can be shifted, which varies across electricity timeslice because of varying capacity factors by timeslice. The model computes the revenue from shifted generation based on availability and battery size and adds to it the revenue from unshifted generation to compute a total levelized energy revenue per unit output. This value will be higher than for plants without storage, particularly when there is a significant spread in marginal dispatch costs. These revenues also use the five-year fuel price averaging outlined above.
 
 ![Annual energy market revenues for new hybrid resources](/img/electricity-sector-main-EnergyRevenuesHybrids.png)
 
@@ -289,7 +289,7 @@ The model then plots the expected profit against a curve that is defined in inpu
 
 ![Share of existing capacity installed per unit profit](/img/electricity-sector-main-ProfitExistingCapacity.png)
 
-For example, if a resource type has a profit of $10/Megawatt-hour, it would cause new builds of roughly 13% of existing capacity. For a resource with an installed base of 50 GW, this would yield 6.5 GW of new builds. But over time as more of that resource is built, if it gets to 100 GW, then the same profit level would result in 13 GW being built. (This is balanced in the model by evolving market revenue as the system is saturated with resources).
+For example, if a resource type has a profit of $10/Megawatt-hour, it would cause new builds of roughly 5% of existing capacity. For a resource with an installed base of 50 GW, this would yield 2.5 GW of new builds. But over time as more of that resource is built, if it gets to 100 GW, then the same profit level would result in 5 GW being built. (This is balanced in the model by evolving market revenue as the system is saturated with resources).
 
 The model then computes the total new capacity added using this computed value and several input data files which let users change the share of costs that have to be covered to be deemed profitable and the share of cost-effective capacity that is actually built (sometimes there are market dynamics that significantly limit what can be built, even if it is profitable) The model also uses a minimum value for resources that do not yet exist so that it is always capable of building them if they are profitable. 
 
@@ -371,17 +371,13 @@ These values are also used to calculate average annual achieved capacity factors
 
 ![Three year average achieved capacity factors](/img/electricity-sector-main-ThreeYearAverageAchievedCF.png)
 
-These rely on weighted average data across the whole fleet by power plant type.
+These rely on weighted average data across the whole fleet by power plant type. In the start year we also compute start year capacity factors based on input data, since there is no historical year data to start calculating from.
 
 ![Three year average achieved capacity factors](/img/electricity-sector-main-WeightedAverageCFs.png)
 
 We also use expected capacity factors where there is no existing capacity from which to calculate an achieved capacity factor, for example novel technologies like hydrogen combustion turbines or small modular reactors. In these cases we compute a hypothetical capacity factor as if one megawatt of that power plant type had been available for dispatch. 
 
 ![Expected capacity factors](/img/electricity-sector-main-ExpectedCFs.png)
-
-In the start year we also compute start year capacity factors based on input data, since there is no historical year data to start calculating from.
-
-![Start year capacity factors](/img/electricity-sector-main-StartYearCFs.png)
 
 Bid capacity factors are used in the dispatch mechanisms to reflect the available capacity in a given hour available to dispatch. They incorporate several limitations, including a maximum capacity factor, i.e. the maximum share of potential output that is available in each hour. Because the EPS is also a single-region model, we also include the ability to discount the available output to account for the regionality of the grid. If we didn't include this, the model would operate as a copper sheet with a power plant in one region being able to supply power in a wholly different region. These parameters are set through RAF Regional Availability Factor for Generation and are generally handled through calibration. Non-dispatchable renewables are not typically affected by this calibration. Capacity factors used for reliability calculations (i.e. that reflect an equivalent to effective load carrying capacity) are calculated here as well. 
 
@@ -437,7 +433,7 @@ The model begins by dispatching resources that are guaranteed, as specified in i
 
 ### Dispatch of RPS Qualifying Resources
 
-Next the model will dispatch RPS qualifying resources, starting with zero- and negative-cost resources and then moving to positive-cost resources. This step helps ensure that these resources are appropriately used even if their costs might exceed other resources. It also ensures alignment with the projected clean share as part of the CES/RPS optimization. The model uses expected capacity factors for dispatch here. Because the expected and available capacity factors for variable renewables are the same, and most clean resources today are variable, this is generally not an important distinction, but it matters for certain resources like hydro, which can be used flexibly but otherwise generally run at a near constant capacity factor.
+Next the model will dispatch RPS qualifying resources, starting with zero- and negative-cost resources and then moving to positive-cost resources. This step helps ensure that these resources are appropriately used even if their costs might exceed other resources. It also ensures alignment with the projected clean share as part of the CES/RPS optimization. The model uses available capacity factors for dispatch here. Because the expected and available capacity factors for variable renewables are the same, and most clean resources today are variable, this is generally not an important distinction, but it matters for certain resources like clean firm resources, which can be used at higher capacity factors when needed to meet CES/RPS requirements.
 
 ![RPS dispatch](/img/electricity-sector-main-RPSDispatch.png)
 
@@ -473,7 +469,9 @@ The electricity sector estimates economic storage additions based on anticipated
 
 To estimate storage additions the model starts by calculating anticipated market revenues. Unlike for power plants, the model does not directly compare anticipated revenues and against costs to estimate additions, but rather looks only at the anticipated net revenue. This approach is necessary because the EPS omits several sources of revenue for storage, notably including ancillary services like frequency response, and comparing against costs would yield far lower profitability than in reality. Additionally, while the EPS now has hourly granularity for six electricity timeslices, to fully capture the revenue potential for storage would required sub-hourly detail, in addition to grid services. If we directly compared costs and revenues, we would miss a large source of revenue and significantly underestimate anticipated storage additions.
 
-To estimate market revenues, the model compares the highest and lowest priced hours and computes an estimated daily profit by arbitraging these hours based on the duration of the storage (four hours by default in the US model). This allows the model to determine an estimated annual average charging and discharging profit per MWh of battery capacity. Incentive policies add to the profitability and drive additional storage capacity. Revenues from the reliability mechanism are integrated as well in this step. Declines in battery costs are modeled as a form of revenue as well to reflect increasing profitability of batteries. Together these elements comprise a "net revenue" estimate.
+To estimate market revenues, the model compares the highest and lowest priced hours and computes an estimated daily profit by arbitraging these hours based on the duration of the storage (four hours by default in the US model). This allows the model to determine an estimated annual average charging and discharging profit per MWh of battery capacity. Incentive policies add to the profitability and drive additional storage capacity. Revenues from the reliability mechanism are integrated as well in this step. Declines in battery costs are modeled as a form of revenue as well to reflect increasing profitability of batteries. Together these elements comprise a "net revenue" estimate. The calculation of incentive policies, which can take the form of subsidies for production, for capacity installed, or per unit output, is shown below.
+
+![Battery storage additions](/img/electricity-sector-main-GridStorageSubsidies.png)
 
 The total net revenue is multiplied by a calibrated input parameter (the MWh of storage added per $/MWh profit) to estimate battery additions.  The storage additions are added to the model’s capacity on a one-year delay. Storage additions for the US and state models approximate those observed from other dedicated power system models, e.g. the National Renewable Energy Lab's ReEDS model.
 

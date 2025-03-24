@@ -46,7 +46,7 @@ Also note that the "electrolysis" pathway draws its electricity from the grid - 
 
 ## Hydrogen Production Energy Use and Emissions
 
-Five EPS sectors can demand hydrogen as a fuel: transportation, buildings, industry, district heat, and geoengineering. (This only includes hydrogen purchased from hydrogen suppliers, not hydrogen produced and consumed within the same industrial facility.) Hydrogen demand from these sectors is summed. Then, the hydrogen to be produced is apportioned between the various production pathways based on shares taken in as time-series input data (allowing for a gradual shift between pathways in the BAU case).
+Six EPS sectors can demand hydrogen as a fuel: transportation, buildings, industry, electricity, district heat, and geoengineering. (This only includes hydrogen purchased from hydrogen suppliers, not hydrogen produced and consumed within the same industrial facility.) Hydrogen demand from these sectors is summed. Then, the hydrogen to be produced is apportioned between the various production pathways based on shares taken in as time-series input data (allowing for a gradual shift between pathways in the BAU case).
 
 ![summing hydrogen demand and apportioning it by production pathway](/img/hydrogen-supply-DemandByPathway.png)
 

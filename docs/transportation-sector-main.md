@@ -43,7 +43,7 @@ The EPS begins by determining the demand for transportation services, which is m
 
 ![cargo distance calculation](/img/transportation-sector-main-CargoDistCalc.png)
 
-Cargo distance transported is then modified for macroeconomic feedbacks from the [Input-Output Model](io-model) (see the [Macroeconomic Feedbacks page](macro-feedbacks)), as shown in the screenshot below. We choose to modify passenger travel by the percent change in household spending and freight travel by the weighted average percent change in industry's indirect and induced contribution to Gross Domestic Product.
+Cargo distance transported is then modified for macroeconomic feedbacks from the [Input-Output Model](io-model) (see the [Macroeconomic Feedbacks page](macro-feedbacks)), as shown in the screenshot below. We choose to modify freight travel by the weighted average percent change in industry's indirect and induced contribution to Gross Domestic Product. 
 
 ![transportation macroeconomic feedbacks](/img/transportation-sector-main-TranspMacroFeedback.png)
 

@@ -106,10 +106,6 @@ We find the percentage change in fuel cost between these two cases.  Then we com
 
 ![behavioral response to energy cost changes](/img/buildings-sector-main-BehavioralResponse.png)
 
-We then adjust energy use for macroeconomic effects from the [Input-Output Model](io-model) (see the [Macroeconomic Feedbacks page](macro-feedbacks) for a detailed discussion).  This step implements a one-year time delay to avoid circularity when adjusting energy demand by the percentage change in the construction industry's indirect and induced economic contribution to Gross Domestic Product.  The 'Boolean Disable Macroeconomic Feedback Loops' control setting shown below can be used for debugging purposes, but most users will not need to disable this feature and will want to inlcude its effects.  
-
-![buildings sector macroeconomic feedback](/img/buildings-sector-main-MacroFeedback.png)
-
 Next, we subtract the reduction in energy use due to retrofitting (calculated above) from the components energy use.
 
 ![removing reduction in energy use due to retrofits](/img/buildings-sector-main-RemoveRetrofitEnergy.png)
