@@ -32,6 +32,15 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
+### **3.4.9.1 - March 28, 2025**
+
+* Data Updates
+  * Corrections to the conversion factor in web-app/OCCF.
+  * Adjustments to the output graph units for hydrogen consumption, LCOE, and electricity fuel cost.
+  * Updated the start year in bldgs/SYCEU.
+  * Grouped electricity CCS with the CES policy in the web app.
+  * Updated dist-heat/RHFF and dist-heat/BFoHPBF data to align with national data, and modified relevant policy descriptions.
+
 ### **3.4.9 - October 3, 2024**
 
 * Initial release
