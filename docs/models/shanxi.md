@@ -33,6 +33,14 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
+### **3.4.9.1 - March 28, 2025**
+
+* Data Updates
+  * Corrections to the conversion factor in web-app/OCCF.
+  * Adjustments to the output graph units for hydrogen consumption, LCOE, and electricity fuel cost.
+  * Modified biomass retirement after 2045 in elec/BCRbQ.
+  * Corrections to coal capacity factor projection in elec/BECF
+
 ### **3.4.9 - October 3, 2024**
 
 * Initial release
