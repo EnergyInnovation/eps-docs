@@ -54,7 +54,7 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 
 ## Version History
 
-### **4.0.4 - March X, 2025**
+### **4.0.4 - April 1, 2025**
 
 * New Features
   * Addition of new policy levers to represent repeal of current policy: Differentiates vehicle standards into national and subnational levers and allows for repeal of current policy in either jusrisdiction, new options for increased process emissions in policy scenarios, non-BAU distributed solar capacity, non-BAU industrial CCS, non-BAU hydrogen production pathway shifting
@@ -77,6 +77,7 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Incorporates CES alternative compliance payment costs into cash flows amd removes anticipated market revenues in CES ongoing costs
   * Removes electricity exports from the calculation of capacity needed for reliability
   * Sets capacity market payments for residual reliability to be made to only the reliability electricity source subscript
+  * Removes subsidies from the change in energy industry revenues used in IO calculations
 * Data updates
   * Updates calculations for BAU vehicle tax credits 
   * Fixes to BAU clean electricity tax credit calculations and CCS tax credit calculations
