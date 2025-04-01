@@ -14,6 +14,7 @@ The information below details our basic modeling assumptions, data sources, and 
 - Policies can be applied starting in 2024
 - State models account for funding and tax credits included in the Inflation Reduction Act.
 - We have tried to incorporate the latest state policy but some specific sectoral policies may be missing, especially if they principally affect energy demand. All Clean Energy Standards (including electricity standards and renewable portfolio standards), Advanced Clean Cars, Advanced Clean Cars II, Advanced Clean Trucks, carbon pricing, and electric vehicle subsidies policies passed before August 2024 have been included in the model.
+- State models include a 'Federal Policy Repeal and Rollback' scenario to model the repeal of the Inflation Reduction Act and select EPA rules affecting greenhouse gas emissions. Documentation on the policy settings included in this scenario is forthcoming.
 
 The following information supplements the general EPS model information by summarizing sources for state energy consumption and emissions data in the state versions of the EPS tool.<sup>[1](#myfootnote1)</sup> 
 
