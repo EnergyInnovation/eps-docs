@@ -54,10 +54,10 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 
 ## Version History
 
-### **4.0.4 - March X, 2025**
+### **4.0.4 - April 1, 2025**
 
 * New Features
-  * Addition of new policy levers to represent repeal of current policy: Differentiates vehicle standards into national and subnational levers and allows for repeal of current policy in either jusrisdiction, new options for increased process emissions in policy scenarios, non-BAU distributed solar capacity, non-BAU industrial CCS, non-BAU hydrogen production pathway shifting
+  * Addition of new policy levers to represent repeal of current policy: Differentiates vehicle standards into national and subnational levers and allows for repeal of current policy in either jurisdiction, new options for increased process emissions in policy scenarios, non-BAU distributed solar capacity, non-BAU industrial CCS, non-BAU hydrogen production pathway shifting
   * Extends the policy selection slider bars to encompass negative values for several preexisting policy levers in order to represent repeal of current policies and adds some policy options to the web app that were previously visible only in Vensim (e.g. use non-BAU coal retirement schedule)
   * Adds a new lever for subsidies for production of grid batteries
   * Added additional options to specify BAU and policy thermal fuels subsidies by sector
@@ -71,12 +71,13 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Fixes incorrect calculations for emissions from blue hydrogen production
   * Fixes calculations for BAU carbon tax rate on exported products and cash flows from BAU carbon tax on process emissions
   * Limits the positive cost RPS qualifying dispatch mechanism once the RPS requirement is reached and improves the calculation of RPS requirements
-  * Updates weighted average variable subsidies to be correctly calculated based on last year capcity built
+  * Updates weighted average variable subsidies to be correctly calculated based on last year capacity built
   * Resolves errors in equality checks for revenue balancing in electricity sector nonenergy revenues and energy supplier revenues
   * Removes macroeconomic feedback effects on passenger transportation demand and building service demand
-  * Incorporates CES alternative compliance payment costs into cash flows amd removes anticipated market revenues in CES ongoing costs
+  * Incorporates CES alternative compliance payment costs into cash flows and removes anticipated market revenues in CES ongoing costs
   * Removes electricity exports from the calculation of capacity needed for reliability
   * Sets capacity market payments for residual reliability to be made to only the reliability electricity source subscript
+  * Removes subsidies from the change in energy industry revenues used in IO calculations
 * Data updates
   * Updates calculations for BAU vehicle tax credits 
   * Fixes to BAU clean electricity tax credit calculations and CCS tax credit calculations
@@ -88,7 +89,7 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Updates government revenue accounting settings to use deficit spending for all government cash flow types
   * Updates to capacity factors for new onshore wind
   * Changes the repayment period for capacity market changes to 3 years
-  * Updates transmission construction costs to exlucde spur line costs, which are captured separately
+  * Updates transmission construction costs to exclude spur line costs, which are captured separately
 
 ### **4.0.3 - December 12, 2024**
 
