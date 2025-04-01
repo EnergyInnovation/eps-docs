@@ -8,7 +8,7 @@ The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model 
 
 The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.3.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.4.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
@@ -21,7 +21,6 @@ We would like to acknowledge the following people who made the Energy Policy Sol
 * Todd Fincannon, Energy Innovation LLC
 * Dan O'Brien, Energy Innovation LLC
 * Olivia Ashmoore, Energy Innovation LLC
-* Anand Gopal, Energy Innovation LLC
 
 ### Reviewers
 
@@ -39,6 +38,7 @@ We would like to acknowledge the following people who made the Energy Policy Sol
 * Jiang Kejun and He Chenmin, Energy Research Institute (国家发展和改革委员会能源研究所)
 * Amol Phadke, Lawrence Berkeley National Laboratory
 * Eric Gimon, Energy Innovation LLC
+* Anand Gopal
 
 The inclusion of a reviewer on this list does not imply endorsement of the model or its findings by this reviewer or his/her organization.
 
@@ -53,6 +53,43 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 * Michael Greenstone, University of Chicago - high-level guidance
 
 ## Version History
+
+### **4.0.4 - April 1, 2025**
+
+* New Features
+  * Addition of new policy levers to represent repeal of current policy: Differentiates vehicle standards into national and subnational levers and allows for repeal of current policy in either jurisdiction, new options for increased process emissions in policy scenarios, non-BAU distributed solar capacity, non-BAU industrial CCS, non-BAU hydrogen production pathway shifting
+  * Extends the policy selection slider bars to encompass negative values for several preexisting policy levers in order to represent repeal of current policies and adds some policy options to the web app that were previously visible only in Vensim (e.g. use non-BAU coal retirement schedule)
+  * Adds a new lever for subsidies for production of grid batteries
+  * Added additional options to specify BAU and policy thermal fuels subsidies by sector
+  * New adjustment mechanism to calculate time-adjusted capacity factors for plants coming online in the modeled timestep
+* Bug Fixes
+  * Fixes bugs in electricity export cash flow accounting, electricity supplier cost recovery, electricity dispatch
+  * Adds missing cash flow accounting for grid battery subsidies
+  * Fixes accounting of subsidies per unit electricity produced based on when new capacity was added and the subsidy duration
+  * Avoids potential divide by zero error in calculations for green hydrogen electricity demand
+  * Fixes double counting of CCS transportation and storage costs in revenue accounting
+  * Fixes incorrect calculations for emissions from blue hydrogen production
+  * Fixes calculations for BAU carbon tax rate on exported products and cash flows from BAU carbon tax on process emissions
+  * Limits the positive cost RPS qualifying dispatch mechanism once the RPS requirement is reached and improves the calculation of RPS requirements
+  * Updates weighted average variable subsidies to be correctly calculated based on last year capacity built
+  * Resolves errors in equality checks for revenue balancing in electricity sector nonenergy revenues and energy supplier revenues
+  * Removes macroeconomic feedback effects on passenger transportation demand and building service demand
+  * Incorporates CES alternative compliance payment costs into cash flows and removes anticipated market revenues in CES ongoing costs
+  * Removes electricity exports from the calculation of capacity needed for reliability
+  * Sets capacity market payments for residual reliability to be made to only the reliability electricity source subscript
+  * Removes subsidies from the change in energy industry revenues used in IO calculations
+* Data updates
+  * Updates calculations for BAU vehicle tax credits 
+  * Fixes to BAU clean electricity tax credit calculations and CCS tax credit calculations
+  * Updates all policy implementation schedules to start in 2025
+  * Updates output currency year to 2024
+  * Recalibrates the share of costs that to be covered to be considered profitable and capacity supply curves for the electricity sector
+  * Updates BAU planned capacity additions to use latest EIA data on plants that have received regulatory approval
+  * Updates natural gas prices based on latest gas futures data
+  * Updates government revenue accounting settings to use deficit spending for all government cash flow types
+  * Updates to capacity factors for new onshore wind
+  * Changes the repayment period for capacity market changes to 3 years
+  * Updates transmission construction costs to exclude spur line costs, which are captured separately
 
 ### **4.0.3 - December 12, 2024**
 

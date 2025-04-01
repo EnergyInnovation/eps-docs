@@ -36,7 +36,7 @@ Particulates are the primary cause of these negative health outcomes, including 
 
 ### Model Structure
 
-The total emissions of each pollutant in the BAU and policy cases are obtained from the [Cross-Sector Totals](cross-sector-totals) sheet, and we take the difference to find the change in pollutant emissions caused by the policy package.  (For the small number of EPS models configured to include emissions associated with imported electricity in the in-region emissions total, we exclude these emissions from the public health calculations, as we are only tracking health incidents caused by in-region emissions.)   We then multiply the change in emissions of each pollutant by a set of `Health Outcome Incidence per Ton Pollutant` multipliers, from the reduded-form tools discussed above.  Outcomes are quantized (rounded down) in increments set by the input data variable 'Quantization Size for Health Outcomes.'  Generally, health outcome graphs don't have rounding errors that need to be dampened, and quantizing to 1 incident can result in errors in the display of graphs don't have rounding errors that need to be the avoided deaths wedge diagram, which can be pronounced in regions and policy packages with small numbers of avoided deaths in partiuclar years (less than 20). Therefore, we default this variable to zero, which has the effect of not quantizing the results at all (the same as if the QUANTUM function were not used).
+The total emissions of each pollutant in the BAU and policy cases are obtained from the [Cross-Sector Totals](cross-sector-totals) sheet, and we take the difference to find the change in pollutant emissions caused by the policy package.  (For the small number of EPS models configured to include emissions associated with imported electricity in the in-region emissions total, we exclude these emissions from the public health calculations, as we are only tracking health incidents caused by in-region emissions.)   We then multiply the change in emissions of each pollutant by a set of `Health Outcome Incidence per Ton Pollutant` multipliers, from the reduded-form tools discussed above.  Outcomes are quantized (rounded down) in increments set by the input data variable 'Quantization Size for Health Outcomes.'
 
 ![public health benefits in the EPS](/img/additional-outputs-PublicHealthBenefits.png)
 
@@ -92,5 +92,9 @@ We also calculate the change in net electricity imports, which is used in one ou
 
 ![change in net electricity imports](/img/additional-outputs-CngNetElecImports.png)
 
+Finally, we calculate the change in battery storage capacity relative to the BAU, which is used in one output graph.
+
+![change in battery storage capacity](/img/additional-outputs-BatteryCapacity.png)
+
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

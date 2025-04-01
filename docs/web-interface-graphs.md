@@ -2,7 +2,7 @@
 title: Output Graphs Available in the Web Interface
 ---
 
-The web interface allows the user to visualize Energy Policy Simulator (EPS) results through a variety of output graphs.  As of EPS 3.3.1, there are 174 different output graphs available in the web interface.  However, which graphs are shown in the web interface may be customized for different EPS country or regional adaptations.  Many graphs include more than one data series, such as a graph of power plant capacity by plant type (coal, nuclear, hydro, etc.).  Therefore, over 600 different data series are available in the web interface.  (Thousands more are available in the [downloadable version](download) of the EPS.)
+The web interface allows the user to visualize Energy Policy Simulator (EPS) results through a variety of output graphs.  As of EPS 3.3.1, there are more than 200 different output graphs available to be displayed in the web interface.  However, which graphs are shown in the web interface may be customized for different EPS country or regional adaptations.  Many graphs include more than one data series, such as a graph of power plant capacity by plant type (coal, nuclear, hydro, etc.). (Thousands more are available in the [downloadable version](download) of the EPS.)
 
 ## List of Output Graphs
 
@@ -14,6 +14,14 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
   * **Total (excludes land use)**
 
     _Economy-wide CO<sub>2</sub>e emissions, excluding Land Use, Land Use Change, and Forestry (LULUCF)_
+
+  * **Cumulative Total (includes land use)**
+
+    _Economy-wide CO<sub>2</sub>e emissions, including Land Use, Land Use Change, and Forestry (LULUCF), cumulated starting in the first modeled year_
+
+  * **Cumulative Total (excludes land use)**
+
+    _Economy-wide CO<sub>2</sub>e emissions, excluding Land Use, Land Use Change, and Forestry (LULUCF), cumulated starting in the first modeled year_
 
   * **By Sector**
 
@@ -62,6 +70,10 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
   * **Water & Waste**
 
     _Water & Waste sector CO<sub>2</sub>e emissions_
+
+  * **Carbon Captured by End Use**
+
+    _CO<sub>2</sub> emissions captured by power plant type or industry category_
 
 * ### Emissions (by Pollutant)
 
@@ -159,45 +171,13 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
   * **Change in Government Cash Flow by Source**
 
-    _This graph presents the net effects of the selected policies on government cash flow prior to government decisions about how to handle its changes in cash flow (which can be controlled with the Government Revenue Accounting levers in the policy selector pane). This metric is broken out by sources of cash flow changes (Carbon Tax Revenue, Fuel Tax Revenue, EV Subsidy, Electric Generation Subsidy, Electricity Capacity Construction Subsidy, Distributed Solar Subsidy, Fuel Subsidy, National Debt Interest, Remaining Government Cash Flows). "Remaining Government Cash Flows" is often dominated by changes in tax receipts due to overall growth or shrinkage of the economy (GDP and Employee Compensation) but also includes changes in costs paid by government, such as spending on energy to power government buildings._
+    _This graph presents the net effects of the selected policies on government cash flow prior to government decisions about how to handle its changes in cash flow (which can be controlled with the Government Revenue Accounting levers in the policy selector pane). This metric is broken out by sources of cash flow changes (Carbon Tax Revenue, Fuel Tax Revenue, EV Subsidy, Vehicle Battery Subsidy, Electric Generation Subsidy, Electricity Capacity Construction Subsidy, Distributed Solar Subsidy, Fuel Subsidy, CCS subsidy, National Debt Interest, Remaining Government Cash Flows). "Remaining Government Cash Flows" is often dominated by changes in tax receipts due to overall growth or shrinkage of the economy (GDP and Employee Compensation) but also includes changes in costs paid by government, such as spending on energy to power government buildings._
 
 * ### Financial: Jobs, GDP, and Earnings
 
   * **Change in Jobs**
 
     _Policy-induced changes in jobs in each year (i.e., increase or decrease in number of employed individuals in a given year, relative to business-as-usual). Note that some jobs (e.g., construction) may be short-term, meaning this metric can be thought of in terms of job-years (one job that lasts for one year equates to one job-year). This graph reports the total change in jobs and also breaks out jobs by Fossil Fuel and Utility Jobs, Manufacturing and Construction Jobs, and Other Jobs._
-
-  * **Change in Jobs by Sex**
-
-    _Policy-induced changes in jobs in each year (i.e., increase or decrease in number of employed individuals in a given year, relative to business-as-usual), disaggregated into categories by sex. Note that some jobs (e.g., construction) may be short-term, meaning this metric can be thought of in terms of job-years (one job that lasts for one year equates to one job-year).  In the U.S. version of the EPS, the available sex categories are based on those categories for which U.S. government data are available (in particular, from the Bureau of Labor Statistics) and should not be interpreted as a reflection Energy Innovation's views of which sex categories exist or are worthy of being reported separately._
-
-  * **Percent Change in Jobs by Sex**
-
-    _The same metric as above, graphed as a percent change in the number of jobs held by people of each sex (relative to the BAU case in that same year)._
-
-  * **Change in Jobs by Race**
-
-    _Policy-induced changes in jobs in each year (i.e., increase or decrease in number of employed individuals in a given year, relative to business-as-usual), disaggregated into categories by race. Note that some jobs (e.g., construction) may be short-term, meaning this metric can be thought of in terms of job-years (one job that lasts for one year equates to one job-year).  In the U.S. version of the EPS, the available race categories are based on those categories for which U.S. government data are available (in particular, from the Bureau of Labor Statistics) and should not be interpreted as a reflection Energy Innovation's views of which race categories exist or are worthy of being reported separately._
-
-  * **Percent Change in Jobs by Race**
-
-    _The same metric as above, graphed as a percent change in the number of jobs held by people of each race (relative to the BAU case in that same year)._
-
-  * **Change in Jobs by Hispanic or Latino Status**
-
-    _Policy-induced changes in jobs in each year (i.e., increase or decrease in number of employed individuals in a given year, relative to business-as-usual), disaggregated into categories by Hispanic or Latino status. Note that some jobs (e.g., construction) may be short-term, meaning this metric can be thought of in terms of job-years (one job that lasts for one year equates to one job-year).  In the U.S. version of the EPS, the available Hispanic or Latino status categories are based on those categories for which U.S. government data are available (in particular, from the Bureau of Labor Statistics) and should not be interpreted as a reflection Energy Innovation's views of which Hispanic or Latino status categories exist or are worthy of being reported separately._
-
-  * **Perc Change in Jobs by Hispanic or Latino Status**
-
-    _The same metric as above, graphed as a percent change in the number of jobs held by people of each Hispanic or Latino status (relative to the BAU case in that same year)._
-
-  * **Change in Jobs by Age Bracket**
-
-    _Policy-induced changes in jobs in each year (i.e., increase or decrease in number of employed individuals in a given year, relative to business-as-usual), disaggregated into categories by age bracket. Note that some jobs (e.g., construction) may be short-term, meaning this metric can be thought of in terms of job-years (one job that lasts for one year equates to one job-year)._
-
-  * **Percent Change in Jobs by Age Bracket**
-
-    _The same metric as above, graphed as a percent change in the number of jobs held by people of each age bracket (relative to the BAU case in that same year)._
 
   * **Change in Jobs by Union Status**
 
@@ -239,48 +219,6 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
     _Policy-induced change in total employee compensation in each year, further broken out by Direct, Indirect, and Induced changes in compensation. For an explanation of these terms, see the [Input-Output Model](io-model) sheet._
 
-* ### Financial: Direct Cash Flow Changes
-
-  * **Cash Flow Change (by Entity)**
-
-    _Direct (first-order) policy-induced change in cash flow for each of nine entities tracked in the Energy Policy Simulator (Government, Non-Energy Industries, Labor and Consumers, Foreign Entities, Electricity Suppliers, Coal Suppliers, Natural Gas and Petroleum Suppliers, Biomass and Biofuel Suppliers, and Other Energy Suppliers). This metric is upstream of the macroeconomic input-output model and therefore does not include how government, households, and industries respend additional money (or how they compensate for reductions in money), so it does not capture economy-wide growth or shrinkage caused by the modeled policies. (See the graphs in the "Financial: Jobs, GDP, and Earnings" section for financial outputs that include policy-driven changes in economy size.) Since any money that is spent by one entity is received by another, direct cash flow changes sum to zero._
-
-  * **Government Cash Flow Components**
-
-    _Direct (first-order) policy-induced change in government cash flow, broken out by Change in Revenue, Change in Energy Expenditures, and Change in Non-Energy Expenditures._
-
-  * **Non-Energy Industries Cash Flow Components**
-
-    _Direct (first-order) policy-induced change in non-energy industries cash flow, broken out by Change in Domestic Revenue, Change in Export Revenue, Change in Energy Expenditures, and Change in Non-Energy Expenditures._
-
-  * **Labor and Consumers Cash Flow Components**
-
-    _Direct (first-order) policy-induced change in labor and consumers cash flow, broken out by Change in Revenue, Change in Energy Expenditures, and Change in Non-Energy Expenditures._
-
-  * **Foreign Entities Cash Flow Components**
-
-    _Direct (first-order) policy-induced change in foreign entities cash flow, broken out by Change in Revenue, Change in Energy Expenditures, and Change in Non-Energy Expenditures._
-
-  * **Electricity Supplier Cash Flow Components**
-
-    _Direct (first-order) policy-induced change in electricity supplier cash flow, broken out by Change in Domestic Revenue, Change in Export Revenue, Change in Energy Expenditures, and Change in Non-Energy Expenditures._
-
-  * **Coal Supplier Cash Flow Components**
-
-    _Direct (first-order) policy-induced change in coal supplier cash flow, broken out by Change in Domestic Revenue, Change in Export Revenue, Change in Energy Expenditures, and Change in Non-Energy Expenditures._
-
-  * **Natural Gas and Petroleum Supplier Cash Flow Components**
-
-    _Direct (first-order) policy-induced change in natural gas and petroleum supplier cash flow, broken out by Change in Domestic Revenue, Change in Export Revenue, Change in Energy Expenditures, and Change in Non-Energy Expenditures._
-
-  * **Biomass and Biofuel Supplier Cash Flow Components**
-
-    _Direct (first-order) policy-induced change in biomass and biofuel supplier cash flow, broken out by Change in Domestic Revenue, Change in Export Revenue, Change in Energy Expenditures, and Change in Non-Energy Expenditures._
-
-  * **Other Energy Supplier Cash Flow Components**
-
-    _Direct (first-order) policy-induced change in other energy supplier cash flow, broken out by Change in Domestic Revenue, Change in Export Revenue, Change in Energy Expenditures, and Change in Non-Energy Expenditures._
-
 * ### Human Health & Social Benefits
 
   * **Avoided Deaths Wedge Diagram**
@@ -291,13 +229,13 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
     _This graph shows the percentage change in the number of deaths occurring each year (relative to the BAU case in that same year)._
 
-  * **Avoided Deaths by Sex**
+  * **Avoided Deaths by Gender**
 
-    _Annual avoided premature deaths as a result of a policy package disaggregated by sex.  In the U.S. version of the EPS, the available sex categories are based on those categories for which U.S. government data are available (in particular, from the Bureau of Labor Statistics, since we use these categories for job impacts as well as health impacts) and should not be interpreted as a reflection Energy Innovation's views of which sex categories exist or are worthy of being reported separately._
+    _Annual avoided premature deaths as a result of a policy package disaggregated by gender.  In the U.S. version of the EPS, the available sex categories are based on those categories for which U.S. government data are available (in particular, from the Bureau of Labor Statistics, since we use these categories for job impacts as well as health impacts) and should not be interpreted as a reflection Energy Innovation's views of which gender categories exist or are worthy of being reported separately._
 
-  * **Percent Change in Deaths by Sex**
+  * **Percent Change in Deaths by Gender**
 
-    _The same metric as above, graphed as a percent change in the number of deaths of people of each sex (relative to the BAU case in that same year)._
+    _The same metric as above, graphed as a percent change in the number of deaths of people of each gender (relative to the BAU case in that same year)._
 
   * **Avoided Deaths by Race**
 
@@ -305,7 +243,7 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
   * **Percent Change in Deaths by Race**
 
-    _The same metric as above, graphed as a percent change in the number of deaths of people of each race (relative to the BAU case in that same year)._
+    _The same metric as above, graphed as a percent change in the number of deaths of people identifying as each race (relative to the BAU case in that same year)._
 
   * **Avoided Deaths by Hispanic or Latino Status**
 
@@ -313,11 +251,7 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
   * **Percent Change in Deaths by Hispanic or Latino Status**
 
-    _The same metric as above, graphed as a percent change in the number of deaths of people of each Hispanic or Latino status (relative to the BAU case in that same year)._
-
-  * **Avoided Premature Deaths**
-
-    _Annual avoided premature deaths as a result of a policy package_
+    _The same metric as above, graphed as a percent change in the number of deaths of people identifying as each Hispanic or Latino status (relative to the BAU case in that same year)._
 
   * **Monetized Avoided Deaths & Climate Benefits**
 
@@ -373,9 +307,9 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
     _Electricity demand broken out by sector (District Heat & Hydrogen, Water & Waste, Agriculture, Transportation, Industry, Buildings)_
 
-  * **Share of Generation from Clean Sources**
+  * **Share of Generation from Clean Sources (including CCS)**
 
-   _Share of electricity generation from clean sources (dependent on region's RPS or CES definitions)_
+   _Share of electricity generation from clean sources, including distributed generation (dependent on region's RPS or CES definitions)_
 
   * **Carbon Intensity of Electricity Generation**
 
@@ -390,6 +324,10 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
   * **Levelized Cost of Electricity (after subsidies)**
 
     _Levelized Cost of Electricity by power plant type in 2020, 2030, 2040, and 2050 (after any subsidies for generation or power plant construction)_
+
+  * **Marginal Dispatch Cost of Electricity**
+
+    _Annual average marginal dispatch cost of electricity, reported in currency units per MWh_
 
   * **Curtailed Electricity from Renewables**
 
@@ -406,6 +344,34 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
   * **Water Consumption by Power Plants**
 
     _Annual water withdrawals (water taken and not returned to the water body, i.e. evaporated) by power plant type_
+
+* ### Electricity: Hourly Dispatch 
+
+  _Hourly dispatch by power plant type for the following days:_
+
+  * **2050, Average Summer Day**
+
+  * **2050, Average Fall Day**
+
+  * **2050, Average Winter Day**
+
+  * **2050, Average Spring Day**
+
+  * **2050, Peak Summer Day**
+
+  * **2050, Peak Winter Day**
+
+  * **2021, Average Summer Day**
+
+  * **2021, Average Fall Day**
+
+  * **2021, Average Winter Day**
+
+  * **2021, Average Spring Day**
+
+  * **2021, Peak Summer Day**
+
+  * **2021, Peak Winter Day**
 
 * ### Transport: Vehicles by Technology
 
@@ -485,6 +451,14 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
     _Annual Industry sector fuel use (total), including feedstocks_
 
+  * **By Industrial Process (Thermal Fuels, Excluding Feedstocks)**
+
+    _Annual Industry sector thermal fuel use by industrial process (boilers & steam, nonboiler low temp, nonboiler medium temp, nonboiler high temp, cooling, machine drive, other processes), excluding feedstocks_
+
+  * **By Industrial Process (Electricity)**
+
+    _Annual Industry sector electricity use by industrial process (boilers & steam, nonboiler low temp, nonboiler medium temp, nonboiler high temp, cooling, machine drive, other processes)_
+
 * ### Industry: CO<sub>2</sub>e Emissions
 
   * **Total by Industry**
@@ -523,23 +497,31 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
     _Annual Industry sector energy-related CO<sub>2</sub> emissions by subindustry_
 
-* ### Buildings: Energy Use
+* ### Buildings: Energy Use and Emissions
 
-  * **By Building Component**
+  * **Energy Use By Building Component**
 
     _Annual Buildings sector energy consumption by building component_
 
-  * **By Building Type**
+  * **Energy Use By Building Type**
 
     _Annual Buildings sector energy consumption by building type (commercial, rural residential, urban residential)_
 
-  * **By Energy Source**
+  * **Energy Use By Energy Source**
 
     _Annual Buildings sector energy consumption by fuel type_
 
-  * **Total**
+  * **Total Energy Use**
 
     _Annual Buildings sector energy consumption (total)_
+
+  * **Direct Emissions by Building Type and End Use**
+
+    _Annual Buildings sector direct CO<sub>2</sub>e emissions by building type and building component_
+
+  * **Emissions by Building Type and End Use (reallocated energy carriers)**
+
+    _Annual Buildings sector direct and indirect CO<sub>2</sub>e emissions by building type and building component (indirect emissions associated with generating electricity, district heat, or hydrogen used in buildings is reallocated to the building type/component consuming that fuel)_
 
 * ### Energy Consumption
 
@@ -551,6 +533,14 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
     _Annual economy-wide primary energy consumption by end use sector (District Heat & Hydrogen, Water & Waste, Agriculture, Buildings, Transportation, Electricity, Industry, Geoengineering)_
 
+  * **Final Energy by Source**
+
+    _Annual economy-wide final energy consumption by fuel type; final energy is defined here as the total amount of energy used by end users (the EPS Buildings, Transportation, Industry, Water & Waste, Agriculture, and Geoengineering sectors), excluding feedstocks_
+
+  * **Final Energy by Sector**
+
+    _Annual economy-wide final energy consumption by sector; final energy is defined here as the total amount of energy used by end users (the EPS Buildings, Transportation, Industry, Water & Waste, Agriculture, and Geoengineering sectors), excluding feedstocks_
+  
   * **Per Unit GDP**
 
     _Annual economy-wide primary energy consumption per unit Gross Domestic Product_
@@ -679,7 +669,7 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
 * ### Fuel Costs (by Fuel, by Sector)
 
-  _Fuel costs in 2020, 2030, 2040, and 2050 by fuel type, by sector (Commercial Buildings, Residential Buildings, Electricity, Transportation, Industry, District Heat and Hydrogen)_
+  _Fuel costs in 2021, 2030, 2040, and 2050 by fuel type, by sector (Commercial Buildings, Residential Buildings, Electricity, Transportation, Industry, District Heat and Hydrogen, Geoengineering)_
 
   * **Electricity**
 
@@ -703,9 +693,9 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
 * ### Technology Costs
 
-  * **Batteries**
+  * **Battery Packs**
 
-    _Battery cost per kilowatt-hour, including the battery cost and the balance of system costs (e.g., labor for its installation)_
+    _Battery pack cost per kilowatt-hour_
 
   * **CCS Capital Equipment**
 
@@ -728,4 +718,4 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
     _Capital cost of hydrogen production equipment to produce one kilogram H<sub>2</sub> per year via electrolysis_
 
 ---
-*This page was last updated in version 3.4.0.*
+*This page was last updated in version 4.0.4.*

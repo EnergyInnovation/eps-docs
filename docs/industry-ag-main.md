@@ -45,9 +45,9 @@ Process emissions refer to the emissions of any of the twelve tracked pollutants
 
 ### Foreign Leakage
 
-The EPS considers policies only on a regional scale.  Typically, a unilateral policy that lowers emissions from industry will lead to an increase in emissions in other nations.  This can happen because some companies move their operations overseas, or because companies that are already overseas scale up production (to export to the modeled country- in this case, to the U.S.) and domestic manufacturers reduce production.
+The EPS considers policies only on a regional scale.  Typically, a unilateral policy that lowers emissions from industry will lead to an increase in emissions in other nations.  This can happen because some companies move their operations overseas, or because companies that are already overseas scale up production (to export to the modeled country -- in this case, to the U.S.) and domestic manufacturers reduce production.
 
-In certain cases, leakage can be negative- that is, a reduction in emissions from the modeled country also leads to a reduction of emissions from other countries.  This is most likely to happen if the modeled country (the U.S., in this case) is a major player in setting the market price for a globally traded commodity.  When policies within the U.S. cause the U.S. to reduce production, the global price for the good increases due to the reduction in supply.  As a result of the higher prices, consumers in other countries reduce demand for the product.  In the case of the U.S., production of coal, oil, and gas all have negative leakage rates, whereas nearly all other products have positive leakage rates.
+In certain cases, leakage can be negative.  That is, a reduction in emissions from the modeled country also leads to a reduction of emissions from other countries.  This is most likely to happen if the modeled country (the U.S., in this case) is a major player in setting the market price for a globally traded commodity.  When policies within the U.S. cause the U.S. to reduce production, the global price for the good increases due to the reduction in supply.  As a result of the higher prices, consumers in other countries reduce demand for the product.  In the case of the U.S., production of coal, oil, and gas all have negative leakage rates, whereas nearly all other products have positive leakage rates.
 
 Emissions due to leakage are estimated by the model but are not added to total emissions, since that total is meant to reflect only emissions from the modeled country.
 
@@ -75,7 +75,7 @@ We can now remove the calculated carbon tax effects from the industry's change i
 
 ![check for carbon tax border adjustment](/img/industry-ag-main-CBAMToggle.png)
 
-If the Carbon Tax Border Adjustment is enabled in a given year, the calculated carbon tax effects are removed from change in passthrough expenses as a share of output. 
+If the Carbon Tax Border Adjustment is enabled in a given year, the calculated carbon tax effects are removed from change in passthrough expenses as a share of output. Two input files allow the user to define the share of each industrial sector's output that are covered by CBAM and to change these values in the policy scenario through a boolean lever. This might help a user reflect the EU's CBAM better, for example, as only fuels used for production of certain chemicals are covered by the CBAM.  In effect, then, only a share of the carbon tax's effects on that industry would be removed from passthrough expenses. 
 
 ![check for carbon tax border adjustment](/img/industry-ag-main-CBAMAdj.png)
 
@@ -147,9 +147,23 @@ The one exception is for the "energy pipelines and gas processing industry," whe
 
 ## Policies Affecting Fuel Use
 
-Now that we understand any policy-induced changes in industrial production, we can begin to calculate industrial fuel use and emissions from that production.  First, we calculate fuel use, and there are a variety of policies that can affect the amount of industrial fuel consumption. 
+Now that we understand any policy-induced changes in industrial production, we can begin to calculate industrial fuel use and emissions from that production.  We calculate fuel use, allowing the user to enable a variety of policies that can affect the amount of industrial fuel consumption. 
 
-First, the early retirement policy causes older, less efficient industrial facilities to retire before their normal lifetimes are exhausted.  It does not affect production, which means that either new, efficient facilities are opened to replace them, or production levels are scaled up at existing facilities.  The policy is implemented as a fraction of potential fuel use reduction achieved.  The following screenshot shows the relevant structure:
+First, before we account for any policies, we want to establish the BAU fuel use. However, there are two types of industrial fuel use: fuel use for energy purposes and fuel use for non-energy purposes (or feedstocks). We track these two quantities separately so that we can correctly calculate emissions from fuels that are combusted for energy purposes later, as opposed to feedstocks which are not combusted (for example, petrochemicals that are incorporated into plastic products). We take in data on total industrial fuel use as well as the proportion of that fuel used for energy. The fuel used for non-energy purposes is temporarily removed in the screenshot below, and the portion used for energy purposes is multiplied by the percent change in production, the calculation of which is described above. This section also adjusts BAU fuel use for the 'Exogenous GDP Adjustment,' which is no longer used in the U.S. model. This feature can be used to adjust energy and service demand for the COVID-19 induced recession or other economic shocks that are not reflected in collected input data. Because the U.S. EPS input data already reflects COVID-19, we no longer rely on this feature. However, it is still in use in certain international EPS models. 
+
+![fuel use for energy purposes before fuel shifting](/img/industry-ag-main-FuelUseEnergyPurposes.png)
+
+We can now adjust industrial fuel consumption using the first fuel shifting policy lever.  The various fuel-consuming processes carried out in industry have heterogeneous demand for various fuels and differing potential for shifting to lower-carbon alternatives. For example, for low-temperature heat requirements, industrial heat pumps are the most efficient and cost-effective option. Higher temperature processes may require other electric heating technologies such as electric reistance or induction, or the combustion of a zero-emissions fuel such as green hydrogen. Other end-uses like electrochemical processes can only use electricity.  Accordingly, we break out thermal fuel and electricity consumption by industrial process in each industry using input data. This allows us to apply fuel shifting policies to specific end-use processes.
+
+![fuel use by process](/img/industry-ag-main-HeatDemand.png)
+
+With industrial processes disaggregated, we turn to the implementation of fuel-shifting policies. Users can specify the amount of desired fuel shifting in each industry category and process. Fuel shifting will be applied to all fuels labeled as eligible in the input data variable 'Industrial Fuels Subject to Fuel Shifting.' As electrical processes are more efficient than those powered by combusting thermal fuels (heat pumps vs. boilers, for example), we apply a percentage industry fuel use reduction multiplier that reduces the input energy needed per unit output. This adjustment is subscripted by process.  
+
+Users can also specify that a portion of thermal fuel use be shifted to hydrogen combustion.  The structure below shows how the EPS tracks both increases and decreases in each fuel type based on the user's policy settings, then calculates the total change in industrial fuel use from fuel shifting. 
+
+![industrial fuel shifting](/img/industry-ag-main-FuelShifting.png)
+
+Subsequently, the model tracks the impact of various policies that lead to greater energy efficiency. The early retirement policy causes older, less efficient industrial facilities to retire before their normal lifetimes are exhausted.  It does not affect production, which means that either new, efficient facilities are opened to replace them, or production levels are scaled up at existing facilities.  The policy is implemented as a fraction of potential fuel use reduction achieved.  The following screenshot shows the relevant structure:
 
 ![early retirement policy](/img/industry-ag-main-EarlyRetirement.png)
 
@@ -169,23 +183,7 @@ The R&D policy reduces fuel use by a user-specified percentage.  As with other R
 
 ![R&D policy](/img/industry-ag-main-RnD.png)
 
-We then add up the effects of the five fuel policies listed above, accounting for the fact that multiple of these policies may be enabled at once. We also apply the Percent Change in Production due to Policies, which was calculated above. This gives us the percent change in fuel use before the last relevant policy, Industrial Fuel Shifting, is applied. 
-
-![percent change in industry fuel use before fuel shifting](/img/industry-ag-main-CngFuelUseBeforeShifting.png)
-
-Next, we want to multiply the percent change in fuel use by the amount of BAU fuel use. However, there are two types of industrial fuel use: fuel use for energy purposes and fuel use for non-energy purposes (or feedstocks). We track these two quantities separately so that we can correctly calculate emissions from fuels that are combusted for energy purposes later, as opposed to feedstocks which are not combusted (for example, petrochemicals that are incorporated into plastic products). We take in data on total industrial fuel use as well as the proportion of that fuel used for energy. The fuel used for non-energy purposes is temporarily removed in the screenshot below, and the portion used for energy purposes is multiplied by the percent change in fuel described above. This section also adjusts BAU fuel use for the 'Exogenous GDP Adjustment,' which is no longer used in the U.S. model. This feature can be used to adjust energy and service demand for the COVID-19 induced recession or other economic shocks that are not reflected in collected input data. Because the U.S. EPS input data already reflects COVID-19, we no longer rely on this feature. However, it is still in use in certain international EPS models. 
-
-![fuel use for energy purposes before fuel shifting](/img/industry-ag-main-FuelUseEnergyPurposes.png)
-
-We can now adjust industrial fuel use for the first fuel shifting policy lever. We break out policy to address industrial fuel shifting into two levers to separately address Low Temperature Industrial Heat and Medium and High Temperature Industrial Heat. This is because different industrial processes require heat at various temperatures, which will require different technological interventions. For low temperature heat requirements, industrial heat pumps are the most efficient and cost-effective option. Higher temperature processes may require other electric heating technologies such as electric reistance or induction, or the combustion of a zero-emissions fuel such as green hydrogen. First, we find the portion of fuel use for energy purposes by temperature range using input data. In the U.S., we define Low Temperature Industrial Heat as all heat demand below 200 degrees Celcius, and Medium and High Temperature Industrial Heat as all demand over that temperature. 
-
-![fuel use by temperature range](/img/industry-ag-main-HeatDemand.png)
-
-Users can specify the amount of desired fuel shifting in each industry category for both temperature ranges through policy levers. Fuel shifting will be applied to all fuels labeled as eligible in the input data variable 'Industrial Fuels Subject to Fuel Shifting.' For Low Temperature Industrial Heat, all fuel use will be shifted to electricity to represent adoption of industrial heat pumps. The conversion is done on the basis of energy content in the fuel, so when electricity is a recipient fuel type, an efficiency adjustment is applied to account for the greater efficiency with which electricity is used relative to thermal fuels.  The efficiency adjustment is subscripted by temperature range, so shifting of Low Temperature Industrial Heat is done based on the coefficient of performance for industrial heat pumps. The policy lever for Medium and High Temperature Industrial Heat is subscripted by target fuel type. A large portion of this heat demand can be met by electricity, and any shifting to electricity also uses an efficiency adjustment. Users can also specify that a portion of fuel use be shifted to any other target fuel, though shifting to hydrogen to meet the highest temperature requirements that cannot feasibly be electrified is the most likely use case.  The structure below shows how the EPS tracks both increases and decreases in each fuel type based on the user's policy settings, then calculates the total change in industrial fuel use from fuel shifting. 
-
-![industrial fuel shifting](/img/industry-ag-main-FuelShifting.png)
-
-Finally, the change in industrial fuel use from fuel shifting is added to the variable 'Fuel Use for Energy Purposes before Fuel Shifting' (shown above) to find 'Industrial Fuel Use for Energy Purposes before CCS and Methane Capture.'
+The impacts of each of these levers impacting efficiency are summed, accounting for the fact that multiple of these policies may be enabled at once.  This gives us the percent change in fuel use due to energy efficiency measures.  This percent change is multiplied by the fuel use calculated after fuel shifting, yielding total industrial fuel use for energy purposes, not including any fuel used for CCS or methane capture, both of which are handled later on. 
 
 ![fuel use for energy purposes before CCS and methane capture](/img/industry-ag-main-EnergyBeforeCCS.png)
 
@@ -193,11 +191,13 @@ Finally, the change in industrial fuel use from fuel shifting is added to the va
 
 ### Policies
 
-All but one policy affecting process emissions are represented as a fraction of the total potential abatement from that policy that is achieved (based on the user's policy setting and policy implementation schedule), so they are all handled via a similar calculation flow, as shown in the following screenshot:
+All but two policies affecting process emissions are represented as a fraction of the total potential abatement from that policy that is achieved (based on the user's policy setting and policy implementation schedule), so they are all handled via a similar calculation flow, as shown in the following screenshot:
 
 ![process emissions policies](/img/industry-ag-main-ProcEmisPols.png)
 
-Each policy setting at its current year value is multiplied by the total potential reduction (in CO<sub>2</sub>e terms) in that year year to obtain reductions due to that policy (in CO<sub>2</sub>e).  Emissions reductions are disaggregated by industry and by policy.  We include a helper variable 'Industry Process Emissions Policy to Pollutant Mappings' to assign the emissions abatement from each policy to the correct pollutant. Generally, each process emissions policy targets a single pollutant, for example substitution of f-gases in the chemicals industry or methane capture for natural gas and petroleum systems.  The exceptions are the agricultural policies targeting cropland and rice and livestock, which include abatement of both CH<sub>4</sub> and N<sub>2</sub>O.  We apportion emissions reductions between these pollutants based on their share of BAU agricultural emissions.
+Each policy setting at its current year value is multiplied by the total potential reduction (in CO<sub>2</sub>e terms) in that year year to obtain reductions due to that policy (in CO<sub>2</sub>e).  The total potential reduction is defined by the input file "PERAC Mass CO2e Avoidable by Marginal Cost", which projects the process emissions that can be abated by policy in the BAU. 
+
+Emissions reductions are disaggregated by industry and by policy.  We include a helper variable 'Industry Process Emissions Policy to Pollutant Mappings' to assign the emissions abatement from each policy to the correct pollutant. Generally, each process emissions policy targets a single pollutant, for example substitution of f-gases in the chemicals industry or methane capture for natural gas and petroleum systems.  The exceptions are the agricultural policies targeting cropland and rice and livestock, which include abatement of both CH<sub>4</sub> and N<sub>2</sub>O.  We apportion emissions reductions between these pollutants based on their share of BAU agricultural emissions.
 
 Our sources for potential percentage reductions achievable also break down the abatement potential into cost buckets, and the cheapest options are implemented first (see the [Industry - Cash Flow sheet](industry-ag-cash).  If a carbon tax is enabled and applies to a source of emissions (which depends on whether the carbon tax is set to apply to process emissions and/or to non-CO<sub>2</sub> gases), we also calculate the process emissions abated due to the tax.  We assume that any abatement potential at a cost less than or equal to the carbon tax is implemented (including any potential that is negatively prices, or cost-saving).  Emissions abated due to the carbon tax are then added to the variable 'This Year Change in Process Emissions by Policy and Industry.'  
 
@@ -217,7 +217,15 @@ We then use global warming potential (GWP) factors to convert BAU Process Emissi
 
 ![change in process emissions in grams pollutant](/img/industry-ag-main-CngProcessPollutant.png)
 
-Finally, we apply the percent change in production due to policies (the calculation of which is explained above) to adjust both the process emissions and the change in process emissions to reflect increases or decreases in industry production levels.  The 'Process Emissions before CCS' variable is used later on this sheet as a component of total Industry sector emissions, while the 'Change in Process Emissions' variable is used on the [Industry - Cash Flow sheet](industry-ag-cash).
+Next, we account for any changes in process emissions due to feedstock shifting. While all fuel-related policies to this point have tackled the impact of fuel use for energy purposes, we also include a policy -- described in the next section -- for reducing fossil feedstocks.  This policy can represent the impact of a shift from oil and gas feedstocks in the chemicals sector (some carbon from which is are released as the feedstocks are chemically converted into other products) to hydrogen or biofuel feeds. It can also represent a shift from the use of metallurgical coal for iron reduction in primary steelmaking to direct iron reduction with hydrogen feedstock. In both cases, emissions arising during the production processes can be prevented by a change in feedstock. We use the change in fuel consumption for non-energy purposes and each fuel's representative CO2 emissions intensity to determine feedstock shifting's imapct on process emissions.
+
+![total change in process emissions](/img/industry-ag-main-ProcEmisFeedstockShift.png)
+
+Then, we explicitly calculate non-BAU process emissions from input data, which can be enabled if a boolean policy lever is turned on by the user. This allows the user to explore differing projections of process emissions from various sources or the rollback of policies included in a BAU projection that would otherwise have lowered emissions and is subscripted by process emissions policy. 
+
+![alternative process emissions](/img/industry-ag-main-AlternativePEAAC.png)
+
+Finally, we apply the percent change in production due to policies (the calculation of which is explained above) to adjust both the process emissions and the change in process emissions to reflect increases or decreases in industry production levels.  The 'Process Emissions before CCS' variable is used later on this sheet as a component of total Industry sector emissions, while the 'Change in Process Emissions due to Policies' variable is used on the [Industry - Cash Flow sheet](industry-ag-cash). We add in the non-BAU additions afterwards such that their cash flows can be calculated separately. 
 
 ![total change in process emissions](/img/industry-ag-main-ProcEmisTotal.png)
 
@@ -229,7 +237,7 @@ First, we find the total industrial fuel use for energy purposes.  The calculati
 
 ![fuel use for energy purposes](/img/industry-ag-main-FuelForEnergy.png)
 
-We then add back in the industrial fuel use for non-energy purposes (feedstocks), adjusting for the percent change in production due to policies.  This gives us our total 'Industrial Fuel Use.'
+We then add back in the industrial fuel use for non-energy purposes (feedstocks), adjusting for the percent change in production due to policies and any shifting to alternative feedstocks, as defined by a policy lever and input data determining the recipient fuel and shifting ratio.  This gives us our total 'Industrial Fuel Use.'
 
 ![industrial fuel use](/img/industry-ag-main-FuelUse.png)
 
@@ -262,4 +270,4 @@ The model calculates foreign leakage (emissions induced in foreign countries in 
 The difference between BAU and policy case emissions by industry are multiplied by the foreign leakage rate (by industry) to obtain the total induced foreign emissions.  These emissions are not added into the totals for the modeled country or region- they are simply reported here.  More information about the calculation of foreign leakage appears above on this page, under the "General Notes" header.
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

@@ -48,26 +48,25 @@ The following table lists which approach is used to govern which types of action
 | Transportation | Mode shifting (e.g. shifting trips from LDVs to buses) | no | yes | TDM |
 | Transportation | Conventional pollutant reduction | no | yes | standards |
 | Electricity<sup>B</sup> | Technology choice for new power plants | yes | yes | floors: RPS, ban new plant types, mandated capacity construction |
-| Electricity | Flexibility provision | no | yes | DR, transmission, batteries |
+| Electricity | Flexibility provision | no | yes | demand response |
 | Electricity | Transmission loss reduction | no | yes | reduce T&D losses |
 | Electricity | Early retirement of fossil plants | yes | yes | additive: early retirement |
 | Electricity | Change in electricity imports & exports | no | yes | electricity imports, electricity exports |
 | Buildings | Change in demand for building services | yes | no | none |
 | Buildings | Technology choice (e.g. natural gas vs. electric appliances) | no | yes | building component electrification |
 | Buildings | Change in efficiency of new building components | yes | yes | additive: building codes, rebate, labeling |
-| Buildings | Accelerated retrofitting | no | yes | commercial retrofitting |
+| Buildings | Accelerated retrofitting | no | yes | commercial and residential retrofitting |
 | Buildings | Distributed solar PV deployment | no | yes | RPS tranche, parameterized subsidy<sup>C</sup> |
 | Industry | Change in demand for industrial products | yes | yes | additive: material efficiency / longevity / re-use, shift to non-animal products |
 | Industry | Technology choice (e.g. natural gas vs. electric production processes) | no | yes | fuel switching |
-| Industry | Change in energy efficiency of production | no | yes | standards, waste heat recovery, system integration |
-| Industry | Early retirement of industrial facilities | no | yes | early retirement |
+| Industry | Change in energy efficiency of production | no | yes | standards, waste heat recovery |
 | Industry | Process emissions abatement | yes | yes | additive: 11 levers (including agriculture) |
 | District Heat<sup>B</sup> | Technology choice (fuel switching) | no | yes | fuel switching |
 | District Heat | Efficiency | no | yes | CHP |
 | LULUCF | All actions | no | yes | each action has its own lever |
-| CCS | Amount of deployment | no | yes | CCS deployment |
+| CCS | Amount of deployment | no | yes | industrial CCS deployment |
 | Hydrogen Supply<sup>B</sup> | Technology choice (e.g. methane reforming, electrolysis, etc.) | no | yes | production pathway switching |
-| Geoengineering | Amount of deployment | no | yes | direct air capture |
+| Geoengineering | Amount of deployment | no | yes | direct air capture, enhanced rock weathering |
 | R&D | Amount of progress achieved | no | yes | separate levers for each technology |
 | Fuel Trade | Quantities of fuels imported/exported | yes | yes | reduce exports |
 
@@ -90,4 +89,4 @@ Key to acronyms used in this table:
 * TDM = transportation demand management
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

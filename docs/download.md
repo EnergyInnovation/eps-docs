@@ -48,8 +48,6 @@ The model folder will contain the following files and folders:
 
 * `.gitignore`, a file assisting in management of the Git repository containing the model's code
 
-* `Cost Curve Generator.xlsx`, an Excel file that enables users to create cost curve diagrams offline (similar to the cost curve diagrams available through the EPS's web interface)
-
 * Four scripts in the Python programming language (with `.py` extension), used to allow for batch runs and other automated behavior.  For instructions, see the [documentation pages on using the Python scripts](automated-analysis).
 
 * `EPS.mdl`, the model source code, suitable for use in Vensim Pro or Vensim DSS (and viewable in a text editor)
@@ -83,4 +81,4 @@ For non-U.S. versions of the Energy Policy Simulator, go to the list of [Energy 
 Many changes, including bug fixes, have been made with each model version.  See the Version History section of the model documentation page for details.  We recommend using only the most recent version of the EPS for analysis purposes.  However, older versions of the EPS may be useful for comparing the performance of different EPS releases or replicating results obtained via an older EPS release.
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

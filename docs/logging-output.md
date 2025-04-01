@@ -47,4 +47,4 @@ Click the "Open" button.  Vensim performs one run for each entry in the list of 
 The `.tsv` files are tab-separated values and can be opened in Microsoft Excel or another spreadsheet program, where the value of each variable specified in the `OuputVarsToExport.lst` file will be included for each year of the model run.  The `.vdfx` files are Vensim data files.  They can be safely deleted if you are only interested in the output for the variables specified in `OutputVarsToExport.lst` (which are included in the tab-separated values file).
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

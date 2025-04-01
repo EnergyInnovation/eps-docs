@@ -29,9 +29,7 @@ Remapping a subscript is possible, but caution must be taken.  In some cases, th
 
 ## Power Plant Types
 
-The 16 elements of the "Electricity Source" subscript are: hard coal, natural gas nonpeaker, nuclear, hydro, onshore wind, solar PV, solar thermal, biomass, geothermal, petroleum, natural gas peaker, lignite, offshore wind, crude oil, heavy or residual fuel oil, and municipal solid waste.  (This does not include distributed generation, which is handled in the Buildings sector and is not part of this subscript.)  Remapping of power plant types is possible given the following constraints:
-
-- The six power plant types that do not use fuel (hydro, onshore wind, offshore wind, solar PV, solar thermal, and geothermal) can only be mapped to power plant types that do not use fuel.  (The Total Primary Energy (TPE) calculation converts renewable electricity generation to equivalent primary energy, whereas it uses actual fuel consumed for the fuel-using plant types.)  Even if the fuel use is accounted for elsewhere, so there is no additional fuel use in the Electricity sector (e.g. if you wish to represent electricity from co-generation facilities whose fuel use is included in the Industry or District Heat sectors), you must not remap one of the plant types that do not use fuel, because TPE will be wrong.  In that case, remap one of the fuel-using plant types and set its heat rate to zero.
+There are 24 elements of the "Electricity Source" subscript. This does not include distributed generation, which is handled in the Buildings sector and is not part of this subscript.  Remapping of power plant types is possible given the following constraints:
 
 - The power plant types that use fuel can only be remapped to plant types that use another fuel provided by the same cash flow entity.  For example, hard coal and lignite are both provided by the "coal suppliers" cash flow entity.  You can remap one of these elements to another fuel provided by "coal suppliers" (such as anthracite, bituminous, or sub-bituminous coal), or even to cogeneration from district heating facilities that burn coal (being careful to adjust the heat rate to account only for any fuel use assigned to these facilities in the District Heating sector).  But you cannot remap "lignite" to a fuel provided by a different cash flow entity, such as "black liquor" (which would be supplied by the "biomass and biofuel suppliers" cash flow entity).  Otherwise, positive and negative cash flows associated with the fuel for the remapped power plant will be assigned to the wrong cash flow entity.
 
@@ -53,7 +51,7 @@ The 25 elements of the "Industry Category" subscript are listed on the [Industry
 
 ## Industrial Process Emissions Policies
 
-The eleven industrial process emissions policies are a subset of the "Policy" subscript and also are used in the "Industry by Process Emissions Policy" subscript  The twelve elements are: methane capture, methane destruction, f-gas substitution, f-gas destruction, f-gas recovery, f-gas inspct maint retrofit, cropland and rice measures, livestock measures, improved soil measures, N2O measures, and cement measures.  Each policy lever represents a "bucket" of different technical strategies (summed up from a major EPA report, for non-CO2 gases), and the exact composition of those buckets can change, as long as the following guidelines are respected:
+The 18 industrial process emissions policies are a subset of the "Policy" subscript and also are used in the "Industry by Process Emissions Policy" subscript. Each policy lever represents a "bucket" of different technical strategies (summed up from a major EPA report, for non-CO2 gases), and the exact composition of those buckets can change, as long as the following guidelines are respected:
 
 - Each policy's name can be updated in the web interface.  Abatement potential and cost data can be updated in indst/PERAC.  This can represent a variety of differences in technical measures and approaches to broadly abate the same gas from the same industry.
 
@@ -65,7 +63,7 @@ The eleven industrial process emissions policies are a subset of the "Policy" su
 
 - The livestock measures policy cannot be remapped, as its effects scale down with increasing use of the "shift from animal to nonanimal products" lever.
 
-For example, you could remap the "cement clinker substitution" policy to "cement measures" and add data about the cost and reduction potential of alternative cement chemistries to the existing data on clinker substitution in PERAC, so this lever represents doing both of these technical measures (depending on the lever's setting).  You could also consolidate all F-gas measures into a smaller number of levers (by default, four levers), or remap "Crop and Rice Measures" to a different policy that affects methane and nitrous oxide in the agriculture industry.
+For example, you could remap the "cement measures" policy to "cement clinker substitution" and add data specifically about the cost and reduction potential of clinker substitution in PERAC.  You could also consolidate all F-gas measures into a smaller number of levers (by default, four levers), or remap "Crop and Rice Measures" to a different policy that affects methane and nitrous oxide in the agriculture industry.
 
 ## Cash Flow Entities
 
@@ -107,7 +105,7 @@ Fuels appear in a variety of subscripts, including "All Fuels" and sector-specif
 
 ## Hydrogen Production Pathway
 
-The hydrogen production pathway subscript includes five pathways: electrolysis, natural gas reforming, coal gasification, biomass gasification, and thermochemical water splitting.
+The hydrogen production pathway subscript includes seven pathways: electrolysis with grid electricity, electrolysis with dedicated renewables, natural gas reforming, natural gas reforming with CCS, coal gasification, biomass gasification, and hydrocarbon partial oxidation.
 
 - Hydrogen production pathways may be remapped freely.  This subscript was designed to facilitate remapping, and also, there is the expectation that no EPS deployment is likely to use all of the available subscript elements.
 
@@ -123,4 +121,4 @@ The six land use policies are a subset of the "Policy" subscript and also are us
 
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

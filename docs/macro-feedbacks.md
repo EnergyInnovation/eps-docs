@@ -8,7 +8,7 @@ The Macroeconomic Feedbacks sheet uses results of the [input-output model](io-mo
 
 ## Energy Service Demand Feedbacks
 
-In addition to producing outputs on policy package impacts on jobs, GDP, and employee compensation, the I/O model also calculates the indirect and induced changes in output (value added) produced by different ISIC codes.  Just like changes in output directly caused by the policy package, indirect and induced changes in output are also associated with changes in energy use and emissions.  In order to capture the energy use and emissions effects, we need to feed the indirect and induced activity back into the main demand sectors of the EPS (Transportation, Buildings, and Industry), to affect the demand for energy-using services and industrial products.  Therefore, in this sheet, we calculate multipliers to be used within those sectors.  As the I/O model operates in terms of ISIC codes, the multipliers must be for each ISIC code, and we map these onto specific energy-using services or industries in the other sectors of the EPS.
+In addition to producing outputs on policy package impacts on jobs, GDP, and employee compensation, the I/O model also calculates the indirect and induced changes in output (value added) produced by different ISIC codes.  Just like changes in output directly caused by the policy package, indirect and induced changes in output are also associated with changes in energy use and emissions.  In order to capture the energy use and emissions effects, we need to feed the indirect and induced activity back into the main demand sectors of the EPS to affect the demand for energy-using services and industrial products.  Therefore, in this sheet, we calculate multipliers to be used within those sectors.  As the I/O model operates in terms of ISIC codes, the multipliers must be for each ISIC code, and we map these onto specific energy-using services or industries in the other sectors of the EPS.
 
 We already have calculated indirect effects on value added in the [I/O model](io-model), but industry passthrough expenditures were added to the change in industrial output used to calculate these effects, to capture the full value added (which includes changes in tax payments and worker compensation).  However, the passthrough costs do not alter production levels, so they do not alter energy use or emissions.  Accordingly, we must re-calculate the indirect value added, using the same methodology as in the I/O model, but without adding the change in passthrough costs into the change in output during the calculation.
 
@@ -22,7 +22,7 @@ Finally, we find the percent difference between the calculated GDP (which includ
 
 ![percent change in GDP](/img/macro-feedbacks-PercCngGDP.png)
 
-This variable is used in the Transportation, Buildings, and Industry sectors to adjust the energy services or industrial products demand to account for the indirect and induced economic effects of the policy package.
+This variable is used in the Transportation and Industry sectors to adjust the demand for freight transportation services and industrial products to account for the indirect and induced economic effects of the policy package. As of version 4.0.4, we do not represent macroeconomic feedback effects in consumer demand for passenger transportation services or building energy demand, since research indicates the link between changes in income and these metrics is not clear.
 
 ## Cash Flow Feedbacks
 
@@ -51,4 +51,4 @@ To do this, we take the change in domestic employee compensation from the I/O mo
 ![changes in government and labor and consumers cash flows](/img/macro-feedbacks-CashFlowCngs.png)
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

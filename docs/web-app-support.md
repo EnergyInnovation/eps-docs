@@ -30,21 +30,21 @@ Some graphs are single-variable graphs.  This means that any given scenario only
 
 ![output CO2e emissions structure and graph](/img/web-app-support-OutputCO2e.png)
 
-Note that the Y-axis may be scaled differently in Vensim than in the web application.  For instance, in the example above, the minimum Y-axis value is 5000.  (The drop and recovery in emissions is due to the 2020 coronavirus pandemic and associated recession.)
+Note that the Y-axis may be scaled differently in Vensim than in the web application.
 
 Multiple-variable output graphs may be multi-line or stacked area graphs.  While the web application can handle stacked area graphs with positive and negative areas, Vensim does not display this correctly, so some graphs that are likely to have negative elements (such as the "Government Cash Flow Accounting" graph) may be displayed as line graphs in Vensim but as stacked area graphs in the web app.
 
-Sometimes the calculated values in the model are distributed into different "buckets" for use in output graphs.  For example, in the graph of primary energy use, most fuel types are listed individually, but subtotals of all refined petroleum fuels and all liquid biofuels are calculated, so these groupings can be displayed as a single series on the output graph.
+Sometimes the calculated values in the model are distributed into different "buckets" for use in output graphs.  For example, in the graph of CO<sub>2</sub>e emissions by sector, the agriculture and waste management industry categories are split out from "Industrial Sector Pollutant Emissions" so that they can be displayed as separate series on the graph.
 
-![calculations for primary energy use graph](/img/web-app-support-PrimEnergyCalcs.png)
+![calculations for emissions by sector graph](/img/web-app-support-EmisCalc.png)
 
-Here is the corresponding primary energy use graph:
+Here is the corresponding graph of emissions by sector:
 
-![primary energy use graph](/img/web-app-support-PrimEnergyGraph.png)
+![emissions by sector graph](/img/web-app-support-EmisbySectorGraph.png)
 
 Wedge diagrams and cost curves cannot be rendered in Vensim.  To see these graph types, you must use the web application.
 
-In general, graphs are included on the Web Application Support sheet as a way to quickly visually check that each output variable is producing data and to verify that the units used by the output variable result in reasonable axis labels.  These small graphs are not intended to be used for data analysis, as they generally lack sufficient detail.  For data analysis use, it is recommended you use the versions of these graphs that are available through the web application.  If you wish to perform data analysis in Vensim, you can follow the guidelines discussed in the help pages in the [How to Conduct Analysis in Vensim Model Reader](how-to-conduct-analysis) section.
+In general, graphs are included on the Web Application Support sheet as a way to quickly visually check that each output variable is producing data and to verify that the units used by the output variable result in reasonable axis labels. These small graphs are not intended to be used for data analysis, as they generally lack sufficient detail. For data analysis use, it is recommended you use the versions of these graphs that are available through the web application. If you wish to perform data analysis in Vensim, you can follow the guidelines discussed in the help pages in the [How to Conduct Analysis in Vensim Model Reader](how-to-conduct-analysis) section.
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

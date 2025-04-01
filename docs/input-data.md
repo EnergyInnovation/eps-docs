@@ -4,7 +4,7 @@ title: The Included Input Data Set
 
 The Energy Policy Simulator (EPS) is distributed with a set of input data representing the modeled country or region.  For instance, the U.S. EPS contains a dataset representing the United States.  The same core model code (in the `EPS.mdl` and `EPS.vpmx` files) is compatible with multiple different regions - the way the EPS is adapted to different geographies is by updating the input data (and the file `WebAppData.xlsx`) to reflect the new region.
 
-There are differences in input data needs (e.g. which variables exist, or how they are subscripted) between different versions of the core model code (such as EPS 2.1.1 and EPS 3.0.0), but two geographic regions using the same core EPS version contain the same set of input data variables.
+There are differences in input data needs (e.g. which variables exist, or how they are subscripted) between different versions of the core model code (such as EPS 4.0.4 and EPS 3.0.0), but two geographic regions using the same core EPS version contain the same set of input data variables.
 
 This page describes the format and organization of the input data.  It also provides guidance that will be useful for a user seeking to swap a single input data value (for example, to provide an updated U.S. value) or to swap most or all of the input data (for example, to cause the model to represent a different country).
 
@@ -32,7 +32,7 @@ Inside each folder that corresponds to one or more sheets in Vensim are folders 
 
 The use of acronyms is necessary because of limitations in the Windows OS on file path lengths.
 
-If a user is looking at a variable with the EPS open in Vensim, it is possible to quickly locate this variable in the InputData folder because every input data variable in Vensim has a name that begins with the acronym used to name its folder inside the InputData folder.  So, if a user is looking at a variable in Vensim, he/she can simply navigate to the folder that corresponds to the sheet he/she is viewing (for example, "bldgs" for the "Buildings - Main" sheet), and then open the folder whose name is the acronym that prefixes the variable he/she is examining in Vensim (for example, the "CL" folder for the "CL Component Lifetime" variable).
+If a user is looking at a variable with the EPS open in Vensim, it is possible to quickly locate this variable in the InputData folder because every input data variable in Vensim has a name that begins with the acronym used to name its folder inside the InputData folder.  So, if a user is looking at a variable in Vensim, they can simply navigate to the folder that corresponds to the sheet they is viewing (for example, "bldgs" for the "Buildings - Main" sheet), and then open the folder whose name is the acronym that prefixes the variable they is examining in Vensim (for example, the "CL" folder for the "CL Component Lifetime" variable).
 
 There also exist several files at the root of the InputData folder:
 
@@ -70,7 +70,7 @@ A few variables use calculated outputs or intermediate calculation steps from ot
 
 ## Working Units and Output Units
 
-The units used by the EPS when outputing results can be customized using the conversion factors in the variables inside the `web-app` folder.  For example, financial results could be output in 2021 U.S. dollars, 2015 Chinese yuan, or any other currency.  The same is true for other types of outputs, such as units of energy or mass of pollutants.
+The units used by the EPS when outputing results can be customized using the conversion factors in the variables inside the `web-app` folder.  For example, financial results could be output in 2024 U.S. dollars, 2022 Chinese yuan, or any other currency.  The same is true for other types of outputs, such as units of energy or mass of pollutants.
 
 Internally, the EPS standardizes on specific "working units" that are used throughout its calculations.  Input data from various reports or databases needs to be adjusted to use the working units on the blue tabs that are exported to `.csv` format.
 
@@ -94,9 +94,8 @@ Due to the large number of data sources (often several for a single variable), t
 
 * The U.S. Energy Information Administration, particularly for BAU fuel use data in many sectors
 * The U.S. Environmental Protection Agency, especially pertaining to industrial process emissions
-* Argonne National Laboratory, for pollutant emissions intensities
 * The U.S. Bureau of Transportation Statistics, for data pertaining to travel demand and vehicle properties
 * The OECD, for input-output tables and related macroeconomic variables
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

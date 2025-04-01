@@ -4,7 +4,7 @@ title: Land Use, Land Use Change, and Forestry
 
 ## General Notes
 
-The Land Use, Land Use Change, and Forestry (LULUCF) sheet in the Energy Policy Simulator (EPS) handles pollutant emissions and sequestration from land uses, primarily related to forests, including forest set-asides, afforestation/reforestation, avoided deforestation, and forest management. However, the policy levers are flexible and can be repurposed to encompass other landscapes. Emissions from agricultural operations are handled in the [Industry sector](industry-ag-main) (including emissions from fuel use and process emissions, such as methane from enteric fermentation and rice cultivation). However, conversion of land from forest to cropland or vice versa is handled in the LULUCF sector.
+The Land Use, Land Use Change, and Forestry (LULUCF) sheet in the Energy Policy Simulator (EPS) handles pollutant emissions and sequestration from land uses, primarily related to forests, including forest set-asides, afforestation/reforestation, avoided deforestation, and forest management. Emissions from agricultural operations are handled in the [Industry sector](industry-ag-main) (including emissions from fuel use and process emissions, such as methane from enteric fermentation and rice cultivation). However, conversion of land from forest to cropland or vice versa is handled in the LULUCF sector.
 
 The LULUCF sector is constructed to be relatively flexible because different countries have very different land use challenges. For example, in the U.S., we include non-forest policy levers for wetland restoration and grassland restoration and avoided conversion. In some other countries, deforestation is a major problem unlike in the U.S. Therefore, the policies in this sector are defined based on a researched potential specific to the modeled country (set in input data), and the policy lever specifies a fraction of the potential that is achieved in each year.
 
@@ -111,4 +111,4 @@ The change in revenues from LULUCF policies is all allocated to the "non-energy 
 The labor and government (tax) shares of these revenues are separated out on the [Cross-Sector Totals](cross-sector-totals) sheet.
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

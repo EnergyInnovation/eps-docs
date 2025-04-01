@@ -73,4 +73,4 @@ If you wish to reset all of the levers to their default values (all policies tur
 You may exit SyntheSim mode by clicking the "Stop Setup" button.  The values of your policy settings and the model results will be remembered until you begin a new simulation or enter Sim Setup mode.
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

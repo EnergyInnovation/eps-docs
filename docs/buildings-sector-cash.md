@@ -13,7 +13,7 @@ The total amount spent on fuels is calculated by multiplying the total energy us
 
 In calculating the effect of policies on building component costs, we only consider components of the types tracked in the Energy Policy Simulator (EPS): heating systems, cooling and ventilation, envelope, lighting, appliances, and other energy-using components.  Certain policies, such as the carbon tax, may have a small effect on other components (say, cabinets or countertops) and on the cost of construction activities, but these impacts are not tracked by the model.
 
-The amount spent on building components in each year of the model run in the BAU case is taken in as input data.  We first adjust this amount upward based on the accelerated retrofitting policy, which causes components to be bought more frequently than in the BAU case.  We convert the fraction of components replaced annually (the user's policy setting) to a percentage reduction in the lifetime of each building component type.  We then increase the amount spent on building components of these types accordingly (assuming steady state, so the lifetime reduction takes effect in accordance with the user's policy implementation schedule, rather than suddenly reducing the lifetime of all existing components by a fixed amount and causing an unrealistic, one-year surge in retirements).  This should be reasonably accurate for countries without much net growth of floorspace, but will overestimate the costs of retrofitting for countries with high rates of net floorspace growth.  The following screenshot shows the relevant structure:
+The amount spent on building components in each year of the model run in the BAU case is taken in as input data. We first adjust this amount upward based on the accelerated retrofitting policy, which causes components to be bought more frequently than in the BAU case. We calculate the energy use reduction from buildings retrofitting and multiply it by an assumed cost per unit energy saved from input data. We assume some share of this retrofit cost is borne by government, again defined by input data. Lastly, this amount is reduced by the R&D lever for building capital cost reductions, which lowers the purchase price for new components.   The following screenshot shows the relevant structure:
 
 ![effects of retrofitting on building component spending](/img/buildings-sector-cash-Retrofitting.png)
 
@@ -21,47 +21,47 @@ Next, the amount to be spent on BAU plus retrofitted building components is adju
 
 * The building component R&D policy can reduce capital costs by a user-specified percentage.
 * Various policies (described on the main [Buildings Sector page](buildings-sector-main)) affect the efficiency of new building components.  The percent change in energy use (for the same set of components) is combined with an elasticity of component price with respect to energy use to obtain a change in policy case component costs.
-* The carbon tax can increase the cost of building components according to the amount of embedded carbon within those components (that is, emissions that occurred upstream in order to manufacture and transport the components, and whose costs may be passed on to purchasers).
+* The fuel use shifting policy changes what type of appliances are purchased by consumers. Typically, this policy represents electrification; e.g., a shift from gas furnaces to heat pumps. Since these components have differing purchase prices, we adjust spending by the incremental amount spent to purchase electrified components, which can be positive or negative depending on the component type.
 
 The following screenshot shows all three interactions and the resulting Amount Spent on Building Components:
 
 ![amount spend on building components](/img/buildings-sector-cash-AmtSpentOnCpts.png)
 
-The taxes paid on building components in the BAU case and the policy case are determined from the total amount spent on building components and the sales tax rate.  Then, we find the difference between the two quantities of taxes paid on building components.  Finally, we take the difference between the two total amounts spent on building components and subtract the difference in taxes paid to find the change in amount paid to building component suppliers.  The relevant structure is shown below:
-
-![taxes on building components](/img/buildings-sector-cash-CptsTaxes.png)
-
 ## Change in Distributed Solar Costs
 
 Distributed solar PV costs are handled via the endogenous learning curve for solar PV technology, which is discussed in the [Electricity Sector](electricity-sector-main).  This means that their costs decline based on total solar PV deployment.  We begin with the cost of distributed solar per unit capacity in the start year of the model run and apply the result of the endogenous learning calculation to find the cost per unit capacity in the current year, for both BAU and policy cases.
 
+The same process is applied to the soft costs per unit distributed solar capacity. 
+
 ![distributed solar cost per unit capacity](/img/buildings-sector-cash-DistSolarCostPerCap.png)
 
-We multiply by the amount of distributed solar capacity added in the BAU case and in the policy case to find the total amount spent on distributed solar in the current year in each case.  We then take the difference to find the change in amount spent on distributed solar due to policies.
+We multiply costs per unit capacity by the amount of distributed solar capacity added in the BAU case and in the policy case to find the total amount spent on distributed solar in the current year in each case.  We then take the difference to find the change in amount spent on distributed solar due to policies.
 
 ![amount spent on distributed solar](/img/buildings-sector-cash-AmtSpentDistSolar.png)
 
-We multiply the amount spent by the tax rate to find the tax paid on distributed solar equipment in the BAU and policy cases, and we subtract these values to find the difference in taxes paid due to policy.  We subtract the difference in taxes paid from the difference in total amount paid to find the change in cash flow for distributed solar equipment suppliers.
-
-![change in taxes paid on distributed solar equipment](/img/buildings-sector-cash-DistSolarTaxes.png)
-
-Separately, we calculate the amount spent on the subsidy for distributed solar equipment when that policy is enabled.  We multiply the increase in distributed solar capacity this year (not just the increase caused by the subsidy policy, but the total increase, as the subsidy is paid for all new distributed solar PV) by the cost per unit capacity and by the subsidy percentage to yield the total quantity of subsidy paid.
+Separately, we calculate the amount spent on subsidies for distributed solar equipment in the BAU and policy cases.  We multiply the cost per unit capacity in the BAU and policy scenarios by the year-over-year change in distributed generation capacity and the BAU percentage of costs subsidized (from input data). In the policy case, the percent of the remaining share of capital costs are multiplied in as well.
 
 ![calculating total distributed solar subsidy paid](/img/buildings-sector-cash-DistSolarSubsidy.png)
 
-## Allocating Cash Flow Changes Among Entities
+## Efficient Component Rebate Payments
 
-Finally, we have to determine which of the model's cash flow entities (government, industry, and consumers) pay or receive the change in cash flow from fuels and components in the buildings sector.  We begin by summing up the change in the amount spent on building components, the change in the amount spent on fuels used in buildings (including electricity), and the change in the amount spent on distributed solar systems, minus the subsidy, if any.  We divide up these expenditures among cash flow actors by the fraction of buildings owned by each actor.  The following screenshot shows the relevant structure:
+To calculate the total amount spent on building component rebates, we first find the total amount spent on rebate-qualifying components. We account for all rebate-qualifying components, not only the ones where the purchase decision was driven by the rebate policy, as "free riders" who would have bought the efficient component also get the rebate. This amount is subsequently multiplied by the percentage of the purchase cost offset by the rebate for all active years.
 
-![total spent in the Buildings Sector](/img/buildings-sector-cash-TotalSpent.png)
+![calculating efficient component rebates paid](/img/buildings-sector-cash-RebatePayments.png)
 
-We sum up the change in taxes paid (on components, fuels, and distributed energy systems) and add it to government cash flow, while we subtract subsidy payments from government cash flow.  The other actors are straightforward: their cash flow changes are the opposite sign from the change in the amount spent.  The structure is shown below:
+## Allocating Changes in Expenditures
 
-![assigning cash flows by actor](/img/buildings-sector-cash-AssigningCashFlows.png)
+Finally, we have to determine which of the model's cash-flow entities (government, industry, and consumers) pay the change in cash flow from fuels and components in the buildings sector.  We begin by summing up the change in the amount spent on nonenergy expenses -- such as the building components themselves and various subsidies -- and the change in the amount spent on fuels used in buildings.  We divide up these expenditures among cash flow actors by the fraction of buildings owned by each actor.  The share of expenses attributed to nonenergy industries is then broken down further into shares paid for by respective ISIC codes (subindustries).
 
-We also sum up the change in capital equipment supplier cash flows, which comes from changes in amounts spent on building components and on distributed energy systems.
+The following screenshot shows the relevant structure:
 
-![change in capital equipment supplier cash flow](/img/buildings-sector-cash-CapEqptSuppliersTot.png)
+![total spent in the Buildings Sector](/img/buildings-sector-cash-AllocatingExpenditures.png)
+
+## Allocating Changes in Revenue
+
+We also need to determine which of the model's cash-flow entities receive the change in cash flow from fuels and components in the buildings sector. These recipients vary by component type. Data indicating the recipient entity are sourced from inputs. These are segmented by ISIC code, as the portion of non-energy industries' revenue going to labor, taxes, and foreign entities are separated out after the industries' change in revenue is totaled across sectors. Changes in revenue from subsidies and rebates are simultaneously summed across their respective recipients. The calculation flow is shown here:
+
+![assigning cash flows by actor](/img/buildings-sector-cash-AllocatingRevenue.png)
 
 ---
-*This page was last updated in version 1.1.4.*
+*This page was last updated in version 4.0.4.*

@@ -123,11 +123,11 @@ In other words, when the policy group makes beneficial progress on the metric (w
 
 **This is generally how raw wedge thicknesses were already calculated in EPS 3.0.0.  The key difference as of 3.1 is that now we are doing this calculation separately for each component variable, rather than for a single metric variable taken as a whole.**  That is, we are adding the inner "For" loop, while the outer "For" loop and wedge thickness calculation should already exist.
 
-Negative values were relatively uncommon under the old approach but will be much more common now, because it is common for a policy that is beneficial overall to have negative effects on at least one of the component variables.  For instance, a policy might reduce emissions in the transportation sector by 100 units but increase energy-related emissions in the industrial sector by 2 units, so it will have a positive raw wedge thickness for the component variable `Output Total CO2e Emissions by Sector[transportation sector]` but a negative raw wedge thickness for the component variable `Output Industry Sector Energy Related CO2e Emissions Excluding Ag and Waste`.
+Negative values were relatively uncommon under the old approach but will be much more common now, because it is common for a policy that is beneficial overall to have negative effects on at least one of the component variables. For instance, a policy might reduce emissions in the transportation sector by 100 units but increase energy-related emissions in the industrial sector by 2 units, so it will have a positive raw wedge thickness for the component variable `Output Total CO2e Emissions by Sector[transportation sector]` but a negative raw wedge thickness for the component variable `Output Industry Sector Energy Related CO2e Emissions Excluding Ag and Waste`. The web app also includes some levers to test repeal of current policies, which can increase emissions.
 
 ### Step 5
 
-Replace all negative wedge thicknesses with zeroes.  We can't have negative thicknesses on the graph, and including the negative numbers interferes with the scaling we need to perform.
+Replace all negative wedge thicknesses with zeroes. We can't have negative thicknesses on the graph, and including the negative numbers interferes with the scaling we need to perform. If the result of the policy package is in the opposite direction of the expected wedge type in a given year (e.g. emissions in the policy scenario are greater than in the BAU), the directionality of the zeroing step is reversed (in the example of greater emissions in the policy case, any policy that decreases emissions in that year is zeroed).
 
 ### Step 6
 
@@ -195,8 +195,6 @@ For an "increase wedge" diagram, such as avoided premature mortality, we are don
 
 For a "reduction wedge" diagram, such as CO2e Emissions, we convert our final wedges into a wedge diagram by stacking them on top of a transparent wedge that represents the "remaining emissions."  The remaining emissions are simply the emissions you got from the model run with all policies enabled (in Step 3), with no modifications.
 
-Note that in any year where the policy case line is worse than BAU (i.e. has moved in the opposite direction from the metric, such as increased emissions or decreased avoided premature mortality), no wedges are shown in the gap between the policy case line and the BAU line.  Wedges are only shown to color in the space between the policy case line and the BAU line when the policy case line is more beneficial than the BAU line for that metric.
-
 ## Cost Curves
 
 The abatement cost curve needs to know the average annual abatement of each policy group over the model run.  Rather than calculating this itself, it should piggyback off the calculations done for the wedge diagram.  That is, it should use the annual output from Step 11, sum across all model run years, and divide by the number of model run years.  Once you have the width of each box, the Y-axis value for each box is calculated in the same way as before 3.1.0, using the new box width.
@@ -212,4 +210,4 @@ The new procedure is designed to be backward-compatible with old EPS versions, s
 The cost curves now only need one variable specified instead of two, as they rely on widths calculated for the wedge diagram.
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

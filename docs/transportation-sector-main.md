@@ -39,15 +39,15 @@ Not every vehicle technology will be used for each vehicle type (for example, we
 
 ## Calculating Cargo Distance Transported
 
-The EPS begins by determining the demand for transportation services, which is measured in units of cargo-distance, separated by vehicle type. Start year transportation service demand in the BAU case is taken in as the product of several input data variables: start year vehicles by technology, average vehicle loading, and average annual distance traveled by vehicle type. This demand is then modified in successive years by the input data variable for 'cargo distance transported relative to start year,' as shown in the following screenshot:
+The EPS begins by determining the demand for transportation services, which is measured in units of cargo-distance, separated by vehicle type. Start year transportation service demand in the BAU case is taken in as the product of several input data variables: start year vehicles by technology, average vehicle loading, and average annual distance traveled by vehicle type. This demand is then modified in successive years by the input data variable for 'BAU cargo distance transported relative to start year,' as shown in the following screenshot:
 
 ![cargo distance calculation](/img/transportation-sector-main-CargoDistCalc.png)
 
-Cargo distance transported is then modified for macroeconomic feedbacks from the [Input-Output Model](io-model) (see the [Macroeconomic Feedbacks page](macro-feedbacks)), as shown in the screenshot below. We choose to modify passenger travel by the percent change in household spending and freight travel by the weighted average percent change in industry's indirect and induced contribution to Gross Domestic Product.
+Cargo distance transported is then modified for macroeconomic feedbacks from the [Input-Output Model](io-model) (see the [Macroeconomic Feedbacks page](macro-feedbacks)), as shown in the screenshot below. We choose to modify freight travel by the weighted average percent change in industry's indirect and induced contribution to Gross Domestic Product. 
 
 ![transportation macroeconomic feedbacks](/img/transportation-sector-main-TranspMacroFeedback.png)
 
-Next, we modify cargo distance transported by the Transportation Demand Management (TDM) policy, as shown in the screenshot below. TDM refers to a spectrum of different policies that generally attempt to reduce passenger usage of light-duty vehicles. These include improving public transit systems, zoning for higher density along transit corridors, zoning for mixed use neighborhoods and developments, building walking and biking paths, and congestion pricing and parking fees on light-duty vehicles. The effect is to decrease passenger usage of LDVs, aircraft, and motorbikes, while increasing passenger usage of HDVs (buses) and rail. The magnitudes of these effects are geography-specific and are customizable in the input data variable RTMF Recipient Transportation Mode Fractions.
+Next, we modify cargo distance transported by the Transportation Demand Management (TDM) policy lever, as shown in the screenshot below. TDM refers to a spectrum of different policies that generally attempt to reduce passenger usage of light-duty vehicles. These include improving public transit systems, zoning for higher density along transit corridors, zoning for mixed use neighborhoods and developments, building walking and biking paths, and congestion pricing and parking fees on light-duty vehicles. The effect is to decrease passenger usage of LDVs, aircraft, and motorbikes, while increasing passenger usage of HDVs (buses) and rail. The magnitudes of these effects are geography-specific and are customizable in the input data variable RTMF Recipient Transportation Mode Fractions.
 
 TDM can also be applied to freight transport, which represents mode shifting and logistics. It decreases the freight ton-miles transported by HDVs (trucks) through better freight logistics and/or increases the freight ton-miles transported by rail.
 
@@ -109,7 +109,7 @@ All R&D policies are defined as being additional to any R&D required to comply w
 
 In order to decide which vehicle technologies will be selected by purchasers to fill the need for new cargo-distance from a given vehicle type in the current year, the model needs to know the price of each vehicle technology as seen by purchasers.  There are three components to this price: the upfront cost of the vehicle, the lifetime operation and maintenance costs (including fuel) for the vehicle (appropriately discounted), and a shadow cost applied to electric passenger light-duty vehicles to represent range anxiety and charging time concerns.  This section of the model calculates these costs.
 
-### NPV of Lifetime Fuel Expenditures
+### NPV of Lifetime Annual Expenditures
 
 First, we take the average transportation fuel cost weighted by fuel type and multiply it by the technology-specific new vehicle fuel economy values we calculated earlier, giving us the fuel cost per unit cargo distance transported by each vehicle type and technology.
 
@@ -121,17 +121,25 @@ Next, we convert this to fuel cost per unit vehicle-distance (for example, vehic
 
 We then add in annual expected vehicle maintenance, insurance, parking, and licensing, registration, and property tax costs. Vehicle maintenance costs are differentiated by vehicle type and technology (as the cost to maintain an electric vs. a gasoline car, for example, can vary significantly), and other costs are differentiated by vehicle type only. These values are all read in as input data.
 
-Finally, we convert this stream of expected fuel and other operation and maintenance expenditures over the vehicle's lifetime into a net present value (NPV) value, using the vehicle lifetime and a discount rate adopted by vehicle buyers.  A high discount rate is generally appropriate here, as vehicle buyers tend to undervalue future fuel savings (or costs) in their calculus of what vehicle to buy today.  This is one of three factors that contributes to the NPV of Lifetime Vehicle Cost:
+Finally, we convert this stream of expected fuel and other operation and maintenance expenditures over the vehicle's lifetime into a net present value (NPV) value, using an average vehicle ownership period and a discount rate adopted by vehicle buyers.  We use an ownership period rather than vehicle lifetime as some vehicle types, for example freight trucks, are typically retained by the original buyer for a period much shorter than the vehicle's lifetime.  A high discount rate is generally appropriate here, as vehicle buyers tend to undervalue future fuel savings (or costs) in their calculus of what vehicle to buy today.  This is one of three factors that contributes to the NPV of Lifetime Vehicle Cost:
 
 ![net present value of fuel costs over vehicle lifetime](/img/transportation-sector-main-NPVFuelCost.png)
 
 ### New Vehicle Price
 
-Prices for most vehicle technologies in future years are taken in as input data, in the "BAU New Vehicle Price" variable.  However, the model uses endogenous learning curves for battery electric vehicles.  This means their cost declines are linked to their cumulative deployment.  The first portion of the calculations in this section determine the cumulative deployment and the ratio of EV cost in the current model year to EV cost in the first model year.  This is based on the number of doublings of cumulative deployment, the share of each vehicle price that made up by the battery, and an estimated percent decline in battery price per doubling:
+The model adds these annual costs to the upfront price of the new vehicle. Prices for most vehicle technologies in future years are taken in as input data.  For battery-equipped vehicles, we separately calculate the cost of the battery using endogenous learning curves -- their cost declines are linked to their cumulative deployment. An average battery pack price (in $/kWh) in the model start year is read from input data, and the price falls endogenously as calculated on the [Endogenous Learning](endogenous-learning) page.  
 
-![endogenous EVs learning curve](/img/transportation-sector-main-EndogenousEVLearning.png)
+![endogenous battery learning](/img/transportation-sector-main-BatteryCost.png)
 
-If desired, the endogenous learning feature for electric vehicle may be overridden by replacing the corresponding zero values with the desired prices for each year in the “BAU New Vehicle Price” variable. BAU new vehicle prices are used for all other vehicle types.  All vehicle prices are then modified based on differences in new vehicle fuel economy in the policy case relative to the BAU case and an elasticity of vehicle price with respect to fuel economy, to account for the increase in price due to more efficient car components.  This is calculated separately for each vehicle type and technology, so we are comparing (for example) more vs. less efficient battery electric LDVs, not comparing battery electric and gasoline LDVs.
+Subsequently, the model takes into account any subsidies for vehicle batteries. This section of code is built to reflect assumptions about the 45X advanced manufacturing tax credits from the U.S. Inflation Reduction Act. These credits offer a $45/kWh credit to producers for domestically produced batteries. The credit can be passed through to consumers in the form of lower upfront vehicle prices. However, we assume only a share is actually passed through. The model structure therefore has multipliers on the subsidy value for both the fraction of vehicle batteries produced domestically and the fraction of subsidy passed through to customers. This structure can be adapted to reflect battery manufacturing subsidies with their own requirements in other regions. 
+
+![battery production subsidy](/img/transportation-sector-main-EndogenousEVLearning.png)
+
+Lastly, the battery cost is converted from $/kWh to $/vehicle by multiplying by the capacity of each vehicle type, then added to the non-battery portion of new vehicle price. (reminder: for non-battery-equipped vehicles, this input variable is the full cost of the vehicle)
+
+![battery size](/img/transportation-sector-main-BatterySize.png)
+
+All vehicle prices are then modified based on differences in new vehicle fuel economy in the policy case relative to the BAU case and an elasticity of vehicle price with respect to fuel economy, to account for the increase in price due to more efficient car components.  This is calculated separately for each vehicle type and technology, so we are comparing (for example) more vs. less efficient battery electric LDVs, not comparing battery electric and gasoline LDVs.
 
 ![effect of changes in fuel economy on new vehicle price](/img/transportation-sector-main-FuelEconPriceEffect.png)
 
@@ -139,7 +147,7 @@ Next, we adjust the price of each vehicle technology for policy case R&D, if the
 
 ![effects of R&D and carbon tax policy levers on new vehicle price](/img/transportation-sector-main-RnDPriceEffect.png)
 
-Finally, we adjust the vehicle price based on subsidies for electric vehicles, including BAU subsidies and any additional subsidies that may have been specified by the user for this model run.
+Finally, we adjust the vehicle price based on BAU subsidies and any additional subsidies that may have been specified by the user for this model run.
 
 ![effect of subsidies on new vehicle price](/img/transportation-sector-main-SubsidyEffect.png)
 
@@ -165,7 +173,7 @@ We take a similar approach in the EPS by implementing what is known as a logit c
 
 ![allocation by vehicle technology](/img/transportation-sector-main-VehTechAllocation.png)
 
-After the cost-based vehicle allocation, we check to see if the share of zero-emission vehicles (ZEVs) meets the minimum required ZEV sales percentage by each subregion, which can be increased through the ZEV mandate policy. This policy represents federal or state governments requiring vehicle manufacturers to sell at least a specified share of ZEVs. (Vehicle manufacturers can comply with a mandate by more heavily marketing ZEVs, offering more attractive ZEVs, and/or discounting ZEVs until sales reach the required percentage.) In the U.S. model, there are subregions for each of the 50 states and the District of Columbia.
+After the cost-based vehicle allocation, we check to see if the share of zero-emission vehicles (ZEVs) meets the minimum required ZEV sales percentage in each subregion, which can be modified by two policy levers. Up to 60 subregions can be defined; in the U.S. model there are 51 regions, representing the states and the District of Columbia.  The first lever allows the user to define non-BAU ZEV sales requirements for each subregion -- in the U.S. representing changes to the Advanced Clean Cars and Trucks rules of California and follower states.  The second policy lever allows the user to define alternative, region-wide minimum sales shares -- in the U.S.  this would represent changes to the Environmental Protection Agency's tailpipe standards for new vehicles. 
 
 ![ZEV Mandate](/img/transportation-sector-main-ZEVMandate.png)
 
@@ -173,13 +181,17 @@ The vehicle technologies that qualify as ZEVs are determined through input data,
 
 ![new vehicles demanded](/img/transportation-sector-main-QualifyingZEVs.png)
 
-Before applying the standard, we calculate how many road vehicles are sold in each subregion, which are the 50 states and the District of Columbia in the U.S. model. 
-
-![new vehicles by subregion](/img/transportation-sector-main-VehbySubregion.png)
-
-We then determine the share of vehicles that contribute to meeting the standard in each subregion based on user selected settings for which vehicles qualify. If the ZEV standard is met naturally, we keep the pre-ZEV standard allocation. Otherwise, we scale up ZEVs sales such that the standard is hit and scale down non-ZEV sales so as to avoid changing the total number of vehicles sold. This gives us the number of new road vehicles by subregion. As a last step, we add back in nonroad vehicles, which are not covered by the ZEV sales standard at this time, to get the total number of new vehicles sold.
+Before applying the standard, we calculate how many vehicles are sold in each subregion, then determine the share of vehicles that contribute to meeting the standard in each subregion based on user selected settings for which vehicles qualify. If the ZEV standard is met naturally, we keep the pre-ZEV standard allocation. Otherwise, we scale up ZEVs sales such that the standard is hit and scale down non-ZEV sales so as to avoid changing the total number of vehicles sold. This gives us the number of new vehicles by subregion.
 
 ![ZEV sales share without ZEV standard](/img/transportation-sector-main-ZEVSalesShare.png)
+
+For some vehicle types -- typically off-road vehicles like ships and planes -- there are no ZEV-qualifying vehicles sold in the BAU scenario. As a result, the above approach does not work; we cannot scale up zero ZEV sales to meet a minimum sales share. For these vehicle types, we assume equivalent shareweights for all ZEV-qualifying technologies, allowing each technology (battery electric, hydrogen-fueled, etc.) to vye competitively for a share of the required sales. Each technology's NVP of lifetime cost thus determines which technology will be sold to meet a minimum sales requirement. 
+
+![ZEV sales share for other vehicle types](/img/transportation-sector-main-OffRoadZEVs.png)
+
+Finally, the number of vehicles of all types sold in each subregion are summed, applying a minimum quantization to account for rounding errors. 
+
+![summing all sales](/img/transportation-sector-main-SummingSales.png)
 
 ## Tracking the Vehicle Fleet
 
@@ -207,7 +219,7 @@ The first step is to determine the amount and types of fuel that would be used i
 
 ![fuel that would be used in absence of LCFS](/img/transportation-sector-main-FuelBeforeLCFS.png)
 
-Next, we filter out vehicle types that are not regulated under the LCFS policy. This can be customized through an input data variable. For the U.S., we filter out aircraft so that they neither are bound by nor contribute to satisfying the LCFS. For visual clarity, the model separates regions of the structure that are subject to filtering by vehicle type behind blue bars.
+Next, we filter out vehicle types that are not regulated under the LCFS policy. This can be customized through an input data variable or adjusted in a policy scenario using the non-BAU LCFS vehicle types lever and input data. For the U.S., we filter out aircraft so that they neither are bound by nor contribute to satisfying the LCFS. For visual clarity, the model separates regions of the structure that are subject to filtering by vehicle type behind blue bars.
 
 ![filtering out unregulated vehicle types](/img/transportation-sector-main-VehTypeFilter.png)
 
@@ -266,4 +278,4 @@ We take in input data on the incremental cost to produce a unit of fuel used to 
 ![LCFS credit price and price cap](/img/transportation-sector-main-CreditPrice.png)
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*
