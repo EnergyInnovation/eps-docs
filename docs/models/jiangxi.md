@@ -22,12 +22,21 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Todd Fincannon, Energy Innovation LLC
 * Tongxin Zhu, iGDP
 * Xi Xi, iGDP
+* Xiaoxue Hou, Energy Innovation LLC
 * Xindi Li, iGDP
 * Xiping Xi, Jiangxi Academy of Sciences
 * Xiuli Zhang, Energy Innovation LLC
 * Yating Yuan, iGDP
 
 ## Version History
+
+### **3.4.9.1 - April 2, 2025**
+
+* Bug Fix
+  * Corrections to the conversion factor in web-app/OCCF.
+  * Adjustments to the output graph units for hydrogen consumption, LCOE, and electricity fuel cost.
+* Data Updates  
+  * Updated dist-heat/RHFF and dist-heat/BFoHPBF data to align with national data, and modified relevant policy descriptions.
 
 ### **3.4.9 - October 3, 2024**
 

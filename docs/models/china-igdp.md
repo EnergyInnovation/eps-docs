@@ -37,9 +37,10 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ### **3.4.9.3 - March 28, 2025**
 
-* Data Updates
+* Bug Fix
   *  Corrections to the conversion factor in web-app/OCCF.
   *  Adjustments to the output graph units for hydrogen consumption, LCOE, and electricity fuel cost.
+* Data Updates
   *  Revisions to process emissions in indst/BPE and indst/PERAC.
 
 ### **3.4.9.2 - December 16, 2024**

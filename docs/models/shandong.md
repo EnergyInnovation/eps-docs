@@ -26,10 +26,20 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Robbie Orvis, Energy Innovation LLC
 * Rui Wang, Beijing Smart Green Transport Research Center
 * Chenxi Zhang, China Academy of Building Research
+* Xiaoxue Hou, Energy Innovation LLC
 * Xiuli Zhang, Energy Innovation LLC
 * Lele Zou, Energy Innovation LLC
 
 ## Version History
+
+### **3.4.9.1 - April 2, 2025**
+
+* Data Updates
+  * Included a new dual carbon targets scenario and documentation.
+  * Updated process emission in indst/BPE, and fuel economy data in trans/SYFAFE.
+* Bug Fix
+  * Updated Natural gas fuel cost unit.
+  * Fixed translation error in Non-BAU Mandated Policy description.
 
 ### **3.4.9 - October 3, 2024**
 
