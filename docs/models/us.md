@@ -21,7 +21,6 @@ We would like to acknowledge the following people who made the Energy Policy Sol
 * Todd Fincannon, Energy Innovation LLC
 * Dan O'Brien, Energy Innovation LLC
 * Olivia Ashmoore, Energy Innovation LLC
-* Anand Gopal, Energy Innovation LLC
 
 ### Reviewers
 
@@ -39,6 +38,7 @@ We would like to acknowledge the following people who made the Energy Policy Sol
 * Jiang Kejun and He Chenmin, Energy Research Institute (国家发展和改革委员会能源研究所)
 * Amol Phadke, Lawrence Berkeley National Laboratory
 * Eric Gimon, Energy Innovation LLC
+* Anand Gopal
 
 The inclusion of a reviewer on this list does not imply endorsement of the model or its findings by this reviewer or his/her organization.
 
