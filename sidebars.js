@@ -26,7 +26,8 @@ const sidebars = {
         'web-interface-graphs',
         'calculating-wedge-diagrams-and-cost-curves',
         'background-and-technical-info',
-        'integrating-the-web-app'
+        'integrating-the-web-app',
+        'repeal-documentation'
       ]
     },
     {

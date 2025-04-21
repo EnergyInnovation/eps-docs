@@ -1,6 +1,6 @@
 EPS Repeal Scenario Guide
 ==============
-**April 17, 2025**
+**April 21, 2025**
 ## Modeled Scenario
 The US national and state models now feature a Repeal scenario representing the potential emissions, economic, and health impacts of repealing federal policies. The scenario is measured against the Current Policies scenario, which includes the Inflation Reduction Act (IRA), the Infrastructure Investment and Jobs Act (IIJA) and the CHIPS and Science Act, as well as finalized rules from the U.S. Environmental Protection Agency, including oil and gas methane standards; tailpipe CO2 standards for light-, medium-, and heavy-duty vehicles; and power plant CO2, mercury, and effluent rules. It also includes any state-level renewable portfolio or clean energy standards; state carbon pricing schemes; building electrification, appliance, and efficiency standards; low carbon fuel standards; EV rebates and subsidies; and adoption of Advanced Clean Cars I and II and Advanced Clean Trucks.
 
@@ -114,3 +114,6 @@ The EPS reads in input data capturing ZEV requirements for each vehicle type and
 The EPA issued rules limiting methane emissions from new and existing oil and natural gas operations. The Current Policies scenario uses EPA’s Regulatory Impact Assessment and its separate marginal abatement cost curve data set to translate these rules into expected GHG abatement and costs, which is then removed from baseline emissions.
 
 The Repeal Scenario removes these rules by reading in an alternate input data file that specifies the amount of increased methane emissions for both the Oil and Gas Production and Oil and Gas Processing industry categories relative to the Current Policies scenario in each cost tier, which modifies both agricultural emissions and cash flows. This is handled in the Industry policy *Non BAU Increase in Process Emissions*. If you wish to turn off only this program, be sure to leave the checkbox checked for only the Oil and Gas boxes before moving the policy slider bar to OFF.
+
+---
+*This page was last updated in version 4.0.4.*
