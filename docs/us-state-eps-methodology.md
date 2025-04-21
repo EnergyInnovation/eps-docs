@@ -146,6 +146,7 @@ Linear implementation of policy requirements unless noted otherwise starting in 
 The state models now feature a Repeal scenario representing the potential emissions, economic, and health impacts of repealing federal policies. The scenario is measured against the Current Policies scenario, which includes the Inflation Reduction Act (IRA), the Infrastructure Investment and Jobs Act (IIJA) and the CHIPS and Science Act, as well as finalized rules from the U.S. Environmental Protection Agency. 
 Guidance on the repeal documentation is available, [here](https://docs.energypolicy.solutions/repeal-documentation). 
 Repeal scenario policies include the following:
+
 | Inflation Reduction Act | 
 |----------|
 | 30D passenger vehicle tax credits | 
