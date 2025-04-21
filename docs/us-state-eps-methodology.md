@@ -140,6 +140,33 @@ The state models include a default version of the US Nationally Determined Contr
 
 Linear implementation of policy requirements unless noted otherwise starting in 2023.
 
+## Federal Policy Repeal and Rollback Scenario
+### Policy Assumptions in the Repeal Scenario
+
+The state models now feature a Repeal scenario representing the potential emissions, economic, and health impacts of repealing federal policies. The scenario is measured against the Current Policies scenario, which includes the Inflation Reduction Act (IRA), the Infrastructure Investment and Jobs Act (IIJA) and the CHIPS and Science Act, as well as finalized rules from the U.S. Environmental Protection Agency. 
+Guidance on the repeal documentation is available, [here](https://docs.energypolicy.solutions/repeal-documentation). 
+Repeal scenario policies include the following:
+| Inflation Reduction Act | 
+|----------|
+| 30D passenger vehicle tax credits | 
+| 30D passenger vehicle tax credits |
+| 45W commercial vehicle tax credits |
+| 45Y/48E tax credits for clean electricity |
+| 45U zero-emission nuclear power production tax credit |
+| 45Q tax credits for carbon capture and sequestration |
+| 45X advanced manufacturing production tax credit |
+| 45V clean hydrogen production tax credit |
+| Support for distributed solar (Solar for All program and 25D rooftop solar tax credit) |
+| 30C alternative fuel vehicle refueling property tax credit |
+
+| EPA Rules  |
+|----------|
+| 111 Clean Air Act rules, Mercury and Air Toxics standards, and Steam Electric Power Generating Effluent Guidelines for power plants |
+| Tailpipe emission standards for light-, medium-, and heavy-duty vehicles (model years 2027 and later) |
+| California’s waiver to set its own tailpipe emission standards under the Clean Air Act |
+| Methane emission rules for oil and natural gas operations |
+
+
 ## About Us  
 --------
 
