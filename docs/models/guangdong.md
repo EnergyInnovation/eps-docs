@@ -33,6 +33,11 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
+### **3.4.9.2 - May 9, 2025**
+
+* Web Application Data Updates
+  * Updated web-app/BCF and web-app/MOU to standardize the unit across all subnational models in China.
+
 ### **3.4.9.1 - March 28, 2025**
 
 * Bug Fix
