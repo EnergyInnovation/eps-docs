@@ -45,8 +45,7 @@ title: "安徽能源政策模型"
 能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考 [软件许可证](../software-license) 页面，了解全部细节。
 
 ## 图片来源
-Xiaoyaojin Park, a public park sitting on the ancient site of the Battle of Xiaoyao Ford, in Hefei, China<br/>
+逍遥津公园，位于中国合肥，是古代逍遥津之战的遗址上的一座公共公园。<br/>
 david eric<br/>
 [https://www.istockphoto.com/photo/xiaoyaojin-park-hefei-gm1218947426-356376235](https://www.istockphoto.com/photo/xiaoyaojin-park-hefei-gm1218947426-356376235)<br/>
-许可：Shutterstock License<br/>
-
+许可：iStock License<br/>
