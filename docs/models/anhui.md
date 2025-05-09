@@ -38,7 +38,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **3.4.9 - May 8, 2025**
+### **3.4.9 - May 9, 2025**
 
 * Initial release
 
@@ -47,8 +47,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software. Refer to the [Software License](../software-license) page for full details.
 
 ## Image Credits
-Landscape of Huangshan (Yellow Mountains).UNESCO World Heritage Site.Located in Huangshan,Anhui,China.<br/>
-ABCDstock<br/>
-[https://www.shutterstock.com/image-photo/landscape-huangshan-yellow-mountainsunesco-world-heritage-1437712829](https://www.shutterstock.com/image-photo/landscape-huangshan-yellow-mountainsunesco-world-heritage-1437712829)<br/>
-Shutterstock License<br/>
-Changes: Image has been cropped.
+Xiaoyaojin Park, a public park sitting on the ancient site of the Battle of Xiaoyao Ford, in Hefei, China<br/>
+david eric<br/>
+[https://www.istockphoto.com/photo/xiaoyaojin-park-hefei-gm1218947426-356376235](https://www.istockphoto.com/photo/xiaoyaojin-park-hefei-gm1218947426-356376235)<br/>
+License: iStock License<br/>

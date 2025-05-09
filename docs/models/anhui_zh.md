@@ -36,7 +36,7 @@ title: "安徽能源政策模型"
 
 ## 版本历史
 
-### **3.4.9 - 2025年5月8日**
+### **3.4.9 - 2025年5月9日**
 
 * 第一次发布
 
@@ -45,8 +45,8 @@ title: "安徽能源政策模型"
 能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考 [软件许可证](../software-license) 页面，了解全部细节。
 
 ## 图片来源
-Landscape of Huangshan (Yellow Mountains).UNESCO World Heritage Site.Located in Huangshan,Anhui,China.<br/>
-ABCDstock<br/>
-[https://www.shutterstock.com/image-photo/landscape-huangshan-yellow-mountainsunesco-world-heritage-1437712829](https://www.shutterstock.com/image-photo/landscape-huangshan-yellow-mountainsunesco-world-heritage-1437712829)<br/>
+Xiaoyaojin Park, a public park sitting on the ancient site of the Battle of Xiaoyao Ford, in Hefei, China<br/>
+david eric<br/>
+[https://www.istockphoto.com/photo/xiaoyaojin-park-hefei-gm1218947426-356376235](https://www.istockphoto.com/photo/xiaoyaojin-park-hefei-gm1218947426-356376235)<br/>
 许可：Shutterstock License<br/>
-修改：图片已被裁剪。
+
