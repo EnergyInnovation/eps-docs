@@ -17,13 +17,11 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Jinglu Sun, Anhui Provincial Economic Research Institute
 * Li Yang, iGDP
 * Lijie Tang, Anhui Provincial Economic Research Institute
-* Lu Lu, Chongqing Carbon Consultant & Management Technology CO.,Ltd
 * Manjiao Song, iGDP
 * Megan Mahajan, Energy Innovation LLC
 * Meian Chen, iGDP
 * Min Hu, iGDP
 * Minshu Deng, Energy Innovation LLC
-* Qiang Li, Chongqing Carbon Consultant & Management Technology CO.,Ltd
 * Robbie Orvis, Energy Innovation LLC
 * Tao Wang, Anhui Provincial Economic Research Institute
 * Todd Fincannon, Energy Innovation LLC
@@ -33,6 +31,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Xiuli Zhang, Energy Innovation LLC、
 * Xueye Liu, iGDP
 * Yating Yuan, iGDP
+
 
 
 
