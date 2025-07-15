@@ -17,7 +17,6 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Li Yang, iGDP
 * Lu Lu, Chongqing Carbon Consultant & Management Technology CO.,Ltd
 * Manjiao Song, iGDP
-* Megan Mahajan, Energy Innovation LLC
 * Meian Chen, iGDP
 * Min Hu, iGDP
 * Minshu Deng, Energy Innovation LLC
