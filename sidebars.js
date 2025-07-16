@@ -265,6 +265,8 @@ const sidebars = {
           { type: 'doc', id: 'models/southkorea', label: 'South Korea' },
           { type: 'doc', id: 'models/tennessee', label: 'Tennessee' },
           { type: 'doc', id: 'models/texas', label: 'Texas' },
+          { type: 'doc', id: 'models/tianjin', label: 'Tianjin' },
+          { type: 'doc', id: 'models/tianjin_zh', label: 'Tianjin — 天津' },
           { type: 'doc', id: 'models/us', label: 'United States' },
           { type: 'doc', id: 'models/utah', label: 'Utah' },
           { type: 'doc', id: 'models/vermont', label: 'Vermont' },
