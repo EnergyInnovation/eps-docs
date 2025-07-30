@@ -26,7 +26,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Xiaoxue Hou, Energy Innovation LLC
 * Xindi Li, iGDP
 * Xinzhi Wang, School of Economics and Management, Tianjin Vocational Institute
-* Xiuli Zhang, Energy Innovation LLC、
+* Xiuli Zhang, Energy Innovation LLC
 * Yating Yuan, iGDP
 
 
