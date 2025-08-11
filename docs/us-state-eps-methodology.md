@@ -167,6 +167,24 @@ Policies rolled back or repealed in the Repeal Scenario include the following:
 | California’s waiver to set its own tailpipe emission standards under the Clean Air Act |
 | Methane emission rules for oil and natural gas operations |
 
+## State-level Policies Included in State Models
+| Sector | Policies | State(s) |
+|---|---|---|
+| Electricity | Clean Energy and Electricity Standards/Plans | CA - SB 100 <br/> CO - Clean Energy Plan <br/> NC - Clean Energy Plan <br/> NJ - Executive Oder No. 28 <br/> NY - 10-Point Action Plan <br/> RI - Clean Energy Plan <br/> WI - Energy Plan and Executive Order #38 |
+| Electricity | Geothermal | CO - HB23-1272|
+| Buildings | Appliance and Equipment Energy and Efficiency Standards, and Energy Code | CA - Code of Regulations Title 20 <br/> CO - HB23-1161 and HB22-1362 <br/> MA - MA S9 <br/> MD - HB 772 <br/> MN - HF 3911 <br/> NH - NH Rev Stat § 339-G:3 <br/> NJ - A5160 <br/> NY - NY A 10439 and A3006 <br/> NV - AB 383 <br/> RI - S 0339A <br/> VT - 9 V.S.A. chapter 74 <br/> WA - Washington State 2021 Energy Code, Clean Buildings Performance Standard, and Appliance Efficiency Standards |
+| Buildings | Building Performance Standard | CO - HB21-1286 <br/> MD - SB 528 <br/> NY - NYC Local Law 97 and Build Smart 2025 |
+|Transportation | Low Carbon Fuel Standard | CA - SB 348 <br/> OR - SB 324 <br/> WA - Washington Clean Fuel Standard |
+| Industry | Oil, Gas, Methane | CA - SB 613 <br/> CO - AQCC regulations 7 and 22, SB22-198 <br/> LA - LAC 43:XIX.103, 3503, 3507, 3509, and 3511 <br/> MA - 310 CMR 7.73 <br/> MD - COMAR 26.11.41 and COMAR 26.11.42 <br/> NM - 19.15.27 NMAC <br/> OR - DEQ 16-2021 <br/> PA - Regulation #7-580 <br/> WA - 173-408 WAC | 
+| Industry | HFCs | CA - SB 1206 <br/> CO - AQCC Regulation 22 <br/> MA - 310 CMR 7.76 <br/> NJ - NJ A5583 <br/> WA - HB 1112, HB 1050 |
+| Industry | Cement and Concrete | CA - SB 596 | 
+| Industry | Industrial Facilities | CO - GEMM Phase I & II rulemaking, HB21-1272 |
+| Industry | Hydrogen | CO - HB23-1281 |
+| Industry | Supply Chain | CO - HB22 – 1355 |
+| Land Use, Agriculture, Waste | Agriculture | WA - SB 5947 &  SB 6306 |
+
+
+
 
 ## About Us  
 --------
