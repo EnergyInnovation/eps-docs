@@ -47,6 +47,11 @@ title: "江西能源政策模型"
 
 * 第一次发布
 
+## 相关报告
+
+摘要：报告回顾了江西省低碳转型的阶段性进展，并基于江西EPS模型开展中长期能源消费和温室气体排放的长期趋势预测，识别在双碳情景下江西省需要重点关注的关键领域、主要目标设定以及优先实施的减排政策。同时，报告评估了减排政策投资需求及其对GDP和就业的影响。在此基础上，报告提出有针对性的政策建议，以期为江西省实现经济发展与低碳转型协同提供决策支持。<br/>
+[https://www.igdp.cn/wp-content/uploads/2025/08/Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Jiangxi%E2%80%94Developing-a-Dual-Carbon-Pathway-Using-EPS-Modeling.pdf](https://www.igdp.cn/wp-content/uploads/2025/08/Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Jiangxi%E2%80%94Developing-a-Dual-Carbon-Pathway-Using-EPS-Modeling.pdf)<br/>
+
 ## 软件许可
 
 能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考 [软件许可证](../software-license) 页面，了解全部细节。

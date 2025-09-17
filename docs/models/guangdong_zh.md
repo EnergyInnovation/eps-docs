@@ -53,6 +53,11 @@ title: "广东能源政策模型"
 
 * 第一次发布
 
+## 相关报告
+
+摘要：报告探讨了广东省整体的能源消费及排放变化趋势，并聚焦工业、建筑、交通和电力等关键部门的低碳转型路径，针对关键政策路径提出建议。通过分析不同时间段的政策减排潜力，识别出包括提高可再生能源占比、严格控制煤电发展、提升工业电气化水平、推广新能源交通工具、加强建筑节能与电气化、完善电力市场机制、加强含氟气体减排控制等重点政策，希望能为广东省“双碳”战略的决策与实施提供科学支撑。<br/>
+[https://www.igdp.cn/wp-content/uploads/2025/09/Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Guangdong%E2%80%94Using-EPS-Modeling.pdf](https://www.igdp.cn/wp-content/uploads/2025/09/Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Guangdong%E2%80%94Using-EPS-Modeling.pdf)<br/>
+
 ## 软件许可
 
 能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考 [软件许可证](../software-license) 页面，了解全部细节。
