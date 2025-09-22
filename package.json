@@ -27,6 +27,13 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.4.1"
   },
+  "packageManager": "pnpm@10.17.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "core-js",
+      "core-js-pure"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.5%",
