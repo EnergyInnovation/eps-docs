@@ -21,20 +21,23 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Dongquan He, Beijing Smart Green Research Center
 * Yiqun He, Beijing Smart Green Research Center
 * Xiaoxue Hou, Energy Innovation LLC
+* Kejun Jiang, The Hong Kang University of Science and Technology (Guangzhou) 
 * Jindong Liang, Beijing Smart Green Research Center
 * Lingjie Li, Beijing Smart Green Research Center
 * Chang Liu, Beijing Smart Green Research Center
 * Qing Liu, Beijing Smart Green Research Center
 * Megan Mahajan, Energy Innovation LLC
 * Robbie Orvis, Energy Innovation LLC
+* Ke Wang, Renmin University of China
 * Rui Wang, Beijing Smart Green Research Center
 * Xiuli Zhang, Energy Innovation LLC
+* Liya Zhao, Beijing Smart Green Research Center
 * Lele Zou, Climate Imperative Foundation
 * Siqi Zu, Beijing Smart Green Research Center
 
 ## Version History
 
-### **3.4.9 - March 1, 2025**
+### **3.4.9 - November 10, 2025**
 
 * Initial release
 
