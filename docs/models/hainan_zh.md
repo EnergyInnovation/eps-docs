@@ -48,6 +48,11 @@ title: "海南能源政策模型"
 
 * 第一次发布
 
+## 相关报告
+
+摘要：本报告系统回顾了海南省低碳转型的进展与成效，运用情景分析方法，分部门预测能源消费与温室气体排放的长期趋势，并分阶段梳理实现“碳中和”目标的关键政策措施。同时，报告全面评估了政策组合对经济发展、就业以及投资需求的潜在影响，提出了切实可行的政策建议，旨在为海南的低碳发展路径提供科学依据与决策参考。<br/>
+[https://www.igdp.cn/wp-content/uploads/2025/11/2025-11-IGDP-Report-CN-Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Hainan—Using-EPS-Modeling.pdf](https://www.igdp.cn/wp-content/uploads/2025/11/2025-11-IGDP-Report-CN-Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Hainan—Using-EPS-Modeling.pdf)<br/>
+
 ## 软件许可
 
 能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考 [软件许可证](../software-license) 页面，了解全部细节。

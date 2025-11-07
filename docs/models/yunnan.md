@@ -15,23 +15,20 @@ The Yunnan Energy Policy Simulator may be used on this website through your web 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Yunnan. Individuals are listed alphabetically by last name.
 
-* Ruqi Chen, Beijing Smart Green Research Center
 * Minshu Deng, Energy Innovation LLC
 * Todd Finncannon, Energy Innovation LLC
 * Dongquan He, Beijing Smart Green Research Center
-* Yiqun He, Beijing Smart Green Research Center
 * Xiaoxue Hou, Energy Innovation LLC
 * Kejun Jiang, The Hong Kang University of Science and Technology (Guangzhou) 
 * Jindong Liang, Beijing Smart Green Research Center
 * Lingjie Li, Beijing Smart Green Research Center
-* Chang Liu, Beijing Smart Green Research Center
-* Qing Liu, Beijing Smart Green Research Center
-* Megan Mahajan, Energy Innovation LLC
+* Wenqing Li, Beijing Smart Green Research Center
+* Yanyan Meng, Beijing Smart Green Research Center
 * Robbie Orvis, Energy Innovation LLC
+* Chenyi Wang, Beijing Smart Green Research Center
 * Ke Wang, Renmin University of China
 * Rui Wang, Beijing Smart Green Research Center
 * Xiuli Zhang, Energy Innovation LLC
-* Liya Zhao, Beijing Smart Green Research Center
 * Lele Zou, Climate Imperative Foundation
 * Siqi Zu, Beijing Smart Green Research Center
 
