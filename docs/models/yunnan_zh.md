@@ -34,7 +34,7 @@ title: "云南能源政策模型"
 
 ## 版本历史
 
-### **3.4.9 - 2025年11月10日**
+### **3.4.9 - 2025年11月25日**
 
 * 第一次发布
 
@@ -43,8 +43,8 @@ title: "云南能源政策模型"
 能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考 [软件许可证](../software-license) 页面，了解全部细节。
 
 ## 图片来源
-彩虹桥，青岛，山东，中国<br/>
-Thomas Chen<br/>
-[https://unsplash.com/photos/cable-stayed-bridge-at-night-DwqRiLTBKLE](https://unsplash.com/photos/cable-stayed-bridge-at-night-DwqRiLTBKLE)<br/>
-Unsplash License<br/>
+香格里拉白水台，云南，中国<br/>
+赵丽雅<br/>
+[https://flickr.com/photos/203843734@N07/54942917056/in/dateposted-public/](https://flickr.com/photos/203843734@N07/54942917056/in/dateposted-public/)<br/>
+CC BY 4.0 License<br/>
 Changes: 图片经过裁剪，并在左侧经过渐变处理。

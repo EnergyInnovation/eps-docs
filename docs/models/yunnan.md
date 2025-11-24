@@ -34,7 +34,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 # Version History
 
-### **3.4.9 - November 10, 2025**
+### **3.4.9 - November 25, 2025**
 
 * Initial release
 
@@ -43,8 +43,8 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software. Refer to the [Software License](../software-license) page for full details.
 
 ## Image Credits
-The rainbow bridge, Qingdao, Shandong, China<br/>
-Thomas Chen<br/>
-[https://unsplash.com/photos/cable-stayed-bridge-at-night-DwqRiLTBKLE](https://unsplash.com/photos/cable-stayed-bridge-at-night-DwqRiLTBKLE)<br/>
-Unsplash License<br/>
+White-water terrace of Shangri-La, Yunnan, China<br/>
+Liya Zhao<br/>
+[https://flickr.com/photos/203843734@N07/54942917056/in/dateposted-public/](https://flickr.com/photos/203843734@N07/54942917056/in/dateposted-public/)<br/>
+CC BY 4.0 License<br/>
 Changes: Image has been cropped and a fade has been applied to the left side.
