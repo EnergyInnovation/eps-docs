@@ -8,7 +8,7 @@ title: "河南能源政策模型"
 
 您可以通过网络浏览器在本网站上使用河南能源政策模型，或点击下方按钮将完整版模型下载至您的电脑中。您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
 
-<p><a href="https://wkf.ms/4hNOYtm" class="btn">下载河南EPS模型</a></p>
+<p><a href="https://wkf.ms/4az9mxB" class="btn">下载河南EPS模型</a></p>
 
 ## 参考情景
 
@@ -34,7 +34,7 @@ title: "河南能源政策模型"
 
 ## 版本历史
 
-### **3.4.9 - 2025年11月10日**
+### **3.4.9 - 2025年12月15日**
 
 * 第一次发布
 
@@ -43,8 +43,8 @@ title: "河南能源政策模型"
 能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考 [软件许可证](../software-license) 页面，了解全部细节。
 
 ## 图片来源
-彩虹桥，青岛，山东，中国<br/>
-Thomas Chen<br/>
-[https://unsplash.com/photos/cable-stayed-bridge-at-night-DwqRiLTBKLE](https://unsplash.com/photos/cable-stayed-bridge-at-night-DwqRiLTBKLE)<br/>
-Unsplash License<br/>
-Changes: 图片经过裁剪，并在左侧经过渐变处理。
+老君山，洛阳，河南，中国<br/>
+Zhang mengyang<br/>
+[https://www.istockphoto.com/photo/the-laojun-mountain-luoyang-henan-china-asia-funiu-mountains-qinling-mountains-snow-gm2184801994-603607261?searchscope=image%2Cfilm](https://www.istockphoto.com/photo/the-laojun-mountain-luoyang-henan-china-asia-funiu-mountains-qinling-mountains-snow-gm2184801994-603607261?searchscope=image%2Cfilm)<br/>
+许可: iSTock License<br/>
+修改:  图片经过裁剪，并在左侧经过渐变处理。

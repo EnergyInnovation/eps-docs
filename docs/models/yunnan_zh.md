@@ -34,7 +34,7 @@ title: "云南能源政策模型"
 
 ## 版本历史
 
-### **3.4.9 - 2025年11月25日**
+### **3.4.9 - 2025年12月15日**
 
 * 第一次发布
 
@@ -46,5 +46,5 @@ title: "云南能源政策模型"
 香格里拉白水台，云南，中国<br/>
 赵丽雅<br/>
 [https://flickr.com/photos/203843734@N07/54942917056/in/dateposted-public/](https://flickr.com/photos/203843734@N07/54942917056/in/dateposted-public/)<br/>
-CC BY 4.0 License<br/>
-Changes: 图片经过裁剪，并在左侧经过渐变处理。
+许可: CC BY 4.0 License<br/>
+修改: 图片经过裁剪，并在左侧经过渐变处理。

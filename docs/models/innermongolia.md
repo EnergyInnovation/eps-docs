@@ -13,19 +13,18 @@ The Inner Mongolia Energy Policy Simulator may be used on this website through y
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Inner Mongolia. Individuals are listed alphabetically by last name.
 
-* Ruqi Chen, Beijing Smart Green Research Center
 * Minshu Deng, Energy Innovation LLC
 * Todd Finncannon, Energy Innovation LLC
 * Dongquan He, Beijing Smart Green Research Center
-* Yiqun He, Beijing Smart Green Research Center
 * Xiaoxue Hou, Energy Innovation LLC
+* Kejun Jiang, The Hong Kang University of Science and Technology (Guangzhou) 
 * Jindong Liang, Beijing Smart Green Research Center
 * Lingjie Li, Beijing Smart Green Research Center
-* Chang Liu, Beijing Smart Green Research Center
-* Qing Liu, Beijing Smart Green Research Center
-* Yang Liu, Beijing Smart Green Research Center
-* Megan Mahajan, Energy Innovation LLC
+* Wenqing Li, Beijing Smart Green Research Center
+* Yanyan Meng, Beijing Smart Green Research Center
 * Robbie Orvis, Energy Innovation LLC
+* Chenyi Wang, Beijing Smart Green Research Center
+* Ke Wang, Renmin University of China
 * Rui Wang, Beijing Smart Green Research Center
 * Xiuli Zhang, Energy Innovation LLC
 * Lele Zou, Climate Imperative Foundation
@@ -33,7 +32,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **3.4.9 - March 1, 2025**
+### **3.4.9 - December 15, 2025**
 
 * Initial release
 
@@ -42,8 +41,8 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software. Refer to the [Software License](../software-license) page for full details.
 
 ## Image Credits
-Aerial view of wind farm on Huiteng Xile Grassland in Ulanqab, Inner Mongolia, China<br/>
-Govan Zhang<br/>
-[https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091](https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091)<br/>
-License: iStock License<br/>
+Morigele River, Inner Mongolia, China<br/>
+Zu Siqi<br/>
+[https://flickr.com/photos/203843734@N07/54942043147/in/dateposted-public/](https://flickr.com/photos/203843734@N07/54942043147/in/dateposted-public/)<br/>
+License: CC BY 4.0 License<br/>
 Changes: Image has been cropped and a fade has been applied to the left side.
