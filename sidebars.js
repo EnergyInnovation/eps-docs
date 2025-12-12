@@ -217,6 +217,8 @@ const sidebars = {
           { type: 'doc', id: 'models/georgia', label: 'Georgia' },
           { type: 'doc', id: 'models/guangdong', label: 'Guangdong' },
           { type: 'doc', id: 'models/guangdong_zh', label: 'Guangdong — 中文' },
+          { type: 'doc', id: 'models/guangxi', label: 'Guangxi' },
+          { type: 'doc', id: 'models/guangxi_zh', label: 'Guangxi — 中文' },
           { type: 'doc', id: 'models/hainan', label: 'Hainan' },
           { type: 'doc', id: 'models/hainan_zh', label: 'Hainan — 中文' },
           { type: 'doc', id: 'models/hongkong', label: 'Hong Kong' },
@@ -225,6 +227,8 @@ const sidebars = {
           { type: 'doc', id: 'models/india', label: 'India' },
           { type: 'doc', id: 'models/indiana', label: 'Indiana' },
           { type: 'doc', id: 'models/indonesia', label: 'Indonesia' },
+          { type: 'doc', id: 'models/innermongolia', label: 'Inner Mongolia' },
+          { type: 'doc', id: 'models/innermongolia_zh', label: 'Inner Mongolia — 中文' },
           { type: 'doc', id: 'models/iowa', label: 'Iowa' },
           { type: 'doc', id: 'models/jiangxi', label: 'Jiangxi' },
           { type: 'doc', id: 'models/jiangxi_zh', label: 'Jiangxi — 中文' },
@@ -275,6 +279,8 @@ const sidebars = {
           { type: 'doc', id: 'models/westvirginia', label: 'West Virginia' },
           { type: 'doc', id: 'models/wisconsin', label: 'Wisconsin' },
           { type: 'doc', id: 'models/wyoming', label: 'Wyoming' },
+          { type: 'doc', id: 'models/yunnan', label: 'Yunnan' },
+          { type: 'doc', id: 'models/yunnan_zh', label: 'Yunnan — 中文' },
           { type: 'doc', id: 'models/zhejiang', label: 'Zhejiang' }
         ]
       ]
