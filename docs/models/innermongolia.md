@@ -41,8 +41,8 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software. Refer to the [Software License](../software-license) page for full details.
 
 ## Image Credits
-Morigele River, Inner Mongolia, China<br/>
-Zu Siqi<br/>
-[https://flickr.com/photos/203843734@N07/54942043147/in/dateposted-public/](https://flickr.com/photos/203843734@N07/54942043147/in/dateposted-public/)<br/>
-License: CC BY 4.0 License<br/>
+Aerial view of wind farm on Huiteng Xile Grassland in Ulanqab, Inner Mongolia, China<br/>
+Govan Zhang<br/>
+[https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091](https://www.istockphoto.com/photo/aerial-view-of-wind-farm-on-huiteng-xile-grassland-in-ulanqab-inner-mongolia-china-gm1508819720-523729091)<br/>
+License: iStock License<br/>
 Changes: Image has been cropped and a fade has been applied to the left side.
