@@ -89,4 +89,4 @@ If the guidelines above regarding financial metrics make them seem too multiface
 * Focus on objective goods.  Nobody can argue with saving human lives.  Don't let the debate about the effects of a policy package exclusively center on financial outcomes.
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

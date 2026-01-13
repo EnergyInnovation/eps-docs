@@ -51,4 +51,9 @@ Open the docs in the web browser on your local PC. The last command will print o
 
 Edit the Markdown pages in the `docs` folder using your text editor. The model-specific region docs are in the `docs/models` folder. Image files go in the `static/img` folder.
 
+Lastly, you should run the build command, which runs more thorough checks on the most recent commit while building the docs. 
+```
+pnpm build
+```
+
 When you are finished, close the PowerShell or Terminal window.

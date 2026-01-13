@@ -8,7 +8,7 @@ The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model 
 
 The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.0.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.4.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
@@ -19,8 +19,8 @@ We would like to acknowledge the following people who made the Energy Policy Sol
 * Robbie Orvis, Energy Innovation LLC
 * Megan Mahajan, Energy Innovation LLC
 * Todd Fincannon, Energy Innovation LLC
+* Dan O'Brien, Energy Innovation LLC
 * Olivia Ashmoore, Energy Innovation LLC
-* Anand Gopal, Energy Innovation LLC
 
 ### Reviewers
 
@@ -38,6 +38,7 @@ We would like to acknowledge the following people who made the Energy Policy Sol
 * Jiang Kejun and He Chenmin, Energy Research Institute (国家发展和改革委员会能源研究所)
 * Amol Phadke, Lawrence Berkeley National Laboratory
 * Eric Gimon, Energy Innovation LLC
+* Anand Gopal
 
 The inclusion of a reviewer on this list does not imply endorsement of the model or its findings by this reviewer or his/her organization.
 
@@ -53,7 +54,118 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 
 ## Version History
 
-### **4.0.0 - March 20, 2024**
+### **4.0.4 - April 1, 2025**
+
+* New Features
+  * Addition of new policy levers to represent repeal of current policy: Differentiates vehicle standards into national and subnational levers and allows for repeal of current policy in either jurisdiction, new options for increased process emissions in policy scenarios, non-BAU distributed solar capacity, non-BAU industrial CCS, non-BAU hydrogen production pathway shifting
+  * Extends the policy selection slider bars to encompass negative values for several preexisting policy levers in order to represent repeal of current policies and adds some policy options to the web app that were previously visible only in Vensim (e.g. use non-BAU coal retirement schedule)
+  * Adds a new lever for subsidies for production of grid batteries
+  * Added additional options to specify BAU and policy thermal fuels subsidies by sector
+  * New adjustment mechanism to calculate time-adjusted capacity factors for plants coming online in the modeled timestep
+* Bug Fixes
+  * Fixes bugs in electricity export cash flow accounting, electricity supplier cost recovery, electricity dispatch
+  * Adds missing cash flow accounting for grid battery subsidies
+  * Fixes accounting of subsidies per unit electricity produced based on when new capacity was added and the subsidy duration
+  * Avoids potential divide by zero error in calculations for green hydrogen electricity demand
+  * Fixes double counting of CCS transportation and storage costs in revenue accounting
+  * Fixes incorrect calculations for emissions from blue hydrogen production
+  * Fixes calculations for BAU carbon tax rate on exported products and cash flows from BAU carbon tax on process emissions
+  * Limits the positive cost RPS qualifying dispatch mechanism once the RPS requirement is reached and improves the calculation of RPS requirements
+  * Updates weighted average variable subsidies to be correctly calculated based on last year capacity built
+  * Resolves errors in equality checks for revenue balancing in electricity sector nonenergy revenues and energy supplier revenues
+  * Removes macroeconomic feedback effects on passenger transportation demand and building service demand
+  * Incorporates CES alternative compliance payment costs into cash flows and removes anticipated market revenues in CES ongoing costs
+  * Removes electricity exports from the calculation of capacity needed for reliability
+  * Sets capacity market payments for residual reliability to be made to only the reliability electricity source subscript
+  * Removes subsidies from the change in energy industry revenues used in IO calculations
+* Data updates
+  * Updates calculations for BAU vehicle tax credits 
+  * Fixes to BAU clean electricity tax credit calculations and CCS tax credit calculations
+  * Updates all policy implementation schedules to start in 2025
+  * Updates output currency year to 2024
+  * Recalibrates the share of costs that to be covered to be considered profitable and capacity supply curves for the electricity sector
+  * Updates BAU planned capacity additions to use latest EIA data on plants that have received regulatory approval
+  * Updates natural gas prices based on latest gas futures data
+  * Updates government revenue accounting settings to use deficit spending for all government cash flow types
+  * Updates to capacity factors for new onshore wind
+  * Changes the repayment period for capacity market changes to 3 years
+  * Updates transmission construction costs to exclude spur line costs, which are captured separately
+
+### **4.0.3 - December 12, 2024**
+
+* New Features
+  * Addition of a new industrial feedstock shifting policy lever
+  * New improved tracking of dedicated clean power plants built for green hydrogen production
+  * New policy lever for non-BAU zero-emission vehicle requirements at the subregional level (e.g. at the US state level)
+  * Addition of new structure to support the breaking out of power plants' own use of electricity
+  * Grid storage is now integrated with the capacity additions mechanism
+  * New control lever for how to integrate capacity market revenue into cash flows
+  * Addition of a minimum distributed solar capacity lever
+  * New policy lever to ban CCS retrofits by power plant type
+  * Addition of a smoothing time to smooth power plant decommissioning costs
+  * Replace thermochemical water splitting hydrogen production pathway with partial oxidation of hydrocarbons option
+  * Improves the representation of electricity cash flows, for example smoothing energy market revenues and wholesale energy market costs and combining least-cost and guaranteed dispatch into a single energy market
+* Bug Fixes
+  * Correct error in process emissions abatement potential for oil and gas CH4
+  * Correct double counting of a portion of emissions from hydrogen production
+  * Corrects bugs in the calculation of incremental capacity and dispatch from the clean electricity standard policy
+  * Correct how the percentage fuel use reductions for electricity are applied to the industrial electrification policy lever
+  * Add missing MAX function to two different variables to prevent mismatches between policy and BAU versions of EPS outputs
+  * Move emissions from ethanol production from the chemicals subsector into refining
+  * Prevent least cost dispatch from being negative in certain cases
+  * Allows the ZEV standard to now be applied to non-road vehicle types
+  * Fixes to revenue and deployment calculations for hybrid power plants
+* Data updates
+  * Update historical process emissions data based on EPA's Greenhouse Gas Inventory 1990-2022
+  * Update pollutant emissions intensities to use the latest EPA National Emissions Inventory for non-GHGs and EPA GHG Inventory data for N2O emissions from mobile combustion
+  * Update hydrogen prices for the electricity sector to assume blue hydrogen
+  * Update short-term natural gas prices to use latest gas futures estimates
+  * No longer estimate the portion of buildings sector fuel demand used for district heating and instead represent all fuel use and emissions within the buildings sector
+
+
+### **4.0.2 - September 9, 2024**
+
+* New Features
+  * Subscript fuel tax/subsidy lever by sector
+  * Update cost-effective capacity additions structure to use expected $/MWh profits rather than a multiplier representing the ratio of revenues to costs
+  * Update calculation methodology for electricity rates by collecting capacity market revenues over ten years and collecting all other non-amortized costs on an annual basis
+* Bug Fixes
+  * Implement one year delay on industry pass through expenses to align calculations and avoid potential for oscillating outputs
+  * Correct equation for change in decommissiong costs
+  * Revise calculation of changes in energy demand for energy pipelines and processing to be based on energy consumption rather than energy production
+  * Correct BAU values for the production tax credit to use correct currency conversion factor
+  * Set hydrogen fuel costs to not vary based on changes in production costs, since our input data already accounts for projected changes in production pathways
+* Data updates
+  * Update to ATB 2024 and extend input data to cover all historical years rather than just the start year
+  * Update global wind, solar, and battery deployment (used in endogenous learning calculations) to use latest projections
+  * Additional calibration of historical year electricity generation
+
+### **4.0.1 - August 14, 2024**
+
+* New Features
+  * Enable policy scenarios to set different values for the RPS Alternative Compliance Payment
+  * Added structure to address the duration of subsidies in dispatch calculations. Previously, we correctly amortized subsidies for deciding what/how much new capacity to build, but did not include the duration in the estimation of dispatch costs in the future. This primarily affects CCUS units receiving 45Q tax credits in the US
+* Bug Fixes
+  * Address a bug with calculating marginal dispatch costs by hour
+  * Update to handling of coal retirements
+  * Update to remove double counting of some capacity built for clean dispatchable reliability
+  * Correct methodological error in calculation of load with transmission and distribution losses
+  * Correct methodological error in how a ban on CCUS retrofits can be applied
+  * Correct methodological error in RPS dispatch of certain resources that could lead to overgeneration
+* Data Updates
+  * Update handling of hydro dispatch
+  * Data correction in file indst/PERAC for methane abatement potential
+  * Data correction in file indst/BIFUbC for LPG energy demand
+  * Data correction in file elec/BPSpUGBDC for phaseout of battery storage tax credits
+  * Updated curve parameters for clean dispatchable supply
+  * Updated the NDC scenario to start implementing policies in 2025, and modify the enhanced rock weathering setting
+
+### **4.0.0.1 - July 8, 2024**
+
+* Data Updates
+ * Data correction in file endo/learn/FoTOMRAEL
+
+### **4.0.0 - July 5, 2024**
 
 * New Features
   * Redesigned electricity module, including hourly demand and dispatch for six time slices. This allows for both profitability- and reliability-based capacity expansion mechanisms; endogenous cost-driven retirements and retrofits; endogenous deployment, charging, and discharging of electricity storage; endogenous deployment of transmission and distribution; and a new bottom-up calculation of electricity rates. 
@@ -81,23 +193,25 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Percent change in share of EVs used for grid balancing
   * Additional subsidies for CCS 
   * Subsidies for the production of EV batteries
+  * Added an enhanced rock weathering policy lever to the geoengineering sector
 * Bug Fixes
   * Quantization fix to avoid small policy effects in BAU case for Change in Energy Export Revenue graph in some cases
   * Fix to tracking of industry CCS for process vs. energy-related emissions
   * Fix that prevents the variable for BAU max new elec output still buildable falling below 0 in rare use cases
   * Corrected double counting of petroleum products in primary energy graphs
 * Data Updates
+  * Updated BAU to reflect components of the Inflation Reduction Act and latest EPA rules (see documentation included in model download folder)
   * Updated to the Energy Information Administration's Annual Energy Outlook 2023 Reference Scenario
   * Updated to use the National Renewable Energy Laboratory's Annual Technology Baseline 2023
   * Updated to use updated PRIMAP database for process CO2 emissions
-  * Updated BAU to reflect components of the Inflation Reduction Act (see documentation included in model download folder)
   * Updated short-term natural gas prices to reflect futures prices
   * Updated BAU methane emissions from the oil and gas sector to reflect latest Environmental Protection Agency standards
   * Updated NDC Scenario with updated policy assumptions
   * Updated passenger light-duty vehicle fuel economy to reflect differences in tested and onroad fuel economy reported by EIA
   * Updated passenger light-duty vehicle lifetime
   * Updated onroad vehicle prices with data from the International Council on Clean Transportation
-  * Correction to LULUCF emissions trajectory based on trends in the Greenhouse Gas Inventory
+  * Updated LULUCF emissions trajectory based on trends in the latest Greenhouse Gas Inventory
+  * Updated mitigation potential in the agriculture and LULUCF sectors based on recent research from the EPA
   * Updates to historical and projected global capacity of certain technologies used in endogenous learning calculations
   * Updated to use EPA's NEEDS database for planned power plant retirements (replacing EIA)
   * Other minor data updates

@@ -8,7 +8,9 @@ The South Dakota Energy Policy Simulator (EPS) is a free and open-source compute
 
 The South Dakota Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-southdakota/archive/refs/tags/3.4.3.3.zip" class="btn">Download the South Dakota Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-southdakota/archive/refs/tags/4.0.4.zip" class="btn">Download the South Dakota Energy Policy Simulator</a></p>
+
+[Click here](https://energypolicy.solutions/simulator/southdakota/en/678620f) for access to the previous version of the public model, including access to saved scenarios.
 
 ## U.S. State EPS Methodology
 
@@ -21,11 +23,42 @@ We would like to acknowledge the following people who made the U.S. State Energy
 * Ashna Aggarwal, RMI
 * Olivia Ashmoore, Energy Innovation LLC
 * Kyle Clark-Sutton, RMI
+* Rachel Goldstein, Energy Innovation LLC
 * Nathan Iyer, RMI
+* Wendy Jaglom, RMI
 * Megan Mahajan, Energy Innovation LLC
 * Robbie Orvis, Energy Innovation LLC
+* Kayleigh Rubin, RMI
+* Addy Sonaike, RMI
 
 ## Version History
+
+### **4.0.4 - April 1, 2025**
+* New Features
+  * Updated to 4.0.4 EPS model platform
+  * Adds a 'Federal Policy Repeal and Rollback' scenario to model the repeal of the Inflation    Reduction Act and select EPA rules affecting greenhouse gas emissions
+* Data updates
+  * Updates calculations for BAU vehicle tax credits 
+  * Fixes to BAU clean electricity tax credit calculations and CCS tax credit calculations
+  * Updates all policy implementation schedules to start in 2025
+  * Updates output currency year to 2024
+  * Recalibrates the share of costs that to be covered to be considered profitable and capacity supply curves for the electricity sector
+  * Updates BAU planned capacity additions to use latest EIA data on plants that have received regulatory approval
+  * Updates natural gas prices based on latest gas futures data
+  * Updates government revenue accounting settings to use deficit spending for all government cash flow types
+  * Updates to capacity factors for new onshore wind
+  * Changes the repayment period for capacity market changes to 3 years
+  * Updates transmission construction costs to exlucde spur line costs, which are captured separately
+  * Updates input-output data to use values from the Economic Census for some states and sectors
+  * Fixes mistake in process emissions file to calculate methane emissions
+
+### **4.0.2 - September 17, 2024**
+
+* Updated to 4.0.2 EPS model platform
+* Data Updates
+  * Updated BAU to reflect components of the Inflation Reduction Act and latest EPA rules (see documentation)
+  * Updated input data to the latest available version from data sources, including the U.S. Energy Information Administration and the 
+    U.S. Environmental Protection Agency
 
 ### **3.4.3.3 - June 9, 2023**
 

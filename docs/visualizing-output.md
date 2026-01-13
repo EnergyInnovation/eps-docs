@@ -32,13 +32,11 @@ In order to see the other lines, it is necessary to hide the lines for CO<sub>2<
 
 ![Subscripts button](/img/visualizing-output-SubscriptsButton.png)
 
-This opens the subscripts window.  This window allows you to toggle the display of various subscript elements off and on.  If it is not already active, click on the tab titled "Pollutant 12/12".  The window should look like this:
+This opens the subscripts window.  This window allows you to toggle the display of various subscript elements off and on.  If it is not already active, click on the subscript option titled "Pollutant 12/12".  The window should look like this:
 
 ![Subscripts window](/img/visualizing-output-SubscriptsWindow.png)
 
-If you instead see a view with three boxes (labeled "Subranges" "Available Elements" and "Selected Elements"), then you are in the "Full" view.  Click the "Simple" button in the lower right to switch the Pollutants tab to simple view, and it will look like the screenshot above.
-
-Click on the "CO<sub>2</sub>" and "F gases" rows to de-select them.  The name of the tab changes to "Pollutant 10/12".  Close the subscripts window, then click on the "Graph" button again.  (If "Total Pollutant Emissions" is no longer the active variable, you will need to first click it to make it active again.)  Now the Total Pollutant Emissions graph only has lines for ten pollutants, and many more of them are visible above the X-axis.  It should look similar to the following screenshot:
+Click on the "CO<sub>2</sub>" and "F gases" rows and use the green arrow to de-select them.  The "Active" status changes to "Pollutant 10/12".  Close the subscripts window, then click on the "Graph" button again.  (If "Total Pollutant Emissions" is no longer the active variable, you will need to first click it to make it active again.)  Now the Total Pollutant Emissions graph only has lines for ten pollutants, and many more of them are visible above the X-axis.  It should look similar to the following screenshot:
 
 ![Total Pollutant Emissions graph](/img/visualizing-output-PollutantsGraph2.png)
 
@@ -54,11 +52,11 @@ A table appears that includes all of the selected variables.  Here is a screensh
 
 ![Table window](/img/visualizing-output-TableWindow.png)
 
-By default, Vensim displays values in "Pretty" format, which uses "M" for million, "B" for billion, and "T" for trillion, etc.  While this may be useful for evaluating the relative magnitude of variables, "Pretty" format is not readable as values in a spreadsheet program.  To change the number format, right click on the Table button and select "Scientific" instead of "Pretty" in the Appearance selector.  Now, tables will display all values in scienific notation.
+By default, Vensim displays values in "Pretty" format, which uses "M" for million, "B" for billion, and "T" for trillion, etc.  While this may be useful for evaluating the relative magnitude of variables, "Pretty" format is not readable as values in a spreadsheet program.  To change the number format, right click on the Table button and select "Tool Option," then "Scientific" instead of "Pretty" in the "Number format" selector.  Now, tables will display all values in scienific notation.
 
 You can include variables on more than one Vensim sheet in the same table by adding the variables to the table sequentially, without closing the table in between variables.  For example, select one or more variables on the Cross-Sector Totals tab, click the "Table" button, and then left-click in the main Vensim window.  The table vanishes, but it has not been closed- it is simply behind the main Vensim window.  Now, switch to another sheet.  Select one or more variables and click the "Table" button.  The existing table will be brought to the front and the selected variables will be added to the bottom of the table.
 
 Once you have the variables you want in the table, you can use the View option from the menu bar to copy the values, or you can click on the "Time" box in the upper-left to select all data and copy using the ctrl+C keyboard shortcut.  Alternatively, you can select and copy only certain rows or columns of the table.  Now, open the program you wish to use for analysis or graphing, such as a spreadsheet program, and paste the data in from the clipboard.  If your analysis or graphing program will not accept pasted data directly, you can instead use the File option on the menu bar to save the data as a text file (again, as tab-separated values), then open that text file in your program.
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

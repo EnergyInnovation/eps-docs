@@ -34,4 +34,4 @@ There are two model components that affect the operation of various sectors.  A 
 Lastly, there are a number of sections that are not part of the model's calculation flow but serve other purposes.  The "Policy Control Center" is a sheet where the user can conveniently view and set all of the policy levers.  The "Endogenous Leaning" sheet implements some of the calculations for newer technologies whose advancement is linked to cumulative deployment.  A Web Application Support Variables" sheet converts many outputs of interest to more commonly-used units (for example, converting BTUs of natural gas to trillion cubic feet of natural gas), so that these variables may be referenced by the web application that powers the online version of the EPS.  A "Debugging Assistance" sheet provides the means to easily check certain totals that should sum to zero in the absence of bugs.
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

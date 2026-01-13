@@ -8,9 +8,7 @@ title: "山西能源政策模型"
 
 您可以通过网络浏览器在本网站上使用山西能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
 
-<p><a href="https://forms.monday.com/forms/b17d4c59814fa8872101298dddaf2e1b?r=use1" class="btn">下载山西EPS模型</a></p>
-
-## 参考情景
+<p><a href="https://wkf.ms/3vQKejZ" class="btn">下载山西EPS模型</a></p>
 
 ## 鸣谢贡献者和审阅专家
 我们在此诚挚感谢以下人员和专家在我们创建和审阅山西能源政策模型时的贡献与支持。姓名按名字首字母排序。
@@ -26,6 +24,7 @@ title: "山西能源政策模型"
 * Todd Fincannon，能源创新公司
 * 朱彤昕，绿色创新发展研究院 (iGDP)
 * 许小静，山西科城环保产业协同创新研究院
+* 侯晓雪, 能源创新公司 
 * 李鑫迪，绿色创新发展研究院 (iGDP)
 * 张秀丽，能源创新公司
 * 秦艳，山西科城环保产业协同创新研究院
@@ -36,9 +35,29 @@ title: "山西能源政策模型"
 
 ## 版本历史
 
-### **3.4.8 - 2024年3月1日**
+### **3.4.9.2 - 2025年5月9日**
+
+* 网站应用数据更新
+  * 更新了 web-app/BCF 和 web-app/MOU，以统一中国所有地方模型中的单位标准。
+
+### **3.4.9.1 - 2025年3月28日**
+
+* 漏洞修复
+  * 修正了 web-app/OCCF 中的转换系数
+  * 修正了氢气消费量，电力平准化成本，以及电力燃料成本的单位
+  * 修正了 elec/BECF 中煤炭容量因子的预测公式
+* 数据更新
+  * 调整了了在 2045 年后 elec/BCRbQ 中的生物质退役计划 
+  * 更新了 dist-heat/RHFF 和 dist-heat/BFoHPBF 数据，使其与国家数据保持一致，并修改了相关政策描述
+  
+### **3.4.9 - 2024年10月3日**
 
 * 第一次发布
+
+## 相关报告
+
+摘要：报告回顾了山西省低碳转型的进展情况。利用山西EPS模型和情景分析方法，报告预测了山西省能源消费和温室气体排放的长期趋势，识别了在双碳情景下山西省需重点关注的关键领域、主要目标设定以及优先实施的减排政策。同时，报告评估了这些政策实施所需的投资规模，以及它们对GDP和就业产生的潜在影响。基于这些分析，报告为山西省低碳转型提供了方向性的政策建议。<br/>
+[https://www.igdp.cn/wp-content/uploads/2025/09/Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Shanxi%E2%80%94Developing-a-Dual-Carbon-Pathway-Using-EPS-Modeling.pdf](https://www.igdp.cn/wp-content/uploads/2025/09/Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Shanxi%E2%80%94Developing-a-Dual-Carbon-Pathway-Using-EPS-Modeling.pdf)<br/>
 
 ## 软件许可
 

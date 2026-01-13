@@ -2,18 +2,16 @@
 title: "海南能源政策模型"
 ---
 
-海南能源政策模型（EPS）是由[美国能源创新公司（EI）](https://energyinnovation.org/)及[绿色创新发展研究院（iGDP）](http://www.igdp.cn/)创建的一个免费开源模型，山西EPS基于EI最初创建的模型进行开发。
+海南能源政策模型（EPS）是由[美国能源创新公司（EI）](https://energyinnovation.org/)及[绿色创新发展研究院（iGDP）](http://www.igdp.cn/)创建的一个免费开源模型，海南EPS基于EI最初创建的模型进行开发。
 
 ## 下载模型
 
 您可以通过网络浏览器在本网站上使用海南能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
 
-<p><a href="https://forms.monday.com/forms/1e67aa8cf6799eb4f47645ba37eb2a10?r=use1" class="btn">下载海南EPS模型</a></p>
-
-## 参考情景
+<p><a href="https://wkf.ms/3vOhHvq" class="btn">下载海南EPS模型</a></p>
 
 ## 鸣谢贡献者和审阅专家
-我们在此诚挚感谢以下人员和专家在我们创建和审阅山西能源政策模型时的贡献与支持。姓名按名字首字母排序。
+我们在此诚挚感谢以下人员和专家在我们创建和审阅海南能源政策模型时的贡献与支持。姓名按名字首字母排序。
 
 * 吴丹，海南大学
 * 邬乐雅，海南省环境科学研究院应对气候变化研究中心
@@ -25,16 +23,35 @@ title: "海南能源政策模型"
 * Robbie Orvis，能源创新公司
 * Todd Fincannon，能源创新公司
 * 朱彤昕，绿色创新发展研究院 (iGDP)
-* 奚溪，绿色创新发展研究院 (iGDP)
+* 奚溪, 绿色创新发展研究院 (iGDP)
+* 侯晓雪, 能源创新公司 
 * 李鑫迪，绿色创新发展研究院 (iGDP)
 * 张秀丽，能源创新公司
 * 袁雅婷，绿色创新发展研究院 (iGDP)
 
 ## 版本历史
 
-### **3.4.8 - 2024年3月1日**
+### **3.4.9.2 - 2025年5月9日**
+
+* 网站应用数据更新
+  * 更新了 web-app/BCF 和 web-app/MOU，以统一中国所有地方模型中的单位标准。
+
+### **3.4.9.1 - 2025年4月2日**
+
+* 漏洞修复
+  * 修正了 web-app/OCCF 中的转换系数
+  * 修正了氢气消费量，电力平准化成本，以及电力燃料成本的单位
+* 数据更新
+  * 更新了 dist-heat/RHFF 和 dist-heat/BFoHPBF 数据，使其与国家数据保持一致，并修改了相关政策描述
+
+### **3.4.9 - 2024年10月3日**
 
 * 第一次发布
+
+## 相关报告
+
+摘要：本报告系统回顾了海南省低碳转型的进展与成效，运用情景分析方法，分部门预测能源消费与温室气体排放的长期趋势，并分阶段梳理实现“碳中和”目标的关键政策措施。同时，报告全面评估了政策组合对经济发展、就业以及投资需求的潜在影响，提出了切实可行的政策建议，旨在为海南的低碳发展路径提供科学依据与决策参考。<br/>
+[https://www.igdp.cn/wp-content/uploads/2025/11/2025-11-IGDP-Report-CN-Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Hainan—Using-EPS-Modeling.pdf](https://www.igdp.cn/wp-content/uploads/2025/11/2025-11-IGDP-Report-CN-Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Hainan—Using-EPS-Modeling.pdf)<br/>
 
 ## 软件许可
 

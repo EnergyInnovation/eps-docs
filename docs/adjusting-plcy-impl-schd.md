@@ -28,7 +28,7 @@ The file lists a policy element for every possible policy in the model, includin
 
 At least one schedule must be defined for every policy element.  Each schedule has a schedule number ahead of its data indicating which schedule file should use those data.  All the policy elements do not need to have the same number of schedules defined.  If you leave a particular schedule for a particular element undefined, the script will use that policy element's first listed schedule.  For example, in the screenshot above, "Schedule 2" uses custom values for passenger LDVs, passenger HDVs, passenger aircraft, and freight LDVs.  Because there are no custom values specified for passenger rail, passenger ships, or passenger motorbikes, those policy elements default to the values set in "Schedule 1." 
 
-In the U.S., the FoPITY Python script includes the default settings in "Schedule 1" and two additional schedules for the two example policies displayed in the web app ("Schedule 2" corresponds to the NDC Scenario, and "Schedule 3" corresponds to the Example Scenario).  Therefore, users who want to create a new custom schedule would likely want to start by creating a "Schedule 4" on top of the other schedules already listed in the FractionOfPolicyImplementedThisYear.py file.
+In the U.S., the FoPITY Python script includes the default settings in "Schedule 1" and one additional schedule for the two example policy displayed in the web app ("Schedule 2" corresponds to the NDC Scenario).  Therefore, users who want to create a new custom schedule would likely want to start by creating a "Schedule 3" on top of the other schedules already listed in the FractionOfPolicyImplementedThisYear.py file.
 
 ### Default Schedules for Linear and for Immediate Policies
 
@@ -40,7 +40,7 @@ Instead of linear implementation, by default, the R&D policies are implemented a
 
 ![R&D policy implementation schedule](/img/adjusting-plcy-impl-schd-RnDSchedule.png)
 
-The default R&D policy schedule reflects the idea that additional investment in R&D achieves progress slowly at first, as staff and laboratories gear up, acquiring skills and knowledge.  Progress is faster in middle years, then slows down again as the easier technical questions are answered, leaving the more challenging technical problems to be solved.  The future progress of technological research cannot be known in advance, and the curve specified here is meant to be a reasonable example.  When specifying your own curve, it is not necessary that the entire S-shape be visible within the model run period of 2015-2030.  Since we are concerned with an *additional* R&D commitment, generally the curve should start relatively flat (as even a technology that is well along its own S-curve will nonetheless respond gradually to a change in its level of R&D investment).  However, there is less reason to believe that the inflection point for additional R&D commitment will necessarily be reached during the model run period: a curve that starts relatively flat and grows at an increasing rate through 2030 could be plausible for some technologies.
+The default R&D policy schedule reflects the idea that additional investment in R&D achieves progress slowly at first, as staff and laboratories gear up, acquiring skills and knowledge.  Progress is faster in middle years, then slows down again as the easier technical questions are answered, leaving the more challenging technical problems to be solved.  The future progress of technological research cannot be known in advance, and the curve specified here is meant to be a reasonable example.  When specifying your own curve, it is not necessary that the entire S-shape be visible within the model run period.  Since we are concerned with an *additional* R&D commitment, generally the curve should start relatively flat (as even a technology that is well along its own S-curve will nonetheless respond gradually to a change in its level of R&D investment).  However, there is less reason to believe that the inflection point for additional R&D commitment will necessarily be reached during the model run period: a curve that starts relatively flat and grows at an increasing rate through 2050 could be plausible for some technologies.
 
 ### Notes for Setting Values
 
@@ -73,4 +73,4 @@ The spreadsheet will automatically update the values in the blue output tabs in 
 The same notes on on default settings, setting values, and selecting implementation schedules in Vensim above still apply in EPS versions earlier than 3.3.1. 
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

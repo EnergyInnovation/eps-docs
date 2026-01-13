@@ -19,15 +19,21 @@ Policy-related change in spending on vehicles includes several components, inclu
 
 ### Change in Vehicle Costs
 
-We calculate the number of newly sold vehicles and vehicle prices (before subsidies) on the [Transportation Sector (main) page](transportation-sector-main). We then multiply these values in both the policy and the BAU cases to find the total amount spent on vehicles. The difference in the amount spent between the two cases reflects the policy-driven change in vehicle spending. This is meant to reflect the total change in cash flow due to vehicle purchases, not the price ultimately paid by the consumer that may be lower due to government subsidies.
+We calculate the number of newly sold vehicles, vehicle prices (before subsidies), and battery prices on the [Transportation Sector (main) page](transportation-sector-main). We then multiply these values in both the policy and the BAU cases to find the total amount spent on batteries and non-battery manufacturing. The difference in the amount spent between the two cases reflects the policy-driven change in vehicle spending. This is meant to reflect the total change in cash flow due to vehicle purchases, not the price ultimately paid by the consumer that may be lower due to government subsidies. As the revenues from each component is fed to different sectors, we also break out the amount spent on vehicle markups. Generally speaking, battery spending is fed to the electrical equipment sector, vehicle markups go to auto manufacturers, and the remainder are spread across various industries. 
 
 ![calculating change in vehicle costs](/img/transportation-sector-cash-VehPrice.png)
 
 ### Change in EV Subsidy Payments
 
-We separately calculate the change in EV subsidies by multiplying the amount spent on vehicles (as calculated above) by the EV subsidy percentage in both the policy and BAU cases in order to find the change in total EV subsidies paid. 
+We separately calculate the change in EV subsidies by multiplying the subsidy values and number of vehicles sold in both the policy and BAU cases in order to find the change in total EV subsidies paid. 
 
-![calculating change in vehicle costs](/img/transportation-sector-cash-EVSubsidy.png)
+![calculating change in EV subsidies](/img/transportation-sector-cash-EVSubsidy.png)
+
+### Change in Vehicle Battery Subsidy Payments
+
+Similarly, we multiply the battery subsidy values by the number of vehicles sold and the battery capacity of each vehicle in both the policy and BAU cases in order to find the change in total subsidies paid. The share of the subsidy passed through to consumers is broken out for revenue tracking purposes.
+
+![calculating change in vehicle battery subsidies](/img/transportation-sector-cash-BatterySubsidies.png)
 
 ### Change in Other Transportation Costs
 
@@ -35,9 +41,13 @@ We also calculate the change in the following costs for vehicles: vehicle mainte
 
 ![calculating change in vehicle maintenance costs](/img/transportation-sector-cash-VehMaintenance.png)
 
-Finally, we calculate the change in transport fares paid. We take input data on fares per unit cargo distance and multiply by the cargo distance transported in both the policy and BAU cases.
+We also calculate the change in transport fares paid. We take input data on fares per unit cargo distance and multiply by the cargo distance transported in both the policy and BAU cases. 
 
 ![calculating change in transport fares](/img/transportation-sector-cash-TransFares.png)
+
+Finally, we calculate the change in amount spent on EV chargers. We take input data on the cost of EV chargers and multiply by the number of chargers deployed in both the policy and BAU cases. 
+
+![calculating change in transport fares](/img/transportation-sector-cash-ChargerCosts.png)
 
 ## Allocating Changes in Expenditures and Revenue
 
@@ -53,7 +63,7 @@ We then allocate energy expenditures to each of the cash flow entities by multip
 
 ![calculating change in energy expenditures by entity](/img/transportation-sector-cash-EnergyExpbyEntity.png)
 
-We next allocate nonenergy expenditures. Generally, the categories of spending shown in the screenshot below are assigned to entities based on the change in amount multiplied by the fraction of vehicles owned by that entity. The exceptions are the change in EV subsidies paid, which are paid wholly by the government, and changes in transport fares (passenger fares are assigned to labor and consumers, while freight fares are assigned to nonenergy industries).
+We next allocate nonenergy expenditures. Generally, the categories of spending shown in the screenshot below are assigned to entities based on the change in amount multiplied by the fraction of vehicles owned by that entity. The exceptions are the change in EV and battery production subsidies paid, which are paid wholly by the government, and changes in transport fares (passenger fares are assigned to labor and consumers, while freight fares are assigned to nonenergy industries).
 
 ![calculating change in nonenergy expenditures by entity](/img/transportation-sector-cash-NonenergyExpbyEntity.png)
 
@@ -61,17 +71,17 @@ Finally, we use the calculated expenditures by entity variables to also assign e
 
 ### Changes in Revenue
 
-We also need to track which entities and ISIC codes receive money based on transportation sector expenditures. First, we find the change in revenue from EV subsidies by entity (using the change in EV subsidies paid and the fraction of vehicles owned by entity). We similarly find the change in fare revenue by transport supplier based on the change in transport fares paid and the fraction of vehicles owned by entity. 
+We also need to track which entities and ISIC codes receive money based on transportation sector expenditures. First, we find the change in revenue from EV and battery production subsidies by entity (using the change in subsidies paid and the fraction of vehicles owned by entity). We similarly find the change in fare revenue by transport supplier based on the change in transport fares paid and the fraction of vehicles owned by entity.
 
 ![calculating change in EV subsidies and transport fares by entity](/img/transportation-sector-cash-SubsidyandFareRevenue.png)
 
-As with expenditures, we want to find the change in revenue by ISIC code for nonenergy industries only. We do this by mapping various categories of expenditures onto the most relevant ISIC code. For example, the amount spent on road vehicles is assigned to the ISIC code for the "motor vehicles, trailers, and semi-trailers" industry, and the amount spent on nonroad vehicles is assigned to the ISIC code for "other transportation equipment" industry. The change in revenue from EV subsidies for the nonenergy industries entity is assigned based on the percent of output provided by each ISIC code. The change in fare revenue for nonenergy industries is assigned to the ISIC code for "transportation and storage."
+As with expenditures, we want to find the change in revenue by ISIC code for nonenergy industries only. We do this by mapping various categories of expenditures onto the most relevant ISIC code. For example, the amount spent on road vehicles is assigned to the ISIC code for the "motor vehicles, trailers, and semi-trailers" industry, and the amount spent on nonroad vehicles is assigned to the ISIC code for "other transportation equipment" industry. The change in revenue from subsidies for the nonenergy industries entity is assigned based on the percent of output provided by each ISIC code. The change in fare revenue for nonenergy industries is assigned to the ISIC code for "transportation and storage."
 
 ![calculating change in revenue by ISIC code](/img/transportation-sector-cash-RevenuebyISIC.png)
 
-Lastly, we also calculate the total transportation sector change in revenue by entity. For the nonenergy industry, this is equal to the sum of the "Transportation Sector Change in Nonenergy Industry Revenue by ISIC Code" variable calculated above. Additional categories of expenditures not included in the nonenergy industries entity are mapped onto the most relevant entities, for example the revenue from vehicle licensing, registration, and property taxes is assigned to the government entity. We also add in the previously calculated change in revenue from EV subsidies and transport fares. 
+Lastly, we also calculate the total transportation sector change in revenue by entity. For the nonenergy industry, this is equal to the sum of the "Transportation Sector Change in Nonenergy Industry Revenue by ISIC Code" variable calculated above. Additional categories of expenditures not included in the nonenergy industries entity are mapped onto the most relevant entities, for example the revenue from vehicle licensing, registration, and property taxes is assigned to the government entity. We also add in the previously calculated change in revenue from subsidies and transport fares.
 
 ![calculating change in revenue by entity](/img/transportation-sector-cash-RevenuebyEntity.png)
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

@@ -42,7 +42,7 @@ There are ways around this issue, such as assuming a new technology will follow 
 
 Some technologies the EPS models using exogenous learning because they are too new or too small-scale to use endogenous learning include:
 
-- Direct air capture / geoenginerring equipment
+- Direct air capture / geoengineering equipment
 - Hydrogen electrolyzers
 - Hydrogen vehicles
 
@@ -58,35 +58,33 @@ When modeling a country where little if any R&D work is done, and where industri
 
 ## Model Structural Components
 
-In the EPS, actual costs paid for technology are calculated in the various sectors where that technology is purchased (e.g. industry, electricity, buildings, and transportation).  The role of the Endogenous Learning sheet is to calculate a ratio for each technology that uses endogenous learning specifying the cost of the technology in the current model year relative to the first simulated year.  These values are then used in other sectors.
+In the EPS, actual costs paid for technology are calculated in the various sectors where that technology is purchased (e.g. industry, electricity, buildings, and transportation).  The role of the Endogenous Learning sheet is to calculate a ratio for each technology that uses endogenous learning specifying the cost of the technology in the current model year relative to the previously simulated year.  These values are then used in other sectors.
+
+The endogenous learning feature only applies when there is no input data specified for a technology in a given model year. This means that a user could supply exogenous cost data for wind and solar through the entire model run and bypass the endogenous learning feature for electricity capacity below. The US model uses historical wind, solar, and battery cost data for the first few years of the model run, then transitions to endogenous learning for years where we do not have observed cost data.
 
 ### CCS
 
-CCS deployment is measured in quantity of CO<sub>2</sub> captured and stored annually, which correlates to the amount of operating CCS equipment.  We assume CCS equipment does not retire in meaningful quantities during the model run, so we can compare the amount of CO<sub>2</sub> sequestered in each year with the amount sequested in the first year, without needing to do stock-and-flow tracking.
+CCS deployment is measured in quantity of CO<sub>2</sub> captured and stored annually, which correlates to the amount of operating CCS equipment.  We assume CCS equipment does not retire in meaningful quantities during the model run, so we can compare the amount of CO<sub>2</sub> sequestered in each year with the amount sequested in the previous time step, without needing to do stock-and-flow tracking.
 
-The CCS component begins with time-series input data specifying the quantity of CO<sub>2</sub> sequestered globally, including within and outside of the modeled region.  The amount sequestered within the modeled region (from the EPS's [CCS sheet](ccs)) is subtracted to obtain the total outside the modeled region, and this is discounted by the `FoTOMRAEL Fraction of Technology Outside Modeled Region Affecting Endogenous Learning` (as described above).  This is time-series data, so we store and remember the total amount of capacity affecting learning that existed in the first year, to serve as our base from which doublings of deployed technology are calculated.
+The CCS component begins with time-series input data specifying the quantity of CO<sub>2</sub> sequestered globally, including within and outside of the modeled region.  The amount sequestered within the modeled region (from the EPS's [CCS sheet](ccs)) is subtracted to obtain the total outside the modeled region, and this is discounted by the `FoTOMRAEL Fraction of Technology Outside Modeled Region Affecting Endogenous Learning` (as described above).  This is time-series data, so we store and remember the total amount of capacity affecting learning that existed in the previous year, to serve as our base from which doublings of deployed technology are calculated.
 
 ![amount of CCS deployment affecting learning](/img/endogenous-learning-CCSAmtAffectingLearning.png)
 
-We compare the amount of CO<sub>2</sub> sequested this year to the amount in the first year, calculating the number of doublings that have occurred.  The cost in the current year declines by the percentage decline per doubling of capacity specified in input data.
+We compare the amount of CO<sub>2</sub> sequested this year to the amount in the last year, calculating the fraction of doublings that have occurred. The cost in the current year declines by the percentage decline per doubling of capacity specified in input data.
 
 ![ccs cost as fraction of first year cost](/img/endogenous-learning-CCSCostFraction.png)
 
-We compare this year's cost fraction to last year's fraction, and we use the higher of the two.  This prevents the cost of CCS from rising if the rate of CCS drops later in the model run.  (This can happen in strong decarbonization scenarios, where by the end of the model run, CO<sub>2</sub> reductions from other policies have left too little CO<sub>2</sub> emissions to capture to maintain a steady or increasing CCS rate.)  R&D progress only runs one way: the EPS assumes people do not forget techniques they have learned to reduce the cost of a technology, even if usage of that technology begins to decline.
-
-![no backsliding on CCS cost declines](/img/endogenous-learning-CCSNoBacksliding.png)
-
 ### Solar PV, Onshore Wind, and Offshore Wind
 
-The calculations for electricity capacity types governed by endogenous learning (solar PV, onshore wind, and offshore wind) start out similarly to those for CCS.  We take in time-series input data on projected global deployments, and use `FoTOMRAEL` to limit the contribution of deployment outside the modeled region to learning calculations.  We store the first-year values to use as a baseline for doublings.
+The calculations for electricity capacity types governed by endogenous learning (solar PV, onshore wind, and offshore wind) start out similarly to those for CCS.  We take in time-series input data on projected global deployments, and use `FoTOMRAEL` to limit the contribution of deployment outside the modeled region to learning calculations.  We store the last year values to use as a baseline for doublings, using input data on the start year amount (defined as the year before the first simulated year) of global capacity for use in the first time step.
 
 ![amount of electricity capacity deployment affecting learning](/img/endogenous-learning-ElecCapAmtAffectingLearning.png)
 
-We sum utility-scale and distributed electricity capacity of each type.  (Distributed solar PV tends to be the only significant distributed capacity type here, given the rarity of small-scale wind / rooftop turbines.)  We delay the sum by one year to avoid circularity (because the cost of renewables factors into how much is built in the current year), using start year values to populate the "Last Year" variable with data from the year before the first simulated year, for use in the first simulated year.
+We sum utility-scale and distributed electricity capacity of each type.  (Distributed solar PV tends to be the only significant distributed capacity type here, given the rarity of small-scale wind / rooftop turbines.)  We delay the sum by an additional time step to avoid circularity (because the cost of renewables factors into how much is built in the current year), using start year values to populate the "Last Year" variable with data from the year before the first simulated year, for use in the first simulated year.
 
 ![calculating last year electricity capacity](/img/endogenous-learning-ElecCapLastYearCap.png)
 
-We compare the amount of capacity that exists in the current year (of each technology) to the amount that existed in the start year.  We calculate the number of doublings and apply the precentage decline in costs per doubling to find the ratio of current year costs to first year costs for each capacity type.  We assume there is no meaningful retirement of wind and solar in the model run, so we use current capacity as a cumulative total, without a stock-and-flow approach.
+We compare the amount of capacity that exists in the last year (of each technology) to the amount that existed two years ago.  We calculate the number of doublings and apply the precentage decline in costs per doubling to find the ratio of current year costs to last year costs for each capacity type.  We assume there is no meaningful retirement of wind and solar in the model run, so we use current capacity as a cumulative total, without a stock-and-flow approach.
 
 ![electricity capacity cost as fraction of first year cost](/img/endogenous-learning-ElecCapCostFraction.png)
 
@@ -94,9 +92,7 @@ In the Electricity and Buildings sectors, this fraction is applied only to the h
 
 ### Batteries
 
-Endogenous learning for batteries is based on the sum of deployment of grid batteries (a minor contributor) and batteries inside electric vehicles (EVs), which make up the vast majority of deployed battery capacity.  We assume no meaningful retirement of grid batteries during the model run, so we calculate total deployment based on current-year capacity, converted from energy to power units.
-
-![grid battery capacity](/img/endogenous-learning-GridBatteryCap.png)
+Endogenous learning for batteries is based on the sum of deployment of grid batteries and batteries inside electric vehicles (EVs), which make up the vast majority of deployed battery capacity (at least in the first modeled year).  We assume no meaningful retirement of grid batteries during the model run, so we calculate total deployment based on last-year capacity as calculated in the Electricity sector (we introduce a one year time delay to prevent circularity).
 
 We cannot assume that no EVs retire during the model run, so we need to track cumulative deployed EV battery capacity using a stock-and-flow approach.  Since the technology selection of newly-purchased vehicles in the current model year depends on EV's prices, we need to introduce a one-timestep delay.  All stocks are only updated after non-stock variables, so we add the new vehicles from last year to the stock as well as to a total containing the cumulative vehicles deployed through last year, which includes the stock (all vehicled deployed up through two years ago) and last year's deployment.
 
@@ -110,15 +106,15 @@ We sum EV and grid battery capacities to find the total cumulative battery capac
 
 ![total battery capacity](/img/endogenous-learning-TotBatteryCap.png)
 
-The next section is similar to the analogous sections in the CCS and electricity capacity calculations, discussed above.  We take in global battery deployment data, separate out a portion of out-of-region deployment that influences in-region learning, and save the first-year battery capacity as a baseline from which to calculate doublings.
+The next section is similar to the analogous sections in the CCS and electricity capacity calculations, discussed above.  We take in global battery deployment data, separate out a portion of out-of-region deployment that influences in-region learning, and save the last-year battery capacity as a baseline from which to calculate doublings.
 
 ![amount of battery capacity deployment affecting learning](/img/endogenous-learning-BatteriesAmtAffectingLearning.png)
 
-We compare the amount of battery capacity that exists in the current year to the amount that existed in the start year.  We calculate the number of doublings and apply the precentage decline in costs per doubling to find the ratio of current year costs to first year costs.
+We compare the amount of battery capacity that exists in the current year to the amount that existed in the last year.  We calculate the number of doublings and apply the precentage decline in costs per doubling to find the ratio of current year costs to last year costs.
 
 ![battery capacity cost as fraction of first year cost](/img/endogenous-learning-BatteriesCostFraction.png)
 
 The resulting fraction is used to reduce the cost of EV batteries (but not other EV components) in the Transportation sector, and to reduce the cost of grid batteries in the Electricity sector.
 
 ---
-*This page was last updated in version 3.0.0.*
+*This page was last updated in version 4.0.4.*

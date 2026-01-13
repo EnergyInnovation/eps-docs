@@ -10,9 +10,7 @@ The creation of multiple scenarios is handled via the "Simulation results file n
 
 ![Simulation results file name control](/img/creating-and-managing-scenarios-FileNameControl.png)
 
-Results of each simulation are automatically saved into the same folder as the model file itself.  Results files have the extension ".vdf".  For example, after running the model at least once, without changing the default simulation results file name, the contents of the EPS model folder may look similar to the following screenshot (in whith the new .vdf file is selected):
-
-![Model folder contents after a model run](/img/creating-and-managing-scenarios-FolderContents.png)
+Results of each simulation are automatically saved into the same folder as the model file itself.  Results files have the extension ".vdf".  
 
 If you perform simulations using the "Sim Setup" and "Simulate" buttons, the process for creating multiple scenarios is very straightforward.  Simply edit the name in the "Simulation results file name" control before pressing the "Simulate" button.  Results will be saved to a new .vdf file with that name.
 
@@ -62,4 +60,4 @@ You may click on one of the scenarios in the right-hand (Loaded) pane to make it
 Select the "RenewablePortfolioStandard" scenario and click the "<<" button in the column between the "Available" and "Loaded" panes.  The "RenewablePortfolioStandard" scenario moves to the "Available" area and is no longer loaded.  It will not appear on charts or tables generated in Vensim.  However, the data file, "RenewablePortfolioStandard.vdf," remains in the model folder until it is deleted or overwritten.  It can be moved back to the "Loaded" pane by pushing the ">>" button, and it will again be included in graphs and tables.
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

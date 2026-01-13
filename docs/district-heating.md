@@ -8,7 +8,7 @@ In the Energy Policy Simulator (EPS), "heat" is an energy carrier like electrici
 
 "District heat" refers only to the heat that is generated centrally and piped to a building or industrial facility. Heat that is generated and used on-site at an industrial facility is not "district heat" and is not included in the "heat" energy carrier total. (Similarly, electricity that is generated and used on-site at an industrial facility is not included in the "electricity" total, as this total serves to inform the model how much demand the Electricity Supply sector must serve.)
 
-In the U.S., district heat is a relatively minor part of the energy system. It is only used by commercial buildings, not by residential buildings, nor industrial facilities. However, the structure in this model section supports countries for which district heat plays a more important role (so the model can be easily customized by swapping input data).
+In the U.S., district heat is a relatively minor part of the energy system. It is only used by commercial buildings, not by residential buildings, nor industrial facilities. Our U.S. input data considers this energy use in the commercial building sector, so we are not currently utilizing the district heat module in the U.S. model. However, the structure in this model section supports countries for which district heat plays a more important role (so the model can be easily customized by swapping input data).
 
 All calculations for district heating (policy case, BAU case, and cash flow) are handled on one sheet in the Vensim model. As is the case for other sectors, the documentation here only discusses the policy case and cash flow, not the BAU case.
 
@@ -18,7 +18,7 @@ First, we find the total usage of the "heat" energy carrier by the Buildings and
 
 ![total heat use](/img/district-heating-TotHeatUse.png)
 
-Next, we find the fraction of district heat that is generated from each fuel (e.g. coal, natural gas, etc.). The BAU fractions are taken in as time-series input data, and the fractions in the policy case can be adjusted by the district heat fuel shifting policy lever. This lever allows the user to shift the fuel mix from the BAU case to whatever fractions are specified for the policy case in the input data variable `RHFF Recipient Heat Fuel Fractions`. The total heat use is then divided up by the fuels that provide that heat. In the U.S., we use this lever to shift district heating fuels to hydrogen by default.
+Next, we find the fraction of district heat that is generated from each fuel (e.g. coal, natural gas, etc.). The BAU fractions are taken in as time-series input data, and the fractions in the policy case can be adjusted by the district heat fuel shifting policy lever. This lever allows the user to shift the fuel mix from the BAU case to whatever fractions are specified for the policy case in the input data variable `RHFF Recipient Heat Fuel Fractions`. The total heat use is then divided up by the fuels that provide that heat. For most regions, we use this lever to shift district heating fuels to electricity by default.
 
 ![fuel used to create district heat](/img/district-heating-FuelUse.png)
 
@@ -68,7 +68,7 @@ In each of the BAU and policy cases, the amount of fuel consumed to generate dis
 
 ### Allocating Expenditures and Revenues
 
-District heat facilities are part of the "other energy suppliers" cash flow entity, so we assign all expenditures on fuel and equipment by district heating facilities to this cash flow entity. We also divide by the total quantity of heat generated to find the change in expenditures (positive or negative) per unit heat, which is used to adjust the price of heat on the [Fuels](fuels) sheet.
+District heat facilities are part of the "other energy suppliers" cash flow entity, so we assign all expenditures on fuel and equipment by district heating facilities to this cash flow entity. We also divide by the total quantity of heat generated to find the change in expenditures (positive or negative) per unit heat compared to the first simulated year, which is used to adjust the price of heat on the [Fuels](fuels) sheet relative to the first year price.
 
 ![allocating change in district heating expenditures](/img/district-heating-AllocatingExpenditures.png)
 
@@ -77,4 +77,4 @@ Changes in fuel tax revenues are allocated to the government. Changes in revenue
 ![allocating change in district heating revenues](/img/district-heating-AllocatingRevenues.png)
 
 ---
-*This page was last updated in version 3.5.0.*
+*This page was last updated in version 4.0.4.*

@@ -1,5 +1,5 @@
 ---
-title: Selecting Ouput Variables for a Python Script
+title: Selecting Output Variables for a Python Script
 ---
 
 Three of the Python scripts included in the Energy Policy Simulator (EPS) model distribution rely on a text file called `OutputVarsToExport.lst` to determine which variables in the EPS the user wishes to have included in the output file(s).  Therefore, before using the Python scripts, it is best to set up the `OutputVarsToExport.lst` file so that all of the variables you are interested in will be included in the results.

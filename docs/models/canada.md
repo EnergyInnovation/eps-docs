@@ -92,6 +92,8 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 * Jason Lam, Pembina Institute
 
+* Bora Plumptre, Pembina Institute
+
 * Olivia Ashmoore, Energy Innovation LLC
 
 * Robbie Orvis, Energy Innovation LLC

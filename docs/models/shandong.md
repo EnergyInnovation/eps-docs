@@ -6,11 +6,9 @@ The Shandong Energy Policy Simulator (EPS) is a free and open-source computer mo
 
 ## Model Download
 
-The Shandong Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below. Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
+The Shandong Energy Policy Simulator may be used on this website through your web browser, or you may request a download of the full version through the button below. Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-shandong/archive/refs/tags/3.4.8.zip" class="btn">Download the Energy Policy Simulator, Shandong Version</a></p>
-
-## Reference Scenarios
+<p><a href="https://wkf.ms/3TVUpvP" class="btn">Download the Energy Policy Simulator, Shandong Version</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Shandong. Individuals are listed alphabetically by last name.
@@ -28,12 +26,27 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Robbie Orvis, Energy Innovation LLC
 * Rui Wang, Beijing Smart Green Transport Research Center
 * Chenxi Zhang, China Academy of Building Research
+* Xiaoxue Hou, Energy Innovation LLC
 * Xiuli Zhang, Energy Innovation LLC
-* Lele Zou, Climate Imperative Foundation
+* Lele Zou, Energy Innovation LLC
 
 ## Version History
 
-### **3.4.8 - March 15, 2024**
+### **3.4.9.2 - May 9, 2025**
+
+* Web Application Data Updates
+  * Updated web-app/BCF and web-app/MOU to standardize the unit across all subnational models in China.
+
+### **3.4.9.1 - April 2, 2025**
+
+* Data Updates
+  * Included a new dual carbon targets scenario and documentation.
+  * Updated process emission in indst/BPE, and fuel economy data in trans/SYFAFE.
+* Bug Fix
+  * Updated Natural gas fuel cost unit.
+  * Fixed translation error in Non-BAU Mandated Policy description.
+
+### **3.4.9 - October 3, 2024**
 
 * Initial release
 

@@ -27,7 +27,6 @@ The main working units of the EPS are:
 |Distance|miles|
 |Land Area|acres|
 |Water Volume|liters|
-|Grid Flexibility|flexibility points|
 |Public Health Outcomes|incidents|
 |Number of vehicles|vehicles|
 |Number of jobs|jobs|
@@ -42,8 +41,6 @@ In electricity-specific output graphs, typically no unit conversion is necessary
 
 For the most part, the EPS only uses heat rates only when representing an actual conversion of thermal or nuclear fuel into electricity.  These conversions occur within the electricity sector and are not relevant for output unit conversion.
 
-However, in output graphs of total primary energy, electricity from renewables (wind, solar, geothermal, etc.) has no upstream source.  If this electricity were displayed alongside other energy types using a pure unit conversion, it would look far smaller than primary energy from fuels used to generate electricity (two thirds or more of the energy in thermal fuels can be lost when burning them for electricity), so a direct unit conversion under-represents the role of renewables in the energy mix.  The EPS follows the convention typically used in China, where the electricity from renewables is converted to energy units not with a pure unit conversion, but with the heat rate of the typical preexisting hard coal power plant at model start.  (In models where the hard coal subscript is repurposed- as of 2023, this applies only to Saudi Arabia, where that subscript is used for crude oil- the heat rate of this plant type is used.)
-
 ## Currency Unit Conversions
 
 Currency units have two relevant dimensions: a currency type (e.g. U.S. dollars, Polish złoty, Chinese yuan, etc.) and a currency year (e.g. 2012 USD, 2018 USD, etc.).  When converting currency units between types and currency years, the order in which you do these conversions affects the result.  This is because currency conversion rates have fluctuated and different currencies have experienced different rates of inflation over the years.
@@ -55,4 +52,4 @@ As a result, we must establish a standard ordering, which we use when converting
 This ordering is selected because when we adapt the EPS to a foreign country, some of the input files typically are retained from the U.S. model and thus only have a year conversion applied in the input data.  Accordingly, we need to undo that conversion (year) before we apply a new conversion (currency type) in the output variable.  Since year conversion has to come first in the output conversion factors, it has to come second in the input variables.
 
 ---
-*This page was last updated in version 3.0.0.*
+*This page was last updated in version 4.0.4.*
