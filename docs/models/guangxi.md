@@ -10,8 +10,6 @@ The Guangxi Energy Policy Simulator may be used on this website through your web
 
 <p><a href="https://wkf.ms/4oB6m7m" class="btn">Download the Energy Policy Simulator, Guangxi Version</a></p>
 
-## Reference Scenarios
-
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Guangxi. Individuals are listed alphabetically by last name.
 
