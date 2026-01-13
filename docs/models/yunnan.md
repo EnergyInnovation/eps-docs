@@ -10,6 +10,8 @@ The Yunnan Energy Policy Simulator may be used on this website through your web 
 
 <p><a href="https://wkf.ms/3EPn6q6" class="btn">Download the Energy Policy Simulator, Yunnan Version</a></p>
 
+## Reference Scenarios
+
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Yunnan. Individuals are listed alphabetically by last name.
 
