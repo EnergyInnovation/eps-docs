@@ -3,7 +3,7 @@ title: Industry & Agriculture Sector (main)
 ---
 ## General Notes
 
-### Industry Categories
+### Included Industries
 
 In the Energy Policy Simulator (EPS), the Industry Sector tracks emissions from the following specific industries or industry categories:
 
@@ -36,39 +36,6 @@ In the Energy Policy Simulator (EPS), the Industry Sector tracks emissions from 
 Note that 'agriculture and forestry' is treated as a specific industry.  Though this industry category does include the economic activity related to forestry, it is distinct from the emissions and cash flow calculations in the Land Use, Land Use Change, and Forestry (LULUCF), which is handled on its own [LULUCF Sector](lulucf) page.
 
 Not every industry category listed above will be used in every region depending on data availability. Where data for not all 25 industries is available, data for multiple categories may be grouped together (for example, some regions may group 'road vehicles' and 'nonroad vehicles' together into a single 'vehicles' category).
-
-### Industrial Fuels
-
-We track the consumption of several industrial fuels and energy carriers in the industrial sector, including:
-
-* electricity
-* coal
-* natural gas
-* biomass
-* petroleum diesel
-* heat
-* crude oil
-* heavy or residual fuel oil
-* LPG, propane and butane
-* hydrogen (green, low-carbon, other)
-
-Other fuels (e.g., naphtha, ethanol, biogas) not listed explicitly above are accounted for in the category whose properties and applications are most similar. 
-
-
-### Industrial Processes
-
-We break down fuel use in industry among various energy-consuming processes:
-
-* boilers
-* nonboiler low-temp process heat (<165 °C)
-* nonboiler med-temp process heat (165–400 °C)
-* nonboiler high-temp process heat (>400 °C)
-* process cooling
-* machine drive
-* electrochemical
-* other
-
-We break out each of these processes because the technical and policy-based solutions needed to address energy use from each differs widely. For example, while many boilers and non-boiler, low-temperature process heat applications can be replaced by industrial heat pumps, higher temperature applications might require induction heating equipment or electric-arc furncaces and very different financial measures to make electrification feasible. 
 
 ### Types of Emissions
 
@@ -178,59 +145,17 @@ The one exception is for the "energy pipelines and gas processing industry," whe
 
 ![tracking change in natural gas demand](/img/industry-ag-main-NGDemand.png)
 
-## Equipment Vintaging and Economic Output ($) Tracking
+## Policies Affecting Fuel Use
 
 Now that we understand any policy-induced changes in industrial production, we can begin to calculate industrial fuel use and emissions from that production.  We calculate fuel use, allowing the user to enable a variety of policies that can affect the amount of industrial fuel consumption. 
 
-### Apportioning BAU Fuel Use by Industrial Process
-
-As of EPS version 4.1, we explicitly track the vintages and stock of industrial equipment to better account for the long lifetimes and turnover rate of equipment. We use input data to establish a baseline energy intensity of industrial production across the various processes used in industrial production, the first steps of which are documented in this section. 
-
-First, we read in projections of industrial fuel use from input data for both feedstock (non-energy) and energy purposes. We track these two quantities separately so that we can correctly calculate emissions from fuels that are combusted for energy purposes and can properly tie process emissions to feedstock consumption where appropriate. Here, we omit the feedstock portion which is handled later. The portion used for energy purposes is multiplied by the percent change in production, the calculation of which is described above. This section also adjusts BAU fuel use for the 'Exogenous GDP Adjustment,' which is no longer used in the U.S. model. This feature can be used to adjust energy and service demand for the COVID-19 induced recession or other economic shocks that are not reflected in collected input data. Because the U.S. EPS input data already reflects COVID-19, we no longer rely on this feature. However, it is still in use in certain international EPS models. 
+First, before we account for any policies, we want to establish the BAU fuel use. However, there are two types of industrial fuel use: fuel use for energy purposes and fuel use for non-energy purposes (or feedstocks). We track these two quantities separately so that we can correctly calculate emissions from fuels that are combusted for energy purposes later, as opposed to feedstocks which are not combusted (for example, petrochemicals that are incorporated into plastic products). We take in data on total industrial fuel use as well as the proportion of that fuel used for energy. The fuel used for non-energy purposes is temporarily removed in the screenshot below, and the portion used for energy purposes is multiplied by the percent change in production, the calculation of which is described above. This section also adjusts BAU fuel use for the 'Exogenous GDP Adjustment,' which is no longer used in the U.S. model. This feature can be used to adjust energy and service demand for the COVID-19 induced recession or other economic shocks that are not reflected in collected input data. Because the U.S. EPS input data already reflects COVID-19, we no longer rely on this feature. However, it is still in use in certain international EPS models. 
 
 ![fuel use for energy purposes before fuel shifting](/img/industry-ag-main-FuelUseEnergyPurposes.png)
 
-This fuel use is apportioned across eight industrial processes according to input data, then converted to "electricity equivalent" units, representing the reduction in energy intensity of electric applications compared with those powered by combustion. For example, industrial heat pumps require ~70 percent less input energy than low-temperature boiler and furnace applications. 
+We can now adjust industrial fuel consumption using the first fuel shifting policy lever.  The various fuel-consuming processes carried out in industry have heterogeneous demand for various fuels and differing potential for shifting to lower-carbon alternatives. For example, for low-temperature heat requirements, industrial heat pumps are the most efficient and cost-effective option. Higher temperature processes may require other electric heating technologies such as electric reistance or induction, or the combustion of a zero-emissions fuel such as green hydrogen. Other end-uses like electrochemical processes can only use electricity.  Accordingly, we break out thermal fuel and electricity consumption by industrial process in each industry using input data. This allows us to apply fuel shifting policies to specific end-use processes.
 
 ![fuel use by process](/img/industry-ag-main-HeatDemand.png)
-
-### Industrial Output with Produced Energy Quantities for Producing ISIC Codes
-
-An industry's energy consumption and equipment needs depend on its economic output, which we calculate as described above. Here, for fuel-producing industries (e.g., oil and gas extraction, refining, and coal mining), we use the quantity of produced energy rather than economic output in dollars to remove the effects of fuel price fluctuations on revenue (output) and better reflect equipment needs. 
-
-![domestically produced energy breakdown](/img/industry-ag-main-DomesticEnProd.png)
-
-We use "Last Year" versions of "Output by ISIC Code by Year" and "Percent Change in Domestically Produced Energy Producing ISIC Code Relative to Initial Time" because they both rely on outputs of the I/O model, which is affected by industrial production and fuel choices.
-
-![last year output with produced energy](/img/industry-ag-main-LYDomesticEnProd.png)
-
-### Tracking Industrial Output by Equipment Vintage
-
-We track stock and output of industrial equipment across industrial subsectors, fuels, and processes. We track preexisting equipment separately from new equipment installed during the model run, and address the former first. 
-
-Preexisting equipment can be retired two ways: either naturally by age or by an early retirement policy lever that allows the user to define the share of preexisting equipment retired early. Input data defines what fuel types are retired early. In the U.S. model, this is typically fossil-fueled equipment that could be retired early to accelerate industry decarbonization. 
-
-We use input data to define retirement profiles for equipment that is retired naturally by age (as in the BAU). For most industries in most regions, we use retirement curves for equipment of each industrial process (from the indst/IESD input file). For example, industrial boilers often remain online for over 40 years, resulting in a slow retirement profile. On the other hand, machine drive applications like motors, compressors, and pumps often retire within 20 years of installation. 
-
-In some regions, certain industries may be small and output may come from a few or only one facility. For example, some U.S. states might have a single steel mill. Therefore, using a gradual retirement profile might not reflect how equipment investments may only occur in specific years (e.g., a blast furnace re-lining across two years from 2031-32). The input file indst/BIISRP allows the user to define retirement profiles for specific industries, not subscripted by industrial process. The boolean variable from the BIISRP input file is used to choose which industries, if any, should use site-specific retirement profiles. 
-
-![preexisting industrial equipment retirement](/img/industry-ag-main-preexistingEqptRetirement.png)
-
-Now that we know the share of preexisting industrial equipment retired in each year, we can track the output from the total stock of preexisting equipment. Since demand can go down and then recover, we work in terms of "potential output." We assume equipment can be idled in a given year if there is more equipment than necessary to meet demand in that year. Potential output refers to the output that the equipment is capable of producing. All equipment is idled proportionately, since older and younger equipment may be mixed among production lines, making it impossible to selectively idle only the oldest equipment. 
-
-![preexisting industrial equipment stock tracking](/img/industry-ag-main-preexistingEqptStock.png)
-
-Next, we calculate the output from equipment installed during the model run. These equipment are retired strictly based on age; that is, we assume there is no policy mechanism for driving early retirement of equipment installed during the model run. The profiles for retirement, therefore, simply depend on the number of years since equipment installation. 
-
-![new industrial equipment retirement](/img/industry-ag-main-newEqptRetirement.png)
-
-Lastly, potential output of equipment installed during the model run is tracked in the same way as for preexisting equipment. It is converted to real output by dividing potential output from equipment by Last Year Output by ISIC with Fuels Based on Energy Content, which was calculated above. 
-
-![new industrial equipment stock tracking](/img/industry-ag-main-newEqptStock.png)
-
-
-## Equipment Efficiency and Fuel Choice
-
 
 With industrial processes disaggregated, we turn to the implementation of fuel-shifting policies. Users can specify the amount of desired fuel shifting in each industry category and process. Fuel shifting will be applied to all fuels labeled as eligible in the input data variable 'Industrial Fuels Subject to Fuel Shifting.' As electrical processes are more efficient than those powered by combusting thermal fuels (heat pumps vs. boilers, for example), we apply a percentage industry fuel use reduction multiplier that reduces the input energy needed per unit output. This adjustment is subscripted by process.  
 
