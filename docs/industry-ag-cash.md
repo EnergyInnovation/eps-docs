@@ -3,16 +3,13 @@ title: Industry & Agriculture Sector (cash flow)
 ---
 ## General Notes
 
-The cash flow calculations for the Industry sector are more complicated than the cash flow calculations for other end-use sectors.  This is in large part because the Industry sector includes two types of emissions (energy-related emissions and process emissions), with different policies that address each type, as well as requiring the calculation of passthrough costs to consumers.  The calculations include the following contributors to the cash flow totals:
+The cash flow calculations for the Industry sector are more complicated than the cash flow calculations for any other sector.  This is in large part because the Industry sector includes two types of emissions (energy-related emissions and process emissions), with different policies that address each type, as well as requiring the calculation of passthrough costs to consumers.  The calculations include the following contributors to the cash flow totals:
 
 * Cash flow impacts of implementing process emissions policies
-* Cash flow changes from purchasing and financing industrial equipment
-* Cash flow changes from clean heat subsidies
 * Cash flow changes from carbon tax on process emissions
 * Cash flow impacts of implementing efficiency and fuel shifting policies
 * Cash flow changes from fuel use and taxes affecting fuel
 * CCS-related cash flow changes
-* Waste heat recovery-related cash flow changes
 * Cash flow changes from changes in production
 * Passthrough of direct changes in expenditures
 * Changes in expenditures due to import substitution
@@ -20,25 +17,19 @@ The cash flow calculations for the Industry sector are more complicated than the
 
 ## Cash Flow Impacts of Implementing Process Emissions Policies
 
-We begin by taking the change in process emissions we found on the [Industry and Agriculture - Main ](industry-ag-main) sheet and converting it to CO<sub>2</sub>e.  We use 100-year global warming potential (GWP) values, rather than the user-selected 20-year or 100-year GWP values, because we must use the same timeframe as the EPA source document that provides marginal abatement cost curves, which we use later in the calculation process to convert these changes in CO<sub>2</sub>e into changes in cash flow.  We also multiply by -1 to go from *decrease* to *increase* in process emissions to aid in the allocation of process emissions into cost buckets in the next step. The following screenshot shows the structure that converts change in process emissions to CO<sub>2</sub>e:
+We begin by taking the change in process emissions we found on the [Industry and Agriculture - Main ](industry-ag-main) sheet and converting it to CO<sub>2</sub>e.  We use 100-year global warming potential (GWP) values, rather than the user-selected 20-year or 100-year GWP values, because we must use the same timeframe as the EPA source document that provides marginal abatement cost curves, which we use later in the calculation process to convert these changes in CO<sub>2</sub>e into changes in cash flow.  The following screenshot shows the structure that converts change in process emissions to CO<sub>2</sub>e:
 
 ![conversion of process emissions to CO2e](/img/industry-ag-cash-ProcEmisConversion.png)
 
-Next, we need to assign all of those emissions reductions to different cost tiers. Our source documents provide marginal abatement curves, which specify a quantity of CO<sub>2</sub>e emissions that can be abated at each of a variety of price points (ranging from negative $1150 to -$100 in $50 increments, then up to $100 in $10 increments, and from $100 to $1600 in $50 increments).  We assume the lowest-cost abatement opportunities are implemented first.  So if the user-specified policy settings cause 10 tons to be abated, the model will assign as many of those tons to the negative $1150 cost tier as possible, then to the negative $1100 cost tier, and so on, until all of the abatement has been assigned to a cost tier.  Not all cost tiers will contain abatement potential.  
+Next, we assign all of those emissions reductions to different cost tiers.  Our source documents provide marginal abatement curves, which specify a quantity of CO<sub>2</sub>e emissions that can be abated at each of a variety of price points (ranging from negative $1150 to -$100 in $50 increments, then up to $100 in $10 increments, and from $100 to $1600 in $50 increments).  We assume the lowest-cost abatement opportunities are implemented first.  So if the user-specified policy settings cause 10 tons to be abated, the model will assign as many of those tons to the negative $1150 cost tier as possible, then to the negative $1100 cost tier, and so on, until all of the abatement has been assigned to a cost tier.  Not all cost tiers will contain abatement potential.  
 
-We employ Vensim's [ALLOCATE AVAILABLE](https://www.vensim.com/documentation/fn_allocate_available.html) function, which "allocates the available amount of a scarse resource to requesters based on the priority of those requests." In our case, the goal is to allocate the change in process emissions to each cost tier from least- to highest-cost (as industries will choose the lowest-cost abatement mechanisms first). 
+The screenshot below shows how the 'Reduction Achieved by Marginal Cost' is calculated.  The calculation is set up to cause Vensim to loop through each element of the "Marginal Abatement Cost" subscript at each timestep.  If there are process emissions reductions left to assign at the current Marginal Abatement Cost (meaning all potential in the cheaper Marginal Abatement Cost tiers has been used and there are remaining unassigned reductions), they will be assigned to the current Marginal Abatement Cost, up to the maximum potential in that tier.  
 
-We first define an "allocation priority" for these buckets, which essentially tells Vensim tells Vensim to prioritize the lowest-cost abatement mechanisms first. This priority is defined as a vector, a type of variable Vensim needs for the ALLOCATE AVAILABLE function. 
-
-![process emissions cost parameters](/img/industry-ag-cash-ProcEmisCostParams.png)
-
-The screenshot below shows how the 'Reduction Achieved by Marginal Cost' is calculated.  The Increase in Process CO2e by Policy and Industry is the total change in emissions to be allocated. Remaining Avoidable Process Emissions after Carbon Tax is the BAU avoidable emissions by marginal cost that is not already abated due to a carbon tax. And Process Emissions Cost Parameters as Vector defines the priority for allocation. 
+This structure also incorporates the variable 'Process Emissions Abated due to Carbon Tax by Marginal Cost,' which was calculated on on the [Industry and Agriculture - Main ](industry-ag-main) and is already in CO<sub>2</sub>e terms.  When calculating the remaining emissions reductions to assign, we remove the process emissions abated due to the carbon tax, as those have already been assigned to marginal cost tiers.
 
 ![assignment of process emissions reductions to cost tiers](/img/industry-ag-cash-CostAssignentByTier.png)
 
-Next, we multiply the number of tons abated at each marginal cost level by the cost definition for that tier.  We also incorporate the costs of the non-BAU process emissions policy lever into this variable. Lastly, we add a variable to determine the cost to government, as some policies could be paid for by the government. For example, 
-
-If for a given policy, the funds go to industry (e.g. buying equipment) rather than consumers (e.g. training or hiring workers), we then apply the effects of the user-specified R&D capital cost reduction policy.  We do this for process emissions due to the carbon tax separately from other process emissions reductions.
+Next, we multiply the number of tons abated at each marginal cost level by the cost definition for that tier.  If for a given policy, the funds go to industry (e.g. buying equipment) rather than consumers (e.g. training or hiring workers), we then apply the effects of the user-specified R&D capital cost reduction policy.  We do this for process emissions due to the carbon tax separately from other process emissions reductions.
 
 ![total cash flow change for Industry due to process emissions policies](/img/industry-ag-cash-ProcEmisCostTotal.png)
 
