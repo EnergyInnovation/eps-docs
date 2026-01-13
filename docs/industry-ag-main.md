@@ -84,20 +84,6 @@ In certain cases, leakage can be negative.  That is, a reduction in emissions fr
 
 Emissions due to leakage are estimated by the model but are not added to total emissions, since that total is meant to reflect only emissions from the modeled country.
 
-## General Structure
-
-As of EPS v4.1, in which we introduced equipment vintaging and stock tracking, the industrial sector is one of the more complex components in the model. At a high level, it follows this logic:
-
-First, we read in projections of each industrial subsector's annual gross output (revenue) under business-as-usual assumptions. We then estimate how policies around the economy affect fuel and product prices, which affect consumer behavior, and in turn, industry output. Spending patterns also influence demand for imports, export, and fuel production.
-
-We estimate how much industrial equipment (like boilers, motors, etc.) and energy is needed to make all of the products demanded by consumers. By making some assumptions about the lifetime of industrial equipment, we can estimate how much equipment (how many boilers, motors) retire each year, and therefore how much new equipment is needed to produce goods. 
-
-We track the cost of industrial equipment and fuel, both of which can be affected by policy, and estimate what types of equipment factories will purchase to replace old stock and make more products: for example, will they buy cheaper gas-powered furnaces or will the high efficiency of heat pumps make the higher upfront cost worth the investment? Once we know the types of equipment used in factories, we can calculate how much fuel they use each year to produce goods and how pollution and costs change over time. 
-
-Lastly, we examine the use of feedstocks (that is, fuels transformed into finished products rather than burned for energy) and the process emissions released during industrial production. Both feedstock consumption and process emissions can be affected by policy choice and are inherently linked. 
-
-Using all these calculations, we can get a sense of how energy policy around the economy affects industrial production, energy use, costs, and emissions. 
-
 ## Changes in Industrial Production Levels
 
 ### Changes in Imports and Production for Nonfuel Industries
@@ -194,49 +180,51 @@ The one exception is for the "energy pipelines and gas processing industry," whe
 
 ## Equipment Vintaging and Economic Output ($) Tracking
 
-Now that we understand any policy-induced changes to industrial production levels, we can begin to calculate industrial fuel use and emissions from that production.  We calculate fuel use, allowing the user to enable a variety of policies that can affect the amount of industrial fuel consumption. 
+Now that we understand any policy-induced changes in industrial production, we can begin to calculate industrial fuel use and emissions from that production.  We calculate fuel use, allowing the user to enable a variety of policies that can affect the amount of industrial fuel consumption. 
 
 ### Apportioning BAU Fuel Use by Industrial Process
+
+As of EPS version 4.1, we explicitly track the vintages and stock of industrial equipment to better account for the long lifetimes and turnover rate of equipment. We use input data to establish a baseline energy intensity of industrial production across the various processes used in industrial production, the first steps of which are documented in this section. 
 
 First, we read in projections of industrial fuel use from input data for both feedstock (non-energy) and energy purposes. We track these two quantities separately so that we can correctly calculate emissions from fuels that are combusted for energy purposes and can properly tie process emissions to feedstock consumption where appropriate. Here, we omit the feedstock portion which is handled later. The portion used for energy purposes is multiplied by the percent change in production, the calculation of which is described above. This section also adjusts BAU fuel use for the 'Exogenous GDP Adjustment,' which is no longer used in the U.S. model. This feature can be used to adjust energy and service demand for the COVID-19 induced recession or other economic shocks that are not reflected in collected input data. Because the U.S. EPS input data already reflects COVID-19, we no longer rely on this feature. However, it is still in use in certain international EPS models. 
 
 ![fuel use for energy purposes before fuel shifting](/img/industry-ag-main-FuelUseEnergyPurposes.png)
 
-This fuel use is apportioned across eight industrial processes according to input data, then converted to "electricity equivalent" units, representing the reduction in energy intensity of electric applications compared with those powered by combustion. For example, industrial heat pumps require around 70% less input energy than low-temperature boiler and furnace applications, on average. 
+This fuel use is apportioned across eight industrial processes according to input data, then converted to "electricity equivalent" units, representing the reduction in energy intensity of electric applications compared with those powered by combustion. For example, industrial heat pumps require ~70 percent less input energy than low-temperature boiler and furnace applications. 
 
 ![fuel use by process](/img/industry-ag-main-HeatDemand.png)
 
 ### Industrial Output with Produced Energy Quantities for Producing ISIC Codes
 
-An industry's energy consumption and equipment needs depend on its economic output, which we calculate as described above. But for fuel-producing industries (e.g., oil and gas extraction, refining, and coal mining), we use the quantity of produced energy rather than economic output in dollars to remove the effects of fuel price fluctuations on revenue (output) and better reflect equipment needs. 
+An industry's energy consumption and equipment needs depend on its economic output, which we calculate as described above. Here, for fuel-producing industries (e.g., oil and gas extraction, refining, and coal mining), we use the quantity of produced energy rather than economic output in dollars to remove the effects of fuel price fluctuations on revenue (output) and better reflect equipment needs. 
 
 ![domestically produced energy breakdown](/img/industry-ag-main-DomesticEnProd.png)
 
-We use "Last Year" versions of "Output by ISIC Code by Year" and "Percent Change in Domestically Produced Energy Producing ISIC Code Relative to Initial Time" because they both rely on outputs of the I/O model, which is affected by industrial production and fuel choices. This prevents a dependency loop that would cause the model to fail.
+We use "Last Year" versions of "Output by ISIC Code by Year" and "Percent Change in Domestically Produced Energy Producing ISIC Code Relative to Initial Time" because they both rely on outputs of the I/O model, which is affected by industrial production and fuel choices.
 
 ![last year output with produced energy](/img/industry-ag-main-LYDomesticEnProd.png)
 
 ### Tracking Industrial Output by Equipment Vintage
 
-Next up, we track industrial equipment stock and output across the various industrial subsectors, fuels, and processes. We track preexisting equipment separately from new equipment installed during the model run, and address the former first. 
+We track stock and output of industrial equipment across industrial subsectors, fuels, and processes. We track preexisting equipment separately from new equipment installed during the model run, and address the former first. 
 
-Preexisting equipment includes the all the machinery and tools that are used in the to generate industrial output and were installed before the model start year. Our first task is to assess what share of preexisting equipment is retired in each year, which helps determine how much new equipment is needed. Different types of equipment last for different durations. For example, industrial boilers often remain online for over 40 years or more. Others, like machine drive applications including motors, compressors, and pumps often retire within 20 years of installation. We use retirement curves from input data to define the share of preexisting equipment taken offline in each year. 
+Preexisting equipment can be retired two ways: either naturally by age or by an early retirement policy lever that allows the user to define the share of preexisting equipment retired early. Input data defines what fuel types are retired early. In the U.S. model, this is typically fossil-fueled equipment that could be retired early to accelerate industry decarbonization. 
 
-However, in some regions, certain industries may be small and output may come from a few or only one facility. For example, some U.S. states or smaller countries might have a single steel mill or primary aluminum smelter. Therefore, using a gradual retirement profile might not reflect how equipment investments may only occur in specific years (e.g., a blast furnace might only need re-lining or replacement in 2030). The input file indst/BIISRP allows the user to define retirement profiles for specific industries, not subscripted by industrial process. The boolean variable from the BIISRP input file is used to choose which industries, if any, should use site-specific retirement profiles. 
+We use input data to define retirement profiles for equipment that is retired naturally by age (as in the BAU). For most industries in most regions, we use retirement curves for equipment of each industrial process (from the indst/IESD input file). For example, industrial boilers often remain online for over 40 years, resulting in a slow retirement profile. On the other hand, machine drive applications like motors, compressors, and pumps often retire within 20 years of installation. 
 
-As we discussed, industrial equipment can usually run for a long time. This can make reaching climate goals difficult since factories that installed new fossil-fueled equipment recently might not see another investment cycle for several decades. Therefore, we include a policy lever which allows the user to define a share of preexisting equipment that must be retired by a chosen year. Input data defines what fuel types are retired early when the lever is used. In the U.S. model, this includes fossil-fueled equipment that can be retired early to accelerate industry decarbonization. This policy lever can be used to represent industrial pollution standards, financial incentives to retire equipment early (akin to a "cash for clunkers" policy). Pairing industrial electrification with early retirement of polluting equipment may be required to reach ambitious climate goals in some regions; policy design should target the highest emitting equipment for early retirement, as the lever can otherwise cause production costs to skyrocket and businesses to lose competitiveness. 
+In some regions, certain industries may be small and output may come from a few or only one facility. For example, some U.S. states might have a single steel mill. Therefore, using a gradual retirement profile might not reflect how equipment investments may only occur in specific years (e.g., a blast furnace re-lining across two years from 2031-32). The input file indst/BIISRP allows the user to define retirement profiles for specific industries, not subscripted by industrial process. The boolean variable from the BIISRP input file is used to choose which industries, if any, should use site-specific retirement profiles. 
 
 ![preexisting industrial equipment retirement](/img/industry-ag-main-preexistingEqptRetirement.png)
 
-Now that we know the share of preexisting industrial equipment retired in each year, we can track the output from the total stock of preexisting equipment. Since demand can go down in one year and then recover (like during and after the COVID pandemic), we work in terms of "potential output." We assume equipment can be idled in a given year if there is more equipment than necessary to meet demand in that year. Potential output refers to the output that the equipment is capable of producing. All equipment is idled proportionately, since older and younger equipment may be mixed among production lines, making it impossible to selectively idle only the oldest equipment. 
+Now that we know the share of preexisting industrial equipment retired in each year, we can track the output from the total stock of preexisting equipment. Since demand can go down and then recover, we work in terms of "potential output." We assume equipment can be idled in a given year if there is more equipment than necessary to meet demand in that year. Potential output refers to the output that the equipment is capable of producing. All equipment is idled proportionately, since older and younger equipment may be mixed among production lines, making it impossible to selectively idle only the oldest equipment. 
 
 ![preexisting industrial equipment stock tracking](/img/industry-ag-main-preexistingEqptStock.png)
 
-Next, we calculate the output from equipment installed during the model run. These tools and machinery are retired strictly based on age; that is, we assume there is no policy mechanism for driving early retirement of equipment installed during the model run. Newer equipment like this is typically more efficient and cost effective to run than older equipment, so an early retirement policy lever would yield less benefits at higher costs. The profiles for retirement, therefore, simply depend on the number of years since equipment installation. 
+Next, we calculate the output from equipment installed during the model run. These equipment are retired strictly based on age; that is, we assume there is no policy mechanism for driving early retirement of equipment installed during the model run. The profiles for retirement, therefore, simply depend on the number of years since equipment installation. 
 
 ![new industrial equipment retirement](/img/industry-ag-main-newEqptRetirement.png)
 
-Lastly, potential output of equipment installed during the model run is tracked in the same way as for preexisting equipment. It is converted to real output by dividing potential output from equipment by Last Year Output by ISIC with Fuels Based on Energy Content, which was calculated above. This leaves us with the total output from all industrial equipment by vintage, including demand for new equipment, which will be allocated to various fuels in the next sections. 
+Lastly, potential output of equipment installed during the model run is tracked in the same way as for preexisting equipment. It is converted to real output by dividing potential output from equipment by Last Year Output by ISIC with Fuels Based on Energy Content, which was calculated above. 
 
 ![new industrial equipment stock tracking](/img/industry-ag-main-newEqptStock.png)
 
@@ -247,23 +235,23 @@ Lastly, potential output of equipment installed during the model run is tracked 
 
 We continue to work in units of "electricity equivalent" to make the output of equipment of varying fuel types comparable (since electricity is used more efficiently than combustible fuels are). This helps facilitate cost-based fuel choice calculations later on. 
 
-We start with BAU Industrial Equipment Energy Use from Input Data by Industrial Process in Electricity Equivalent and sum across industrial fuel type and process, then divide by BAU Last Year Output by ISIC Code to yield a "raw" industrial energy intensity — that is, the BTU of fuel required to produce a $ of output according to input data. 
+We start with BAU Industrial Equipment Energy Use from Input Data by Industrial Process in Electricity Equivalent and sum across industrial fuel type and process, then divide by BAU Last Year Output by ISIC Code to yield a "raw" industrial energy intensity — that is, the BTU of fuel required to produce a $ of output. 
 
 ![BAU raw industrial energy intensity](/img/industry-ag-main-RawEnergyIntensity.png)
 
-However, this is an energy intensity read explicitly from input data. We want energy intensity to evolve endogenously as policy affects equipment choice (whether it be different fuels or efficiencies) and the industry sector evolves in the model. We will return to this "raw" quantity later.
+However, this is an energy intensity read explicitly from input data. We want energy intensity to evolve endogenously as equipment choice changes and the industry sector evolves in the model. We will return to this "raw" quantity later. 
 
-Next up, we calculate the "unit energy factor," or the energy intensity of new industrial equipment measured as BTUs of input energy per BTUs of output energy. For example, a natural gas boiler might have an efficiency of 0.85, meaning it produces 0.85 BTU of heat for each 1 BTU of input gas. The energy intensity or unit energy factor of this equipment is 1/0.85 or 1.18. On the other hand, an industrial heat pump with a coefficient of performance (COP) of 3 produces 3 BTU of heat for each BTU of input electricity, resulting in a much lower energy intensity of 1/3 or 0.33. 
+Next up, we calculate the "unit energy factor," or the energy intensity of new industrial equipment as BTUs of input energy per BTUs of output energy. For example, a natural gas boiler might have an efficiency of 0.85, meaning it produces 0.85 BTU of heat for each 1 BTU of input gas. The energy intensity of this equipment is 1/0.85 or 1.18. On the other hand, an industrial heat pump with a coefficient of performance (COP) of 3 produces 3 BTU of heat for each BTU of input electricity, resulting in an energy intensity of 1/3 or 0.33. 
 
 We read in a start year equipment unit energy factor from input data for each industrial process and fuel type. This value is scaled each year by the BAU improvement in equipment efficiency improvement, also sourced from input data, which should correspond to the assumed new equipment efficiency improvement in indst/BIFU. The resulting unit energy factor is limited to a theoretical minimum defined in indst/IEMUEF. For the same natural gas equipment described above, the value in this file might represent a modulating condensing boiler, the efficiency of which can approach 99% (for an intensity of 1.01).
 
 ![BAU industrial energy intensity](/img/industry-ag-main-BAUEnergyIntensity.png)
 
-Next, we account for how industrial equipment efficiency can change in a policy scenario. This can happen two ways in the model. 
+Next, we account for how industrial equipment efficiency can change in a policy scenario. This can happen two ways. 
 
-First, we account for how new equipment efficiency changes with fuel prices. Consider a factory manager in a region who needs to replace an old gas boiler. If the price of gas is very low, she may choose a less efficient boiler model with lower upfront costs. But if the price of gas is high, she might instead spend a bit more for a more efficient boiler, knowing that the difference in upfront spending will pay off quickly given the high fuel prices. This relationship between fuel prices and equipment efficiency happens automatically in the model with changes in fuel prices in the policy scenario. The elasticity of efficiency to fuel prices is sourced from input data (indst/EoIEECwEC).
+First, we account for how new equipment efficiency changes with fuel prices. Consider a factory manager in a region who needs to replace an old gas boiler. If the price of gas is very low, she may choose a less efficient boiler model with lower upfront costs. But if the price of gas is high, she might instead spend a bit more for a more efficient boiler, knowing that the difference in upfront spending will pay off quickly given the high fuel prices. This relationship between fuel prices and equipment efficiency happens automatically in the model with changes in fuel prices in the policy scenario. 
 
-The second mechanism by which industrial equipment efficiency can change is in response to an efficiency standard policy. We include separate policy levers for standards on equipment powered by electricity and by combustible fuels as a government may pass different efficiency requirements for, for example, electric motors vs. diesel generators, or heat pumps vs. solid-fuel furnaces. Importantly, this lever should be used to represent policies that reduce the fuel use (relative to BAU) of components that are assembled together as part of industrial facilities; efficiency improvements from other approaches and technologies like improved process scheduling or the installation of waste heat recovery equipment are evaluated later in the calculations.
+The second mechanism by which industrial equipment efficiency can change is in response to an efficiency standard policy. We include separate policy levers for equipment powered by electricity and by combustible fuels as a government may pass different efficiency requirements for electric motors vs. diesel generators, or heat pumps vs. solid-fuel furnaces. 
 
 ![industrial energy intensity change](/img/industry-ag-main-EnergyIntensityChange.png)
 
@@ -275,7 +263,7 @@ We return to the Raw BAU Industrial Energy Intensity in Electricity Equivalent, 
 
 ![energy intensity of industrial production](/img/industry-ag-main-EnergyIntensityIndstProd.png)
 
-Lastly, as noted briefly above, more efficient equipment often comes with a price premium. For example, applications for industrial pumps or compressors that operate with fluctuating load might be made much more efficient by use of a variable-speed drive (VSD). While they typically make motors more expensive, VSDs allow the motor speed to adjust to match demand, reducing energy consumption and saving money on fuel. We use elasticities from input data to define the relation between efficiency and price. The resulting price change is applied to new equipment cost in the upcoming equipment choice step. 
+Lastly, as noted briefly above, more efficient equipment often comes with a price premium. For example, applications for industrial pumps or compressors that operate with fluctuating load might be made much more efficient by use of a variable-speed drive (VSD). While making a motor more expensive, VSDs allow the motor speed to adjust to match demand, reducing its energy consumption. We use elasticities from input data to define the relation between efficiency and price. The resulting price change is applied to new equipment cost in the upcoming equipment choice step. 
 
 ![energy intensity of industrial production](/img/industry-ag-main-EfficiencyUpgradePrice.png)
 
@@ -289,7 +277,7 @@ We want to base our technology choice on cost, with cheaper options being more w
 
 However, while the upfront cost of some industrial equipment can be significant, the overwhelming share of expenditures made during its lifetime is typically spending on energy. Therefore, we instead base our economic choice on the present value of all expenditure types, not just capital costs, discounting future spending by an industry's cost of capital. Costs are calculated in dollars per unit annual energy use so we can standardize across industrial processes and shift to "electricity equivalent" again to standardize across fuel types. 
 
-To start, we read capital costs from input data for both stationary and mobile equipment. Energy use by offroad mobile equipment like agricultural tractors and heavy construction equipment is often accounted for in the industrial sector, rather than in the transportation sector, but the costs, annual energy use of, and policies for decarbonizing these equipment differ from other industrial equipment significantly. Thus we use different capital cost assumptions.
+To start, we read capital costs from input data for both stationary and mobile equipment. Energy use by offroad mobile equipment like agricultural tractors and heavy construction equipment is often accounted for in the industrial sector, rather than in the transportation sector, but the costs, annual energy use of, and policies for decarbonizing these equipment differ from other industrial equipment significantly. Thus we use different capital cost assumptions.  
 
 The equipment cost change caused by efficiency adjustments calculated above is then added in.
 
@@ -324,32 +312,6 @@ With new equipment demand allocated economically, we turn to the implementation 
 Lastly, the share of new indsutrial equipment by fuel type is converted to economic output from new industrial equipment and summed to useful quantities for stock and energy use tracking purposes. 
 
 ![industrial fuel choice and shifting](/img/industry-ag-main-eqptOutputEnergyUse.png)
-
-### Recording Fuel Type Shares by Vintage
-
-Now having built an understanding of the equipment needs in each year and allocating new equipment to various fuel types, we include variables that track the fuel type shares of all equipment. We have one variable each for new and preexisting equipment. 
-
-For newly installed equipment, we simply save fuel type shares for each vintage and reference that for every model year going forward. 
-
-![equipment fuel type by vintage](/img/industry-ag-main-eqptFuelTypeByVintage.png)
-
-For preexisting equipment, we need to account for how the early retirement policy can target specific fuel types. For example, if a scenario retires all coal-burning industrial furnaces by 2035, maybe to represent a local air pollution regulation, the fuel-type shares of preexisting furnaces will change over time. As a result, we need to re-calculate the fuel-type shares for preexisting equipment in each modeled year. 
-
-![equipment fuel type by vintage](/img/industry-ag-main-preexistingEqptFuelTypeShares.png)
-
-### Calculating Current Year Industrial Energy Use
-
-We finally have all the information we need to calculate industrial energy use: output from preexisting and new equipment by vintage (in $), energy intensity of industrial production by fuel type and vintage (in BTU/$), and fuel type shares by vintage (dimensionless). Multiplying these three yields energy consumption in BTU by fuel type. 
-
-![fuel use before process policies](/img/industry-ag-main-fuelUseBeforeProcPolicies.png)
-
-We can apply two final policy levers at this point to affect energy consumption. 
-
-The first is waste heat recovery, which represents the application of equipment to recover waste heat that is otherwise lost to the environment. A majority of industrial energy consumption is for heat generation, so recovering heat that would otherwise be released to the environment can significantly lower production costs. The upfront cost of equipment to recover waste heat is handled on the [Industry Cash Flows](industry-ag-cash) page. 
-
-The final lever affecting industrial energy use is process efficiency upgrades. This lever can be used to represent several improvements to industrial processes, such as improved process scheduling, programmed heating, energy monitoring and management systems, or improved pretreatment of materials, to name a few. These are typically low-cost solutions that may already have widespread adoption in advanced economies, so users should be cautious about properly representing real-world industry potential for improvements. Additionally, since implementation costs can vary, we do not assign capital expenditures to this lever. 
-
-![industry fuel use for energy after waste heat recovery and process efficiency](/img/industry-ag-main-WasteAndProcessEfficiency.png)
 
 ## Process Emissions
 
