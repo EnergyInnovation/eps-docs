@@ -44,69 +44,21 @@ If for a given policy, the funds go to industry (e.g. buying equipment) rather t
 
 In the process emissions calculations on the [Industry and Agriculture - Main ](industry-ag-main) sheet, we include a boolean policy to read additional process emissions from input data. We treat these additional emissions similarly to those reduced by other policies, multiplying the number of tons added at each marginal cost level by the cost definition for that tier. These additioanl emissions are fed into the Cost to Industry from Process Emissions Policies. 
 
-## Calculating Industry Sector Cost of Capital
+![cash flow change for Industry due to added process emissions](/img/industry-ag-cash-ProcEmisAdded.png)
 
-Typically, industrial producers, when purchasing new equipment, will not buy the equipment flat out. Instead, they will finance the upfront cost of the equipment through bank loans, energy service company (ESCO) funding, original equipment manufacturer (OEM) financing, green bank investment, or other similar financing mechanisms. As a result, they can pay off the cost of this equipment over time as they bring in revenue from their business.
+## Cash Flow Impacts of Implementing Efficiency Policies
 
-The "cost of capital" is the price a company pays for this financing. Weighted Average Cost of Capital (WACC) is calculated as the average of cost of equity and the after-tax cost of debt, weighted by the market values of equity and debt. We read WACC values for each industry category from input data. For the policy scenario, we include a lever that represents how government can lower the cost of capital for industry through mechanisms like low-rate loans and differential financing for clean technology — essentially lowering the interest rate on financed clean equipment to incentivize or de-risk investments. Input data defines the equipment fuel types qualifying for these loans. 
+We begin this calculation by determining the additional, incremental change in fuel use (that is, between the policy and BAU cases) in the current year of the model run relative to the prior year.  This incremental difference indicates how much additional equipment was needed in the current year, since equipment that enabled fuel savings in past years is still in operation and still provides fuel savings in the current year.  For fuel shifting policies, we use increases in industrial fuel use rather than the change in fuel use, since the costs of fuel shifting are based on the purchase of equipment to handle new fuel types.  The following structure shows this calculation:
 
-![industry sector cost of capital](/img/industry-ag-cash-CostOfCapital.png)
+![incremental fuel savings](/img/industry-ag-cash-IncrementalFuelSavings.png)
 
-Next, we calculate the capital recovery factor (CRF), which is a ratio that can be used to convert an initial investment amount into a series of equal annual payments (the amount an industry would have to pay each year on financed costs). 
+Next, we use input data that provide the cost to implement different efficiency policies per unit of energy saved annually (or, in the case of the fuel switching policy, per unit energy shifted).  These factors are multiplied with our incremental fuel savings (from the previous calculation) to determine the current year payments to implement policies (at more stringent levels than the prior year), as shown in the following structure:
 
-![industry sector cost of capital](/img/industry-ag-cash-CapitalRecoveryFactor.png)
+![efficiency policy incremental implementation cost](/img/industry-ag-cash-EffPolicyImplemCost.png)
 
-## Calculating Change in Industrial Equipment Capital Expenditures
+Next, we reduce the cost of equipment purchased due to the policies based on the user's setting for the R&D-driven industrial equipment capital cost reduction policy (by industry category).  We only reduce the cost for policies where the main expense for compliance is to buy equipment, rather than to pay workers.  The following screenshot shows the relevant structure:
 
-We want to track how much each industry spends on equipment so we can attribute those expenditures as revenue in the appropriate economic sectors. This calculation is simple: the potential energy use of new industrial equipment is multiplied by the capital cost per unit annual energy use. 
-
-![change in upfront spending on equipment](/img/industry-ag-cash-UpfrontEquipmentSpending.png)
-
-As noted above, industries rarely pay for equipment up front; rather these expenditures are made by financiers who then recover through annuities over a repayment period. This section calculates the annual financing repayments made by industry to financiers over the duration of the loan. We use Vensim's level/rate structure, where the variable "Last Year Financing Repayments for Industrial Equipment is the stock of all payments being made by industry in the previous modeled year, while the rate "Annual Financing Repayment for Newly Purchased Industrial Equipment" increases the stock (adds more payments) and Annual Industrial Equipment Financing Repayments Expiring After Repayment Period" decreases the stock (as an industry finishes repaying the equipment cost in full). 
-
-![financing repayments for industrial equipment](/img/industry-ag-cash-EqptFinancingRepayments.png)
-
-Lastly, we subtract the policy scenario financing repayments from the BAU to determine the change in financing repayments for industrial equipment. This is tracked later in the changes in expenditures and revenues. 
-
-![change in financing repayments for industrial equipment](/img/industry-ag-cash-ChgEqptFinancingRepayments.png)
-
-## Calculating Change in Clean Heat Subsidies
-
-We track changes in the cost of clean heat production and investment subsidy schemes here. 
-
-### Change in Clean Heat Investment Subsidies
-
-The amount spent on clean industrial heat investment subsidies is trivial to compute: we multiply the potential energy use of new equipment (effectively the heating capacity) by the subsidy rate in $/BTU and compare the BAU versus policy scenario subsidy amounts paid. 
-
-![clean heat investment subsidy costs](/img/industry-ag-cash-CleanHeatInvSubsCosts.png)
-
-### Change in Clean Heat Production Subsidies
-
-Firstly, a recap on clean heat production subsidies. We define these as payments made to 
-industrial producers who purchase and use process heating equipment (like boilers or furnaces) 
-powered by clean energy (typically electricity). The payment can come in the form of a tax 
-credit (as in the U.S. federal context) or a direct payment. The amount paid depends not on the
- cost of the equipment (that's an investment subsidy), but on the amount the equipment is used 
-in the production process. For example, if a heat pump is purchased for heating a chemical, the
- payment would be provided based on the amount of heat it generates that is used in the 
-process. Notably, a well-designed clean heat subsidy should depend on the output of the 
-equipment, rather than the energy input: government should not subsidize the amount of energy 
-consumed by the heat pump. By incentivizing heat *production*, more efficient products are incentivized more highly. 
-
-As clean heat production subsidies are dependent on the actual production of industrial heat in a year, rather than the amount of equipment used. Thus, we rely on the output from each vintage in a given year, and multiply by the output fuel shares by vintage already calculated on the [Industry Main](industry-ag-main) page. 
-
-The variable Clean Industrial Heat Production Subsidy Rate by Equipment Vintage works similarly to a level variable type, calculating the subsidy rate paid to users of equipment from installed during each vintage. It uses the following logic (paired with examples for the model year 2030 and a five-year duration production subsidy):
-* if the vintage is after the current modeled year (e.g., vintage 2031), the subsidy rate is zero as the equipment in this vintage is not yet installed 
-* if the vintage is equal to the current year (i.e., vintage 2030), the subsidy rate is pulled from the [Industry Main](industry-ag-main) page
-* if the vintage is before the current model year (e.g., vintage 2025), the model checks whether the subsidy has expired (if 2030 minus 2025 is greater than five, the subsidy duration); if so, the value is zero. If not, the value is pulled from the variable's Last Year version
-
-Finally, the subsidy value is multiplied by output and energy intensity in electricity equivalent, but discounted by the reduction in energy intensity from efficiency upgrades (process and waste heat recovery). This is summed across all vintages to get a total amount in $ spent on clean heat production subsidies. 
-
-![clean heat production subsidy costs](/img/industry-ag-cash-CleanHeatProdSubsCosts.png)
-
-We subtract the BAU subsidy payments from the policy scenario payments to get the change in production subsidies paid. And lastly, the change in production and investment subsidy values are summed for use in the revenue and expenditure tracking sections.
-
-![clean heat subsidy costs](/img/industry-ag-cash-CleanHeatSubsCosts.png)
+![R&D effects on cost of implementing efficiency policies](/img/industry-ag-cash-EffPolRnD.png)
 
 ## Cash Flow Impacts from Fuel Use and Taxes Affecting Fuel
 
@@ -132,58 +84,19 @@ The structure shown above is repeated for the BAU case, and we calculate the 'Ch
 
 ## CCS-Related Cash Flow Impacts
 
-The change in Industry sector cash flow related to CCS has seven components, differences in:
-* CCS capital equipment costs, 
-* equipment financing repayments,
-* O&M payments,
-* sequestered CO<sub>2</sub> transportation and storage costs,
-* sequestered CO<sub>2</sub> transportation and storage subsidies,
-* industrial CCS subsidies, and
-* carbon tax reductions for sequestered CO<sub>2</sub>,
+The change in Industry sector cash flow related to CCS has three components: differences in CCS capital equipment costs, O&M payments, and carbon tax reductions for sequestered CO<sub>2</sub>.
 
-### CCS Equipment Costs and Financing
-
-To calculate the change in CCS capital equipment costs, we take the difference in amount spent on CCS equipment in the BAU and policy cases.  The following screenshot shows the relevant structure:
+To calculate the change in CCS capital equipment costs, we take the difference in amount spent on CCS capital equipment in the BAU and policy cases.  The following screenshot shows the relevant structure:
 
 ![change in cash flow due to CCS equipment](/img/industry-ag-cash-CCSEquipmentCosts.png)
 
-We then turn the new capital equipment cost spending into financing repayments using a capital recovery factor (CRF), a financial tool described above. 
-
-![CCS annual financing repayments](/img/industry-ag-cash-CCSFinancingRepayments.png)
-
-The financing repayments associated with CCS equipment installed in each model year are tracked in a level/rate structure similar to that used for industrial process equipment described above. In brief, the annual payments associated with each vintage are added into a stock and removed after the repayment period duration. 
-
-![CCS annual financing repayments stock](/img/industry-ag-cash-CCSFinancingRepaymentsStock.png)
-
-Finally, the summed annuities for all equipment not yet paid off are compared across the policy and BAU scenarios.
-
-![change in CCS annual financing repayments](/img/industry-ag-cash-ChangeCCSFinancingRepayments.png)
-
-### Other CCS Costs
-
-The change in O&M and transportation and storage costs, as well as the change in CCS subsidies are all handled similarly to upfront equipment costs, as we need only find the difference in amounts between the pre-calculated BAU and policy cases. 
+The change in O&M and transportation and storage costs, as well as the change in CCS subsidies are all handled similarly, as we find the difference in amounts between the BAU and policy cases. 
 
 ![change in cash flow due to CCS O&M](/img/industry-ag-cash-CCSOtherCosts.png)
 
-### Change in Carbon Tax Rebates
-
-Finally, we take the difference in CO<sub>2</sub> sequestered in the BAU and policy cases, convert from grams of pollutant to grams of CO<sub>2</sub>e (which does not change the number, because CO<sub>2</sub> is the only pollutant that can be sequestered, and it has a GWP of 1), and convert to metric tons of CO<sub>2</sub>e.  This yields the change in CO<sub>2</sub> sequestered by Industry, and we apply the carbon tax rate (multiplied by the fraction of each industry subject to carbon tax) to find the total tax rebate from CO<sub>2</sub> sequestration.  The relevant structure is shown in the following screenshot:
+Finally, we take the difference in CO<sub>2</sub> sequestered in the BAU and policy cases, convert from grams of pollutant to grams of CO<sub>2</sub>e (which does not change the number, because CO<sub>2</sub> is the only pollutant that can be sequestered, and it has a GWP of 1), and convert to metric tons of CO<sub>2</sub>e.  This yields the change in CO<sub>2</sub> sequestered by Industry, and we apply the carbon tax rate to find the total tax rebate from CO<sub>2</sub> sequestration.  The relevant structure is shown in the following screenshot:
 
 ![change in carbon tax due to change in sequestered CO2](/img/industry-ag-cash-CCSCarbonTaxRebate.png)
-
-## Cash Flow Impacts of Implementing Efficiency Policies
-
-We begin this calculation by determining the additional, incremental change in fuel use (that is, between the policy and BAU cases) in the current year of the model run relative to the prior year.  This incremental difference indicates how much additional equipment was needed in the current year, since equipment that enabled fuel savings in past years is still in operation and still provides fuel savings in the current year.  For fuel shifting policies, we use increases in industrial fuel use rather than the change in fuel use, since the costs of fuel shifting are based on the purchase of equipment to handle new fuel types.  The following structure shows this calculation:
-
-![incremental fuel savings](/img/industry-ag-cash-IncrementalFuelSavings.png)
-
-Next, we use input data that provide the cost to implement different efficiency policies per unit of energy saved annually (or, in the case of the fuel switching policy, per unit energy shifted).  These factors are multiplied with our incremental fuel savings (from the previous calculation) to determine the current year payments to implement policies (at more stringent levels than the prior year), as shown in the following structure:
-
-![efficiency policy incremental implementation cost](/img/industry-ag-cash-EffPolicyImplemCost.png)
-
-Next, we reduce the cost of equipment purchased due to the policies based on the user's setting for the R&D-driven industrial equipment capital cost reduction policy (by industry category).  We only reduce the cost for policies where the main expense for compliance is to buy equipment, rather than to pay workers.  The following screenshot shows the relevant structure:
-
-![R&D effects on cost of implementing efficiency policies](/img/industry-ag-cash-EffPolRnD.png)
 
 ## Cash Flow Changes from Changes in Production
 
