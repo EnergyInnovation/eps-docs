@@ -94,7 +94,11 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 * Center for New Energy Economy
 * Energy Foundation
+* Matthew Twyman, CDPHE
 * Shannon Hill, CDPHE
+* Rebecca Billingsley, CDPHE
+* Mercy Ngulat, CDPHE
+* Sabrina Schatz, CDPHE
 * Olivia Ashmoore, Energy Innovation LLC
 * Wendy Jaglom, RMI
 * Megan Mahajan, Energy Innovation LLC
