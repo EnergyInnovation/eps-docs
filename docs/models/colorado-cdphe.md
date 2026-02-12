@@ -6,7 +6,7 @@ The Colorado (CDPHE) Energy Policy Simulator (EPS) is a free and open-source com
 
 [Click here](https://energypolicy.solutions/home/colorado-cdphe/en) for access to the latest version (4.0.4) of the public model that was refined and developed in collaboration with the Colorado Department of Public Health and Environment to inform the state's 2025 [Greenhouse Gas (GHG) Inventory](https://cdphe.colorado.gov/environment/air-pollution/climate-change/GHG-inventory). This version includes three customized state scenarios: Business as Usual (BAU), Roadmap Baseline (RBL), and Near-Term Actions (NTA). 
 
-A prior version of the model was used for the Roadmap 2.0 Project. This version is now archived. [Click here](https://energypolicy.solutions/simulator/colorado/en/6e7743c) for access to the previous version (3.4.3) of the public model, which was developed for and calibrated to the state's 2023 GHG Inventory, and used to inform the state's [GHG Pollution Reduction Roadmap](https://energyoffice.colorado.gov/ghg-pollution-reduction-roadmap) (Roadmap 2.0). 
+A prior version of the model was used for the Roadmap 2.0 Project. This version is now archived. [Click here](https://energypolicy.solutions/simulator/colorado/en/6e7743c) for access to the previous version (3.4.3) of the public model, which was developed for and calibrated to the state's 2023 GHG Inventory, and used to inform the state's [GHG Pollution Reduction Roadmap](https://energyoffice.colorado.gov/ghg-pollution-reduction-roadmap) (Roadmap 2.0). If you would like to access the documentation for this version of the model, email us at policy@energyinnovation.org.
 
 ## Model Download
 
@@ -108,7 +108,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
-### **4.0.4 - January 30, 2026**
+### **4.0.4 - February 12, 2026**
 * Launch of the custom Colorado EPS
 * Scenarios
   * RBL and NTA scenarios added to model the active and planned policy actions identified in the Colorado 2025 GHG Inventory and the second GHG Pollution Reduction Roadmap
@@ -131,8 +131,8 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software.  Refer to the [Software License](../software-license) page for full details.
 
 ## Image Credits
-xx<br/>
-xx<br/>
-xx<br/>
-License: x
+Downtown Denver Skyline in Fall<br/>
+EdgeOfReason<br/>
+[https://www.shutterstock.com/image-photo/downtown-denver-skyline-fall-2506202663?dd_referrer=](https://www.shutterstock.com/image-photo/downtown-denver-skyline-fall-2506202663?dd_referrer=)<br/>
+License: Shutterstock<br/>
 Changes: Image has been cropped and a fade has been applied to the left side.<br/>
