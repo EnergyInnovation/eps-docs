@@ -57,7 +57,7 @@ Other fuels (e.g., naphtha, ethanol, biogas) not listed explicitly above are acc
 
 ### Industrial Processes
 
-We break down fuel use in industry among various energy-consuming processes:
+We break down fuel use in industry among various energy-consuming end uses:
 
 * boilers
 * nonboiler low-temp process heat (<165 °C)
@@ -65,8 +65,10 @@ We break down fuel use in industry among various energy-consuming processes:
 * nonboiler high-temp process heat (>400 °C)
 * process cooling
 * machine drive
-* electrochemical
-* other
+* other processes (e.g., electrochemical)
+* facility HVAC
+* facility lighting
+* other nonprocess (e.g., onsite transportation)
 
 We break out each of these processes because the technical and policy-based solutions needed to address energy use from each differs widely. For example, while many boilers and non-boiler, low-temperature process heat applications can be replaced by industrial heat pumps, higher temperature applications might require induction heating equipment or electric-arc furncaces and very different financial measures to make electrification feasible. 
 

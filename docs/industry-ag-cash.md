@@ -36,7 +36,7 @@ The screenshot below shows how the 'Reduction Achieved by Marginal Cost' is calc
 
 ![assignment of process emissions reductions to cost tiers](/img/industry-ag-cash-CostAssignentByTier.png)
 
-Next, we multiply the number of tons abated at each marginal cost level by the cost definition for that tier.  We also incorporate the costs of the non-BAU process emissions policy lever into this variable. Lastly, we add a variable to determine the cost to government, as some policies could be paid for by the government. For example, 
+Next, we multiply the number of tons abated at each marginal cost level by the cost definition for that tier.  We also incorporate the costs of the non-BAU process emissions policy lever into this variable. Lastly, we add a variable to determine the cost to government, as some policies could be paid for by the government. For example, government may provide funds to farmers to employ conservation techniques on their land; expenditures would be made by landowners but rebated by government. 
 
 If for a given policy, the funds go to industry (e.g. buying equipment) rather than consumers (e.g. training or hiring workers), we then apply the effects of the user-specified R&D capital cost reduction policy.  We do this for process emissions due to the carbon tax separately from other process emissions reductions.
 
@@ -171,19 +171,15 @@ Finally, we take the difference in CO<sub>2</sub> sequestered in the BAU and pol
 
 ![change in carbon tax due to change in sequestered CO2](/img/industry-ag-cash-CCSCarbonTaxRebate.png)
 
-## Cash Flow Impacts of Implementing Efficiency Policies
+## Cash Flow Changes from Waste Heat Recovery Capital Expenditures
 
-We begin this calculation by determining the additional, incremental change in fuel use (that is, between the policy and BAU cases) in the current year of the model run relative to the prior year.  This incremental difference indicates how much additional equipment was needed in the current year, since equipment that enabled fuel savings in past years is still in operation and still provides fuel savings in the current year.  For fuel shifting policies, we use increases in industrial fuel use rather than the change in fuel use, since the costs of fuel shifting are based on the purchase of equipment to handle new fuel types.  The following structure shows this calculation:
+As with CCS- and other equipment, equipment for waste heat recovery is assumed to be financed by industry. The BTU of energy saved through heat recovery is calculated then multiplied by an assumed capital cost per unit energy from the literature. This yields capital expenditures for new waste heat recovery equipment in each modeled year. 
 
-![incremental fuel savings](/img/industry-ag-cash-IncrementalFuelSavings.png)
+![new waste heat recovery expenditures](/img/industry-ag-cash-WasteHeatExpenditures.png)
 
-Next, we use input data that provide the cost to implement different efficiency policies per unit of energy saved annually (or, in the case of the fuel switching policy, per unit energy shifted).  These factors are multiplied with our incremental fuel savings (from the previous calculation) to determine the current year payments to implement policies (at more stringent levels than the prior year), as shown in the following structure:
+The upfront expenditures necessary for waste heat recovery equipment are converted into constant annuities using a capital recovery factor, and tracked using a stock and flow structure. Financing repayments begin in the year of the equipment purchase and end after a repayment period defined in input data. Upfront expenditures are attributed to the EPS financing sector and repayments make this sector whole again over this period.
 
-![efficiency policy incremental implementation cost](/img/industry-ag-cash-EffPolicyImplemCost.png)
-
-Next, we reduce the cost of equipment purchased due to the policies based on the user's setting for the R&D-driven industrial equipment capital cost reduction policy (by industry category).  We only reduce the cost for policies where the main expense for compliance is to buy equipment, rather than to pay workers.  The following screenshot shows the relevant structure:
-
-![R&D effects on cost of implementing efficiency policies](/img/industry-ag-cash-EffPolRnD.png)
+![new waste heat recovery equipment financing](/img/industry-ag-cash-WasteHeatFinancing.png)
 
 ## Cash Flow Changes from Changes in Production
 
@@ -245,7 +241,7 @@ As covered above, we separately track industry spending on energy and nonenergy 
 
 In the screenshot above, we also separate out the 'Industry Sector Change in Energy Expenditures for Natural Gas Production' for use on the [Fuels](fuels) sheet. 
 
-Next, we want to sum up the changes in nonenergy expenditures by entity.  We do this in several steps, grouping changes in expenses together by category: 'Change in Expenditures on Nonenergy Imports and Exports by Entity,' 'Change in Nonenergy Expenditures by Entity due to Expense Passthrough,' 'Industry Sector Change in CCS Subsidy Amount Paid,' 'Change in Carbon Tax Rebates,' 'Change in Nonenergy Expenditures by Entity due to Production Changes,' and 'Industry Sector Change in Miscellaneous Expenditures by Entity,' the last of which contains a variety of capital and O&M expenses calculated in the sections above.  Where necessary, the structure below maps expenditures that are subscripted by industry category to the relevant cash flow entities.  For example, the 'Change in Carbon Tax Rebates' is assigned to the 'government' entity, and expenditures by all nonenergy industry categories are summed together into the 'nonenergy industries' entity.
+Next, we want to sum up the changes in nonenergy expenditures by entity.  We do this in several steps, grouping changes in expenses together by category: 'Change in Upfront Capital Expenditures,' 'Change in Miscellaneous Expenditures,' 'Change in Government Subsidies,' 'Change in Nonenergy Expenditures by Entity due to Production Changes,' 'Change in Carbon Tax Rebates,' 'Change in Nonenergy Expenditures by Entity due to Expense Passthrough,' and 'Change in Expenditures on Nonenergy Imports and Exports by Entity.' The Miscellaneous Expenditures category contains a variety of capital and O&M expenses calculated in the sections above.  Where necessary, the structure below maps expenditures that are subscripted by industry category to the relevant cash flow entities.  For example, the 'Change in Carbon Tax Rebates' is assigned to the 'government' entity, and expenditures by all nonenergy industry categories are summed together into the 'nonenergy industries' entity.
 
 ![carbon tax per unit industrial output](/img/industry-ag-cash-CngNonenergyExp.png)
 
@@ -264,4 +260,4 @@ Lastly, we also need the change in nonenergy industry sector revenue by ISIC cod
 ![carbon tax per unit industrial output](/img/industry-ag-cash-CngNonenergyRevenueISIC.png)
 
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.1.*
