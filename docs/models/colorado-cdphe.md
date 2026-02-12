@@ -1,8 +1,8 @@
 ---
-title:  "Colorado Energy Policy Simulator"
+title:  "Colorado (CDPHE) Energy Policy Simulator"
 ---
 
-The Colorado Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation LLC](https://energyinnovation.org/) and [RMI](https://rmi.org/).  It is adapted from software originally created by Energy Innovation LLC.
+The Colorado (CDPHE) Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation LLC](https://energyinnovation.org/) and [RMI](https://rmi.org/).  It is adapted from software originally created by Energy Innovation LLC.
 
 [Click here](https://energypolicy.solutions/home/colorado-cdphe/en) for access to the latest version (4.0.4) of the public model that was refined and developed in collaboration with the Colorado Department of Public Health and Environment to inform the state's 2025 [Greenhouse Gas (GHG) Inventory](https://cdphe.colorado.gov/environment/air-pollution/climate-change/GHG-inventory). This version includes three customized state scenarios: Business as Usual (BAU), Roadmap Baseline (RBL), and Near-Term Actions (NTA). 
 
