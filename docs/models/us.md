@@ -8,7 +8,7 @@ The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model 
 
 The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.4.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.5.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
@@ -53,6 +53,46 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 * Michael Greenstone, University of Chicago - high-level guidance
 
 ## Version History
+
+### **4.0.5 - March X, 2026**
+
+* New Features
+  * Model BAU adjusted to represent the latest policy developments, including passage of the One Big Beautiful Bill Act and the loss of California's waiver to set its own vehicle standards. Given the current policy landscape and announcements from the EPA, we also remove EPA's Phase 3 tailpipe rules for LDVs and MDVs/HDVs and Section 111 power plant rules
+  * Adds a new category of load growth for data centers and the ability to toggle between Low/Moderate/High data center growth trajectories
+  * New methodology for calculating electricity rates, which uses a weighted average of cost of service and competitive retail rates; improved calculation of exported electricity prices based on marginal dispatch costs
+  * Adds the ability to set separate Renewable Portfolio Standard (RPS) and Clean Electricity Standard (CES) values, across both the BAU and policy scenarios; also adds five year foresight for RPS/CES to reliability mechanism to avoid building non-qualifying resources shortly before a 100% RPS/CES comes into effect
+  * Adds the ability to either include or exclude electricity exports from RPS and CES requirements
+  * Simplified the mechanism for capacity expansion for reliability and integrated it with the cost-driven retirement mechanism
+  * Updates calculations for profitable power plant additions to use $/MW rather than $/MWh terms to better reflect the value of added capacity
+  * Improves tracking of capacity factors for power plants, which avoids double counting and better incorporates expected dispatch due to the guaranteed and RPS/CES dispatch mechanisms
+  * Improves Input-Output model results by switching to calculating jobs for energy ISIC codes using "per unit energy production" versions of requirements and calculating changes in employee compensation based on compensation per employed person rather than compensation per dollar output
+  * Adds the ability to set BAU and policy mandated battery storage additions
+  * Edits the vehicle choice logit function to use cost per mile rather than NPV of lifetime cost and introduced helper files to automatically calibrate historical shareweights
+  * Breaks out grid battery vs. hybrid battery power plants on web app graphs
+  * Adds additional output graph for the change in household energy costs
+  * Adds the ability to set different battery pack prices for LDVs vs. other vehicle types
+* Bug Fixes
+  * Changes to the RPS/CES dispatch mechanism to avoid overshooting required targets
+  * Adds a cap on distributed solar output based on total demand by building type
+  * Applies power plant retrofit ban to only economic retrofits, not mandated/planned
+  * Corrects the amount spent on building electricity use to exclude output from distributed solar
+  * Adds new detail to properly track electricity generation subsidies for existing vs. new power plants (i.e. different tracking for the existing nuclear PTC vs. a PTC for new construction)
+  * Fixes double counting of vehicle battery subsidies in the transportation sector cash flows
+  * Improves calculation of the fuel import/export/production caps
+  * Adds check to ensure the sum of hourly imports/exports will equal the annual net imports specified in input data
+  * Applies any applicable construction subsidies to the battery portion of hybrid power plant costs, which had previously been missing
+* Data updates
+  * Moved to the Energy Information Administration's Annual Energy Outlook 2025. We primarily use the "High zero-carbon technology cost" scenario, which we believe best approximates the current policy baseline after passage of the One Big Beautiful Bill Act. We supplement with data from the "Alternative transportation" scenario for select files relating to demand for transportation and refined petroleum products, which we believe best approximates the current policy baseline after the loss of California's waiver to set its own vehicle standards and the potential loss of EPA tailpipe standards
+  * Moved to the latest EIA data for input data files such as planned capacity additions and retirements
+  * Moved to the latest data on natural gas futures prices for near-term gas prices
+  * Recalibrated vehicle shareweights based on latest vehicle sales data and projections
+  * Moved to IEA's CCUS project database for BAU industry CCUS
+  * Moved to NLR's Transportation Annual Technology Baseline for onroad vehicle prices
+  * Moved to the latest year of BEA data for various I/O files and better aligned ISIC code mapping
+  * New methodology and sources for calculating hourly load factors and capacity factors using historical EIA data to bin hours into representative timeslices
+  * Updated range and charging anxiety cost assumptions to latest data sources
+  * Changed the repayment period for financed electricity sector capital expenses from 20 to 30 years
+  * Various formula fixes in input data files such as BASoBC, BRESaC, an PCFURfE
 
 ### **4.0.4 - April 1, 2025**
 
