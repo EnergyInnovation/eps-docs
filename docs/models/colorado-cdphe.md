@@ -6,7 +6,7 @@ The Colorado Energy Policy Simulator (EPS) is a free and open-source computer mo
 
 [Click here](https://energypolicy.solutions/home/colorado-cdphe/en) for access to the latest version (4.0.4) of the public model that was refined and developed in collaboration with the Colorado Department of Public Health and Environment to inform the state's 2025 [Greenhouse Gas (GHG) Inventory](https://cdphe.colorado.gov/environment/air-pollution/climate-change/GHG-inventory). This version includes three customized state scenarios: Business as Usual (BAU), Roadmap Baseline (RBL), and Near-Term Actions (NTA). 
 
-A prior version of the model was used for the Roadmap 2.0 Project. This version is now archived. [Click here](https://eps-app-git-develop-energy-innovation.vercel.app/simulator/colorado/en/6e7743c) for access to the previous version (3.4.3) of the public model, which was developed for and calibrated to the state's 2023 GHG Inventory, and used to inform the state's [GHG Pollution Reduction Roadmap](https://energyoffice.colorado.gov/ghg-pollution-reduction-roadmap) (Roadmap 2.0). 
+A prior version of the model was used for the Roadmap 2.0 Project. This version is now archived. [Click here](https://energypolicy.solutions/simulator/colorado/en/6e7743c) for access to the previous version (3.4.3) of the public model, which was developed for and calibrated to the state's 2023 GHG Inventory, and used to inform the state's [GHG Pollution Reduction Roadmap](https://energyoffice.colorado.gov/ghg-pollution-reduction-roadmap) (Roadmap 2.0). 
 
 ## Model Download
 

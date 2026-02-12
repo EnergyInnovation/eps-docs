@@ -10,9 +10,9 @@ The Colorado Energy Policy Simulator may be used on this website through your we
 
 <p><a href="https://github.com/EnergyInnovation/eps-colorado/archive/refs/tags/4.0.4.zip" class="btn">Download the Colorado Energy Policy Simulator</a></p>
 
-[Click here](https://energypolicy.solutions/simulator/colorado/en/5b26453) for access to the previous version of the public model, including access to saved scenarios.
+[Click here](https://energypolicy.solutions/simulator/colorado/en/6e7743c) for access to the previous version of the public model that was recalibrated to the state's emissions inventory and used to inform the state's emissions reductions roadmap.
 
-[Click here](https://eps-app-git-develop-energy-innovation.vercel.app/simulator/colorado/en/6e7743c) for access to the previous version of the public model, which was recalibrated to the state's emissions inventory, and used to inform the state's emissions reductions roadmap. 
+[Click here](https://energypolicy.solutions/simulator/colorado/en/5b26453) for access to version 3.4.3.10 of the public model from February 2024.
 
 ## U.S. State EPS Methodology
 

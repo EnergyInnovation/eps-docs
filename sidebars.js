@@ -210,6 +210,7 @@ const sidebars = {
           { type: 'doc', id: 'models/chongqing', label: 'Chongqing' },
           { type: 'doc', id: 'models/chongqing_zh', label: 'Chongqing — 中文' },
           { type: 'doc', id: 'models/colorado', label: 'Colorado' },
+          { type: 'doc', id: 'models/colorado-cdphe', label: 'Colorado (CDPHE)' },
           { type: 'doc', id: 'models/connecticut', label: 'Connecticut' },
           { type: 'doc', id: 'models/delaware', label: 'Delaware' },
           { type: 'doc', id: 'models/eu', label: 'European Union' },
