@@ -36,6 +36,16 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 * Initial release
 
+### **3.4.9.1 - March 31, 2026**
+
+* Data Updates
+  * Revised projections for electric and hydrogen aircraft in trans/TTS.
+  * Adjusted trans/MPoEFUbVT to align with aircraft SAF blending targets.
+  * Modified elec/EIaE, elec/MPCbS, elec/BCRbQ, elec/CRbQ, and related policy settings to correct trends in the electricity sector.
+  * Updated trans/BNVP with new data.
+  * Localized hydgn/EHPpUC using China-specific data.
+  
+
 ## Software License
 
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software. Refer to the [Software License](../software-license) page for full details.

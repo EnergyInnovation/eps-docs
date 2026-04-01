@@ -37,6 +37,15 @@ title: "云南能源政策模型"
 
 * 第一次发布
 
+### **3.4.9.1 - 2026年3月31日**
+
+* 数据更新
+  * 修订了 trans/TTS 中电动和氢能航空的预测。
+  * 调整了 trans/MPoEFUbVT 以与航空可持续航空燃料（SAF）掺混目标保持一致。
+  * 修改了 elec/EIaE、elec/MPCbS、elec/BCRbQ、elec/CRbQ 及相关政策设置，以修正电力部门的趋势。
+  * 使用新数据更新了 trans/BNVP。
+  * 将 hydgn/EHPpUC 更新为基于中国本地数据。
+
 ## 软件许可
 
 能源政策模型 (EPS) 根据GNU通用公共许可证第3版 (GPLv3) 或任何更高的版本发布，是免费的开源软件。 请参考 [软件许可证](../software-license) 页面，了解全部细节。
