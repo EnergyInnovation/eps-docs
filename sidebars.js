@@ -222,6 +222,8 @@ const sidebars = {
           { type: 'doc', id: 'models/guangxi_zh', label: 'Guangxi — 中文' },
           { type: 'doc', id: 'models/hainan', label: 'Hainan' },
           { type: 'doc', id: 'models/hainan_zh', label: 'Hainan — 中文' },
+          { type: 'doc', id: 'models/henan', label: 'Henan' },
+          { type: 'doc', id: 'models/henan_zh', label: 'Henan — 中文' },
           { type: 'doc', id: 'models/hongkong', label: 'Hong Kong' },
           { type: 'doc', id: 'models/idaho', label: 'Idaho' },
           { type: 'doc', id: 'models/illinois', label: 'Illinois' },
