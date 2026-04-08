@@ -27,6 +27,12 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.10.0"
   },
+  "pnpm": {
+    "overrides": {
+      "serialize-javascript@<7.0.5": "7.0.5",
+      "webpackbar": "7.0.0"
+    }
+  },
   "browserslist": {
     "production": [
       ">0.5%",
