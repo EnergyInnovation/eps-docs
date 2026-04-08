@@ -7,4 +7,4 @@ Many [policies](http://decarboni.se/publications/deployment-ccs-cement-industry/
 
 Other policies promoting clinker substitution focus on rewarding cement manufacturers for using recycled materials or creating incentives for co-locating cement kilns with other industrial facilities that produce clinker substitutes as by-products.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/industrial-process-emissions-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/industrial-process-emissions-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

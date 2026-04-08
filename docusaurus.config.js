@@ -1,5 +1,4 @@
-const lightCodeTheme = require('prism-react-renderer/themes/github')
-const darkCodeTheme = require('prism-react-renderer/themes/dracula')
+const { themes: prismThemes } = require('prism-react-renderer')
 
 const config = {
   title: 'Energy Policy Simulator Documentation',
@@ -7,8 +6,13 @@ const config = {
   url: 'https://docs.energypolicy.solutions',
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenAnchors: 'ignore',
   favicon: 'img/favicon.ico',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn'
+    }
+  },
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -54,8 +58,8 @@ const config = {
       copyright: `Copyright © ${new Date().getFullYear()} Energy Innovation. All rights reserved.`
     },
     prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula
     },
     algolia: {
       // The application ID, key, and index name is provided by Algolia.

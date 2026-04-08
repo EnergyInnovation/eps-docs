@@ -13,4 +13,4 @@ There are also indirect emissions associated with livestock husbandry, including
 
 Reducing demand for animal products (for example, by [substituting plant-based products](shift-to-non-animal-products)) is another technique for reducing emissions from livestock operations.  However, a reduction in demand for animal products is not a part of the livestock measures policy.  Rather, it is govered by its own policy lever in the EPS.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/industrial-process-emissions-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/industrial-process-emissions-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

@@ -7,4 +7,4 @@ This policy lever represents small, non-monetary benefits government may provide
 - Access to parking spaces reserved for EVs
 - Various policy approaches to [accelerate electric vehicle charging station deployment](ev-charger-deployment)
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/electric-vehicle-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/electric-vehicle-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

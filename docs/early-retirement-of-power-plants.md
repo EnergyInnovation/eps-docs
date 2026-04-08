@@ -7,4 +7,4 @@ While most retirement plans will be based on environmental measurements like GHG
 
 To ensure cleaner resources replace retired assets, it is best to supplement this policy with programs encouraging efficiency and renewable energy.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/complementary-electricity-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/complementary-electricity-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

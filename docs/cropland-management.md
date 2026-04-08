@@ -13,4 +13,4 @@ Application of fertilizer results in emissions of the greenhouse gas nitrous oxi
 
 Farmers can be financially compensated for adopting reduced-tilling or no-tilling practices; the required level of compensation varies by crop, as some crop types are more affected by reduced tilling (such as those planted early in the season, when the soil is colder and harder than later in the season).  A tax on nitrogen fertilizers (per lb of nitrogen) can encourage improved fertilization practices, so that less fertilizer may be used.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/industrial-process-emissions-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/industrial-process-emissions-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

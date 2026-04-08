@@ -7,4 +7,4 @@ TDM can include policies to reduce the use of inefficient forms of transit, such
 
 The TDM policy can also be applied to freight transport to represent improved freight logistics that decrease the number of trips by freight trucks. 
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/urban-mobility-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/urban-mobility-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

@@ -57,7 +57,7 @@ These programming structures are necessary in order to perform the automated ana
 
 ## Steps to Use Python Scripts
 
-More detailed instructions about how to use each Python script are available on each script's own documentation page (which you can reach from the [EPS documentation index](index)).  However, the basic process is the same for all of the Python scripts:
+More detailed instructions about how to use each Python script are available on each script's own documentation page (which you can reach from the [EPS documentation index](/)).  However, the basic process is the same for all of the Python scripts:
 
 1. Open the Python script you wish to use in your text editor.  Edit it to specify the parameters of the series of runs that you wish to perform.  Save and close the Python script.  It is recommended you use "save as" and save a copy of the Python script with a name that describes the edits you made.  This helps with file organization and ensures you always have a clean copy of the original Python script to refer to.
 

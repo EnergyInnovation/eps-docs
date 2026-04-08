@@ -6,17 +6,17 @@ title: Remapping Subscript Elements
 
 | Section | Remapping Potential |
 | ------- | ----------------- |
-| [About Subscript Elements and Remapping](#about)                                | |
-| [Power Plant Types](#power_plant_types)                                         | good |
+| [About Subscript Elements and Remapping](#about-subscript-elements-and-remapping) | |
+| [Power Plant Types](#power-plant-types)                                           | good |
 | [Industries](#industries)                                                       | limited |
-| [Industrial Process Emissions Policies](#industrial_process_emissions_policies) | very limited |
-| [Cash Flow Entities](#cash_flow_entities)                                       | impossible |
-| [Building Type](#building_type)                                                 | good |
-| [Building Component](#building_component)                                       | limited |
-| [Vehicle Type and Cargo Type](#vehicle_type_and_cargo_type)                     | good |
+| [Industrial Process Emissions Policies](#industrial-process-emissions-policies) | very limited |
+| [Cash Flow Entities](#cash-flow-entities)                                       | impossible |
+| [Building Type](#building-type)                                                 | good |
+| [Building Component](#building-component)                                       | limited |
+| [Vehicle Type and Cargo Type](#vehicle-type-and-cargo-type)                     | good |
 | [Fuels](#fuels)                                                                 | very limited |
-| [Hydrogen Production Pathway](#hydrogen_production_pathway)                     | good |
-| [Land Use Policy](#land_use_policy)                                             | good |
+| [Hydrogen Production Pathway](#hydrogen-production-pathway)                     | good |
+| [Land Use Policy](#land-use-policy)                                             | good |
 
 
 ## About Subscript Elements and Remapping

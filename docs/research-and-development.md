@@ -33,4 +33,4 @@ A world-class patent system is a crucial enabler of private sector R&D efforts. 
 
 Training programs can help students transition to becoming scientists and engineers at R&D laboratories or private companies.  A government-funded internship program available to top math, science, and engineering students can allow them to gain experience in the workplace during or immediately after graduation at no cost to the firms.  Such a program provides students with valuable experience and gives companies access to talented, trained students they may hire full-time at the end of the internship period.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/research-and-development-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/research-and-development-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

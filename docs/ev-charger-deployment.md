@@ -14,4 +14,4 @@ There are a variety of policy approaches to promote EV charger deployment.  For 
 
 For commercial fleet vehicles, buses, and mobility services (fleets of company-owned EVs for car-sharing), private chargers are typically located in a central depot, garage, or holding facility, allowing vehicles to charge in between scheduled services.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/electric-vehicle-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/electric-vehicle-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

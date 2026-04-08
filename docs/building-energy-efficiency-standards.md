@@ -11,4 +11,4 @@ Efficiency standards for appliances are designed as product standards or class-a
 
 Product standards are the preferred option for appliances because they require every model to meet a minimum efficiency level.  These kinds of appliance standards can also build in continuous improvement by requiring periodic updates based on best-in-class performance.  For example, a top runner program periodically (e.g., every five years) resets the minimum standard at a certain top-performing percentage (e.g., the top quartile or quintile).  A quantitative efficiency standard guarantees that all manufacturers adhere to the same rules and production criteria, ensuring fair market competition.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/building-codes-appliance-standards/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/building-codes-appliance-standards/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

@@ -7,4 +7,4 @@ In most cases, fuel-economy standards save customers money over the lifetime of 
 
 Fuel-economy standards improve new vehicle efficiency, but in the absence of complementary [fuel-price](fuel-taxes) or [emissions tax](carbon-tax) policies, some of this gain may be offset by increased vehicle use due to the cheaper cost per mile of traveling.  This “rebound effect” phenomenon is exacerbated if fuel is subsidized rather than taxed.  Fuel taxes are thus a useful complement to fuel economy standards.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/vehicle-performance-standards/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/vehicle-performance-standards/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

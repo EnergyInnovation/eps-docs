@@ -7,4 +7,4 @@ Pricing policies, such as carbon capture incentives (such as the 45Q tax credits
 
 CO<sub>2</sub> emissions limits are another way of encouraging CCS.  These limits set maximum emissions rates for facilities burning fossil fuels, requiring the owners to install CCS in order to receive a permit.  Emissions limits can be set either by the type of facility being regulated (e.g., different values for a coal power plant versus a natural gas power plant) or, better yet, can be set at one consistent value across a sector.  In the latter case, emissions standards may result in less CCS facilities if it is more cost-effective to use a different technology that produces power or industrial products below the emissions limit.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies-for-a-post-2050-world/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies-for-a-post-2050-world/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

@@ -95,8 +95,8 @@ Changes: Image has been cropped and a fade has been applied to the left side.<br
 
 * * * * *
 
-<a name="myfootnote1">1</a>: https://www.agora-industry.org/data-tools/power-2-heat-transformation-cost-calculator#downloads.<br/>
-<a name="myfootnote2">2</a>: https://link.springer.com/article/10.1007/s12053-022-10071-8#Sec15.<br/>
-<a name="myfootnote3">3</a>: https://theicct.org/wp-content/uploads/2021/06/EU-vehicle-standards-green-deal-mar21.pdf.<br/>
-<a name="myfootnote4">4</a>: https://www.solarpowereurope.org/press-releases/eu-rooftop-solar-standard-alone-could-solar-power-56-million-homes.<br/>
-<a name="myfootnote5">5</a>: https://climate.ec.europa.eu/document/download/9013881e-8d5d-429e-9112-c908f127c833_en?filename=f-gases_impact_assessment_en.pdf.<br/>
+<a id="myfootnote1">1</a>: https://www.agora-industry.org/data-tools/power-2-heat-transformation-cost-calculator#downloads.<br/>
+<a id="myfootnote2">2</a>: https://link.springer.com/article/10.1007/s12053-022-10071-8#Sec15.<br/>
+<a id="myfootnote3">3</a>: https://theicct.org/wp-content/uploads/2021/06/EU-vehicle-standards-green-deal-mar21.pdf.<br/>
+<a id="myfootnote4">4</a>: https://www.solarpowereurope.org/press-releases/eu-rooftop-solar-standard-alone-could-solar-power-56-million-homes.<br/>
+<a id="myfootnote5">5</a>: https://climate.ec.europa.eu/document/download/9013881e-8d5d-429e-9112-c908f127c833_en?filename=f-gases_impact_assessment_en.pdf.<br/>

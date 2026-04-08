@@ -30,7 +30,7 @@ It is easiest to use the EPS if your operating system is not configured to hide 
 
 ## Running the EPS
 
-Double-click the `EPS.vpmx` model file to open the model in Vensim Model Reader.  (If the .vpm file extension is not associated to Vensim, you may need to browse for Vensim Model Reader (`venread.exe`) and select it in order to associate the .vpmx extension to this program.)  You may now examine and run the model.  For guidance, please see the [How to Conduct Analysis in Vensim Model Reader](how-to-conduct-analysis) page (and its sub-pages on the [documentation index](index)) and/or refer to [Vensim's help documentation](http://www.vensim.com/documentation/index.html).
+Double-click the `EPS.vpmx` model file to open the model in Vensim Model Reader.  (If the .vpm file extension is not associated to Vensim, you may need to browse for Vensim Model Reader (`venread.exe`) and select it in order to associate the .vpmx extension to this program.)  You may now examine and run the model.  For guidance, please see the [How to Conduct Analysis in Vensim Model Reader](how-to-conduct-analysis) page (and its sub-pages on the [documentation index](/)) and/or refer to [Vensim's help documentation](http://www.vensim.com/documentation/index.html).
 
 ## Model Folder Contents
 
@@ -38,7 +38,7 @@ The model folder will contain the following files and folders:
 
 ### Folders
 
-* `docs`, a copy of the documentation viewable [on this website](index)
+* `docs`, a copy of the documentation viewable [on this website](/)
 
 * `InputData`, a folder that contains all of the input data files (in .csv format) read by the model at runtime, as well as the Excel files used to generate those data files.  The Excel files contain bibliographic source information, so model users know the origin of every piece of data used in the model.  Data are sorted into folders by model section and then by acronyms for variable names.  A key to the meaning of all acronyms is provided in the `InputData` folder, in the file `acronym-key.xlsx`.  For more details, see the [input data documentation page](input-data).
 

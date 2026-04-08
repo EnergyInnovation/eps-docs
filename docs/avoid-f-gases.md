@@ -11,4 +11,4 @@ Taken together, these policies can materially reduce F-gas emissions and unleash
 
 The Energy Policy Simulator includes four different F-gas policy options: F-gas substitution, F-gas destruction, F-gas recovery, and F-gas equipment maintenance and retrofits. 
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/industrial-process-emissions-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/industrial-process-emissions-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

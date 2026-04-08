@@ -8,4 +8,4 @@ Bans on new capacity can be directly promulgated at the national or subnational 
 
 In the Energy Policy Simulator, this policy can also be used to represent standards that effectively ban the construction of new power plant types, such as stringent pollution control measures.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/complementary-electricity-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/complementary-electricity-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

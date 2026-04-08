@@ -7,4 +7,4 @@ The effectiveness of ZEV policies in reducing GHG emissions depends heavily on t
 
 For passenger heavy duty vehicles (HDVs), these policies can either require a minimum proportion of the fleet be electrified, or can require that cities invest in infrastructure to electrify the bus fleet.  For example, trolleybuses, which are common in many cities, draw power from electric lines place over streets.  Because individual heavy duty vehicles are harder to electrify given their power and weight requirements, it may be necessary to have this infrastructure in place prior to achieving high levels of vehicle electrification.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/electric-vehicle-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/electric-vehicle-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

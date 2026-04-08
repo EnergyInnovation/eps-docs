@@ -7,4 +7,4 @@ Shifting dietary behavior via policy can be politically difficult, but alongside
 
 It is also possible to reduce animal consumption through financial incentives, such as by redirecting subsidies currently paid to farmers who raise animals or feed crops to farmers growing fruits, vegetables, and other plant-based foods for human consumption.  A tax on animal meat, akin to taxes on tobacco and other products with negative externalities, is another viable approach.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies-for-a-post-2050-world/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies-for-a-post-2050-world/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

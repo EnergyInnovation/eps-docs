@@ -18,4 +18,4 @@ Finally, by sending a consistent price signal and making emissions sources respo
 
 Similar results can be achieved via a carbon cap-and-trade policy.  In a cap-and-trade policy, the total allowable emissions are set by policymakers and the corresponding price per ton of emissions reductions is determined by the market.  An effective cap-and-trade policy has some of the same design principles as a good carbon tax: The program should be administered upstream on the largest emitters, covering as close to 100 percent of the market as possible.  Additionally, auction revenues should be partially distributed to consumers and trade-exposed industries, and partially invested in emissions-reducing technologies.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/carbon-pricing/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/carbon-pricing/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

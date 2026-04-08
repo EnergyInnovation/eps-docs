@@ -5,4 +5,4 @@ Methane destruction refers to the combustion—or “flaring”—of methane gas
 
 Methane destruction is achievable through basic standards that require that excess natural gas is flared instead of vented.  As usual, such standards must be complemented by periodic checks to see that the operators have installed required equipment and that it is operating as intended.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/industrial-process-emissions-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/industrial-process-emissions-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

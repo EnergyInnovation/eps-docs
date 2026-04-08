@@ -5,4 +5,4 @@ Demand response (DR) operates by calling on utility customers—typically large 
 
 DR is part of a larger portfolio of resources called demand-side management (DSM) programs. Supply planning should also include DSM programs as an option to meet capacity at lower cost than building new generation sources.  DSM programs include end-use energy efficiency, demand response, load management programs, and tariffs to reduce or shift peak demand and make the load profile more flexible.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/complementary-electricity-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/complementary-electricity-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

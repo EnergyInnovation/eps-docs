@@ -9,4 +9,4 @@ EV subsidies are typically seen as a temporary measure.  Once EV technology brin
 
 Any reduction or withdrawl of subsidies should be done gradually, according to a schedule announced years in advance, to allow vehicle makers and consumers time to adjust.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/electric-vehicle-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/electric-vehicle-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

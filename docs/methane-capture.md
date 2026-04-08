@@ -7,4 +7,4 @@ Establishing performance standards for the particular hardware and processes inv
 
 Technologies to monitor and enforce performance standards have improved greatly in recently years—in both cost and operational capability—and government enforcement can take advantage of these advancements to ensure strong regulatory compliance.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/industrial-process-emissions-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/industrial-process-emissions-policies/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

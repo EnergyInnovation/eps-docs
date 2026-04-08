@@ -7,4 +7,4 @@ Policies promoting fuel conversion can be mandatory (e.g., banning the use of co
 
 Though industrial facilities would generally need new equipment to burn hydrogen, it is possible to transform hydrogen into other high-energy molecules that are compatible with existing industrial equipment (such as ammonia or methane) with modest energy losses.  This could allow for a gradual transition to hydrogen, avoiding early equipment retirements or write-offs.  Working in harmony with industry's equipment replacement cycles and minimizing factory downtime will be important for facilitating roll-out of this new technology.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies-for-a-post-2050-world/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies-for-a-post-2050-world/) of Designing Climate Solutions, our book on smart energy and climate policy design.*

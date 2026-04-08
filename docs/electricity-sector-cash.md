@@ -23,7 +23,7 @@ Existing power plants have ongoing capital costs beyond O&M costs. For example, 
 
 ### CCS Transportation and Storage Costs
 
-We also track changes in the costs to transport and store CO<sub>2</sub> that has been captured at plants equipped with CCS. Spending on CO<sub>2</sub> transportation and storage costs is calculated on the [CCS](CCS) page and the electricity CCS portion of those costs in BAU and policy cases is compared to determine the change in costs.
+We also track changes in the costs to transport and store CO<sub>2</sub> that has been captured at plants equipped with CCS. Spending on CO<sub>2</sub> transportation and storage costs is calculated on the [CCS](ccs) page and the electricity CCS portion of those costs in BAU and policy cases is compared to determine the change in costs.
 
 ![change in CCS transport and storage costs](/img/electricity-sector-cash-CCSTransportStorage.png)
 
@@ -219,7 +219,7 @@ This step also aggregates the total change in revenue by ISIC code.
 
 ## Electricity Rates
 
-As of version 4.0.0, the EPS now estimates electricity rates, which are used throughout the model. Total rates are calculated on the [Fuels](Fuels) page. The wholesale energy, transmission, and distribution components of the rates are calculated here in the electricity sector cash flows. The methodology is discussed below. 
+As of version 4.0.0, the EPS now estimates electricity rates, which are used throughout the model. Total rates are calculated on the [Fuels](fuels) page. The wholesale energy, transmission, and distribution components of the rates are calculated here in the electricity sector cash flows. The methodology is discussed below. 
 
 Transmission, distribution, grid storage, and battery costs are considered system costs. This means these costs, including a rate of return, are recovered directly from electricity users. These costs are treated as financed over a set financing period. To estimate the annual recoverable costs, we sum the annual change in spending for each category and apply a calculated capital recovery factor, amortizes a capital investment over an investment period and at an assumed interest rate, which is the weighted average cost of electricity sector capital specified in input data. This methodology converts annual spending by utilities into a recoverable annual cost spread out over several years. We compare these estimates to find the change in repayment for financing as well.
 

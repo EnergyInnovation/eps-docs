@@ -7,4 +7,4 @@ Renewable portfolio standards should reward performance, not investment, by allo
 
 Typically, RPS requirements are met by electricity suppliers through a system of tradable renewable energy credits (RECs), with each MWh of generation assigned a unique tracking number.  Using a credit system allows suppliers lacking adequate renewable resources to purchase credits rather than investing in renewable generation of their own, helping to minimize the overall cost of compliance.  Non-complying suppliers should be penalized well above the market credit value to provide a sufficient incentive for participation.
 
-*For a more detailed discussion, see [the applicable chapter](/dcs/policies/feed-in-tariffs/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
+*For a more detailed discussion, see [the applicable chapter](https://docs.energypolicy.solutions/dcs/policies/feed-in-tariffs/) of Designing Climate Solutions, our book on smart energy and climate policy design.*
