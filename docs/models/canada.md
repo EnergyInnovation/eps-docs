@@ -5,11 +5,7 @@ title: "Canada Energy Policy Simulator"
 
 The Energy Policy Simulator (EPS) is a free and open-source computer model originally created by [Energy Innovation LLC](https://energyinnovation.org/) and adapted for Canada in partnership with the Pembina Institute.
 
-## Model Download
-
-The Canada Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
-
-<p><a href="https://github.com/EnergyInnovation/eps-canada/archive/refs/tags/3.4.7.1.zip" class="btn">Download the Canada Energy Policy Simulator</a></p>
+<p><a href="https://energypolicy.solutions/simulator/canada/en" class="btn">Run the simulator in your browser</a></p>
 
 ## Business As Usual (BAU) – Baseline 
 ### Overarching Assumptions
@@ -114,6 +110,13 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Updated scenarios
 ## 1.3.2 – March 26, 2018
 * Initial public release
+
+## Model Download
+
+The Canada Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
+
+<p><a href="https://github.com/EnergyInnovation/eps-canada/archive/refs/tags/3.4.7.1.zip" class="btn">Download the Canada Energy Policy Simulator</a></p>
+
 # Software License
 The Energy Policy Simulator (EPS) is released under the GNU General Public License version 3 (GPLv3) or any later version and is free and open-source software. Refer to the Software License page for full details.
 

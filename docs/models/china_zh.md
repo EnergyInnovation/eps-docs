@@ -4,6 +4,8 @@ title:  "中国 (NCSC) 能源政策模型"
 
 中国 (NCSC) 能源政策模型来自由[能源创新 (EI)](https://energyinnovation.org/)创建的免费、开源计算机模型，并与中国[国家应对气候变化战略研究和国际合作中心 (NCSC) ](http://www.ncsc.org.cn/)和中国[能源研究所 (ERI)](http://www.eri.org.cn/)合作为中国进行了改编。
 
+<p><a href="https://energypolicy.solutions/simulator/china/zh" class="btn">在您的浏览器中运行模型</a></p>
+
 ## 结果
 
 2016年，上述机构通过中国 (NCSC) EPS模型进行分析，联合发布了一份执行摘要，其中包含对中国的主要发现。 2017年和2023年发布了新版和改进版的中国 (NCSC) EPS模型。相关结果根据新版模型和新的一系列政策进行更新。 同时，2016年的文件仍可供下载：

@@ -4,11 +4,7 @@ title:  "Mexico Energy Policy Simulator"
 
 The Energy Policy Simulator (EPS) is a free and open-source computer model originally created by [Energy Innovation LLC](https://energyinnovation.org/) and adapted for Mexico in partnership with [World Resources Institute Mexico](http://wrimexico.org/) and [Centro Mario Molina](http://centromariomolina.org/).
 
-## Model Download
-
-The Mexico Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
-
-<p><a href="https://github.com/EnergyInnovation/eps-mexico/archive/3.3.1.1.zip" class="btn">Download the Energy Policy Simulator, Mexico Version</a></p>
+<p><a href="https://energypolicy.solutions/simulator/mexico/en" class="btn">Run the simulator in your browser</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Mexico.  Individuals are listed alphabetically.
@@ -61,6 +57,12 @@ The following people helped create the first adaptation of the EPS for Mexico (1
 * Julia Martinez, CTS Embarq Mexico
 * Robbie Orvis, Energy Innovation LLC
 * Taryn Fransen, World Resources Institute
+
+## Model Download
+
+The Mexico Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
+
+<p><a href="https://github.com/EnergyInnovation/eps-mexico/archive/3.3.1.1.zip" class="btn">Download the Energy Policy Simulator, Mexico Version</a></p>
 
 ## Software License
 

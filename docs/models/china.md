@@ -4,6 +4,8 @@ title:  "China (NCSC) Energy Policy Simulator"
 
 The China (NCSC) Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation (EI)](https://energyinnovation.org/) and adapted for China in partnership with China's [National Center for Climate Change Strategy and International Cooperation (NCSC)](http://www.ncsc.org.cn/) and China's [Energy Research Institute](http://www.eri.org.cn/).
 
+<p><a href="https://energypolicy.solutions/simulator/china/en" class="btn">Run the simulator in your browser</a></p>
+
 ## Results
 
 In 2016, the organizations listed above jointly released an Executive Summary with key findings for China based on analysis performed with the China (NCSC) EPS.  New and improved versions of the China (NCSC) EPS were released in 2017 and 2023. The results will be updated based on the new version of the simulator and new policy packages.  In the meantime, the 2016 documents remain available for download:

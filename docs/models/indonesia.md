@@ -8,11 +8,7 @@ The Energy Policy Simulator (EPS) is a free and open-source computer model origi
 
 In 2017, WRI and Energy Innovation jointly released [this technical note](http://www.wri.org/publication/indonesia-eps-tech-note) describing the structure, the input data sources, and the limitations and assumptions of Indonesia’s EPS.
 
-## Model Download
-
-The Indonesia Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
-
-<p><a href="https://github.com/EnergyInnovation/eps-indonesia/archive/1.2.3.3.zip" class="btn">Download the Energy Policy Simulator, Indonesia Version</a></p>
+<p><a href="https://energypolicy.solutions/simulator/indonesia/en" class="btn">Run the simulator in your browser</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Indonesia.  Individuals are listed alphabetically.
@@ -25,6 +21,12 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 * Hening Marlistya Citraningrum, Institute for Essential Services Reform
 * Jeffrey Rissman, Energy Innovation LLC
 * Robbie Orvis, Energy Innovation LLC
+
+## Model Download
+
+The Indonesia Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
+
+<p><a href="https://github.com/EnergyInnovation/eps-indonesia/archive/1.2.3.3.zip" class="btn">Download the Energy Policy Simulator, Indonesia Version</a></p>
 
 ## Software License
 

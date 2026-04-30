@@ -4,11 +4,7 @@ title: "Anhui Energy Policy Simulator"
 
 The Anhui Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation LLC (EI)](https://energyinnovation.org/) and the [Institute for Global Decarbonization Progress (iGDP)](http://www.igdp.cn/). It is adapted from software originally created by EI.
 
-## Model Download
-
-The Anhui Energy Policy Simulator may be used on this website through your web browser, or you may request a download of the full version through the button below. Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
-
-<p><a href="https://wkf.ms/3RR4t8z" class="btn">Download the Energy Policy Simulator, Anhui Version</a></p>
+<p><a href="https://energypolicy.solutions/simulator/anhui/en" class="btn">Run the simulator in your browser</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Anhui. Individuals are listed alphabetically by first name.
@@ -39,6 +35,12 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 ### **3.4.9 - May 9, 2025**
 
 * Initial release
+
+## Model Download
+
+The Anhui Energy Policy Simulator may be used on this website through your web browser, or you may request a download of the full version through the button below. Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
+
+<p><a href="https://wkf.ms/3RR4t8z" class="btn">Download the Energy Policy Simulator, Anhui Version</a></p>
 
 ## Software License
 

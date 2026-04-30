@@ -4,11 +4,7 @@ title:  "South Korea Energy Policy Simulator"
 
 The South Korea Energy Policy Simulator (EPS) is a free and open-source computer model originally created by [Energy Innovation LLC](https://energyinnovation.org/) and adapted for South Korea in partnership with [the NEXT Group](http://nextgroup.or.kr/).
 
-## Model Download
-
-The South Korea Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
-
-<p><a href="https://github.com/EnergyInnovation/eps-southkorea/archive/4.0.4.zip" class="btn">Download the South Korea Energy Policy Simulator</a></p>
+<p><a href="https://energypolicy.solutions/simulator/southkorea/en" class="btn">Run the simulator in your browser</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for South Korea.  Individuals are listed alphabetically.
@@ -43,6 +39,12 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 ### **3.3.1 - July 26, 2022**
 
 * Initial Release
+
+## Model Download
+
+The South Korea Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
+
+<p><a href="https://github.com/EnergyInnovation/eps-southkorea/archive/4.0.4.zip" class="btn">Download the South Korea Energy Policy Simulator</a></p>
 
 ## Software License
 

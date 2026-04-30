@@ -4,9 +4,7 @@ title:  "Zhejiang Energy Policy Simulator"
 
 The Zhejiang Energy Policy Simulator (EPS) is a free and open-source computer model created by [World Resources Institute China](https://wri.org.cn/) and the [Zhejiang Development & Planning Institute](http://www.zdpri.cn/), with help from [Energy Innovation LLC](https://energyinnovation.org/).  It is adapted from software originally created by Energy Innovation.
 
-## Model Download
-
-The Zhejiang Energy Policy Simulator may be used on this website through your web browser.
+<p><a href="https://energypolicy.solutions/simulator/zhejiang/en" class="btn">Run the simulator in your browser</a></p>
 
 ## Reports
 
@@ -33,6 +31,10 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 *	Xi Wenyi, WRI China
 *	Xu Qinglin, ZDPRI
 *	Zheng Zhuolian, ZDPRI 
+
+## Model Download
+
+The Zhejiang Energy Policy Simulator may be used on this website through your web browser.
 
 ## Software License
 

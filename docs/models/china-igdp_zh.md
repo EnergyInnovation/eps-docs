@@ -4,9 +4,7 @@ title:  "中国 (iGDP) 能源政策模型"
 
 中国 (iGDP) 能源政策模型 (EPS) 是由[能源创新 (EI)](https://energyinnovation.org/)和[绿色创新发展研究院 (iGDP)](http://www.igdp.cn/)创建的免费、开源的计算机模型。它由EI最初创建的模型改编建立。
 
-## 下载模型
-
-您可以通过网络浏览器在本网站上使用中国 (iGDP) 能源政策模型。如果需要下载完整版本的模型，请通过[在线表格](https://wkf.ms/3UwdWnS)提交您的申请。
+<p><a href="https://energypolicy.solutions/simulator/china-igdp/zh" class="btn">在您的浏览器中运行模型</a></p>
 
 ## 关于中国EPS不同版本的说明
 
@@ -159,6 +157,10 @@ EPS软件是免费、开源的，中国 (iGDP) EPS是利用公开数据建立的
 ### **3.4.2 - 2022年10月10日**
 
 * 第一次发布
+
+## 下载模型
+
+您可以通过网络浏览器在本网站上使用中国 (iGDP) 能源政策模型。如果需要下载完整版本的模型，请通过[在线表格](https://wkf.ms/3UwdWnS)提交您的申请。
 
 ## 软件许可
 

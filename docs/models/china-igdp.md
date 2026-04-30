@@ -4,9 +4,7 @@ title:  "China (iGDP) Energy Policy Simulator"
 
 The China (iGDP) Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation (EI)](https://energyinnovation.org/) and the [Institute for Global Decarbonization Progress (iGDP)](http://www.igdp.cn/).  It is adapted from software originally created by EI.
 
-## Model Download
-
-The China (iGDP) Energy Policy Simulator may be used on this website through your web browser, and a download of the full version is available upon request. Please submit your request through this [online form](https://wkf.ms/3hIh7YF).
+<p><a href="https://energypolicy.solutions/simulator/china-igdp/en" class="btn">Run the simulator in your browser</a></p>
 
 ## Note on Different Versions of the China EPS
 
@@ -158,6 +156,10 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 ### **3.4.2 - October 10, 2022**
 
 * Initial Release
+
+## Model Download
+
+The China (iGDP) Energy Policy Simulator may be used on this website through your web browser, and a download of the full version is available upon request. Please submit your request through this [online form](https://wkf.ms/3hIh7YF).
 
 ## Software License
 

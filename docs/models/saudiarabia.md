@@ -4,11 +4,7 @@ title:  "Saudi Arabia Energy Policy Simulator"
 
 The Saudi Arabia Energy Policy Simulator (EPS) is a free and open-source computer model jointly created by [Energy Innovation LLC](https://energyinnovation.org/) and the [King Abdullah Petroleum Studies and Research Center (KAPSARC)](https://www.kapsarc.org/).
 
-## Model Download
-
-The Saudi Arabia Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below. Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
-
-<p><a href="https://github.com/EnergyInnovation/eps-saudiarabia/archive/2.0.0.zip" class="btn">Download the Saudi Arabia Energy Policy Simulator</a></p>
+<p><a href="https://energypolicy.solutions/simulator/saudiarabia/en" class="btn">Run the simulator in your browser</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Saudi Arabia.  Individuals are listed alphabetically.
@@ -32,6 +28,12 @@ With special thanks for input from subject matter experts and other experts:
 * Guodong Sun, KAPSARC
 * Nicholas Howarth, KAPSARC
 * Walid Matar, KAPSARC
+
+## Model Download
+
+The Saudi Arabia Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below. Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
+
+<p><a href="https://github.com/EnergyInnovation/eps-saudiarabia/archive/2.0.0.zip" class="btn">Download the Saudi Arabia Energy Policy Simulator</a></p>
 
 ## Software License
 

@@ -4,6 +4,8 @@ title:  "Maharashtra Energy Policy Simulator"
 
 The Energy Policy Simulator (EPS) is a free and open-source computer model originally created by [Energy Innovation LLC](https://energyinnovation.org/) and adapted for Maharashtra in partnership with State Climate Action Cell, the [Department of Environment and Climate Change](https://envd.maharashtra.gov.in/) (Government of Maharashtra), the [Maharashtra Institution for Transformation](https://mahamitra.org), [WRI India](https://wri-india.org/), and [Thinkthrough Consulting](https://www.ttcglocal.com/).
 
+<p><a href="https://energypolicy.solutions/simulator/maharashtra/en" class="btn">Run the simulator in your browser</a></p>
+
 ## Model Access
 Data collection for the Maharashtra EPS was performed by Thinkthrough Consulting, with technical assitance by Energy Innovation LLC to load the edited data files into the open-source EPS platform. Energy Innovation LLC cannot guarantee the accuracy of the custom input data used for this project.
 

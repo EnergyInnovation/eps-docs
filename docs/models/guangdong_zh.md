@@ -4,11 +4,7 @@ title: "广东能源政策模型"
 
 广东能源政策模型（EPS）是由[美国能源创新公司（EI）](https://energyinnovation.org/)及[绿色创新发展研究院（iGDP）](http://www.igdp.cn/)创建的一个免费开源模型，广东EPS基于EI最初创建的模型进行开发。
 
-## 下载模型
-
-您可以通过网络浏览器在本网站上使用广东能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
-
-<p><a href="https://wkf.ms/3Q21tWn" class="btn">下载广东EPS模型</a></p>
+<p><a href="https://energypolicy.solutions/simulator/guangdong/zh" class="btn">在您的浏览器中运行模型</a></p>
 
 ## 鸣谢贡献者和审阅专家
 我们在此诚挚感谢以下人员和专家在我们创建和审阅广东能源政策模型时的贡献与支持。姓名按名字首字母排序。
@@ -57,6 +53,12 @@ title: "广东能源政策模型"
 
 摘要：报告探讨了广东省整体的能源消费及排放变化趋势，并聚焦工业、建筑、交通和电力等关键部门的低碳转型路径，针对关键政策路径提出建议。通过分析不同时间段的政策减排潜力，识别出包括提高可再生能源占比、严格控制煤电发展、提升工业电气化水平、推广新能源交通工具、加强建筑节能与电气化、完善电力市场机制、加强含氟气体减排控制等重点政策，希望能为广东省“双碳”战略的决策与实施提供科学支撑。<br/>
 [https://www.igdp.cn/wp-content/uploads/2025/09/Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Guangdong%E2%80%94Using-EPS-Modeling.pdf](https://www.igdp.cn/wp-content/uploads/2025/09/Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Guangdong%E2%80%94Using-EPS-Modeling.pdf)<br/>
+
+## 下载模型
+
+您可以通过网络浏览器在本网站上使用广东能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
+
+<p><a href="https://wkf.ms/3Q21tWn" class="btn">下载广东EPS模型</a></p>
 
 ## 软件许可
 

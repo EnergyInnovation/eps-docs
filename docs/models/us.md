@@ -4,11 +4,7 @@ title:  "U.S. Energy Policy Simulator"
 
 The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation LLC](https://energyinnovation.org/).
 
-## Model Download
-
-The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
-
-<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.4.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
+<p><a href="https://energypolicy.solutions/simulator/us/en" class="btn">Run the simulator in your browser</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
@@ -1258,6 +1254,12 @@ Note that starting with this release, Vensim 8 or later (64-bit) is required to 
 ### **1.0.0 - Oct 20, 2015**
 
 * Initial Release
+
+## Model Download
+
+The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
+
+<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.4.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
 ## Software License
 

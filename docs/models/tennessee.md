@@ -4,13 +4,7 @@ title:  "Tennessee Energy Policy Simulator"
 
 The Tennessee Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation LLC](https://energyinnovation.org/) and [RMI](https://rmi.org/).  It is adapted from software originally created by [Energy Innovation LLC](https://energyinnovation.org/).
 
-## Model Download
-
-The Tennessee Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
-
-<p><a href="https://github.com/EnergyInnovation/eps-tennessee/archive/refs/tags/4.0.4.zip" class="btn">Download the Tennessee Energy Policy Simulator</a></p>
-
-[Click here](https://energypolicy.solutions/simulator/tennessee/en/df665ab) for access to the previous version of the public model, including access to saved scenarios.
+<p><a href="https://energypolicy.solutions/simulator/tennessee/en" class="btn">Run the simulator in your browser</a></p>
 
 ## U.S. State EPS Methodology
 
@@ -73,6 +67,14 @@ We would like to acknowledge the following people who made the U.S. State Energy
 ### **3.4.3.1 - February 6, 2023**
 
 * Official launch of the U.S. State Energy Policy Simulators
+
+## Model Download
+
+The Tennessee Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
+
+<p><a href="https://github.com/EnergyInnovation/eps-tennessee/archive/refs/tags/4.0.4.zip" class="btn">Download the Tennessee Energy Policy Simulator</a></p>
+
+[Click here](https://energypolicy.solutions/simulator/tennessee/en/df665ab) for access to the previous version of the public model, including access to saved scenarios.
 
 ## Software License
 

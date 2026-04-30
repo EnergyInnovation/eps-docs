@@ -4,13 +4,7 @@ title:  California Energy Policy Simulator
 
 The California Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation LLC](https://energyinnovation.org/) and [Rocky Mountain Institute](https://rmi.org/).  It is adapted from software originally created by [Energy Innovation LLC](https://energyinnovation.org/).
 
-## Model Download
-
-The California Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
-
-<p><a href="https://github.com/EnergyInnovation/eps-california/archive/refs/tags/4.0.4.zip" class="btn">Download the California Energy Policy Simulator</a></p>
-
-[Click here](https://energypolicy.solutions/simulator/california/en/932e552) for access to the previous version of the public model, including access to saved scenarios.
+<p><a href="https://energypolicy.solutions/simulator/california/en" class="btn">Run the simulator in your browser</a></p>
 
 ## U.S. State EPS Methodology
 
@@ -155,6 +149,14 @@ Additionally, the updated Deeper Decarbonization Scenario adds a policy reducing
   
 ### **1.4.3 - January 15, 2020**
 * Official launch of the California EPS
+
+## Model Download
+
+The California Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
+
+<p><a href="https://github.com/EnergyInnovation/eps-california/archive/refs/tags/4.0.4.zip" class="btn">Download the California Energy Policy Simulator</a></p>
+
+[Click here](https://energypolicy.solutions/simulator/california/en/932e552) for access to the previous version of the public model, including access to saved scenarios.
 
 ## Software License
 

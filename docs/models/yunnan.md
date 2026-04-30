@@ -4,11 +4,7 @@ title: "Yunnan Energy Policy Simulator"
 
 The Yunnan Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation LLC (EI)](https://energyinnovation.org/) and the [Beijing Smart Green Transport Research Center (Smart Trans)](http://smart-trans.net/). It is adapted from software originally created by EI.
 
-## Model Download
-
-The Yunnan Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below. Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
-
-<p><a href="https://wkf.ms/3EPn6q6" class="btn">Download the Energy Policy Simulator, Yunnan Version</a></p>
+<p><a href="https://energypolicy.solutions/simulator/yunnan/en" class="btn">Run the simulator in your browser</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Yunnan. Individuals are listed alphabetically by last name.
@@ -45,6 +41,12 @@ We would like to acknowledge the following people who helped adapt the Energy Po
   * Updated trans/BNVP with new data.
   * Localized hydgn/EHPpUC using China-specific data.
   
+
+## Model Download
+
+The Yunnan Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below. Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
+
+<p><a href="https://wkf.ms/3EPn6q6" class="btn">Download the Energy Policy Simulator, Yunnan Version</a></p>
 
 ## Software License
 

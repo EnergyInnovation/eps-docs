@@ -4,11 +4,7 @@ title: "山西能源政策模型"
 
 山西能源政策模型（EPS）是由[美国能源创新公司（EI）](https://energyinnovation.org/)及[绿色创新发展研究院（iGDP）](http://www.igdp.cn/)创建的一个免费开源模型，山西EPS基于EI最初创建的模型进行开发。
 
-## 下载模型
-
-您可以通过网络浏览器在本网站上使用山西能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
-
-<p><a href="https://wkf.ms/3vQKejZ" class="btn">下载山西EPS模型</a></p>
+<p><a href="https://energypolicy.solutions/simulator/shanxi/zh" class="btn">在您的浏览器中运行模型</a></p>
 
 ## 鸣谢贡献者和审阅专家
 我们在此诚挚感谢以下人员和专家在我们创建和审阅山西能源政策模型时的贡献与支持。姓名按名字首字母排序。
@@ -58,6 +54,12 @@ title: "山西能源政策模型"
 
 摘要：报告回顾了山西省低碳转型的进展情况。利用山西EPS模型和情景分析方法，报告预测了山西省能源消费和温室气体排放的长期趋势，识别了在双碳情景下山西省需重点关注的关键领域、主要目标设定以及优先实施的减排政策。同时，报告评估了这些政策实施所需的投资规模，以及它们对GDP和就业产生的潜在影响。基于这些分析，报告为山西省低碳转型提供了方向性的政策建议。<br/>
 [https://www.igdp.cn/wp-content/uploads/2025/09/Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Shanxi%E2%80%94Developing-a-Dual-Carbon-Pathway-Using-EPS-Modeling.pdf](https://www.igdp.cn/wp-content/uploads/2025/09/Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Shanxi%E2%80%94Developing-a-Dual-Carbon-Pathway-Using-EPS-Modeling.pdf)<br/>
+
+## 下载模型
+
+您可以通过网络浏览器在本网站上使用山西能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
+
+<p><a href="https://wkf.ms/3vQKejZ" class="btn">下载山西EPS模型</a></p>
 
 ## 软件许可
 

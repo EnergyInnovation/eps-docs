@@ -4,12 +4,7 @@ title: "云南能源政策模型"
 
 云南能源政策模型（EPS）是由[美国能源创新公司（EI）](https://energyinnovation.org/)及[北京智汇绿行科技中心（Smart Trans）](https://smart-trans.net/)创建的一个免费开源模型，云南EPS基于EI最初创建的模型进行开发。
 
-## 下载模型
-
-您可以通过网络浏览器在本网站上使用云南能源政策模型，或点击下方按钮将完整版模型下载至您的电脑中。您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
-
-<p><a href="https://wkf.ms/4igjdsV" class="btn">下载云南EPS模型</a></p>
-
+<p><a href="https://energypolicy.solutions/simulator/yunnan/zh" class="btn">在您的浏览器中运行模型</a></p>
 
 ## 鸣谢贡献者和审阅专家
 我们在此诚挚感谢以下人员和专家在我们创建和审阅云南能源政策模型时的贡献与支持。姓名按姓氏拼音首字母排序。
@@ -45,6 +40,13 @@ title: "云南能源政策模型"
   * 修改了 elec/EIaE、elec/MPCbS、elec/BCRbQ、elec/CRbQ 及相关政策设置，以修正电力部门的趋势。
   * 使用新数据更新了 trans/BNVP。
   * 将 hydgn/EHPpUC 更新为基于中国本地数据。
+
+## 下载模型
+
+您可以通过网络浏览器在本网站上使用云南能源政策模型，或点击下方按钮将完整版模型下载至您的电脑中。您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
+
+<p><a href="https://wkf.ms/4igjdsV" class="btn">下载云南EPS模型</a></p>
+
 
 ## 软件许可
 

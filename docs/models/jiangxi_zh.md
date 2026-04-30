@@ -4,11 +4,7 @@ title: "江西能源政策模型"
 
 江西能源政策模型（EPS）是由[美国能源创新公司（EI）](https://energyinnovation.org/)及[绿色创新发展研究院（iGDP）](http://www.igdp.cn/)创建的一个免费开源模型，江西EPS基于EI最初创建的模型进行开发。
 
-## 下载模型
-
-您可以通过网络浏览器在本网站上使用江西能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
-
-<p><a href="https://wkf.ms/3PSqQd1" class="btn">下载江西EPS模型</a></p>
+<p><a href="https://energypolicy.solutions/simulator/jiangxi/zh" class="btn">在您的浏览器中运行模型</a></p>
 
 ## 鸣谢贡献者和审阅专家
 我们在此诚挚感谢以下人员和专家在我们创建和审阅江西能源政策模型时的贡献与支持。姓名按名字首字母排序。
@@ -51,6 +47,12 @@ title: "江西能源政策模型"
 
 摘要：报告回顾了江西省低碳转型的阶段性进展，并基于江西EPS模型开展中长期能源消费和温室气体排放的长期趋势预测，识别在双碳情景下江西省需要重点关注的关键领域、主要目标设定以及优先实施的减排政策。同时，报告评估了减排政策投资需求及其对GDP和就业的影响。在此基础上，报告提出有针对性的政策建议，以期为江西省实现经济发展与低碳转型协同提供决策支持。<br/>
 [https://www.igdp.cn/wp-content/uploads/2025/08/Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Jiangxi%E2%80%94Developing-a-Dual-Carbon-Pathway-Using-EPS-Modeling.pdf](https://www.igdp.cn/wp-content/uploads/2025/08/Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Jiangxi%E2%80%94Developing-a-Dual-Carbon-Pathway-Using-EPS-Modeling.pdf)<br/>
+
+## 下载模型
+
+您可以通过网络浏览器在本网站上使用江西能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
+
+<p><a href="https://wkf.ms/3PSqQd1" class="btn">下载江西EPS模型</a></p>
 
 ## 软件许可
 

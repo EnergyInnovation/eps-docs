@@ -4,13 +4,7 @@ title:  "Texas Energy Policy Simulator"
 
 The Texas Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation LLC](https://energyinnovation.org/) and [The Webber Energy Group at The Univeristy of Texas at Austin](http://www.webberenergygroup.com/).  It is adapted from software originally created by [Energy Innovation LLC](https://energyinnovation.org/).
 
-## Model Download
-
-The Texas Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
-
-<p><a href="https://github.com/EnergyInnovation/eps-texas/archive/4.0.4.zip" class="btn">Download the Texas Energy Policy Simulator</a></p>
-
-[Click here](https://energypolicy.solutions/simulator/texas/en/fb81fb5) for access to the previous version of the public model, including access to saved scenarios.
+<p><a href="https://energypolicy.solutions/simulator/texas/en" class="btn">Run the simulator in your browser</a></p>
 
 ## U.S. State EPS Methodology
 
@@ -84,6 +78,14 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 ### **3.1.0 - Apr. 12, 2022**
 
 * Official launch of the Texas EPS
+
+## Model Download
+
+The Texas Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
+
+<p><a href="https://github.com/EnergyInnovation/eps-texas/archive/4.0.4.zip" class="btn">Download the Texas Energy Policy Simulator</a></p>
+
+[Click here](https://energypolicy.solutions/simulator/texas/en/fb81fb5) for access to the previous version of the public model, including access to saved scenarios.
 
 ## Software License
 

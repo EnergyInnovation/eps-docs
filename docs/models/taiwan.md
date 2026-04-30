@@ -4,6 +4,8 @@ title: "Taiwan Energy Policy Simulator"
 
 The Taiwan Energy Policy Simulator (EPS) is a free and open-source computer model created by [Energy Innovation LLC (EI)](https://energyinnovation.org/) and the [National Taipei University of Technology (NTUT)](https://www-en.ntut.edu.tw/). It is adapted from software originally created by EI. Model documentation in Chinese is available at [this link](https://energyinnovation-my.sharepoint.com/:f:/g/personal/minshu_energyinnovation_org/IgAUzBmP22AdS5hv11fTDtwDAaMa5BLUIRPJXPTnoyjmkyc?e=lrV8hA).
 
+<p><a href="https://energypolicy.solutions/simulator/taiwan/en" class="btn">Run the simulator in your browser</a></p>
+
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who helped adapt the Energy Policy Simulator for Taiwan. Individuals are listed alphabetically by last name.
 

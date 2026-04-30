@@ -4,11 +4,7 @@ title:  "Alberta Energy Policy Simulator"
 
 The Alberta Energy Policy Simulator (EPS) is a free and open-source computer model created by the [Pembina Institute](http://www.pembina.org/).  It is adapted from software originally created by [Energy Innovation LLC](https://energyinnovation.org/).
 
-## Model Download
-
-The Alberta Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
-
-<p><a href="https://github.com/EnergyInnovation/eps-alberta/archive/1.4.2.zip" class="btn">Download the Energy Policy Simulator, Alberta Version</a></p>
+<p><a href="https://energypolicy.solutions/simulator/alberta/en" class="btn">Run the simulator in your browser</a></p>
 
 ## Reference Scenarios
 
@@ -32,6 +28,12 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 * Initial release of the Alberta EPS
 
+
+## Model Download
+
+The Alberta Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the full version of the model.
+
+<p><a href="https://github.com/EnergyInnovation/eps-alberta/archive/1.4.2.zip" class="btn">Download the Energy Policy Simulator, Alberta Version</a></p>
 
 ## Software License
 

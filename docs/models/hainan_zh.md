@@ -4,11 +4,7 @@ title: "海南能源政策模型"
 
 海南能源政策模型（EPS）是由[美国能源创新公司（EI）](https://energyinnovation.org/)及[绿色创新发展研究院（iGDP）](http://www.igdp.cn/)创建的一个免费开源模型，海南EPS基于EI最初创建的模型进行开发。
 
-## 下载模型
-
-您可以通过网络浏览器在本网站上使用海南能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
-
-<p><a href="https://wkf.ms/3vOhHvq" class="btn">下载海南EPS模型</a></p>
+<p><a href="https://energypolicy.solutions/simulator/hainan/zh" class="btn">在您的浏览器中运行模型</a></p>
 
 ## 鸣谢贡献者和审阅专家
 我们在此诚挚感谢以下人员和专家在我们创建和审阅海南能源政策模型时的贡献与支持。姓名按名字首字母排序。
@@ -52,6 +48,12 @@ title: "海南能源政策模型"
 
 摘要：本报告系统回顾了海南省低碳转型的进展与成效，运用情景分析方法，分部门预测能源消费与温室气体排放的长期趋势，并分阶段梳理实现“碳中和”目标的关键政策措施。同时，报告全面评估了政策组合对经济发展、就业以及投资需求的潜在影响，提出了切实可行的政策建议，旨在为海南的低碳发展路径提供科学依据与决策参考。<br/>
 [https://www.igdp.cn/wp-content/uploads/2025/11/2025-11-IGDP-Report-CN-Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Hainan—Using-EPS-Modeling.pdf](https://www.igdp.cn/wp-content/uploads/2025/11/2025-11-IGDP-Report-CN-Medium-and-Long-Term-Outlook-for-Low-Carbon-Transition-in-Hainan—Using-EPS-Modeling.pdf)<br/>
+
+## 下载模型
+
+您可以通过网络浏览器在本网站上使用海南能源政策模型，您也可以通过[EPS下载页面](../download)完善相关信息后申请下载完整模型。
+
+<p><a href="https://wkf.ms/3vOhHvq" class="btn">下载海南EPS模型</a></p>
 
 ## 软件许可
 

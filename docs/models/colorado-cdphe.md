@@ -8,12 +8,7 @@ The Colorado (CDPHE) Energy Policy Simulator (EPS) is a free and open-source com
 
 A prior version of the model was used for the Roadmap 2.0 Project. This version is now archived. [Click here](https://energypolicy.solutions/simulator/colorado/en/6e7743c) for access to the previous version (3.4.3) of the public model, which was developed for and calibrated to the state's 2023 GHG Inventory, and used to inform the state's [GHG Pollution Reduction Roadmap](https://energyoffice.colorado.gov/ghg-pollution-reduction-roadmap) (Roadmap 2.0). If you would like to access the documentation for this version of the model, email us at policy@energyinnovation.org.
 
-## Model Download
-
-The Colorado Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to follow the steps on the [EPS download page](../download) in order to install the required software and use the downloadable version of the model.
-
-<p><a href="https://github.com/EnergyInnovation/eps-colorado-cdphe/archive/refs/tags/4.0.4.zip" class="btn">Download the Colorado Energy Policy Simulator</a></p>
-
+<p><a href="https://energypolicy.solutions/simulator/colorado-cdphe/en" class="btn">Run the simulator in your browser</a></p>
 
 ## U.S. State EPS Methodology
 
@@ -125,6 +120,13 @@ We would like to acknowledge the following people who helped adapt the Energy Po
   * ACC and ACT rule assumptions modified in BAU Required ZEV Sales Perc by Subregion
 * Data updates
   * Energy consumption data updated to 2023 SEDS release (BAU Components Energy Use, BAU Industrial Fuel Use before CCS, and BAU Cargo Distance Transported Relative to Start Year)
+
+## Model Download
+
+The Colorado Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to follow the steps on the [EPS download page](../download) in order to install the required software and use the downloadable version of the model.
+
+<p><a href="https://github.com/EnergyInnovation/eps-colorado-cdphe/archive/refs/tags/4.0.4.zip" class="btn">Download the Colorado Energy Policy Simulator</a></p>
+
 
 ## Software License
 
