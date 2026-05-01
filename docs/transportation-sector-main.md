@@ -107,7 +107,7 @@ All R&D policies are defined as being additional to any R&D required to comply w
 
 ## Calculating NPV of Lifetime Vehicle Cost
 
-In order to decide which vehicle technologies will be selected by purchasers to fill the need for new cargo-distance from a given vehicle type in the current year, the model needs to know the price of each vehicle technology as seen by purchasers.  There are three components to this price: the upfront cost of the vehicle, the lifetime operation and maintenance costs (including fuel) for the vehicle (appropriately discounted), and a shadow cost applied to electric passenger light-duty vehicles to represent range anxiety and charging time concerns.  This section of the model calculates these costs.
+In order to decide which vehicle technologies will be selected by purchasers to fill the need for new cargo-distance from a given vehicle type in the current year, the model needs to know the price of each vehicle technology as seen by purchasers.  There are three components to this price: the upfront cost of the vehicle, the lifetime operation and maintenance costs (including fuel) for the vehicle (appropriately discounted), and a set of shadow costs applied to electric passenger light-duty vehicles to represent perceived non-monetary barriers (range anxiety, charging-station availability, and broader consumer preference factors).  This section of the model calculates these costs.
 
 ### NPV of Lifetime Annual Expenditures
 
@@ -160,13 +160,18 @@ Finally, we adjust the vehicle price based on BAU subsidies and any additional s
 
 ![effect of subsidies on new vehicle price](/img/transportation-sector-main-SubsidyEffect.png)
 
-### Range Anxiety and Charging Time Shadow Cost
+### Shadow Costs for Electric Passenger LDVs
 
-The third component of the NPV of Lifetime Vehicle Cost is a shadow cost for range anxiety and charging time, applied only to electric passenger light-duty vehicles. This shadow cost is added to the calculated new vehicle price for the calculations determining which vehicles are purchased by consumers, but is not included in the actual costs tracked in the model’s cash flow calculations. It is meant to represent the perceived non-monetary barriers of electric vehicles in consumer purchasing decisions and uses data from a Department of Energy study and a comparison of the expected number of charging ports to gas stations. A policy lever allows users to reduce the size of this shadow cost.
+The third component of the NPV of Lifetime Vehicle Cost is a set of shadow costs applied only to electric passenger light-duty vehicles. These shadow costs are added to the calculated new vehicle price for the calculations determining which vehicles are purchased by consumers, but are not included in the actual costs tracked in the model's cash flow calculations. They are meant to represent perceived non-monetary barriers to EV adoption in consumer purchasing decisions. The model represents three such barriers as separate, additive shadow costs:
 
-Finally, the three vehicle cost components are summed to calculate the NPV of Lifetime Vehicle Cost variable, as shown below. 
+* **Range anxiety shadow cost.** Reflects buyers' concern about the distance an EV can travel between charges. Sourced from a Department of Energy study. A policy lever ('Reduce EV Range Anxiety') allows users to scale this shadow cost down.
+* **Charging availability shadow cost.** Reflects the relative scarcity of EV chargers compared to gas stations. Calculated as a logarithmic function of the ratio of the projected number of EV chargers to the number of gas pumps; falls toward zero as charger deployment approaches parity with gas pump deployment. Affected by the EV Charger Deployment policy lever.
+* **Consumer preference shadow cost.** Reflects broader non-monetary preference factors beyond range and charger availability — for example, perceptions of unfamiliar technology and concerns about resale value. Calibrated against historical light-duty vehicle sales data (see [Forsythe et al., PNAS 2023](https://www.pnas.org/doi/10.1073/pnas.2219396120) and the U.S. Energy Information Administration Annual Energy Outlook). The shadow cost decays as the BEV share of the existing passenger LDV fleet grows: it is multiplied by `1 − BEV share of last year's passenger LDV fleet`, on the assumption that as more BEVs reach the road, the perception barriers represented by this shadow cost diminish.
 
-![effect of range anxiety and charging time shadow price](/img/transportation-sector-main-RngAnxiety.png)
+Finally, the three shadow costs are summed with the new vehicle price (and the NPV of Lifetime Annual Expenditures, which already includes the EVSE installation cost described above) to produce the NPV of Lifetime Vehicle Cost variable used in the vehicle choice function:
+
+<!-- TODO: screenshot may need replacement — view shown is from 4.0.4 and shows only Range Anxiety + Charging Availability shadow costs. The 4.0.5 view also includes Consumer Preference Shadow Cost (BCPSC) driven by last year's BEV stock share. -->
+![effect of range anxiety, charging availability, and consumer preference shadow costs on perceived vehicle price](/img/transportation-sector-main-RngAnxiety.png)
 
 ## Calculating Number of New Vehicles
 
