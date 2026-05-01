@@ -125,6 +125,11 @@ Finally, we convert this stream of expected fuel and other operation and mainten
 
 ![net present value of fuel costs over vehicle lifetime](/img/transportation-sector-main-NPVFuelCost.png)
 
+For passenger light-duty battery electric vehicles, we also add a one-time charging-equipment installation cost. New EV buyers who do not already have a home charger generally need to purchase and install one. The model multiplies a per-installation cost (the 'EV Charger Installation Costs' input, sourced from a study on the levelized cost of charging electric vehicles in the United States) by the share of new passenger LDV EV purchases requiring an installation. That share is set to one minus the BEV share of the existing passenger LDV fleet, on the assumption that BEV buyers in households that already include a BEV typically already have a working home charger. The resulting installation cost adds to the NPV of Lifetime Annual Expenditures only for passenger LDV BEVs and is zero for all other vehicle/cargo/technology combinations.
+
+<!-- TODO: SCREENSHOT NEEDED: View "Transportation - Main" in EPS.mdl, showing the new structure that calculates Added Cost for Passenger LDV EV EVSE Equipment from EVCIC EV Charger Installation Costs and the Share of New Passenger LDV EV Purchases Requiring Home Charger Installations, and feeds into the NPV of Lifetime Annual Expenditures. Suggested filename: transportation-sector-main-EVSECost_4.0.5.png -->
+
+
 ### New Vehicle Price
 
 The model adds these annual costs to the upfront price of the new vehicle. Prices for most vehicle technologies in future years are taken in as input data.  For battery-equipped vehicles, we separately calculate the cost of the battery using endogenous learning curves -- their cost declines are linked to their cumulative deployment. An average battery pack price (in $/kWh) in the model start year is read from input data, and the price falls endogenously as calculated on the [Endogenous Learning](endogenous-learning) page. The starting price is treated as a passenger-LDV battery pack price; for other vehicle types and cargo modes, the model applies a 'Battery Pack Price Multiplier' (sourced from NREL's Annual Technology Baseline) to scale the price for freight LDVs, HDVs, and nonroad vehicles.
