@@ -127,7 +127,7 @@ Finally, we convert this stream of expected fuel and other operation and mainten
 
 ### New Vehicle Price
 
-The model adds these annual costs to the upfront price of the new vehicle. Prices for most vehicle technologies in future years are taken in as input data.  For battery-equipped vehicles, we separately calculate the cost of the battery using endogenous learning curves -- their cost declines are linked to their cumulative deployment. An average battery pack price (in $/kWh) in the model start year is read from input data, and the price falls endogenously as calculated on the [Endogenous Learning](endogenous-learning) page.  
+The model adds these annual costs to the upfront price of the new vehicle. Prices for most vehicle technologies in future years are taken in as input data.  For battery-equipped vehicles, we separately calculate the cost of the battery using endogenous learning curves -- their cost declines are linked to their cumulative deployment. An average battery pack price (in $/kWh) in the model start year is read from input data, and the price falls endogenously as calculated on the [Endogenous Learning](endogenous-learning) page. The starting price is treated as a passenger-LDV battery pack price; for other vehicle types and cargo modes, the model applies a 'Battery Pack Price Multiplier' (sourced from NREL's Annual Technology Baseline) to scale the price for freight LDVs, HDVs, and nonroad vehicles.
 
 ![endogenous battery learning](/img/transportation-sector-main-BatteryCost.png)
 
@@ -135,7 +135,11 @@ Subsequently, the model takes into account any subsidies for vehicle batteries. 
 
 ![battery production subsidy](/img/transportation-sector-main-EndogenousEVLearning.png)
 
-Lastly, the battery cost is converted from $/kWh to $/vehicle by multiplying by the capacity of each vehicle type, then added to the non-battery portion of new vehicle price. (reminder: for non-battery-equipped vehicles, this input variable is the full cost of the vehicle)
+Next, the post-subsidy battery manufacturing price is converted to a retail-price-equivalent (RPE) basis by multiplying by a 'Battery Pack Markup' factor. This markup follows NREL ATB methodology, applying a retail price equivalent factor of 1.5 for light-duty vehicles and 1.2 for medium- and heavy-duty vehicles to estimate retail prices from manufacturing costs.
+
+<!-- TODO: screenshot may need replacement — view shown is from 4.0.4 and does not depict the Battery Pack Markup multiplier added in 4.0.5. -->
+
+Lastly, the marked-up battery cost is converted from $/kWh to $/vehicle by multiplying by the battery capacity of each vehicle type, then added to the non-battery portion of new vehicle price. (reminder: for non-battery-equipped vehicles, this input variable is the full cost of the vehicle)
 
 ![battery size](/img/transportation-sector-main-BatterySize.png)
 

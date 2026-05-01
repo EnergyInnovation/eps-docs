@@ -31,8 +31,9 @@ We separately calculate the change in EV subsidies by multiplying the subsidy va
 
 ### Change in Vehicle Battery Subsidy Payments
 
-Similarly, we multiply the battery subsidy values by the number of vehicles sold and the battery capacity of each vehicle in both the policy and BAU cases in order to find the change in total subsidies paid. The share of the subsidy passed through to consumers is broken out for revenue tracking purposes.
+Similarly, we multiply the battery subsidy values by the number of vehicles sold and the battery capacity of each vehicle in both the policy and BAU cases in order to find the change in total subsidies paid. Battery prices and the resulting subsidy pass-through to consumers are tracked by vehicle type, reflecting that battery pack prices vary by vehicle and cargo mode (see the [Battery Pack Price Multiplier](transportation-sector-main#new-vehicle-price) discussion on the main transportation page). The share of the subsidy passed through to consumers is broken out for revenue tracking purposes.
 
+<!-- TODO: screenshot may need replacement — view shown is from 4.0.4 and does not depict the per-vehicle-type disaggregation of battery manufacturing price added in 4.0.5. -->
 ![calculating change in vehicle battery subsidies](/img/transportation-sector-cash-BatterySubsidies.png)
 
 ### Change in Other Transportation Costs
