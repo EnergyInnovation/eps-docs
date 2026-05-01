@@ -60,8 +60,9 @@ First, we allocate transportation expenditures. To do this, we find the fraction
 
 ![calculating fraction of vehicles by entity](/img/transportation-sector-cash-VehbyEntity.png)
 
-We then allocate energy expenditures to each of the cash flow entities by multiplying the change in amount spent on transportation fuels by vehicle type by the fraction of vehicles owned by each entity. 
+We then allocate energy expenditures to each of the cash flow entities by multiplying the change in amount spent on transportation fuels by vehicle type by the fraction of vehicles owned by each entity. The model also tracks the change in energy expenditures broken out simultaneously by entity and by fuel type, so downstream calculations can attribute (for example) gasoline-related cash flow effects to consumers separately from electricity-related effects to the same entity.
 
+<!-- TODO: screenshot may need replacement — view shown is from 4.0.4 and does not depict the new by-entity-and-fuel disaggregation added in 4.0.5. -->
 ![calculating change in energy expenditures by entity](/img/transportation-sector-cash-EnergyExpbyEntity.png)
 
 We next allocate nonenergy expenditures. Generally, the categories of spending shown in the screenshot below are assigned to entities based on the change in amount multiplied by the fraction of vehicles owned by that entity. The exceptions are the change in EV and battery production subsidies paid, which are paid wholly by the government, and changes in transport fares (passenger fares are assigned to labor and consumers, while freight fares are assigned to nonenergy industries).
