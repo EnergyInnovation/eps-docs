@@ -86,4 +86,4 @@ Lastly, we also calculate the total transportation sector change in revenue by e
 ![calculating change in revenue by entity](/img/transportation-sector-cash-RevenuebyEntity.png)
 
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.0.5.*

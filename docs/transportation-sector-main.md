@@ -299,4 +299,4 @@ We take in input data on the incremental cost to produce a unit of fuel used to 
 ![LCFS credit price and price cap](/img/transportation-sector-main-CreditPrice.png)
 
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.0.5.*
