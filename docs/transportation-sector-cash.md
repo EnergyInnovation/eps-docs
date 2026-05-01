@@ -9,7 +9,7 @@ The following screenshot shows the model structure used to calculate change in a
 
 ![change in fuel spending](/img/transportation-sector-cash-Fuels.png)
 
-Transportation fuel use by fuel type is multiplied by the fuel cost per unit energy (calculated on the [Fuels page](fuels)) to obtain the amount of money spent on transportation fuels.  This value is inclusive of tax.  We also multiply the quantity of fuel used by the amount of tax paid per unit energy to find the taxes paid on transportation fuels.  These steps are done both for the BAU and the policy cases.
+Transportation fuel use by fuel type is multiplied by the fuel cost per unit energy (calculated on the [Fuels page](fuels)) to obtain the amount of money spent on transportation fuels.  This value is inclusive of tax.  Fuel cost per unit energy is differentiated by vehicle type and cargo type so that the cost of electricity reflects the public/private charging mix specific to each vehicle (see the [main transportation page](transportation-sector-main#calculating-cargo-distance-transported) for details).  We also multiply the quantity of fuel used by the amount of tax paid per unit energy to find the taxes paid on transportation fuels.  These steps are done both for the BAU and the policy cases.
 
 We find the difference in the amount spent on fuel taxes, and we find the difference in the amount spent on fuels.  We subtract out the difference in taxes to find the cash flow change for the fuel industry (which is subscripted by fuel type).  That is, a reduction in fuel spending is a negative cash flow for the fuel industry, while an increase in fuel spending is a positive cash flow for the fuel industry.
 
