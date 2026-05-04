@@ -19,6 +19,12 @@ notes/.tools/diff_equation.sh "Vehicles" EPS-4.0.4.mdl EPS.mdl
 
 # Read About-tab prose from an input data .xlsx.
 notes/.tools/read_xlsx_about.sh "/c/Users/.../InputData/trans/ANVCV/Additional New Vehicles Calibration Variable.xlsx"
+
+# Lay out a screenshot before writing the prose: get the bounding box of the
+# variables a doc paragraph cites, plus any neighbors that fall inside it.
+node notes/.tools/cluster_vars.js bbox EPS.mdl "Transportation - Main" \
+  "BPM Battery Pack Markup" "BPPM Battery Pack Price Multiplier" \
+  "This Year Battery Manufacturing Price After Subsidies"
 ```
 
 ## Reference
@@ -32,6 +38,7 @@ notes/.tools/read_xlsx_about.sh "/c/Users/.../InputData/trans/ANVCV/Additional N
 | `find_equation.js` | Print the equation block(s) for one variable from one file | `"<var>"` `<mdl>` |
 | `diff_equation.sh` | Diff one variable's equation between the two files | `"<var>"` `<old_mdl>` `<new_mdl>` |
 | `read_xlsx_about.sh` | Print human-readable text from an EPS input `.xlsx` | `<xlsx_path>` |
+| `cluster_vars.js` | Inspect Vensim sketch coordinates: bounding box of N variables, region listing, or nearest-neighbor lookup. Use this to lay out screenshot bounding boxes before drafting Phase 3 prose | `bbox <mdl> "<view>" "<var1>" ...` / `region <mdl> "<view>" <x1> <y1> <x2> <y2>` / `near <mdl> "<view>" "<var>" [k]` |
 
 ## Output / cache directories
 

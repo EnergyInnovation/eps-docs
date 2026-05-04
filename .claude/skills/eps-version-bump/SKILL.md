@@ -53,6 +53,7 @@ For each in-scope sector:
 3. Make small, reviewable commits — one logical change per commit, prefixed `docs(<sector>): <summary> (<new_version>)`.
 4. Existing `![...](...)` image references stay in place even when the underlying screenshot is now stale; add a `<!-- TODO: screenshot may need replacement — ... -->` marker near each.
 5. For sections that describe entirely new structure with no existing screenshot, add a structured marker: `<!-- TODO: SCREENSHOT NEEDED: View "..." in <new_mdl>, showing ... Suggested filename: <section>_<view>_<new_version>.png -->`.
+6. **Lay out screenshots before committing prose.** When a doc paragraph cites N variables, run `notes/.tools/cluster_vars.js bbox <new_mdl> "<view>" "<var1>" "<var2>" ...`. The tool reports the bounding box that would contain all cited variables, lists any other variables that fall inside the same box (so they can be confirmed-or-excluded), and lists on-canvas annotations within the box. Use this output to (a) split a paragraph if its variables don't cluster, (b) include the bounding box and the full variable list in the screenshot inventory entry, and (c) ensure the staff member capturing the screenshot doesn't have to guess which region to crop.
 6. Bump `*This page was last updated in version <new>.*` only on pages with substantive content changes.
 7. **Do not push to remote.** All commits stay local on `develop_<new_version>` for staff review.
 
