@@ -33,7 +33,6 @@ We separately calculate the change in EV subsidies by multiplying the subsidy va
 
 Similarly, we multiply the battery subsidy values by the number of vehicles sold and the battery capacity of each vehicle in both the policy and BAU cases in order to find the change in total subsidies paid. Battery prices and the resulting subsidy pass-through to consumers are tracked by vehicle type, reflecting that battery pack prices vary by vehicle and cargo mode (see the [Battery Pack Price Multiplier](transportation-sector-main#new-vehicle-price) discussion on the main transportation page). The share of the subsidy passed through to consumers is broken out for revenue tracking purposes.
 
-<!-- TODO: screenshot may need replacement — view shown is from 4.0.4 and does not depict the per-vehicle-type disaggregation of battery manufacturing price added in 4.0.5. -->
 ![calculating change in vehicle battery subsidies](/img/transportation-sector-cash-BatterySubsidies.png)
 
 ### Change in Other Transportation Costs
@@ -46,7 +45,7 @@ We also calculate the change in transport fares paid. We take input data on fare
 
 ![calculating change in transport fares](/img/transportation-sector-cash-TransFares.png)
 
-Finally, we calculate the change in amount spent on EV chargers. We take input data on the cost of EV chargers and multiply by the number of chargers deployed in both the policy and BAU cases. 
+Finally, we calculate the change in amount spent on EV chargers. We take input data on the cost of EV chargers and multiply by the number of chargers deployed in both the policy and BAU cases. This calculation captures the public-charger network funded by the EV Charger Deployment policy. Note that this is distinct from the home-charger installation cost paid by individual passenger LDV BEV buyers, which is included in vehicle pricing on the [main transportation page](transportation-sector-main#npv-of-lifetime-annual-expenditures) rather than tracked here.
 
 ![calculating change in transport fares](/img/transportation-sector-cash-ChargerCosts.png)
 
@@ -62,7 +61,6 @@ First, we allocate transportation expenditures. To do this, we find the fraction
 
 We then allocate energy expenditures to each of the cash flow entities by multiplying the change in amount spent on transportation fuels by vehicle type by the fraction of vehicles owned by each entity. The model also tracks the change in energy expenditures broken out simultaneously by entity and by fuel type, so downstream calculations can attribute (for example) gasoline-related cash flow effects to consumers separately from electricity-related effects to the same entity.
 
-<!-- TODO: screenshot may need replacement — view shown is from 4.0.4 and does not depict the new by-entity-and-fuel disaggregation added in 4.0.5. -->
 ![calculating change in energy expenditures by entity](/img/transportation-sector-cash-EnergyExpbyEntity.png)
 
 We next allocate nonenergy expenditures. Generally, the categories of spending shown in the screenshot below are assigned to entities based on the change in amount multiplied by the fraction of vehicles owned by that entity. The exceptions are the change in EV and battery production subsidies paid, which are paid wholly by the government, and changes in transport fares (passenger fares are assigned to labor and consumers, while freight fares are assigned to nonenergy industries).
