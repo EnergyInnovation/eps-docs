@@ -185,4 +185,138 @@ These pages live under "Policy Design Guide → Transportation Policies" (per `s
 
 ---
 
-*This file is project memory. Update or extend it (rather than rewriting) as later phases reveal new context. Pilot scope: transportation only — non-transport sectors will be appended once staff confirms the format above.*
+# Section II — Electricity Supply (Phase 1)
+
+**Status:** Draft for staff review. The transport-pilot mapping format (above) is reused here. Sized for the much larger volume of electricity content: 502 lines / 63 images in `electricity-sector-main.md`, 247 lines / 28 images in `electricity-sector-cash.md`, plus 14 short policy pages.
+
+## E1. Vensim views in scope
+
+| Vensim view | 4.0.4 vars | 4.0.5 vars | Net | Added | Removed |
+| --- | --- | --- | --- | --- | --- |
+| `Electricity Supply - Main` | 745 | 754 | +9 | 212 | 203 |
+| `Electricity Supply - BAU` | 672 | 687 | +15 | 219 | 204 |
+| `Electricity Supply - Cash Flow` | 430 | 425 | −5 | 86 | 91 |
+
+**The +9 / +15 / −5 net deltas hide a major refactor.** ~30 % of the variables on the Main and BAU views are added or removed (or, very often, renamed via removal+addition pairs). This sector pass will be substantially larger than the transport pilot — the mapping below is unchanged in spirit but the Phase 2 change list is going to be long.
+
+## E2. Section-by-section mapping for `electricity-sector-main.md`
+
+The doc has 19 second- and third-level subsections. Each row below ties one or more h3 subsections to the relevant region of the `Electricity Supply - Main` view via the image filenames.
+
+| Doc subsection (h2 / h3) | Image filename stem(s) | Notes |
+| --- | --- | --- |
+| Power Plant Technologies | (none) | Lists the `Electricity Source` subscript values. Phase 2 must check this subscript range. |
+| Temporal Resolution | (none) | Describes `Electricity Timeslice`, `Hour`, day-types. Phase 2 must check these subscripts. |
+| Hourly Electricity Demand → Net Imports | `NetImports` | |
+| Hourly Electricity Demand → Calculating Hourly from Annual | `TotalDemandBeforeDG` | Cross-references buildings, transport, and industry electricity demand. The transport-side electricity feed has already changed in 4.0.5 (see transport pilot, §4 — fuel cost subscript expansion). Likely affects this subsection. |
+| Hourly Demand after Distributed Generation | `TotalDemandAfterDG` | |
+| Hourly Demand after Optimizing Dispatch of Net Imports | `TotalDemandAfterNetImports` | |
+| Potential Load Modification → Grid Batteries | `GridBatteriesDailyMax` | |
+| Potential Load Modification → Pumped Hydro | `PumpedHydro` | |
+| Potential Load Modification → EV Batteries | `EVBatteries` | Cross-references transport sector (V2G / managed charging). Likely touches the new `AVCC Average Vehicle Charger Capacity` variable seen in the diff. |
+| Potential Load Modification → Demand Response | `DemandResponse` | |
+| Potential Load Modification → Total Diurnal Balancing Potential | `TotalDiurnalBalancingBeforeHybridBatteries` / `TotalDiurnalBalancingIncludingHybridBatteries` | |
+| Modifying Load before / after Accounting for Hybrid Battery Storage | `NetPeakLoadShift1of2`, `NetPeakLoadShift2of2`, `NetPeakLoadShiftHybrid1of2`, `NetPeakLoadShiftHybrid2of2`, `TotalSeasonalBalancing` | |
+| Summing Charging and Discharging from Batteries | `HourlyBatteryChargeDischarge` | Phase 2 diff already shows new variables `Battery Charge Parameters`, `Battery Charging Allocation`, `Battery Discharge Parameters`, `Battery Discharging Allocation` — battery dispatch was refactored. |
+| Revenues, Costs, Retirements, Max Build Rates → Annual Energy Market Revenues for Existing | `EnergyRevenuesExisting`, `ProfitExistingCapacity` | |
+| Revenues, Costs, Retirements → Projected Annual Revenues for New Resources | `EnergyRevenuesNew`, `EnergyRevenuesNewAll`, `EnergyRevenuesHybrids`, `BidCFs`, `HypotheticalDispatch` | |
+| Revenues, Costs, Retirements → Annual Recurring Costs | `AnnualRecurringCosts` | |
+| Revenues, Costs, Retirements → Clean Electricity Standard and ZEC Revenue | `CESandZECRevenues`, `CES` | **Major rename impact:** in 4.0.4 this section is "RPS Revenue"; in 4.0.5 the model adds a `Clean Elec Requirement: {RPS, CES}` subscript and renames many `RPS X` variables to `Elec Portfolio Std X[Clean Elec Requirement]`. See E5 §1. |
+| Revenues, Costs, Retirements → CCUS Retrofitting Costs | `CCUSRetrofitCost` | |
+| Revenues, Costs, Retirements → LCOE | `LCOE1`–`LCOE5` | |
+| Revenues, Costs, Retirements → Economic, Policy-Driven, and Planned Retirements | `Retirements1`, `Retirements2` | **Phase 2 already shows new variables:** `Capacity Retirements Based on Economic Lifetime`, `BUCLfCR Boolean Use Capacity Lifetimes for Capacity Retirements`, `BGCL BAU Generation Capacity Lifetime` — economic-lifetime-based retirement is a new mechanism. |
+| Revenues, Costs, Retirements → Maximum Buildable Capacity | `MaxBuildableCapacity` | |
+| New Capacity Construction → Policy Mandated Capacity Additions and Retrofits | `PolicyMandatedAdditionsRetrofits` | Phase 2 shows new `BPMGBSA BAU Policy Mandated Grid Battery Storage Additions`, `Boolean Use Non BAU Mandated Capacity Construction Schedule This Year`, `Boolean Use Non BAU Mandated Grid Battery Capacity Construction Schedule This Year`. New levers / split between generation and grid-battery mandates. |
+| New Capacity Construction → Flexible Clean Capacity for CES Compliance | `FlexibleCleanFirm` | |
+| New Capacity Construction → Cost Effectiveness Additions and Retrofits | `CostEffectiveAdditions` | |
+| New Capacity Construction → Clean Electricity Standard Additions | `CESTarget` | Renamed/restructured via the `Clean Elec Requirement` subscript — see E5 §1. |
+| New Capacity Construction → Additions to Support Green Hydrogen Production | `GreenH2Additions` | |
+| New Capacity Construction → Reliability Additions | `DispatchableReliability`, `ResidualReliability` | Phase 2 shows new `Binding Peak Hour for Clean Dispatchable Reliability`, `Binding Peak Hour for Reliability Additions` — reliability machinery refactored. Many "Seasonal Dispatchable Reliability" / "Seasonal Residual Reliability" variables were removed in 4.0.5. See E5 §3. |
+| New Capacity Construction → Total New and Retrofit Capacity | `TotalNewCapacity` | |
+| Tracking Electricity Stock → Tracking the Electricity Fleet | `StockTracking` | |
+| Tracking Electricity Stock → Capacity Factors | `ThreeYearAverageAchievedCF`, `ThreeYearAverageAchievedCFbyHour`, `ExpectedCFs`, `MarginalCapacityFactor` | |
+| Tracking Electricity Stock → Other Weighted Average Fleet Properties | `WeightedAverageCFs` | |
+| Tracking Electricity Stock → Available and Expected Capacity by Hour | (no new image — likely shares prior frame) | |
+| Electricity Dispatch → Guaranteed Dispatch | `GuaranteedDispatch` | |
+| Electricity Dispatch → Dispatch of RPS Qualifying Resources | `RPSDispatch` | **Image filename retains "RPS"** even though the model has renamed/expanded the framework. Phase 3 needs to decide whether to rename the screenshot or update the prose without renaming the image. |
+| Electricity Dispatch → Dispatch of Remaining Zero- and Negative-Cost Resources | `NegAndZeroDispatch` | |
+| Electricity Dispatch → Least Cost Dispatch | `LeastCostDispatch` | |
+| Electricity Dispatch → Summing Total Dispatch and Estimating Market Prices | `TotalDispatchAndMarketPrices` | |
+| Economic Storage Additions | `GridStorageAdditions`, `GridStorageSubsidies` | |
+| Total Emissions | `TotalEmissions` | |
+| Additional Electricity Outputs | `AdditionalOutputs` | |
+
+## E3. Section-by-section mapping for `electricity-sector-cash.md`
+
+| Doc subsection | Image filename stem(s) |
+| --- | --- |
+| Cost Components → Generation Construction Costs | `Generation` |
+| Cost Components → Ongoing Capital Costs | `ongoingcapital` |
+| Cost Components → CCS Transportation and Storage Costs | `CCSTransportStorage` |
+| Cost Components → Spending on Batteries | `Batteries` |
+| Cost Components → Fuel Costs | `Fuels` |
+| Cost Components → Generation O&M Costs | `OnM` |
+| Cost Components → Rebate for Sequestered CO2 | `CCSRebate` |
+| Cost Components → Decommissioning Costs | `decommissioning` |
+| Cost Components → Generation and Grid Battery Electricity Supply Subsidies | `Subsidies` / `generationsubsidies` / `batterygenerationsubsidies` |
+| Cost Components → Other Grid Battery Subsidies | (no listed image) |
+| Cost Components → Zero Emission Credit Subsidies | `ZECs` |
+| Cost Components → Construction and CCS Subsidy Payments | `CCSSubsidies` |
+| Cost Components → Transmission System Costs | `transmission` |
+| Cost Components → Spur Line Construction Costs | `spurlines` |
+| Cost Components → Distribution System Costs | `distribution` |
+| Cost Components → Demand Response Costs | `demandresponse` |
+| Cost Components → Electricity Import and Export Costs | `elecimportcash` |
+| Cost Components → Energy Market Costs | `energymarket` |
+| Cost Components → Clean Electricity Standard Costs | `CES` | 
+| Cost Components → Capacity Market Costs | `capacity` | **Phase 2 shows the seasonal capacity market machinery was simplified — see E5 §4.** |
+| Allocating Changes → Changes in Expenditures | `expenditures` |
+| Allocating Changes → Changes in Revenue | `revenuebyentity`, `revenuebyisic` |
+| Electricity Rates | `ratesOM`, `ratescapital`, `ratesother` |
+
+## E4. Mapping for electricity policy pages (concept-only)
+
+| Policy page | Implementation page anchor |
+| --- | --- |
+| `least-cost-dispatch.md` | Main doc, "Least Cost Dispatch" subsection (image `LeastCostDispatch`) |
+| `clean-energy-standard.md` | Main doc, "CES Additions" + "CES and ZEC Revenue" subsections; cash doc, "Clean Electricity Standard Costs" |
+| `renewable-portfolio-standard.md` | Same machinery as `clean-energy-standard.md` after the 4.0.5 refactor — both are now configurations of the unified `Clean Elec Requirement` framework. **Phase 3 should confirm both concept pages still read correctly.** |
+| `ban-new-capacity.md` | Main doc, "Policy Mandated Capacity Additions and Retrofits" |
+| `demand-response.md` | Main doc, "Demand Response" subsection; cash doc, `demandresponse` |
+| `early-retirement-of-power-plants.md` | Main doc, "Economic, Policy-Driven, and Planned Retirements" |
+| `grid-scale-electricity-storage.md` | Main doc, "Economic Storage Additions"; cash doc, `Batteries` / `batterygenerationsubsidies` |
+| `increase-transmission.md` | Cash doc, "Transmission System Costs" |
+| `nuclear-lifetime-extension.md` | Main doc, "Retirements" |
+| `reduce-downtime.md` | Main doc, "Capacity Factors" |
+| `reduce-soft-costs.md` | Main doc, "LCOE" sequence (cost component reduction) |
+| `reduce-tnd-losses.md` | Main doc, "Calculating Hourly from Annual" (T&D loss factor in the demand-derivation chain); cash doc, "Distribution System Costs" |
+| `subsidy-for-electricity-production.md` | Main doc, "CES and ZEC Revenue"; cash doc, `generationsubsidies` |
+| `electricity-imports-exports.md` | Main doc, "Net Imports"; cash doc, `elecimportcash` |
+
+## E5. Major change themes spotted in Phase 1 (preview for Phase 2)
+
+These five themes already stand out from the variable-name diff and a couple of targeted greps. Phase 2 will deepen each, but they're noted here so staff can review the framing before equation-level drafting begins:
+
+1. **`Clean Elec Requirement: {RPS, CES}` — new subscript.** A new top-level subscript range was added in 4.0.5. Many 4.0.4 variables named `... RPS ...` (e.g., `Actual RPS Qualifying Electricity Generation`, `Available Capacity After RPS Dispatch`, `Electricity Dispatch Required to Satisfy RPS`) were renamed to `... Elec Portfolio Std ...[Clean Elec Requirement]` in 4.0.5. Other variables retain `RPS` in their name but now sit *inside* the new subscript. **This is a structural change** affecting the whole framework around clean-electricity standards. The doc currently has both `clean-energy-standard.md` and `renewable-portfolio-standard.md` policy pages — Phase 3 must confirm both still read correctly as configurations of the new unified framework, and the main doc's "Clean Electricity Standard" subsection prose needs updating.
+2. **Data center load (new).** `Adjusted Load Factors for Data Centers`, `BAU Data Center Load`, and likely related variables. New load category, probably feeds into the "Calculating Hourly Electricity Demand" subsection. The doc may need a new paragraph or a brief mention.
+3. **Reliability machinery refactor.** Many "Seasonal Dispatchable Reliability" / "Seasonal Residual Reliability" / "Capacity Market Optimization Step Size for Seasonal X" variables removed; new `Binding Peak Hour for Clean Dispatchable Reliability`, `Binding Peak Hour for Reliability Additions` added. Affects "Reliability Additions" subsection of the main doc.
+4. **Capacity market simplification.** `Capacity Market Price for Seasonal Dispatchable Reliability`, `Capacity Market Price for Seasonal Residual Reliability`, `Capacity Market Optimization Step Size for Seasonal Residual Reliability`, etc. removed in 4.0.5. The cash doc's "Capacity Market Costs" subsection probably needs updating; need to check what replaced these.
+5. **Battery dispatch / charge-discharge refactor.** New `Battery Charge Parameters`, `Battery Charging Allocation`, `Battery Discharge Parameters`, `Battery Discharging Allocation`. Likely affects "Summing Charging and Discharging" subsection of the main doc.
+6. **Economic-lifetime-based retirement** (likely a new policy lever). `BUCLfCR Boolean Use Capacity Lifetimes for Capacity Retirements`, `BGCL BAU Generation Capacity Lifetime`, `Capacity Retirements Based on Economic Lifetime` are all new. Affects "Economic, Policy-Driven, and Planned Retirements" subsection.
+7. **EV battery integration / `AVCC Average Vehicle Charger Capacity`.** Cross-references the transport sector. Affects "EV Batteries" subsection of the main doc.
+8. **Capacity construction split between generation and grid batteries.** New `BPMGBSA BAU Policy Mandated Grid Battery Storage Additions` and twin booleans for "this year" mandate-override toggles. Affects "Policy Mandated Capacity Additions and Retrofits" subsection.
+
+## E6. Ambiguities / open questions for staff (electricity)
+
+1. **`renewable-portfolio-standard.md` and `clean-energy-standard.md` overlap.** With the unified `Clean Elec Requirement: {RPS, CES}` framework in 4.0.5, both concept pages may need light updates to acknowledge they're configurations of the same machinery. Should they be merged, kept separate but cross-referenced, or left untouched if the policy concepts themselves haven't changed? Same kind of decision as `ev-mandate.md` vs `hydrogen-vehicle-mandate.md` in the transport pilot.
+2. **`RPSDispatch.png` filename.** The image filename retains "RPS" but the underlying machinery now spans both RPS and CES. Phase 3 should decide whether to rename the screenshot (and the markdown reference) or leave the filename and update prose to clarify the broader scope.
+3. **Capacity Market section.** The 4.0.4 cash doc has a "Capacity Market Costs" subsection. Phase 2 needs to confirm what replaced the seasonal-residual-reliability machinery — if the capacity market mechanism in the cash doc is now obsolete, that subsection may need to be rewritten or removed entirely.
+4. **Data centers.** Are there user-facing assumptions (e.g., a separate `data-centers.md` policy page, or a top-level `assumptions.md` callout) that staff would expect new docs prose for? Phase 1 found nothing in the docs file list that obviously corresponds to data-center load.
+
+## E7. Notes on scope
+
+Given the change volume (~30 % of variables added/removed on each main view), the Phase 2 change list for electricity will be substantially larger than transport. I'll structure it the same way (themes 1-N, confidence flags), but staff should expect Phase 2 review of electricity to take noticeably more time than transport did.
+
+---
+
+*This file is project memory. Update or extend it (rather than rewriting) as later phases reveal new context. Sections covered so far: transportation (Phase 1-3 done), electricity (Phase 1 done). Other sectors will be appended as they enter Phase 1.*
