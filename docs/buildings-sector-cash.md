@@ -7,7 +7,7 @@ The following structure is used to calculate the change in amount spent on fuels
 
 ![buildings sector fuel-related cash flow changes](/img/buildings-sector-cash-Fuels.png)
 
-The total amount spent on fuels is calculated by multiplying the total energy use by building components (which is disaggregated by fuel) by the fuel cost per unit energy (for each fuel).  A similar calculation is performed to find the BAU equivalent.  The amount of this total that consists of taxes is determined by multiplying the quantity of energy used by the amount of fuel tax per unit energy.  Taking the difference between the policy and BAU values for taxes paid gives the change in fuel taxes paid in the buildings sector.  Taking the difference between the total amount spent on fuels in the BAU and policy cases gives the change in total amount spent on fuels.  We subtract out the difference in taxes to obtain the change in payments to the fuel industry (this is disaggregated by fuel, so the "fuel industry" impacts can be recategorized into more meaningful industry categories on the [Cross-Sector Totals](cross-sector-totals) page).
+The total amount spent on fuels is calculated by multiplying the energy use by building components (summed across components and disaggregated by fuel) by the fuel cost per unit energy (for each fuel). For electricity specifically, we first net out the annual output from on-site distributed electricity sources (rooftop solar PV, on-site wind) by building type, since households and businesses do not pay the utility for power they generate themselves. The result is the "Building Components Energy Use With Fuel Costs," which represents the energy whose fuel cost actually flows to fuel suppliers.  A similar calculation is performed to find the BAU equivalent.  The amount of this total that consists of taxes is determined by multiplying the quantity of energy used by the amount of fuel tax per unit energy.  Taking the difference between the policy and BAU values for taxes paid gives the change in fuel taxes paid in the buildings sector.  Taking the difference between the total amount spent on fuels in the BAU and policy cases gives the change in total amount spent on fuels.  We subtract out the difference in taxes to obtain the change in payments to the fuel industry (this is disaggregated by fuel, so the "fuel industry" impacts can be recategorized into more meaningful industry categories on the [Cross-Sector Totals](cross-sector-totals) page).
 
 ## Change in Building Component Costs and Taxes
 
@@ -51,7 +51,7 @@ To calculate the total amount spent on building component rebates, we first find
 
 ## Allocating Changes in Expenditures
 
-Finally, we have to determine which of the model's cash-flow entities (government, industry, and consumers) pay the change in cash flow from fuels and components in the buildings sector.  We begin by summing up the change in the amount spent on nonenergy expenses -- such as the building components themselves and various subsidies -- and the change in the amount spent on fuels used in buildings.  We divide up these expenditures among cash flow actors by the fraction of buildings owned by each actor.  The share of expenses attributed to nonenergy industries is then broken down further into shares paid for by respective ISIC codes (subindustries).
+Finally, we have to determine which of the model's cash-flow entities (government, industry, and consumers) pay the change in cash flow from fuels and components in the buildings sector.  We begin by summing up the change in the amount spent on nonenergy expenses -- such as the building components themselves and various subsidies -- and the change in the amount spent on fuels used in buildings.  We divide up these expenditures among cash flow actors by the fraction of buildings owned by each actor.  The model also tracks the change in energy expenditures broken out simultaneously by entity and by fuel type, so downstream calculations can attribute (for example) gas-related cash flow effects to consumers separately from electricity-related effects to the same entity.  The share of expenses attributed to nonenergy industries is then broken down further into shares paid for by respective ISIC codes (subindustries).
 
 The following screenshot shows the relevant structure:
 
@@ -64,4 +64,4 @@ We also need to determine which of the model's cash-flow entities receive the ch
 ![assigning cash flows by actor](/img/buildings-sector-cash-AllocatingRevenue.png)
 
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.0.5.*
