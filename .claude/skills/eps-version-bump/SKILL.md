@@ -54,6 +54,15 @@ For each in-scope sector:
 4. Existing `![...](...)` image references stay in place even when the underlying screenshot is now stale; add a `<!-- TODO: screenshot may need replacement — ... -->` marker near each.
 5. For sections that describe entirely new structure with no existing screenshot, add a structured marker: `<!-- TODO: SCREENSHOT NEEDED: View "..." in <new_mdl>, showing ... Suggested filename: <section>_<view>_<new_version>.png -->`.
 6. **Lay out screenshots before committing prose.** When a doc paragraph cites N variables, run `notes/.tools/cluster_vars.js bbox <new_mdl> "<view>" "<var1>" "<var2>" ...`. The tool reports the bounding box that would contain all cited variables, lists any other variables that fall inside the same box (so they can be confirmed-or-excluded), and lists on-canvas annotations within the box. Use this output to (a) split a paragraph if its variables don't cluster, (b) include the bounding box and the full variable list in the screenshot inventory entry, and (c) ensure the staff member capturing the screenshot doesn't have to guess which region to crop.
+7. **Holistic narrative re-read after targeted edits.** Targeted equation-driven edits often introduce or expose narrative-level incoherence that a diff-based approach won't catch on its own. After all targeted edits in a sector are landed, re-read each modified markdown file end-to-end and look for:
+   - **Stale section intros.** Section openers that say "Now that we know X, …" or "There are three components …" may need updating when X has been renamed, the count has changed, or the framing has shifted (e.g., the "NPV of Lifetime Vehicle Cost" framing in transport became "New Vehicle Cost per Mile" framing).
+   - **Buried conceptual changes.** A new derivation or intermediate step inserted into a long paragraph may deserve its own dedicated subsection so future readers don't miss it.
+   - **Busy paragraphs.** When you've added prose to an existing paragraph, check whether the paragraph now mixes more than two distinct ideas. Break it out.
+   - **Cross-references and anchor links.** When a section heading is renamed or an anchor link target moves, audit `grep -n` for references — both within the same doc and across other docs.
+   - **Consequential closing lines.** "Finally, the three X are summed …" or "This is one of three factors …" become wrong when the count shifts. Re-count.
+   - **Distinctions between similar-sounding mechanisms.** When a sector adds a new path that resembles an existing path (e.g., home-charger installation cost vs. public-charger deployment cost in transport), state explicitly that they're distinct so readers don't conflate them.
+
+   This step is a separate pass over the whole modified doc; it is not optional. Treat it as part of Phase 3, not "polish."
 6. Bump `*This page was last updated in version <new>.*` only on pages with substantive content changes.
 7. **Do not push to remote.** All commits stay local on `develop_<new_version>` for staff review.
 
