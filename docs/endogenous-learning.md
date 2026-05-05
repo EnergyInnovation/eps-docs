@@ -80,11 +80,11 @@ The calculations for electricity capacity types governed by endogenous learning 
 
 ![amount of electricity capacity deployment affecting learning](/img/endogenous-learning-ElecCapAmtAffectingLearning.png)
 
-We sum utility-scale and distributed electricity capacity of each type.  (Distributed solar PV tends to be the only significant distributed capacity type here, given the rarity of small-scale wind / rooftop turbines.)  We delay the sum by an additional time step to avoid circularity (because the cost of renewables factors into how much is built in the current year), using start year values to populate the "Last Year" variable with data from the year before the first simulated year, for use in the first simulated year.
+We sum new utility-scale capacity additions and new distributed electricity capacity additions of each type each year.  (Distributed solar PV tends to be the only significant distributed capacity type here, given the rarity of small-scale wind / rooftop turbines.)  We then accumulate these annual additions into a running total of cumulative capacity built, which is the quantity that drives learning. We delay the accumulation by an additional time step to avoid circularity (because the cost of renewables factors into how much is built in the current year), using start year values for the first simulated year.
 
 ![calculating last year electricity capacity](/img/endogenous-learning-ElecCapLastYearCap.png)
 
-We compare the amount of capacity that exists in the last year (of each technology) to the amount that existed two years ago.  We calculate the number of doublings and apply the precentage decline in costs per doubling to find the ratio of current year costs to last year costs for each capacity type.  We assume there is no meaningful retirement of wind and solar in the model run, so we use current capacity as a cumulative total, without a stock-and-flow approach.
+We compare the cumulative capacity built as of the current year to the cumulative capacity built one year earlier.  We calculate the number of doublings and apply the percentage decline in costs per doubling to find the ratio of current year costs to last year costs for each capacity type.  Because retirements of wind and solar are not significant during the model run, the cumulative-built total is a close approximation of the global installed base of these technologies; we track cumulative additions explicitly rather than relying on the current fleet so that learning is driven by deployment history rather than by the timing of any retirements.
 
 ![electricity capacity cost as fraction of first year cost](/img/endogenous-learning-ElecCapCostFraction.png)
 
@@ -117,4 +117,4 @@ We compare the amount of battery capacity that exists in the current year to the
 The resulting fraction is used to reduce the cost of EV batteries (but not other EV components) in the Transportation sector, and to reduce the cost of grid batteries in the Electricity sector.
 
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.0.5.*
