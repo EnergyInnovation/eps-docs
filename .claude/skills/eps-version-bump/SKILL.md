@@ -63,8 +63,18 @@ For each in-scope sector:
    - **Distinctions between similar-sounding mechanisms.** When a sector adds a new path that resembles an existing path (e.g., home-charger installation cost vs. public-charger deployment cost in transport), state explicitly that they're distinct so readers don't conflate them.
 
    This step is a separate pass over the whole modified doc; it is not optional. Treat it as part of Phase 3, not "polish."
-6. Bump `*This page was last updated in version <new>.*` only on pages with substantive content changes.
-7. **Do not push to remote.** All commits stay local on `develop_<new_version>` for staff review.
+8. **Equation-flow trace for every documented theme.** This step is the single most important defense against describing model changes incorrectly, and it has caught real errors in past passes (e.g., the 4.0.4→4.0.5 reliability "two-step" framing that was preserved verbatim from the old doc; the "capacity construction split" framing that ignored the fact that 4.0.4 had no grid-battery mandate path at all). The pattern of error is: read the variable-name diff → form a hypothesis about what the change means → describe it without verifying the actual structural flow → ship prose that's wrong in a way the diff alone cannot reveal. To prevent this, before considering a theme's prose final, do an equation-flow audit:
+   - For each variable that the theme prose names or implies, run `find_equation.js` against both old and new `.mdl` files.
+   - Identify the **upstream consumers** in the new file: what variables consume the changed variable? Use `grep -n "<varname>"` and look for the consumer equations. Do those consumer equations match the framing in the prose?
+   - Identify the **downstream feeds**: what does the changed variable feed *into*, and does that match the prose? In particular, when prose says "X is now used for Y," confirm the equation for Y actually references X.
+   - For "removed" or "added" variables that look like a refactor, check whether the SUPPLEMENTARY-style metric (the one with `:SUPPLEMENTARY` flag) is the only consumer. If so, it's an exposed metric, not a structural mechanism — the prose should reflect that.
+   - For variables that look like sketch-section additions but might just be drawn-on-a-different-view, run an equation-section grep across both files to confirm "newness."
+   - For "two-step" or "three-step" or "first/then" framings copied from old prose, re-derive the actual sequencing from the equations. Sequential framings are particularly vulnerable to silent obsolescence when an intermediate step is collapsed.
+   - For subscript-like phrases ("restricted to dispatchable resources," "applies to all building types," etc.), verify the actual subscript scope of the equation. Distinguish *structural* restrictions (subscript or `:EXCEPT:`) from *behavioral* restrictions (the equation is defined for all but evaluates to zero outside the intended set).
+
+   When the equation flow contradicts the prose framing, fix the prose, not the equation. When the prose framing happens to match the model behavior but for the wrong reason (e.g., correct outcome but wrong mechanism), rewrite the prose to match the actual mechanism.
+9. Bump `*This page was last updated in version <new>.*` only on pages with substantive content changes.
+10. **Do not push to remote.** All commits stay local on `develop_<new_version>` for staff review.
 
 **Outputs:**
 - Local commits on `develop_<new_version>`.
