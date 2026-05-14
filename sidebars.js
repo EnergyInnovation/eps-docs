@@ -215,6 +215,8 @@ const sidebars = {
           { type: 'doc', id: 'models/delaware', label: 'Delaware' },
           { type: 'doc', id: 'models/eu', label: 'European Union' },
           { type: 'doc', id: 'models/florida', label: 'Florida' },
+          { type: 'doc', id: 'models/gansu', label: 'Gansu' },
+          { type: 'doc', id: 'models/gansu_zh', label: 'Gansu — 中文' },
           { type: 'doc', id: 'models/georgia', label: 'Georgia' },
           { type: 'doc', id: 'models/guangdong', label: 'Guangdong' },
           { type: 'doc', id: 'models/guangdong_zh', label: 'Guangdong — 中文' },
