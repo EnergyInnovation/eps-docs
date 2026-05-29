@@ -18,19 +18,25 @@ Though CRFs can be computed quickly, gridded air quality models are slow to run,
 
 The EPS calculates the change in the following public health outcomes caused by the policy package:
 
-- Premature mortality (i.e. deaths)
+- Premature mortality (i.e. deaths, both infant and child/adult)
+- Asthma symptoms (albuterol use, chest tightness, cough, shortness of breath, and wheeze)
+- Asthma incidence (new cases)
+- Hay fever (allergic rhinitis) incidence
 - Respiratory emergency room visits
-- Acute bronchitis
-- Lower respiratory symptoms
-- Upper respiratory symptoms
-- Minor restricted activity days
-- Lost workdays
-- Asthma exacerbation (asthma attacks)
-- Cardiovascular hospital admissions
 - Respiratory hospital admissions
 - Nonfatal heart attacks
+- Minor restricted activity days
+- Lost workdays
+- Lung cancer incidence
+- Cardiovascular hospital admissions
+- Alzheimer's disease hospital admissions
+- Parkinson's disease hospital admissions
+- Stroke incidence
+- Out-of-hospital cardiac arrest incidence
+- Cardiac emergency room visits
+- School loss days
 
-In the web interface, these are grouped into eight categories, while the full breakout of eleven categories is shown in Vensim.
+In the web interface, these are grouped into eight summary categories; the list above reflects the more detailed set of outcomes tracked in Vensim. 
 
 Particulates are the primary cause of these negative health outcomes, including primary particulates (those directly emitted by combustion) and secondary particulates (those formed in the atmosphere by chemical reactions involving gaseous pollutants).  The health outomes simulated in the EPS are only due to particulates, not other pollutants (such as ozone), so the public health impacts estimates produced by the EPS may be conservative.
 
@@ -40,7 +46,7 @@ The total emissions of each pollutant in the BAU and policy cases are obtained f
 
 ![public health benefits in the EPS](/img/additional-outputs-PublicHealthBenefits.png)
 
-In some cases, it is useful to be able to see public health benefits in currency units - e.g. for comparison with other costs or savings.  The EPS monetizes avoided premature mortality using a Value of a Statistical Life (VSL) figure, taken in as input data.  Only premature mortality, not other health outcomes, are monetized.  (Premature mortality often represents on the order of 97% of monetized benefits, due to the high value assigned to incidents of premature mortality and far smaller values assigned to other health impacts.)
+In some cases, it is useful to be able to see public health benefits in currency units - e.g. for comparison with other costs or savings.  The EPS monetizes avoided premature mortality using a Value of a Statistical Life (VSL) figure, taken in as input data.  The other, non-fatal health outcomes are monetized using a separate set of per-incident dollar values (`Health Outcome Valuation`), also taken in as input data; these are multiplied by the avoided incidents of each outcome and summed.  (The per-incident value table assigns zero to the mortality outcomes, which are valued through the VSL path instead, avoiding double-counting.)  Premature mortality typically represents the large majority of the total monetized benefit, because of the high value assigned to avoided deaths relative to the per-incident values for non-fatal outcomes.  The model also reports the total monetized health benefit on a per-household basis.
 
 ![monetized avoided premature mortality](/img/additional-outputs-MonetizedBenefits.png)
 

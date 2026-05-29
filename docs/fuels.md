@@ -141,6 +141,12 @@ In some countries or regions, the prices that fuel producers may charge on the d
 
 ![fuel price deregulation](/img/fuels-PriceDeregulation.png)
 
+### Policy-Driven Change in Fuel Price
+
+The model also supports a policy lever that directly adjusts pre-tax fuel prices, specified as a fractional change for each combination of fuel and demand sector. This lets policymakers represent direct interventions in fuel prices that are not captured by the tax, subsidy, and deregulation levers above — for example, a targeted price change applied to a single fuel within a single sector. The adjustment is phased in according to the policy implementation schedule and is applied as a multiplier on the post-deregulation, pre-tax price, so a value of zero leaves the price unchanged. Because it is indexed by both fuel and sector, the lever can be applied broadly across all fuels or targeted narrowly (for example, only to natural gas used in the electricity sector).
+
+![fuel price deregulation](/img/fuels-FuelPricePolicy.png)
+
 ## After-Tax Fuel Prices
 
 We sum the total fuel tax amount (which is already broken by fuel and by sector) with the policy-modified, pre-tax fuel price (in `Pretax Fuel Cost per Unit Energy by Sector after Fuel Price Deregulation`) to obtain the total cost per unit fuel for each sector. A surcharge can be added to specific powerplants' fuel costs; in the U.S. model we use this variable to reflect the higher gas costs paid by operators of peaking plants, which consume fuel on an irregular and infrequent basis, as compared with operators of combined-cycle baseload plants.
@@ -202,6 +208,8 @@ We need a helper variable to assist us in calculations in the next section (chan
 ## Components of Changes in Fuel Production and Imports
 
 Our next task is to calculate the change in fuel production and fuel imports. We begin by calculating a number of components, which we will add up to find the final changes in fuel production and imports. Much of the complexity of the logic here pertains to the import and production caps, and what to do if one or both of these caps is exceeded (e.g. domestic demand for a fuel grows so much that the import and production caps cannot both be obeyed).
+
+One of these components is a policy-driven increase in domestic fuel production from expanded oil and gas leasing. When enabled by a boolean policy lever, the model adds a specified increase in natural gas and crude oil production — drawn from input data representing additional output from increased leasing auctions — into the production and import calculation.
 
 We begin by finding the change in domestic fuel use that must be accounted for by changes in production and imports. Generally, this is simply the change in demand that hasn't already been accounted for via change in fuel exports, discussed above. However, there are two important notes:
 

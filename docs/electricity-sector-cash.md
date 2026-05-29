@@ -74,6 +74,8 @@ Qualifying power plants may also receive a subsidy per unit of electricity gener
 
 ![change in generation subsidies](/img/electricity-sector-cash-generationsubsidies.png)
 
+In addition to subsidies for new and retrofit capacity, users can apply a production subsidy to existing plants, specified per unit of output for each electricity source. This is combined with any business-as-usual existing-plant subsidy (after applying the `Reduction in BAU Subsidies` lever) to give a total subsidy per unit output for existing plants. The model converts this per-output value to a per-capacity basis using each source's prior-year capacity factor, and the result feeds the plant revenue used in the retirement and capacity-expansion calculations. 
+
 A similar structure is used to track subsidy payments for electricity supplied to the grid by batteries. 
 
 ![change in generation subsidies](/img/electricity-sector-cash-batterygenerationsubsidies.png)
