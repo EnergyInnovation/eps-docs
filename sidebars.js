@@ -27,7 +27,7 @@ const sidebars = {
         'calculating-wedge-diagrams-and-cost-curves',
         'background-and-technical-info',
         'integrating-the-web-app',
-        'repeal-documentation'
+        { type: 'doc', id: 'january-2025-frozen-policies', label: 'January 2025 Frozen Policies' }
       ]
     },
     {

@@ -6,6 +6,10 @@ The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model 
 
 <p><a href="https://energypolicy.solutions/simulator/us/en" class="btn">Run the simulator in your browser</a></p>
 
+## Scenarios
+
+The U.S. model includes a **January 2025 Frozen Policies** scenario, representing the federal and state policy environment as it stood in January 2025 — before the legislative and regulatory changes enacted over 2025–2026 — and serving as a counterfactual to the current-policies baseline. See the [January 2025 Frozen Policies Scenario Guide](https://docs.energypolicy.solutions/january-2025-frozen-policies) for the full methodology.
+
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
 
