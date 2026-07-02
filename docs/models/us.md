@@ -8,7 +8,9 @@ The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model 
 
 ## Scenarios
 
-The U.S. model includes a **January 2025 Frozen Policies** scenario, representing the federal and state policy environment as it stood in January 2025 — before the legislative and regulatory changes enacted over 2025–2026 — and serving as a counterfactual to the current-policies baseline. See the [January 2025 Frozen Policies Scenario Guide](https://docs.energypolicy.solutions/january-2025-frozen-policies) for the full methodology.
+The U.S. model includes a **Climate Ambition** scenario — an interactive scenario representing a comprehensive package of federal and state climate and energy policies aimed at deep economy-wide emissions reductions through 2050. See the [Climate Ambition Scenario Guide](https://docs.energypolicy.solutions/climate-ambition) for the macro policies it comprises.
+
+We also build in a **January 2025 Frozen Policies** CO2e trendline; this scenario represents the federal and state policy environment as it stood in January 2025 — before the legislative and regulatory changes enacted over 2025–2026. See the [January 2025 Frozen Policies Scenario Guide](https://docs.energypolicy.solutions/january-2025-frozen-policies) for the full methodology.
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
@@ -53,6 +55,54 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 * Michael Greenstone, University of Chicago - high-level guidance
 
 ## Version History
+
+### **4.0.5 - July 8, 2026**
+
+* New Features
+  * Unifies the Renewable Portfolio Standard (RPS) and Clean Energy Standard (CES) into a single portfolio-standard framework, subscripted by a new RPS/CES (Clean Elec Requirement) dimension. This puts the RPS on the same credit-price and cost-effectiveness machinery as the CES and shares qualifying-resource definitions through subscript subranges (the two standards still clear their credit prices in separate optimization passes); the former separate "non-BAU RPS qualifying resource definitions" lever is folded into this unified framework
+  * Adds data center electricity demand as a selectable BAU load assumption
+  * Adds an annual cap on how quickly each electricity source's capacity can grow (a soft cap based on the largest existing vintage and a hard cap based on a share of total system capacity)
+  * Rebuilds the reliability capacity mechanism: removes the separate "seasonal residual reliability" sub-pass and sizes reliability additions from a single binding peak hour, and adds effective load carrying capability (ELCC) discounting with timeslice/hour/technology-specific values computed separately for generation sources and demand-altering technologies
+  * Adds an optional retirement pathway that retires power plants at a fixed economic lifetime by source type
+  * Adds a policy lever to extend production tax credits (a per-unit-output production subsidy) for existing power plants
+  * Adds a lever to increase domestic fuel production from expanded oil and gas leasing
+  * Adds an exogenous, policy-driven fuel-price adjustment lever (by fuel and sector)
+  * Adds customizable LCFS fuel-substitution maximums
+  * Adds explicit electric vehicle charger (EVSE) installation costs to vehicle cost calculations, a battery-pack price markup that varies by vehicle type (e.g. higher for heavy-duty vehicles), and a third "consumer preference" shadow cost for battery-electric vehicles
+  * Adds a state EV registration-fee lever
+  * Adds a cost-of-service electricity rate pathway (alongside the existing market-based rates), including a component for the cost of keeping generation capacity online past its repayment period
+  * Tracks generation capacity by vintage and recovers historical construction costs on a vintage basis; the repayment period for financed electricity-sector capital changes from 20 to 30 years
+  * Substantially expands the public health outputs: the set of tracked health outcomes grows from 11 to 22 (adding infant mortality, a five-way asthma-symptom breakout, hay fever, lung cancer, Alzheimer's and Parkinson's hospital admissions, stroke, out-of-hospital cardiac arrest, cardiac ER visits, and school-loss days); splits the demographic mortality breakdown into infant vs. child-and-adult; monetizes the non-fatal outcomes (premature mortality is still valued via the value of a statistical life); reports monetized health benefits per household; and includes health benefits in the social cost of carbon summation
+  * Adds a foresight trendline to the RPS/CES performance graphs (with range limited by a control setting set to 10 years in the U.S. model)
+  * Adds a control lever to exclude electricity exports from RPS/CES compliance
+  * Endogenous learning now tracks cumulative built capacity rather than comparing last-year vs. two-years-ago fleet capacity
+  * Nets on-site distributed generation out of the buildings electricity fuel-cost calculation
+  * Adds an independent grid-battery storage mandate path (separate from the generation-capacity mandate) and tracks standalone vs. hybrid battery storage separately throughout the model and in outputs; the standalone grid-battery output subsidy added in 4.0.4 is removed, with battery-related subsidies now handled through the production and capacity-construction subsidy structures
+  * Refines the input-output model to compute fossil and energy-utility industries' direct economic impacts on a per-BTU rather than per-dollar basis (adding dedicated source/target ISIC-code subscripts)
+* Bug Fixes
+  * Fixes RPS/CES under-compliance and caps positive-cost RPS dispatch at expected qualifying capacity to prevent overgeneration
+  * Corrects hybrid power plant treatment in RPS/CES compliance (applies appropriate hybrid capacity factors; removes the source-plant RPS/CES revenue when evaluating CCUS retrofits, e.g. removing conventional-biomass CES revenue from BECCS retrofit calculations)
+  * Corrects capacity factors used for reliability (applies the regional availability factor in hypothetical and peak-timeslice bid capacity factors; salvages otherwise-curtailed electricity)
+  * Fixes the CCUS retrofit cost calculation (no longer amortizes variable-cost changes under the new structure)
+  * Corrects capacity-payment units to $/(MW-day) and applies the generation (not capacity) regional availability factor in the capacity mechanism
+  * Reorganizes battery stock-and-flow tracking and removes an extra time-step delay in the battery portion of capacity-market costs
+  * Removes natural gas exports from the fuel production mapped to ISIC 352T353
+  * Fixes vehicle allocation for vehicle types with no qualifying technologies, passenger-rail technology shares, and aircraft inputs
+  * Limits the change in hourly electricity demand from demand-altering technologies to 95% of existing hourly demand
+  * Fixes the wind annual capital-cost formula
+  * Corrects tillage emissions accounting and an incorrect subscript in the avoided-asthma-incidence output
+* Data updates
+  * Recalibrates U.S. model to the EIA Annual Energy Outlook 2026 (with AEO 2025 High Zero-Carbon Technology Cost and Alternate Transportation cases used for selected industries as a post-OBBBA baseline proxy)
+  * Updates U.S. model start-year plant and battery capacities to the latest EIA Form 860 (2024), updates BAU planned capacity additions, and updates coal retirements to incorporate state policies for pre-2030 retirements
+  * Updates U.S. model wind and battery capital costs to NREL ATB (conservative wind, advanced battery), natural gas plant construction costs (GridLAB), and hydrogen costs
+  * Updates U.S. model short-term natural gas prices (latest STEO / futures), vehicle prices, insurance costs by vehicle technology, and home-charging power
+  * Updates U.S. model historical process emissions and pollutant intensities (EPA Greenhouse Gas Inventory, National Emissions Inventory; updated non-CO2 report)
+  * Updates U.S. model economic data to 2024 BEA value-added and 2024 BLS data, adds 2025 CPI, and sets the output currency year to 2025
+  * Updates representative-day selection (SYSHECF / SHELF) and slice/hour/technology-specific ELCC values
+  * Updates transmission and spur-line costs (now median rather than weighted average)
+  * Updates U.S. model BAU hydrogen production shares (BNEF) and demand forecasts incorporating data center load
+  * Updates first modeled year to 2025 and all policy implementation schedules to start in 2026
+  * Adds hydrogen combustion turbine cost multipliers (capacity, fixed O&M, and variable O&M) relative to gas turbines
 
 ### **4.0.4 - April 1, 2025**
 
