@@ -8,9 +8,9 @@ The U.S. Energy Policy Simulator (EPS) is a free and open-source computer model 
 
 ## Scenarios
 
-The U.S. model includes a **Climate Ambition** scenario — an interactive scenario representing a comprehensive package of federal and state climate and energy policies aimed at deep economy-wide emissions reductions through 2050. See the [Climate Ambition Scenario Guide](https://docs.energypolicy.solutions/climate-ambition) for the macro policies it comprises.
+The U.S. model includes a **Climate Ambition** scenario — an interactive scenario representing a comprehensive package of federal and state climate and energy policies aimed at deep economy-wide emissions reductions through 2050. See the [Climate Ambition Scenario Guide](../climate-ambition) for the macro policies it comprises.
 
-We also build in a **January 2025 Frozen Policies** CO2e trendline; this scenario represents the federal and state policy environment as it stood in January 2025 — before the legislative and regulatory changes enacted over 2025–2026. See the [January 2025 Frozen Policies Scenario Guide](https://docs.energypolicy.solutions/january-2025-frozen-policies) for the full methodology.
+We also build in a **January 2025 Frozen Policies** CO2e trendline; this scenario represents the federal and state policy environment as it stood in January 2025 — before the legislative and regulatory changes enacted over 2025–2026. See the [January 2025 Frozen Policies Scenario Guide](../january-2025-frozen-policies) for the full methodology.
 
 ## Acknowledgement of Contributors and Reviewers
 We would like to acknowledge the following people who made the Energy Policy Solutions project possible.
