@@ -67,11 +67,10 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Adds a policy lever to extend production tax credits (a per-unit-output production subsidy) for existing power plants
   * Adds a lever to increase domestic fuel production from expanded oil and gas leasing
   * Adds an exogenous, policy-driven fuel-price adjustment lever (by fuel and sector)
-  * Adds customizable LCFS fuel-substitution maximums
+  * Adds alternative LCFS fuel-substitution maximums accessible by a policy lever
   * Adds explicit electric vehicle charger (EVSE) installation costs to vehicle cost calculations, a battery-pack price markup that varies by vehicle type (e.g. higher for heavy-duty vehicles), and a third "consumer preference" shadow cost for battery-electric vehicles
-  * Adds a state EV registration-fee lever
-  * Adds a cost-of-service electricity rate pathway (alongside the existing market-based rates), including a component for the cost of keeping generation capacity online past its repayment period
-  * Tracks generation capacity by vintage and recovers historical construction costs on a vintage basis; the repayment period for financed electricity-sector capital changes from 20 to 30 years
+  * Adds a cost-of-service electricity rate pathway (alongside the existing market-based rates)
+  * Tracks generation capacity by vintage and recovers historical construction costs on a vintage basis
   * Substantially expands the public health outputs: the set of tracked health outcomes grows from 11 to 22 (adding infant mortality, a five-way asthma-symptom breakout, hay fever, lung cancer, Alzheimer's and Parkinson's hospital admissions, stroke, out-of-hospital cardiac arrest, cardiac ER visits, and school-loss days); splits the demographic mortality breakdown into infant vs. child-and-adult; monetizes the non-fatal outcomes (premature mortality is still valued via the value of a statistical life); reports monetized health benefits per household; and includes health benefits in the social cost of carbon summation
   * Adds a foresight trendline to the RPS/CES performance graphs (with range limited by a control setting set to 10 years in the U.S. model)
   * Adds a control lever to exclude electricity exports from RPS/CES compliance
@@ -79,8 +78,9 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Nets on-site distributed generation out of the buildings electricity fuel-cost calculation
   * Adds an independent grid-battery storage mandate path (separate from the generation-capacity mandate) and tracks standalone vs. hybrid battery storage separately throughout the model and in outputs; the standalone grid-battery output subsidy added in 4.0.4 is removed, with battery-related subsidies now handled through the production and capacity-construction subsidy structures
   * Refines the input-output model to compute fossil and energy-utility industries' direct economic impacts on a per-BTU rather than per-dollar basis (adding dedicated source/target ISIC-code subscripts)
+  * Integrates battery additions and capacity retirements within the capacity mechanism for reliability; avoided retirements and new storage can now contribute to meeting incremental reliability in each year
 * Bug Fixes
-  * Fixes RPS/CES under-compliance and caps positive-cost RPS dispatch at expected qualifying capacity to prevent overgeneration
+  * Fixes RPS/CES under-compliance and caps positive-cost RPS/CES dispatch at expected qualifying capacity to prevent overgeneration
   * Corrects hybrid power plant treatment in RPS/CES compliance (applies appropriate hybrid capacity factors; removes the source-plant RPS/CES revenue when evaluating CCUS retrofits, e.g. removing conventional-biomass CES revenue from BECCS retrofit calculations)
   * Corrects capacity factors used for reliability (applies the regional availability factor in hypothetical and peak-timeslice bid capacity factors; salvages otherwise-curtailed electricity)
   * Fixes the CCUS retrofit cost calculation (no longer amortizes variable-cost changes under the new structure)
@@ -96,7 +96,7 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
   * Updates U.S. model start-year plant and battery capacities to the latest EIA Form 860 (2024), updates BAU planned capacity additions, and updates coal retirements to incorporate state policies for pre-2030 retirements
   * Updates U.S. model wind and battery capital costs to NREL ATB (conservative wind, advanced battery), natural gas plant construction costs (GridLAB), and hydrogen costs
   * Updates U.S. model short-term natural gas prices (latest STEO / futures), vehicle prices, insurance costs by vehicle technology, and home-charging power
-  * Updates U.S. model historical process emissions and pollutant intensities (EPA Greenhouse Gas Inventory, National Emissions Inventory; updated non-CO2 report)
+  * Updates U.S. model historical process emissions and pollutant intensities (EPA Greenhouse Gas Inventory, University of Maryland National Greenhouse Gas Inventory; updated EPA non-CO2 report)
   * Updates U.S. model economic data to 2024 BEA value-added and 2024 BLS data, adds 2025 CPI, and sets the output currency year to 2025
   * Updates representative-day selection (SYSHECF / SHELF) and slice/hour/technology-specific ELCC values
   * Updates transmission and spur-line costs (now median rather than weighted average)
