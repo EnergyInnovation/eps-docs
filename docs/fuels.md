@@ -87,7 +87,7 @@ For the industry and transport sectors, there can be significant heterogeneity i
 
 ### Calculating Electricity prices
 
-In EPS platform 4.0, a simple capacity expansion model was added to the [Electricity sector](electricity-sector-main). This structure allows endogenous calculations of capacity additions needed to meet the demands of policies, to ensure reliability, and to maximize profits through economic additions. The greater level of detail means electricity prices are better endogenized and can be sourced from that module rather than input data.  We calculate prices here by summing supplier costs recovered through electricity rates and any additional retail electricity costs on a one-year time delay.
+A simple capacity expansion model in the [Electricity sector](electricity-sector-main) allows endogenous calculations of capacity additions needed to meet the demands of policies, to ensure reliability, and to maximize profits through economic additions. The greater level of detail means electricity prices are endogenized and can be sourced from that module rather than from input data. We calculate prices here by summing supplier costs recovered through electricity rates and any additional retail electricity costs on a one-year time delay. The supplier costs come from two parallel rate paths in the electricity sector — a market-based rate and a cost-of-service rate — blended at this stage by the share of electricity demand served under cost-of-service ratemaking. See the [electricity sector cash flow page](electricity-sector-cash#electricity-rates) for the upstream calculation.
 
 ![calculating electricity prices](/img/fuels-ElecPrices.png)
 
@@ -140,6 +140,12 @@ In many regions, subsidies affect fuel costs in the BAU case, and policymakers m
 In some countries or regions, the prices that fuel producers may charge on the domestic market are capped at levels far below the prices that could be commanded on the international market. This is particularly relevant in oil-exporting countries that wish to protect domestic industry and residents from high energy prices while maximizing earnings for exported oil. The fuel price deregulation policy lever allows the user to partially or fully relax these domestic price caps, such that domestic fuel prices may approach or equal international market prices. Since this is not a tax or a subsidy, it does not involve direct government payments to/from fuel producers.
 
 ![fuel price deregulation](/img/fuels-PriceDeregulation.png)
+
+### Policy-Driven Change in Fuel Price
+
+The model also supports a policy lever that directly adjusts pre-tax fuel prices, specified as a fractional change for each combination of fuel and demand sector. This lets policymakers represent direct interventions in fuel prices that are not captured by the tax, subsidy, and deregulation levers above — for example, a targeted price change applied to a single fuel within a single sector. The adjustment is phased in according to the policy implementation schedule and is applied as a multiplier on the post-deregulation, pre-tax price, so a value of zero leaves the price unchanged. Because it is indexed by both fuel and sector, the lever can be applied broadly across all fuels or targeted narrowly (for example, only to natural gas used in the electricity sector).
+
+![fuel price deregulation](/img/fuels-FuelPricePolicy.png)
 
 ## After-Tax Fuel Prices
 
@@ -202,6 +208,8 @@ We need a helper variable to assist us in calculations in the next section (chan
 ## Components of Changes in Fuel Production and Imports
 
 Our next task is to calculate the change in fuel production and fuel imports. We begin by calculating a number of components, which we will add up to find the final changes in fuel production and imports. Much of the complexity of the logic here pertains to the import and production caps, and what to do if one or both of these caps is exceeded (e.g. domestic demand for a fuel grows so much that the import and production caps cannot both be obeyed).
+
+One of these components is a policy-driven increase in domestic fuel production from expanded oil and gas leasing. When enabled by a boolean policy lever, the model adds a specified increase in natural gas and crude oil production — drawn from input data representing additional output from increased leasing auctions — into the production and import calculation.
 
 We begin by finding the change in domestic fuel use that must be accounted for by changes in production and imports. Generally, this is simply the change in demand that hasn't already been accounted for via change in fuel exports, discussed above. However, there are two important notes:
 
@@ -318,4 +326,4 @@ Finally, we need a variable that tracks the percent change in energy production 
 
 ![percent change in BAU energy productiona and imports vs initial year by ISIC code](/img/fuels-PercCngFuelISIC.png)
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.0.5.*

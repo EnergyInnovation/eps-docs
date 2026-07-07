@@ -14,7 +14,6 @@ The information below details our basic modeling assumptions, data sources, and 
 - Policies can be applied starting in 2024
 - State models account for funding and tax credits included in the Inflation Reduction Act.
 - We have tried to incorporate the latest state policy but some specific sectoral policies may be missing, especially if they principally affect energy demand. All Clean Energy Standards (including electricity standards and renewable portfolio standards), Advanced Clean Cars, Advanced Clean Cars II, Advanced Clean Trucks, carbon pricing, and electric vehicle subsidies policies passed before August 2024 have been included in the model.
-- State models include a 'Federal Policy Repeal and Rollback' scenario to model the repeal of the Inflation Reduction Act and select EPA rules affecting greenhouse gas emissions. Documentation on the policy settings included in this scenario is forthcoming.
 
 The following information supplements the general EPS model information by summarizing sources for state energy consumption and emissions data in the state versions of the EPS tool.<sup>[1](#myfootnote1)</sup> 
 
@@ -139,33 +138,6 @@ The state models include a default version of the US Nationally Determined Contr
 | Land use/ Agriculture | <br/> • 100% achievement of potential additional carbon uptake from afforestation/reforestation measures by 2030 <br/> • 100% achievement of improved soil measures, cropland measures, and livestock measures (such as requiring anaerobic digesters) by 2050 <br/> • 50% achievement of carbon reduction from improved forest management by 2050 |
 
 Linear implementation of policy requirements unless noted otherwise starting in 2023.
-
-## Federal Policy Repeal and Rollback Scenario
-### Policy Assumptions in the Repeal Scenario
-
-The state models now feature a Repeal scenario representing the potential emissions, economic, and health impacts of repealing federal policies. The scenario is measured against the Current Policies scenario, which includes the Inflation Reduction Act (IRA), the Infrastructure Investment and Jobs Act (IIJA) and the CHIPS and Science Act, as well as finalized rules from the U.S. Environmental Protection Agency. 
-Guidance on the repeal documentation is available, [here](https://docs.energypolicy.solutions/repeal-documentation). 
-Policies rolled back or repealed in the Repeal Scenario include the following:
-
-| Inflation Reduction Act | 
-|----------|
-| 30D passenger vehicle tax credits | 
-| 30D passenger vehicle tax credits |
-| 45W commercial vehicle tax credits |
-| 45Y/48E tax credits for clean electricity |
-| 45U zero-emission nuclear power production tax credit |
-| 45Q tax credits for carbon capture and sequestration |
-| 45X advanced manufacturing production tax credit |
-| 45V clean hydrogen production tax credit |
-| Support for distributed solar (Solar for All program and 25D rooftop solar tax credit) |
-| 30C alternative fuel vehicle refueling property tax credit |
-
-| EPA Rules  |
-|----------|
-| 111 Clean Air Act rules, Mercury and Air Toxics standards, and Steam Electric Power Generating Effluent Guidelines for power plants |
-| Tailpipe emission standards for light-, medium-, and heavy-duty vehicles (model years 2027 and later) |
-| California’s waiver to set its own tailpipe emission standards under the Clean Air Act |
-| Methane emission rules for oil and natural gas operations |
 
 ## State-level Policies Included in State Models
 | Sector | Policies | State(s) |

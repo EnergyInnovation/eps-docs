@@ -9,7 +9,7 @@ The following screenshot shows the model structure used to calculate change in a
 
 ![change in fuel spending](/img/transportation-sector-cash-Fuels.png)
 
-Transportation fuel use by fuel type is multiplied by the fuel cost per unit energy (calculated on the [Fuels page](fuels)) to obtain the amount of money spent on transportation fuels.  This value is inclusive of tax.  We also multiply the quantity of fuel used by the amount of tax paid per unit energy to find the taxes paid on transportation fuels.  These steps are done both for the BAU and the policy cases.
+Transportation fuel use by fuel type is multiplied by the fuel cost per unit energy (calculated on the [Fuels page](fuels)) to obtain the amount of money spent on transportation fuels.  This value is inclusive of tax.  Fuel cost per unit energy is differentiated by vehicle type and cargo type so that the cost of electricity reflects the public/private charging mix specific to each vehicle (see the [main transportation page](transportation-sector-main#calculating-cargo-distance-transported) for details).  We also multiply the quantity of fuel used by the amount of tax paid per unit energy to find the taxes paid on transportation fuels.  These steps are done both for the BAU and the policy cases.
 
 We find the difference in the amount spent on fuel taxes, and we find the difference in the amount spent on fuels.  We subtract out the difference in taxes to find the cash flow change for the fuel industry (which is subscripted by fuel type).  That is, a reduction in fuel spending is a negative cash flow for the fuel industry, while an increase in fuel spending is a positive cash flow for the fuel industry.
 
@@ -31,7 +31,7 @@ We separately calculate the change in EV subsidies by multiplying the subsidy va
 
 ### Change in Vehicle Battery Subsidy Payments
 
-Similarly, we multiply the battery subsidy values by the number of vehicles sold and the battery capacity of each vehicle in both the policy and BAU cases in order to find the change in total subsidies paid. The share of the subsidy passed through to consumers is broken out for revenue tracking purposes.
+Similarly, we multiply the battery subsidy values by the number of vehicles sold and the battery capacity of each vehicle in both the policy and BAU cases in order to find the change in total subsidies paid. Battery prices and the resulting subsidy pass-through to consumers are tracked by vehicle type, reflecting that battery pack prices vary by vehicle and cargo mode (see the [Battery Pack Price Multiplier](transportation-sector-main#new-vehicle-price) discussion on the main transportation page). The share of the subsidy passed through to consumers is broken out for revenue tracking purposes.
 
 ![calculating change in vehicle battery subsidies](/img/transportation-sector-cash-BatterySubsidies.png)
 
@@ -45,7 +45,7 @@ We also calculate the change in transport fares paid. We take input data on fare
 
 ![calculating change in transport fares](/img/transportation-sector-cash-TransFares.png)
 
-Finally, we calculate the change in amount spent on EV chargers. We take input data on the cost of EV chargers and multiply by the number of chargers deployed in both the policy and BAU cases. 
+Finally, we calculate the change in amount spent on EV chargers. We take input data on the cost of EV chargers and multiply by the number of chargers deployed in both the policy and BAU cases. This calculation captures the public-charger network funded by the EV Charger Deployment policy. Note that this is distinct from the home-charger installation cost paid by individual passenger LDV BEV buyers, which is included in vehicle pricing on the [main transportation page](transportation-sector-main#npv-of-lifetime-annual-expenditures) rather than tracked here.
 
 ![calculating change in transport fares](/img/transportation-sector-cash-ChargerCosts.png)
 
@@ -59,7 +59,7 @@ First, we allocate transportation expenditures. To do this, we find the fraction
 
 ![calculating fraction of vehicles by entity](/img/transportation-sector-cash-VehbyEntity.png)
 
-We then allocate energy expenditures to each of the cash flow entities by multiplying the change in amount spent on transportation fuels by vehicle type by the fraction of vehicles owned by each entity. 
+We then allocate energy expenditures to each of the cash flow entities by multiplying the change in amount spent on transportation fuels by vehicle type by the fraction of vehicles owned by each entity. The model also tracks the change in energy expenditures broken out simultaneously by entity and by fuel type, so downstream calculations can attribute (for example) gasoline-related cash flow effects to consumers separately from electricity-related effects to the same entity.
 
 ![calculating change in energy expenditures by entity](/img/transportation-sector-cash-EnergyExpbyEntity.png)
 
@@ -84,4 +84,4 @@ Lastly, we also calculate the total transportation sector change in revenue by e
 ![calculating change in revenue by entity](/img/transportation-sector-cash-RevenuebyEntity.png)
 
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.0.5.*

@@ -59,6 +59,10 @@ The model structure for the fuel cost per unit cargo distance in the policy scen
 
 ![fuel cost per unit cargo distance](/img/transportation-sector-main-FuelCostPerCargoDist.png)
 
+For non-electricity transportation fuels, the fuel cost per unit energy is the same regardless of which type of vehicle uses it. Electricity is a special case: the price an EV owner effectively pays per unit of energy depends on whether they charge at a private (home or depot) charger or at a public charger, and public charging is generally more expensive per unit energy than private charging. The model therefore tracks an electricity fuel cost per unit energy by vehicle and cargo type, blending the underlying electricity price with a public-versus-private charging mix and a 'Ratio of Public Charging Costs to Private Charging Costs' input. The private-charging share is set to one for vehicle types with dedicated depot charging (transit buses, freight rail, etc.); for passenger LDVs it is determined endogenously from a lookup against the BEV share of the existing passenger LDV fleet (sourced from a study of home charging access in the United States), so that as more EV households charge at home or in apartment garages the effective electricity price drifts toward the lower private rate.
+
+![EV public/private charging ratio](/img/transportation-sector-main-PublicPrivateCharging.png)
+
 We compare this figure with its corresponding BAU variable to determine the percentage change in fuel cost per unit cargo-distance that is attributable to the policies. Thus, policies that increase fuel cost will tend to make transporting cargo-distance more expensive, and policies that improve fuel economy will tend to make it less expensive. Literature on fuel economy improvements often discusses a "rebound effect," referring to the tendency to increase driving in response to the fuel savings that come from increased fuel efficiency. However, if increased fuel price is a driver of the increase in fuel economy, the "rebound" could be positive or negative, depending on whether the increased cost outweighs the increased efficiency, or vice versa. The 'Elasticity of Demand for Vehicle Use wrt Fuel Cost' is multiplied by the percentage change in fuel cost per unit cargo-distance to determine whether usage is increased or decreased, and by how much, for each vehicle type. We apply these changes to the the cargo distance after TDM effects to find the cargo distance transported in the policy case:
 
 ![percent change in fuel cost per unit cargo distance](/img/transportation-sector-main-PercChangeFuelCost.png)
@@ -107,11 +111,11 @@ All R&D policies are defined as being additional to any R&D required to comply w
 
 ## Calculating NPV of Lifetime Vehicle Cost
 
-In order to decide which vehicle technologies will be selected by purchasers to fill the need for new cargo-distance from a given vehicle type in the current year, the model needs to know the price of each vehicle technology as seen by purchasers.  There are three components to this price: the upfront cost of the vehicle, the lifetime operation and maintenance costs (including fuel) for the vehicle (appropriately discounted), and a shadow cost applied to electric passenger light-duty vehicles to represent range anxiety and charging time concerns.  This section of the model calculates these costs.
+In order to decide which vehicle technologies will be selected by purchasers to fill the need for new cargo-distance from a given vehicle type in the current year, the model needs to know the price of each vehicle technology as seen by purchasers.  There are three components to this price: the upfront cost of the vehicle; the discounted lifetime cost of operating, maintaining, and -- for passenger-LDV battery electric vehicles (BEVs) -- installing home charging equipment for the vehicle; and a set of shadow costs applied to electric passenger light-duty vehicles to represent perceived non-monetary barriers (range anxiety, charging-station availability, and broader consumer preference factors).  This section of the model calculates these costs and combines them into a single NPV of Lifetime Vehicle Cost, which is then converted to a per-mile cost for use in the vehicle choice function.
 
 ### NPV of Lifetime Annual Expenditures
 
-First, we take the average transportation fuel cost weighted by fuel type and multiply it by the technology-specific new vehicle fuel economy values we calculated earlier, giving us the fuel cost per unit cargo distance transported by each vehicle type and technology.
+First, we take the average transportation fuel cost weighted by fuel type and multiply it by the technology-specific new vehicle fuel economy values we calculated earlier, giving us the fuel cost per unit cargo distance transported by each vehicle type and technology. As noted in the cargo-distance discussion above, electricity prices in this calculation are also differentiated by vehicle and cargo type to reflect the public/private charging mix.
 
 ![new vehicle fuel cost per unit cargo distance](/img/transportation-sector-main-FuelCostPerCargDist.png)
 
@@ -121,13 +125,15 @@ Next, we convert this to fuel cost per unit vehicle-distance (for example, vehic
 
 We then add in annual expected vehicle maintenance, insurance, parking, and licensing, registration, and property tax costs. Vehicle maintenance costs are differentiated by vehicle type and technology (as the cost to maintain an electric vs. a gasoline car, for example, can vary significantly), and other costs are differentiated by vehicle type only. These values are all read in as input data.
 
-Finally, we convert this stream of expected fuel and other operation and maintenance expenditures over the vehicle's lifetime into a net present value (NPV) value, using an average vehicle ownership period and a discount rate adopted by vehicle buyers.  We use an ownership period rather than vehicle lifetime as some vehicle types, for example freight trucks, are typically retained by the original buyer for a period much shorter than the vehicle's lifetime.  A high discount rate is generally appropriate here, as vehicle buyers tend to undervalue future fuel savings (or costs) in their calculus of what vehicle to buy today.  This is one of three factors that contributes to the NPV of Lifetime Vehicle Cost:
+For passenger light-duty BEVs, we also add a one-time charging-equipment installation cost. Most EV buyers who do not already have a Level 2 home charger purchase and install one. The model multiplies a per-installation cost by the share of new passenger LDV EV purchases requiring an installation. That share is set to one minus the BEV share of the existing passenger LDV fleet, on the assumption that BEV buyers in households that already include a BEV typically already have a working home charger. The resulting installation cost adds to the NPV of Lifetime Annual Expenditures only for passenger LDV BEVs and is zero for all other vehicle/cargo/technology combinations.
+
+Finally, we convert this stream of expected fuel and other expenditures over the vehicle's lifetime into a net present value (NPV) value, using an average vehicle ownership period and a discount rate adopted by vehicle buyers.  We use an ownership period rather than vehicle lifetime as some vehicle types, for example freight trucks, are typically retained by the original buyer for a period much shorter than the vehicle's lifetime.  A high discount rate is generally appropriate here, as vehicle buyers tend to undervalue future fuel savings (or costs) in their calculus of what vehicle to buy today.  This is one of three factors that contributes to the NPV of Lifetime Vehicle Cost:
 
 ![net present value of fuel costs over vehicle lifetime](/img/transportation-sector-main-NPVFuelCost.png)
 
 ### New Vehicle Price
 
-The model adds these annual costs to the upfront price of the new vehicle. Prices for most vehicle technologies in future years are taken in as input data.  For battery-equipped vehicles, we separately calculate the cost of the battery using endogenous learning curves -- their cost declines are linked to their cumulative deployment. An average battery pack price (in $/kWh) in the model start year is read from input data, and the price falls endogenously as calculated on the [Endogenous Learning](endogenous-learning) page.  
+The model adds these annual costs to the upfront price of the new vehicle. Prices for most vehicle technologies in future years are taken in as input data.  For battery-equipped vehicles, we separately calculate the cost of the battery using endogenous learning curves -- their cost declines are linked to their cumulative deployment. An average battery pack price (in $/kWh) in the model start year is read from input data, and the price falls endogenously as calculated on the [Endogenous Learning](endogenous-learning) page. The starting price is treated as a passenger-LDV battery pack price; for other vehicle types and cargo modes, the model applies a 'Battery Pack Price Multiplier' (sourced from NREL's Annual Technology Baseline) to scale the price for freight LDVs, HDVs, and nonroad vehicles.
 
 ![endogenous battery learning](/img/transportation-sector-main-BatteryCost.png)
 
@@ -135,7 +141,9 @@ Subsequently, the model takes into account any subsidies for vehicle batteries. 
 
 ![battery production subsidy](/img/transportation-sector-main-EndogenousEVLearning.png)
 
-Lastly, the battery cost is converted from $/kWh to $/vehicle by multiplying by the capacity of each vehicle type, then added to the non-battery portion of new vehicle price. (reminder: for non-battery-equipped vehicles, this input variable is the full cost of the vehicle)
+Next, the post-subsidy battery manufacturing price is converted to a retail-price-equivalent (RPE) basis by multiplying by a 'Battery Pack Markup' factor. This markup follows NREL ATB methodology, applying a retail price equivalent factor of 1.5 for light-duty vehicles and 1.2 for medium- and heavy-duty vehicles to estimate retail prices from manufacturing costs.
+
+Lastly, the marked-up battery cost is converted from $/kWh to $/vehicle by multiplying by the battery capacity of each vehicle type, then added to the non-battery portion of new vehicle price. (reminder: for non-battery-equipped vehicles, this input variable is the full cost of the vehicle)
 
 ![battery size](/img/transportation-sector-main-BatterySize.png)
 
@@ -151,17 +159,29 @@ Finally, we adjust the vehicle price based on BAU subsidies and any additional s
 
 ![effect of subsidies on new vehicle price](/img/transportation-sector-main-SubsidyEffect.png)
 
-### Range Anxiety and Charging Time Shadow Cost
+### Shadow Costs for Electric Passenger LDVs
 
-The third component of the NPV of Lifetime Vehicle Cost is a shadow cost for range anxiety and charging time, applied only to electric passenger light-duty vehicles. This shadow cost is added to the calculated new vehicle price for the calculations determining which vehicles are purchased by consumers, but is not included in the actual costs tracked in the model’s cash flow calculations. It is meant to represent the perceived non-monetary barriers of electric vehicles in consumer purchasing decisions and uses data from a Department of Energy study and a comparison of the expected number of charging ports to gas stations. A policy lever allows users to reduce the size of this shadow cost.
+The third component of the NPV of Lifetime Vehicle Cost is a set of shadow costs applied only to electric passenger light-duty vehicles. These shadow costs are added to the calculated new vehicle price for the calculations determining which vehicles are purchased by consumers, but are not included in the actual costs tracked in the model's cash flow calculations. They are meant to represent perceived non-monetary barriers to EV adoption in consumer purchasing decisions. The model represents three such barriers as separate, additive shadow costs:
 
-Finally, the three vehicle cost components are summed to calculate the NPV of Lifetime Vehicle Cost variable, as shown below. 
+* **Range anxiety shadow cost.** Reflects buyers' concern about the distance an EV can travel between charges. Sourced from a Department of Energy study. A policy lever ('Reduce EV Range Anxiety') allows users to scale this shadow cost down.
+* **Charging availability shadow cost.** Reflects the relative scarcity of EV chargers compared to gas stations. Calculated as a logarithmic function of the ratio of the projected number of EV chargers to the number of gas pumps; falls toward zero as charger deployment approaches parity with gas pump deployment. Affected by the EV Charger Deployment policy lever.
+* **Consumer preference shadow cost.** Reflects broader non-monetary preference factors beyond range and charger availability — for example, perceptions of unfamiliar technology and concerns about resale value. Calibrated against historical light-duty vehicle sales data (see [Forsythe et al., PNAS 2023](https://www.pnas.org/doi/10.1073/pnas.2219396120) and the U.S. Energy Information Administration Annual Energy Outlook). The shadow cost decays as the BEV share of the existing passenger LDV fleet grows: it is multiplied by `1 − BEV share of last year's passenger LDV fleet`, on the assumption that as more BEVs reach the road, the perception barriers represented by this shadow cost diminish.
 
-![effect of range anxiety and charging time shadow price](/img/transportation-sector-main-RngAnxiety.png)
+The three shadow costs are summed with the new vehicle price and the NPV of Lifetime Annual Expenditures (the latter already including the EVSE installation cost described above) to produce the NPV of Lifetime Vehicle Cost variable:
+
+![effect of range anxiety, charging availability, and consumer preference shadow costs on perceived vehicle price](/img/transportation-sector-main-RngAnxiety.png)
+
+### New Vehicle Cost per Mile
+
+The vehicle choice function described in the next section compares technologies in cost-per-mile units rather than in total NPV terms, so that vehicles with different annual usage patterns and different ownership periods can be compared on a like-for-like basis. We compute the New Vehicle Cost per Mile by dividing the NPV of Lifetime Vehicle Cost by the product of the average annual distance traveled, vehicle loading, and ownership period for each vehicle type, cargo type, and technology. This per-mile metric is used internally by the vehicle choice function; it is not exposed in cash flow tracking or in outputs outside the transportation sector.
 
 ## Calculating Number of New Vehicles
 
-Now that we know the NPV of Lifetime Vehicle Cost for each vehicle technology, we have the information we need to determine both the number of new vehicles and what technologies will be selected. We begin by converting new cargo-distance transported to new vehicles demanded, using vehicle loading and annual average distance traveled by vehicle type (which were also used earlier, to find annual fuel use per vehicle).
+Now that we know the New Vehicle Cost per Mile for each vehicle technology, we have the information we need to determine both the number of new vehicles and what technologies will be selected.
+
+We begin by converting new cargo-distance transported to new vehicles demanded, using vehicle loading and annual average distance traveled by vehicle type (which were both used earlier to find annual fuel use per vehicle).
+
+In some regions, changing economics and political factors cause the resulting historical-year sales to drift from observed values. We therefore include an optional, additive calibration adjustment, the 'Additional New Vehicles Calibration Variable,' to the new vehicles demanded by vehicle and cargo type. By construction, the calibration values across the historical time series sum to zero for each vehicle/cargo combination, so the adjustment shifts sales between years rather than changing the cumulative number of vehicles introduced.
 
 ![new vehicles demanded](/img/transportation-sector-main-NewVehDemanded.png)
 
@@ -169,7 +189,7 @@ To determine what technologies of vehicle purchasers will buy (e.g. how many of 
 
 ![example vehicle choice logic](/img/transportation-sector-main-CurvesAllocation.png)
 
-We take a similar approach in the EPS by implementing what is known as a logit choice function. The logit function behavior is controlled by two components. The first is a logit exponent, which determines purchasers' sensitivity to cost. The second is the technology shareweights, which can be calibrated based on historical sales. These shareweights capture non-cost factors such as consumer preferences, barriers to market entry, etc. The exponent and shareweight selections will determine the shapes and distributions of the curves for each vehicle technology. The following screenshot shows how this structure is implemented in the EPS:
+We take a similar approach in the EPS by implementing what is known as a logit choice function. Its cost input is the New Vehicle Cost per Mile derived in the previous section. The function's behavior is controlled by two components. The first is a logit exponent, which determines purchasers' sensitivity to cost. The second is the technology shareweights, which can be calibrated based on historical sales. These shareweights capture non-cost factors such as consumer preferences, barriers to market entry, etc. The exponent and shareweight selections will determine the shapes and distributions of the curves for each vehicle technology. The following screenshot shows how this structure is implemented in the EPS:
 
 ![allocation by vehicle technology](/img/transportation-sector-main-VehTechAllocation.png)
 
@@ -185,7 +205,7 @@ Before applying the standard, we calculate how many vehicles are sold in each su
 
 ![ZEV sales share without ZEV standard](/img/transportation-sector-main-ZEVSalesShare.png)
 
-For some vehicle types -- typically off-road vehicles like ships and planes -- there are no ZEV-qualifying vehicles sold in the BAU scenario. As a result, the above approach does not work; we cannot scale up zero ZEV sales to meet a minimum sales share. For these vehicle types, we assume equivalent shareweights for all ZEV-qualifying technologies, allowing each technology (battery electric, hydrogen-fueled, etc.) to vye competitively for a share of the required sales. Each technology's NVP of lifetime cost thus determines which technology will be sold to meet a minimum sales requirement. 
+For some vehicle types -- typically off-road vehicles like ships and planes -- there are no ZEV-qualifying vehicles sold in the BAU scenario. As a result, the above approach does not work; we cannot scale up zero ZEV sales to meet a minimum sales share. For these vehicle types, we assume equivalent shareweights for all ZEV-qualifying technologies, allowing each technology (battery electric, hydrogen-fueled, etc.) to vye competitively for a share of the required sales. Each technology's New Vehicle Cost per Mile thus determines which technology will be sold to meet a minimum sales requirement. 
 
 ![ZEV sales share for other vehicle types](/img/transportation-sector-main-OffRoadZEVs.png)
 
@@ -235,7 +255,7 @@ Next, we calculate the required increase in CFE by comparing the amount of CFE p
 
 ![required increase in CFE](/img/transportation-sector-main-ReqdCFEInc.png)
 
-Next, we need to determine the quantity by which CFE may be increased from shifting to each eligible fuel for each vehicle type and vehicle technology. To do this, we begin by taking in (as input data) the maximum percentage of each fuel that is usable by each vehicle technology. We convert this to percentage points of fuel increase relative to the BAU percentages, then we apply the same three filters or conversions applied to the fuel that would have been used in the absence of an LCFS. That is, we filter out non-regulated vehicle types, adjust for electricity efficiency, and convert to CFE. We then use this quantity to divide, proportionally, the required increase in CFE by vehicle type and by fuel. (We make a small adjustment to correct for the fact that plug-in hybrids could shift their petroleum fuel consumption to either electricity or biofuels, to avoid exceeding the total quantity of energy that may be shifted.)
+Next, we need to determine the quantity by which CFE may be increased from shifting to each eligible fuel for each vehicle type and vehicle technology. To do this, we begin by taking in (as input data) the maximum percentage of each fuel that is usable by each vehicle technology. The model provides this input as separate BAU and non-BAU CSV files for every supported vehicle/cargo/technology combination. A policy lever ('Use Non BAU Max Fuel Consumption by Veh Type') allows users to apply the non-BAU set of maximums in policy scenarios, which is useful when modeling regulatory or market changes that expand the share of biofuels, hydrogen, or electricity that a given vehicle technology can accept. We convert this to percentage points of fuel increase relative to the BAU percentages, then we apply the same three filters or conversions applied to the fuel that would have been used in the absence of an LCFS. That is, we filter out non-regulated vehicle types, adjust for electricity efficiency, and convert to CFE. We then use this quantity to divide, proportionally, the required increase in CFE by vehicle type and by fuel. (We make a small adjustment to correct for the fact that plug-in hybrids could shift their petroleum fuel consumption to either electricity or biofuels, to avoid exceeding the total quantity of energy that may be shifted.)
 
 ![assigning CFE increases by vehicle type and by fuel](/img/transportation-sector-main-AssigningCFEByVehByFuel.png)
 
@@ -278,4 +298,4 @@ We take in input data on the incremental cost to produce a unit of fuel used to 
 ![LCFS credit price and price cap](/img/transportation-sector-main-CreditPrice.png)
 
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.0.5.*

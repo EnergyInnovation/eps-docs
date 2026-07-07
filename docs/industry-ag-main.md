@@ -7,31 +7,41 @@ title: Industry & Agriculture Sector (main)
 
 In the Energy Policy Simulator (EPS), the Industry Sector tracks emissions from the following specific industries or industry categories:
 
-* agriculture and forestry
-* coal mining
-* oil and gas extraction
-* other mining and quarrying
-* food, beverage, and tobacco
-* textiles, apparel, and leather
-* wood products
-* pulp, paper, and printing
-* refined petroleum and coke
-* chemicals
-* rubber and plastic products
-* glass and glass products
-* cement and other nonmetallic minerals
-* iron and steel
-* other metals
-* metal products except machinery and vehicles
-* computers and electronics
-* appliances and electrical equipment
-* other machinery
-* road vehicles
-* nonroad vehicles
-* other manufacturing
-* energy pipelines and gas processing
-* water and waste
-* construction
+| Industry category | ISIC code(s) | U.S. model NAICS mapping |
+| --- | --- | --- |
+| agriculture and forestry | 01-03 | 111–113, 1151–1153 |
+| coal mining | 05 | 2121 |
+| oil and gas extraction | 06 | 211 |
+| other mining and quarrying | 07-08 | 2122, 2123 |
+| food, beverage, and tobacco | 10-12 | 311, 312 |
+| textiles, apparel, and leather | 13-15 | 313, 314, 315, 316 |
+| wood products | 16 | 321 |
+| pulp, paper, and printing | 17-18 | 322, 323 |
+| refined petroleum and coke | 19 | 324 (refining, 32411, modeled separately in AEO's LFMM) |
+| chemicals | 20 | 325 |
+| rubber and plastic products | 22 | 326 |
+| glass and glass products | 231 | 3272 |
+| cement and other nonmetallic minerals | 239 | 327 except glass (e.g. 3271, 3273, 3274, 3279) |
+| iron and steel | 241 | 3311, 3312, ferrous foundries 331510 (and merchant coke ovens, 324199) |
+| other metals | 242 | 3313, 3314, nonferrous foundries 331520 |
+| metal products except machinery and vehicles | 25 | 332 |
+| computers and electronics | 26 | 334 |
+| appliances and electrical equipment | 27 | 335 |
+| other machinery | 28 | 333 |
+| road vehicles | 29 | part of 336 (e.g. 3361–3363) |
+| nonroad vehicles | 30 | part of 336 (e.g. 3364–3366, 3369; includes motorbikes) |
+| other manufacturing | 31-33 | 337, 339, and asphalt (324121, 324122, 324191) |
+| energy pipelines and gas processing | 352-353 | natural-gas processing and pipeline transport (≈ 2212, 486210) |
+| water and waste | 36-39 | 2213, 562 |
+| construction | 41-43 | 23 |
+
+The ISIC codes are the EPS `Industry Category` subscript identifiers used throughout the model. The NAICS codes show the approximate North American Industry Classification System correspondence for the U.S. EPS: the industry breakdown largely follows the [AEO Industrial Demand Module (IDM) categories](https://www.eia.gov/outlooks/aeo/assumptions/pdf/IDM_Assumptions.pdf) (IDM Table 1), with a few categories combined or split to align AEO energy data with the U.S. Bureau of Economic Analysis (BEA) and Bureau of Labor Statistics (BLS) economic data the EPS uses. In particular:
+
+* **food, beverage, and tobacco**, **textiles, apparel, and leather**, and the **printing** portion of pulp/paper/printing are separated out of AEO's "Miscellaneous finished goods" category (NAICS 312–316, 323) and reallocated by economic output.
+* **iron and steel** versus **other metals** splits AEO's iron-and-steel, aluminum, and "other primary metals" categories — including ferrous (331510) versus nonferrous (331520) foundries — by output shares.
+* **road vehicles** versus **nonroad vehicles** splits AEO's transportation-equipment manufacturing (NAICS 336) by output shares; "nonroad vehicles" here includes motorbikes.
+* **other manufacturing** is the residual of AEO's "Miscellaneous finished goods" (furniture, NAICS 337; miscellaneous, 339; asphalt, 324121/324122/324191) after the reallocations above.
+* **oil and gas extraction** additionally absorbs natural-gas lease and plant fuel, while **energy pipelines and gas processing** and **water and waste** are not standalone AEO IDM manufacturing industries and are derived from other sources, so their NAICS correspondence is approximate.
 
 Note that 'agriculture and forestry' is treated as a specific industry.  Though this industry category does include the economic activity related to forestry, it is distinct from the emissions and cash flow calculations in the Land Use, Land Use Change, and Forestry (LULUCF), which is handled on its own [LULUCF Sector](lulucf) page.
 

@@ -18,19 +18,25 @@ Though CRFs can be computed quickly, gridded air quality models are slow to run,
 
 The EPS calculates the change in the following public health outcomes caused by the policy package:
 
-- Premature mortality (i.e. deaths)
+- Premature mortality (i.e. deaths, both infant and child/adult)
+- Asthma symptoms (albuterol use, chest tightness, cough, shortness of breath, and wheeze)
+- Asthma incidence (new cases)
+- Hay fever (allergic rhinitis) incidence
 - Respiratory emergency room visits
-- Acute bronchitis
-- Lower respiratory symptoms
-- Upper respiratory symptoms
-- Minor restricted activity days
-- Lost workdays
-- Asthma exacerbation (asthma attacks)
-- Cardiovascular hospital admissions
 - Respiratory hospital admissions
 - Nonfatal heart attacks
+- Minor restricted activity days
+- Lost workdays
+- Lung cancer incidence
+- Cardiovascular hospital admissions
+- Alzheimer's disease hospital admissions
+- Parkinson's disease hospital admissions
+- Stroke incidence
+- Out-of-hospital cardiac arrest incidence
+- Cardiac emergency room visits
+- School loss days
 
-In the web interface, these are grouped into eight categories, while the full breakout of eleven categories is shown in Vensim.
+In the web interface, these are grouped into eight summary categories; the list above reflects the more detailed set of outcomes tracked in Vensim. 
 
 Particulates are the primary cause of these negative health outcomes, including primary particulates (those directly emitted by combustion) and secondary particulates (those formed in the atmosphere by chemical reactions involving gaseous pollutants).  The health outomes simulated in the EPS are only due to particulates, not other pollutants (such as ozone), so the public health impacts estimates produced by the EPS may be conservative.
 
@@ -40,17 +46,17 @@ The total emissions of each pollutant in the BAU and policy cases are obtained f
 
 ![public health benefits in the EPS](/img/additional-outputs-PublicHealthBenefits.png)
 
-In some cases, it is useful to be able to see public health benefits in currency units - e.g. for comparison with other costs or savings.  The EPS monetizes avoided premature mortality using a Value of a Statistical Life (VSL) figure, taken in as input data.  Only premature mortality, not other health outcomes, are monetized.  (Premature mortality often represents on the order of 97% of monetized benefits, due to the high value assigned to incidents of premature mortality and far smaller values assigned to other health impacts.)
+In some cases, it is useful to be able to see public health benefits in currency units - e.g. for comparison with other costs or savings.  The EPS monetizes avoided premature mortality using a Value of a Statistical Life (VSL) figure, taken in as input data.  The other, non-fatal health outcomes are monetized using a separate set of per-incident dollar values (`Health Outcome Valuation`), also taken in as input data; these are multiplied by the avoided incidents of each outcome and summed.  (The per-incident value table assigns zero to the mortality outcomes, which are valued through the VSL path instead, avoiding double-counting.)  Premature mortality typically represents the large majority of the total monetized benefit, because of the high value assigned to avoided deaths relative to the per-incident values for non-fatal outcomes.  The model also reports the total monetized health benefit on a per-household basis.
 
 ![monetized avoided premature mortality](/img/additional-outputs-MonetizedBenefits.png)
 
 Additionally, the EPS provides an estimated demographic breakdown of premature mortality incidents, where input data are available.  We take in input data from `FoHObDT Fraction of Health Outcomes by Demographic Trait` and multiply by the number of avoided premature deaths to allocate them to specific demographic traits.  For the U.S. model, the relevant traits are sex, race, and Hispanic or Latino status.  The main complexity of this process occurs not within Vensium but within the Excel file for variable `FoHObDT Fraction of Health Outcomes by Demographic Trait` (which draws from results from air quality and public health models).  The sources and methods are carefully documented and explained within that file - simply [download the model](download) and review the file for more details.
 
+The demographic breakdown is further split into infant premature mortality and child-and-adult premature mortality. Infant mortality is calculated using a separate `FoIPMbDT Fraction of Infant Premature Mortality by Demographic Trait` lookup that maps total avoided infant deaths to specific demographic traits, and child-and-adult mortality is similarly mapped via `FoCaAPMbDT`. This split lets users compare relative outcomes for infants versus the broader child-and-adult population within each demographic group.
+
 ![avoided premature mortality by demographic trait](/img/additional-outputs-AvoidedDeathsDemographics.png)
 
-So that we can display demographic mortality results as percentage changes (which is helpful for making comparisons between demographic groups), we calculate the number of deaths by demographic trait (in the policy case) by subtracting avoided deaths from BAU deaths, and we compare policy case deaths to BAU deaths by demographic trait to find percent changes.
-
-![percent change in deaths](/img/additional-outputs-PercCngDeaths.png)
+So that we can display demographic mortality results as percentage changes (which is helpful for making comparisons between demographic groups), we calculate the number of deaths by demographic trait (in the policy case) by subtracting avoided deaths from BAU deaths, and we compare policy case deaths to BAU deaths by demographic trait to find percent changes. Both child-and-adult and infant premature mortality percent changes are calculated.
 
 ## Avoided Climate Damages
 
@@ -92,9 +98,13 @@ We also calculate the change in net electricity imports, which is used in one ou
 
 ![change in net electricity imports](/img/additional-outputs-CngNetElecImports.png)
 
-Finally, we calculate the change in battery storage capacity relative to the BAU, which is used in one output graph.
+Finally, we calculate the change in battery storage capacity relative to the BAU, which is used in one output graph. Battery storage tracking is split between standalone grid batteries (excluding hybrid) and hybrid grid battery storage, with both quantities reported in MW and MWh.
 
 ![change in battery storage capacity](/img/additional-outputs-BatteryCapacity.png)
 
+Lastly, we calculate per-household energy-expenditure outputs in this section, including the change in average household building energy expenditures and the change in average household transportation energy expenditures. These are computed by dividing the relevant entity-level change in energy expenditures (e.g., the consumer share) by the number of households (read in as input data), giving a per-household figure that is useful for comparing policy effects on average household energy bills.
+
+![change household energy expenditures](/img/additional-outputs-householdexpenditures.png)
+
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.0.5.*

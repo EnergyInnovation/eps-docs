@@ -69,7 +69,7 @@ The EPS reads electricity exports (total) and imports (by fuel type) from input 
 
 ### Calculating Hourly Electricity Demand from Annual Electricity Demand including Own Use and Transmission and Distribution Losses
 
-The model then moves to compute total hourly final electricity demand. In other sectors of the model, electricity demand is tracked annuallyl; for example, total annual cooling demand in buildings or demand for electric vehicle charging. Input data relating annual demand to hourly demand (load factors) is used to convert the annual values to hourly values aligned with the electricity timeslices used by the model. 
+The model then moves to compute total hourly final electricity demand. In other sectors of the model, electricity demand is tracked annually; for example, total annual cooling demand in buildings or demand for electric vehicle charging. Input data relating annual demand to hourly demand (load factors) are used to convert the annual values to hourly values aligned with the electricity timeslices used by the model. 
 
 Due to differences in data alignment, i.e. some end uses don’t directly overlap with input data, an adjustment can be necessary to ensure the computed peak and minimum demand values align with historical data. In this step, the model multiplies the computed hourly demand by an Hourly Variance Multiplier that is estimated such that the peak annual demand in the EPS aligns with historically observed values.
 
@@ -113,7 +113,12 @@ Next the model estimates the potential day contribution of pumped hydro. Due to 
 
 #### EV Batteries
 
-EV batteries can contribute to load shifting in the EPS based on input data and policy settings. The model aggregates the total amount of battery capacity from the existing stock of vehicles and then applies a BAU share of the EV battery capacity that can be used for grid balancing based on input data (in many countries this is set to zero as there is no vehicle-to-grid availability yet). Users can modify this through a policy lever which allows for increasing the share of total EV battery capacity that can be used for grid balancing. The model computes the final maximum amount of daily shifting that can be utilized from the EV batteries (round trip losses are accounted for later).
+EV batteries can contribute to load shifting in the EPS based on input data and policy settings. The model tracks two related but distinct measures of available EV-battery contribution to grid balancing:
+
+* The **daily energy budget** (in MW·hr) that can be charged or discharged for diurnal balancing — the measure used in the load-shifting calculations described in this section. It is computed from the existing fleet's total battery energy capacity multiplied by the BAU share of EV battery capacity available for grid balancing (in many countries this is set to zero today as there is no vehicle-to-grid availability yet).
+* The **instantaneous power capacity** (in MW) that EVs can supply to the grid as a demand-shifting resource. It is computed by multiplying the number of battery electric vehicles in each vehicle and cargo type by the average vehicle charger capacity (in kW per vehicle), summed across the fleet, and then multiplied by the same grid-balancing share. This MW figure feeds a unified `Total Demand Shifting Capacity in MW` aggregator that combines EV batteries with demand response, pumped hydro, and grid + hybrid battery storage for grid-services accounting.
+
+Users can modify the grid-balancing share through a policy lever which allows for increasing the share of total EV battery capacity that can be used for grid balancing. The model computes the final maximum amount of daily shifting that can be utilized from the EV batteries (round trip losses are accounted for later).
 
 ![potential daily max shifting from EV batteries](/img/electricity-sector-main-EVBatteries.png)
 
@@ -163,7 +168,7 @@ At the end of this calculation flow, the model has determined the final hourly e
 
 ### Summing Charging and Discharging from Batteries
 
-Finally, the model sums the total amount of battery capacity and the total charging and discharging of batteries, inclusive of hybrid batteries, for use in other places throughout the model.
+The model sums the total amount of battery capacity and the total charging and discharging of batteries, inclusive of hybrid batteries, for use in other places throughout the model. For hybrid batteries (those paired with a renewable resource at the same plant), the model decides which hours to charge and discharge by treating the previous five-year average marginal dispatch cost as a price signal: a Vensim allocation function distributes each day's charging budget toward the hours with the lowest prices and the discharging budget toward the hours with the highest prices, so that hybrid storage tends to charge when cheap power is plentiful and discharge when prices are high. Standalone grid batteries continue to use the load-shifting allocation mechanism described in the diurnal-balancing sections above.
 
 ![total hourly and annual charging and discharging of battery storage](/img/electricity-sector-main-HourlyBatteryChargeDischarge.png)
 
@@ -205,7 +210,7 @@ Annual recurring costs are calculated as an input into the retirement decision-m
 
 ### Clean Electricity Standard and Zero Emission Credit Revenue
 
-Input data can specify any credits specifically for nuclear power plant owners. The model calculates a credit price from the clean electricity standard (discussed later) which is used here. Total revenue from these credits is calculated for use in the retirement calculations.
+Input data can specify any credits specifically for nuclear power plant owners. The model calculates credit prices from the clean electricity portfolio standard (discussed later) which are used here. The portfolio standard is represented as a unified framework that can simultaneously enforce a Renewable Portfolio Standard (RPS) and a Clean Energy Standard (CES) -- the two are configured independently with their own qualifying-resource definitions and percentage targets, and a separate credit price is computed for each. Total revenue from these credits, summed across the RPS and CES paths, is calculated for use in the retirement calculations.
 
 ![Revenues from CES and ZEC programs](/img/electricity-sector-main-CESandZECRevenues.png)
 
@@ -247,7 +252,13 @@ For each power plant type, annual revenues are compared against going forward co
 
 To this, the model adds capacity retirements specified in input data and finally adds capacity retirements from any policy lever settings to determine total retiring generation capacity.
 
+The model also supports a third, optional retirement path based on a fixed economic lifetime per power plant type. When this path is enabled (via a control setting), the model retires capacity in the year that its vintage age equals the configured economic lifetime for its source type, in addition to any economic and policy-driven retirements that would otherwise occur. This complements the economic retirement mechanism described above and is useful for calibration and for representing plants that are scheduled to retire at expected end-of-life regardless of profitability. The control setting is off by default in the U.S. model.
+
 ![Calculated total retiring generation capacity](/img/electricity-sector-main-Retirements2.png)
+
+We duplicate this structure below but exclude plants' predicted capacity market revenue. The retirements calculated here are not used in the calculation flow; rather the difference between modeled cumulative retiring capacity and the value without capacity payments is used later in the cash flows to estimate system capacity costs.
+
+![Retiring generation capacity without capacity payment](/img/electricity-sector-main-Retirements3.png)
 
 ### Maximum Buildable Capacity
 
@@ -255,13 +266,17 @@ The model accounts for technical potential for various power plant types and wil
 
 ![Maximum buildable capacity](/img/electricity-sector-main-MaxBuildableCapacity.png)
 
+The model also limits how quickly each source's capacity can grow from year to year, reflecting real-world supply-chain and deployment constraints. Each source is subject to an annual build limit equal to the smaller of two caps: a *soft cap*, equal to the largest single existing vintage of that source's capacity grown by a configurable growth fraction, and a *hard cap*, equal to a configurable fraction of total system capacity. The annual build limit is the lesser of these two, but never less than a minimum buildable amount, so that small or nascent technologies can still be deployed. Both the growth fraction and the hard-cap fraction are set in input data.
+
+![build caps](/img/electricity-sector-main-BuildCaps.png)
+
 ## New Capacity Construction
 
 In this stage, the model calculates new capacity additions across multiple mechanisms. The first of these is a mandated capacity and retrofit mechanism that uses input data and policy levers to add capacity and retrofit plants with CCUS. Next the model will add clean firm capacity if needed to comply with a clean electricity standard. After this step, the model moves into adding economic capacity, which is co-optimized with the clean electricity standard policy. Lastly, the model moves through a two stage reliability capacity addition mechanism, which ensures there is sufficient capacity installed to meet reliability requirements.
 
 ### Policy Mandated Capacity Additions and Retrofits
 
-Mandated capacity additions and CCUS retrofits in the BAU and policy scenarios can be specified in the input data and policy levers. The model starts by reading in these values and adding them to new capacity built and retrofits in future years. 
+Mandated capacity additions and CCUS retrofits in the BAU and policy scenarios can be specified in the input data and policy levers. The model starts by reading in these values and adding them to new capacity built and retrofits in future years. The model maintains two independent mandate paths: a per-electricity-source generation mandate (covering the 24 generation technologies listed above) and a grid-battery storage mandate, each with its own BAU input schedule and its own non-BAU policy lever. The grid-battery path uses `BPMGBSA BAU Policy Mandated Grid Battery Storage Additions` as its BAU input. The two paths are independent, so a user can override mandated grid-battery additions without disturbing mandated generation construction, and vice versa.
 
 ![Policy mandated capacity additions and retrofits](/img/electricity-sector-main-PolicyMandatedAdditionsRetrofits.png)
 
@@ -281,7 +296,7 @@ The core logic underpinning each element of the capacity expansion structure ope
 
 This mechanism operates simultaneously for new resources without storage, new resources with storage, and CCUS retrofits of existing resources.
 
-The model begins by cumulating the total anticipated revenue by resource type. This relies on the rolling four-year energy market revenue discussed earlier and any anticipated policy revenue, particularly credits for the Clean Electricity Standard, which is co-optimized with economic capacity expansion (discussed later). Revenue is normalized into $/Megawatt-hour based on achieved capacity factors by resource in the model. Subsidies for electricity generation are added.
+The model begins by cumulating the total anticipated revenue by resource type. This relies on the rolling four-year energy market revenue discussed earlier and any anticipated policy revenue, particularly credits from the portfolio-standard mechanism (RPS, CES, or both), which is co-optimized with economic capacity expansion (discussed later). Revenue is normalized into $/Megawatt-hour based on achieved capacity factors by resource in the model. Subsidies for electricity generation are added.
 
 The model then compares anticipated revenue against the anticipated levelized cost of building new resources, not including variable subsidies (these are considered a revenue stream). Resources that are profitable will have revenues that exceed costs while unprofitable resources will not. This results in a profit value, i.e. revenues minus costs.
 
@@ -297,9 +312,11 @@ The model then computes the total new capacity added using this computed value a
 
 ### Clean Electricity Standard Additions
 
-The EPS includes the clean electricity standard (CES; sometimes referred to as renewable portfolio standard, RPS) as one of the key power sector policies. The application of the CES/RPS is co-optimized with the cost-effectiveness additions to identify a credit price that generates sufficient revenue to add or retrofit resources for cost-effectiveness that leads to compliance with the CES/RPS setting. In each optimization pass, the model checks to see whether the anticipated amount of existing and new or retrofit clean electricity is sufficient to meet the standard. It will raise the credit price until this share is met and converge on a credit price that gets just the right amount of new clean capacity built and/or retrofit. 
+The EPS represents electricity portfolio standards through a unified framework that can simultaneously enforce a Renewable Portfolio Standard (RPS) and a Clean Energy Standard (CES). RPS typically qualifies only renewable resources (wind, solar, geothermal, hydro, etc.); CES is broader and may also qualify nuclear, fossil generation paired with carbon capture, and other low-carbon firm resources. The model treats the two as configurations of the same machinery: each has its own qualifying-resource definitions, its own percentage targets (which can also vary by subregion), and its own credit price that the model converges on. A run can enforce either standard, both at once, or neither. Where these docs below use the abbreviation "CES/RPS," it refers to whichever of the two standards is being computed in that step.
 
-The first stage of the CES is to compute the weighted average national CES/RPS value. The model allows for different resources to be included as part of the RPS/CES and aggregates subnational data provided in the input data to estimate a binding CES/RPS value. For example, many states have existing RPS/CES values and collectively they form a national floor CES, below which a user policy setting would not be binding. This first set of structures computes the effective RPS/CES value that model will achieve.
+The application of each portfolio standard is co-optimized with the cost-effectiveness additions to identify a credit price that generates sufficient revenue to add or retrofit resources for cost-effectiveness that leads to compliance with the standard. In each optimization pass, the model checks to see whether the anticipated amount of existing and new or retrofit qualifying electricity is sufficient to meet the target. It will raise the credit price until this share is met and converge on a credit price that gets just the right amount of new qualifying capacity built and/or retrofit. The RPS and CES optimizations run in separate passes, so each finds its own marginal-clearing credit price.
+
+The first stage is to compute the weighted average national CES/RPS value. The model allows for different resources to be included as part of the RPS or CES and aggregates subnational data provided in the input data to estimate a binding value. For example, many states have existing RPS/CES values and collectively they form a national floor, below which a user policy setting would not be binding. This first set of structures computes the effective RPS/CES value that the model will achieve, separately for each. In parallel, the model optionally determines the portfolio percentage needed to meet future RPS/CES values if foresight is enabled. 
 
 ![Calculating RPS/CES percentage to seek](/img/electricity-sector-main-CESTarget.png)
 
@@ -309,9 +326,9 @@ The optimization structure utilizes a special type of capacity factor, the margi
 
 One drawback to this approach is that it can make the credit price seem unnecessarily high. This can occur because the model computes revenue as the CES credit price multiplied by the marginal capacity factor for a given hour, summed over the year. As the grid approaches 100% clean, marginal capacity factors for all resources decrease and a higher price is needed to drive clean adoption. On the other hand, this ensures the model is only paying for completely additive clean resources and it helps shift CES revenue to dispatchable resources as the grid gets close to 100% clean.
 
-Hybrid resources are included in the optimization loop and the model will tend to move towards them in years with higher clean shares to reallocate the clean supply to the hours when it is needed.
+Hybrid resources are included in the optimization loop and the model will tend to move towards them in years with higher clean shares to reallocate the clean supply to the hours when it is needed. Because a hybrid resource (a renewable paired with on-site storage) can be desired both as a hybrid power plant and as a standalone generation source, when the combined desired additions for both roles would exceed what is buildable for that source, the model splits the buildable capacity between the two roles in proportion to each role's desired amount as a proxy for comparative profitability.
 
-The CES also allows users to set an Alternative Compliance Payment in the input data that sets a cap on the credit price. Once the cap is hit, the model will not continue to increase the credit price, even if it cannot hit the CES target. 
+The CES also allows users to set an Alternative Compliance Payment in the input data that sets a cap on the credit price. Once the cap is hit, the model will not continue to increase the credit price, even if it cannot hit the CES target. Relatedly, when a portfolio target cannot be met even with full deployment of qualifying resources — that is, the maximum achievable clean share is at or below the target — the model detects this during the optimization passes and holds the final credit price at the level that achieves the maximum feasible buildout, rather than continuing to step it upward.
 
 ![Calculating marginal capacity factors](/img/electricity-sector-main-CES.png)
 
@@ -325,21 +342,24 @@ The EPS also tracks green hydrogen demand and will build off-grid renewables to 
 
 ### Reliability Additions
 
-At this point the model has built capacity as mandated in input data, for cost-effectiveness, to comply with an RPS or CES including if flexible clean resources are needed, and for off-grid green hydrogen production. The final set of capacity mechanisms ensure there are sufficient resources online to meet reliability in every hour, including a reserve margin. 
+At this point the model has built capacity as mandated in input data, for cost-effectiveness, to comply with an RPS or CES including if flexible clean resources are needed, and for off-grid green hydrogen production. The final capacity mechanism ensures there are sufficient resources online to meet reliability in every hour, including a reserve margin.
 
-The reliability mechanism is broken into two steps due to limitations in Vensim. The model cannot optimize a resource mix across multiple hours and resource types at the same time given the structural limitations of Vensim (this would require a linear program). So, the EPS first does a reliability optimization limiting the model to building dispatchable resources. In the second optimization, the model adds the resources from the first optimization to the supply mix and then fills in the rest of what is needed from any resources. An example helps illustrate why this approach is necessary.
+In practice, reliability additions in the EPS comprise **dispatchable resources** -- the kinds of plants utilities and grid operators rely on to provide firm capacity during peak demand hours (e.g., natural gas peakers, nuclear, hydro, biomass, dispatchable storage). Variable renewable resources like solar PV and onshore wind do not effectively enter through this mechanism because their availability in the binding peak hour (typically a winter evening for many regions, when solar output is zero) is very low; the capacity-market revenue they would receive in this calculation is discounted by that availability and is too small to make them profitable for reliability additions. They enter the model instead through the cost-effectiveness, portfolio-standard, and policy-mandate mechanisms above. This restriction reflects real-world capacity planning practice, where reliability is provided by firm and dispatchable resources rather than by variable renewables.
 
-Consider a system with a summer peak at 2 PM and a winter peak at 10 PM and where the summer peak is higher than the winter peak. If the model optimize around the single maximum peak, it might want to build solar to meet the 2 PM peak, but this solar would be unavailable for the winter peak. This could lead to situations where the model is unable to meet winter demand. On the other hand, the model was allowed to build all it wanted for both peaks, for example solar for the summer peak and gas for the winter peak, and it just summed the additions from the two peaks, this would add too much capacity, because some of the gas winter peaking capacity could be used for the 2 PM summer peak. The best way to address this challenge is through the use of a linear program, b Vensim is not configured for this. So, the EPS addresses this challenge by splitting the reliability mechanism into two pieces. It first computes the dispatchable capacity, and then fills in the remainder with any kind of capacity.
+To size additions, the model first identifies the **single binding peak hour** -- the (timeslice, hour) combination across the peak winter and peak summer days where net electricity demand most exceeds the available supply, after accounting for the reserve margin. It then computes a capacity price that increases revenue such that sufficient dispatchable capacity is added to the system, using the same cost-effectiveness structure used elsewhere in the model. Resources' total revenue from the capacity price is discounted by their hourly availability in the binding hour. For example, if a winter 10 PM peak is the binding hour, dispatchable resources receive capacity revenue weighted by their typical availability in that hour.
 
-The model determines capacity additions by first estimating how much is needed in each hour and computing a capacity price that increases revenue such that sufficient capacity is added to the system, using the same cost-effectiveness structure used elsewhere in the model. The single highest hour is identified and used as the price for all resources. Resources’ total revenue from the capacity price is discounted by their hourly availability in the binding hour. For example, if a winter 10 PM peak is the binding hour, solar PV would not receive any capacity revenue, but onshore wind would at its estimated capacity factor.
+To estimate how much is needed in each hour, the model uses a peak winter and a peak summer timeslice. These are meant to represent the worst system conditions during the worst days of each season in terms of demand and potential output from variable resources. The input data uses hierarchical clustering of historical demand data and the minimum capacity factor for variable resources. The model then adds a reserve margin to ensure sufficient supply. These approaches attempt to mimic planning procedures of real-world utilities and grid operators. 
 
-To estimate how much is needed in each hour, the model uses a peak winter and a peak summer timeslice. These are meant to represent the worst system conditions during the worst five days of each season in terms of demand and potential output from variable resources. The input data looks at the maximum demand during each hour of the top five days and the minimum capacity factor for variable resources. The model adds a reserve margin on top of this, to ensure sufficient supply. These approaches try to mimic planning procedures by real world utilities and grid operators.
+The reliability mechanism runs two parallel sub-computations on disjoint subsets of dispatchable resources, both summed into a single set of reliability additions:
 
-![Dispatchable-only reliability additions](/img/electricity-sector-main-DispatchableReliability.png)
+* **Clean dispatchable reliability** -- restricted to dispatchable resources that qualify under the active CES (e.g., nuclear, hydro, geothermal, biomass with CCS, gas with CCS). This sub-pass ensures that as a CES approaches 100%, the model can still maintain reliability with qualifying resources rather than non-qualifying generation.
+* **General dispatchable reliability** -- the remaining dispatchable resources (e.g., natural gas peakers in regions where the CES does not require carbon capture). This sub-pass handles reliability needs that don't have to come from CES-qualifying resources.
 
-![Residual reliability additions](/img/electricity-sector-main-ResidualReliability.png)
+Both sub-passes use the same binding-peak-hour structure described above. Their resulting capacity additions are summed and added to the generation-capacity total going into stock-and-flow tracking.
 
-Because the reliability mechanisms are downstream of the cost-effectiveness mechanism, including for the CES/RPS, the reliability mechanism can result in additional clean capacity being built that causes the model to exceed the CES/RPS value in certain years. The only way to fully address this would be through a linear program where the model could optimize capacity against multiple constraints at once, but Vensim is unable to do this.
+![Dispatchable reliability additions](/img/electricity-sector-main-DispatchableReliability.png)
+
+Because the reliability mechanism runs downstream of the cost-effectiveness mechanism, including for the CES/RPS, it can result in additional dispatchable clean capacity being built that pushes the model past the CES/RPS target in certain years. The only way to fully avoid this would be through a linear program where the model could optimize capacity against multiple constraints at once, but Vensim is unable to do this.
 
 If the model has a CES/RPS of 100%, the reliability mechanism will not allow non-qualifying resources to be built. However, in the years leading up to the 100% value, the model can still build non-qualifying resources, which may not be run or may not be allowed to run shortly after. This is a known issue using a model without perfect foresight, but we are again constrained by our ability to model this given Vensim’s structure. A future area for enhancement might be to integrate the future year RPS value into the reliability structure to prevent the model from building resources that would never or only scarcely be used.
 
@@ -363,7 +383,7 @@ Existing capacity, retirements, new capacity, and retrofits are combined to prod
 
 Various capacity factor calculations are used through the electricity sector. These include achieved capacity factors (annual and by hour), three year average achieved capacity factors, expected capacity factors, start year capacity factors, and bid capacity factors. Each of these has a different use in the structure to reflect different situations and calculations.
 
-Three-year average achieved capacity factors by hour are used in the RPS mechanism to ensure compliance will be met at a given RPS price and deployment. Achieved capacity factors by hour are important for measuring hourly output, which in turn is used to estimate annual output and compliance with an annual RPS. Achieved capacity factors differ from expected capacity factors because the account for real world (in the model) operating conditions and things that may cause expected output to deviate from actual output, such as curtailment. The model calculates achieved capacity factors using a three-year rolling average of the model's calculated capacity factor by plant type by hour.
+Three-year average achieved capacity factors by hour are used in the portfolio-standard mechanism (RPS and CES) to ensure compliance will be met at a given credit price and deployment. Achieved capacity factors by hour are important for measuring hourly output, which in turn is used to estimate annual output and compliance with annual portfolio-standard targets. Achieved capacity factors differ from expected capacity factors because they account for real world (in the model) operating conditions and things that may cause expected output to deviate from actual output, such as curtailment. The model calculates achieved capacity factors using a three-year rolling average of the model's calculated capacity factor by plant type by hour.
 
 ![Three year average achieved capacity factors by hour](/img/electricity-sector-main-ThreeYearAverageAchievedCFbyHour.png)
 
@@ -379,7 +399,7 @@ We also use expected capacity factors where there is no existing capacity from w
 
 ![Expected capacity factors](/img/electricity-sector-main-ExpectedCFs.png)
 
-Bid capacity factors are used in the dispatch mechanisms to reflect the available capacity in a given hour available to dispatch. They incorporate several limitations, including a maximum capacity factor, i.e. the maximum share of potential output that is available in each hour. Because the EPS is also a single-region model, we also include the ability to discount the available output to account for the regionality of the grid. If we didn't include this, the model would operate as a copper sheet with a power plant in one region being able to supply power in a wholly different region. These parameters are set through RAF Regional Availability Factor for Generation and are generally handled through calibration. Non-dispatchable renewables are not typically affected by this calibration. Capacity factors used for reliability calculations (i.e. that reflect an equivalent to effective load carrying capacity) are calculated here as well. 
+Bid capacity factors are used in the dispatch mechanisms to reflect the available capacity in a given hour available to dispatch. They incorporate several limitations, including a maximum capacity factor, i.e. the maximum share of potential output that is available in each hour. Because the EPS is also a single-region model, we also include the ability to discount the available output to account for the regionality of the grid. If we didn't include this, the model would operate as a copper sheet with a power plant in one region being able to supply power in a wholly different region. These parameters are set through RAF Regional Availability Factor for Generation and are generally handled through calibration. Non-dispatchable renewables are not typically affected by this calibration. Capacity factors used for reliability calculations (i.e. that reflect an equivalent to effective load carrying capacity) are calculated here as well. This effective-load-carrying-capacity adjustment is applied separately to generation sources and to demand-altering technologies (such as demand response, EV batteries, and storage), reflecting the different ways each contributes to meeting peak reliability needs. 
 
 ![Bid capacity factors](/img/electricity-sector-main-BidCFs.png)
 
@@ -427,13 +447,13 @@ The model combines all the dispatch data at the end of the dispatch process to c
 
 ### Guaranteed Dispatch
 
-The model begins by dispatching resources that are guaranteed, as specified in input data. Based on this data, the model dispatches a fixed amount of the expected capacity of a resource in every hour. Expected capacity factors are based on input data and calculations described above for expected capacity factors. The input data can be configured to have two priority tiers so that in instances where the total amount of demand would be exceeded by guaranteed dispatch, it will first curtail resources in the lower tier and then the higher tier. In instances where guaranteed dispatch and the RPS mechanism conflict, the RPS mechanism will take precedence to ensure compliance.
+The model begins by dispatching resources that are guaranteed, as specified in input data. Based on this data, the model dispatches a fixed amount of the expected capacity of a resource in every hour. Expected capacity factors are based on input data and calculations described above for expected capacity factors. The input data can be configured to have two priority tiers so that in instances where the total amount of demand would be exceeded by guaranteed dispatch, it will first curtail resources in the lower tier and then the higher tier. In instances where guaranteed dispatch and the portfolio-standard mechanism (RPS or CES) conflict, the portfolio-standard mechanism will take precedence to ensure compliance.
 
 ![Guaranteed dispatch](/img/electricity-sector-main-GuaranteedDispatch.png)
 
-### Dispatch of RPS Qualifying Resources
+### Dispatch of Portfolio-Standard Qualifying Resources
 
-Next the model will dispatch RPS qualifying resources, starting with zero- and negative-cost resources and then moving to positive-cost resources. This step helps ensure that these resources are appropriately used even if their costs might exceed other resources. It also ensures alignment with the projected clean share as part of the CES/RPS optimization. The model uses available capacity factors for dispatch here. Because the expected and available capacity factors for variable renewables are the same, and most clean resources today are variable, this is generally not an important distinction, but it matters for certain resources like clean firm resources, which can be used at higher capacity factors when needed to meet CES/RPS requirements.
+Next the model will dispatch RPS- and CES-qualifying resources, starting with zero- and negative-cost resources and then moving to positive-cost resources. This step helps ensure that these resources are appropriately used even if their costs might exceed other resources. It also ensures alignment with the projected qualifying share as part of the CES/RPS optimization. The model uses available capacity factors for dispatch here. Because the expected and available capacity factors for variable renewables are the same, and most qualifying resources today are variable, this is generally not an important distinction, but it matters for certain resources like clean firm resources, which can be used at higher capacity factors when needed to meet CES/RPS requirements. RPS-qualifying resources are dispatched first; remaining qualifying-but-not-yet-dispatched CES resources follow, since CES qualifying definitions are typically a superset of RPS.
 
 ![RPS dispatch](/img/electricity-sector-main-RPSDispatch.png)
 
@@ -465,9 +485,9 @@ Total electricity dispatched is summed across each of the elements of the dispat
 
 ## Economic Storage Additions
 
-The electricity sector estimates economic storage additions based on anticipated market revenues, incentives, and battery costs.
+The electricity sector estimates economic additions of grid battery storage -- specifically standalone grid batteries (storage that is not co-located with a renewable power plant). Storage additions for hybrid power plants (renewables paired with on-site batteries) are co-optimized with the hybrid plant's capacity expansion in the cost-effectiveness step described above. The standalone grid-battery additions described in this section are tracked separately from hybrid storage and use a different revenue-driven methodology. Both standalone and hybrid storage are summed at the end for use in load shifting, market price formation, and reliability checks.
 
-To estimate storage additions the model starts by calculating anticipated market revenues. Unlike for power plants, the model does not directly compare anticipated revenues and against costs to estimate additions, but rather looks only at the anticipated net revenue. This approach is necessary because the EPS omits several sources of revenue for storage, notably including ancillary services like frequency response, and comparing against costs would yield far lower profitability than in reality. Additionally, while the EPS now has hourly granularity for six electricity timeslices, to fully capture the revenue potential for storage would required sub-hourly detail, in addition to grid services. If we directly compared costs and revenues, we would miss a large source of revenue and significantly underestimate anticipated storage additions.
+To estimate standalone grid-battery additions the model starts by calculating anticipated market revenues. Unlike for power plants, the model does not directly compare anticipated revenues and against costs to estimate additions, but rather looks only at the anticipated net revenue. This approach is necessary because the EPS omits several sources of revenue for storage, notably including ancillary services like frequency response, and comparing against costs would yield far lower profitability than in reality. Additionally, while the EPS now has hourly granularity for six electricity timeslices, to fully capture the revenue potential for storage would required sub-hourly detail, in addition to grid services. If we directly compared costs and revenues, we would miss a large source of revenue and significantly underestimate anticipated storage additions.
 
 To estimate market revenues, the model compares the highest and lowest priced hours and computes an estimated daily profit by arbitraging these hours based on the duration of the storage (four hours by default in the US model). This allows the model to determine an estimated annual average charging and discharging profit per MWh of battery capacity. Incentive policies add to the profitability and drive additional storage capacity. Revenues from the reliability mechanism are integrated as well in this step. Declines in battery costs are modeled as a form of revenue as well to reflect increasing profitability of batteries. Together these elements comprise a "net revenue" estimate. The calculation of incentive policies, which can take the form of subsidies for production, for capacity installed, or per unit output, is shown below.
 
@@ -493,11 +513,11 @@ This section includes a few calculated variables that may be of interest in eval
 
 We calculate the amount of curtailed electricity output (based on the reduction in expected capacity factors) from each variable electricity source. These calculations are based on the expected output at expected capacity factors for these resources compared to their actual output. Curtailment can happen when supply is greater than demand or when other resources are guaranteed ahead of variable renewable resources. 
 
-We also track compliance with the RPS, which is used the RPS mechanism and accompany graphs. Conversions to other outputs, such as the percentage generation from clean sources and renewable electricity generation in primary energy units is also handled here.
+We also track compliance with the RPS and CES, which are used by their respective optimization passes and the accompanying graphs. Conversions to other outputs, such as the percentage generation from clean sources and renewable electricity generation in primary energy units, are also handled here.
 
 The EPS also tracks water withdrawn and used by power plants based on input data on power plant types and generation by power plant types. 
 
 Finally, the model aggregates pollutant emissions into estimate of CO<sub>2</sub>e and computes a few additional metrics used throughout the electricity sector.
 
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.0.5.*
