@@ -31,12 +31,7 @@
   "pnpm": {
     "overrides": {
       "serialize-javascript@<7.0.5": "7.0.5",
-      "uuid@<14.0.0": "^14.0.0",
-      "qs@>=6.11.1 <=6.15.1": "^6.15.2",
-      "gray-matter>js-yaml": "4.2.0"
-    },
-    "patchedDependencies": {
-      "gray-matter@4.0.3": "patches/gray-matter@4.0.3.patch"
+      "uuid@<14.0.0": "^14.0.0"
     }
   },
   "browserslist": {
