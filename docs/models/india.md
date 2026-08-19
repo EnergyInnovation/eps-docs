@@ -4,6 +4,8 @@ title:  "India Energy Policy Simulator"
 
 The Energy Policy Simulator (EPS) is a free and open-source computer model originally created by [Energy Innovation LLC](https://energyinnovation.org/) and adapted for India in partnership with [World Resources Institute India](http://wri-india.org/).
 
+Additional documentation and model results are available in this [technical note](https://www.wri.org/research/tool-designing-policy-packages-indias-climate-targets) authored by WRI.
+
 <p><a href="https://energypolicy.solutions/simulator/india/en" class="btn">Run the simulator in your browser</a></p>
 
 ## Acknowledgement of Contributors and Reviewers
