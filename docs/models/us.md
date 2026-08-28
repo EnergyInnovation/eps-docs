@@ -1313,7 +1313,7 @@ Note that starting with this release, Vensim 8 or later (64-bit) is required to 
 
 The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.4.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.5.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
 ## Software License
 
