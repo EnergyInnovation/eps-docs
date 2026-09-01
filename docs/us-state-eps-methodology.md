@@ -1,6 +1,6 @@
 State EPS Methodology
 ==============
-**Updated: September 2024**
+**Updated: August 2026**
 
 The state Energy Policy Simulators (EPS) account for emissions produced in the following sectors: electricity generation, building energy consumption, industrial energy consumption, industrial process emissions, agriculture process emissions, land use change, and transportation. Our primary sources are federal data sets from the Environmental Protection Agency (EPA), Energy Information Administration (EIA), and the National Renewable Energy Lab (NREL).
 
@@ -111,18 +111,20 @@ For the other gases we use EPA's mitigation report for the detail and projection
 ## State-level Policies Included in State Models
 | Sector | Policies | State(s) |
 |---|---|---|
-| Electricity | Clean Energy and Electricity Standards/Plans | CA - SB 100 <br/> CO - Clean Energy Plan <br/> NC - Clean Energy Plan <br/> NJ - Executive Oder No. 28 <br/> NY - 10-Point Action Plan <br/> RI - Clean Energy Plan <br/> WI - Energy Plan and Executive Order #38 |
-| Electricity | Geothermal | CO - HB23-1272|
-| Buildings | Appliance and Equipment Energy and Efficiency Standards, and Energy Code | CA - Code of Regulations Title 20 <br/> CO - HB23-1161 and HB22-1362 <br/> MA - MA S9 <br/> MD - HB 772 <br/> MN - HF 3911 <br/> NH - NH Rev Stat § 339-G:3 <br/> NJ - A5160 <br/> NY - NY A 10439 and A3006 <br/> NV - AB 383 <br/> RI - S 0339A <br/> VT - 9 V.S.A. chapter 74 <br/> WA - Washington State 2021 Energy Code, Clean Buildings Performance Standard, and Appliance Efficiency Standards |
-| Buildings | Building Performance Standard | CO - HB21-1286 <br/> MD - SB 528 <br/> NY - NYC Local Law 97 and Build Smart 2025 |
-|Transportation | Low Carbon Fuel Standard | CA - SB 348 <br/> OR - SB 324 <br/> WA - Washington Clean Fuel Standard |
-| Industry | Oil, Gas, Methane | CA - SB 613 <br/> CO - AQCC regulations 7 and 22, SB22-198 <br/> LA - LAC 43:XIX.103, 3503, 3507, 3509, and 3511 <br/> MA - 310 CMR 7.73 <br/> MD - COMAR 26.11.41 and COMAR 26.11.42 <br/> NM - 19.15.27 NMAC <br/> OR - DEQ 16-2021 <br/> PA - Regulation #7-580 <br/> WA - 173-408 WAC | 
-| Industry | HFCs | CA - SB 1206 <br/> CO - AQCC Regulation 22 <br/> MA - 310 CMR 7.76 <br/> NJ - NJ A5583 <br/> WA - HB 1112, HB 1050 |
-| Industry | Cement and Concrete | CA - SB 596 | 
-| Industry | Industrial Facilities | CO - GEMM Phase I & II rulemaking, HB21-1272 |
-| Industry | Hydrogen | CO - HB23-1281 |
-| Industry | Supply Chain | CO - HB22 – 1355 |
-| Land Use, Agriculture, Waste | Agriculture | WA - SB 5947 &  SB 6306 |
+| Electricity | Clean Energy and Renewable Portfolio Standards | CA - SB 1020 <br/> CO - SB 19-236 <br/> CT - Public Act 25-173 (SB 4) <br/> DE - SB 33 <br/> IL - SB 2408 <br/> MA - S.9 <br/> MD - Executive Order 01.01.2024.19 <br/> ME - LD 1868 <br/> MI - SB 271 <br/> MN - HF 7 <br/> MO - Mo. Rev. Stat. § 393.1020 <br/> NH - N.H. Rev. Stat. Ann. § 362-F <br/> NJ - Executive Order 315 <br/> NM - 17.9.571 NMAC <br/> NV - SB 358 <br/> NY - S6599 (Climate Leadership and Community Protection Act) <br/> OH - HB 6 <br/> OR - SB 1547 <br/> PA - Pa. Cons. Stat. tit. 66 § 2814 <br/> RI - HB 7277A <br/> VA - SB 1284 <br/> VT - Act 179 <br/> WA - SB 5116 <br/> WI - Executive Order 38 |
+| Electricity | Distributed Generation Carve-out | AZ - distributed renewables carve-out (4.5% of retail sales by 2025) <br/> VT - distributed renewables carve-out (5.8% by 2025, 20% by 2035) |
+| Electricity | Coal Retirements | CO - Comanche Unit 3 retirement (Xcel Energy, by 2031) <br/> WA - SB 5116 (100% coal phase-out by 2025) |
+| Electricity | Energy Storage Targets | IL - Public Act 104-0458 (SB 25), 3 GW by 2030 <br/> MI - SB 271, 2,500 MW by 2030 <br/> NJ - A3723, 2,000 MW by 2030 <br/> NY - CASE 18-E-0130, 6,000 MW by 2030 <br/> RI - S 2499 A, 90 MW by 2026 / 195 MW by 2028 / 600 MW by 2033 <br/> VA - HB895, 16 GW by 2045 |
+| Buildings | Building Performance Standards | CO - HB 25-1269 (Building Performance Colorado) <br/> MD - SB 528 (Building Energy Performance Standards) <br/> WA - Clean Buildings Performance Standard |
+| Buildings | Appliance and Equipment Efficiency Standards | MA - MA S9 <br/> MD - HB 772 <br/> NH - NH Rev Stat § 339-G:3 <br/> NJ - A5160 <br/> NY - NY A 10439 <br/> RI - S 0339A <br/> VT - 9 V.S.A. chapter 74 <br/> WA - Appliance Standards (2022) |
+| Buildings | All-Electric Buildings | CA - 2025 Building Energy Efficiency Standards (2022 Scoping Plan Reference Scenario) |
+| Buildings | Lighting Standard | MN - Clean Lighting Bill |
+| Buildings | Data Center Bans and Moratoriums | NY - Executive Order No. 62 |
+| Industry | Oil, Gas, Methane | CA - SB 1137 <br/> CO - Regulation Number 7 <br/> LA - LAC 43:XIX.103, 3503, 3507, 3509, and 3511 <br/> MA - 310 CMR 7.73 <br/> MD - COMAR 26.11.41 <br/> NM - 20.2.50 NMAC <br/> NY - 6 NYCRR Part 203 <br/> PA - Regulation #7-580 |
+| Industry | Industrial Emissions Regulation | CO - GEMM I and II |
+| Transportation | Electric Vehicle Rebates | CA - Consumer Assistance Program <br/> CO - Vehicle Exchange Colorado (VXC) Program <br/> CT - Connecticut Hydrogen and Electric Automobile Purchase Rebate (CHEAPR) Program <br/> DE - Delaware Clean Vehicle Rebate Program <br/> IL - Electric Vehicle Rebate Program <br/> MA - Ride Clean Mass (MOR-EV) <br/> ME - Off-Peak Charging Electric Vehicle Rebates <br/> NJ - Charge Up New Jersey <br/> NY - Drive Clean Rebate <br/> PA - Alternative Fuel Vehicle Rebate Program <br/> RI - DRIVE+ Program |
+| Transportation | Low-Emission Vehicle (LEV) Standards | CA (originating standard), adopted by CO, CT, DE, MA, MD, ME, MN, NJ, NM, NV, NY, OR, PA, RI, VA, VT, WA - Advanced Clean Cars I / LEV III GHG standard, converted to an equivalent mpg fuel-efficiency standard |
+| Cross Sector | Carbon Pollution Pricing | CA - Cap-and-Trade Program <br/> CO - AQCC Regulation Number 27, Part D <br/> CT, DE, MA, MD, ME, NH, NJ, RI, VT - Regional Greenhouse Gas Initiative (RGGI) <br/> NY - RGGI (developing an economywide cap-and-invest program) <br/> OR - Climate Protection Program <br/> WA - Cap-and-Invest Program (HB 1975) |
 
 ## About Us  
 --------
