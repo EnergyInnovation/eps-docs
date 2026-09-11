@@ -26,11 +26,17 @@ We follow a similar approach to our original OBBBA modeling and substitute in ac
 ### Sec. 60012. Rescission of funding for the methane emissions and waste reduction incentive program for petroleum and natural gas systems
 We do not model this provision in this report.
 
+### Sec. 70502. Termination of clean vehicle credit
+In the original OBBBA modeling, we repealed our calculated weighted average clean vehicle tax credit after 2025. Here, we reinstate those tax credit values for passenger LDVs.
+
+### Sec. 70503. Termination of qualified commercial clean vehicles credit
+In the original OBBBA modeling, we repealed the commercial clean vehicles credit after 2025. Here, we reinstate those tax credit values for freight LDVs and HDVs.
+
 ### Sec. 70506. Termination of residential clean energy credit
 In the original OBBBA modeling, we relied on forecasted changes in solar deployment from external modeling (AEO 2023 and an analysis from REPEAT). Here we instead endogenously model the loss of 25D tax credits for residential solar using the credit value and an elasticity of deployment with respect to solar incentives.
 
 ### Sec. 70510. Modifications of zero-emission nuclear power production credit
-As in the original OBBBA modeling, we assume that the limited foreign entities provisions will have no impact on the collection of the credit, due to the nature of the taxpayers producing nuclear power. We assume the credit terminates in line with the schedule established in §112012(b), with no credits issued in 2032.
+As in the original OBBBA modeling, we assume that the limited foreign entities provisions will have no impact on the collection of the credit, due to the nature of the taxpayers producing nuclear power. We assume the credit terminates in line with the schedule established in §112012(b), with no credits issued in 2033.
 
 ### Sec. 70511. Termination of clean hydrogen production credit
 See the Hydrogen section below.
