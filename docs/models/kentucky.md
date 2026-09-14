@@ -14,18 +14,32 @@ The [U.S. State EPS Methodology](../us-state-eps-methodology) page details our b
 
 We would like to acknowledge the following people who made the U.S. State Energy Policy Simulators possible.
 
-* Ashna Aggarwal, RMI
 * Olivia Ashmoore, Energy Innovation LLC
-* Kyle Clark-Sutton, RMI
-* Rachel Goldstein, Energy Innovation LLC
-* Nathan Iyer, RMI
-* Wendy Jaglom, RMI
 * Megan Mahajan, Energy Innovation LLC
+* Dan O'Brien, Energy Innovation LLC
 * Robbie Orvis, Energy Innovation LLC
+* Wendy Jaglom, RMI
 * Kayleigh Rubin, RMI
 * Addy Sonaike, RMI
+* Drew Veysey, RMI
 
 ## Version History
+
+### **4.0.6 - September 28, 2026**
+* New Features
+  * Updated to 4.0.6 EPS model platform (includes all 4.0.5 platform changes; see the U.S. model version history)
+* Data updates
+  * Updates all input data to the latest available version from data sources, including EIA SEDS 2024, EIA Forms 860 and 923 for 2024, and the EPA state greenhouse gas inventory
+  * Recalibrates forecasts to the EIA Annual Energy Outlook 2026
+  * Updates first modeled year to 2025, all policy implementation schedules to start in 2026, and output currency year to 2025
+  * Updates BAU to reflect the latest federal policy changes, including the One Big Beautiful Bill Act, EPA rule changes, and withdrawal of state zero-emission vehicle standard waivers
+  * Updates state-level policies in the BAU scenario, including clean electricity and renewable portfolio standards, energy storage targets, coal retirements, building and appliance standards, oil and gas methane rules, electric vehicle rebates, and carbon pricing programs (see documentation)
+  * Updates existing capacity, planned capacity additions, and coal retirements to latest EIA data
+  * Adds state-specific renewable resource limits and build rates based on NREL supply curves
+  * Adds data center electricity demand as part of BAU load
+  * Updates distributed solar capacity and adds behind-the-meter gas generation
+  * Updates vehicle stocks and electric vehicle adoption to latest state registration and sales data
+  * Updates process emissions and abatement costs to the EPA July 2025 non-CO2 report
 
 ### **4.0.4 - April 1, 2025**
 * New Features
@@ -72,9 +86,7 @@ We would like to acknowledge the following people who made the U.S. State Energy
 
 The Kentucky Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-kentucky/archive/refs/tags/4.0.4.zip" class="btn">Download the Kentucky Energy Policy Simulator</a></p>
-
-[Click here](https://energypolicy.solutions/simulator/kentucky/en/06680e4) for access to the previous version of the public model, including access to saved scenarios.
+<p><a href="https://github.com/EnergyInnovation/eps-kentucky/archive/refs/tags/4.0.6.zip" class="btn">Download the Kentucky Energy Policy Simulator</a></p>
 
 ## Software License
 
