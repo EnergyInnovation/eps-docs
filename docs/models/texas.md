@@ -25,7 +25,7 @@ We would like to acknowledge the following people who made the U.S. State Energy
 
 ## Version History
 
-### **4.0.6 - September 28, 2026**
+### **4.0.6 - October 2, 2026**
 * New Features
   * Updated to 4.0.6 EPS model platform (includes all 4.0.5 platform changes; see the U.S. model version history)
 * Data updates
