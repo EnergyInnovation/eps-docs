@@ -6,9 +6,9 @@ EPS January 2025 Frozen Policies Scenario Guide for State Models
 
 Each U.S. State Energy Policy Simulator's business-as-usual (BAU) baseline represents **current policies** as they stood in October 2026, including the One Big Beautiful Bill Act (OBBBA), the U.S. Environmental Protection Agency (EPA) regulatory actions that followed it, and the administrative actions taken over 2025–2026, together with the state's own policies in effect at that time. This is the baseline against which all policy scenarios in the state models are measured.
 
-Against that baseline, the state models also feature a **January 2025 Frozen Policies** scenario, representing the federal and state policy environment as it stood in January 2025 — before those legislative and regulatory changes. It includes the Inflation Reduction Act (IRA), the Infrastructure Investment and Jobs Act (IIJA), and the CHIPS and Science Act, along with the finalized EPA rules in effect at that time and the state tailpipe standards then covered by Clean Air Act §177 waivers.
+Against that baseline, the state models also feature a **January 2025 Frozen Policies** scenario, holding state policies constant as of October 2026 but representing the federal and policy environment as it stood in January 2025 — before those federal legislative and regulatory changes. It includes the Inflation Reduction Act (IRA), the Infrastructure Investment and Jobs Act (IIJA), and the CHIPS and Science Act, along with the finalized EPA rules in effect at that time and the state tailpipe standards then covered by Clean Air Act §177 waivers.
 
-The January 2025 Frozen Policies scenario serves as a counterfactual: comparing it against the current-policies baseline isolates the combined emissions, economic, and health impacts of the 2025–2026 changes.
+The January 2025 Frozen Policies scenario serves as a counterfactual: comparing it against the current-policies baseline isolates the combined emissions, economic, and health impacts of the 2025–2026 federal policy changes.
 
 ## How the State Scenarios Differ from the National Scenario
 
