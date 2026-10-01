@@ -56,7 +56,14 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 
 ## Version History
 
-### **4.0.6 - October 2, 2026**
+### **4.0.7 - October 1, 2026**
+
+* New Features
+  * Credits new power plants for dispatching more cheaply than the existing fleet when evaluating whether new capacity is cost-effective
+* Bug Fixes
+  * Stops counting demand-shifting headroom (demand response, standalone batteries, pumped hydro, EV batteries) and hybrid battery storage as binding-hour supply in the dispatchable reliability pass, since these technologies are already credited through their reduction of binding-hour demand
+
+### **4.0.6 - October 1, 2026**
 
 * New Features
   * Replaces the capacity supply curve lookup with a parametric supply curve anchored to each plant type's existing or seed capacity, and replaces the soft build cap's growth fraction with an annual build limit based on each source's share of the fleet and per-plant-type minimum buildable amounts
@@ -1357,7 +1364,7 @@ Note that starting with this release, Vensim 8 or later (64-bit) is required to 
 
 The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.5.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.7.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
 ## Software License
 
