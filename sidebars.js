@@ -28,7 +28,7 @@ const sidebars = {
         'background-and-technical-info',
         'integrating-the-web-app',
         { type: 'doc', id: 'january-2025-frozen-policies', label: 'January 2025 Frozen Policies' },
-        { type: 'doc', id: 'january-2025-frozen-policies-state', label: 'January 2025 Frozen Policies (States)' },
+        { type: 'doc', id: 'january-2025-frozen-policies-states', label: 'January 2025 Frozen Policies (States)' },
         { type: 'doc', id: 'climate-ambition', label: 'Climate Ambition' }
       ]
     },

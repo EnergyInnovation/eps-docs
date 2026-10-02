@@ -16,7 +16,7 @@ The Current Policies scenario, our baseline, reflects federal and state policy a
 The state EPS models include two built-in scenarios:
 
 - **Climate Ambition** is an illustrative package of state and federal policies intended to put the U.S. back on track for emissions reductions. Federal policies begin phasing in in 2029. Alternative policies could achieve similar emissions outcomes. See the [Climate Ambition scenario documentation](https://docs.energypolicy.solutions/climate-ambition).
-- **January 2025 Frozen Policies** represents the federal and state policy environment as it stood in January 2025, before the legislative and regulatory changes enacted over 2025-2026. It includes the Inflation Reduction Act, the Infrastructure Investment and Jobs Act, the CHIPS and Science Act, and the finalized EPA rules and state-level standards in effect at that time. Unlike Current Policies, which reflects policy as currently enacted, it holds policy at that January 2025 state. See the [January 2025 Frozen Policies scenario documentation](https://docs.energypolicy.solutions/january-2025-frozen-policies-state).
+- **January 2025 Frozen Policies** represents the federal and state policy environment as it stood in January 2025, before the legislative and regulatory changes enacted over 2025-2026. It includes the Inflation Reduction Act, the Infrastructure Investment and Jobs Act, the CHIPS and Science Act, and the finalized EPA rules and state-level standards in effect at that time. Unlike Current Policies, which reflects policy as currently enacted, it holds policy at that January 2025 state. See the [January 2025 Frozen Policies scenario documentation](https://docs.energypolicy.solutions/january-2025-frozen-policies-states).
 
 ## Data Sources Summary
 
