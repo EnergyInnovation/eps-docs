@@ -39,11 +39,11 @@ In the process emissions calculations on the [Industry and Agriculture - Main ](
 
 ## Cash Flow Impacts of Implementing Efficiency Policies
 
-We begin this calculation by determining the additional, incremental change in fuel use (that is, between the policy and BAU cases) in the current year of the model run relative to the prior year.  This incremental difference indicates how much additional equipment was needed in the current year, since equipment that enabled fuel savings in past years is still in operation and still provides fuel savings in the current year.  For fuel shifting policies, we use increases in industrial fuel use rather than the change in fuel use, since the costs of fuel shifting are based on the purchase of equipment to handle new fuel types.  The following structure shows this calculation:
+We begin this calculation by determining the energy saved (or, for fuel shifting policies, shifted) by each policy in each industry relative to the BAU case.  We track the maximum energy-saving or energy-shifting capability installed in prior years as a stock.  Only the amount by which this year's energy saved or shifted exceeds that installed capability requires new equipment, since equipment purchased in past years is still in operation and still provides savings in the current year.  If energy saved or shifted temporarily declines, for example because production falls, no new equipment is purchased and implementation costs are not negative.  For fuel shifting policies, we use increases in industrial fuel use rather than the change in fuel use, since the costs of fuel shifting are based on the purchase of equipment to handle new fuel types.  The following structure shows this calculation:
 
 ![incremental fuel savings](/img/industry-ag-cash-IncrementalFuelSavings.png)
 
-Next, we use input data that provide the cost to implement different efficiency policies per unit of energy saved annually (or, in the case of the fuel switching policy, per unit energy shifted).  These factors are multiplied with our incremental fuel savings (from the previous calculation) to determine the current year payments to implement policies (at more stringent levels than the prior year), as shown in the following structure:
+Next, we use input data that provide the cost to implement different efficiency policies per unit of energy saved annually (or, in the case of the fuel switching policy, per unit energy shifted).  These factors are multiplied by the newly installed energy saving or shifting capability (from the previous calculation) to determine the current year payments to implement policies (at more stringent levels than the prior year), as shown in the following structure:
 
 ![efficiency policy incremental implementation cost](/img/industry-ag-cash-EffPolicyImplemCost.png)
 
@@ -107,7 +107,7 @@ First, we sum up the direct change in expenditures by industry, including the ch
 
 ![change in industry expenditures](/img/industry-ag-cash-CngExpenditures.png)
 
-We then find the share of these increased expenditures that is passed through to buyers, which is set through input data.  By default, we set this value to 1 to represent full passthrough of changes in expenses to buyers based on the literature.  We exclude energy industries because fuel prices are already adjusted by carbon taxes and fuel taxes in each fuel-buying sector.  This gives us 'Nonenergy Industry Expenses Passed Through to Buyers,' which is subscripted by industry category.  We also create a version of this variable that is subscripted by ISIC code to be used in later calculations. 
+We then find the share of these increased expenditures that is passed through to buyers, which is set through input data.  By default, we set this value to 1 to represent full passthrough of changes in expenses to buyers based on the literature.  We exclude energy industries because fuel prices are already adjusted by carbon taxes and fuel taxes in each fuel-buying sector.  This gives us 'Nonenergy Industry Expenses Passed Through to Buyers,' which is subscripted by industry category.  We also create a version of this variable that is subscripted by ISIC code to be used in later calculations.  (The price signal that drives changes in production, imports, and exports uses a unit-cost version of these expenses; see the [Industry and Agriculture - Main](industry-ag-main) page.) 
 
 ![nonenergy industry expenses passed through to buyers](/img/industry-ag-cash-PassthroughByInd.png)
 
@@ -168,4 +168,4 @@ Lastly, we also need the change in nonenergy industry sector revenue by ISIC cod
 ![carbon tax per unit industrial output](/img/industry-ag-cash-CngNonenergyRevenueISIC.png)
 
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.0.6.*

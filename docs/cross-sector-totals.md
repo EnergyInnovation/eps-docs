@@ -8,7 +8,7 @@ The Cross-Sector Totals sheet is where various quantities are totaled from the v
 
 ## Pollutants and CO2e
 
-The Energy Policy Simulator (EPS) totals the quantities of 12 pollutants emitted (or sequestered) from eight sectors: transportation, electricity, industry (including agriculture), buildings, district heat, hydrogen supply, LULUCF, and geoengineering.  Industry sector emissions here do **not** include leakage (induced emissions in other countries/regions); see the [Industry Sector page](industry-ag-main) for details about leakage.  Pollutants are simply summed, a quantization term is applied to avoid rounding error, then GWP values (using the user-selected GWP timeframe) are applied to convert them to CO2e.  The following screenshot shows the relevant structure:
+The Energy Policy Simulator (EPS) totals the quantities of 12 pollutants emitted (or sequestered) from eight sectors: transportation, electricity, industry (including agriculture), buildings, district heat, hydrogen supply, LULUCF, and geoengineering.  Industry sector emissions here do **not** include leakage (induced emissions in other countries/regions); see the [Industry Sector page](industry-ag-main) for details about leakage.  Pollutants are simply summed, a quantization term is applied to avoid rounding error, then GWP values (using the user-selected GWP timeframe) are applied to convert them to CO2e.  We also keep a version of CO2e emissions broken out by both sector and pollutant, which supports output graphs reporting each sector's emissions by greenhouse gas.  The following screenshot shows the relevant structure:
 
 ![summing pollutant and CO2e emissions](/img/cross-sector-totals-SumPollutants.png)
 
@@ -119,4 +119,4 @@ We also need the BAU energy supplier revenue by fuel to endogenously calculate t
 ![summing changes in energy supplier revenue](/img/cross-sector-totals-BAUEnergySupplierRev.png)
 
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.0.6.*

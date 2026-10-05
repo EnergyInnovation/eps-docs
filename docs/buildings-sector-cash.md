@@ -29,7 +29,7 @@ The following screenshot shows all three interactions and the resulting Amount S
 
 ## Change in Distributed Solar Costs
 
-Distributed solar PV costs are handled via the endogenous learning curve for solar PV technology, which is discussed in the [Electricity Sector](electricity-sector-main).  This means that their costs decline based on total solar PV deployment.  We begin with the cost of distributed solar per unit capacity in the start year of the model run and apply the result of the endogenous learning calculation to find the cost per unit capacity in the current year, for both BAU and policy cases.
+Distributed solar PV costs are handled via the endogenous learning curve for solar PV technology, which is discussed on the [Endogenous Learning](endogenous-learning#solar-pv-onshore-wind-and-offshore-wind) page.  This means that their costs decline based on total solar PV deployment.  We begin with the cost of distributed solar per unit capacity in the start year of the model run and apply the result of the endogenous learning calculation to find the cost per unit capacity in the current year, for both BAU and policy cases.
 
 The same process is applied to the soft costs per unit distributed solar capacity. 
 

@@ -70,13 +70,13 @@ The CCS component begins with time-series input data specifying the quantity of 
 
 ![amount of CCS deployment affecting learning](/img/endogenous-learning-CCSAmtAffectingLearning.png)
 
-We compare the amount of CO<sub>2</sub> sequested this year to the amount in the last year, calculating the fraction of doublings that have occurred. The cost in the current year declines by the percentage decline per doubling of capacity specified in input data.
+We compare the amount of CO<sub>2</sub> sequested this year to the amount in the last year, calculating the fraction of doublings that have occurred. The cost in the current year declines by the percentage decline per doubling of capacity specified in input data.  If the amount sequestered falls relative to the prior year, costs are held flat rather than increasing.
 
 ![ccs cost as fraction of first year cost](/img/endogenous-learning-CCSCostFraction.png)
 
 ### Solar PV, Onshore Wind, and Offshore Wind
 
-The calculations for electricity capacity types governed by endogenous learning (solar PV, onshore wind, and offshore wind) start out similarly to those for CCS.  We take in time-series input data on projected global deployments, and use `FoTOMRAEL` to limit the contribution of deployment outside the modeled region to learning calculations.  We store the last year values to use as a baseline for doublings, using input data on the start year amount (defined as the year before the first simulated year) of global capacity for use in the first time step.
+The calculations for electricity capacity types governed by endogenous learning (solar PV, onshore wind, and offshore wind) start out similarly to those for CCS, except that the input data already exclude the modeled region.  We take in time-series input data on projected deployment outside the modeled region (in-region capacity is removed in the input data workbook, not in the model), and use `FoTOMRAEL` to limit the contribution of deployment outside the modeled region to learning calculations.  We store the last year values to use as a baseline for doublings, using input data on the start year amount (defined as the year before the first simulated year) of global capacity for use in the first time step.
 
 ![amount of electricity capacity deployment affecting learning](/img/endogenous-learning-ElecCapAmtAffectingLearning.png)
 
@@ -84,7 +84,7 @@ We sum new utility-scale capacity additions and new distributed electricity capa
 
 ![calculating last year electricity capacity](/img/endogenous-learning-ElecCapLastYearCap.png)
 
-We compare the cumulative capacity built as of the current year to the cumulative capacity built one year earlier.  We calculate the number of doublings and apply the percentage decline in costs per doubling to find the ratio of current year costs to last year costs for each capacity type.  Because retirements of wind and solar are not significant during the model run, the cumulative-built total is a close approximation of the global installed base of these technologies; we track cumulative additions explicitly rather than relying on the current fleet so that learning is driven by deployment history rather than by the timing of any retirements.
+We compare the cumulative capacity built as of last year (plus this year's capacity outside the modeled region affecting learning) to the same total one year earlier.  We calculate the number of doublings and apply the percentage decline in costs per doubling to find the ratio of current year costs to last year costs for each capacity type.  Because retirements of wind and solar are not significant during the model run, the cumulative-built total is a close approximation of the global installed base of these technologies; we track cumulative additions explicitly rather than relying on the current fleet so that learning is driven by deployment history rather than by the timing of any retirements.  As with the other technologies, a decline in the deployment base never increases costs.
 
 ![electricity capacity cost as fraction of first year cost](/img/endogenous-learning-ElecCapCostFraction.png)
 
@@ -92,7 +92,7 @@ In the Electricity and Buildings sectors, this fraction is applied only to the h
 
 ### Batteries
 
-Endogenous learning for batteries is based on the sum of deployment of grid batteries and batteries inside electric vehicles (EVs), which make up the vast majority of deployed battery capacity (at least in the first modeled year).  We assume no meaningful retirement of grid batteries during the model run, so we calculate total deployment based on last-year capacity as calculated in the Electricity sector (we introduce a one year time delay to prevent circularity).
+Endogenous learning for batteries is based on the sum of deployment of grid batteries (standalone and hybrid, including policy-mandated grid batteries) and batteries inside electric vehicles (EVs), which make up the vast majority of deployed battery capacity (at least in the first modeled year).  We assume no meaningful retirement of grid batteries during the model run, so we calculate total deployment based on last-year capacity as calculated in the Electricity sector (we introduce a one year time delay to prevent circularity).
 
 We cannot assume that no EVs retire during the model run, so we need to track cumulative deployed EV battery capacity using a stock-and-flow approach.  Since the technology selection of newly-purchased vehicles in the current model year depends on EV's prices, we need to introduce a one-timestep delay.  All stocks are only updated after non-stock variables, so we add the new vehicles from last year to the stock as well as to a total containing the cumulative vehicles deployed through last year, which includes the stock (all vehicled deployed up through two years ago) and last year's deployment.
 
@@ -110,11 +110,11 @@ The next section is similar to the analogous sections in the CCS and electricity
 
 ![amount of battery capacity deployment affecting learning](/img/endogenous-learning-BatteriesAmtAffectingLearning.png)
 
-We compare the amount of battery capacity that exists in the current year to the amount that existed in the last year.  We calculate the number of doublings and apply the precentage decline in costs per doubling to find the ratio of current year costs to last year costs.
+We compare the amount of battery capacity that exists in the current year to the amount that existed in the last year.  We calculate the number of doublings and apply the precentage decline in costs per doubling to find the ratio of current year costs to last year costs.  If battery capacity falls relative to the prior year, costs are held flat rather than increasing.
 
 ![battery capacity cost as fraction of first year cost](/img/endogenous-learning-BatteriesCostFraction.png)
 
 The resulting fraction is used to reduce the cost of EV batteries (but not other EV components) in the Transportation sector, and to reduce the cost of grid batteries in the Electricity sector.
 
 ---
-*This page was last updated in version 4.0.5.*
+*This page was last updated in version 4.0.6.*

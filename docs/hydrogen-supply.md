@@ -92,6 +92,10 @@ Finally, we take the difference between the BAU and Policy case versions of this
 
 Separately, we track the construction costs of green hydrogen electricity capacity.  We use the construction cost per unit capacity calculated in the [Electricity Sector](electricity-sector-main) page. This is multiplied by the new off-grid capacity for green hydrogen demand. Policy and BAU-scenario costs are then compared to find the change in costs.
 
+We also track ongoing (sustaining) capital costs for the off-grid capacity serving green hydrogen demand. The off-grid capacity is multiplied by the weighted average annual capital cost per unit capacity from the [Electricity Sector](electricity-sector-main), which reflects age-dependent sustaining capital expenditures averaged across the generating fleet's vintages. The BAU case uses the BAU weighted average, so that the change in ongoing capital costs reflects only policy-driven differences.
+
+![ongoing capital costs for green hydrogen electricity](/img/hydrogen-supply-OngoingCapitalCosts.png)
+
 ![change in green hydrogen supply capital expenditures](/img/hydrogen-supply-GreenChgInCapEx.png)
 
 ## Non-Fuel Operational Expenditures
@@ -150,4 +154,4 @@ Remaining changes in revenues are allocated to the correct cash flow entities. T
 The changes in expenditures and revenues are then summed with those from other sectors on the [Cross-Sector Totals](cross-sector-totals) sheet.
 
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.0.6.*

@@ -11,14 +11,15 @@ The following model structure calculates the changes in cost due to construction
 
 ![change in generation construction costs](/img/electricity-sector-cash-Generation.png)
 
-The construction cost per unit capacity before subsidies is the same for most technologies in the BAU and policy cases. However, certain plant types subject to endogenous learning (covered in the [Endogenous Learning](endogenous-learning) sheet) can have policy driven capital cost declines. Differences in spending on generation and retrofitting costs arise from different quantities and types of power plants being constructed in each scenario as well as the extent to which endogenous learning changes the unsubsidized capital costs.
+The construction cost per unit capacity before subsidies is the same for most technologies in the BAU and policy cases. However, certain plant types subject to endogenous learning (covered in the [Endogenous Learning](endogenous-learning) sheet) can have policy driven capital cost declines. Differences in spending on generation and retrofitting costs arise from different quantities and types of power plants being constructed in each scenario as well as the extent to which endogenous learning changes the unsubsidized capital costs. For hybrid power plants, the construction cost also includes the battery storage paired with the plant, valued at the same endogenously calculated battery cost per unit capacity used for grid batteries.
 
 The costs in each case are subtracted from each other, and an averaging function in Vensim (set to a 3-year averaging time) is used to even out unrealistic spikiness that comes from dramatically different amounts of capacity being built in adjacent years. Three years was chosen as a compromise between more averaging and avoiding the average in of too many "zero" values from beyond the model run period (a shorter timeframe) and is a fair approximation of the average time to build new power plants (though this varies widely across different power plant types).
 
+Construction and retrofitting costs are also recovered through cost-of-service electricity rates (see the Electricity Rates section below). Each year's construction and retrofitting spending, net of construction subsidies, is converted into an annual repayment using a plant type specific capital recovery factor, based on the cost of electricity sector capital for power plants and the repayment period for financed electricity sector capital costs, and this repayment is charged for the length of the repayment period. Power plants that already exist in the start year are treated in a similar way: the model values the start-year capacity of each vintage at the start-year BAU construction cost per unit capacity, converts this to an annual repayment using the same capital recovery factor, and continues charging it until that vintage reaches the end of the repayment period. Vintages already older than the repayment period in the start year have no remaining repayment. These cost recovery values are used only in the cost-of-service rate calculation.
 
 ### Ongoing Capital Costs
 
-Existing power plants have ongoing capital costs beyond O&M costs. For example, nuclear plants need somewhat regular capital investment to maintain safety. We track ongoing capital costs for the existing fleet by multiplying the surviving capacity by a power plant type specific weighted average annual capital cost per unit capacity to find the change in ongoing capital costs. These ongoing capital costs are tracked separately from the vintage-based recovery of historical construction financing described above.
+Existing power plants have ongoing capital costs beyond O&M costs. For example, nuclear plants need somewhat regular capital investment to maintain safety. We track ongoing capital costs for the existing fleet by multiplying the surviving capacity by a power plant type specific weighted average annual capital cost per unit capacity to find the change in ongoing capital costs. The weighted average is taken across vintages whose sustaining capital expenditure per unit capacity rises with the vintage's age (a base value plus an age slope and additional adders beyond 30 and 40 years of age, all from input data), so ongoing capital costs grow as the fleet ages and fall as older units retire. These ongoing capital costs are tracked separately from the vintage-based recovery of historical construction financing described above.
 
 ![change in decommissioning costs](/img/electricity-sector-cash-ongoingcapital.png)
 
@@ -30,9 +31,11 @@ We also track changes in the costs to transport and store CO<sub>2</sub> that ha
 
 ### Spending on Batteries
 
-The model determines the change in expenditures due to the construction of grid batteries and batteries at hybrid power plants.  Batteries are one of the technologies for which the model endogenously calculates cost declines based on total global deployment.  The cost declines are based on the number of doublings of battery capacity relative to the start year, as discussed in the [Endogenous Learning](endogenous-learning) code. Battery costs are broken into energy costs, power costs, and balance of system costs.
+The model determines the change in expenditures due to the construction of standalone grid batteries, including both batteries deployed by the model and those required by grid battery storage mandates. Batteries at hybrid power plants are counted as part of the construction cost of their host plant (see Generation Construction Costs above).  Batteries are one of the technologies for which the model endogenously calculates cost declines based on total global deployment.  The cost declines are based on the number of doublings of battery capacity relative to the start year, as discussed in the [Endogenous Learning](endogenous-learning) code. Battery costs are broken into energy costs, power costs, and balance of system costs.
 
 We find the difference in total new capacity of deployed battery storage in both the BAU and policy cases to determine the change in battery storage built this year.  This is multiplied by the cost of batteries per unit capacity, which is calculated here based on the endogenous learning calculations.   The structure is as follows:
+
+![grid battery cost per unit capacity](/img/electricity-sector-cash-BatteryCostChain.png)
 
 ![change in battery costs](/img/electricity-sector-cash-Batteries.png)
 
@@ -68,23 +71,21 @@ When power plants are retired, they have to be decommissioned. We track changes 
 
 ![change in decommissioning costs](/img/electricity-sector-cash-decommissioning.png)
 
-### Generation and Grid Battery Electricity Supply Subsidies
+### Electricity Generation Subsidies
 
 Qualifying power plants may also receive a subsidy per unit of electricity generation. We use Vensim's stock and flow structure to track the eligibility of new and retrofit capacity for generation subsidies over time. In the BAU, we assume subsidies are paid for ten years after the construction of each power plant. We then take the difference between the policy and BAU generation subsidies paid to feed into expenditure and revenue tracking.
 
 ![change in generation subsidies](/img/electricity-sector-cash-generationsubsidies.png)
 
-In addition to subsidies for new and retrofit capacity, users can apply a production subsidy to existing plants, specified per unit of output for each electricity source. This is combined with any business-as-usual existing-plant subsidy (after applying the `Reduction in BAU Subsidies` lever) to give a total subsidy per unit output for existing plants. The model converts this per-output value to a per-capacity basis using each source's prior-year capacity factor, and the result feeds the plant revenue used in the retirement and capacity-expansion calculations. 
-
-A similar structure is used to track subsidy payments for electricity supplied to the grid by batteries. 
-
-![change in generation subsidies](/img/electricity-sector-cash-batterygenerationsubsidies.png)
+In addition to subsidies for new and retrofit capacity, users can apply a production subsidy to existing plants, specified per unit of output for each electricity source. This is combined with any business-as-usual existing-plant subsidy (after applying the `Reduction in BAU Subsidies` lever) to give a total subsidy per unit output for existing plants. The model converts this per-output value to a per-capacity basis using each source's prior-year capacity factor, and the result feeds the plant revenue used in the retirement and capacity-expansion calculations. The subsidy payments themselves, found by multiplying each source's electricity generation by its total subsidy per unit output for existing plants, are added to the payments for new and retrofit capacity in the change in generation subsidies paid by government.
 
 ### Other Grid Battery Subsidies
 
-We also track two other categories of spending on grid battery subsidies: subsidies for production of grid batteries (paid to manufacturers), and subsidies per unit capacity installed (paid to electricity suppliers).
+We also track two other categories of spending on grid battery subsidies: subsidies for production of grid batteries (paid to manufacturers), and subsidies per unit capacity installed (paid to electricity suppliers). Production subsidies apply to all new battery capacity, including batteries at hybrid power plants. The installation subsidies tracked here cover standalone grid batteries, including mandated additions; installation subsidies for batteries at hybrid power plants are counted with the host plant's construction subsidies (see Construction and CCS Subsidy Payments below).
 
 ![other grid battery subsidies](/img/electricity-sector-cash-other-battery-subsidies.png)
+
+![grid battery construction subsidies](/img/electricity-sector-cash-BatteryConstructionSubsidies.png)
 
 ### Zero Emission Credit Subsidies
 
@@ -98,7 +99,7 @@ The following structure handles differences in construction subsidies for new an
 
 ![change in construction subsidy payments](/img/electricity-sector-cash-Subsidies.png)
 
-In the BAU case, capacity and CCS retrofit subsidies are applied based on BAU new and retrofit capacity. In the policy case these subsidies can be affected by multiple policies (which change the subsidy amounts) and the amount of capacity receiving incentives that is deployed. The change in capacity construction and CCS subsidies reflects differences in subsidy levels and new and retrofit capacity.
+In the BAU case, capacity and CCS retrofit subsidies are applied based on BAU new and retrofit capacity. In the policy case these subsidies can be affected by multiple policies (which change the subsidy amounts) and the amount of capacity receiving incentives that is deployed. The change in capacity construction and CCS subsidies reflects differences in subsidy levels and new and retrofit capacity. For hybrid power plants, capacity construction subsidies also include the per-unit-capacity grid battery subsidy applied to the plant's paired battery storage.
 
 This section also calculates the change in CCS subsidy payments based on the amount of CCS-equipped new or retrofit capacity in each timestep and the subsidy duration.
 
@@ -116,7 +117,7 @@ Transmission operating and maintenance costs are calculated based on the growth 
 
 The EPS includes estimates of spur line costs, or the cost of running lines from a power plant to the bulk transmission system, in cash flow estimates. These costs are defined in input data and can vary by power plant type. Each power plant type can have an associated cost, in $/MW, that gets multiplied by new capacity to estimate the total spending on spur lines for each power plant type. These costs are averaged out over a set number of years, defined in input data, to avoid spikiness, and to reflect the fact that, like power plants, spur line construction often takes place over a duration exceeding a year. 
 
-![change in demand response costs](/img/electricity-sector-cash-spurlines.png)
+![change in spur line construction costs](/img/electricity-sector-cash-spurlines.png)
 
 ### Distribution System Costs
 
@@ -136,23 +137,23 @@ The model also calculates the amount spent on buying electricity (from beyond th
 
 We multiply the price of imported electricity by the amount imported in the BAU and Policy cases, then take the difference to find the change in amount spent on importing electricity.
 
-For exports, we do something very similar, except that we adjust the exported electricity price by changes in the calculated electricity market prices in the model. This step is required because in BAU and policy scenarios where a lot of low marginal cost clean energy is deployed, the market price can drop significantly, and the export price should reflect changing market prices. 
+For exports, we value exported electricity at the hourly marginal dispatch cost calculated on the [Electricity Sector Main](electricity-sector-main) page, multiplying exports in each hour by that hour's marginal dispatch cost and summing over the year. This means the value of exports reflects changing market prices: in BAU and policy scenarios where a lot of low marginal cost clean energy is deployed, the market price can drop significantly, and export revenue falls with it.
 
-In the future, we hope to make imports and exports more dynamic and to calculate prices endogenously.
+In the future, we hope to make imports more dynamic and to calculate import prices endogenously.
 
 ![change in electricity import and export spending](/img/electricity-sector-cash-elecimportcash.png)
 
+![change in amount received from electricity exports](/img/electricity-sector-cash-elecexportcash.png)
+
 ### Energy Market Costs
 
-Annual energy market costs are calculated in the EPS. These costs are calculated using the hourly marginal dispatch costs calculated on the [Electricity Sector Main](electricity-sector-main) tab. They reflect the marginal hourly dispatch costs across the entire electricity system. Total costs are estimated by multiplying least cost dispatch and the market price in each hour, then summing over the year. Costs for resources dispatched under guaranteed dispatch, the portfolio-standard qualifying dispatch mechanism (covering both RPS- and CES-qualifying resources), and the zero or negative dispatch cost mechanism are not included here, because it is assumed these resources have fixed contracts and guaranteed cost recovery. For example, many clean energy projects have power purchase agreements (PPAs) in which a price per megawatthour is agreed upon, with excess revenue credit back to the developer and shortfalls in revenue being made up by the offtaker (the purchaser of the power).
+Annual energy market costs are calculated in the EPS. These costs are calculated using the hourly marginal dispatch costs calculated on the [Electricity Sector Main](electricity-sector-main) tab. They reflect the marginal hourly dispatch costs across the entire electricity system. Total costs are estimated by multiplying the total electricity dispatched in each hour, across all dispatch mechanisms (guaranteed dispatch, portfolio-standard qualifying dispatch covering both RPS- and CES-qualifying resources, and least cost dispatch), by the market price in that hour, then summing over the year.
 
 ![change in energy market costs](/img/electricity-sector-cash-energymarket.png)
 
 ### Clean Electricity Standard Costs
 
-The EPS includes a unified portfolio-standard mechanism that can simultaneously enforce a Clean Energy Standard (CES) and a Renewable Portfolio Standard (RPS). This mechanism is discussed fully on the [Electricity Sector Main](electricity-sector-main) page but reviewed here. Each portfolio standard computes its own credit price that drives sufficient incremental qualifying generation, and the cost calculations described below are performed separately for the RPS and CES paths and then aggregated. The total costs of the market-driven portfolio-standard component, which includes both credit costs and the required revenue for qualifying resources, are calculated in the "CES Costs for Market Based CES Mechanism" variable (despite its name, this variable covers both RPS and CES paths). Costs are estimated by multiplying the output of qualifying plants by the credit price and the market revenue that would have been received. We assume that in each year the qualifying resources enter into a contract for their electricity as the sum of the credit price and the anticipated market revenue, i.e., that the credit price is guaranteed to those resources over the financial lifetime of the asset. The portfolio-standard mechanism also includes hybrid resources. When energy market costs are calculated (discussed above) they do not include these resources to avoid double counting the revenue.
-
-Additionally, as the CES approaches 100%, the EPS engages a mechanism to ensure sufficient clean firm/flexible capacity is available. The amount of capacity required and the threshold at which this requirement is triggered are determined by input data. As with the market based CES mechanism, it is assumed that these credits are made available at a fixed amount for the financial lifetime of the asset. These costs are estimated by first finding the market price and then multiplying it by the capacity deployed under this mechanism.
+The EPS includes a unified portfolio-standard mechanism that can simultaneously enforce a Clean Energy Standard (CES) and a Renewable Portfolio Standard (RPS). This mechanism is discussed fully on the [Electricity Sector Main](electricity-sector-main) page but reviewed here. Each portfolio standard computes its own credit price that drives sufficient incremental qualifying generation, and the cost calculations described below are performed separately for the RPS and CES paths and then aggregated. The total costs of the market-driven portfolio-standard component are calculated in the "CES Costs for Market Based CES Mechanism" variable (despite its name, this variable covers both RPS and CES paths). Costs are estimated by multiplying the expected output of new qualifying plants by the credit price (for the CES path, the sum of the CES and RPS credit prices). We assume that in each year the qualifying resources enter into a contract for their electricity as the sum of the credit price and the anticipated market revenue, i.e., that the credit price is guaranteed to those resources over the financial lifetime of the asset. The portfolio-standard mechanism also includes hybrid resources. The market revenue these resources earn is already counted in energy market costs (discussed above), so only the credit price is added here.
 
 These costs are fed into a stock and flow structure to reflect their availability during the lifetime of the assets and track the total change in costs of a CES program over time. After the financial lifetime, the credits expire and the costs are reduced.
 
@@ -160,15 +161,13 @@ These costs are fed into a stock and flow structure to reflect their availabilit
 
 ### Capacity Market Costs
 
-The EPS includes a capacity mechanism to ensure sufficient capacity is available for periods of peak demand and limited resource availability. As outlined on the [Electricity Sector Main](electricity-sector-main) page, the model computes a capacity price during each of the two reliability passes (the clean-dispatchable-only pass and the all-resources pass), based on the single binding peak hour identified in that pass. Computed capacity payments are paid out to qualifying resources, adjusted for their availability during the binding hour of the mechanism. Capacity prices are recalculated every year and only paid out on a yearly basis. This approach is meant to approximate a market-based capacity construct.
+The EPS includes a capacity mechanism to ensure sufficient capacity is available for periods of peak demand and limited resource availability. As outlined on the [Electricity Sector Main](electricity-sector-main) page, the model computes a single capacity price each year through an optimization loop, based on the single binding net peak hour. Capacity payments are made to all installed generation capacity, with each source's payment scaled by its bid capacity factor in the binding hour, its effective load carrying capability, and, for resources that do not qualify under the RPS or CES, the reliability credit factor. That factor declines toward zero as the portfolio-standard requirement approaches 100%, so non-qualifying resources gradually lose their capacity payments under a tightening clean electricity requirement, and this section includes variables and code to ensure that dynamic is captured. Capacity prices are recalculated every year; the resulting annual capacity market costs are recovered through electricity rates over a set repayment period (three years in the U.S. model), as described in the Electricity Rates section below. This approach is meant to approximate a market-based capacity construct.
 
-A control lever setting allows the use of an alternative method. When this toggle is enabled, the capacity price is calculated similarly but only paid out to resources built in that year specifically for reliability purposes. The model assumes that the capacity payment is fixed annually for the financial lifetime of the asset being built. This approximates a different kind of market construct, such as a tolling agreement or the way in which a vertically integrated utility might contract for capacity over many years. This approach reduces the annual cost of the capacity mechanism but can lead to higher long-term costs, depending on the specifics of the capacity need in the model region.
+Battery storage is integrated into the capacity mechanism with its own payment calculation. Standalone grid batteries are paid the capacity price on their power capacity (in MW), discounted by a usage factor for the binding peak hour from input data and scaled by grid battery round-trip efficiency; the reliability credit factor does not apply to them. Batteries at hybrid power plants are not paid separately here.
 
-Battery storage is integrated into the capacity mechanism and payments follow the same structure, depending on whether the control lever is enabled. 
+The model also tracks capacity that is kept online only because of its predicted capacity payment (see the retirements discussion on the [Electricity Sector Main](electricity-sector-main) page). The annual cost of keeping this capacity online is charged at the capacity price and enters the cost-of-service recoverable costs used in electricity rates.
 
-The structure below covers calculation of these costs for both approaches and for both traditional resources and battery storage resources, across both reliability passes.
-
-When the RPS/CES policy lever is set to a value of 100%, non-qualifying resources lose their eligibility for the capacity market, and this section includes variables and code to ensure that dynamic is captured.
+The structure below covers calculation of these costs for both traditional resources and battery storage resources.
 
 ![change in capacity costs](/img/electricity-sector-cash-capacity.png)
 
@@ -194,7 +193,7 @@ Changes in capacity construction costs and ongoing capital costs are aggregated 
 
 Changes in spur line costs, distribution construction costs, and transmission construction costs are aggregated and assigned to ISIC codes.
 
-Changes in spending on batteries is assigned directly to the electrical equipment ISIC code, which includes battery suppliers.
+Changes in spending on standalone grid batteries are assigned directly to the electrical equipment ISIC code, which includes battery suppliers. Spending on batteries at hybrid power plants is part of the host plant's construction costs and is assigned to ISIC codes along with them.
 
 The above changes spending are summed by ISIC code to find a subtotal of the total change in amount spent on capital by recipient ISIC code.
 
@@ -218,19 +217,21 @@ Other revenue is aggregated and assigned to the correct cash flow entity, typica
 
 This step also aggregates the total change in revenue by ISIC code.
 
+![allocating nonenergy industry revenue changes](/img/electricity-sector-cash-RevenueByEntityNonenergy.png)
+
 ![change in electricity revenues by cash flow entity](/img/electricity-sector-cash-revenuebyentity.png)
 
 ## Electricity Rates
 
 The EPS estimates electricity rates, which are used throughout the model. Total rates are calculated on the [Fuels](fuels) page. The wholesale energy, transmission, and distribution components of the rates are calculated here in the electricity sector cash flows. The methodology is discussed below.
 
-The model computes per-unit electricity rates along two parallel paths and then blends them. The first path is a market-based rate, in which costs that vary with the wholesale energy market and capacity market flow through to consumers via the recoverable-costs structure described in this section. The second path is a cost-of-service rate, which represents the regulated-utility framework where electricity suppliers recover the full revenue requirement (including a rate of return on rate base) directly through rates, regardless of wholesale price formation. Each path produces its own per-unit rate; the final rate seen in the model is a weighted average of the two, weighted by the share of electricity demand served under cost-of-service ratemaking versus market-based ratemaking. That share is read from input data and may differ across regions and over time. The structure described below applies to both paths; the cost-of-service path uses a parallel set of intermediate variables that aggregate the same underlying costs into a regulated-revenue-requirement framing.
+The model computes per-unit electricity rates along two parallel paths and then blends them. The first path is a market-based rate, in which costs that vary with the wholesale energy market and capacity market flow through to consumers via the recoverable-costs structure described in this section. The second path is a cost-of-service rate, which represents the regulated-utility framework where electricity suppliers recover the full revenue requirement (including a rate of return on rate base) directly through rates, regardless of wholesale price formation. Each path produces its own per-unit rate; the final rate seen in the model is a weighted average of the two, weighted by the share of electricity demand served under cost-of-service ratemaking versus market-based ratemaking. That share is read from input data and may differ across regions and over time. The structure described below covers the market-based path; the cost-of-service path, described at the end of the cost summation below, shares the system and other costs but replaces wholesale market and capacity market payments with the recovery of generation and capital costs.
 
 Transmission, distribution, grid storage, and battery costs are considered system costs. This means these costs, including a rate of return, are recovered directly from electricity users. These costs are treated as financed over a set financing period. To estimate the annual recoverable costs, we sum the annual change in spending for each category and apply a calculated capital recovery factor, amortizing a capital investment over an investment period and at an assumed interest rate, which is the weighted average cost of electricity sector capital specified in input data. This methodology converts annual spending by utilities into a recoverable annual cost spread out over several years. We compare these estimates to find the change in repayment for financing as well.
 
 ![repayment for electricity sector capital](/img/electricity-sector-cash-ratescapital.png)
 
-Next, we incorporate annual O&M and other expenditures. These include: transmission O&M, distribution O&M, costs of importing electricity, carbon price rebates due to CCS, costs of providing demand response, any income from subsidies paid for output from grid batteries, and the amortized decommissioning costs. All of these are considered recoverable in rates and charged directly.
+Next, we incorporate annual O&M and other expenditures. These include: transmission O&M, distribution O&M, costs of importing electricity, carbon price rebates due to CCS, costs of providing demand response, and the amortized decommissioning costs. All of these are considered recoverable in rates and charged directly.
 
 ![repayment for other electricity sector costs](/img/electricity-sector-cash-ratesother.png)
 
@@ -238,15 +239,19 @@ Then, we move to adding other annual costs that would be recovered through rates
 
 Next, we add the annual ongoing CES costs as calculated above. 
 
-We then add in the energy costs for non-portfolio-standard-qualifying resources (i.e., resources that qualify for neither the RPS nor the CES) with zero or negative dispatch costs, also calculated above. 
+Summing all of the above gives us the total annual costs that need to be recovered through market-based rates.
 
-Summing all of the above gives us the total annual costs that need to be recovered through rates.
+For cost-of-service rates, the total annual recoverable costs are the sum of four components. The first is the total cost of power generation: fuel, fixed and variable O&M, electricity imports, CCS transportation and storage, and ongoing CES costs, less carbon price rebates for CCS, CCS subsidies, and generation subsidies per unit output for new and retrofit capacity. The second is the annual cost recovery for new and historical power plant construction and retrofits described in the Generation Construction Costs section. The third is the annual cost of keeping capacity online because of its predicted capacity payment. The fourth is the cost of transmission, distribution, storage, and other system costs, which includes the financed transmission, distribution, and grid battery capital repayments, transmission and distribution O&M, demand response, decommissioning, and start-year transmission and distribution capital costs also used in the market-based path. Wholesale energy market costs and capacity market repayments are not part of this path, which recovers actual generation and capital costs rather than market payments.
 
-![repayment for other electricity sector costs](/img/electricity-sector-cash-ratessum.png)
+![cost of power generation for cost-of-service rates](/img/electricity-sector-cash-CostOfPowerGeneration.png)
+
+![cost of capacity for cost-of-service rates](/img/electricity-sector-cash-CostOfCapacity.png)
+
+![total cost of service rates](/img/electricity-sector-cash-ratessum.png)
 
 We then divide this total by the sum of total electricity demand plus exports to estimate a cost per unit electricity delivered, separately for the market-based and cost-of-service paths, and compare each against its BAU equivalent. The two are then blended using the cost-of-service share of electricity demand to produce the final rate metric.
 
 On the fuels page, we calculate the difference between this value and cost of delivered electricity from input data, the difference of which we assume are other components of rates not captured in the model. We then calculate rates by holding this difference constant and adding it to the calculated rates using the structure above. This calculation flow is detailed on the [Fuels](fuels) page.
 
 ---
-*This page was last updated in version 4.0.5.*
+*This page was last updated in version 4.0.6.*
