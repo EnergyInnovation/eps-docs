@@ -2,7 +2,7 @@
 title: Output Graphs Available in the Web Interface
 ---
 
-The web interface allows the user to visualize Energy Policy Simulator (EPS) results through a variety of output graphs.  As of EPS 3.3.1, there are more than 200 different output graphs available to be displayed in the web interface.  However, which graphs are shown in the web interface may be customized for different EPS country or regional adaptations.  Many graphs include more than one data series, such as a graph of power plant capacity by plant type (coal, nuclear, hydro, etc.). (Thousands more are available in the [downloadable version](download) of the EPS.)
+The web interface allows the user to visualize Energy Policy Simulator (EPS) results through a variety of output graphs.  There are more than 200 different output graphs available to be displayed in the web interface.  However, which graphs are shown in the web interface may be customized for different EPS country or regional adaptations.  Many graphs include more than one data series, such as a graph of power plant capacity by plant type (coal, nuclear, hydro, etc.). (Thousands more are available in the [downloadable version](download) of the EPS.)
 
 ## List of Output Graphs
 
@@ -103,6 +103,26 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
   * **CO**
 
+* ### Emissions (by Sector and GHG)
+
+  _Annual CO<sub>2</sub>, CH<sub>4</sub>, and N<sub>2</sub>O emissions (in CO<sub>2</sub>e) within each sector; the Industry graph also includes F-gases_
+
+  * **Agriculture**
+
+  * **Buildings**
+
+  * **District Heat & Hydrogen**
+
+  * **Electricity**
+
+  * **Industry**
+
+  * **Land Use**
+
+  * **Transportation**
+
+  * **Water & Waste**
+
 * ### Emissions: Energy-Related CO<sub>2</sub>
 
   * **By Sector**
@@ -172,6 +192,10 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
   * **Change in Government Cash Flow by Source**
 
     _This graph presents the net effects of the selected policies on government cash flow prior to government decisions about how to handle its changes in cash flow (which can be controlled with the Government Revenue Accounting levers in the policy selector pane). This metric is broken out by sources of cash flow changes (Carbon Tax Revenue, Fuel Tax Revenue, EV Subsidy, Vehicle Battery Subsidy, Electric Generation Subsidy, Electricity Capacity Construction Subsidy, Distributed Solar Subsidy, Fuel Subsidy, CCS subsidy, National Debt Interest, Remaining Government Cash Flows). "Remaining Government Cash Flows" is often dominated by changes in tax receipts due to overall growth or shrinkage of the economy (GDP and Employee Compensation) but also includes changes in costs paid by government, such as spending on energy to power government buildings._
+
+  * **Change in Average Annual Energy Costs per Household**
+
+    _Change in average annual household spending on energy, broken out into home energy (electricity, natural gas, and other fuels) and transportation energy (petroleum, electricity, and other fuels)_
 
 * ### Financial: Jobs, GDP, and Earnings
 
@@ -253,6 +277,10 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
     _The same metric as above, graphed as a percent change in the number of deaths of people identifying as each Hispanic or Latino status (relative to the BAU case in that same year)._
 
+  * **Avoided Premature Infant Deaths**
+
+    _Annual avoided premature deaths among infants as a result of a policy package_
+
   * **Monetized Avoided Deaths & Climate Benefits**
 
     _Monetized annual avoided premature deaths (according to the Value of a Statistical Life) and climate benefits (according to the Social Cost of Carbon) as a result of a policy package_
@@ -261,13 +289,13 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
     _Annual avoided lost workdays as a result of a policy package_
 
-  * **Avoided Respiratory Symptoms and Bronchitis**
-
-    _Annual avoided respiratory symptoms and bronchitis as a result of a policy package_
-
   * **Avoided Asthma Attacks**
 
     _Annual avoided asthma attacks as a result of a policy package_
+
+  * **Avoided Asthma Incidence**
+
+    _Annual avoided new cases of asthma as a result of a policy package_
 
   * **Avoided Nonfatal Heart Attacks**
 
@@ -277,19 +305,39 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
     _Annual avoided hospital admissions as a result of a policy package_
 
-  * **Avoided Respiratory ER Visits**
+  * **Avoided Respiratory and Cardiac ER Visits**
 
-    _Annual avoided respiratory emergency room visits as a result of a policy package_
+    _Annual avoided respiratory and cardiac emergency room visits as a result of a policy package_
 
   * **Avoided Minor Restricted Activity Days**
 
     _Annual avoided minor restricted activity days as a result of a policy package_
 
+  * **Avoided Hay Fever/Rhinitis Incidence**
+
+    _Annual avoided cases of hay fever and allergic rhinitis as a result of a policy package_
+
+  * **Avoided Lung Cancer Incidence**
+
+    _Annual avoided new cases of lung cancer as a result of a policy package_
+
+  * **Avoided Stroke Incidence**
+
+    _Annual avoided strokes as a result of a policy package_
+
+  * **Avoided Out of Hospital Cardiac Arrest Incidence**
+
+    _Annual avoided out-of-hospital cardiac arrests as a result of a policy package_
+
+  * **Avoided Lost Schooldays**
+
+    _Annual avoided lost school days as a result of a policy package_
+
 * ### Electricity Generation, Capacity, and Demand
 
   * **Generation**
 
-    _Annual electricity generation by power plant type_
+    _Annual electricity generation by power plant type, including distributed solar and behind-the-meter gas_
 
   * **Policy-Driven Change in Generation**
 
@@ -297,7 +345,7 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
   * **Capacity**
 
-    _Annual electricity generation capacity by power plant type_
+    _Annual electricity generation capacity by power plant type, including distributed solar and behind-the-meter gas_
 
   * **Policy-Driven Change in Capacity**
 
@@ -305,9 +353,9 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
   * **Electricity Demand by Sector**
 
-    _Electricity demand broken out by sector (District Heat & Hydrogen, Water & Waste, Agriculture, Transportation, Industry, Buildings)_
+    _Electricity demand broken out by sector (dedicated clean sources for hydrogen production, hydrogen grid electricity use, District Heat, Water & Waste, Agriculture, Transportation, Data Centers, Industry, Buildings)_
 
-  * **Share of Generation from Clean Sources (including CCS)**
+  * **Share of Generation from Clean Sources**
 
    _Share of electricity generation from clean sources, including distributed generation (dependent on region's RPS or CES definitions)_
 
@@ -319,11 +367,11 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
    _Kilowatt-hour per unit GDP_
 
-* ### Electricity: Levelized Costs, Curtailment, Emissions and Water Use
+* ### Electricity: Construction Costs, Curtailment, Emissions and Water Use
 
-  * **Levelized Cost of Electricity (after subsidies)**
+  * **Cost of Electricity Generation Capacity Construction (after subsidies)**
 
-    _Levelized Cost of Electricity by power plant type in 2020, 2030, 2040, and 2050 (after any subsidies for generation or power plant construction)_
+    _Construction cost per unit of new electricity generation capacity by power plant type in 2025, 2030, 2040, and 2050 (after any subsidies for power plant construction)_
 
   * **Marginal Dispatch Cost of Electricity**
 
@@ -349,29 +397,22 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
   _Hourly dispatch by power plant type for the following days:_
 
-  * **2050, Average Summer Day**
+  * **2050, Representative Day 1** through **Representative Day 4**
 
-  * **2050, Average Fall Day**
+    _The four representative (average) seasonal days that make up the model's electricity timeslices_
 
-  * **2050, Average Winter Day**
+  * **2050, Net Peak Summer Day**
 
-  * **2050, Average Spring Day**
+  * **2050, Net Peak Winter Day**
 
-  * **2050, Peak Summer Day**
+    _The summer and winter peak days used in reliability calculations, on which demand net of variable renewable output is highest_
 
-  * **2050, Peak Winter Day**
+  * **2025, Representative Day 1** through **Representative Day 4**
 
-  * **2021, Average Summer Day**
+  * **2025, Net Peak Summer Day**
 
-  * **2021, Average Fall Day**
+  * **2025, Net Peak Winter Day**
 
-  * **2021, Average Winter Day**
-
-  * **2021, Average Spring Day**
-
-  * **2021, Peak Summer Day**
-
-  * **2021, Peak Winter Day**
 
 * ### Transport: Vehicles by Technology
 
@@ -381,11 +422,11 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
   * **Sales: Buses**
 
-  * **Sales: Light Freight Trucks**
+  * **Sales: Light & Medium Freight Trucks**
 
-  * **Sales: Med & Heavy Freight Trucks**
+  * **Sales: Heavy Freight Trucks**
 
-  * **Sales: Motorbikes**
+  * **Sales: Passenger Motorbikes**
 
   _Stock by vehicle technology for the following classes of vehicles:_
 
@@ -393,11 +434,11 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
   * **Fleet Composition: Buses**
 
-  * **Fleet Composition: Light Freight Trucks**
+  * **Fleet Composition: Light & Medium Freight Trucks**
 
-  * **Fleet Composition: Med & Heavy Freight Trucks**
+  * **Fleet Composition: Heavy Freight Trucks**
 
-  * **Fleet Composition: Motorbikes**
+  * **Fleet Composition: Passenger Motorbikes**
 
 * ### Transport: Travel Demand, Fuel Use, and Emissions
 
@@ -669,7 +710,7 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
 
 * ### Fuel Costs (by Fuel, by Sector)
 
-  _Fuel costs in 2021, 2030, 2040, and 2050 by fuel type, by sector (Commercial Buildings, Residential Buildings, Electricity, Transportation, Industry, District Heat and Hydrogen, Geoengineering)_
+  _Fuel costs in 2025, 2030, 2040, and 2050 by fuel type, by sector (Commercial Buildings, Residential Buildings, Electricity, Transportation, Industry, District Heat and Hydrogen, Geoengineering)_
 
   * **Electricity**
 
@@ -718,4 +759,4 @@ The web interface allows the user to visualize Energy Policy Simulator (EPS) res
     _Capital cost of hydrogen production equipment to produce one kilogram H<sub>2</sub> per year via electrolysis_
 
 ---
-*This page was last updated in version 4.0.4.*
+*This page was last updated in version 4.0.6.*

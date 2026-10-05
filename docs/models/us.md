@@ -56,6 +56,57 @@ The inclusion of a reviewer on this list does not imply endorsement of the model
 
 ## Version History
 
+### **4.0.7 - October 1, 2026**
+
+* New Features
+  * Credits new power plants for dispatching more cheaply than the existing fleet when evaluating whether new capacity is cost-effective
+* Bug Fixes
+  * Stops counting demand-shifting headroom (demand response, standalone batteries, pumped hydro, EV batteries) and hybrid battery storage as binding-hour supply in the dispatchable reliability pass, since these technologies are already credited through their reduction of binding-hour demand
+
+### **4.0.6 - October 1, 2026**
+
+* New Features
+  * Replaces the capacity supply curve lookup with a parametric supply curve anchored to each plant type's existing or seed capacity, and replaces the soft build cap's growth fraction with an annual build limit based on each source's share of the fleet and per-plant-type minimum buildable amounts
+  * Redesigns cost-driven power plant retirements
+  * Rebuilds the reliability capacity mechanism around a single dispatchable-reliability pass that derates the reliability credit of resources that do not qualify under the RPS/CES and adds emergency non-qualifying capacity if the binding-hour need cannot otherwise be met
+  * Credits idle demand-shifting capacity (demand response, standalone batteries, pumped hydro, EV batteries) and hybrid battery storage as reliability supply in the binding peak hour, and stops raising the capacity price once supply reaches 95% of what the fleet could achievably build
+  * Replaces the flat annual capital cost per unit capacity with a sustaining capital expenditure
+  * Rebuilds the hourly allocation of net electricity imports and exports on net load (supply relative to demand by hour) and caps hourly imports at that hour's demand
+  * Adds separate BAU and policy RPS/CES qualifying source definitions with a policy lever to use the non-BAU definitions and a lever to replace the BAU RPS/CES percentage schedule with an alternative schedule in policy scenarios
+  * Adds a historical-year capacity factor calibration adjustment for calibrating modeled generation to observed data
+  * Refines the input-output model: fuel-industry revenue changes are carried through on a supply-chain basis by ISIC code with an export backing share by fuel, energy ISIC codes are excluded from induced respending, and household and government respending distributions scale with exogenous output growth
+  * Adds a data center load growth assumption selector to the web app
+  * Adds behind-the-meter gas generation (for data centers) to distributed generation graphs and adds data center electricity use and total emissions by sector and pollutant as outputs
+* Bug Fixes
+  * Converts industry pass-through expenses to unit costs (with a hold at minimum production) to remove oscillation in input-output outputs
+  * Incorporates the time adjustment factor for capacity coming online during the modeled year into revenue per unit capacity
+  * Allows the capacity price to recover after reaching zero when capacity needed for reliability subsequently retires
+  * Rebuilds the stock tracking capacity kept online due to predicted capacity payments as a bounded pool, avoiding double counting of plants and unbounded growth in cost-of-service rates
+  * Charges CO2 transport and storage costs in all dispatch cost calculations and uses the BAU version of those costs in BAU new-plant variable costs
+  * Corrects CES compliance to include time-adjusted capacity factors, fixes hard coal CCS costs, and adds numerical tolerances to the RPS/CES maximum-achievable checks
+  * Resolves several policy/BAU mismatches (variable ordering, quantization of annual dispatch, a missing floor in BAU qualifying electricity demand, green hydrogen capital costs, LCFS fuel displacement) and floors policy-case LCFS compliance at BAU biofuel volumes
+  * Removes double counting of hydrogen CCS costs in cash flows and corrects the pollutant emissions calculation for distributed electricity sources in buildings
+  * Prevents endogenous learning from increasing costs in any year
+  * Drops the electricity export revenue credit from the cost-of-service rate base and spreads recoverable costs over demand plus exports
+  * Corrects double counting in crude oil production, import, and export balancing and in the energy pipelines and gas processing fuel-production adjustment
+  * Fixes input-output handling of energy-producing industries (double-counted electric utility expenses and value added tied to rate-driven output changes), prevents floating-point errors from inconsistent import/export data, and floors output by ISIC code at zero
+  * Corrects the Advanced Clean Cars I implementation to run through 2025
+  * Corrects the transportation fuel cost output (Output Fuel Costs per Unit Energy by Sector) to report a usage-weighted cost for each fuel rather than a single value averaged across all transportation fuels
+  * Other data file fixes: BRZSPbS, ICpUEfEBE (rural residential other), 45Q currency year, 45X in the policy scenario, offshore wind spur line costs, natural gas and LPG passenger car fuel economy (BHNVFEAL, BNVFE), commercial buildings energy use
+* Data updates
+  * Rebases transportation input files to EIA Annual Energy Outlook 2026 and recalibrates vehicle technology shareweights (including CNG and LPG vehicles); adds non-placeholder prices for alternative bus and truck technologies
+  * Updates heat rates to NREL ATB 2024, adds a fuel surcharge for small modular reactors, updates coal fixed O&M costs, and replaces the annual capital cost input with sustaining capital expenditure by generator age
+  * Updates start-year capacities and BAU planned additions to EIA Form 860M (July 2026) and Electric Power Monthly (August 2026)
+  * Credits BAU mandated capacity additions and retirements (including grid batteries) by the fraction of the year each unit will be generating
+  * Updates ELCC values (Cambium 2024 P30 statistic for wind and solar, revised offshore wind methodology, an alternate calculation that factors in the worst day for each region, lower values for demand-altering technologies)
+  * Updates BAU grid battery additions to ICF data
+  * Updates for behind-the-meter gas capacity for data centers
+  * Updates hydrogen cost projections to blue/green hydrogen
+  * Calibrates 2025 generation to observed data (representative-day capacity factors, coal rank split, dispatch parameters) and recalibrates the share of cost-effective capacity built, the hard cap on annual capacity builds, and the grid battery deployment parameter
+  * Updates process emissions projections (start-year indexing fix, F-gases from the EPA Vintaging Model) and process emissions abatement costs
+  * Updates input-output data to newer BEA data
+  * Updates short-term natural gas prices to the latest gas futures data
+
 ### **4.0.5 - July 8, 2026**
 
 * New Features
@@ -1313,7 +1364,7 @@ Note that starting with this release, Vensim 8 or later (64-bit) is required to 
 
 The U.S. Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.5.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-us/archive/refs/tags/4.0.7.zip" class="btn">Download the U.S. Energy Policy Simulator</a></p>
 
 ## Software License
 
