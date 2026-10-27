@@ -26,6 +26,8 @@ The input data variable 'Share of Components Energy Use that is New This Year' i
 
 ## Policy Effects for New Components
 
+<a id="eff-stds"></a>
+
 ### Efficiency Standards and R&D
 
 The following structure implements the energy efficiency standards and energy efficiency R&D policies for building components:
@@ -34,6 +36,10 @@ The following structure implements the energy efficiency standards and energy ef
 
 The implementation of these policies is straightforward, as the user settings of these policy levers explicitly define their effects.  We conservatively assume that newly sold building components just meet the reduction in energy use required by the standard.  The R&D policies are defined to be additional R&D beyond any that may be needed to satisfy requirements of other policies, such as R&D by building component manufacturers done in order to meet efficiency standards.
 
+<a id="device-labeling"></a>
+
+<a id="contractor-ed"></a>
+
 ### Improved Labeling and Contractor Education and Training
 
 The following structure implements two Boolean policies (i.e., policies that can only be set to "on" or "off" rather than set to a range of different values): improved device labeling and improved contractor education and training.
@@ -41,6 +47,8 @@ The following structure implements two Boolean policies (i.e., policies that can
 ![improved device labeling and contractor education and training policies](/img/buildings-sector-main-LabelingTraining.png)
 
 Energy efficiency labeling reduces the energy use of specific types of devices- appliances, heating equipment (i.e. central air furnace), and cooling / ventilation equipment (e.g. air conditioning units).  Contractor education and training improves the performance of building envelope components, reducing energy spent on heating and cooling.  In both cases, these are Boolean policies because specific labeling interventions and specific training programs were studied in our input data sources; it does not make sense to allow a user to implement a fraction of a labeling program or a fraction of a training program.
+
+<a id="rebate"></a>
 
 ### Rebate Policy and Component Quality Levels
 
@@ -62,6 +70,8 @@ The energy use of new components is compared with the energy use of that same se
 
 In the next step, we combine this change in energy use with the difference in fuel cost (disaggregated by fuel), which may be driven by other policies (such as a carbon tax or fuel taxes), most of which are handled on the [Fuels page](fuels).  This gives us a percentage change in cost to provide services to a given building area, disaggregated by component and by fuel type.  We apply an elasticity of new component energy demand with respect to energy cost in constant-elasticity form (the ratio of policy to BAU energy cost is raised to the power of the elasticity) to convert this into a percentage change in the energy efficiency of newly sold components.  For small cost changes this closely matches multiplying the percentage change in cost by the elasticity, but it gives diminishing responses to large price changes, such as those driven by a high carbon tax.  This percentage change is multiplied by the total energy use from the most recent prior calculation ("New Components Potential Energy Use after Quality Level Shifts") to give the potential energy use after price-efficiency feedbacks.
 
+<a id="component-elec"></a>
+
 ### Fuel Shifting
 
 A policy is available to shift newly sold components from their BAU fuel types to another fuel type, as shown below. This is typically used to represent electrification, but users can specify shifting to a different fuel source using the input data variable 'Recipient Buildings Fuel Fractions.'
@@ -75,6 +85,8 @@ The implementation of this policy is relatively straightforward, because the use
 At this stage, we are done applying policies and economic effects that alter the efficiency and fuel use of new building components.  The next step is to convert changes in envelope efficiency into changes in energy use, as envelope components do not themselves use energy.  As noted above, envelope is handled as a multiplier that starts at '1' in the BAU and can be reduced to less than '1' if any policies improving the performance of envelope components are enabled.  We multiply the envelope multiplier by energy use from the "heating" and "cooling and ventilation" component types to reflect the increased performance they get from envelope improvements relative to the BAU case in the current model year.  This is done inside a single variable, as shown in this screenshot:
 
 ![envelope effects](/img/buildings-sector-main-Envelope.png)
+
+<a id="retrofitting"></a>
 
 ## Retrofitting Calculations
 
@@ -130,6 +142,8 @@ First, we read in data on the projected BAU capacity of distributed generation s
 
 ![BAU distributed electricity capacity](/img/buildings-sector-main-DistBAUTracking.png)
 
+<a id="distributed-solar-subsidy"></a>
+
 The first policy that can impact distributed generation is a boolean that, if turned on, causes the model to read in a non-BAU projection of distributed generation capacity. This enables the user to easily implement projections from other sources. The second policy to influence distributed generation is a subsidy for distributed solar. The model calculates the effect such a subsidy using an elasticity of distributed solar deployment with respect to subsidy price, which modifies the BAU increase in distributed solar capacity. The additional subsidy lever represents the percentage of distributed solar costs that are not subsidized in the BAU, hence the inclusion of the BAU percent subsidy variable here.
 
 ![effect of subsidy and nonBAU policy on distributed capacity](/img/buildings-sector-main-DistnonBAUandElasticity.png)
@@ -137,6 +151,8 @@ The first policy that can impact distributed generation is a boolean that, if tu
 The third policy that can impact distributed generation is a policy specifying a minimum cumulative installed capacity to exist in a given year. For example, this policy could reflect a region's binding target of X GW of rooftop solar be installed by 2030. The increase in new installations needed to meet the capacity requirement is added to the prior year's total installed capacity to determine the total capacity required. 
 
 ![effect of minimum capacity policy on distributed capacity](/img/buildings-sector-main-DistMinimumCapacity.png)
+
+<a id="solar-carve-out"></a>
 
 The total installations required to meet the capacity requirement in the last step are used to deteremine how much additional solar, if any, is required this year by the fourth and final distributed generation policy: a carve-out policy requiring a minimum share of all electricity generation to come from distributed solar in a year.
 

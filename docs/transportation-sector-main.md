@@ -47,6 +47,8 @@ Cargo distance transported is then modified for macroeconomic feedbacks from the
 
 ![transportation macroeconomic feedbacks](/img/transportation-sector-main-TranspMacroFeedback.png)
 
+<a id="tdm"></a>
+
 Next, we modify cargo distance transported by the Transportation Demand Management (TDM) policy lever, as shown in the screenshot below. TDM refers to a spectrum of different policies that generally attempt to reduce passenger usage of light-duty vehicles. These include improving public transit systems, zoning for higher density along transit corridors, zoning for mixed use neighborhoods and developments, building walking and biking paths, and congestion pricing and parking fees on light-duty vehicles. The effect is to decrease passenger usage of LDVs, aircraft, and motorbikes, while increasing passenger usage of HDVs (buses) and rail. The magnitudes of these effects are geography-specific and are customizable in the input data variable RTMF Recipient Transportation Mode Fractions.
 
 TDM can also be applied to freight transport, which represents mode shifting and logistics. It decreases the freight ton-miles transported by HDVs (trucks) through better freight logistics and/or increases the freight ton-miles transported by rail.
@@ -97,6 +99,8 @@ The feebate policy, which only applies to LDVs, has a specific effect on new LDV
 
 ![feebate effect](/img/transportation-sector-main-FeebateEffect.png)
 
+<a id="fuel-econ-std"></a>
+
 ### Fuel Economy Standards
 
 The improvement caused by the fuel economy standards policy is implemented directly as a percentage improvement to fuel economy (relative to BAU fuel economy in that year) for vehicles, with users able to differentiate by cargo mode and vehicle type. A further input data variable controls which vehicle technologies are subject to the standard. By default, this input data variable is set to apply fuel economy standards to only gasoline, diesel, and LPG onroad vehicles and diesel offroad vehicles in the U.S. The EPS does not currently allow users to select an emissions standard that would then be endogenously met through a combination of fuel economy improvements in internal combustion vehicles as well as an increase in the number of zero-emission vehicles sold. However, the separate Zero-Emission Vehicle Sales Standard policy (covered later in this documentation), or other policies that increase the penetration of zero-emission vehicles such as incentives can be applied in tandem with fuel economy improvements. 
@@ -130,6 +134,8 @@ For passenger light-duty BEVs, we also add a one-time charging-equipment install
 Finally, we convert this stream of expected fuel and other expenditures over the vehicle's lifetime into a net present value (NPV) value, using an average vehicle ownership period and a discount rate adopted by vehicle buyers.  We use an ownership period rather than vehicle lifetime as some vehicle types, for example freight trucks, are typically retained by the original buyer for a period much shorter than the vehicle's lifetime.  A high discount rate is generally appropriate here, as vehicle buyers tend to undervalue future fuel savings (or costs) in their calculus of what vehicle to buy today.  This is one of three factors that contributes to the NPV of Lifetime Vehicle Cost:
 
 ![net present value of fuel costs over vehicle lifetime](/img/transportation-sector-main-NPVFuelCost.png)
+
+<a id="ev-subsidy"></a>
 
 ### New Vehicle Price
 
@@ -193,6 +199,8 @@ We take a similar approach in the EPS by implementing what is known as a logit c
 
 ![allocation by vehicle technology](/img/transportation-sector-main-VehTechAllocation.png)
 
+<a id="ev-mandate"></a>
+
 After the cost-based vehicle allocation, we check to see if the share of zero-emission vehicles (ZEVs) meets the minimum required ZEV sales percentage in each subregion, which can be modified by two policy levers. Up to 60 subregions can be defined; in the U.S. model there are 51 regions, representing the states and the District of Columbia.  The first lever allows the user to define non-BAU ZEV sales requirements for each subregion -- in the U.S. representing changes to the Advanced Clean Cars and Trucks rules of California and follower states.  The second policy lever allows the user to define alternative, region-wide minimum sales shares -- in the U.S.  this would represent changes to the Environmental Protection Agency's tailpipe standards for new vehicles. 
 
 ![ZEV Mandate](/img/transportation-sector-main-ZEVMandate.png)
@@ -230,6 +238,8 @@ We track changes in fleet average fuel economy by calculating the percentage cha
 ![tracking fleet average fuel economy](/img/transportation-sector-main-TrackFleetFuelEcon.png)
 
 We first read in input data on historical new vehicle fuel economy (for example, if the average vehicle lifetime is 15 years, the fuel economy of a newly sold vehicle 15 years ago). After one vehicle lifetime, the retiring vehicle fuel economy is simply the new vehicle fuel economy delayed by one vehicle lifetime. We use this variable to find the retiring vehicle fuel economy and the percentage difference in this value vs. last year’s fleet average fuel economy. We similarly find the percentage difference in new vehicle economy. Because we know the number of retiring and newly sold vehicles this year, we can then calculate the contribution of each to the percentage change in fleet average fuel economy. Finally, we multiply this value by last year’s fleet average fuel economy to find the current year’s fleet average fuel economy. 
+
+<a id="lcfs"></a>
 
 ## Calculating Fuel Shifts Caused by the Low Carbon Fuel Standard (LCFS)
 
@@ -272,6 +282,8 @@ Next, we undo the electricity efficiency adjustment. This reduces the quantity o
 ![undoing electricity efficiency adjustment and adding non-regulated vehicle types](/img/transportation-sector-main-TotFuelUsed.png)
 
 Note that while the methodology to calculate the effects of the LCFS policy accounts for electric vehicles’ contribution to meeting the standard, it does not endogenously deploy additional electric vehicles. Instead, it only shifts the fuel types used within existing vehicles.   
+
+<a id="conv-pol-stds"></a>
 
 ## Calculating Emissions and Electricity Use
 

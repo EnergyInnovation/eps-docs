@@ -53,6 +53,8 @@ We also load the CO<sub>2</sub> emissions intensities from each fuel into the `A
 
 ![fuel CO2 emissions intensities in All Fuels subscript](/img/fuels-EmisIntensitiesAllFuels.png)
 
+<a id="carbon-tax"></a>
+
 ## Carbon Tax Amount per Unit Energy
 
 The carbon tax is based on the CO<sub>2</sub> or CO<sub>2</sub>e intensity of different fuels (depending on whether the carbon tax is configured to apply to non-CO<sub>2</sub> greenhouse gases), so we must begin by considering fuels' pollutant emissions intensities.
@@ -91,6 +93,8 @@ A simple capacity expansion model in the [Electricity sector](electricity-sector
 
 ![calculating electricity prices](/img/fuels-ElecPrices.png)
 
+<a id="fuel-taxes"></a>
+
 ### Fuel Tax Amount per Unit Energy
 
 In addition to carbon taxes, there are often fuel taxes, such as sales taxes, value added taxes, or excise taxes on fuels. We need to calculate the amounts of these taxes per unit energy for each fuel. First, we multiply any additional tax rate or subsidy (set as a percentage of the BAU pretax fuel price) set by the user by the BAU pretax fuel price to find the incremental additional fuel tax amount per unit energy. We add this to the BAU fuel tax amount per unit energy to find the policy case fuel tax or subsidy amount per unit energy. (notes: the pretax electricity price is sourced from the above calculations rather than input data; the "Future Year to Year Mapping" variable is used to translate fuel costs from BFPAT, which is set up in a special manner to allow electricity producers foresight of future fuel prices)
@@ -128,6 +132,8 @@ The model supports altering the price of fuels based on model results. We take t
 We include a boolean control setting subscripted by the `All Fuels` subscript that allows users to select which fuels are affected by changes in production costs. In some regions, energy suppliers may not adjust their prices in response to changes in their costs, such as in countries where electricity prices are strictly regulated, and state-owned utilities may absorb increased costs rather than raise electric rates. A control setting allows the person adapting the EPS to a particular country or region to specify whether the default behavior is to allow or disallow these energy suppliers from passing on policy-driven changes in their costs through increased (or decreased) prices. A policy lever allows this behavior to be reversed, to enable policymakers to test what would hapen if they were to relax or institute fixed energy carrier pricing. A price adjustment, if enabled, is then applied to the policy-case energy prices.
 
 ![energy price adjustment configuration](/img/fuels-EnergyPriceAdjControls.png)
+
+<a id="end-subsidies"></a>
 
 ### Reduction of BAU Subsidies for Fuels
 

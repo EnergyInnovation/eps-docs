@@ -30,6 +30,8 @@ The EPS uses endogenous learning for the following technologies:
 - offshore wind capacity
 - batteries (including the batteries inside electric vehicles and grid batteries)
 
+<a id="red-soft-costs"></a>
+
 ### Hard and Soft Costs
 
 For solar and wind capacity, the endogenous learning is only applied to a portion of the costs, called the _hard costs_.  The remainder, _soft costs_, include the cost of things such as installation, supporting components such as frames/racks on which to mount solar panels, etc.  The soft costs of these technologies are handled via exogenous learning.

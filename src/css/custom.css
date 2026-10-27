@@ -83,3 +83,7 @@ a.btn:active {
    top: 0;
    width: 100%;
 }
+/* Keep section anchors linked from the web app clear of the sticky navbar, like headings */
+.markdown a[id]:empty {
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 0.5rem);
+}

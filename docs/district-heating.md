@@ -18,6 +18,8 @@ First, we find the total usage of the "heat" energy carrier by the Buildings and
 
 ![total heat use](/img/district-heating-TotHeatUse.png)
 
+<a id="convert-coal"></a>
+
 Next, we find the fraction of district heat that is generated from each fuel (e.g. coal, natural gas, etc.). The BAU fractions are taken in as time-series input data, and the fractions in the policy case can be adjusted by the district heat fuel shifting policy lever. This lever allows the user to shift the fuel mix from the BAU case to whatever fractions are specified for the policy case in the input data variable `RHFF Recipient Heat Fuel Fractions`. The total heat use is then divided up by the fuels that provide that heat. For most regions, we use this lever to shift district heating fuels to electricity by default.
 
 ![fuel used to create district heat](/img/district-heating-FuelUse.png)
@@ -25,6 +27,8 @@ Next, we find the fraction of district heat that is generated from each fuel (e.
 Next, we determine the fraction of district heat that is provided by combined heat and power (CHP) plants. BAU data break out the CHP share of district heat by fuel, to allow for the circumstance where heat-providing CHP plants tend to more often burn one fuel type (such as natural gas), while dedicated heat plants tend to more often burn a different fuel type (such as coal).
 
 We assume CHP plants would have been run irrespective of heat demand in order to provide electricity, and so, these plants should be included within the Electricity Sector. To avoid double-counting these plants, we only consider heat provided by "dedicated facilities" (i.e. non-CHP plants) in the "District Heating" part of the model.
+
+<a id="chp"></a>
 
 The user may use the district heat CHP conversion policy to specify what fraction of heat provided by non-CHP plants in the BAU case should instead be provided by CHP plants in the policy case, thus effectively removing those plants from consideration within the "District Heating" model sheet.
 

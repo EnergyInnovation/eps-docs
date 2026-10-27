@@ -61,6 +61,10 @@ Input data determine the number of days in each electricity timeslice. Peak days
 
 The first stage of the power sector calculates the hourly electricity demand, which is used throughout the power sector to calculate dispatch, capacity additions, and market prices. In this stage, the model calculates the total annual demand across the various sectors and converts it to hourly demand. Then, the model adjusts hourly demand to account for trade, losses, and load modifying technologies, before finally yielding a total hourly electricity demand value for each electricity timeslice.
 
+<a id="elec-imports"></a>
+
+<a id="elec-exports"></a>
+
 ### Net Imports
 
 The EPS reads electricity exports (total) and imports (by fuel type) from input data and calculates any changes to the BAU data based on exogenous GDP adjustments determined by input data and policy levers. These adjustments vary imports and exports based on changes in GDP outside of the underlying projection data. This structure is configured to allow for estimation of COVID-induced changes in demand from data sets pre-dating 2020. The final output is total net imports (positive for imports, negative for exports).
@@ -74,6 +78,8 @@ The model then moves to compute total hourly final electricity demand. In other 
 Due to differences in data alignment, i.e. some end uses don’t directly overlap with input data, an adjustment can be necessary to ensure the computed peak and minimum demand values align with historical data. In this step, the model multiplies the computed hourly demand by an Hourly Variance Multiplier that is estimated such that the peak annual demand in the EPS aligns with historically observed values.
 
 Electricity demand from data centers is tracked as its own demand category. Annual data center load comes from input data, which provides low, medium, and high growth trajectories, and a control setting (the Data Center Load Growth Assumption) selects which trajectory is used. Because no policy lever affects it, data center load is the same in the BAU and policy cases. It is converted to hourly demand using its own load factors from input data, with their variation around the daily mean scaled by the commercial buildings Hourly Variance Multiplier.
+
+<a id="red-tnd-losses"></a>
 
 In this step, the model adjusts load to account for transmission and distribution losses based on input data, adding demand in each hour to cover the estimated losses. Policies can be used to improve the loss percentages as well.
 
@@ -123,6 +129,8 @@ EV batteries can contribute to load shifting in the EPS based on input data and 
 Users can modify the grid-balancing share through a policy lever which allows for increasing the share of total EV battery capacity that can be used for grid balancing. The model computes the final maximum amount of daily shifting that can be utilized from the EV batteries (round trip losses are accounted for later).
 
 ![potential daily max shifting from EV batteries](/img/electricity-sector-main-EVBatteries.png)
+
+<a id="dr"></a>
 
 #### Demand Response
 
@@ -228,6 +236,8 @@ Annualized costs per unit new electricity output, the EPS version of an Levelize
 
 ![Construction costs per unit capacity before subsidies](/img/electricity-sector-main-LCOE1.png)
 
+<a id="subsidies"></a>
+
 The model then applies any subsidies for capacity construction (e.g. investment tax credit), which can be modified by user set policies. The model also adds in spur line costs at this point, which vary by technology and region. After computing the construction cost after subsidies and spur line costs, the model estimates an annual repayment of these costs per MW using a capital recovery factor calculated upstream. Each plant type can have its own capital recovery factor which is based on the weighted average cost of capital and assumed financing lifetimes for power plant types. The application of the capital recovery factor converts the construction costs into an annualized payment.
 
 ![Annual financing repayment per unit capacity](/img/electricity-sector-main-LCOE2.png)
@@ -243,6 +253,8 @@ Next, the model adds annual fixed operating and maintenance (O&M) costs to the a
 The model then estimates total variable costs and subsidies. Electricity production CCUS subsidy amounts are calculated here, including an adjustment based on the lifetime of the credit (i.e. for credits that are only available for a portion of the financial lifetime of the power plant, their value has to be adjusted to account for the limited duration of their availability). The model adjusts the value of the incentive to account for instances where the duration of the subsidy is shorter than the financial lifetime of the plant (i.e., what is the value of a 10-year subsidy on a plant lasting 20 years). Users can also modify the electricity production and CCUS incentives, which change the subsidy per unit electricity output. Carbon pricing credits are also calculated at this stage for plants equipped with CCUS. The model sums total variable costs, including fuel costs (which include carbon pricing impacts), variable O&M costs, CO2 transport and storage costs per Megawatt-hour for plants with CCUS, electricity production subsidies, carbon price credits, and CCUS subsidies. Variable costs are added to the levelized fixed costs to produce a total cost per unit new elec output. This $/MWh cost sets the starting point for the RPS and CES credit price searches and is used in the logit choice of resources built for green hydrogen production; the capacity expansion tests themselves use the $/MW values described above. The same CO2 transport and storage costs also enter the dispatch costs used in dispatch and in market price formation, and the dispatch bid for a prospective new plant is built from the new entrant's own fuel and variable O&M costs plus transport and storage costs, less its production and CCUS subsidies valued at present value.
 
 ![Cost per unit new electricity output](/img/electricity-sector-main-LCOE5.png)
+
+<a id="early-ret"></a>
 
 ### Economic, Policy-Driven, and Planned Retirements
 
@@ -271,6 +283,8 @@ We duplicate this structure below but exclude plants' predicted capacity market 
 ![retirement gap and pending retirements excluding predicted capacity payments](/img/electricity-sector-main-RetirementsExclCapacityPaymentPending.png)
 
 ![capacity kept online due to predicted capacity payments](/img/electricity-sector-main-Retirements3.png)
+
+<a id="ban"></a>
 
 ### Maximum Buildable Capacity
 
@@ -317,6 +331,8 @@ The model then computes the total new capacity added using this computed value a
 ![Cost effective capacity additions and retrofits](/img/electricity-sector-main-CostEffectiveAdditions.png)
 
 ![new capacity and retrofits desired due to cost effectiveness](/img/electricity-sector-main-CostEffectiveCapacityDesired.png)
+
+<a id="ces"></a>
 
 ### Clean Electricity Standard Additions
 
@@ -416,6 +432,8 @@ Various capacity factor calculations are used through the electricity sector. Th
 Achieved capacity factors by hour measure each plant type's output in each hour relative to its installed capacity, with capacity that came online during the year counted at a time-adjustment fraction. Achieved capacity factors differ from expected capacity factors because they account for real world (in the model) operating conditions and things that may cause expected output to deviate from actual output, such as curtailment. When the portfolio-standard mechanism (RPS and CES) estimates the qualifying output it can expect from surviving capacity, it uses last year's achieved capacity factors by hour for hydro and last year's hourly bid capacity factors for other resources.
 
 ![achieved capacity factors by hour](/img/electricity-sector-main-ThreeYearAverageAchievedCFbyHour.png)
+
+<a id="red-downtime"></a>
 
 These values are also used to calculate average annual achieved capacity factors. For new plants, the model estimates the capacity factors they would achieve from a hypothetical dispatch, as if one megawatt of each power plant type had been available. Each year, the model calculates how much of that megawatt would be dispatched in each hour through guaranteed dispatch, portfolio-standard dispatch, and least cost dispatch at five-year average market prices, using the bids of a new plant of that type. After the start year, the expected capacity factors for new plants are the three-year average of these hypothetical capacity factors, adjusted for any policy-driven reduction in plant downtime. This lets the model reflect the evolving nature of the power system and the impact to plant run times. For example, in a power sector decarbonization scenario, fossil thermal plants are dispatched less, so the expected capacity factors, and therefore the anticipated revenues, of new fossil plants decline as well. If we used a static capacity factor, then when computing anticipated revenue and costs for new power plant types, we would fail to capture the fewer hours those plants run.
 

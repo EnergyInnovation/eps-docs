@@ -2,6 +2,8 @@
 title: Direct Air Capture (DAC)
 ---
 
+<a id="dac"></a>
+
 In the Energy Policy Simulator (EPS), Direct Air Capture (DAC) refers to the removal of carbon dioxide (CO<sub>2</sub>) from the atmosphere by technological means, such as by using machines containing hydroxide- or amine-based sorbents.  DAC does not refer to removing CO<sub>2</sub> via afforestation, which is governed by a separate [afforestation and reforestation policy lever](afforestation-and-reforestation).  Nor does DAC refer to growing biomass, burning it for energy, and capturing and storing the resulting carbon (bioenergy + carbon capture and storage; BECCS), which is governed by the [CCS policy lever](carbon-capture-and-sequestration) and underlying input variables that specify the fuels used by power plants or industrial facilities.
 
 ## Policies to Support DAC
