@@ -37,6 +37,20 @@ const config = {
       }
     ]
   ],
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        // Keep old URLs that are still linked from WebAppData.xlsx in the model repos working
+        redirects: [
+          {
+            from: '/clean-energy-standard',
+            to: '/renewable-portfolio-standard'
+          }
+        ]
+      }
+    ]
+  ],
   themeConfig: {
     docs: {
       sidebar: {
@@ -65,7 +79,7 @@ const config = {
       // The application ID, key, and index name is provided by Algolia.
       appId: 'JX5PCLQY4G',
       indexName: 'energypolicy',
-      apiKey: '887071eebffc9848ee9cd1afdc33a621',
+      apiKey: '887071eebffc9848ee9cd1afdc33a621'
     }
   }
 }
