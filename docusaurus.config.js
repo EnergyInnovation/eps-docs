@@ -41,10 +41,14 @@ const config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
+        // The web app links to docs pages as `page.html#anchor`. Hosts that don't map
+        // `page.html` to `page/index.html` (Vercel) return 404 for those, so write a
+        // static `page.html` that redirects to `/page`, keeping the anchor.
+        fromExtensions: ['html'],
         // Keep old URLs that are still linked from WebAppData.xlsx in the model repos working
         redirects: [
           {
-            from: '/clean-energy-standard',
+            from: ['/clean-energy-standard', '/clean-energy-standard.html'],
             to: '/renewable-portfolio-standard'
           }
         ]
