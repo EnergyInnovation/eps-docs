@@ -118,6 +118,16 @@ Screenshots are produced by staff opening Vensim and capturing images. Claude Co
 - **No remote pushes.** All work stays local on `develop_4.0.5` until staff approval.
 - **Working notes are project memory.** The files in `/notes/` are how the next Claude Code session picks up where the last one left off. Keep them current.
 
+## Testing the site locally
+
+To check links, redirects, or anchors, run `pnpm build` and serve the output with Python's static server, which, like the Vercel deployment, serves only the files that exist:
+
+```bash
+python3 -m http.server 3124 --directory build
+```
+
+Do not use `pnpm dev` (`docusaurus start`) or `pnpm serve` (`docusaurus serve`) for this. `docusaurus serve` redirects `page.html` to `/page`, but Vercel returns 404 for `page.html`, so URL problems that break the live site don't show up locally. (The web app links to pages as `page.html#anchor`; the `fromExtensions: ['html']` option in `docusaurus.config.js` makes those work on Vercel.) Python adds a trailing slash to directory URLs, which Vercel does not; ignore that difference.
+
 ## Suggested pilot
 
 Before running the full project, pick one documentation section that has clear 4.0.5 changes and walk all three phases on just that section. This will surface workflow issues — screenshot handling, mapping ambiguity, diff noise, commit conventions — at small scale before they compound across the whole docs site. Refine these instructions based on what the pilot reveals.
