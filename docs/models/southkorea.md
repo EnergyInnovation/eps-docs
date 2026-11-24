@@ -29,6 +29,14 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 ## Version History
 
+### **4.0.7 - November 24, 2026**
+
+* Updated model platform to 4.0.7 from 4.0.4
+* Incorporates extensive data and projection updates across sectors
+* Unifies the Renewable Portfolio Standard (RPS) and Clean Energy Standard (CES) into a single portfolio-standard framework, subscripted by a new RPS/CES (Clean Elec Requirement) dimension.
+* Adds data center electricity demand as a selectable BAU load assumption
+* Redesigns cost-driven power plant retirements
+
 ### **4.0.4 - February 2, 2026**
 
 * Updated model platform to 4.0.4 from 3.3.1
@@ -44,7 +52,7 @@ We would like to acknowledge the following people who helped adapt the Energy Po
 
 The South Korea Energy Policy Simulator may be used on this website through your web browser, or the full version may be downloaded to your computer by clicking the button below.  Note that you will need to go through the steps explained on the [EPS download page](../download) in order to install the required software and make use of the downloadable version of the model.
 
-<p><a href="https://github.com/EnergyInnovation/eps-southkorea/archive/4.0.4.zip" class="btn">Download the South Korea Energy Policy Simulator</a></p>
+<p><a href="https://github.com/EnergyInnovation/eps-southkorea/archive/4.0.7.zip" class="btn">Download the South Korea Energy Policy Simulator</a></p>
 
 ## Software License
 
